@@ -4,5 +4,12 @@
         "rewrite": "/404.html",
         "statusCode": 404
       }
-    }
+    },
+    "routes": [
+      {
+        "route": "/",
+        "redirect": "https://directhomeservice.com",
+        "statusCode": 301
+      }
+    ]
   }
