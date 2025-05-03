@@ -2,7 +2,7 @@
   "globalHeaders": {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST, GET, OPTIONS"
-  }
+  },
     "responseOverrides": {
       "404": {
         "rewrite": "/404.html",
