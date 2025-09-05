@@ -12,7 +12,7 @@
     "routes": [
       {
         "route": "/",
-        "redirect": "https://directhomeservice.com",
+        "redirect": "https://directhomeservice.ladesk.com/",
         "statusCode": 301
       }
     ]
