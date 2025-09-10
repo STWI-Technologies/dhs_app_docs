@@ -155,9 +155,10 @@
             // Configuration
             config: {
                 videoUrl: 'https://www.youtube.com/watch?v=zQnBQ4tB3ZA', // Test video - replace with actual tutorial
-                fallbackScheduleUrl: 'https://calendly.com/',
-                fallbackLearningCenterUrl: 'https://help.example.com/learning-center',
-                calendlyVideoCallUrl: 'https://calendly.com/' // Replace with actual Calendly video call URL
+                fallbackScheduleUrl: 'https://directhomeservice.com/1-schedule-traininglanguage/',
+                fallbackLearningCenterUrl: 'https://learn.directhomeservice.com/?_gl=1%2A13dfirw%2A_ga%2AMTgzODIwNjI1NS4xNzQ4Mzc2MDI5%2A_ga_X3F0L99N68%2AczE3NTc1MTkxMzMkbzYyJGcxJHQxNzU3NTE5MjAyJGo1NyRsMCRoMA..',
+                calendlyVideoCallUrl: 'https://directhomeservice.com/1-schedule-traininglanguage/',
+                trainingScheduleUrl: 'https://directhomeservice.com/1-schedule-traininglanguage/'
             },
 
             /**
@@ -187,10 +188,11 @@
                 try {
                     const messageSent = this.sendMessageToParent('schedulePhoneCall');
                     if (!messageSent) {
-                        // TODO: Implement phone call scheduling functionality
+                        window.open(this.config.trainingScheduleUrl, '_blank');
                     }
                 } catch (error) {
                     console.error('Error scheduling phone call:', error);
+                    window.open(this.config.trainingScheduleUrl, '_blank');
                 }
             },
 
@@ -200,10 +202,10 @@
             scheduleVideoCall: function() {
                 try {
                     const messageSent = this.sendMessageToParent('scheduleVideoCall');
-                    window.open(this.config.calendlyVideoCallUrl, '_blank');
+                    window.open(this.config.trainingScheduleUrl, '_blank');
                 } catch (error) {
                     console.error('Error scheduling video call:', error);
-                    window.open(this.config.calendlyVideoCallUrl, '_blank');
+                    window.open(this.config.trainingScheduleUrl, '_blank');
                 }
             },
 
