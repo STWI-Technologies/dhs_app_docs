@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Search - Direct Home Service</title>
+    <meta name="title-en" content="Advanced Search - Direct Home Service">
+    <meta name="title-es" content="Búsqueda Avanzada - Direct Home Service">
+    <meta name="description" content="Advanced search for the Direct Home Service Knowledge Base">
+    <meta name="description-en" content="Advanced search for the Direct Home Service Knowledge Base">
+    <meta name="description-es" content="Búsqueda avanzada para la Base de Conocimientos de Direct Home Service">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        /* Header Styles */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-section h1 {
+            color: #2E3192;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #666;
+            font-size: 14px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #f8f9fa;
+            color: #2E3192;
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 10px;
+            background: white;
+            padding: 5px;
+            border-radius: 25px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .language-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            color: #555;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .language-btn:hover {
+            color: #2E3192;
+        }
+
+        .language-btn.active {
+            background: #2E3192;
+            color: white;
+        }
+
+        .flag {
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
+            display: inline-block;
+        }
+
+        .flag-us {
+            background: linear-gradient(to bottom, #002868 0%, #002868 33%, #ffffff 33%, #ffffff 66%, #bf0a30 66%);
+        }
+
+        .flag-es {
+            background: linear-gradient(to bottom, #c60b1e 0%, #c60b1e 33%, #ffc400 33%, #ffc400 66%, #c60b1e 66%);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-title {
+            color: #2E3192;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .page-subtitle {
+            color: #666;
+            font-size: 18px;
+            font-weight: 300;
+        }
+
+        /* Search Form */
+        .advanced-search-form {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .search-section {
+            margin-bottom: 30px;
+        }
+
+        .search-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            color: #2E3192;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Form Controls */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            color: #374151;
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: #2E3192;
+            box-shadow: 0 0 0 3px rgba(46, 49, 146, 0.1);
+            outline: none;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-select:focus {
+            border-color: #2E3192;
+            outline: none;
+        }
+
+        /* Filter Grid */
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .filter-group {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #e9ecef;
+        }
+
+        .filter-title {
+            font-weight: 600;
+            color: #2E3192;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        /* Checkbox and Radio Groups */
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .checkbox-item, .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-item input, .radio-item input {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        .checkbox-item label, .radio-item label {
+            cursor: pointer;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        /* Search Actions */
+        .search-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2E3192 0%, #5158bb 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 49, 146, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #666;
+            border: 2px solid #e0e0e0;
+        }
+
+        .btn-secondary:hover {
+            border-color: #2E3192;
+            color: #2E3192;
+        }
+
+        /* Search Results */
+        .search-results-section {
+            margin-top: 40px;
+        }
+
+        /* Quick Search */
+        .quick-search {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .quick-search-title {
+            color: #2E3192;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Search Tips */
+        .search-tips {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .tips-title {
+            color: #2E3192;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .tips-list li::before {
+            content: "💡";
+            position: absolute;
+            left: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+                padding: 0 15px;
+            }
+
+            .container {
+                padding: 20px 15px;
+            }
+
+            .advanced-search-form {
+                padding: 25px;
+            }
+
+            .page-title {
+                font-size: 28px;
+            }
+
+            .filter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .search-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Loading State */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .loading::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #e0e0e0;
+            border-top: 2px solid #2E3192;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <a href="/" class="back-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zM4.5 7.5a.5.5 0 0 1 0-1h5.793L8.146 4.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 7.5H4.5z"/>
+                    </svg>
+                    <span data-en="Back to Home" data-es="Volver al Inicio">Back to Home</span>
+                </a>
+                <h1 data-en="Advanced Search" data-es="Búsqueda Avanzada">Advanced Search</h1>
+            </div>
+            
+            <div class="language-switcher">
+                <button class="language-btn active" data-language="en">
+                    <span class="flag flag-us"></span>
+                    English
+                </button>
+                <button class="language-btn" data-language="es">
+                    <span class="flag flag-es"></span>
+                    Español
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="page-header">
+            <h1 class="page-title" data-en="Advanced Search" data-es="Búsqueda Avanzada">Advanced Search</h1>
+            <p class="page-subtitle" data-en="Find exactly what you're looking for with powerful search filters" data-es="Encuentra exactamente lo que buscas con filtros de búsqueda potentes">Find exactly what you're looking for with powerful search filters</p>
+        </div>
+
+        <!-- Quick Search -->
+        <div class="quick-search">
+            <h2 class="quick-search-title" data-en="Quick Search" data-es="Búsqueda Rápida">Quick Search</h2>
+            <div id="quickSearchContainer"></div>
+        </div>
+
+        <!-- Advanced Search Form -->
+        <form class="advanced-search-form" id="advancedSearchForm">
+            <!-- Query Section -->
+            <div class="search-section">
+                <h3 class="section-title">
+                    <svg class="section-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"/>
+                    </svg>
+                    <span data-en="Search Query" data-es="Consulta de Búsqueda">Search Query</span>
+                </h3>
+                
+                <div class="form-group">
+                    <label for="mainQuery" class="form-label" data-en="Search for..." data-es="Buscar...">Search for...</label>
+                    <input type="text" id="mainQuery" class="form-input" placeholder="Enter your search terms" data-en="Enter your search terms" data-es="Introduce tus términos de búsqueda">
+                </div>
+
+                <div class="form-group">
+                    <label for="exactPhrase" class="form-label" data-en="Exact phrase" data-es="Frase exacta">Exact phrase</label>
+                    <input type="text" id="exactPhrase" class="form-input" placeholder="Search for exact phrase" data-en="Search for exact phrase" data-es="Buscar frase exacta">
+                </div>
+
+                <div class="form-group">
+                    <label for="excludeWords" class="form-label" data-en="Exclude words" data-es="Excluir palabras">Exclude words</label>
+                    <input type="text" id="excludeWords" class="form-input" placeholder="Words to exclude from results" data-en="Words to exclude from results" data-es="Palabras a excluir de los resultados">
+                </div>
+            </div>
+
+            <!-- Filters Section -->
+            <div class="search-section">
+                <h3 class="section-title">
+                    <svg class="section-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"/>
+                    </svg>
+                    <span data-en="Filters" data-es="Filtros">Filters</span>
+                </h3>
+
+                <div class="filter-grid">
+                    <!-- Category Filter -->
+                    <div class="filter-group">
+                        <div class="filter-title" data-en="Category" data-es="Categoría">Category</div>
+                        <div class="checkbox-group" id="categoryFilters">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Language Filter -->
+                    <div class="filter-group">
+                        <div class="filter-title" data-en="Language" data-es="Idioma">Language</div>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="langBoth" name="language" value="both" checked>
+                                <label for="langBoth" data-en="Both Languages" data-es="Ambos Idiomas">Both Languages</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="langEn" name="language" value="en">
+                                <label for="langEn" data-en="English Only" data-es="Solo Inglés">English Only</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="langEs" name="language" value="es">
+                                <label for="langEs" data-en="Spanish Only" data-es="Solo Español">Spanish Only</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sort Options -->
+                    <div class="filter-group">
+                        <div class="filter-title" data-en="Sort Results" data-es="Ordenar Resultados">Sort Results</div>
+                        <select id="sortOption" class="form-select">
+                            <option value="relevance" data-en="By Relevance" data-es="Por Relevancia">By Relevance</option>
+                            <option value="title" data-en="By Title" data-es="Por Título">By Title</option>
+                            <option value="category" data-en="By Category" data-es="Por Categoría">By Category</option>
+                        </select>
+                    </div>
+
+                    <!-- Results Count -->
+                    <div class="filter-group">
+                        <div class="filter-title" data-en="Results Per Page" data-es="Resultados Por Página">Results Per Page</div>
+                        <select id="resultsPerPage" class="form-select">
+                            <option value="10">10</option>
+                            <option value="20" selected>20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Actions -->
+            <div class="search-actions">
+                <button type="submit" class="btn btn-primary" id="searchButton">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                    <span data-text="search">Search</span>
+                </button>
+                <button type="reset" class="btn btn-secondary" id="clearButton">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                    <span data-text="clear">Clear</span>
+                </button>
+            </div>
+        </form>
+
+        <!-- Search Results -->
+        <div class="search-results-section">
+            <div id="searchResults"></div>
+        </div>
+
+        <!-- Search Tips -->
+        <div class="search-tips">
+            <h3 class="tips-title">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                </svg>
+                <span data-en="Search Tips" data-es="Consejos de Búsqueda">Search Tips</span>
+            </h3>
+            <ul class="tips-list">
+                <li data-en="Use quotes for exact phrase matching: &quot;crew management&quot;" data-es="Usa comillas para búsqueda exacta: &quot;gestión de equipos&quot;">Use quotes for exact phrase matching: "crew management"</li>
+                <li data-en="Use multiple keywords to narrow results: jobs schedule crew" data-es="Usa múltiples palabras clave para reducir resultados: trabajos programar equipo">Use multiple keywords to narrow results: jobs schedule crew</li>
+                <li data-en="Try different word forms: manage, management, managing" data-es="Prueba diferentes formas de palabras: gestión, gestionar, gestionando">Try different word forms: manage, management, managing</li>
+                <li data-en="Use category filters to focus your search" data-es="Usa filtros de categoría para enfocar tu búsqueda">Use category filters to focus your search</li>
+                <li data-en="Check spelling or try synonyms if no results found" data-es="Verifica la ortografía o prueba sinónimos si no encuentras resultados">Check spelling or try synonyms if no results found</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Load search engine and UI components -->
+    <script src="/js/language-manager.js"></script>
+    <script src="/js/search-engine.js"></script>
+    <script src="/js/search-ui.js"></script>
+    
+    <script>
+        // Advanced Search Page Controller
+        class AdvancedSearchController {
+            constructor() {
+                this.searchEngine = window.dhsSearch;
+                this.searchUI = window.dhsSearchUI;
+                this.currentResults = [];
+                this.init();
+            }
+
+            init() {
+                // Wait for search engine to load
+                const waitForDependencies = () => {
+                    if (!this.searchEngine || !this.searchUI) {
+                        setTimeout(waitForDependencies, 100);
+                        return;
+                    }
+                    this.setupComponents();
+                };
+                waitForDependencies();
+            }
+
+            setupComponents() {
+                // Setup quick search
+                this.setupQuickSearch();
+                
+                // Setup category filters
+                this.setupCategoryFilters();
+                
+                // Setup form handlers
+                this.setupFormHandlers();
+                
+                // Setup URL parameters
+                this.setupURLParams();
+            }
+
+            setupQuickSearch() {
+                const quickSearchContainer = document.getElementById('quickSearchContainer');
+                
+                // Create quick search box
+                this.searchUI.createSearchBox(quickSearchContainer, {
+                    showSuggestions: true,
+                    showFilters: false,
+                    onSearch: (query, results) => {
+                        this.displayResults(results, query);
+                        this.updateURLParams({ q: query });
+                    }
+                });
+            }
+
+            setupCategoryFilters() {
+                const categoryFilters = document.getElementById('categoryFilters');
+                const categories = this.searchEngine.getCategories();
+                
+                categories.forEach(category => {
+                    const div = document.createElement('div');
+                    div.className = 'checkbox-item';
+                    div.innerHTML = `
+                        <input type="checkbox" id="cat_${category.id}" value="${category.id}">
+                        <label for="cat_${category.id}">${category.displayName}</label>
+                    `;
+                    categoryFilters.appendChild(div);
+                });
+            }
+
+            setupFormHandlers() {
+                const form = document.getElementById('advancedSearchForm');
+                const clearButton = document.getElementById('clearButton');
+
+                // Form submission
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.performAdvancedSearch();
+                });
+
+                // Clear form
+                clearButton.addEventListener('click', () => {
+                    this.clearForm();
+                    this.clearResults();
+                });
+            }
+
+            setupURLParams() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const query = urlParams.get('q');
+                
+                if (query) {
+                    document.getElementById('mainQuery').value = query;
+                    this.performAdvancedSearch();
+                }
+            }
+
+            performAdvancedSearch() {
+                const formData = this.getFormData();
+                const results = this.executeSearch(formData);
+                this.displayResults(results, formData.mainQuery);
+                this.updateURLParams(formData);
+            }
+
+            getFormData() {
+                const mainQuery = document.getElementById('mainQuery').value.trim();
+                const exactPhrase = document.getElementById('exactPhrase').value.trim();
+                const excludeWords = document.getElementById('excludeWords').value.trim();
+                const selectedLanguage = document.querySelector('input[name="language"]:checked').value;
+                const sortOption = document.getElementById('sortOption').value;
+                const resultsPerPage = parseInt(document.getElementById('resultsPerPage').value);
+                
+                // Get selected categories
+                const selectedCategories = Array.from(document.querySelectorAll('#categoryFilters input:checked'))
+                    .map(checkbox => checkbox.value);
+
+                return {
+                    mainQuery,
+                    exactPhrase,
+                    excludeWords,
+                    categories: selectedCategories,
+                    language: selectedLanguage,
+                    sortOption,
+                    resultsPerPage
+                };
+            }
+
+            executeSearch(formData) {
+                let query = formData.mainQuery;
+                
+                // Add exact phrase with quotes
+                if (formData.exactPhrase) {
+                    query += ` "${formData.exactPhrase}"`;
+                }
+                
+                // Add exclude words with minus prefix
+                if (formData.excludeWords) {
+                    const excludeTerms = formData.excludeWords.split(' ')
+                        .filter(word => word.trim())
+                        .map(word => `-${word.trim()}`)
+                        .join(' ');
+                    query += ` ${excludeTerms}`;
+                }
+
+                if (!query.trim()) return [];
+
+                // Search options
+                const options = {
+                    language: formData.language === 'both' ? this.searchEngine.getLanguage() : formData.language,
+                    maxResults: formData.resultsPerPage
+                };
+
+                // If categories are selected, search within them
+                if (formData.categories.length > 0) {
+                    const allResults = [];
+                    formData.categories.forEach(categoryId => {
+                        const categoryResults = this.searchEngine.search(query, {
+                            ...options,
+                            category: categoryId
+                        });
+                        allResults.push(...categoryResults);
+                    });
+                    
+                    // Remove duplicates and sort
+                    const uniqueResults = allResults.filter((result, index, self) => 
+                        index === self.findIndex(r => r.id === result.id)
+                    );
+                    
+                    return this.sortResults(uniqueResults, formData.sortOption);
+                } else {
+                    const results = this.searchEngine.search(query, options);
+                    return this.sortResults(results, formData.sortOption);
+                }
+            }
+
+            sortResults(results, sortOption) {
+                switch (sortOption) {
+                    case 'title':
+                        return results.sort((a, b) => a.displayTitle.localeCompare(b.displayTitle));
+                    case 'category':
+                        return results.sort((a, b) => a.category.localeCompare(b.category));
+                    case 'relevance':
+                    default:
+                        return results; // Already sorted by relevance
+                }
+            }
+
+            displayResults(results, query = '') {
+                const resultsContainer = document.getElementById('searchResults');
+                
+                // Create results container if it doesn't exist
+                let searchResultsDiv = resultsContainer.querySelector('.dhs-search-results');
+                if (!searchResultsDiv) {
+                    searchResultsDiv = document.createElement('div');
+                    searchResultsDiv.className = 'dhs-search-results';
+                    resultsContainer.appendChild(searchResultsDiv);
+                }
+
+                this.currentResults = results;
+                this.searchUI.displayResults(query, results, searchResultsDiv);
+            }
+
+            clearForm() {
+                document.getElementById('advancedSearchForm').reset();
+                document.querySelectorAll('#categoryFilters input').forEach(cb => cb.checked = false);
+                document.querySelector('#langBoth').checked = true;
+            }
+
+            clearResults() {
+                const resultsContainer = document.getElementById('searchResults');
+                resultsContainer.innerHTML = '';
+                this.updateURLParams({});
+            }
+
+            updateURLParams(params) {
+                const url = new URL(window.location);
+                
+                // Clear existing search params
+                url.searchParams.delete('q');
+                url.searchParams.delete('categories');
+                url.searchParams.delete('language');
+                url.searchParams.delete('sort');
+                
+                // Add new params
+                if (params.mainQuery || params.q) {
+                    url.searchParams.set('q', params.mainQuery || params.q);
+                }
+                if (params.categories && params.categories.length > 0) {
+                    url.searchParams.set('categories', params.categories.join(','));
+                }
+                if (params.language && params.language !== 'both') {
+                    url.searchParams.set('language', params.language);
+                }
+                if (params.sortOption && params.sortOption !== 'relevance') {
+                    url.searchParams.set('sort', params.sortOption);
+                }
+
+                // Update URL without reload
+                window.history.replaceState({}, '', url);
+            }
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            new AdvancedSearchController();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+{
+  "header": {
+    "title": "Direct Home Service",
+    "subtitle": "Customer Service Knowledge Base"
+  },
+  "search": {
+    "placeholder": "Search entire knowledge base...",
+    "button": "Search",
+    "localSearch": "Local Search",
+    "externalSearch": "External Search",
+    "externalDescription": "Search the complete LiveAgent knowledge base",
+    "noResults": "No results found",
+    "searchResultsFor": "Search results for: {{query}}",
+    "resultsCount": "{{count}} results found",
+    "loading": "Searching...",
+    "clear": "Clear search"
+  },
+  "categories": {
+    "coreOperations": "Core Operations",
+    "customerManagement": "Customer Management",
+    "servicesProducts": "Services & Products",
+    "reportsAnalytics": "Reports & Analytics",
+    "financialReports": "Financial Reports",
+    "operationsCompliance": "Operations & Compliance",
+    "allCategories": "All Categories",
+    "viewAll": "View All",
+    "articles": "articles"
+  },
+  "navigation": {
+    "home": "Home",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "breadcrumb": "You are here:"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Try again",
+    "notFound": "Not found",
+    "comingSoon": "Coming soon",
+    "readMore": "Read more",
+    "showLess": "Show less",
+    "lastUpdated": "Last updated: {{date}}",
+    "helpful": "Was this helpful?",
+    "yes": "Yes",
+    "no": "No",
+    "feedback": "Feedback",
+    "contactSupport": "Contact Support"
+  },
+  "errors": {
+    "pageNotFound": "Page not found",
+    "pageNotFoundDescription": "The page you are looking for does not exist.",
+    "serverError": "Server error",
+    "serverErrorDescription": "Something went wrong on our end. Please try again later.",
+    "networkError": "Network error",
+    "networkErrorDescription": "Please check your internet connection and try again.",
+    "searchError": "Search error",
+    "searchErrorDescription": "Unable to complete search. Please try again."
+  },
+  "language": {
+    "selectLanguage": "Select language",
+    "english": "English",
+    "spanish": "Español",
+    "switchTo": "Switch to {{language}}"
+  },
+  "filters": {
+    "filterBy": "Filter by:",
+    "sortBy": "Sort by:",
+    "relevance": "Relevance",
+    "date": "Date",
+    "title": "Title",
+    "category": "Category",
+    "all": "All",
+    "reset": "Reset filters",
+    "apply": "Apply filters"
+  },
+  "article": {
+    "relatedArticles": "Related Articles",
+    "tableOfContents": "Table of Contents",
+    "printArticle": "Print Article",
+    "shareArticle": "Share Article",
+    "articleViews": "{{count}} views",
+    "estimatedReadTime": "{{minutes}} min read",
+    "tags": "Tags:",
+    "attachments": "Attachments",
+    "downloadAttachment": "Download {{filename}}"
+  },
+  "quickLinks": {
+    "title": "Quick Links",
+    "gettingStarted": "Getting Started",
+    "frequentlyAsked": "Frequently Asked Questions",
+    "contactUs": "Contact Us",
+    "support": "Support",
+    "documentation": "Documentation",
+    "tutorials": "Tutorials"
+  }
+}

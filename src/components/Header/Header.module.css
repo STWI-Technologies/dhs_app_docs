@@ -1,0 +1,96 @@
+/* Header Component Styles */
+
+.header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 40px 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  gap: 20px;
+}
+
+.logoLink {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.logo {
+  height: 45px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.headerText {
+  text-align: left;
+}
+
+.headerText .title {
+  margin-bottom: 5px;
+}
+
+.title {
+  color: #2E3192;
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.subtitle {
+  color: #878787;
+  font-size: 18px;
+  font-weight: 300;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .logoContainer {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .headerText {
+    text-align: center;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .header {
+    padding: 30px 15px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .logo {
+    height: 35px;
+  }
+}

@@ -1,0 +1,223 @@
+{
+  "documents": [
+    {
+      "id": "index",
+      "url": "/index.html",
+      "title": "Direct Home Service - Knowledge Base",
+      "titleEs": "Direct Home Service - Base de Conocimientos",
+      "content": "Customer Service Knowledge Base Track Schedule Complete Get Paid Core Operations Users Management Crews Management Jobs Management Availability Management Customer Management Clients Management Estimates Invoices Services Products Services Catalog Products Catalog Reports Analytics Reports Overview Work Order Reports Technician Performance Customer Reports Financial Reports Financial Reports Time Labor Report Operations Compliance Scheduling Dispatch Reports Compliance Safety Reports",
+      "contentEs": "Base de Conocimientos de Atención al Cliente Seguir Programar Completar Cobrar Operaciones Principales Gestión de Usuarios Gestión de Equipos Gestión de Trabajos Gestión de Disponibilidad Gestión de Clientes Gestión de Clientes Presupuestos Facturas Servicios Productos Catálogo de Servicios Catálogo de Productos Informes Análisis Resumen de Informes Informes de Órdenes de Trabajo Rendimiento de Técnicos Informes de Clientes Informes Financieros Informes Financieros Informe de Tiempo y Mano de Obra Operaciones Cumplimiento Informes de Programación y Despacho Informes de Cumplimiento y Seguridad",
+      "category": "home",
+      "categoryEs": "inicio",
+      "keywords": ["home", "knowledge base", "search", "categories", "direct home service"],
+      "keywordsEs": ["inicio", "base de conocimientos", "buscar", "categorías", "direct home service"],
+      "language": "both"
+    },
+    {
+      "id": "jobs-en",
+      "url": "/en/jobs.html",
+      "title": "Jobs",
+      "titleEs": "Trabajos",
+      "content": "Jobs Track Schedule Complete Get Paid video tutorial want to see it in action what you can do create and schedule jobs for your customers assign crews and technicians to jobs track job progress from start to completion manage job details estimates invoices set job priorities and deadlines tips for success use clear job descriptions include customer contact information set realistic timeframes double check crew assignments before scheduling notify customers of any schedule changes",
+      "contentEs": "Trabajos Seguir Programar Completar Cobrar tutorial de video quiere verlo en acción qué puede hacer crear y programar trabajos para sus clientes asignar equipos y técnicos a trabajos seguir el progreso del trabajo de principio a fin gestionar detalles del trabajo presupuestos facturas establecer prioridades y plazos de trabajos consejos para el éxito usar descripciones claras de trabajo incluir información de contacto del cliente establecer plazos realistas verificar asignaciones de equipos antes de programar notificar a los clientes de cualquier cambio de horario",
+      "category": "operations",
+      "categoryEs": "operaciones",
+      "keywords": ["jobs", "schedule", "crew", "technician", "assignment", "progress", "completion"],
+      "keywordsEs": ["trabajos", "programar", "equipo", "técnico", "asignación", "progreso", "finalización"],
+      "language": "en"
+    },
+    {
+      "id": "crew-en",
+      "url": "/en/crew.html",
+      "title": "Crew",
+      "titleEs": "Equipo",
+      "content": "Crew Organize your team Assign jobs efficiently Stay on schedule video tutorial want to see it in action what you can do create and manage crews for better job coordination assign team members and designate a crew lead set crew-specific availability and time slots view and update member roles and assignments filter and search crews for fast access tips for success only Admin and Crew roles can be added to crews first member equals crew lead changeable later crew availability overrides global schedule use colors and names that reflect purpose like HVAC East",
+      "contentEs": "Equipo Organizar su equipo Asignar trabajos eficientemente Mantenerse en horario tutorial de video quiere verlo en acción qué puede hacer crear y gestionar equipos para mejor coordinación de trabajos asignar miembros del equipo y designar un líder de equipo establecer disponibilidad específica del equipo y horarios ver y actualizar roles y asignaciones de miembros filtrar y buscar equipos para acceso rápido consejos para el éxito solo roles de Admin y Equipo pueden ser agregados a equipos primer miembro igual líder de equipo cambiable después disponibilidad del equipo anula horario global usar colores y nombres que reflejen propósito como HVAC Este",
+      "category": "operations",
+      "categoryEs": "operaciones",
+      "keywords": ["crew", "team", "coordination", "lead", "availability", "roles", "assignment"],
+      "keywordsEs": ["equipo", "coordinación", "líder", "disponibilidad", "roles", "asignación"],
+      "language": "en"
+    },
+    {
+      "id": "dashboard-en",
+      "url": "/en/dashboard.html",
+      "title": "Dashboard",
+      "titleEs": "Tablero de Control",
+      "content": "Dashboard Control when you work Keep your schedule conflict-free video tutorial want to see it in action overview of your daily activities view scheduled jobs and appointments manage availability and time slots quick access to important features track performance metrics monitor job status and progress",
+      "contentEs": "Tablero de Control Controla cuándo trabajas Mantén tu horario libre de conflictos tutorial de video quiere verlo en acción resumen de sus actividades diarias ver trabajos programados y citas gestionar disponibilidad y horarios acceso rápido a características importantes seguir métricas de rendimiento monitorear estado y progreso del trabajo",
+      "category": "overview",
+      "categoryEs": "resumen",
+      "keywords": ["dashboard", "overview", "schedule", "activities", "availability", "performance", "monitoring"],
+      "keywordsEs": ["tablero", "resumen", "horario", "actividades", "disponibilidad", "rendimiento", "monitoreo"],
+      "language": "en"
+    },
+    {
+      "id": "dashboard-es",
+      "url": "/es/dashboard.html",
+      "title": "Tablero de Control",
+      "titleEs": "Tablero de Control",
+      "content": "Tablero de Control Controla cuándo trabajas Mantén tu horario libre de conflictos tutorial de video mira nuestro tutorial en video resumen de sus actividades diarias ver trabajos programados y citas gestionar disponibilidad y horarios acceso rápido a características importantes seguir métricas de rendimiento monitorear estado y progreso del trabajo",
+      "contentEs": "Tablero de Control Controla cuándo trabajas Mantén tu horario libre de conflictos tutorial de video mira nuestro tutorial en video resumen de sus actividades diarias ver trabajos programados y citas gestionar disponibilidad y horarios acceso rápido a características importantes seguir métricas de rendimiento monitorear estado y progreso del trabajo",
+      "category": "resumen",
+      "categoryEs": "resumen",
+      "keywords": ["tablero", "resumen", "horario", "actividades", "disponibilidad", "rendimiento", "monitoreo"],
+      "keywordsEs": ["tablero", "resumen", "horario", "actividades", "disponibilidad", "rendimiento", "monitoreo"],
+      "language": "es"
+    },
+    {
+      "id": "users-en",
+      "url": "/en/users.html",
+      "title": "Users",
+      "titleEs": "Usuarios",
+      "content": "Users Manage your team members Add edit remove user accounts Set permissions and access levels Assign roles technician admin crew leader Configure user profiles and contact information Track user activity and performance Manage login credentials and security settings",
+      "contentEs": "Usuarios Gestionar miembros de su equipo Agregar editar eliminar cuentas de usuario Establecer permisos y niveles de acceso Asignar roles técnico admin líder de equipo Configurar perfiles de usuario e información de contacto Seguir actividad y rendimiento del usuario Gestionar credenciales de inicio de sesión y configuraciones de seguridad",
+      "category": "management",
+      "categoryEs": "gestión",
+      "keywords": ["users", "team", "accounts", "permissions", "roles", "profiles", "security"],
+      "keywordsEs": ["usuarios", "equipo", "cuentas", "permisos", "roles", "perfiles", "seguridad"],
+      "language": "en"
+    },
+    {
+      "id": "clients-en",
+      "url": "/en/clients.html",
+      "title": "Clients",
+      "titleEs": "Clientes",
+      "content": "Clients Manage customer information Add new clients and contact details Update client profiles and service history Track customer preferences and notes Schedule appointments and follow-ups Manage billing and payment information Generate client reports and analytics",
+      "contentEs": "Clientes Gestionar información del cliente Agregar nuevos clientes y detalles de contacto Actualizar perfiles de clientes e historial de servicio Seguir preferencias y notas del cliente Programar citas y seguimientos Gestionar facturación e información de pago Generar informes y análisis de clientes",
+      "category": "customers",
+      "categoryEs": "clientes",
+      "keywords": ["clients", "customers", "contacts", "profiles", "appointments", "billing", "reports"],
+      "keywordsEs": ["clientes", "contactos", "perfiles", "citas", "facturación", "informes"],
+      "language": "en"
+    },
+    {
+      "id": "estimates-en",
+      "url": "/en/estimates.html",
+      "title": "Estimates",
+      "titleEs": "Presupuestos",
+      "content": "Estimates Create detailed service estimates Generate professional quotes for customers Include materials labor and service costs Add terms conditions and expiration dates Send estimates via email or print Track estimate status approval rejection Convert approved estimates to jobs Manage estimate templates and pricing",
+      "contentEs": "Presupuestos Crear presupuestos detallados de servicio Generar cotizaciones profesionales para clientes Incluir materiales mano de obra y costos de servicio Agregar términos condiciones y fechas de vencimiento Enviar presupuestos por email o imprimir Seguir estado del presupuesto aprobación rechazo Convertir presupuestos aprobados a trabajos Gestionar plantillas de presupuesto y precios",
+      "category": "finance",
+      "categoryEs": "finanzas",
+      "keywords": ["estimates", "quotes", "pricing", "materials", "labor", "approval", "conversion"],
+      "keywordsEs": ["presupuestos", "cotizaciones", "precios", "materiales", "mano de obra", "aprobación", "conversión"],
+      "language": "en"
+    },
+    {
+      "id": "invoices-en",
+      "url": "/en/invoices.html",
+      "title": "Invoices",
+      "titleEs": "Facturas",
+      "content": "Invoices Generate professional invoices Process payments and billing Track payment status and overdue accounts Send invoices electronically or print Apply taxes discounts and fees Manage recurring billing and subscriptions Generate financial reports and statements Handle refunds and credits",
+      "contentEs": "Facturas Generar facturas profesionales Procesar pagos y facturación Seguir estado de pago y cuentas vencidas Enviar facturas electrónicamente o imprimir Aplicar impuestos descuentos y tarifas Gestionar facturación recurrente y suscripciones Generar informes financieros y estados de cuenta Manejar reembolsos y créditos",
+      "category": "finance",
+      "categoryEs": "finanzas",
+      "keywords": ["invoices", "billing", "payments", "taxes", "discounts", "recurring", "financial"],
+      "keywordsEs": ["facturas", "facturación", "pagos", "impuestos", "descuentos", "recurrente", "financiero"],
+      "language": "en"
+    },
+    {
+      "id": "availability-en",
+      "url": "/en/availability.html",
+      "title": "Availability",
+      "titleEs": "Disponibilidad",
+      "content": "Availability Manage work schedules and time slots Set availability for technicians and crews Block out time for maintenance and breaks Handle vacation requests and time off Configure working hours and shift patterns View team availability calendar Prevent scheduling conflicts and overlaps",
+      "contentEs": "Disponibilidad Gestionar horarios de trabajo y franjas horarias Establecer disponibilidad para técnicos y equipos Bloquear tiempo para mantenimiento y descansos Manejar solicitudes de vacaciones y tiempo libre Configurar horas de trabajo y patrones de turnos Ver calendario de disponibilidad del equipo Prevenir conflictos de programación y superposiciones",
+      "category": "scheduling",
+      "categoryEs": "programación",
+      "keywords": ["availability", "schedule", "time slots", "vacation", "working hours", "calendar", "conflicts"],
+      "keywordsEs": ["disponibilidad", "horario", "franjas horarias", "vacaciones", "horas de trabajo", "calendario", "conflictos"],
+      "language": "en"
+    },
+    {
+      "id": "settings-en",
+      "url": "/en/settings.html",
+      "title": "Settings",
+      "titleEs": "Configuración",
+      "content": "Settings Configure system preferences Manage user permissions and access levels Set up notifications and alerts Configure company information and branding Manage integrations and API connections Set up backup and security options Configure workflow and business rules",
+      "contentEs": "Configuración Configurar preferencias del sistema Gestionar permisos de usuario y niveles de acceso Configurar notificaciones y alertas Configurar información de la empresa y marca Gestionar integraciones y conexiones API Configurar opciones de respaldo y seguridad Configurar flujo de trabajo y reglas de negocio",
+      "category": "administration",
+      "categoryEs": "administración",
+      "keywords": ["settings", "preferences", "permissions", "notifications", "integrations", "security", "workflow"],
+      "keywordsEs": ["configuración", "preferencias", "permisos", "notificaciones", "integraciones", "seguridad", "flujo de trabajo"],
+      "language": "en"
+    },
+    {
+      "id": "products-en",
+      "url": "/en/products.html",
+      "title": "Products",
+      "titleEs": "Productos",
+      "content": "Products Manage inventory and product catalog Add edit remove products and services Set pricing and cost information Track stock levels and reorder points Configure product categories and attributes Manage supplier and vendor information Generate product reports and analytics",
+      "contentEs": "Productos Gestionar inventario y catálogo de productos Agregar editar eliminar productos y servicios Establecer información de precios y costos Seguir niveles de existencias y puntos de reorden Configurar categorías y atributos de productos Gestionar información de proveedores Generar informes y análisis de productos",
+      "category": "inventory",
+      "categoryEs": "inventario",
+      "keywords": ["products", "inventory", "catalog", "pricing", "stock", "categories", "suppliers"],
+      "keywordsEs": ["productos", "inventario", "catálogo", "precios", "existencias", "categorías", "proveedores"],
+      "language": "en"
+    },
+    {
+      "id": "reports-en",
+      "url": "/en/reports-timesheet.html",
+      "title": "Reports - Timesheet",
+      "titleEs": "Informes - Hoja de Tiempo",
+      "content": "Reports Timesheet Track employee work hours Generate timesheet reports View labor costs and productivity metrics Export data for payroll processing Manage overtime and break tracking Configure time tracking settings Generate detailed time analysis",
+      "contentEs": "Informes Hoja de Tiempo Seguir horas de trabajo del empleado Generar informes de hoja de tiempo Ver costos laborales y métricas de productividad Exportar datos para procesamiento de nómina Gestionar seguimiento de horas extra y descansos Configurar configuraciones de seguimiento de tiempo Generar análisis detallado de tiempo",
+      "category": "reports",
+      "categoryEs": "informes",
+      "keywords": ["reports", "timesheet", "hours", "labor", "productivity", "payroll", "overtime"],
+      "keywordsEs": ["informes", "hoja de tiempo", "horas", "laboral", "productividad", "nómina", "horas extra"],
+      "language": "en"
+    }
+  ],
+  "categories": [
+    {
+      "id": "operations",
+      "name": "Core Operations",
+      "nameEs": "Operaciones Principales",
+      "description": "Job management, scheduling, and crew coordination",
+      "descriptionEs": "Gestión de trabajos, programación y coordinación de equipos"
+    },
+    {
+      "id": "customers",
+      "name": "Customer Management",
+      "nameEs": "Gestión de Clientes",
+      "description": "Client information, estimates, and invoices",
+      "descriptionEs": "Información del cliente, presupuestos y facturas"
+    },
+    {
+      "id": "finance",
+      "name": "Financial Management",
+      "nameEs": "Gestión Financiera",
+      "description": "Billing, payments, and financial reports",
+      "descriptionEs": "Facturación, pagos e informes financieros"
+    },
+    {
+      "id": "inventory",
+      "name": "Inventory & Products",
+      "nameEs": "Inventario y Productos",
+      "description": "Product catalog and inventory management",
+      "descriptionEs": "Catálogo de productos y gestión de inventario"
+    },
+    {
+      "id": "reports",
+      "name": "Reports & Analytics",
+      "nameEs": "Informes y Análisis",
+      "description": "Performance tracking and business intelligence",
+      "descriptionEs": "Seguimiento de rendimiento e inteligencia empresarial"
+    },
+    {
+      "id": "administration",
+      "name": "Administration",
+      "nameEs": "Administración",
+      "description": "System settings and user management",
+      "descriptionEs": "Configuración del sistema y gestión de usuarios"
+    }
+  ],
+  "meta": {
+    "version": "1.0.0",
+    "lastUpdated": "2025-09-11",
+    "totalDocuments": 13,
+    "languages": ["en", "es"]
+  }
+}

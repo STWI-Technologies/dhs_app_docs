@@ -1,0 +1,850 @@
+{
+  "knowledgeBase": {
+    "lastUpdated": "2025-09-11",
+    "source": "directhomeservice.ladesk.com",
+    "totalArticles": 17,
+    "articles": [
+      {
+        "id": "460823",
+        "url": "https://directhomeservice.ladesk.com/460823-Users",
+        "title": "Users Management",
+        "category": "Core Operations",
+        "keywords": ["users", "management", "admin", "accounts", "roles", "permissions", "dashboard"],
+        "content": {
+          "overview": "Users Management in Customer Service Platform - User Dashboard for managing user accounts with ability to add, edit, enable, and disable users. Search and filter functionality for user management.",
+          "keyFeatures": [
+            "User Dashboard for managing user accounts",
+            "Add, edit, enable, and disable users",
+            "Search and filter functionality",
+            "Role assignment (Admin, Support, Crew)",
+            "Time zone configuration"
+          ],
+          "stepByStepInstructions": {
+            "addingNewUser": [
+              "Click 'Add User' button",
+              "Fill out required fields: First Name, Last Name, Email Address, Role, Time Zone",
+              "Optional: Add description",
+              "Set user password",
+              "Click 'Add User' to create account"
+            ],
+            "editingUser": [
+              "Click pencil icon next to user name",
+              "Modify fields",
+              "Click 'Apply Changes'"
+            ],
+            "disableEnableUsers": [
+              "Disabling prevents application access",
+              "Can be reversed at any time",
+              "Confirm action when prompted"
+            ]
+          },
+          "searchCapabilities": [
+            "Quick search by name or email",
+            "Advanced filtering by user role",
+            "Reset filter option"
+          ],
+          "importantNotes": "The User Management section allows administrators to effectively manage user accounts in the system."
+        }
+      },
+      {
+        "id": "586913",
+        "url": "https://directhomeservice.ladesk.com/586913-Crews",
+        "title": "Crews Management",
+        "category": "Core Operations",
+        "keywords": ["crews", "teams", "management", "scheduling", "members", "lead"],
+        "content": {
+          "overview": "Crews Management Guide - Crew Dashboard for managing crew teams with ability to add, edit, and delete crew information. Assign and manage crew members and view crew availability and schedules.",
+          "keyFeatures": [
+            "Crew Dashboard for managing crew teams",
+            "Add, edit, and delete crew information",
+            "Assign and manage crew members",
+            "View crew availability and schedules",
+            "Calendar color coding"
+          ],
+          "stepByStepInstructions": {
+            "addingNewCrew": [
+              "Click 'New Crew' button",
+              "Fill out required fields: Crew Name, Calendar Color",
+              "Add at least one team member",
+              "Assign a Crew Lead (first member automatically selected)"
+            ]
+          },
+          "editingCapabilities": [
+            "Modify crew name and calendar color",
+            "Add/remove crew members",
+            "Change crew lead",
+            "Set crew availability and schedule"
+          ],
+          "searchAndFilter": [
+            "Quick search by crew name",
+            "Filter crews by specific team members",
+            "Reset filters easily"
+          ],
+          "importantNotes": [
+            "A crew lead must be assigned",
+            "Crew cannot be deleted if assigned to active jobs",
+            "Crew cannot be deleted if it's the only crew in the account"
+          ]
+        }
+      },
+      {
+        "id": "431361",
+        "url": "https://directhomeservice.ladesk.com/431361-Jobs",
+        "title": "Jobs Management",
+        "category": "Core Operations",
+        "keywords": ["jobs", "scheduling", "clients", "crews", "status", "invoices", "timer"],
+        "content": {
+          "overview": "Jobs Management in Direct Home Service Platform - Comprehensive job management interface for service providers. Allows viewing, adding, editing, and deleting jobs with job status and scheduling tracking.",
+          "keyFeatures": [
+            "Comprehensive job management interface",
+            "View, add, edit, and delete jobs",
+            "Track job status and scheduling",
+            "Link to clients and crews",
+            "Priority setting and management"
+          ],
+          "jobDashboard": [
+            "Job Name",
+            "Client",
+            "Schedule",
+            "Crew",
+            "Status"
+          ],
+          "stepByStepInstructions": {
+            "addingNewJob": [
+              "Click '+ New Job' button",
+              "Select client from dropdown",
+              "Enter job title",
+              "Choose client property",
+              "Assign crew",
+              "Select checklist",
+              "Set start and end dates/times",
+              "Optional: Set job priority",
+              "Click 'Add Job' to create"
+            ]
+          },
+          "managementOptions": [
+            "Prioritize jobs",
+            "Mark jobs as completed",
+            "Reschedule",
+            "Cancel jobs",
+            "Delete jobs"
+          ],
+          "detailInterfaceCapabilities": [
+            "Manage visits",
+            "Track time with 'Start Timer'",
+            "Create and manage invoices",
+            "Set recurring schedules",
+            "View/edit client information"
+          ],
+          "searchAndFilter": [
+            "Quick search by job title, client, or crew",
+            "Filter jobs by status (Draft, Scheduled, Completed, etc.)"
+          ],
+          "importantNotes": "Deleting a Job is a permanent action and cannot be undone."
+        }
+      },
+      {
+        "id": "270481",
+        "url": "https://directhomeservice.ladesk.com/270481-Availability",
+        "title": "Availability Management",
+        "category": "Core Operations",
+        "keywords": ["availability", "scheduling", "time slots", "exceptions", "global", "crew-specific"],
+        "content": {
+          "overview": "Availability Management for Service Providers - Manage service availability globally or per crew. Set schedules, time slots, and exceptions with flexible scheduling options.",
+          "keyFeatures": [
+            "Manage service availability globally or per crew",
+            "Set schedules, time slots, and exceptions",
+            "Flexible scheduling options",
+            "Warning system for schedule conflicts"
+          ],
+          "mainFunctionality": {
+            "availabilityDashboard": "Provides overview of availability settings with options for global and per-crew availability",
+            "settingAvailability": "Choose between 'Global' or 'Per Crew' settings and select specific crew if using per-crew option"
+          },
+          "managingSchedules": {
+            "globalSchedule": [
+              "Add up to 2 non-overlapping time slots per day",
+              "Enable/disable workdays with toggle switch"
+            ],
+            "crewSchedule": [
+              "Select specific crew",
+              "Add up to 2 non-overlapping time slots",
+              "Warning if crew slots exceed global availability"
+            ]
+          },
+          "addingTimeSlots": [
+            "Click on desired day",
+            "Set start and end times",
+            "Ensure no time slot overlaps"
+          ],
+          "managingExceptions": [
+            "Add exceptions by day range",
+            "Add exceptions by month",
+            "Add exceptions by season",
+            "Applies to both global and per-crew views"
+          ],
+          "importantNotes": "If a crew-specific time slot falls outside the bounds of global availability time slots, a warning will be displayed."
+        }
+      },
+      {
+        "id": "831098",
+        "url": "https://directhomeservice.ladesk.com/831098-Clients",
+        "title": "Clients Management",
+        "category": "Customer Management",
+        "keywords": ["clients", "customers", "properties", "residential", "business", "contact"],
+        "content": {
+          "overview": "Clients Management Guide for Customer Service Agents - Comprehensive client management system with ability to add, edit, and track client information. Detailed client dashboard with multiple sections.",
+          "keyFeatures": [
+            "Comprehensive client management system",
+            "Add, edit, and track client information",
+            "Detailed client dashboard with multiple sections",
+            "Property management integration",
+            "Document and note organization"
+          ],
+          "mainSections": {
+            "clientDashboard": [
+              "Displays client details like name, type, contact info",
+              "Action buttons for each client (view, chat, estimate, invoice)",
+              "Categorization options: All, Residential, Business, Archived"
+            ],
+            "clientDetailInterface": [
+              "Properties: View and manage client properties",
+              "Estimates: Create and track project estimates",
+              "Jobs & Invoices: Manage project-related financial documents",
+              "Notes & Attachments: Organize client documentation",
+              "Additional Options: Quick actions like chat, add estimate/invoice"
+            ]
+          },
+          "stepByStepInstructions": {
+            "addingNewClient": [
+              "Click '+ New client' button",
+              "Select client type (Residential or Business)",
+              "Enter required fields for Residential: First/Last Name, Phone, Email",
+              "Enter required fields for Business: Company name, Website, additional details",
+              "Add property details",
+              "Upload property image (optional)"
+            ]
+          },
+          "searchFunctionality": [
+            "Quick search by name, email, address",
+            "Advanced filtering by city and state"
+          ],
+          "keyHighlights": [
+            "Intuitive, user-friendly interface",
+            "Comprehensive client information management",
+            "Flexible search and filtering capabilities"
+          ]
+        }
+      },
+      {
+        "id": "919387",
+        "url": "https://directhomeservice.ladesk.com/919387-Estimates",
+        "title": "Estimates",
+        "category": "Customer Management",
+        "keywords": ["estimates", "pricing", "services", "products", "taxes", "discounts", "recurring"],
+        "content": {
+          "overview": "Estimates Management Guide for Customer Service Agents - Comprehensive estimate creation, editing, and tracking system. Allows service providers to manage client estimates efficiently.",
+          "keyFeatures": [
+            "Comprehensive estimate creation, editing, and tracking",
+            "Service providers can manage client estimates efficiently",
+            "Support for both residential and business estimates",
+            "Tax and discount application",
+            "Recurring service scheduling"
+          ],
+          "mainSections": {
+            "estimateDashboard": "Displays estimate details like name, client, property type, total, status with search and filter capabilities"
+          },
+          "stepByStepInstructions": {
+            "creatingNewEstimate": [
+              "Click '+ New Estimate'",
+              "Fill out estimate details (client, title, property type)",
+              "Select services and products",
+              "Add pricing and tax information",
+              "Submit estimate"
+            ]
+          },
+          "keyManagementFunctions": [
+            "Edit estimate details",
+            "Add/modify services and products",
+            "Set recurring schedules",
+            "Add client comments",
+            "Submit estimate via email/SMS",
+            "Convert estimate to job",
+            "Delete estimates"
+          ],
+          "uniqueFeatures": [
+            "Comprehensive client information panel",
+            "Flexible estimate conversion to jobs",
+            "Multiple communication channels for estimate sharing",
+            "PDF download and estimate duplication"
+          ],
+          "recommendedWorkflow": [
+            "Create detailed estimate",
+            "Review all details",
+            "Submit to client",
+            "Track and manage estimate status"
+          ]
+        }
+      },
+      {
+        "id": "804099",
+        "url": "https://directhomeservice.ladesk.com/804099-Invoices",
+        "title": "Invoices",
+        "category": "Customer Management",
+        "keywords": ["invoices", "billing", "payments", "jobs", "taxes", "email", "sms"],
+        "content": {
+          "overview": "Invoices Management Guide for Customer Service Agents - Invoice Dashboard for creating, viewing, and managing invoices with ability to link invoices to specific jobs. Comprehensive invoice creation and editing process.",
+          "keyFeatures": [
+            "Invoice Dashboard for creating, viewing, and managing invoices",
+            "Link invoices to specific jobs",
+            "Comprehensive invoice creation and editing process",
+            "Multiple communication options for sending invoices"
+          ],
+          "stepByStepInstructions": {
+            "invoiceCreation": [
+              "Click '+ New Invoice' button",
+              "Select a job from dropdown",
+              "Enter invoice title",
+              "Set due date",
+              "Add services and products",
+              "Click 'Add Invoice'"
+            ]
+          },
+          "mainSections": {
+            "invoiceDashboard": "Shows job name, invoice total, and status with search and filter options",
+            "invoiceDetailInterface": [
+              "Services and Products management",
+              "Billing details (taxes, discounts)",
+              "Client information",
+              "Send invoice functionality"
+            ]
+          },
+          "importantFunctionality": [
+            "Add/edit services and products",
+            "Apply taxes and discounts",
+            "Send invoices via email or SMS",
+            "Search and filter invoices",
+            "Delete invoices (permanent action)"
+          ],
+          "uniqueFeatures": [
+            "Quick add for services/products",
+            "Detailed client information panel",
+            "Preview invoice before sending",
+            "Flexible invoice status tracking"
+          ],
+          "keyNotes": [
+            "Invoices are closely tied to job management",
+            "Deleting an invoice cannot be undone",
+            "Comprehensive client information tracking"
+          ]
+        }
+      },
+      {
+        "id": "219493",
+        "url": "https://directhomeservice.ladesk.com/219493-Services",
+        "title": "Services Catalog",
+        "category": "Services & Products",
+        "keywords": ["services", "catalog", "sku", "pricing", "taxable", "online booking"],
+        "content": {
+          "overview": "Services Management Guide for Customer Service Agents - Manage service items for estimates and invoices. Add, edit, delete, and search services with configuration of service details like SKU, cost, taxability, and online booking.",
+          "keyFeatures": [
+            "Manage service items for estimates and invoices",
+            "Add, edit, delete, and search services",
+            "Configure service details like SKU, cost, taxability, and online booking",
+            "Usage status tracking"
+          ],
+          "servicesDashboard": [
+            "SKU",
+            "Service name",
+            "Cost per hour",
+            "Taxability",
+            "Online booking availability",
+            "Usage status"
+          ],
+          "keyFunctionality": {
+            "addingNewService": [
+              "Click '+ New Service' button",
+              "Fill required fields: SKU, Name, Cost per hour",
+              "Optional: Add description",
+              "Configure additional parameters: Taxable, Show online booking, In use status"
+            ],
+            "editingServices": [
+              "Select service from dashboard",
+              "Click 'Actions' menu",
+              "Modify desired fields",
+              "'Apply Changes' to save"
+            ],
+            "deletingServices": [
+              "Move to Disabled section first",
+              "Can restore or permanently delete",
+              "Deletion restricted for services linked to estimates/invoices"
+            ],
+            "serviceSearch": [
+              "Quick search by SKU or name",
+              "Advanced filtering options: Taxable, Online booking, Usage status"
+            ]
+          },
+          "importantNotes": "Deletion may only occur if the service item is not linked to an estimate or invoice."
+        }
+      },
+      {
+        "id": "807691",
+        "url": "https://directhomeservice.ladesk.com/807691-Products",
+        "title": "Products Catalog",
+        "category": "Services & Products",
+        "keywords": ["products", "inventory", "sku", "cost", "markup", "pricing", "taxable"],
+        "content": {
+          "overview": "Products Management in Customer Service Platform - Manage product items for estimates and invoices. Add, edit, delete, and search product inventory with automatic price calculations.",
+          "keyFeatures": [
+            "Manage product items for estimates and invoices",
+            "Add, edit, delete, and search product inventory",
+            "Automatic price calculations with markup",
+            "Two-stage deletion process for safety"
+          ],
+          "dashboardOverview": [
+            "SKU",
+            "Product name",
+            "Cost",
+            "Markup",
+            "Item price",
+            "Taxability",
+            "Usage status"
+          ],
+          "keyFunctionalities": {
+            "addingNewProduct": [
+              "Click '+ New Product' button",
+              "Fill required fields: SKU, Product Name, Cost",
+              "Optional: Add description",
+              "Set markup percentage",
+              "Specify if product is taxable",
+              "'Item Price' auto-calculates"
+            ],
+            "editingProducts": [
+              "Locate product in dashboard",
+              "Click 'Edit' action button",
+              "Modify necessary fields",
+              "'Apply Changes' to save updates"
+            ],
+            "deletingProducts": [
+              "Two-stage deletion process",
+              "First move to 'Disabled' section",
+              "Can restore or permanently delete",
+              "Deletion only allowed for unused products"
+            ],
+            "productSearch": [
+              "Quick search by SKU or name",
+              "Advanced filtering options",
+              "Filter by taxability and usage status"
+            ]
+          },
+          "importantNotes": "Deletion may only occur if the product item is not linked to an estimate or invoice."
+        }
+      },
+      {
+        "id": "722264",
+        "url": "https://directhomeservice.ladesk.com/722264-Reports",
+        "title": "Reports Overview",
+        "category": "Reports & Analytics",
+        "keywords": ["reports", "analytics", "overview", "time", "labor", "tracking"],
+        "content": {
+          "overview": "Reports - Part of a customer service agent onboarding guide providing comprehensive reporting tools for various operational areas including detailed analytics across multiple domains.",
+          "keyFeatures": [
+            "Comprehensive reporting tools for various operational areas",
+            "Detailed analytics across multiple domains",
+            "Visualize, analyze, and manage workforce information",
+            "Track hours logged by users for assigned jobs"
+          ],
+          "reportingDomains": [
+            "Work Order Reports",
+            "Technician Performance Reports",
+            "Customer Reports",
+            "Time and Labor Reports",
+            "Asset and Inventory Reports",
+            "Financial Reports",
+            "Scheduling and Dispatch Reports",
+            "Compliance and Safety Reports",
+            "Travel and Mileage Reports",
+            "Service Level Agreement (SLA) Reports"
+          ],
+          "timeAndLaborFocus": [
+            "Visualize, analyze, and manage information related to hours worked",
+            "Provides comprehensive overview of time entries",
+            "Tracks hours logged by users for assigned jobs"
+          ],
+          "importantNotes": [
+            "Helps support efficient team supervision and control",
+            "Allows detailed tracking of workforce activity"
+          ]
+        }
+      },
+      {
+        "id": "131021",
+        "url": "https://directhomeservice.ladesk.com/131021-Work-Order-Reports",
+        "title": "Work Order Reports",
+        "category": "Reports & Analytics",
+        "keywords": ["work orders", "status", "priority", "completion", "timeline", "revenue"],
+        "content": {
+          "overview": "Work Order Reports - Comprehensive tool for managers to analyze and track work orders within an organization with customizable data views and advanced filtering options.",
+          "keyFeatures": [
+            "Comprehensive work order tracking and analysis",
+            "Customizable data views",
+            "Advanced search and filtering options",
+            "Export reports as PDF",
+            "Interactive chart exploration"
+          ],
+          "dashboardViews": {
+            "dataView": [
+              "Job Name",
+              "Service Items",
+              "Status",
+              "Priority",
+              "Client",
+              "Location",
+              "Start/End Dates",
+              "Estimated Hours"
+            ],
+            "visualizationView": [
+              "Work Orders by Status",
+              "Work Orders by Priority",
+              "Work Order Completion Rate",
+              "Work Orders Timeline",
+              "Revenue by Status"
+            ]
+          },
+          "filteringOptions": [
+            "Search Bar",
+            "Time Filters",
+            "Status Filters",
+            "Priority Filters",
+            "Client Filters",
+            "Location Filters"
+          ],
+          "exportFeatures": [
+            "Filtered work order table",
+            "Applied search criteria",
+            "Visual summaries",
+            "Optimized formatting"
+          ],
+          "purpose": "Empower managers and supervisors to analyze trends, monitor service delivery, and identify opportunities for operational improvement."
+        }
+      },
+      {
+        "id": "182200",
+        "url": "https://directhomeservice.ladesk.com/182200-Technician-Performance",
+        "title": "Technician Performance",
+        "category": "Reports & Analytics",
+        "keywords": ["technician", "performance", "productivity", "completion rate", "utilization"],
+        "content": {
+          "overview": "Technician Performance Dashboard - Comprehensive tool for tracking and evaluating technician productivity and job completion across an organization with detailed metrics and visualizations.",
+          "keyFeatures": [
+            "Track and evaluate technician productivity",
+            "Job completion analysis across organization",
+            "Group by Crew, User, or Combined",
+            "Export performance data as PDF",
+            "Customizable date ranges"
+          ],
+          "keyMetricsTracked": [
+            "Total Jobs",
+            "Average Completion Rate",
+            "Average Utilization",
+            "Job Completion by Crew/Individual",
+            "Average Job Completion Time"
+          ],
+          "dashboardComponents": [
+            "KPI Boxes (Summary Metrics)",
+            "Data View Table",
+            "Visual Graphs and Charts"
+          ],
+          "keyPerformanceVisualization": [
+            "Completion Rate by Group",
+            "Productivity Metrics",
+            "Utilization by Group",
+            "Productivity Trends"
+          ],
+          "dataTableColumns": [
+            "Name",
+            "Type (Crew or User)",
+            "Completed Jobs",
+            "Assigned Jobs",
+            "Completion Rate",
+            "Average Jobs Per Period",
+            "Average Completion Time",
+            "Utilization Rate"
+          ],
+          "filteringOptions": [
+            "Quick search",
+            "Filter by Crew",
+            "Filter by User",
+            "Combined Crew and User view",
+            "Custom date range selection"
+          ],
+          "purpose": "Empowers managers to monitor workforce metrics, review productivity trends, and identify opportunities for increased efficiency or further training."
+        }
+      },
+      {
+        "id": "296554",
+        "url": "https://directhomeservice.ladesk.com/296554-Customer-Reports",
+        "title": "Customer Reports",
+        "category": "Reports & Analytics",
+        "keywords": ["customer", "satisfaction", "complaints", "feedback", "rating", "resolution"],
+        "content": {
+          "overview": "Customer Reports - Comprehensive Customer Satisfaction and Complaint Analysis with interactive filtering and exportable PDF reports for tracking customer experience and service quality.",
+          "keyFeatures": [
+            "Customer Satisfaction Dashboard",
+            "Complaint Analysis and Tracking",
+            "Interactive filtering and visualization",
+            "Exportable PDF reports",
+            "Crew-wise performance comparisons"
+          ],
+          "customerSatisfactionDashboard": {
+            "filters": ["Search bar", "Date range", "Rating", "Status"],
+            "kpiSummaryBoxes": [
+              "Total Feedbacks",
+              "Average Rating",
+              "Total Complaints"
+            ],
+            "dataView": [
+              "Crew Lead Name",
+              "Total Feedback Entries",
+              "Average Rating",
+              "Satisfaction Score"
+            ],
+            "visualizations": [
+              "Rating Distribution Charts",
+              "Satisfaction Trend Graphs",
+              "Crew-wise Performance Comparisons"
+            ]
+          },
+          "complaintsSection": {
+            "filters": "Complaints analysis filters",
+            "kpiBoxes": [
+              "Total Complaints",
+              "Open Complaints",
+              "Resolved Complaints",
+              "Average Resolution Time"
+            ],
+            "trackingFeatures": [
+              "Detailed complaint data view",
+              "Complaint type and status tracking",
+              "Resolution notes and audit trail"
+            ]
+          },
+          "uniqueCapabilities": [
+            "Interactive filtering",
+            "Exportable PDF reports",
+            "Comprehensive visual and tabular data representation",
+            "Crew and team performance tracking"
+          ],
+          "purpose": "The goal is to offer a clear picture of the customer experience, highlight areas for improvement, and support data-driven decisions to elevate service quality."
+        }
+      },
+      {
+        "id": "724970",
+        "url": "https://directhomeservice.ladesk.com/724970-Financial-Reports",
+        "title": "Financial Reports",
+        "category": "Financial Reports",
+        "keywords": ["financial", "revenue", "jobs", "taxes", "discounts", "accounting", "forecasting"],
+        "content": {
+          "overview": "Financial Reports - Comprehensive tools for tracking and analyzing financial performance of jobs and services with detailed revenue tracking and visual analysis for business planning.",
+          "keyFeatures": [
+            "Track and analyze financial performance of jobs and services",
+            "Generate PDF reports with KPI summaries",
+            "Export selected charts and filtered job data",
+            "Support accurate accounting and forecasting"
+          ],
+          "dashboardComponents": {
+            "filterBar": [
+              "Search jobs by name, client, keywords",
+              "Select date ranges (Today, Last Week, Custom)"
+            ],
+            "dataViewTable": [
+              "Job Name",
+              "Status",
+              "Total Revenue",
+              "Subtotal",
+              "Tax",
+              "Discount",
+              "Estimated Hours",
+              "Crew",
+              "Client",
+              "Scheduled Start"
+            ],
+            "kpiSummaryBoxes": [
+              "Total Revenue",
+              "Total Jobs",
+              "Completed Jobs",
+              "Average Job Value"
+            ],
+            "visualizations": [
+              "Job Status Distribution (Pie Chart)",
+              "Revenue By Month (Bar Graph)",
+              "Revenue Breakdown",
+              "Jobs Over Time Timeline"
+            ]
+          },
+          "exportFeatures": [
+            "Generate PDF reports",
+            "Include filtered job data",
+            "Export KPI summaries",
+            "Capture selected charts"
+          ],
+          "keyBenefit": "Enables managers and finance teams to monitor revenue generation, job values, tax impacts, discounts, and scheduling details",
+          "practicalUse": "Supports accurate accounting, forecasting, and business planning through detailed financial tracking and visual analysis."
+        }
+      },
+      {
+        "id": "318626",
+        "url": "https://directhomeservice.ladesk.com/318626-Time-and-Labor-Report",
+        "title": "Time and Labor Report",
+        "category": "Financial Reports",
+        "keywords": ["time", "labor", "payroll", "productivity", "timesheet", "hours", "tracking"],
+        "content": {
+          "overview": "Time and Labor Report - Comprehensive tool for managers to track and analyze employee work hours with detailed insights into workforce time tracking, supporting payroll processing and productivity analysis.",
+          "keyFeatures": [
+            "Track and analyze employee work hours",
+            "Detailed workforce time tracking insights",
+            "Support payroll processing",
+            "Enable productivity analysis",
+            "Flexible filtering options"
+          ],
+          "filterBar": [
+            "Search employees by name",
+            "Select date ranges (today, yesterday, last week, etc.)",
+            "Filter by job types",
+            "Select specific employees"
+          ],
+          "dataViewTable": [
+            "Employee Name",
+            "Date",
+            "Clock In/Out Times",
+            "Total Hours Worked",
+            "Job Details",
+            "Break Time"
+          ],
+          "visualizationSection": [
+            "Technician Performance Chart: Monthly performance metrics",
+            "Monthly Overview: Aggregate timesheet summary"
+          ],
+          "exportFunctionality": [
+            "Generate PDF reports",
+            "Include filtered timesheet records",
+            "Contains visual chart summaries"
+          ],
+          "keyBenefits": [
+            "Support payroll processing",
+            "Enable productivity analysis",
+            "Provide operational oversight",
+            "Allow detailed employee time tracking"
+          ],
+          "uniqueAspects": [
+            "Graphical trend analysis",
+            "Flexible filtering options",
+            "Comprehensive reporting capabilities"
+          ],
+          "primaryUsers": "Supervisors and managers monitoring workforce time and productivity"
+        }
+      },
+      {
+        "id": "927404",
+        "url": "https://directhomeservice.ladesk.com/927404-Scheduling--Dispatch-Reports",
+        "title": "Scheduling & Dispatch Reports",
+        "category": "Operations & Compliance",
+        "keywords": ["scheduling", "dispatch", "optimization", "crew", "region", "workflow", "resources"],
+        "content": {
+          "overview": "Scheduling & Dispatch Reports - Module helps managers analyze and optimize job scheduling and dispatch across teams and regions. Provides actionable insights into operational efficiency through powerful filtering and visualization tools.",
+          "keyFeatures": [
+            "Analyze and optimize job scheduling and dispatch",
+            "Monitor across teams and regions",
+            "Provide actionable insights into operational efficiency",
+            "Interactive tools with multiple visualization options"
+          ],
+          "filterBar": [
+            "Search Bar: Quickly find specific jobs",
+            "Group By Switch: Toggle between Crew, User, or Region views",
+            "Date Range: Select preset or custom time periods"
+          ],
+          "kpiSummaryBoxes": [
+            "Total Jobs",
+            "Scheduled Jobs",
+            "Completed Jobs",
+            "Total Hours"
+          ],
+          "visualizations": [
+            "Job Status Distribution",
+            "Scheduling Trends",
+            "Crew Performance",
+            "Hours Distribution"
+          ],
+          "exportingReports": [
+            "Apply filters and groupings",
+            "Export dashboard as PDF",
+            "Include KPI boxes, charts, and filtered data"
+          ],
+          "keyBenefits": [
+            "Analyze job assignment and scheduling",
+            "Compare performance across teams",
+            "Identify workflow bottlenecks",
+            "Support resource allocation decisions"
+          ],
+          "uniqueAspect": "The dashboard offers flexible, interactive tools for managers to gain comprehensive insights into operational performance through multiple visualization and filtering options."
+        }
+      },
+      {
+        "id": "977125",
+        "url": "https://directhomeservice.ladesk.com/977125-Compliance-and-Safety-Reports",
+        "title": "Compliance and Safety Reports",
+        "category": "Operations & Compliance",
+        "keywords": ["compliance", "safety", "regulatory", "standards", "audit", "tracking"],
+        "content": {
+          "overview": "Compliance and Safety Reports Dashboard - Tracks job statuses, work crew assignments, and compliance rates with centralized monitoring of safety practices and regulatory requirements.",
+          "keyFeatures": [
+            "Track job statuses and work crew assignments",
+            "Monitor compliance rates",
+            "Centralized safety practices monitoring",
+            "Regulatory requirements tracking",
+            "PDF export functionality for auditing"
+          ],
+          "dashboardComponents": {
+            "jobDetailsTable": [
+              "Job Name",
+              "Client",
+              "Status",
+              "Crew",
+              "Scheduled Start",
+              "Estimated Hours",
+              "Property"
+            ],
+            "searchAndFilterOptions": [
+              "Search bar for quick job lookup",
+              "Date range filters",
+              "Status filters (Completed, Started, Draft)"
+            ]
+          },
+          "keyPerformanceIndicators": [
+            "Total Jobs",
+            "Completed Jobs",
+            "Compliance Rate",
+            "Active Crews"
+          ],
+          "visualizationFeatures": [
+            "Job Status Distribution chart",
+            "Crew Job Assignment visualization",
+            "Compliance Rate Tracking pie chart"
+          ],
+          "pdfExportFunctionality": [
+            "Export filtered reports",
+            "Include summary section, detailed jobs table, and graphical summaries",
+            "Suitable for printing, auditing, and stakeholder distribution"
+          ],
+          "keyInstructions": [
+            "Apply desired filters to narrow job view",
+            "Review KPIs and graphical insights",
+            "Use search and filter tools to analyze data",
+            "Export PDF reports as needed for documentation"
+          ],
+          "importantNotes": "The dashboard helps ensure regulatory requirements and internal standards are consistently met."
+        }
+      }
+    ]
+  }
+}

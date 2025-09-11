@@ -1,0 +1,391 @@
+/* ArticleCard Component Styles */
+
+.articleCard {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(46, 49, 146, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+.articleCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  border-color: rgba(46, 49, 146, 0.2);
+}
+
+.articleCard:focus {
+  outline: 2px solid #2E3192;
+  outline-offset: 2px;
+}
+
+.articleCard:active {
+  transform: translateY(-2px);
+}
+
+.categoryBadge {
+  position: absolute;
+  top: -8px;
+  left: 20px;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
+
+.articleHeader {
+  margin-bottom: 16px;
+  padding-top: 8px;
+}
+
+.articleTitle {
+  color: #2E3192;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.articleMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  color: #878787;
+  font-size: 12px;
+}
+
+.readTime,
+.lastUpdated {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.readTime::before {
+  content: '⏱️';
+  font-size: 10px;
+}
+
+.lastUpdated::before {
+  content: '📅';
+  font-size: 10px;
+}
+
+.articleContent {
+  flex: 1;
+  margin-bottom: 16px;
+}
+
+.excerpt {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.keywordTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.keywordTag {
+  background: #f0f2ff;
+  color: #2E3192;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: lowercase;
+  border: 1px solid rgba(46, 49, 146, 0.2);
+  transition: all 0.2s ease;
+}
+
+.keywordTag:hover {
+  background: #2E3192;
+  color: white;
+}
+
+.moreKeywords {
+  background: #e0e0e0;
+  color: #666;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.articleFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.readMoreLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #2E3192;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.readMoreLink:hover {
+  background: #2E3192;
+  color: white;
+  border-color: #2E3192;
+  transform: translateX(2px);
+}
+
+.readMoreLink:focus {
+  outline: 2px solid #2E3192;
+  outline-offset: 2px;
+}
+
+.readMoreIcon {
+  transition: transform 0.3s ease;
+  font-weight: bold;
+}
+
+.readMoreLink:hover .readMoreIcon {
+  transform: translateX(3px);
+}
+
+.articleIndicators {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.newIndicator,
+.updatedIndicator,
+.featuredIndicator {
+  font-size: 10px;
+  padding: 3px 6px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.newIndicator {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+}
+
+.updatedIndicator {
+  background: linear-gradient(135deg, #FF9800 0%, #f57c00 100%);
+  color: white;
+}
+
+.featuredIndicator {
+  background: linear-gradient(135deg, #E91E63 0%, #ad1457 100%);
+  color: white;
+}
+
+/* Animation for card loading */
+.articleCard {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .articleCard {
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .categoryBadge {
+    top: -6px;
+    left: 16px;
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+
+  .articleTitle {
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+
+  .articleMeta {
+    font-size: 11px;
+    gap: 8px;
+  }
+
+  .excerpt {
+    font-size: 13px;
+    -webkit-line-clamp: 2;
+  }
+
+  .keywordTags {
+    margin-bottom: 16px;
+    gap: 4px;
+  }
+
+  .keywordTag,
+  .moreKeywords {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+
+  .readMoreLink {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  .articleFooter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .articleIndicators {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .articleCard {
+    padding: 16px;
+    border-radius: 8px;
+  }
+
+  .categoryBadge {
+    position: static;
+    margin-bottom: 12px;
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+  }
+
+  .articleHeader {
+    padding-top: 0;
+    margin-bottom: 12px;
+  }
+
+  .articleTitle {
+    font-size: 16px;
+    -webkit-line-clamp: 3;
+  }
+
+  .excerpt {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .keywordTags {
+    margin-bottom: 12px;
+  }
+
+  .readMoreLink {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .newIndicator,
+  .updatedIndicator,
+  .featuredIndicator {
+    font-size: 9px;
+    padding: 2px 4px;
+  }
+}
+
+/* Grid layouts for different contexts */
+.articleCard.compact {
+  padding: 16px;
+}
+
+.articleCard.compact .articleTitle {
+  font-size: 16px;
+  -webkit-line-clamp: 1;
+}
+
+.articleCard.compact .excerpt {
+  -webkit-line-clamp: 2;
+  font-size: 13px;
+}
+
+.articleCard.featured {
+  border: 2px solid #2E3192;
+  background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+}
+
+.articleCard.featured .articleTitle {
+  color: #1f2575;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .articleCard {
+    border: 2px solid #2E3192;
+  }
+
+  .articleCard:hover {
+    background: #f8f9ff;
+  }
+
+  .keywordTag {
+    border: 1px solid #2E3192;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .articleCard {
+    transition: none;
+    animation: none;
+  }
+
+  .articleCard:hover {
+    transform: none;
+  }
+
+  .readMoreLink:hover {
+    transform: none;
+  }
+
+  .readMoreLink:hover .readMoreIcon {
+    transform: none;
+  }
+}

@@ -1,0 +1,109 @@
+/* Language Switcher Component Styles */
+
+.languageSwitcher {
+  position: fixed;
+  bottom: 0;
+  left: 25%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  gap: 0;
+  background: #2d2d2d;
+  padding: 8px 12px;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+  border: none;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.languageSwitcher:hover {
+  background: #3d3d3d;
+  transform: translateX(-50%);
+}
+
+.languageBtn {
+  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  outline: none;
+}
+
+.languageBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.languageBtn:focus {
+  outline: 2px solid #2E3192;
+  outline-offset: 2px;
+}
+
+.languageBtn.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.flag {
+  width: 18px;
+  height: 13px;
+  border-radius: 2px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.flagUs {
+  background: linear-gradient(to bottom, #002868 0%, #002868 33%, #ffffff 33%, #ffffff 66%, #bf0a30 66%);
+}
+
+.flagEs {
+  background: linear-gradient(to bottom, #c60b1e 0%, #c60b1e 33%, #ffc400 33%, #ffc400 66%, #c60b1e 66%);
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .languageSwitcher {
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 15px;
+  }
+  
+  .languageSwitcher:hover {
+    transform: translateX(-50%) translateY(-2px);
+  }
+
+  .languageBtn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .languageSwitcher {
+    bottom: 15px;
+    padding: 8px 12px;
+  }
+
+  .languageBtn {
+    padding: 5px 10px;
+    font-size: 11px;
+    gap: 3px;
+  }
+
+  .flag {
+    width: 16px;
+    height: 12px;
+  }
+}
