@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct Home Service - Base de Conocimientos</title>
+    <meta name="description" content="Base de Conocimientos de Atención al Cliente de Direct Home Service - Accede a documentación, guías y recursos de ayuda.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .language-switcher a {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(46, 49, 146, 0.9);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .language-switcher a:hover {
+            background: rgba(46, 49, 146, 1);
+            transform: translateY(-2px);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 20px;
+        }
+
+        .logo {
+            height: 45px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .header-text {
+            text-align: left;
+        }
+
+        .header-text h1 {
+            margin-bottom: 5px;
+        }
+
+        h1 {
+            color: #2E3192;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #878787;
+            font-size: 18px;
+            font-weight: 300;
+        }
+
+        .search-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 600px;
+            padding: 15px 25px;
+            font-size: 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .search-box:focus {
+            border-color: #2E3192;
+            box-shadow: 0 0 0 3px rgba(46, 49, 146, 0.1);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .category-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .category-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .category-title {
+            color: #2E3192;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-icon {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+        }
+
+        .article-list {
+            list-style: none;
+        }
+
+        .article-list li {
+            margin-bottom: 12px;
+        }
+
+        .article-link {
+            color: #555;
+            text-decoration: none;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .article-link:hover {
+            background: #f8f9fa;
+            color: #2E3192;
+            padding-left: 15px;
+        }
+
+        .article-link::before {
+            content: "→";
+            margin-right: 10px;
+            color: #96FAC2;
+            font-weight: bold;
+        }
+
+        .quick-links {
+            margin-top: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .quick-links-title {
+            color: #2E3192;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .quick-link-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #2E3192 0%, #5158bb 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .quick-link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 49, 146, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #878787;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .language-switcher {
+                position: static;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .logo-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .header-text {
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <a href="../public/index.html">English</a>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <a href="../public/index.html">
+                    <img src="../public/brand/logo-12.png" alt="Direct Home Service" class="logo">
+                </a>
+                <div class="header-text">
+                    <h1>Direct Home Service</h1>
+                    <p class="subtitle">Base de Conocimientos</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="search-container">
+            <form action="https://directhomeservice.ladesk.com/search" method="get" style="position: relative; display: flex; width: 100%; max-width: 600px; gap: 10px;">
+                <div style="position: relative; flex: 1;">
+                    <input type="text" name="q" class="search-box" placeholder="Buscar en toda la base de conocimientos..." id="searchBox" required style="width: 100%; padding-right: 40px;">
+                    <button type="button" id="clearBtn" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 18px; color: #878787; cursor: pointer; display: none;">✕</button>
+                </div>
+                <button type="submit" style="padding: 15px 25px; background: linear-gradient(135deg, #2E3192 0%, #5158bb 100%); color: white; border: none; border-radius: 25px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 500; transition: all 0.3s ease;">Buscar</button>
+                <input type="hidden" name="pid" value="6">
+                <input type="hidden" name="type" value="search">
+                <input type="hidden" name="upid" value="">
+            </form>
+        </div>
+
+        <div class="categories-grid">
+            <!-- Operaciones Principales -->
+            <div class="category-section">
+                <h2 class="category-title">Operaciones Principales</h2>
+                <ul class="article-list">
+                    <li><a href="https://directhomeservice.ladesk.com/460823-Users" class="article-link">Gestión de Usuarios</a></li>
+                    <li><a href="https://directhomeservice.ladesk.com/586913-Crews" class="article-link">Gestión de Equipos</a></li>
+                    <li><a href="https://directhomeservice.ladesk.com/431361-Jobs" class="article-link">Gestión de Trabajos</a></li>
+                    <li><a href="https://directhomeservice.ladesk.com/270481-Availability" class="article-link">Gestión de Disponibilidad</a></li>
+                </ul>
+            </div>
+
+            <!-- Gestión de Clientes -->
+            <div class="category-section">
+                <h2 class="category-title">Gestión de Clientes</h2>
+                <ul class="article-list">
+                    <li><a href="https://directhomeservice.ladesk.com/831098-Clients" class="article-link">Gestión de Clientes</a></li>
+                    <li><a href="https://directhomeservice.ladesk.com/919387-Estimates" class="article-link">Presupuestos</a></li>
+                    <li><a href="https://directhomeservice.ladesk.com/804099-Invoices" class="article-link">Facturas</a></li>
+                </ul>
+            </div>
+
+            <!-- Servicios y Productos -->
+            <div class="category-section">
+                <h2 class="category-title">Servicios y Productos</h2>
+                <ul class="article-list">
+                    <li><a href="https://directhomeservice.ladesk.com/219493-Services" class="article-link">Catálogo de Servicios</a></li>
+                    <li><a href="https://directhomeservice.ladesk.com/807691-Products" class="article-link">Catálogo de Productos</a></li>
+                </ul>
+            </div>
+
+            <!-- Informes y Análisis -->
+            <div class="category-section">
+                <h2 class="category-title">Informes y Análisis</h2>
+                <ul class="article-list">
+                    <li><a href="https://directhomeservice.ladesk.com/722264-Reports" class="article-link">Vista General de Informes</a></li>
+                    <li><a href="https://directhomeservice.ladesk.com/131021-Work-Order-Reports" class="article-link">Informes de Órdenes de Trabajo</a></li>
+                    <li><a href="https://directhomeservice.ladesk.com/182200-Technician-Performance" class="article-link">Rendimiento de Técnicos</a></li>
+                    <li><a href="https://directhomeservice.ladesk.com/296554-Customer-Reports" class="article-link">Informes de Clientes</a></li>
+                </ul>
+            </div>
+
+            <!-- Informes Financieros -->
+            <div class="category-section">
+                <h2 class="category-title">Informes Financieros</h2>
+                <ul class="article-list">
+                    <li><a href="https://directhomeservice.ladesk.com/724970-Financial-Reports" class="article-link">Informes Financieros</a></li>
+                    <li><a href="https://directhomeservice.ladesk.com/318626-Time-and-Labor-Report" class="article-link">Informe de Tiempo y Mano de Obra</a></li>
+                </ul>
+            </div>
+
+            <!-- Operaciones y Cumplimiento -->
+            <div class="category-section">
+                <h2 class="category-title">Operaciones y Cumplimiento</h2>
+                <ul class="article-list">
+                    <li><a href="https://directhomeservice.ladesk.com/927404-Scheduling--Dispatch-Reports" class="article-link">Informes de Programación y Despacho</a></li>
+                    <li><a href="https://directhomeservice.ladesk.com/977125-Compliance-and-Safety-Reports" class="article-link">Informes de Cumplimiento y Seguridad</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Direct Home Service. Todos los derechos reservados.</p>
+            <p>¿Necesitas ayuda? <a href="mailto:support@directhomeservice.com" style="color: #2E3192;">Contactar Soporte</a></p>
+        </footer>
+    </div>
+
+    <script>
+        const searchBox = document.getElementById('searchBox');
+        const clearBtn = document.getElementById('clearBtn');
+        
+        // Mostrar/ocultar botón de limpiar basado en la entrada
+        searchBox.addEventListener('input', function() {
+            if (this.value.length > 0) {
+                clearBtn.style.display = 'block';
+            } else {
+                clearBtn.style.display = 'none';
+            }
+        });
+        
+        // Limpiar búsqueda cuando se hace clic en el botón limpiar
+        clearBtn.addEventListener('click', function() {
+            searchBox.value = '';
+            clearBtn.style.display = 'none';
+            searchBox.focus();
+        });
+        
+        // Agregar retroalimentación visual para el formulario de búsqueda
+        searchBox.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                // El formulario se enviará naturalmente
+                this.style.borderColor = '#2E3192';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,655 @@
+{
+  "knowledgeBase": {
+    "lastUpdated": "2025-09-11",
+    "source": "directhomeservice.ladesk.com",
+    "totalArticles": 17,
+    "articles": [
+      {
+        "id": "460823",
+        "url": "https://directhomeservice.ladesk.com/460823-Users",
+        "en": {
+          "title": "Users Management",
+          "category": "Core Operations",
+          "content": {
+            "overview": "Users Management in Customer Service Platform - User Dashboard for managing user accounts with ability to add, edit, enable, and disable users. Search and filter functionality for user management.",
+            "keyFeatures": [
+              "User Dashboard for managing user accounts",
+              "Add, edit, enable, and disable users",
+              "Search and filter functionality",
+              "Role assignment (Admin, Support, Crew)",
+              "Time zone configuration"
+            ]
+          }
+        },
+        "es": {
+          "title": "Gestión de Usuarios",
+          "category": "Operaciones Principales",
+          "content": {
+            "overview": "Gestión de Usuarios en la Plataforma de Servicio al Cliente - Panel de Usuarios para administrar cuentas de usuario con la capacidad de agregar, editar, habilitar y deshabilitar usuarios. Funcionalidad de búsqueda y filtrado para la gestión de usuarios.",
+            "keyFeatures": [
+              "Panel de usuarios para administrar cuentas de usuario",
+              "Agregar, editar, habilitar y deshabilitar usuarios",
+              "Funcionalidad de búsqueda y filtrado",
+              "Asignación de roles (Admin, Soporte, Equipo)",
+              "Configuración de zona horaria"
+            ]
+          }
+        },
+        "keywords": ["users", "usuarios", "management", "gestión", "admin", "accounts", "cuentas", "roles", "permissions", "permisos", "dashboard", "panel"]
+      },
+      {
+        "id": "586913",
+        "url": "https://directhomeservice.ladesk.com/586913-Crews",
+        "en": {
+          "title": "Crews Management",
+          "category": "Core Operations",
+          "content": {
+            "overview": "Crews Management Guide - Crew Dashboard for managing crew teams with ability to add, edit, and delete crew information. Assign and manage crew members and view crew availability and schedules.",
+            "keyFeatures": [
+              "Crew Dashboard for managing crew teams",
+              "Add, edit, and delete crew information",
+              "Assign and manage crew members",
+              "View crew availability and schedules",
+              "Calendar color coding"
+            ]
+          }
+        },
+        "es": {
+          "title": "Gestión de Equipos",
+          "category": "Operaciones Principales",
+          "content": {
+            "overview": "Gestión de Equipos - Herramienta integral para gestionar equipos y miembros del equipo con capacidades de creación, edición, asignación de miembros y eliminación.",
+            "keyFeatures": [
+              "Panel de equipos para gestión de equipos",
+              "Asignación de miembros del equipo",
+              "Crear, editar y eliminar equipos",
+              "Búsqueda y filtrado de equipos",
+              "Gestión de estatus de equipo"
+            ]
+          }
+        },
+        "keywords": ["crews", "equipos", "teams", "management", "gestión", "scheduling", "programación", "members", "miembros", "lead", "líder"]
+      },
+      {
+        "id": "431361",
+        "url": "https://directhomeservice.ladesk.com/431361-Jobs",
+        "en": {
+          "title": "Jobs Management",
+          "category": "Core Operations",
+          "content": {
+            "overview": "Jobs Management in Direct Home Service Platform - Comprehensive job management interface for service providers. Allows viewing, adding, editing, and deleting jobs with job status and scheduling tracking.",
+            "keyFeatures": [
+              "Comprehensive job management interface",
+              "View, add, edit, and delete jobs",
+              "Track job status and scheduling",
+              "Link to clients and crews",
+              "Priority setting and management"
+            ]
+          }
+        },
+        "es": {
+          "title": "Gestión de Trabajos",
+          "category": "Operaciones Principales",
+          "content": {
+            "overview": "Gestión de Trabajos en la Plataforma Direct Home Service - Interfaz integral de gestión de trabajos para proveedores de servicios. Permite visualizar, agregar, editar y eliminar trabajos con seguimiento de estado y programación.",
+            "keyFeatures": [
+              "Interfaz integral de gestión de trabajos",
+              "Visualizar, agregar, editar y eliminar trabajos",
+              "Rastrear estado y programación de trabajos",
+              "Vincular a clientes y cuadrillas",
+              "Configuración y gestión de prioridades"
+            ]
+          }
+        },
+        "keywords": ["jobs", "trabajos", "scheduling", "programación", "clients", "clientes", "crews", "cuadrillas", "status", "estado", "invoices", "facturas", "timer", "temporizador"]
+      },
+      {
+        "id": "270481",
+        "url": "https://directhomeservice.ladesk.com/270481-Availability",
+        "en": {
+          "title": "Availability Management",
+          "category": "Core Operations",
+          "content": {
+            "overview": "Availability Management for Service Providers - Manage service availability globally or per crew. Set schedules, time slots, and exceptions with flexible scheduling options.",
+            "keyFeatures": [
+              "Manage service availability globally or per crew",
+              "Set schedules, time slots, and exceptions",
+              "Flexible scheduling options",
+              "Warning system for schedule conflicts"
+            ]
+          }
+        },
+        "es": {
+          "title": "Gestión de Disponibilidad",
+          "category": "Operaciones Principales",
+          "content": {
+            "overview": "Gestión de Disponibilidad para Proveedores de Servicios - Administrar disponibilidad de servicios globalmente o por cuadrilla. Configurar horarios, franjas horarias y excepciones con opciones flexibles de programación.",
+            "keyFeatures": [
+              "Gestionar disponibilidad de servicios globalmente o por cuadrilla",
+              "Configurar horarios, franjas horarias y excepciones",
+              "Opciones flexibles de programación",
+              "Sistema de alertas para conflictos de horario"
+            ]
+          }
+        },
+        "keywords": ["availability", "disponibilidad", "scheduling", "programación", "time slots", "franjas horarias", "exceptions", "excepciones", "global", "crew-specific", "específico de cuadrilla"]
+      },
+      {
+        "id": "831098",
+        "url": "https://directhomeservice.ladesk.com/831098-Clients",
+        "en": {
+          "title": "Clients Management",
+          "category": "Customer Management",
+          "content": {
+            "overview": "Clients Management Guide for Customer Service Agents - Comprehensive client management system with ability to add, edit, and track client information. Detailed client dashboard with multiple sections.",
+            "keyFeatures": [
+              "Comprehensive client management system",
+              "Add, edit, and track client information",
+              "Detailed client dashboard with multiple sections",
+              "Property management integration",
+              "Document and note organization"
+            ]
+          }
+        },
+        "es": {
+          "title": "Gestión de Clientes",
+          "category": "Gestión de Clientes",
+          "content": {
+            "overview": "Guía de Gestión de Clientes para Agentes de Servicio al Cliente - Sistema integral de gestión de clientes con capacidad para agregar, editar y rastrear información del cliente. Panel detallado de clientes con múltiples secciones.",
+            "keyFeatures": [
+              "Sistema integral de gestión de clientes",
+              "Agregar, editar y rastrear información del cliente",
+              "Panel detallado de clientes con múltiples secciones",
+              "Integración de gestión de propiedades",
+              "Organización de documentos y notas"
+            ]
+          }
+        },
+        "keywords": ["clients", "clientes", "customers", "properties", "propiedades", "residential", "residencial", "business", "negocio", "contact", "contacto"]
+      },
+      {
+        "id": "919387",
+        "url": "https://directhomeservice.ladesk.com/919387-Estimates",
+        "en": {
+          "title": "Estimates",
+          "category": "Customer Management",
+          "content": {
+            "overview": "Estimates Management Guide for Customer Service Agents - Comprehensive estimate creation, editing, and tracking system. Allows service providers to manage client estimates efficiently.",
+            "keyFeatures": [
+              "Comprehensive estimate creation, editing, and tracking",
+              "Service providers can manage client estimates efficiently",
+              "Support for both residential and business estimates",
+              "Tax and discount application",
+              "Recurring service scheduling"
+            ]
+          }
+        },
+        "es": {
+          "title": "Presupuestos",
+          "category": "Gestión de Clientes",
+          "content": {
+            "overview": "Guía de Gestión de Presupuestos para Agentes de Servicio al Cliente - Sistema integral de creación, edición y seguimiento de presupuestos. Permite a los proveedores de servicios gestionar presupuestos de clientes de manera eficiente.",
+            "keyFeatures": [
+              "Creación, edición y seguimiento integral de presupuestos",
+              "Los proveedores de servicios pueden gestionar presupuestos de clientes eficientemente",
+              "Soporte para presupuestos residenciales y comerciales",
+              "Aplicación de impuestos y descuentos",
+              "Programación de servicios recurrentes"
+            ]
+          }
+        },
+        "keywords": ["estimates", "presupuestos", "pricing", "precios", "services", "servicios", "products", "productos", "taxes", "impuestos", "discounts", "descuentos", "recurring", "recurrente"]
+      },
+      {
+        "id": "804099",
+        "url": "https://directhomeservice.ladesk.com/804099-Invoices",
+        "en": {
+          "title": "Invoices",
+          "category": "Customer Management",
+          "content": {
+            "overview": "Invoices Management Guide for Customer Service Agents - Invoice Dashboard for creating, viewing, and managing invoices with ability to link invoices to specific jobs. Comprehensive invoice creation and editing process.",
+            "keyFeatures": [
+              "Invoice Dashboard for creating, viewing, and managing invoices",
+              "Link invoices to specific jobs",
+              "Comprehensive invoice creation and editing process",
+              "Multiple communication options for sending invoices"
+            ]
+          }
+        },
+        "es": {
+          "title": "Facturas",
+          "category": "Gestión de Clientes",
+          "content": {
+            "overview": "Guía de Gestión de Facturas para Agentes de Servicio al Cliente - Panel de Facturas para crear, ver y gestionar facturas con capacidad de vincular facturas a trabajos específicos. Proceso integral de creación y edición de facturas.",
+            "keyFeatures": [
+              "Panel de Facturas para crear, ver y gestionar facturas",
+              "Vincular facturas a trabajos específicos",
+              "Proceso integral de creación y edición de facturas",
+              "Múltiples opciones de comunicación para enviar facturas"
+            ]
+          }
+        },
+        "keywords": ["invoices", "facturas", "billing", "facturación", "payments", "pagos", "jobs", "trabajos", "taxes", "impuestos", "email", "correo", "sms"]
+      },
+      {
+        "id": "219493",
+        "url": "https://directhomeservice.ladesk.com/219493-Services",
+        "en": {
+          "title": "Services Catalog",
+          "category": "Services & Products",
+          "content": {
+            "overview": "Services Management Guide for Customer Service Agents - Manage service items for estimates and invoices. Add, edit, delete, and search services with configuration of service details like SKU, cost, taxability, and online booking.",
+            "keyFeatures": [
+              "Manage service items for estimates and invoices",
+              "Add, edit, delete, and search services",
+              "Configure service details like SKU, cost, taxability, and online booking",
+              "Usage status tracking"
+            ]
+          }
+        },
+        "es": {
+          "title": "Catálogo de Servicios",
+          "category": "Servicios y Productos",
+          "content": {
+            "overview": "Guía de Gestión de Servicios para Agentes de Servicio al Cliente - Gestionar elementos de servicio para presupuestos y facturas. Agregar, editar, eliminar y buscar servicios con configuración de detalles del servicio como SKU, costo, gravabilidad y reserva en línea.",
+            "keyFeatures": [
+              "Gestionar elementos de servicio para presupuestos y facturas",
+              "Agregar, editar, eliminar y buscar servicios",
+              "Configurar detalles del servicio como SKU, costo, gravabilidad y reserva en línea",
+              "Seguimiento del estado de uso"
+            ]
+          }
+        },
+        "keywords": ["services", "servicios", "catalog", "catálogo", "sku", "pricing", "precios", "taxable", "gravable", "online booking", "reserva en línea"]
+      },
+      {
+        "id": "807691",
+        "url": "https://directhomeservice.ladesk.com/807691-Products",
+        "en": {
+          "title": "Products Catalog",
+          "category": "Services & Products",
+          "content": {
+            "overview": "Products Management in Customer Service Platform - Manage product items for estimates and invoices. Add, edit, delete, and search product inventory with automatic price calculations.",
+            "keyFeatures": [
+              "Manage product items for estimates and invoices",
+              "Add, edit, delete, and search product inventory",
+              "Automatic price calculations with markup",
+              "Two-stage deletion process for safety"
+            ]
+          }
+        },
+        "es": {
+          "title": "Catálogo de Productos",
+          "category": "Servicios y Productos",
+          "content": {
+            "overview": "Gestión de Productos en la Plataforma de Servicio al Cliente - Gestionar elementos de producto para presupuestos y facturas. Agregar, editar, eliminar y buscar inventario de productos con cálculos automáticos de precios.",
+            "keyFeatures": [
+              "Gestionar elementos de producto para presupuestos y facturas",
+              "Agregar, editar, eliminar y buscar inventario de productos",
+              "Cálculos automáticos de precios con margen de beneficio",
+              "Proceso de eliminación en dos etapas para seguridad"
+            ]
+          }
+        },
+        "keywords": ["products", "productos", "inventory", "inventario", "sku", "cost", "costo", "markup", "margen", "pricing", "precios", "taxable", "gravable"]
+      },
+      {
+        "id": "178086",
+        "url": "https://directhomeservice.ladesk.com/178086-Dashboard",
+        "en": {
+          "title": "Dashboard",
+          "category": "Dashboard",
+          "content": {
+            "overview": "Dashboard - Comprehensive command center for monitoring real-time performance metrics, work orders, and customer satisfaction with key performance indicators (KPIs) and customizable reports.",
+            "keyFeatures": [
+              "Real-time performance metrics",
+              "Work order overview",
+              "Customer satisfaction analytics",
+              "Customizable dashboards",
+              "Report export options"
+            ]
+          }
+        },
+        "es": {
+          "title": "Panel de Control",
+          "category": "Panel de Control",
+          "content": {
+            "overview": "Panel de Control - Centro de comando integral para supervisar métricas de rendimiento en tiempo real, órdenes de trabajo y satisfacción del cliente con indicadores clave de rendimiento (KPI) e informes personalizables.",
+            "keyFeatures": [
+              "Métricas de rendimiento en tiempo real",
+              "Resumen de órdenes de trabajo",
+              "Análisis de satisfacción del cliente",
+              "Tableros personalizables",
+              "Opciones de exportación de informes"
+            ]
+          }
+        },
+        "keywords": ["dashboard", "panel de control", "metrics", "métricas", "performance", "rendimiento", "KPI", "analytics", "análisis", "reports", "informes"]
+      },
+      {
+        "id": "532457",
+        "url": "https://directhomeservice.ladesk.com/532457-Customer-Portal",
+        "en": {
+          "title": "Customer Portal",
+          "category": "Customer Management",
+          "content": {
+            "overview": "Customer Portal - Comprehensive service hub for customers to view service history, submit requests, make payments, and manage their account information.",
+            "keyFeatures": [
+              "Access to service history",
+              "Submit service requests",
+              "Online payment processing",
+              "Account profile management",
+              "Request status tracking"
+            ]
+          }
+        },
+        "es": {
+          "title": "Portal del Cliente",
+          "category": "Gestión de Clientes",
+          "content": {
+            "overview": "Portal del Cliente - Centro de servicio integral para que los clientes vean el historial de servicios, envíen solicitudes, hagan pagos y gestionen su información de cuenta.",
+            "keyFeatures": [
+              "Acceso al historial de servicios",
+              "Envío de solicitudes de servicio",
+              "Procesamiento de pagos en línea",
+              "Gestión de perfil de cuenta",
+              "Seguimiento de estado de solicitudes"
+            ]
+          }
+        },
+        "keywords": ["portal", "customer", "cliente", "service history", "historial de servicios", "requests", "solicitudes", "payments", "pagos", "account", "cuenta"]
+      },
+      {
+        "id": "849208",
+        "url": "https://directhomeservice.ladesk.com/849208-Scheduling-Dispatch",
+        "en": {
+          "title": "Scheduling and Dispatch",
+          "category": "Scheduling",
+          "content": {
+            "overview": "Scheduling and Dispatch - Advanced system for scheduling work orders, assigning technicians, and optimizing routes with calendar visualization and automatic dispatch.",
+            "keyFeatures": [
+              "Drag-and-drop calendar view",
+              "Automatic technician assignment",
+              "Route optimization",
+              "Real-time notifications",
+              "Recurring job scheduling"
+            ]
+          }
+        },
+        "es": {
+          "title": "Programación y Despacho",
+          "category": "Programación",
+          "content": {
+            "overview": "Programación y Despacho - Sistema avanzado para programar órdenes de trabajo, asignar técnicos y optimizar rutas con visualización de calendario y despacho automático.",
+            "keyFeatures": [
+              "Vista de calendario de arrastrar y soltar",
+              "Asignación automática de técnicos",
+              "Optimización de rutas",
+              "Notificaciones en tiempo real",
+              "Programación de trabajos recurrentes"
+            ]
+          }
+        },
+        "keywords": ["scheduling", "programación", "dispatch", "despacho", "calendar", "calendario", "routes", "rutas", "technicians", "técnicos", "assignments", "asignaciones"]
+      },
+      {
+        "id": "722264",
+        "url": "https://directhomeservice.ladesk.com/722264-Reports",
+        "en": {
+          "title": "Reports Overview",
+          "category": "Reports & Analytics",
+          "content": {
+            "overview": "Reports - Part of a customer service agent onboarding guide providing comprehensive reporting tools for various operational areas including detailed analytics across multiple domains.",
+            "keyFeatures": [
+              "Comprehensive reporting tools for various operational areas",
+              "Detailed analytics across multiple domains",
+              "Visualize, analyze, and manage workforce information",
+              "Track hours logged by users for assigned jobs"
+            ]
+          }
+        },
+        "es": {
+          "title": "Resumen de Reportes",
+          "category": "Informes y Análisis",
+          "content": {
+            "overview": "Reportes - Parte de una guía de incorporación para agentes de servicio al cliente que proporciona herramientas integrales de reportes para diversas áreas operativas, incluyendo análisis detallados en múltiples dominios.",
+            "keyFeatures": [
+              "Herramientas integrales de reportes para diversas áreas operativas",
+              "Análisis detallados en múltiples dominios",
+              "Visualizar, analizar y gestionar información de la fuerza laboral",
+              "Rastrear horas registradas por usuarios para trabajos asignados"
+            ]
+          }
+        },
+        "keywords": ["reports", "reportes", "analytics", "análisis", "overview", "resumen", "time", "tiempo", "labor", "trabajo", "tracking", "seguimiento"]
+      },
+      {
+        "id": "131021",
+        "url": "https://directhomeservice.ladesk.com/131021-Work-Order-Reports",
+        "en": {
+          "title": "Work Order Reports",
+          "category": "Reports & Analytics",
+          "content": {
+            "overview": "Work Order Reports - Comprehensive tool for managers to analyze and track work orders within an organization with customizable data views and advanced filtering options.",
+            "keyFeatures": [
+              "Comprehensive work order tracking and analysis",
+              "Customizable data views",
+              "Advanced search and filtering options",
+              "Export reports as PDF",
+              "Interactive chart exploration"
+            ]
+          }
+        },
+        "es": {
+          "title": "Reportes de Órdenes de Trabajo",
+          "category": "Informes y Análisis",
+          "content": {
+            "overview": "Reportes de Órdenes de Trabajo - Herramienta integral para que los gerentes analicen y rastreen órdenes de trabajo dentro de una organización con vistas personalizables de datos y opciones avanzadas de filtrado.",
+            "keyFeatures": [
+              "Seguimiento y análisis integral de órdenes de trabajo",
+              "Vistas personalizables de datos",
+              "Opciones avanzadas de búsqueda y filtrado",
+              "Exportar reportes como PDF",
+              "Exploración interactiva de gráficos"
+            ]
+          }
+        },
+        "keywords": ["work orders", "órdenes de trabajo", "status", "estado", "priority", "prioridad", "completion", "finalización", "timeline", "línea de tiempo", "revenue", "ingresos"]
+      },
+      {
+        "id": "182200",
+        "url": "https://directhomeservice.ladesk.com/182200-Technician-Performance",
+        "en": {
+          "title": "Technician Performance",
+          "category": "Reports & Analytics",
+          "content": {
+            "overview": "Technician Performance Dashboard - Comprehensive tool for tracking and evaluating technician productivity and job completion across an organization with detailed metrics and visualizations.",
+            "keyFeatures": [
+              "Track and evaluate technician productivity",
+              "Job completion analysis across organization",
+              "Group by Crew, User, or Combined",
+              "Export performance data as PDF",
+              "Customizable date ranges"
+            ]
+          }
+        },
+        "es": {
+          "title": "Rendimiento del Técnico",
+          "category": "Informes y Análisis",
+          "content": {
+            "overview": "Panel de Rendimiento del Técnico - Herramienta integral para rastrear y evaluar la productividad del técnico y la finalización de trabajos en toda la organización con métricas y visualizaciones detalladas.",
+            "keyFeatures": [
+              "Seguimiento y evaluación de la productividad del técnico",
+              "Análisis de finalización de trabajos en toda la organización",
+              "Agrupación por Equipo, Usuario o Combinado",
+              "Exportar datos de rendimiento como PDF",
+              "Rangos de fecha personalizables"
+            ]
+          }
+        },
+        "keywords": ["technician", "técnico", "performance", "rendimiento", "productivity", "productividad", "completion rate", "tasa de finalización", "utilization", "utilización"]
+      },
+      {
+        "id": "296554",
+        "url": "https://directhomeservice.ladesk.com/296554-Customer-Reports",
+        "en": {
+          "title": "Customer Reports",
+          "category": "Reports & Analytics",
+          "content": {
+            "overview": "Customer Reports - Comprehensive Customer Satisfaction and Complaint Analysis with interactive filtering and exportable PDF reports for tracking customer experience and service quality.",
+            "keyFeatures": [
+              "Customer Satisfaction Dashboard",
+              "Complaint Analysis and Tracking",
+              "Interactive filtering and visualization",
+              "Exportable PDF reports",
+              "Crew-wise performance comparisons"
+            ]
+          }
+        },
+        "es": {
+          "title": "Informes de Clientes",
+          "category": "Informes y Análisis",
+          "content": {
+            "overview": "Informes de Clientes - Análisis integral de satisfacción del cliente y quejas con filtrado interactivo e informes PDF exportables para el seguimiento de la experiencia del cliente y la calidad del servicio.",
+            "keyFeatures": [
+              "Panel de satisfacción del cliente",
+              "Análisis y seguimiento de quejas",
+              "Filtrado y visualización interactivos",
+              "Informes PDF exportables",
+              "Comparaciones de rendimiento por equipo"
+            ]
+          }
+        },
+        "keywords": ["customer", "cliente", "satisfaction", "satisfacción", "complaints", "quejas", "feedback", "retroalimentación", "rating", "calificación", "resolution", "resolución"]
+      },
+      {
+        "id": "724970",
+        "url": "https://directhomeservice.ladesk.com/724970-Financial-Reports",
+        "en": {
+          "title": "Financial Reports",
+          "category": "Financial Reports",
+          "content": {
+            "overview": "Financial Reports - Comprehensive tools for tracking and analyzing financial performance of jobs and services with detailed revenue tracking and visual analysis for business planning.",
+            "keyFeatures": [
+              "Track and analyze financial performance of jobs and services",
+              "Generate PDF reports with KPI summaries",
+              "Export selected charts and filtered job data",
+              "Support accurate accounting and forecasting"
+            ]
+          }
+        },
+        "es": {
+          "title": "Reportes Financieros",
+          "category": "Reportes Financieros",
+          "content": {
+            "overview": "Reportes Financieros - Herramientas integrales para rastrear y analizar el rendimiento financiero de trabajos y servicios con seguimiento detallado de ingresos y análisis visual para planificación empresarial.",
+            "keyFeatures": [
+              "Rastrear y analizar el rendimiento financiero de trabajos y servicios",
+              "Generar reportes PDF con resúmenes de KPI",
+              "Exportar gráficos seleccionados y datos filtrados de trabajos",
+              "Apoyar contabilidad precisa y proyecciones"
+            ]
+          }
+        },
+        "keywords": ["financial", "financiero", "revenue", "ingresos", "jobs", "trabajos", "taxes", "impuestos", "discounts", "descuentos", "accounting", "contabilidad", "forecasting", "proyecciones"]
+      },
+      {
+        "id": "318626",
+        "url": "https://directhomeservice.ladesk.com/318626-Time-and-Labor-Report",
+        "en": {
+          "title": "Time and Labor Report",
+          "category": "Financial Reports",
+          "content": {
+            "overview": "Time and Labor Report - Comprehensive tool for managers to track and analyze employee work hours with detailed insights into workforce time tracking, supporting payroll processing and productivity analysis.",
+            "keyFeatures": [
+              "Track and analyze employee work hours",
+              "Detailed workforce time tracking insights",
+              "Support payroll processing",
+              "Enable productivity analysis",
+              "Flexible filtering options"
+            ]
+          }
+        },
+        "es": {
+          "title": "Reporte de Tiempo y Trabajo",
+          "category": "Reportes Financieros",
+          "content": {
+            "overview": "Reporte de Tiempo y Trabajo - Herramienta integral para que los gerentes rastreen y analicen las horas de trabajo de empleados con perspectivas detalladas sobre el seguimiento de tiempo de la fuerza laboral, apoyando el procesamiento de nómina y análisis de productividad.",
+            "keyFeatures": [
+              "Rastrear y analizar horas de trabajo de empleados",
+              "Perspectivas detalladas de seguimiento de tiempo de la fuerza laboral",
+              "Apoyar procesamiento de nómina",
+              "Habilitar análisis de productividad",
+              "Opciones flexibles de filtrado"
+            ]
+          }
+        },
+        "keywords": ["time", "tiempo", "labor", "trabajo", "payroll", "nómina", "productivity", "productividad", "timesheet", "hoja de tiempo", "hours", "horas", "tracking", "seguimiento"]
+      },
+      {
+        "id": "927404",
+        "url": "https://directhomeservice.ladesk.com/927404-Scheduling--Dispatch-Reports",
+        "en": {
+          "title": "Scheduling & Dispatch Reports",
+          "category": "Operations & Compliance",
+          "content": {
+            "overview": "Scheduling & Dispatch Reports - Module helps managers analyze and optimize job scheduling and dispatch across teams and regions. Provides actionable insights into operational efficiency through powerful filtering and visualization tools.",
+            "keyFeatures": [
+              "Analyze and optimize job scheduling and dispatch",
+              "Monitor across teams and regions",
+              "Provide actionable insights into operational efficiency",
+              "Interactive tools with multiple visualization options"
+            ]
+          }
+        },
+        "es": {
+          "title": "Reportes de Programación y Despacho",
+          "category": "Operaciones y Cumplimiento",
+          "content": {
+            "overview": "Reportes de Programación y Despacho - El módulo ayuda a los gerentes a analizar y optimizar la programación de trabajos y despacho entre equipos y regiones. Proporciona perspectivas accionables sobre eficiencia operativa a través de herramientas poderosas de filtrado y visualización.",
+            "keyFeatures": [
+              "Analizar y optimizar programación de trabajos y despacho",
+              "Monitorear entre equipos y regiones",
+              "Proporcionar perspectivas accionables sobre eficiencia operativa",
+              "Herramientas interactivas con múltiples opciones de visualización"
+            ]
+          }
+        },
+        "keywords": ["scheduling", "programación", "dispatch", "despacho", "optimization", "optimización", "crew", "cuadrilla", "region", "región", "workflow", "flujo de trabajo", "resources", "recursos"]
+      },
+      {
+        "id": "977125",
+        "url": "https://directhomeservice.ladesk.com/977125-Compliance-and-Safety-Reports",
+        "en": {
+          "title": "Compliance and Safety Reports",
+          "category": "Operations & Compliance",
+          "content": {
+            "overview": "Compliance and Safety Reports Dashboard - Tracks job statuses, work crew assignments, and compliance rates with centralized monitoring of safety practices and regulatory requirements.",
+            "keyFeatures": [
+              "Track job statuses and work crew assignments",
+              "Monitor compliance rates",
+              "Centralized safety practices monitoring",
+              "Regulatory requirements tracking",
+              "PDF export functionality for auditing"
+            ]
+          }
+        },
+        "es": {
+          "title": "Reportes de Cumplimiento y Seguridad",
+          "category": "Operaciones y Cumplimiento",
+          "content": {
+            "overview": "Panel de Reportes de Cumplimiento y Seguridad - Rastrea estados de trabajos, asignaciones de cuadrillas de trabajo y tasas de cumplimiento con monitoreo centralizado de prácticas de seguridad y requisitos regulatorios.",
+            "keyFeatures": [
+              "Rastrear estados de trabajos y asignaciones de cuadrillas de trabajo",
+              "Monitorear tasas de cumplimiento",
+              "Monitoreo centralizado de prácticas de seguridad",
+              "Seguimiento de requisitos regulatorios",
+              "Funcionalidad de exportación PDF para auditorías"
+            ]
+          }
+        },
+        "keywords": ["compliance", "cumplimiento", "safety", "seguridad", "regulatory", "regulatorio", "standards", "estándares", "audit", "auditoría", "tracking", "seguimiento"]
+      }
+    ]
+  }
+}

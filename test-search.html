@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Functionality Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-title {
+            color: #2E3192;
+            margin-bottom: 15px;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        button {
+            background: #2E3192;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #5158bb; }
+    </style>
+</head>
+<body>
+    <h1>DHS Search System Test</h1>
+    
+    <div class="test-section">
+        <h2 class="test-title">1. Component Loading Test</h2>
+        <div id="loading-test-results"></div>
+        <button onclick="testComponentLoading()">Test Component Loading</button>
+    </div>
+
+    <div class="test-section">
+        <h2 class="test-title">2. Search Index Test</h2>
+        <div id="index-test-results"></div>
+        <button onclick="testSearchIndex()">Test Search Index</button>
+    </div>
+
+    <div class="test-section">
+        <h2 class="test-title">3. Search Engine Test</h2>
+        <div id="engine-test-results"></div>
+        <button onclick="testSearchEngine()">Test Search Engine</button>
+    </div>
+
+    <div class="test-section">
+        <h2 class="test-title">4. Language Manager Test</h2>
+        <div id="language-test-results"></div>
+        <button onclick="testLanguageManager()">Test Language Manager</button>
+    </div>
+
+    <div class="test-section">
+        <h2 class="test-title">5. UI Components Test</h2>
+        <div id="ui-test-results"></div>
+        <div id="ui-test-container" style="margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 4px;"></div>
+        <button onclick="testUIComponents()">Test UI Components</button>
+    </div>
+
+    <!-- Load search components -->
+    <script src="/public/js/language-manager.js"></script>
+    <script src="/public/js/search-engine.js"></script>
+    <script src="/public/js/search-ui.js"></script>
+
+    <script>
+        // Test results helper
+        function displayResult(containerId, message, type = 'info') {
+            const container = document.getElementById(containerId);
+            const div = document.createElement('div');
+            div.className = `test-result ${type}`;
+            div.textContent = message;
+            container.appendChild(div);
+        }
+
+        function clearResults(containerId) {
+            document.getElementById(containerId).innerHTML = '';
+        }
+
+        // Test 1: Component Loading
+        function testComponentLoading() {
+            clearResults('loading-test-results');
+            
+            // Test if components are loaded
+            if (typeof window.dhsLanguage !== 'undefined') {
+                displayResult('loading-test-results', '✓ Language Manager loaded successfully', 'success');
+            } else {
+                displayResult('loading-test-results', '✗ Language Manager failed to load', 'error');
+            }
+
+            if (typeof window.dhsSearch !== 'undefined') {
+                displayResult('loading-test-results', '✓ Search Engine loaded successfully', 'success');
+            } else {
+                displayResult('loading-test-results', '✗ Search Engine failed to load', 'error');
+            }
+
+            if (typeof window.dhsSearchUI !== 'undefined') {
+                displayResult('loading-test-results', '✓ Search UI loaded successfully', 'success');
+            } else {
+                displayResult('loading-test-results', '✗ Search UI failed to load', 'error');
+            }
+        }
+
+        // Test 2: Search Index
+        async function testSearchIndex() {
+            clearResults('index-test-results');
+            
+            try {
+                const response = await fetch('/public/data/search-index.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    displayResult('index-test-results', `✓ Search index loaded: ${data.documents.length} documents`, 'success');
+                    displayResult('index-test-results', `✓ Categories available: ${data.categories.length}`, 'success');
+                    displayResult('index-test-results', `✓ Languages supported: ${data.meta.languages.join(', ')}`, 'success');
+                } else {
+                    displayResult('index-test-results', '✗ Failed to load search index', 'error');
+                }
+            } catch (error) {
+                displayResult('index-test-results', `✗ Error loading search index: ${error.message}`, 'error');
+            }
+        }
+
+        // Test 3: Search Engine
+        function testSearchEngine() {
+            clearResults('engine-test-results');
+            
+            if (!window.dhsSearch) {
+                displayResult('engine-test-results', '✗ Search engine not available', 'error');
+                return;
+            }
+
+            // Wait for search engine to be ready
+            setTimeout(() => {
+                try {
+                    // Test basic search
+                    const results = window.dhsSearch.search('jobs');
+                    displayResult('engine-test-results', `✓ Basic search works: found ${results.length} results for "jobs"`, 'success');
+
+                    // Test fuzzy search
+                    const fuzzyResults = window.dhsSearch.search('jobb'); // misspelled
+                    displayResult('engine-test-results', `✓ Fuzzy search works: found ${fuzzyResults.length} results for "jobb"`, 'success');
+
+                    // Test suggestions
+                    const suggestions = window.dhsSearch.getSuggestions('job');
+                    displayResult('engine-test-results', `✓ Suggestions work: ${suggestions.length} suggestions for "job"`, 'success');
+
+                    // Test categories
+                    const categories = window.dhsSearch.getCategories();
+                    displayResult('engine-test-results', `✓ Categories work: ${categories.length} categories available`, 'success');
+
+                } catch (error) {
+                    displayResult('engine-test-results', `✗ Search engine error: ${error.message}`, 'error');
+                }
+            }, 1000); // Wait for index to load
+        }
+
+        // Test 4: Language Manager
+        function testLanguageManager() {
+            clearResults('language-test-results');
+            
+            if (!window.dhsLanguage) {
+                displayResult('language-test-results', '✗ Language manager not available', 'error');
+                return;
+            }
+
+            try {
+                // Test current language
+                const currentLang = window.dhsLanguage.getLanguage();
+                displayResult('language-test-results', `✓ Current language: ${currentLang}`, 'success');
+
+                // Test language switching
+                window.dhsLanguage.setLanguage('es');
+                const newLang = window.dhsLanguage.getLanguage();
+                if (newLang === 'es') {
+                    displayResult('language-test-results', '✓ Language switching works', 'success');
+                } else {
+                    displayResult('language-test-results', '✗ Language switching failed', 'error');
+                }
+
+                // Switch back
+                window.dhsLanguage.setLanguage('en');
+
+            } catch (error) {
+                displayResult('language-test-results', `✗ Language manager error: ${error.message}`, 'error');
+            }
+        }
+
+        // Test 5: UI Components
+        function testUIComponents() {
+            clearResults('ui-test-results');
+            const container = document.getElementById('ui-test-container');
+            container.innerHTML = '';
+            
+            if (!window.dhsSearchUI) {
+                displayResult('ui-test-results', '✗ Search UI not available', 'error');
+                return;
+            }
+
+            try {
+                // Test search box creation
+                const searchBox = window.dhsSearchUI.createSearchBox(container, {
+                    showSuggestions: true,
+                    onSearch: (query, results) => {
+                        displayResult('ui-test-results', `✓ Search callback triggered: "${query}" found ${results.length} results`, 'success');
+                    }
+                });
+
+                if (searchBox) {
+                    displayResult('ui-test-results', '✓ Search box created successfully', 'success');
+                } else {
+                    displayResult('ui-test-results', '✗ Failed to create search box', 'error');
+                }
+
+                // Test results container creation
+                const resultsContainer = document.createElement('div');
+                container.appendChild(resultsContainer);
+                
+                const results = window.dhsSearchUI.createResultsContainer(resultsContainer, {
+                    showFilters: true
+                });
+
+                if (results) {
+                    displayResult('ui-test-results', '✓ Results container created successfully', 'success');
+                } else {
+                    displayResult('ui-test-results', '✗ Failed to create results container', 'error');
+                }
+
+            } catch (error) {
+                displayResult('ui-test-results', `✗ UI components error: ${error.message}`, 'error');
+            }
+        }
+
+        // Auto-run tests on load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                testComponentLoading();
+                testSearchIndex();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

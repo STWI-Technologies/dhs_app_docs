@@ -1,0 +1,60 @@
+{
+  "name": "dhs-knowledge-base",
+  "version": "1.0.0",
+  "description": "Direct Home Service Knowledge Base React Application",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.{js,jsx}",
+    "lint:fix": "eslint src/**/*.{js,jsx} --fix",
+    "format": "prettier --write src/**/*.{js,jsx,json,css,md}",
+    "analyze": "npm run build && npx bundle-analyzer build/static/js/*.js"
+  },
+  "dependencies": {
+    "i18next": "^22.4.10",
+    "i18next-browser-languagedetector": "^7.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^12.1.5",
+    "react-router-dom": "^6.8.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^3.1.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
+    "eslint": "^8.34.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.8.4",
+    "puppeteer": "^24.20.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "keywords": [
+    "react",
+    "knowledge-base",
+    "i18n",
+    "internationalization",
+    "customer-service",
+    "documentation"
+  ],
+  "author": "Direct Home Service",
+  "license": "MIT",
+  "homepage": ".",
+  "proxy": "http://localhost:3000"
+}
