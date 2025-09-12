@@ -1,12 +1,12 @@
 {
   "name": "dhs-knowledge-base",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Direct Home Service Knowledge Base React Application",
   "main": "src/index.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build:azure": "react-scripts build && cp -r public/en build/ && ([ -d public/es ] && [ \"$(ls -A public/es 2>/dev/null)\" ] && cp -r public/es build/ || echo 'Skipping empty/missing public/es') && cp -r public/brand build/",
+    "build:azure": "react-scripts build && cp -r public/en build/ && cp -r public/es build/ && cp -r public/brand build/",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.{js,jsx}",

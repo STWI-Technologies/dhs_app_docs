@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios</title>
+</head>
+<body style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1f2937; line-height: 1.6;">
+    <div style="overflow: hidden;">
+        
+        <!-- Header -->
+        <div style="padding: 20px 15px; margin-top: 8px;">
+            <div style="display: flex; align-items: center;">
+                <div style="display: flex; margin-right: 12px; background: #F3F4FF; padding: 6px; border-radius: 4px; border: 1px solid #1011150F;">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.66663 0.833313V3.33331M13.3333 0.833313V3.33331M14.1666 6.66665H5.83329M9.66663 18.3333H10.3333C13.1336 18.3333 14.5337 18.3333 15.6032 17.7883C16.5441 17.309 17.309 16.5441 17.7883 15.6033C18.3333 14.5337 18.3333 13.1336 18.3333 10.3333V9.66665C18.3333 6.86638 18.3333 5.46625 17.7883 4.39669C17.309 3.45588 16.5441 2.69098 15.6032 2.21161C14.5337 1.66665 13.1336 1.66665 10.3333 1.66665H9.66663C6.86636 1.66665 5.46623 1.66665 4.39667 2.21161C3.45586 2.69098 2.69096 3.45588 2.21159 4.39669C1.66663 5.46625 1.66663 6.86638 1.66663 9.66665V10.3333C1.66663 13.1336 1.66663 14.5337 2.21159 15.6033C2.69096 16.5441 3.45586 17.309 4.39667 17.7883C5.46623 18.3333 6.86636 18.3333 9.66663 18.3333Z" stroke="#3C40BC" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h1 style="margin: 0; font-size: 20px; font-weight: 600; color: #111827;">Servicios</h1>
+            </div>
+            <p style="margin: 0; color: #6b7280; font-size: 14px;">Gestiona tu catálogo de servicios. Controla lo que ofreces y cómo lo precias.</p>
+        </div>
+
+        <!-- Video Tutorial Section -->
+        <div style="display: flex; align-items: center; padding: 0px 15px;">
+            <div style="display: flex; align-items: center; margin-right: 12px;">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.6667 7.08333C11.6667 7.31345 11.4801 7.5 11.25 7.5C11.0199 7.5 10.8333 7.31345 10.8333 7.08333M11.6667 7.08333C11.6667 6.85321 11.4801 6.66667 11.25 6.66667C11.0199 6.66667 10.8333 6.85321 10.8333 7.08333M11.6667 7.08333L10.8333 7.08333M15.8333 12.5001V12.5001C16.6305 13.0979 17.0291 13.3969 17.3497 13.4662C18.0374 13.6149 18.7361 13.2656 19.0298 12.6261C19.1667 12.3281 19.1667 11.8299 19.1667 10.8334L19.1667 9.16671C19.1667 8.17028 19.1667 7.67206 19.0298 7.374C18.7361 6.73456 18.0374 6.38522 17.3496 6.53394C17.029 6.60327 16.6305 6.9022 15.8333 7.50008V7.50008L15.8333 12.5001ZM7.23333 17.5L9.43333 17.5C11.6735 17.5 12.7936 17.5 13.6493 17.064C14.4019 16.6805 15.0139 16.0686 15.3974 15.316C15.8333 14.4603 15.8333 13.3402 15.8333 11.1L15.8333 8.9C15.8333 6.65979 15.8333 5.53968 15.3974 4.68404C15.0139 3.93139 14.4019 3.31947 13.6493 2.93597C12.7936 2.5 11.6735 2.5 9.43333 2.5L7.23333 2.5C4.99312 2.5 3.87301 2.5 3.01737 2.93597C2.26472 3.31947 1.6528 3.93139 1.2693 4.68404C0.833328 5.53968 0.833328 6.65979 0.833328 8.9L0.833328 11.1C0.833328 13.3402 0.833328 14.4603 1.2693 15.316C1.6528 16.0686 2.26472 16.6805 3.01737 17.064C3.87301 17.5 4.99312 17.5 7.23333 17.5Z" stroke="#3C40BC" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h3 style="font-size: 16px; font-weight: 600; color: #111827;">
+                ¿Quieres Verlo en Acción?
+            </h3>
+        </div>
+            </div>
+        <div id="video-container" class="video-tutorial" style="min-height: 140px; border-radius: 8px; border: 1px solid #0000001F; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0px 10px; position: relative; background-size: cover; background-position: center; background-repeat: no-repeat;" onclick="toggleVideoPlayer()">
+            
+            <!-- Blurred Background Overlay -->
+            <div id="video-thumbnail-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.3); backdrop-filter: blur(2px); border-radius: 8px;"></div>
+            
+            <!-- Play Button (initially visible) -->
+            <div id="play-button" style="position: relative; z-index: 10; background: rgba(255,255,255,0.95); box-shadow: 0px 0px 2px 0px #0000001F; box-shadow: 0px 2px 5px 0px #00000017; border-radius: 32px; width:48px; height:48px; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">
+                <svg width="15" height="18" viewBox="0 0 15 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 12.4608V5.53903C1 3.67384 1 2.74124 1.39081 2.21172C1.73153 1.75006 2.25412 1.45697 2.82571 1.40697C3.48133 1.34962 4.2771 1.83593 5.86864 2.80853L11.5319 6.26942C13.0092 7.17221 13.7478 7.6236 13.9997 8.20472C14.2195 8.71206 14.2195 9.28778 13.9997 9.79512C13.7478 10.3762 13.0092 10.8276 11.5319 11.7304L5.86864 15.1913C4.2771 16.1639 3.48133 16.6502 2.82571 16.5929C2.25412 16.5429 1.73153 16.2498 1.39081 15.7881C1 15.2586 1 14.326 1 12.4608Z" fill="#3C40BC" stroke="#3C40BC" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>                    
+            </div>
+            
+            <!-- YouTube Video Player (initially hidden) -->
+            <div id="video-player" style="display: none; width: 100%; height: 100%; border-radius: 8px; overflow: hidden;">
+                <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src="about:blank" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    style="border-radius: 8px;">
+                </iframe>
+            </div>
+            
+            <!-- Close Button (initially hidden) -->
+            <button id="close-video" onclick="closeVideoPlayer(event)" style="display: none; position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.7); color: white; border: none; border-radius: 50%; width: 24px; height: 24px; cursor: pointer; font-size: 14px; line-height: 1;">×</button>
+        </div>
+
+        <!-- What You Can Do Section -->
+        <div style="padding: 20px 15px;">
+            <div style="display: flex; align-items: center; margin-bottom: 16px; padding-top: 20px;">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
+                    <path d="M4.58332 17.9166L4.15906 17.4924L4.58332 17.9166ZM13.7576 9.59091C13.9919 9.3566 13.9919 8.9767 13.7576 8.74238C13.5233 8.50807 13.1434 8.50807 12.9091 8.74238L13.7576 9.59091ZM2.08333 15.4166L2.50759 15.8409L2.50759 15.8409L2.08333 15.4166ZM11.2576 7.09093C11.4919 6.85662 11.4919 6.47672 11.2576 6.24241C11.0233 6.00809 10.6434 6.00809 10.4091 6.24241L11.2576 7.09093ZM2.08333 17.9166L2.50759 17.4924H2.50759L2.08333 17.9166ZM2.21228 18.0429L1.80869 18.4869L1.8087 18.4869L2.21228 18.0429ZM4.45437 18.0429L4.85795 18.4869L4.85796 18.4869L4.45437 18.0429ZM1.95705 17.7877L1.51306 18.1913L1.51306 18.1913L1.95705 17.7877ZM1.95705 15.5456L2.40104 15.9492L2.40104 15.9492L1.95705 15.5456ZM17.9881 7.98814L18.4124 7.56387L17.9881 7.98814ZM13.0596 3.05962L13.4839 2.63536V2.63536L13.0596 3.05962ZM15.0715 10.9048L15.4957 10.4805L15.0715 10.9048ZM7.67258 3.5059L7.24832 3.93017L7.67258 3.5059ZM5.00759 18.3409L13.7576 9.59091L12.9091 8.74238L4.15906 17.4924L5.00759 18.3409ZM2.50759 15.8409L11.2576 7.09093L10.4091 6.24241L1.65906 14.9924L2.50759 15.8409ZM1.65906 18.3409C1.72055 18.4024 1.76607 18.4482 1.80869 18.4869L2.61586 17.5989C2.59972 17.5843 2.57885 17.5636 2.50759 17.4924L1.65906 18.3409ZM4.15906 17.4924C4.08779 17.5636 4.06693 17.5843 4.05079 17.5989L4.85796 18.4869C4.90058 18.4482 4.9461 18.4024 5.00759 18.3409L4.15906 17.4924ZM1.8087 18.4869C2.67322 19.2728 3.99343 19.2728 4.85795 18.4869L4.0508 17.5989C3.64396 17.9687 3.02269 17.9687 2.61585 17.5989L1.8087 18.4869ZM2.50759 17.4924C2.43632 17.4211 2.41571 17.4003 2.40103 17.3841L1.51306 18.1913C1.55181 18.2339 1.59757 18.2794 1.65906 18.3409L2.50759 17.4924ZM1.65906 14.9924C1.59758 15.0539 1.55181 15.0994 1.51306 15.142L2.40104 15.9492C2.41571 15.933 2.43632 15.9122 2.50759 15.8409L1.65906 14.9924ZM2.40104 17.3841C2.03123 16.9773 2.03123 16.356 2.40104 15.9492L1.51306 15.142C0.727222 16.0065 0.727221 17.3267 1.51306 18.1913L2.40104 17.3841ZM17.8528 11.3291L18.4124 10.7694L17.5639 9.92089L17.0042 10.4805L17.8528 11.3291ZM18.4124 7.56387L13.4839 2.63536L12.6354 3.48389L17.5639 8.4124L18.4124 7.56387ZM15.4957 10.4805L8.09684 3.08164L7.24832 3.93017L14.6472 11.3291L15.4957 10.4805ZM8.26184 2.68331H10.7026V1.48331H8.26184V2.68331ZM8.09684 3.08164C7.94985 2.93465 8.05396 2.68331 8.26184 2.68331V1.48331C6.98487 1.48331 6.34537 3.02722 7.24832 3.93017L8.09684 3.08164ZM13.4839 2.63536C12.7463 1.89772 11.7458 1.48331 10.7026 1.48331V2.68331C11.4275 2.68331 12.1228 2.97129 12.6354 3.48389L13.4839 2.63536ZM18.4124 10.7694C19.2976 9.88423 19.2976 8.44906 18.4124 7.56387L17.5639 8.4124C17.9804 8.82896 17.9804 9.50433 17.5639 9.92089L18.4124 10.7694ZM17.0042 10.4805C16.5877 10.8971 15.9123 10.8971 15.4957 10.4805L14.6472 11.3291C15.5324 12.2143 16.9676 12.2143 17.8528 11.3291L17.0042 10.4805Z" fill="#3C40BC"/>
+                </svg>                    
+                <h2 style="margin: 0; font-size: 16px; font-weight: 600; color: #111827;">Lo que puedes hacer:</h2>
+            </div>
+            
+            <ul style="margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C; font-size: 14px;">
+                <li style="margin-bottom: 5px;">Agregar nuevos servicios con SKU, nombre y tarifas por hora</li>
+                <li style="margin-bottom: 5px;">Editar detalles de servicios incluyendo precios y configuración de impuestos</li>
+                <li style="margin-bottom: 5px;">Gestionar archivos adjuntos (especificaciones, manuales, guías de instalación)</li>
+                <li style="margin-bottom: 5px;">Organizar con etiquetas y grupos para fácil categorización</li>
+                <li style="margin-bottom: 5px;">Controlar la visibilidad de reservas en línea para cada servicio</li>
+                <li style="margin-bottom: 5px;">Archivar y restaurar servicios sin eliminación permanente</li>
+                <li style="margin-bottom: 0;">Buscar y filtrar por múltiples criterios (SKU, etiquetas, estado)</li>
+            </ul>
+        </div>
+
+        <!-- Tips for Success Section -->
+        <div style="padding: 20px 15px;">
+            <div style="display: flex; align-items: center; margin-bottom: 16px;">
+                <div style="margin-right: 8px; display: flex;">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.75 14.8C7.75 14.8 8.5 15.2 10 15.2M10 15.2C11.5 15.2 12.25 14.8 12.25 14.8M10 15.2V11.6M16 8.4C16 4.86538 13.3137 2 10 2C6.68629 2 4 4.86538 4 8.4C4 10.7464 5.65258 12.6217 6.76363 13.6173C7.34995 14.1427 7.75 14.874 7.75 15.6613V15.75C7.75 16.9926 8.75736 18 10 18V18C11.2426 18 12.25 16.9926 12.25 15.75V15.6733C12.25 14.88 12.6588 14.1441 13.2524 13.6177C14.3633 12.6329 16 10.7783 16 8.4Z" stroke="#3C40BC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3 style="margin: 0; font-size: 16px; font-weight: 600; color: #17171C;">Consejos para el éxito</h3>
+            </div>
+            
+            <ul style="font-size: 14px; margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C;">
+                <li style="margin-bottom: 5px;">Mantén actualizado el Costo Por Hora para mantener precios precisos</li>
+                <li style="margin-bottom: 5px;">Usa etiquetas estratégicamente para agrupar servicios similares para filtrado rápido</li>
+                <li style="margin-bottom: 5px;">Agrega archivos adjuntos completos para ayudar a los equipos a entender los requisitos del servicio</li>
+                <li style="margin-bottom: 5px;">Habilita reservas en línea solo para servicios que los clientes puedan entender fácilmente</li>
+                <li>Archiva servicios no utilizados en lugar de eliminarlos para mantener datos históricos</li>
+            </ul>
+        </div>
+
+        <!-- Call-to-Action Buttons -->
+        <div style="padding: 20px 15px; margin-bottom: 30px;">
+            <div style="display: flex; flex-direction: column;">
+                <button onclick="watchTutorial()" style="display: flex; align-items: center; text-align: left; width: 100%; padding: 6px 10px; background: #FFF9F5; color: #17171C; border: 1px solid #FFF2EB; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; text-decoration: none; margin-bottom: 12px;">
+                    <span style="width: 20px; height: 20px; background: #FFF2EB; border-radius: 4px; padding: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-right: 12px;">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.6667 7.08333C11.6667 7.31345 11.4801 7.5 11.25 7.5C11.0199 7.5 10.8333 7.31345 10.8333 7.08333M11.6667 7.08333C11.6667 6.85321 11.4801 6.66667 11.25 6.66667C11.0199 6.66667 10.8333 6.85321 10.8333 7.08333M11.6667 7.08333L10.8333 7.08333M15.8333 12.5001V12.5001C16.6305 13.0979 17.0291 13.3969 17.3497 13.4662C18.0374 13.6149 18.7361 13.2656 19.0298 12.6261C19.1667 12.3281 19.1667 11.8299 19.1667 10.8334L19.1667 9.16671C19.1667 8.17028 19.1667 7.67206 19.0298 7.374C18.7361 6.73456 18.0374 6.38522 17.3496 6.53394C17.029 6.60327 16.6305 6.9022 15.8333 7.50008V7.50008L15.8333 12.5001ZM7.23333 17.5L9.43333 17.5C11.6735 17.5 12.7936 17.5 13.6493 17.064C14.4019 16.6805 15.0139 16.0686 15.3974 15.316C15.8333 14.4603 15.8333 13.3402 15.8333 11.1L15.8333 8.9C15.8333 6.65979 15.8333 5.53968 15.3974 4.68404C15.0139 3.93139 14.4019 3.31947 13.6493 2.93597C12.7936 2.5 11.6735 2.5 9.43333 2.5L7.23333 2.5C4.99312 2.5 3.87301 2.5 3.01737 2.93597C2.26472 3.31947 1.6528 3.93139 1.2693 4.68404C0.833328 5.53968 0.833328 6.65979 0.833328 8.9L0.833328 11.1C0.833328 13.3402 0.833328 14.4603 1.2693 15.316C1.6528 16.0686 2.26472 16.6805 3.01737 17.064C3.87301 17.5 4.99312 17.5 7.23333 17.5Z" stroke="#F16C09" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    Ver Tutorial de Funciones de Disponibilidad
+                </button>
+                
+                <button onclick="visitLearningCenter()" style="display: flex; align-items: center; text-align: left; width: 100%; padding: 6px 10px; background: #F5FDF5; color: #17171C; border: 1px solid #1980381A; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; text-decoration: none; margin-bottom: 12px;">
+                    <span style="width: 20px; height: 20px; background: #DFF0E299; border-radius: 4px; padding: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-right: 12px;">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 9.99998V1.66665L12.7394 2.67133C12.4164 2.81491 12.2549 2.88669 12.0963 2.92798C11.5732 3.06422 11.0173 2.98292 10.5551 2.7026C10.415 2.61766 10.2808 2.50262 10.0124 2.27256V2.27256C9.65631 1.96733 9.47826 1.81472 9.29755 1.71527C8.69716 1.38487 7.96942 1.38487 7.36904 1.71527C7.18832 1.81472 7.01027 1.96733 6.65417 2.27256V2.27256C6.38576 2.50262 6.25156 2.61766 6.11151 2.7026C5.64932 2.98292 5.09334 3.06422 4.57024 2.92798C4.41173 2.88669 4.25021 2.81491 3.92716 2.67133L1.66663 1.66665V11.9333C1.66663 14.1735 1.66663 15.2936 2.1026 16.1493C2.48609 16.9019 3.09802 17.5138 3.85066 17.8973C4.70631 18.3333 5.82642 18.3333 8.06663 18.3333H16.6666M15 9.99998H15.1333C16.2534 9.99998 16.8135 9.99998 17.2413 10.218C17.6176 10.4097 17.9236 10.7157 18.1153 11.092C18.3333 11.5198 18.3333 12.0799 18.3333 13.2V16.6666C18.3333 17.5871 17.5871 18.3333 16.6666 18.3333V18.3333C15.7462 18.3333 15 17.5871 15 16.6666V9.99998ZM5.83329 14.1666H10.8333M5.83329 7.49998H9.16663M5.83329 10.8333H10.8333" stroke="#198038" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    Visitar Centro de Aprendizaje para aprendizaje profundo
+                </button>
+                
+                <button onclick="schedulePhoneCall()" style="display: flex; align-items: center; text-align: left; width: 100%; padding: 6px 10px; background: #f1f2f4; color: #17171C; border: 1px solid #E8E9FF; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; text-decoration: none; margin-bottom: 12px;">
+                    <span style="width: 20px; height: 20px; border: 1px solid #E8E9FF; background: #e5e5e8; border-radius: 4px; padding: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-right: 12px;">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.59469 9.75C2.58134 8.0332 1.91091 6.03524 1.63816 3.81089C1.62176 3.67717 1.61356 3.61031 1.61516 3.47621C1.62604 2.56117 2.4411 1.64007 3.34801 1.5179C3.48091 1.5 3.59274 1.5 3.81641 1.5V1.5C4.05108 1.5 4.16842 1.5 4.27281 1.51099C5.03259 1.59096 5.68043 2.09678 5.94229 2.81448C5.97827 2.91309 6.00673 3.02693 6.06365 3.25459L6.11235 3.44941C6.25096 4.00385 6.32027 4.28107 6.34993 4.55074C6.44905 5.45201 6.23903 6.36023 5.75428 7.12649C5.60925 7.35575 5.42527 7.5744 5.05732 8.0117L3.59469 9.75ZM3.59469 9.75C4.68602 11.5989 6.17506 13.1217 7.9934 14.25M7.9934 14.25C9.76659 15.3503 11.8529 16.0754 14.1889 16.3618C14.3228 16.3782 14.3897 16.3864 14.5238 16.3848C15.4388 16.374 16.3599 15.5589 16.4821 14.652C16.5 14.5191 16.5 14.3997 16.5 14.1609V14.1609C16.5 13.9413 16.5 13.8316 16.489 13.7272C16.409 12.9674 15.9032 12.3196 15.1855 12.0577C15.0869 12.0217 14.9731 11.9933 14.7454 11.9364L14.4711 11.8678C13.8587 11.7147 13.5524 11.6381 13.2521 11.6097C12.4679 11.5354 11.6792 11.6944 10.985 12.0666C10.7191 12.2091 10.4664 12.3983 9.96105 12.7767L7.9934 14.25Z" stroke="#757a8a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    Programar Llamada Telefónica
+                </button>
+                
+                <button onclick="scheduleVideoCall()" style="display: flex; align-items: center; text-align: left; width: 100%; padding: 6px 10px; background: #F3F4FF; color: #17171C; border: 1px solid #E8E9FF; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; text-decoration: none;">
+                    <span style="width: 20px; height: 20px; border: 1px solid #E8E9FF; background: #E8E9FF; border-radius: 4px; padding: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-right: 12px;">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.6667 7.08333C11.6667 7.31345 11.4801 7.5 11.25 7.5C11.0199 7.5 10.8333 7.31345 10.8333 7.08333M11.6667 7.08333C11.6667 6.85321 11.4801 6.66667 11.25 6.66667C11.0199 6.66667 10.8333 6.85321 10.8333 7.08333M11.6667 7.08333L10.8333 7.08333M15.8333 12.5001V12.5001C16.6305 13.0979 17.0291 13.3969 17.3497 13.4662C18.0374 13.6149 18.7361 13.2656 19.0298 12.6261C19.1667 12.3281 19.1667 11.8299 19.1667 10.8334L19.1667 9.16671C19.1667 8.17028 19.1667 7.67206 19.0298 7.374C18.7361 6.73456 18.0374 6.38522 17.3496 6.53394C17.029 6.60327 16.6305 6.9022 15.8333 7.50008V7.50008L15.8333 12.5001ZM7.23333 17.5L9.43333 17.5C11.6735 17.5 12.7936 17.5 13.6493 17.064C14.4019 16.6805 15.0139 16.0686 15.3974 15.316C15.8333 14.4603 15.8333 13.3402 15.8333 11.1L15.8333 8.9C15.8333 6.65979 15.8333 5.53968 15.3974 4.68404C15.0139 3.93139 14.4019 3.31947 13.6493 2.93597C12.7936 2.5 11.6735 2.5 9.43333 2.5L7.23333 2.5C4.99312 2.5 3.87301 2.5 3.01737 2.93597C2.26472 3.31947 1.6528 3.93139 1.2693 4.68404C0.833328 5.53968 0.833328 6.65979 0.833328 8.9L0.833328 11.1C0.833328 13.3402 0.833328 14.4603 1.2693 15.316C1.6528 16.0686 2.26472 16.6805 3.01737 17.064C3.87301 17.5 4.99312 17.5 7.23333 17.5Z" stroke="#3C40BC" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    Programar Videollamada
+                </button>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        /**
+         * Help Panel Interaction Handlers
+         */
+        const Handlers = {
+            // Configuration
+            config: {
+                videoUrl: 'https://www.youtube.com/watch?v=zQnBQ4tB3ZA', // Test video - replace with actual tutorial
+                fallbackScheduleUrl: 'https://calendly.com/',
+                fallbackLearningCenterUrl: 'https://help.example.com/learning-center',
+                calendlyVideoCallUrl: 'https://calendly.com/' // Replace with actual Calendly video call URL
+            },
+
+            /**
+             * Generic message sender for parent communication
+             */
+            sendMessageToParent: function(action, data = {}) {
+                try {
+                    if (window.parent && window.parent !== window) {
+                        window.parent.postMessage({ 
+                            action,
+                            source: 'services-help-panel',
+                            ...data
+                        }, '*');
+                        return true;
+                    }
+                    return false;
+                } catch (error) {
+                    console.error('Error sending message to parent:', error);
+                    return false;
+                }
+            },
+
+            /**
+             * Handle scheduling a phone call
+             */
+            schedulePhoneCall: function() {                
+                try {
+                    const messageSent = this.sendMessageToParent('schedulePhoneCall');
+                    if (!messageSent) {
+                        // TODO: Implement phone call scheduling functionality
+                    }
+                } catch (error) {
+                    console.error('Error scheduling phone call:', error);
+                }
+            },
+
+            /**
+             * Handle scheduling a video call
+             */
+            scheduleVideoCall: function() {
+                try {
+                    const messageSent = this.sendMessageToParent('scheduleVideoCall');
+                    window.open(this.config.calendlyVideoCallUrl, '_blank');
+                } catch (error) {
+                    console.error('Error scheduling video call:', error);
+                    window.open(this.config.calendlyVideoCallUrl, '_blank');
+                }
+            },
+
+            /**
+             * Handle opening the video tutorial inline
+             */
+            openVideoTutorial: function() {
+                console.log('Video tutorial clicked - playing inline');
+                this.showVideoPlayer();
+            },
+
+            /**
+             * Show the video player inline
+             */
+            showVideoPlayer: function() {
+                const playButton = document.getElementById('play-button');
+                const videoPlayer = document.getElementById('video-player');
+                const closeButton = document.getElementById('close-video');
+                const videoContainer = document.getElementById('video-container');
+                const thumbnailOverlay = document.getElementById('video-thumbnail-overlay');
+                const iframe = videoPlayer.querySelector('iframe');
+                
+                // Extract YouTube video ID from URL
+                const videoId = this.extractYouTubeId(this.config.videoUrl);
+                
+                if (videoId) {
+                    // Hide play button and overlay, show video player and close button
+                    playButton.style.display = 'none';
+                    thumbnailOverlay.style.display = 'none';
+                    videoPlayer.style.display = 'block';
+                    closeButton.style.display = 'block';
+                    
+                    // Add playing class for CSS-based responsive height
+                    videoContainer.classList.add('playing');
+                    videoContainer.style.cursor = 'default';
+                    
+                    // Set YouTube embed URL with autoplay
+                    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+                } else {
+                    console.error('Invalid YouTube URL');
+                }
+            },
+
+            /**
+             * Hide the video player and show play button
+             */
+            hideVideoPlayer: function() {
+                const playButton = document.getElementById('play-button');
+                const videoPlayer = document.getElementById('video-player');
+                const closeButton = document.getElementById('close-video');
+                const videoContainer = document.getElementById('video-container');
+                const thumbnailOverlay = document.getElementById('video-thumbnail-overlay');
+                const iframe = videoPlayer.querySelector('iframe');
+                
+                // Show play button and overlay, hide video player and close button
+                playButton.style.display = 'flex';
+                thumbnailOverlay.style.display = 'block';
+                videoPlayer.style.display = 'none';
+                closeButton.style.display = 'none';
+                
+                // Remove playing class to reset height via CSS
+                videoContainer.classList.remove('playing');
+                videoContainer.style.cursor = 'pointer';
+                
+                // Stop video by clearing src
+                iframe.src = 'about:blank';
+            },
+
+            /**
+             * Extract YouTube video ID from URL
+             */
+            extractYouTubeId: function(url) {
+                const regex = /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/;
+                const match = url.match(regex);
+                return match ? match[1] : null;
+            },
+
+            /**
+             * Set video thumbnail as background
+             */
+            setVideoThumbnail: function() {
+                const videoContainer = document.getElementById('video-container');
+                const videoId = this.extractYouTubeId(this.config.videoUrl);
+                
+                if (videoId && videoContainer) {
+                    // YouTube provides multiple thumbnail sizes, we'll use maxresdefault for best quality
+                    // Fallback to hqdefault if maxresdefault is not available
+                    const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+                    
+                    // Set as background image
+                    videoContainer.style.backgroundImage = `url(${thumbnailUrl})`;
+                    
+                    // Fallback to hqdefault if maxresdefault fails, then to gray if that fails too
+                    const img = new Image();
+                    img.onload = function() {
+                        // Image loaded successfully, keep maxresdefault
+                    };
+                    img.onerror = function() {
+                        // Try fallback to hqdefault
+                        const fallbackImg = new Image();
+                        fallbackImg.onload = function() {
+                            videoContainer.style.backgroundImage = `url(https://img.youtube.com/vi/${videoId}/hqdefault.jpg)`;
+                        };
+                        fallbackImg.onerror = function() {
+                            // Final fallback to gray background
+                            videoContainer.style.background = '#f3f4f6';
+                            videoContainer.style.backgroundImage = 'none';
+                            // Hide the blur overlay since there's no image to blur
+                            const thumbnailOverlay = document.getElementById('video-thumbnail-overlay');
+                            if (thumbnailOverlay) {
+                                thumbnailOverlay.style.display = 'none';
+                            }
+                        };
+                        fallbackImg.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                    };
+                    img.src = thumbnailUrl;
+                } else {
+                    // Fallback to gray background if no valid video ID
+                    videoContainer.style.background = '#f3f4f6';
+                    videoContainer.style.backgroundImage = 'none';
+                    // Hide the blur overlay since there's no image to blur
+                    const thumbnailOverlay = document.getElementById('video-thumbnail-overlay');
+                    if (thumbnailOverlay) {
+                        thumbnailOverlay.style.display = 'none';
+                    }
+                }
+            },
+
+            /**
+             * Handle watching the tutorial (button click)
+             */
+            watchTutorial: function() {
+                try {
+                    const messageSent = this.sendMessageToParent('watchTutorial', { 
+                        url: this.config.videoUrl 
+                    });
+                    window.open(this.config.videoUrl, '_blank');
+                } catch (error) {
+                    console.error('Error opening tutorial:', error);
+                    window.open(this.config.videoUrl, '_blank');
+                }
+            },
+
+            /**
+             * Handle visiting the learning center
+             */
+            visitLearningCenter: function() {
+                try {
+                    const messageSent = this.sendMessageToParent('openLearningCenter');
+                    if (!messageSent) {
+                        window.open(this.config.fallbackLearningCenterUrl, '_blank');
+                    }
+                } catch (error) {
+                    console.error('Error opening learning center:', error);
+                    window.open(this.config.fallbackLearningCenterUrl, '_blank');
+                }
+            },
+
+            /**
+             * Initialize handlers
+             */
+            init: function() {
+                console.log('Dashboard handlers initialized');
+                // Set video thumbnail as background
+                this.setVideoThumbnail();
+            }
+        };
+
+        // Global functions for onclick handlers
+        function schedulePhoneCall() {
+            if (typeof Handlers !== 'undefined' && Handlers.schedulePhoneCall) {
+                Handlers.schedulePhoneCall();
+            }
+        }
+
+        function scheduleVideoCall() {
+            if (typeof Handlers !== 'undefined' && Handlers.scheduleVideoCall) {
+                Handlers.scheduleVideoCall();
+            }
+        }
+
+        function openVideoTutorial() {
+            Handlers.openVideoTutorial();
+        }
+
+        function toggleVideoPlayer() {
+            Handlers.openVideoTutorial();
+        }
+
+        function closeVideoPlayer(event) {
+            event.stopPropagation(); // Prevent triggering the container click
+            Handlers.hideVideoPlayer();
+        }
+
+        function watchTutorial() {
+            Handlers.watchTutorial();
+        }
+
+        function visitLearningCenter() {
+            Handlers.visitLearningCenter();
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            Handlers.init();
+        });
+    </script>
+
+    <!-- Responsive adjustments -->
+    <style>
+        /* Mobile adjustments */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            #video-container {
+                min-height: 120px !important;
+            }
+            #video-container.playing {
+                height: 180px !important;
+            }
+        }
+
+        /* Tablet adjustments */
+        @media (min-width: 481px) and (max-width: 768px) {
+            #video-container {
+                min-height: 160px !important;
+            }
+            #video-container.playing {
+                height: 240px !important;
+            }
+        }
+
+        /* Desktop adjustments */
+        @media (min-width: 769px) {
+            #video-container {
+                min-height: 180px !important;
+            }
+            #video-container.playing {
+                height: 280px !important;
+            }
+        }
+
+        /* Large screens - standalone mode detection */
+        @media (min-width: 1024px) {
+            /* When window is wide enough to be standalone */
+            body {
+                max-width: 800px !important;
+                margin: 0 auto !important;
+                padding: 0 20px !important;
+            }
+            
+            #video-container {
+                min-height: 200px !important;
+                margin: 0 50px !important;
+                max-width: 800px !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+            #video-container.playing {
+                height: 380px !important;
+            }
+        }
+
+        /* Extra large screens */
+        @media (min-width: 1440px) {
+            body {
+                max-width: 900px !important;
+                margin: 0 auto !important;
+                padding: 0 20px !important;
+            }
+            
+            #video-container {
+                min-height: 220px !important;
+                margin: 0 80px !important;
+                max-width: 900px !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+            #video-container.playing {
+                height: 450px !important;
+            }
+        }
+
+        /* Height-based queries for very tall screens */
+        @media (min-height: 800px) {
+            #video-container {
+                min-height: 200px !important;
+            }
+            #video-container.playing {
+                height: max(380px, 35vh) !important;
+            }
+        }
+
+        @media (min-height: 1000px) {
+            #video-container {
+                min-height: 220px !important;
+            }
+            #video-container.playing {
+                height: max(450px, 40vh) !important;
+            }
+        }
+
+        /* Button hover effects */
+        button:hover {
+            opacity: 0.9;
+            border: 1px solid #3C40BC;
+            transition: all 0.2s ease;
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* Video tutorial hover effects */
+        .video-tutorial:hover #video-thumbnail-overlay {
+            backdrop-filter: blur(1px);
+            background: rgba(0,0,0,0.4);
+            transition: all 0.2s ease;
+        }
+
+        .video-tutorial:hover #play-button {
+            transform: scale(1.05);
+            background: rgba(255,255,255,1);
+            transition: all 0.2s ease;
+        }
+
+        #close-video:hover {
+            background: rgba(0,0,0,0.9) !important;
+            transform: scale(1.1);
+            transition: all 0.2s ease;
+        }
+
+        /* Smooth height transitions */
+        #video-container {
+            transition: height 0.3s ease-in-out;
+        }
+    </style>
+</body>
+</html>
