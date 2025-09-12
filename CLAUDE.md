@@ -1,6 +1,6 @@
 # CLAUDE.md - AI Assistant Instructions
 
-Version: 2.0.0
+Version: 2.1.0
 
 ## Project Overview
 
@@ -118,6 +118,66 @@ Before committing changes:
 1. Edit `/src/i18n/locales/en.json`
 2. Edit `/src/i18n/locales/es.json`
 3. Use translation keys in components with `useTranslation()` hook
+
+## Translation System
+
+The application uses a dual-layer translation system to provide complete English/Spanish support:
+
+### UI Translations
+- Located in `/src/App.js` in the `translations` object
+- Covers all UI elements (buttons, labels, messages, navigation)
+- Automatically switches based on selected language
+- Example structure:
+  ```javascript
+  const translations = {
+    en: {
+      title: "Knowledge Base",
+      searchPlaceholder: "Search articles..."
+    },
+    es: {
+      title: "Base de Conocimiento",
+      searchPlaceholder: "Buscar artículos..."
+    }
+  }
+  ```
+
+### Content Translations
+- Located in `/src/data/spanish-translations.json`
+- Maps article IDs to Spanish translations
+- Includes titles, categories, and content sections
+- Search functionality works in both languages simultaneously
+- Structure:
+  ```json
+  {
+    "articles": {
+      "460823": {
+        "title": "Gestión de Usuarios",
+        "category": "Operaciones Principales",
+        "content": { /* translated content */ }
+      }
+    }
+  }
+  ```
+
+### How Translation Works
+1. **Language Selection**: User selects language via the floating language switcher
+2. **Cookie Storage**: Language preference saved in cookie for 1 year
+3. **Dynamic Translation**: Content automatically translates based on selection
+4. **Search Integration**: Search queries match content in the selected language
+5. **Autocomplete**: Suggestions appear in the current language
+
+### Adding New Translations
+To add a new article translation:
+1. Add the article ID to `/src/data/spanish-translations.json`
+2. Provide Spanish translations for title, category, and all content sections
+3. Test search functionality in both languages
+4. Verify autocomplete shows translated results
+
+### Cookie Implementation
+- Cookie name: `selectedLanguage`
+- Expiration: 365 days
+- Path: `/` (site-wide)
+- Values: `en` or `es`
 
 ## Important Warnings
 

@@ -1,0 +1,155 @@
+{
+  "articles": {
+    "460823": {
+      "title": "Gestión de Usuarios",
+      "category": "Operaciones Principales",
+      "content": {
+        "overview": "Gestión de Usuarios en la Plataforma de Servicio al Cliente - Panel de Usuarios para administrar cuentas de usuario con la capacidad de agregar, editar, habilitar y deshabilitar usuarios. Funcionalidad de búsqueda y filtrado para la gestión de usuarios.",
+        "keyFeatures": [
+          "Panel de usuarios para administrar cuentas de usuario",
+          "Agregar, editar, habilitar y deshabilitar usuarios",
+          "Funcionalidad de búsqueda y filtrado",
+          "Asignación de roles (Admin, Soporte, Equipo)",
+          "Configuración de zona horaria"
+        ]
+      }
+    },
+    "586913": {
+      "title": "Gestión de Equipos",
+      "category": "Operaciones Principales",
+      "content": {
+        "overview": "Gestión de Equipos - Herramienta integral para gestionar equipos y miembros del equipo con capacidades de creación, edición, asignación de miembros y eliminación.",
+        "keyFeatures": [
+          "Panel de equipos para gestión de equipos",
+          "Asignación de miembros del equipo",
+          "Crear, editar y eliminar equipos",
+          "Búsqueda y filtrado de equipos",
+          "Gestión de estatus de equipo"
+        ]
+      }
+    },
+    "178086": {
+      "title": "Panel de Control",
+      "category": "Panel de Control",
+      "content": {
+        "overview": "Panel de Control - Centro de comando integral para supervisar métricas de rendimiento en tiempo real, órdenes de trabajo y satisfacción del cliente con indicadores clave de rendimiento (KPI) e informes personalizables.",
+        "keyFeatures": [
+          "Métricas de rendimiento en tiempo real",
+          "Resumen de órdenes de trabajo",
+          "Análisis de satisfacción del cliente",
+          "Tableros personalizables",
+          "Opciones de exportación de informes"
+        ]
+      }
+    },
+    "532457": {
+      "title": "Portal del Cliente",
+      "category": "Gestión de Clientes",
+      "content": {
+        "overview": "Portal del Cliente - Centro de servicio integral para que los clientes vean el historial de servicios, envíen solicitudes, hagan pagos y gestionen su información de cuenta.",
+        "keyFeatures": [
+          "Acceso al historial de servicios",
+          "Envío de solicitudes de servicio",
+          "Procesamiento de pagos en línea",
+          "Gestión de perfil de cuenta",
+          "Seguimiento de estado de solicitudes"
+        ]
+      }
+    },
+    "849208": {
+      "title": "Programación y Despacho",
+      "category": "Programación",
+      "content": {
+        "overview": "Programación y Despacho - Sistema avanzado para programar órdenes de trabajo, asignar técnicos y optimizar rutas con visualización de calendario y despacho automático.",
+        "keyFeatures": [
+          "Vista de calendario de arrastrar y soltar",
+          "Asignación automática de técnicos",
+          "Optimización de rutas",
+          "Notificaciones en tiempo real",
+          "Programación de trabajos recurrentes"
+        ]
+      }
+    },
+    "274612": {
+      "title": "Panel de Órdenes de Trabajo",
+      "category": "Informes y Análisis",
+      "content": {
+        "overview": "Panel de Órdenes de Trabajo - Panel integral para el seguimiento, gestión y análisis de órdenes de trabajo con filtrado avanzado, visualizaciones y capacidades de exportación de informes.",
+        "keyFeatures": [
+          "Gestión completa de órdenes de trabajo",
+          "Seguimiento de estado en tiempo real",
+          "Filtrado y búsqueda avanzados",
+          "Análisis visual de datos",
+          "Informes exportables en PDF"
+        ]
+      }
+    },
+    "182200": {
+      "title": "Rendimiento del Técnico",
+      "category": "Informes y Análisis",
+      "content": {
+        "overview": "Panel de Rendimiento del Técnico - Herramienta integral para rastrear y evaluar la productividad del técnico y la finalización de trabajos en toda la organización con métricas y visualizaciones detalladas.",
+        "keyFeatures": [
+          "Seguimiento y evaluación de la productividad del técnico",
+          "Análisis de finalización de trabajos en toda la organización",
+          "Agrupación por Equipo, Usuario o Combinado",
+          "Exportar datos de rendimiento como PDF",
+          "Rangos de fecha personalizables"
+        ]
+      }
+    },
+    "296554": {
+      "title": "Informes de Clientes",
+      "category": "Informes y Análisis",
+      "content": {
+        "overview": "Informes de Clientes - Análisis integral de satisfacción del cliente y quejas con filtrado interactivo e informes PDF exportables para el seguimiento de la experiencia del cliente y la calidad del servicio.",
+        "keyFeatures": [
+          "Panel de satisfacción del cliente",
+          "Análisis y seguimiento de quejas",
+          "Filtrado y visualización interactivos",
+          "Informes PDF exportables",
+          "Comparaciones de rendimiento por equipo"
+        ]
+      }
+    }
+  },
+  "categories": {
+    "Core Operations": "Operaciones Principales",
+    "Dashboard": "Panel de Control",
+    "Customer Management": "Gestión de Clientes",
+    "Scheduling": "Programación",
+    "Reports & Analytics": "Informes y Análisis"
+  },
+  "commonTerms": {
+    "users": "usuarios",
+    "management": "gestión",
+    "admin": "administrador",
+    "accounts": "cuentas",
+    "roles": "roles",
+    "permissions": "permisos",
+    "dashboard": "panel de control",
+    "search": "buscar",
+    "filter": "filtrar",
+    "export": "exportar",
+    "import": "importar",
+    "report": "informe",
+    "analytics": "análisis",
+    "performance": "rendimiento",
+    "customer": "cliente",
+    "satisfaction": "satisfacción",
+    "complaints": "quejas",
+    "feedback": "retroalimentación",
+    "rating": "calificación",
+    "resolution": "resolución",
+    "schedule": "programar",
+    "dispatch": "despachar",
+    "technician": "técnico",
+    "crew": "equipo",
+    "work order": "orden de trabajo",
+    "service": "servicio",
+    "status": "estado",
+    "priority": "prioridad",
+    "date": "fecha",
+    "time": "hora"
+  }
+}

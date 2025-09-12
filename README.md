@@ -1,6 +1,6 @@
 # DHS App Docs - Knowledge Base
 
-Version: 2.0.0
+Version: 2.1.0
 
 ## Overview
 
@@ -15,8 +15,9 @@ This repository uses a **hybrid architecture**:
 
 ## Features
 
-- 🌐 **Bilingual Support** - Full English and Spanish translations
-- 🔍 **Advanced Search** - Local and external search capabilities
+- 🌐 **Bilingual Support** - Full English and Spanish translations with cookie persistence
+- 🔍 **Smart Bilingual Search** - Search in English or Spanish with language-aware autocomplete
+- 🍪 **Language Persistence** - User language preference saved in cookies (1 year)
 - 📱 **Responsive Design** - Mobile-first approach
 - ⚡ **Fast Performance** - Static HTML for panels, React for dynamic content
 - 🎨 **Consistent Branding** - Unified design across all pages
@@ -101,6 +102,34 @@ This repository is configured for automatic deployment to Azure Static Web Apps 
 - `/en/jobs.html` - Jobs management
 - `/es/trabajos.html` - Gestión de trabajos
 - And more...
+
+## Translation System
+
+The application uses a dual-layer translation system:
+
+### UI Translations
+- Located in `/src/App.js` in the `translations` object
+- Covers all UI elements (buttons, labels, messages)
+- Automatically switches based on selected language
+
+### Content Translations
+- Located in `/src/data/spanish-translations.json`
+- Maps article IDs to Spanish translations
+- Includes titles, categories, and content sections
+- Search works in both languages simultaneously
+
+### How It Works
+1. **Language Selection**: User selects language via the language switcher
+2. **Cookie Storage**: Language preference saved for 1 year
+3. **Dynamic Translation**: Content automatically translates based on selection
+4. **Search Integration**: Search queries match content in the selected language
+5. **Autocomplete**: Suggestions appear in the current language
+
+### Adding New Translations
+To add a new article translation:
+1. Add the article ID to `/src/data/spanish-translations.json`
+2. Provide Spanish translations for title, category, and content
+3. Test search functionality in both languages
 
 ## Development Guidelines
 
