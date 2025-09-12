@@ -258,7 +258,7 @@ const KnowledgeBase = () => {
                   }}
                   style={{
                     position: 'absolute',
-                    right: '8px',
+                    right: '-53px',
                     top: '50%',
                     transform: 'translateY(-50%)',
                     background: 'none',
