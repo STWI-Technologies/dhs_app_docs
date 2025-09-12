@@ -1,11 +1,12 @@
 {
   "name": "dhs-knowledge-base",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "description": "Direct Home Service Knowledge Base React Application",
   "main": "src/index.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:azure": "react-scripts build && cp -r public/en build/ && cp -r public/es build/ && cp -r public/brand build/",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.{js,jsx}",
