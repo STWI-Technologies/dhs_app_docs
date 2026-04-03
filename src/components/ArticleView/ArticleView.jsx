@@ -3,6 +3,21 @@ import { useLanguage } from '../../context/LanguageContext';
 import Lightbox from '../Lightbox/Lightbox';
 import './ArticleView.css';
 
+// Non-screenshot images: arrows, icons, spacers, decorators from Google Docs export
+const DECORATOR_IMAGES = new Set([
+  'image1.png','image2.png','image3.png','image6.png','image8.png','image10.png',
+  'image12.png','image14.png','image28.png','image29.png','image32.png','image36.png',
+  'image45.png','image46.png','image50.png','image64.png','image65.png','image66.png',
+  'image71.png','image74.png','image76.png','image93.png','image94.png','image99.png',
+  'image106.png','image111.png','image112.png','image114.png','image116.png','image117.png',
+  'image118.png','image119.png','image120.png','image123.png','image124.png','image129.png',
+  'image130.png','image131.png','image139.png','image145.png','image147.png','image162.png',
+  'image163.png','image170.png','image177.png','image179.png','image182.png','image186.png',
+  'image190.png','image192.png','image199.png','image207.png','image218.png','image227.png',
+  'image231.png','image234.png','image235.png','image237.png','image242.png','image247.png',
+  'image250.png','image260.png','image263.png','image264.png','image266.png','image267.png'
+]);
+
 function getImageCaption(img, index) {
   // Walk UP to find the block-level parent (p or div)
   let block = img.closest('p') || img.closest('div') || img.parentElement;
@@ -117,8 +132,17 @@ export default function ArticleView({ article, onBack }) {
     let lightboxIdx = 0;
 
     imgs.forEach((img) => {
-      // Skip tiny decorator/icon images (inline arrows, bullets, etc.)
-      // These are typically <100px wide from Google Docs exports
+      // Check blocklist of known non-screenshot images
+      const src = img.getAttribute('src') || '';
+      const filename = src.split('/').pop();
+      if (DECORATOR_IMAGES.has(filename)) {
+        img.classList.add('doc-inline-icon');
+        const wrapper = img.closest('span[style*="overflow"]');
+        if (wrapper) wrapper.classList.add('doc-inline-icon-wrapper');
+        return;
+      }
+
+      // Also skip tiny images by dimension
       const w = img.naturalWidth || img.width || parseInt(img.style.width) || 0;
       const h = img.naturalHeight || img.height || parseInt(img.style.height) || 0;
       if ((w > 0 && w < 100) || (h > 0 && h < 100)) {
@@ -126,14 +150,13 @@ export default function ArticleView({ article, onBack }) {
         return;
       }
 
-      // Also check the wrapper span dimensions
       const wrapper = img.closest('span[style*="overflow"]');
       if (wrapper) {
         const wrapperW = parseInt(wrapper.style.width) || 0;
         const wrapperH = parseInt(wrapper.style.height) || 0;
         if ((wrapperW > 0 && wrapperW < 100) || (wrapperH > 0 && wrapperH < 100)) {
           img.classList.add('doc-inline-icon');
-          if (wrapper) wrapper.classList.add('doc-inline-icon-wrapper');
+          wrapper.classList.add('doc-inline-icon-wrapper');
           return;
         }
       }
