@@ -15,6 +15,7 @@ import {
   WhatsappIcon,
   AiBrain01Icon,
   TelephoneIcon,
+  Layers01Icon,
 } from 'hugeicons-react';
 
 const articles = [
@@ -257,10 +258,26 @@ const articles = [
       overview: 'Un sistema telefónico con IA que permite a los usuarios encontrar proveedores de servicios, programar citas, gestionar reservas y solicitar devoluciones de llamada — todo por voz o teclado, en inglés o español.'
     },
     keywords: ['phone', 'teléfono', 'ivr', 'call', 'llamada', 'appointment', 'cita', 'schedule', 'programar', 'voice', 'voz', 'callback', 'provider', 'proveedor']
+  },
+  {
+    id: 'plans-pricing',
+    icon: Layers01Icon,
+    en: {
+      title: 'Plans & App Versions',
+      category: 'Getting Started',
+      overview: 'DHS comes in two app versions — Solo for independent contractors and Team for businesses with crews. Compare features, communication channels, and find the right fit for your business.'
+    },
+    es: {
+      title: 'Planes y Versiones de la App',
+      category: 'Primeros Pasos',
+      overview: 'DHS viene en dos versiones — Solo para contratistas independientes y Team para negocios con equipos. Compare características, canales de comunicación y encuentre la opción ideal para su negocio.'
+    },
+    keywords: ['plans', 'planes', 'solo', 'team', 'equipo', 'enterprise', 'pricing', 'subscription', 'suscripción', 'features', 'comparison']
   }
 ];
 
 export const categoryOrder = [
+  'Getting Started',
   'People & Teams',
   'Clients & Properties',
   'Services & Products',
