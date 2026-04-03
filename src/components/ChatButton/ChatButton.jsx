@@ -5,31 +5,65 @@ export default function ChatButton() {
   const [visible, setVisible] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Load LiveAgent scripts
+  // Load LiveAgent scripts - exact pattern from the SP app
   useEffect(() => {
-    const loadLA = (buttonId, windowKey) => {
-      const s = document.createElement('script');
+    // Contact Form button
+    (function (d, src, c) {
+      var t = d.scripts[d.scripts.length - 1];
+      var s = d.createElement('script');
+      s.id = 'la_x2s6df8d';
       s.defer = true;
-      s.src = 'https://directhomeservice.ladesk.com/scripts/track.js';
-      s.onload = function () {
-        if (window.LiveAgent) {
-          window[windowKey] = window.LiveAgent.createButton(buttonId, s);
-        }
+      s.src = src;
+      s.onload = s.onreadystatechange = function () {
+        var rs = this.readyState;
+        if (rs && rs !== 'complete' && rs !== 'loaded') return;
+        c(this);
       };
-      document.body.appendChild(s);
-    };
+      t.parentElement.insertBefore(s, t.nextSibling);
+    })(document, 'https://directhomeservice.ladesk.com/scripts/track.js', function (e) {
+      window.contactForm = window.LiveAgent.createButton('qfc0o8rw', e);
+    });
 
-    loadLA('qfc0o8rw', 'contactForm');
-    loadLA('ws5l92o9', 'chatButton');
-    loadLA('hpnn2l51', 'callButton');
+    // Chat button
+    (function (d, src, c) {
+      var t = d.scripts[d.scripts.length - 1];
+      var s = d.createElement('script');
+      s.id = 'la_x2s6df8d';
+      s.defer = true;
+      s.src = src;
+      s.onload = s.onreadystatechange = function () {
+        var rs = this.readyState;
+        if (rs && rs !== 'complete' && rs !== 'loaded') return;
+        c(this);
+      };
+      t.parentElement.insertBefore(s, t.nextSibling);
+    })(document, 'https://directhomeservice.ladesk.com/scripts/track.js', function (e) {
+      window.chatButton = window.LiveAgent.createButton('ws5l92o9', e);
+    });
+
+    // Call button
+    (function (d, src, c) {
+      var t = d.scripts[d.scripts.length - 1];
+      var s = d.createElement('script');
+      s.id = 'la_x2s6df8d';
+      s.defer = true;
+      s.src = src;
+      s.onload = s.onreadystatechange = function () {
+        var rs = this.readyState;
+        if (rs && rs !== 'complete' && rs !== 'loaded') return;
+        c(this);
+      };
+      t.parentElement.insertBefore(s, t.nextSibling);
+    })(document, 'https://directhomeservice.ladesk.com/scripts/track.js', function (e) {
+      window.callButton = window.LiveAgent.createButton('hpnn2l51', e);
+    });
 
     // Show button after scripts load
-    const timer = setTimeout(() => setVisible(true), 1500);
+    const timer = setTimeout(() => setVisible(true), 2000);
     return () => clearTimeout(timer);
   }, []);
 
   const toggleMenu = useCallback(() => {
-    // Check business hours (Eastern Time)
     const now = new Date();
     const eastern = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
     const hours = eastern.getHours();
@@ -41,31 +75,29 @@ export default function ChatButton() {
     if (isOpen) {
       setMenuOpen(prev => !prev);
     } else {
-      // Outside hours - open contact form directly
-      if (window.contactForm?.onClick) window.contactForm.onClick();
+      if (window.contactForm && window.contactForm.onClick) window.contactForm.onClick();
     }
   }, []);
 
   const handleContact = () => {
     setMenuOpen(false);
-    if (window.contactForm?.onClick) window.contactForm.onClick();
+    if (window.contactForm && window.contactForm.onClick) window.contactForm.onClick();
   };
 
   const handleChat = () => {
     setMenuOpen(false);
-    if (window.chatButton?.onClick) window.chatButton.onClick();
+    if (window.chatButton && window.chatButton.onClick) window.chatButton.onClick();
   };
 
   const handleCall = () => {
     setMenuOpen(false);
-    if (window.callButton?.onClick) window.callButton.onClick();
+    if (window.callButton && window.callButton.onClick) window.callButton.onClick();
   };
 
   if (!visible) return null;
 
   return (
     <>
-      {/* Multi-widget menu */}
       <div className={`chat-widget__menu ${menuOpen ? 'chat-widget__menu--open' : ''}`}>
         <button className="chat-widget__close" onClick={() => setMenuOpen(false)}>&times;</button>
         <ul className="chat-widget__options">
@@ -77,16 +109,14 @@ export default function ChatButton() {
               alt="Contact Form"
             />
           </li>
-          {window.callButton?.form && (
-            <li className="chat-widget__option" onClick={handleCall}>
-              <span className="chat-widget__option-text">Call Us</span>
-              <img
-                className="chat-widget__option-icon"
-                src="https://directhomeservice.com/wp-content/uploads/2024/12/file-03.svg"
-                alt="Call Us"
-              />
-            </li>
-          )}
+          <li className="chat-widget__option" onClick={handleCall}>
+            <span className="chat-widget__option-text">Call Us</span>
+            <img
+              className="chat-widget__option-icon"
+              src="https://directhomeservice.com/wp-content/uploads/2024/12/file-03.svg"
+              alt="Call Us"
+            />
+          </li>
           <li className="chat-widget__option" onClick={handleChat}>
             <span className="chat-widget__option-text">Live Chat</span>
             <img
@@ -98,7 +128,6 @@ export default function ChatButton() {
         </ul>
       </div>
 
-      {/* Floating button */}
       <button
         className={`chat-widget__button ${menuOpen ? 'chat-widget__button--active' : ''}`}
         onClick={toggleMenu}
