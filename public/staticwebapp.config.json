@@ -3,11 +3,9 @@
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST, GET, OPTIONS"
   },
-  "responseOverrides": {
-    "404": {
-      "rewrite": "/index.html",
-      "statusCode": 200
-    }
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/images/*", "/content/*", "/brand/*", "/en/*", "/es/*", "/sitemap.xml", "/robots.txt"]
   },
   "routes": [
     {
