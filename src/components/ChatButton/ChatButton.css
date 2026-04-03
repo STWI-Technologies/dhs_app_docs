@@ -1,0 +1,123 @@
+/* Floating contact button */
+.chat-widget__button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 1001;
+  background: linear-gradient(90deg, #5455c5 0, #7c7dc5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.chat-widget__button:hover {
+  background: linear-gradient(90deg, #5455c5 0, #a0a0c5 100%);
+}
+
+.chat-widget__button--active {
+  background: linear-gradient(90deg, #5455c5 0, #a0a0c5 100%);
+}
+
+.chat-widget__button img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  box-shadow: 0 0.25em 2em rgba(0, 0, 0, 0.12);
+}
+
+/* Multi-widget menu */
+.chat-widget__menu {
+  position: fixed;
+  right: 20px;
+  bottom: -350px;
+  opacity: 0;
+  width: 260px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 0.25em 2em rgba(0, 0, 0, 0.12);
+  z-index: 1001;
+  font-family: 'Poppins', sans-serif;
+  transition: bottom 0.4s ease, opacity 0.3s ease;
+}
+
+.chat-widget__menu--open {
+  bottom: 90px;
+  opacity: 1;
+}
+
+.chat-widget__close {
+  display: block;
+  text-align: right;
+  background: none;
+  border: none;
+  font-size: 32px;
+  font-weight: 300;
+  color: #333;
+  cursor: pointer;
+  padding: 12px 20px 0;
+  width: 100%;
+}
+
+.chat-widget__options {
+  list-style: none;
+  margin: 0;
+  padding: 0 10px 16px;
+}
+
+.chat-widget__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  cursor: pointer;
+  margin-bottom: 6px;
+  padding: 10px;
+  border-radius: 15px;
+  transition: background 0.2s;
+  height: 75px;
+}
+
+.chat-widget__option:hover {
+  background: #7c7dc5;
+}
+
+.chat-widget__option:hover .chat-widget__option-text {
+  color: white;
+}
+
+.chat-widget__option-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-left: 10px;
+  transition: color 0.2s;
+}
+
+.chat-widget__option-icon {
+  width: 56px;
+  height: 56px;
+  margin-left: 16px;
+  box-shadow: 0 0.25em 2em rgba(0, 0, 0, 0.12);
+  border-radius: 50%;
+}
+
+/* Position on smaller screens */
+@media (max-width: 768px) {
+  .chat-widget__button {
+    bottom: 16px;
+    right: 16px;
+  }
+  .chat-widget__menu {
+    right: 16px;
+  }
+  .chat-widget__menu--open {
+    bottom: 86px;
+  }
+}

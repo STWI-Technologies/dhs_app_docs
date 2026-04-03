@@ -6,6 +6,7 @@ import CategorySection from './components/CategorySection/CategorySection';
 import ArticleView from './components/ArticleView/ArticleView';
 import LanguageSwitcher from './components/LanguageSwitcher/LanguageSwitcher';
 import Footer from './components/Footer/Footer';
+import ChatButton from './components/ChatButton/ChatButton';
 import articles, { categoryOrder } from './data/articles';
 import './App.css';
 
@@ -61,6 +62,7 @@ function KnowledgeBase() {
       </div>
 
       <LanguageSwitcher />
+      <ChatButton />
     </div>
   );
 }
