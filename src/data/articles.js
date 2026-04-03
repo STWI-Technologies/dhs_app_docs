@@ -12,6 +12,9 @@ import {
   Timer02Icon,
   Setting07Icon,
   CheckListIcon,
+  WhatsappIcon,
+  AiBrain01Icon,
+  TelephoneIcon,
 } from 'hugeicons-react';
 
 const articles = [
@@ -209,6 +212,51 @@ const articles = [
       overview: 'Crear plantillas de listas de verificación reutilizables con elementos ordenados. Asignar listas a trabajos y presupuestos, duplicar plantillas y rastrear el progreso.'
     },
     keywords: ['checklists', 'listas', 'templates', 'plantillas', 'items', 'elementos', 'jobs', 'trabajos']
+  },
+  {
+    id: 'whatsapp-ai',
+    icon: WhatsappIcon,
+    en: {
+      title: 'WhatsApp AI Assistant',
+      category: 'AI & Automation',
+      overview: 'Manage your entire DHS business from WhatsApp. Send text or voice messages to search records, create appointments, track time, send invoices, and more — all in English or Spanish.'
+    },
+    es: {
+      title: 'Asistente IA de WhatsApp',
+      category: 'IA y Automatización',
+      overview: 'Administre todo su negocio DHS desde WhatsApp. Envíe mensajes de texto o voz para buscar registros, crear citas, rastrear tiempo, enviar facturas y más — todo en inglés o español.'
+    },
+    keywords: ['whatsapp', 'ai', 'assistant', 'asistente', 'voice', 'voz', 'chat', 'bilingual', 'bilingüe', 'tools', 'herramientas', 'automation']
+  },
+  {
+    id: 'ai-assistant',
+    icon: AiBrain01Icon,
+    en: {
+      title: 'AI Assistant (Web & Mobile)',
+      category: 'AI & Automation',
+      overview: 'Use the built-in AI Assistant in the DHS web and mobile app to manage your business with natural language. Search, create, update, and delete records by typing or speaking.'
+    },
+    es: {
+      title: 'Asistente IA (Web y Móvil)',
+      category: 'IA y Automatización',
+      overview: 'Use el Asistente IA integrado en la app web y móvil de DHS para administrar su negocio con lenguaje natural. Busque, cree, actualice y elimine registros escribiendo o hablando.'
+    },
+    keywords: ['ai', 'assistant', 'asistente', 'web', 'mobile', 'móvil', 'voice', 'voz', 'search', 'buscar', 'create', 'crear', 'natural language']
+  },
+  {
+    id: 'appointment-line',
+    icon: TelephoneIcon,
+    en: {
+      title: 'Appointment Line (IVR)',
+      category: 'AI & Automation',
+      overview: 'An AI-powered phone system that lets callers find service providers, schedule appointments, manage bookings, and request callbacks — all by voice or keypad, in English or Spanish.'
+    },
+    es: {
+      title: 'Línea de Citas (IVR)',
+      category: 'IA y Automatización',
+      overview: 'Un sistema telefónico con IA que permite a los usuarios encontrar proveedores de servicios, programar citas, gestionar reservas y solicitar devoluciones de llamada — todo por voz o teclado, en inglés o español.'
+    },
+    keywords: ['phone', 'teléfono', 'ivr', 'call', 'llamada', 'appointment', 'cita', 'schedule', 'programar', 'voice', 'voz', 'callback', 'provider', 'proveedor']
   }
 ];
 
@@ -219,6 +267,7 @@ export const categoryOrder = [
   'Scheduling',
   'Jobs & Estimates',
   'Billing & Time Tracking',
+  'AI & Automation',
   'Settings'
 ];
 

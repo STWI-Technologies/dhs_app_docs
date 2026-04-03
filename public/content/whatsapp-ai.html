@@ -1,0 +1,584 @@
+<h1>WhatsApp AI Assistant</h1>
+
+<h2>Overview</h2>
+<p>The <b>WhatsApp AI Assistant</b> is a conversational AI built right into WhatsApp that lets you manage your entire DHS business from your phone — using simple text messages or voice memos. Instead of switching between apps, you can search for clients, create appointments, send invoices, check your schedule, and much more, all from a WhatsApp chat.</p>
+
+<p>With the WhatsApp AI Assistant you can:</p>
+<ul>
+    <li><b>Search and look up</b> clients, jobs, estimates, invoices, crews, and more</li>
+    <li><b>Create new records</b> like appointments, clients, jobs, estimates, and invoices</li>
+    <li><b>Update and manage</b> existing records — change statuses, reschedule, edit fields</li>
+    <li><b>Track time</b> — clock in, clock out, and review timesheets</li>
+    <li><b>Communicate</b> — send messages and notifications to your team or clients</li>
+    <li><b>Get reports</b> — daily briefings, schedule summaries, and business reports</li>
+    <li><b>Use utilities</b> — check the weather, get directions, run quick calculations</li>
+</ul>
+
+<p>The assistant supports <b>over 103 tools</b> and works in both <b>English and Spanish</b>. You can type your requests in natural, everyday language — no special commands to memorize.</p>
+
+<h2>Getting Started</h2>
+
+<h3>Linking Your WhatsApp Number</h3>
+<p>Before you can use the WhatsApp AI Assistant, you need to link your WhatsApp phone number to your DHS account. Here is how:</p>
+<ol>
+    <li>Open the <b>DHS app</b> on your phone or desktop.</li>
+    <li>Go to <b>Settings</b> and select <b>WhatsApp Integration</b>.</li>
+    <li>Enter the phone number associated with your WhatsApp account.</li>
+    <li>Tap <b>Link Number</b>. You will receive a verification code via WhatsApp.</li>
+    <li>Enter the verification code in the DHS app to confirm the link.</li>
+    <li>Once verified, you can start messaging the DHS AI Assistant directly on WhatsApp.</li>
+</ol>
+
+<h3>Authentication and Security</h3>
+<p>Your WhatsApp AI session is protected by multiple layers of security:</p>
+<ul>
+    <li><b>Twilio Verification</b> — Your phone number is verified through Twilio to confirm your identity.</li>
+    <li><b>Session Lock</b> — After a period of inactivity, your session is automatically locked. To unlock it, you will receive a verification email with a secure link.</li>
+    <li><b>Email Verification</b> — When your session locks, simply check your email, click the verification link, and your WhatsApp session will unlock automatically.</li>
+</ul>
+<p>If someone else tries to message the assistant from an unlinked number, they will not be able to access any account data.</p>
+
+<h2>What You Can Do</h2>
+<p>The WhatsApp AI Assistant gives you access to over 103 tools organized into the categories below. You do not need to memorize tool names — just describe what you need in plain language and the assistant will figure out the right action.</p>
+
+<h3>Search and Look Up</h3>
+<p>Quickly find any record in your DHS system by asking the assistant.</p>
+<table>
+    <thead>
+        <tr>
+            <th>Action</th>
+            <th>What It Does</th>
+            <th>Example Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Search Clients</td>
+            <td>Find clients by name, phone, email, or address</td>
+            <td>"Find the client named Maria Lopez"</td>
+        </tr>
+        <tr>
+            <td>Search Jobs</td>
+            <td>Look up jobs by client, status, date, or crew</td>
+            <td>"Show me all open jobs for this week"</td>
+        </tr>
+        <tr>
+            <td>Search Estimates</td>
+            <td>Find estimates by client, status, or amount</td>
+            <td>"Find pending estimates over $500"</td>
+        </tr>
+        <tr>
+            <td>Search Invoices</td>
+            <td>Look up invoices by client, status, or date range</td>
+            <td>"Show unpaid invoices from March"</td>
+        </tr>
+        <tr>
+            <td>Search Appointments</td>
+            <td>Find appointments by client, date, or crew</td>
+            <td>"What appointments do I have tomorrow?"</td>
+        </tr>
+        <tr>
+            <td>Search Crews</td>
+            <td>Look up crew members and their assignments</td>
+            <td>"Who is on the North crew?"</td>
+        </tr>
+        <tr>
+            <td>Search Products/Services</td>
+            <td>Find products or services in your catalog</td>
+            <td>"Look up the price for lawn mowing"</td>
+        </tr>
+        <tr>
+            <td>Client Details</td>
+            <td>Get full details for a specific client including properties and history</td>
+            <td>"Show me all the details for client #1234"</td>
+        </tr>
+        <tr>
+            <td>Job Details</td>
+            <td>View complete job information including line items and notes</td>
+            <td>"Give me the details on job 5678"</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Create Records</h3>
+<p>Create new records directly from WhatsApp without opening the DHS app.</p>
+<table>
+    <thead>
+        <tr>
+            <th>Action</th>
+            <th>What It Does</th>
+            <th>Example Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Create Appointment</td>
+            <td>Schedule a new appointment for a client</td>
+            <td>"Schedule an appointment for Maria Lopez next Tuesday at 9am"</td>
+        </tr>
+        <tr>
+            <td>Create Client</td>
+            <td>Add a new client to your system</td>
+            <td>"Add a new client: John Smith, 555-0123, 100 Oak Street"</td>
+        </tr>
+        <tr>
+            <td>Create Job</td>
+            <td>Create a new job linked to a client</td>
+            <td>"Create a lawn care job for client Maria Lopez"</td>
+        </tr>
+        <tr>
+            <td>Create Estimate</td>
+            <td>Generate a new estimate for a client</td>
+            <td>"Create an estimate for tree trimming for client #1234"</td>
+        </tr>
+        <tr>
+            <td>Create Invoice</td>
+            <td>Generate a new invoice from a job or manually</td>
+            <td>"Create an invoice for job 5678"</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Update and Manage</h3>
+<p>Make changes to existing records without leaving WhatsApp.</p>
+<table>
+    <thead>
+        <tr>
+            <th>Action</th>
+            <th>What It Does</th>
+            <th>Example Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Change Job Status</td>
+            <td>Update a job to in-progress, completed, on hold, etc.</td>
+            <td>"Mark job 5678 as completed"</td>
+        </tr>
+        <tr>
+            <td>Reschedule Appointment</td>
+            <td>Move an appointment to a new date or time</td>
+            <td>"Reschedule tomorrow's 9am appointment to Friday at 2pm"</td>
+        </tr>
+        <tr>
+            <td>Update Client Info</td>
+            <td>Edit client contact details, address, or notes</td>
+            <td>"Update Maria Lopez's phone number to 555-9876"</td>
+        </tr>
+        <tr>
+            <td>Change Estimate Status</td>
+            <td>Mark an estimate as sent, approved, or declined</td>
+            <td>"Mark estimate #300 as approved"</td>
+        </tr>
+        <tr>
+            <td>Update Invoice Status</td>
+            <td>Mark invoices as sent, paid, or void</td>
+            <td>"Mark invoice #450 as paid"</td>
+        </tr>
+        <tr>
+            <td>Assign Crew</td>
+            <td>Assign or reassign a crew to a job or appointment</td>
+            <td>"Assign the East crew to job 5678"</td>
+        </tr>
+        <tr>
+            <td>Add Notes</td>
+            <td>Add notes to any record (job, client, appointment, etc.)</td>
+            <td>"Add a note to job 5678: Customer prefers backyard entrance"</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Time Tracking</h3>
+<p>Manage your team's time right from WhatsApp.</p>
+<table>
+    <thead>
+        <tr>
+            <th>Action</th>
+            <th>What It Does</th>
+            <th>Example Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Clock In</td>
+            <td>Start your work timer for the day or a specific job</td>
+            <td>"Clock me in"</td>
+        </tr>
+        <tr>
+            <td>Clock Out</td>
+            <td>Stop your work timer</td>
+            <td>"Clock me out"</td>
+        </tr>
+        <tr>
+            <td>View Timesheet</td>
+            <td>See your hours for a specific day or week</td>
+            <td>"Show my timesheet for this week"</td>
+        </tr>
+        <tr>
+            <td>Crew Timesheets</td>
+            <td>View hours logged by your crew members</td>
+            <td>"Show me the East crew's hours for today"</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Communication</h3>
+<p>Send messages and notifications to clients and team members.</p>
+<table>
+    <thead>
+        <tr>
+            <th>Action</th>
+            <th>What It Does</th>
+            <th>Example Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Send Client Message</td>
+            <td>Send a text or email to a client</td>
+            <td>"Send Maria Lopez a message that we'll arrive at 10am"</td>
+        </tr>
+        <tr>
+            <td>Send Notification</td>
+            <td>Push a notification to a team member</td>
+            <td>"Notify the East crew that the schedule changed"</td>
+        </tr>
+        <tr>
+            <td>Send Estimate</td>
+            <td>Email an estimate to the client</td>
+            <td>"Send estimate #300 to the client"</td>
+        </tr>
+        <tr>
+            <td>Send Invoice</td>
+            <td>Email an invoice to the client</td>
+            <td>"Send invoice #450 to Maria Lopez"</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Reports and Schedule</h3>
+<p>Get quick summaries and reports without logging into the DHS dashboard.</p>
+<table>
+    <thead>
+        <tr>
+            <th>Action</th>
+            <th>What It Does</th>
+            <th>Example Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Daily Briefing</td>
+            <td>Get an overview of today's schedule, open jobs, and key metrics</td>
+            <td>"Give me my daily briefing"</td>
+        </tr>
+        <tr>
+            <td>Schedule Summary</td>
+            <td>View your schedule for today, tomorrow, or the week</td>
+            <td>"What's my schedule for this week?"</td>
+        </tr>
+        <tr>
+            <td>Revenue Report</td>
+            <td>See revenue totals and breakdowns by date range</td>
+            <td>"Show me revenue for the last 30 days"</td>
+        </tr>
+        <tr>
+            <td>Outstanding Invoices</td>
+            <td>View all unpaid invoices and total amounts due</td>
+            <td>"How much do clients owe me right now?"</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Utilities</h3>
+<p>Helpful everyday tools available right in the chat.</p>
+<table>
+    <thead>
+        <tr>
+            <th>Action</th>
+            <th>What It Does</th>
+            <th>Example Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Weather</td>
+            <td>Check the weather forecast for your area or a specific location</td>
+            <td>"What's the weather tomorrow in Miami?"</td>
+        </tr>
+        <tr>
+            <td>Directions</td>
+            <td>Get driving directions and estimated travel time to a job site</td>
+            <td>"How do I get to client Maria Lopez's property?"</td>
+        </tr>
+        <tr>
+            <td>Calculator</td>
+            <td>Run quick math calculations</td>
+            <td>"What is 15% of $2,400?"</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Voice Messages</h2>
+<p>You do not have to type everything out. The WhatsApp AI Assistant fully supports <b>voice messages</b> — just hold the microphone button in WhatsApp and speak your request.</p>
+
+<ul>
+    <li><b>Speak in English or Spanish</b> — the system automatically detects and transcribes your language.</li>
+    <li><b>Natural speech</b> — talk the way you normally would. For example, say "Schedule an appointment for Maria Lopez next Tuesday at nine in the morning" and it will understand.</li>
+    <li><b>Automatic processing</b> — your voice memo is transcribed in real time, and the assistant responds as if you had typed the message.</li>
+    <li><b>Confirmation</b> — the assistant will show you the transcription so you can verify it understood you correctly before taking action.</li>
+</ul>
+
+<p>Voice messages are especially useful when you are on a job site and cannot type, or when you want to quickly dictate a note or update.</p>
+
+<h2>Bilingual Support</h2>
+<p>The WhatsApp AI Assistant is fully bilingual and works seamlessly in both <b>English</b> and <b>Spanish</b>.</p>
+
+<ul>
+    <li><b>80+ Spanish language patterns</b> recognized — the system understands common Spanish phrases, slang, and regional variations for business tasks.</li>
+    <li><b>Automatic language detection</b> — write or speak in whichever language is most comfortable for you. The assistant detects your language and responds accordingly.</li>
+    <li><b>Consistent experience</b> — every feature, tool, and response is available in both languages with the same level of detail.</li>
+    <li><b>Mix languages freely</b> — if you switch between English and Spanish mid-conversation, the assistant adapts without missing a beat.</li>
+</ul>
+
+<p><b>Examples in Spanish:</b></p>
+<ul>
+    <li>"Buscar el cliente Maria Lopez"</li>
+    <li>"Crear una cita para el martes a las 9am"</li>
+    <li>"Mostrar mis trabajos abiertos"</li>
+    <li>"Marcar la factura 450 como pagada"</li>
+    <li>"Dame mi agenda de hoy"</li>
+</ul>
+
+<h2>Sending Files and Images</h2>
+<p>The WhatsApp AI Assistant can handle files and images, making it easy to share documents and get AI-powered visual analysis.</p>
+
+<h3>Uploading Attachments</h3>
+<p>You can send files to the assistant just like you would send them to any WhatsApp contact:</p>
+<ul>
+    <li>Tap the <b>attachment icon</b> (paperclip) in WhatsApp.</li>
+    <li>Select the file you want to send (PDFs, documents, spreadsheets, etc.).</li>
+    <li>The assistant will process the file and let you know what it received.</li>
+</ul>
+
+<h3>Image Analysis</h3>
+<p>Send photos directly to the assistant for AI-powered analysis. This is useful for:</p>
+<ul>
+    <li><b>Job site photos</b> — snap a picture of a property and ask the assistant to note conditions or create a job description.</li>
+    <li><b>Document scanning</b> — photograph a handwritten note or printed document and have the assistant extract the information.</li>
+    <li><b>Issue documentation</b> — send a photo of a problem area and the assistant can help you log it as a note on the relevant job or client record.</li>
+</ul>
+
+<h3>Downloading Files with Magic Links</h3>
+<p>When the assistant needs to send you a file (such as an estimate PDF, invoice, or report), it generates a <b>secure magic link</b>:</p>
+<ul>
+    <li>The link is unique to your session and expires after a set time for security.</li>
+    <li>Tap the link to download or view the file directly on your phone.</li>
+    <li>No login required — the link itself serves as your authentication.</li>
+</ul>
+
+<h2>Plan Limits</h2>
+<p>The number of WhatsApp AI messages you can send per month depends on your DHS subscription plan.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Free</th>
+            <th>Solo</th>
+            <th>Team</th>
+            <th>Enterprise</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Monthly AI Messages</td>
+            <td>25</td>
+            <td>250</td>
+            <td>1,000</td>
+            <td>Unlimited</td>
+        </tr>
+        <tr>
+            <td>Voice Messages</td>
+            <td>10</td>
+            <td>100</td>
+            <td>500</td>
+            <td>Unlimited</td>
+        </tr>
+        <tr>
+            <td>Image Analysis</td>
+            <td>5</td>
+            <td>50</td>
+            <td>200</td>
+            <td>Unlimited</td>
+        </tr>
+        <tr>
+            <td>File Downloads (Magic Links)</td>
+            <td>10</td>
+            <td>100</td>
+            <td>500</td>
+            <td>Unlimited</td>
+        </tr>
+        <tr>
+            <td>Daily Briefings</td>
+            <td>1 per day</td>
+            <td>3 per day</td>
+            <td>Unlimited</td>
+            <td>Unlimited</td>
+        </tr>
+        <tr>
+            <td>Users with Access</td>
+            <td>1</td>
+            <td>1</td>
+            <td>Up to 10</td>
+            <td>Unlimited</td>
+        </tr>
+        <tr>
+            <td>Bilingual Support</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>Priority Response Time</td>
+            <td>No</td>
+            <td>No</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>When you approach your monthly limit, the assistant will notify you. You can upgrade your plan at any time from the DHS app under <b>Settings &gt; Subscription</b>.</p>
+
+<h2>Tips and Best Practices</h2>
+
+<h3>Be Specific When You Can</h3>
+<p>The assistant understands natural language, but being specific helps it get things done faster:</p>
+<ul>
+    <li><b>Good:</b> "Schedule an appointment for Maria Lopez at 123 Oak St next Tuesday at 9am for lawn mowing"</li>
+    <li><b>Also works:</b> "I need to schedule something for Maria next week" (the assistant will ask follow-up questions)</li>
+</ul>
+
+<h3>Example Conversations</h3>
+
+<p><b>Starting your day:</b></p>
+<ul>
+    <li><b>You:</b> "Good morning, give me my daily briefing"</li>
+    <li><b>Assistant:</b> Provides today's schedule, open jobs count, pending invoices, and weather forecast.</li>
+</ul>
+
+<p><b>Looking up a client before a visit:</b></p>
+<ul>
+    <li><b>You:</b> "Show me everything about client Maria Lopez"</li>
+    <li><b>Assistant:</b> Returns client details, properties, recent jobs, open estimates, and outstanding invoices.</li>
+</ul>
+
+<p><b>Creating a job on the go:</b></p>
+<ul>
+    <li><b>You:</b> "Create a new job for Maria Lopez — hedge trimming at her Main Street property"</li>
+    <li><b>Assistant:</b> Creates the job and confirms the details. Asks if you want to assign a crew or schedule a date.</li>
+</ul>
+
+<p><b>Clocking in for the day:</b></p>
+<ul>
+    <li><b>You:</b> "Clock me in"</li>
+    <li><b>Assistant:</b> Starts your time clock and confirms the timestamp.</li>
+</ul>
+
+<p><b>Checking on payments:</b></p>
+<ul>
+    <li><b>You:</b> "How many unpaid invoices do I have?"</li>
+    <li><b>Assistant:</b> Shows a summary of outstanding invoices with total amount due.</li>
+</ul>
+
+<p><b>Quick update from the field:</b></p>
+<ul>
+    <li><b>You:</b> (voice memo) "Mark job 5678 as completed and add a note that the client was very happy with the work"</li>
+    <li><b>Assistant:</b> Updates the job status and adds the note. Confirms both actions.</li>
+</ul>
+
+<h3>General Tips</h3>
+<ul>
+    <li><b>Use voice messages</b> when you are in the field and cannot type.</li>
+    <li><b>Ask for your daily briefing</b> each morning to stay on top of your schedule.</li>
+    <li><b>Use the assistant for quick lookups</b> instead of opening the full app — it is often faster.</li>
+    <li><b>Take advantage of image analysis</b> — snap photos of job sites, receipts, or documents and let the AI process them.</li>
+    <li><b>Do not worry about exact wording</b> — the assistant understands many different ways of asking for the same thing.</li>
+    <li><b>If the assistant gets something wrong</b>, just correct it. Say "No, I meant..." and it will adjust.</li>
+</ul>
+
+<h2>Security</h2>
+<p>Your data security is a top priority. The WhatsApp AI Assistant uses multiple layers of protection to keep your business information safe.</p>
+
+<h3>Phone Number Verification</h3>
+<p>When you first link your WhatsApp number, it is verified through <b>Twilio</b>, a trusted communications platform. This ensures that only your verified phone number can access your DHS account through WhatsApp.</p>
+
+<h3>Session Lock and Unlock</h3>
+<p>To prevent unauthorized access, your WhatsApp AI session automatically locks after a period of inactivity. When your session is locked:</p>
+<ol>
+    <li>The assistant will let you know your session has expired.</li>
+    <li>A <b>verification email</b> is sent to the email address on your DHS account.</li>
+    <li>Open the email and click the <b>secure verification link</b>.</li>
+    <li>Your WhatsApp session unlocks automatically — you can continue right where you left off.</li>
+</ol>
+
+<h3>Magic Link Authentication</h3>
+<p>File downloads and sensitive actions use <b>magic links</b> — one-time-use URLs that are:</p>
+<ul>
+    <li><b>Unique</b> to your session and request</li>
+    <li><b>Time-limited</b> — they expire after a short period</li>
+    <li><b>Single-use</b> — once clicked, the link cannot be reused</li>
+</ul>
+
+<h3>Data Privacy</h3>
+<ul>
+    <li>Messages are processed securely and are not stored beyond what is needed to complete your request.</li>
+    <li>Voice messages are transcribed in real time and the audio is not retained.</li>
+    <li>The assistant only accesses data within your DHS account — it cannot see other users' data.</li>
+    <li>All communication between WhatsApp and the DHS system is encrypted.</li>
+</ul>
+
+<h2>Troubleshooting</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Issue</th>
+            <th>Solution</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Assistant does not respond</td>
+            <td>Check your internet connection. If the issue persists, your session may have expired — check your email for a verification link.</td>
+        </tr>
+        <tr>
+            <td>Session keeps locking</td>
+            <td>This is normal security behavior after inactivity. Click the email verification link to unlock. Contact support if it happens too frequently.</td>
+        </tr>
+        <tr>
+            <td>Voice message not understood</td>
+            <td>Try speaking more slowly and clearly. Reduce background noise. You can also type the request instead.</td>
+        </tr>
+        <tr>
+            <td>Wrong language detected</td>
+            <td>Start your message with a clear phrase in your preferred language. The assistant will adjust.</td>
+        </tr>
+        <tr>
+            <td>Monthly limit reached</td>
+            <td>Upgrade your plan under Settings &gt; Subscription in the DHS app, or wait for the next billing cycle.</td>
+        </tr>
+        <tr>
+            <td>File download link expired</td>
+            <td>Ask the assistant to generate a new download link for the file.</td>
+        </tr>
+        <tr>
+            <td>Cannot link WhatsApp number</td>
+            <td>Make sure you are entering the same phone number registered with your WhatsApp account, including country code. Contact support if the issue persists.</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>For additional help, contact <b>support@directhomeservice.com</b> or use the in-app support chat.</p>
