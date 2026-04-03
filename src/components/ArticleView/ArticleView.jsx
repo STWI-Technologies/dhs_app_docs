@@ -3,36 +3,72 @@ import { useLanguage } from '../../context/LanguageContext';
 import Lightbox from '../Lightbox/Lightbox';
 import './ArticleView.css';
 
-function getImageCaption(img) {
-  // Walk backwards from the image to find the nearest heading for context
-  let el = img.closest('p, div, span') || img;
-  let heading = '';
+function getImageCaption(img, index) {
+  // Find the block-level container of this image
+  let container = img.closest('p, div, span[style*="overflow"]') || img;
 
-  // Look for the nearest preceding heading
-  let sibling = el.previousElementSibling;
+  // Walk backwards through siblings to find context
+  let heading = '';
+  let contextText = '';
+  let sibling = container.previousElementSibling;
   let steps = 0;
-  while (sibling && steps < 10) {
+
+  while (sibling && steps < 15) {
     const tag = sibling.tagName?.toLowerCase();
+    const text = sibling.textContent?.trim();
+
     if (tag === 'h1' || tag === 'h2' || tag === 'h3') {
-      heading = sibling.textContent.trim();
+      heading = text;
       break;
     }
+
+    // Grab the closest preceding text as context (skip empty or image-only elements)
+    if (!contextText && text && text.length > 5 && tag === 'p') {
+      // Skip if it's just an image wrapper paragraph
+      if (!sibling.querySelector('img')) {
+        contextText = text;
+      }
+    }
+
     sibling = sibling.previousElementSibling;
     steps++;
   }
 
-  // Also check the preceding text paragraph for context
-  let prevText = '';
-  let prev = el.previousElementSibling;
-  if (prev && prev.tagName?.toLowerCase() === 'p') {
-    prevText = prev.textContent.trim();
-    if (prevText.length > 80) prevText = prevText.substring(0, 80) + '...';
+  // Also check the immediate next sibling for "Step N:" patterns or descriptions
+  let nextText = '';
+  let nextSib = container.nextElementSibling;
+  if (nextSib) {
+    const nt = nextSib.textContent?.trim();
+    if (nt && nt.length > 5 && nt.length < 120 && nextSib.tagName?.toLowerCase() === 'p') {
+      nextText = nt;
+    }
   }
 
-  if (heading && prevText) return `${heading} — ${prevText}`;
-  if (heading) return heading;
-  if (prevText) return prevText;
-  return '';
+  // Build caption: prefer contextText (what the image illustrates), fall back to heading
+  let caption = '';
+  if (contextText) {
+    // Truncate long context
+    caption = contextText.length > 100 ? contextText.substring(0, 100) + '...' : contextText;
+  }
+
+  // Prefix with section heading if we have one
+  if (heading && caption) {
+    caption = heading + ' — ' + caption;
+  } else if (heading) {
+    caption = heading;
+  }
+
+  // If still nothing, use next text
+  if (!caption && nextText) {
+    caption = nextText.length > 100 ? nextText.substring(0, 100) + '...' : nextText;
+  }
+
+  // Final fallback
+  if (!caption) {
+    caption = `Figure ${index + 1}`;
+  }
+
+  return caption;
 }
 
 export default function ArticleView({ article, onBack }) {
@@ -89,14 +125,32 @@ export default function ArticleView({ article, onBack }) {
     setHeadings(parsed);
     if (parsed.length > 0) setActiveId(parsed[0].id);
 
-    // Collect all images with captions
+    // Collect all images, generate captions, inject caption elements
     const imgs = contentRef.current.querySelectorAll('img');
     const imageData = [];
     imgs.forEach((img, i) => {
-      const caption = getImageCaption(img);
+      const caption = getImageCaption(img, i);
       imageData.push({ src: img.src, caption });
       img.dataset.lightboxIndex = i;
       img.title = caption || 'Click to enlarge';
+
+      // Inject visible caption below the image
+      // Find the right parent to insert after (image wrapper span or the image itself)
+      const wrapper = img.closest('span[style*="overflow"]');
+      const insertAfter = wrapper || img;
+      const parent = insertAfter.parentElement;
+
+      // Don't add duplicate captions
+      if (parent && !insertAfter.nextElementSibling?.classList?.contains('doc-caption')) {
+        const captionEl = document.createElement('figcaption');
+        captionEl.className = 'doc-caption';
+        captionEl.textContent = caption;
+        if (insertAfter.nextSibling) {
+          parent.insertBefore(captionEl, insertAfter.nextSibling);
+        } else {
+          parent.appendChild(captionEl);
+        }
+      }
     });
     setLightboxImages(imageData);
 
