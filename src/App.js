@@ -36,7 +36,7 @@ function KnowledgeBase() {
   return (
     <div className="app">
       <div className="app__container">
-        <Header />
+        <Header onLogoClick={handleBack} />
 
         {selectedArticle ? (
           <ArticleView article={selectedArticle} onBack={handleBack} />

@@ -138,14 +138,6 @@
   background: #fafbff;
 }
 
-.doc-content table tr:hover td {
-  background: #f0f1ff;
-}
-
-/* Don't hover-highlight the header row */
-.doc-content table tr:first-child:hover td {
-  background: #1a1a2e !important;
-}
 
 /* Images */
 .doc-content img {
@@ -154,15 +146,17 @@
   border-radius: 8px;
   margin: 20px 0;
   display: block;
-  border: 1px solid #d0d0d0;
-  background: #f9f9f9;
+  border: 1.5px solid #b0b0b0;
+  background: #f5f5f5;
   padding: 4px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
   transition: box-shadow 0.2s;
+  cursor: pointer;
 }
 
 .doc-content img:hover {
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.14);
+  border-color: #999;
 }
 
 /* Image wrapper spans from Google Docs */
@@ -173,10 +167,11 @@
   height: auto !important;
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid #d0d0d0;
-  background: #f9f9f9;
+  border: 1.5px solid #b0b0b0;
+  background: #f5f5f5;
   padding: 4px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
 }
 
 .doc-content span[style*="overflow: hidden"] img {

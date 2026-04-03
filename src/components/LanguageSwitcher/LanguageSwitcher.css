@@ -26,11 +26,11 @@
 }
 
 .lang-switcher__current {
-  border-radius: 10px 10px 0 0;
+  border-radius: 0;
 }
 
 .lang-switcher__option {
-  border-radius: 10px 10px 0 0;
+  border-radius: 0;
   border-bottom: none;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .lang-switcher__flag {
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1;
 }
 
