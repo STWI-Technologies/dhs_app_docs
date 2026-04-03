@@ -44,31 +44,30 @@ function getImageCaption(img, index) {
     }
   }
 
-  // Build caption: prefer contextText (what the image illustrates), fall back to heading
-  let caption = '';
+  // Build description from context
+  let description = '';
   if (contextText) {
-    // Truncate long context
-    caption = contextText.length > 100 ? contextText.substring(0, 100) + '...' : contextText;
+    description = contextText.length > 120 ? contextText.substring(0, 120) + '...' : contextText;
+  } else if (nextText) {
+    description = nextText.length > 120 ? nextText.substring(0, 120) + '...' : nextText;
   }
 
-  // Prefix with section heading if we have one
-  if (heading && caption) {
-    caption = heading + ' — ' + caption;
-  } else if (heading) {
-    caption = heading;
-  }
+  // Section heading
+  const section = heading || '';
 
-  // If still nothing, use next text
-  if (!caption && nextText) {
-    caption = nextText.length > 100 ? nextText.substring(0, 100) + '...' : nextText;
-  }
-
-  // Final fallback
-  if (!caption) {
+  // Combined caption for inline display
+  let caption = '';
+  if (section && description) {
+    caption = section + ' — ' + description;
+  } else if (section) {
+    caption = section;
+  } else if (description) {
+    caption = description;
+  } else {
     caption = `Figure ${index + 1}`;
   }
 
-  return caption;
+  return { caption, section, description };
 }
 
 export default function ArticleView({ article, onBack }) {
@@ -129,8 +128,8 @@ export default function ArticleView({ article, onBack }) {
     const imgs = contentRef.current.querySelectorAll('img');
     const imageData = [];
     imgs.forEach((img, i) => {
-      const caption = getImageCaption(img, i);
-      imageData.push({ src: img.src, caption });
+      const { caption, section, description } = getImageCaption(img, i);
+      imageData.push({ src: img.src, caption, section, description });
       img.dataset.lightboxIndex = i;
       img.title = caption || 'Click to enlarge';
 

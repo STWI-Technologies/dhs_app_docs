@@ -40,6 +40,13 @@ export default function Lightbox({ images, currentIndex, onClose, onNext, onPrev
           </button>
         )}
 
+        {/* Section header (top) */}
+        {image.section && (
+          <div className="lightbox__header">
+            <p className="lightbox__section">{image.section}</p>
+          </div>
+        )}
+
         {/* Image */}
         <img src={image.src} alt={image.caption || ''} className="lightbox__image" />
 
@@ -52,9 +59,9 @@ export default function Lightbox({ images, currentIndex, onClose, onNext, onPrev
           </button>
         )}
 
-        {/* Caption + Counter */}
+        {/* Description + Counter (bottom) */}
         <div className="lightbox__footer">
-          {image.caption && <p className="lightbox__caption">{image.caption}</p>}
+          {image.description && <p className="lightbox__caption">{image.description}</p>}
           <span className="lightbox__counter">{currentIndex + 1} / {images.length}</span>
         </div>
       </div>
