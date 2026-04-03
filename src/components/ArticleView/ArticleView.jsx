@@ -4,58 +4,45 @@ import Lightbox from '../Lightbox/Lightbox';
 import './ArticleView.css';
 
 function getImageCaption(img, index) {
-  // Find the block-level container of this image
-  let container = img.closest('p, div, span[style*="overflow"]') || img;
+  // Walk UP to find the block-level parent (p or div)
+  let block = img.closest('p') || img.closest('div') || img.parentElement;
 
-  // Walk backwards through siblings to find context
+  // Walk backwards through ALL preceding siblings to find heading and context
   let heading = '';
   let contextText = '';
-  let sibling = container.previousElementSibling;
-  let steps = 0;
+  let el = block;
 
-  while (sibling && steps < 15) {
-    const tag = sibling.tagName?.toLowerCase();
-    const text = sibling.textContent?.trim();
+  // Walk previous siblings
+  while (el) {
+    el = el.previousElementSibling;
+    if (!el) break;
 
+    const tag = el.tagName?.toLowerCase();
+    const text = el.textContent?.trim();
+
+    // Found a heading - stop
     if (tag === 'h1' || tag === 'h2' || tag === 'h3') {
-      heading = text;
+      if (text) heading = text;
       break;
     }
 
-    // Grab the closest preceding text as context (skip empty or image-only elements)
-    if (!contextText && text && text.length > 5 && tag === 'p') {
-      // Skip if it's just an image wrapper paragraph
-      if (!sibling.querySelector('img')) {
+    // Found a text paragraph (not one that only contains images)
+    if (!contextText && tag === 'p' && text && text.length > 5) {
+      const hasOnlyImages = el.querySelectorAll('img').length > 0 &&
+        text.replace(/\s/g, '').length < 5;
+      if (!hasOnlyImages) {
         contextText = text;
       }
     }
-
-    sibling = sibling.previousElementSibling;
-    steps++;
   }
 
-  // Also check the immediate next sibling for "Step N:" patterns or descriptions
-  let nextText = '';
-  let nextSib = container.nextElementSibling;
-  if (nextSib) {
-    const nt = nextSib.textContent?.trim();
-    if (nt && nt.length > 5 && nt.length < 120 && nextSib.tagName?.toLowerCase() === 'p') {
-      nextText = nt;
-    }
-  }
+  // Build description
+  let description = contextText
+    ? (contextText.length > 120 ? contextText.substring(0, 120) + '...' : contextText)
+    : '';
 
-  // Build description from context
-  let description = '';
-  if (contextText) {
-    description = contextText.length > 120 ? contextText.substring(0, 120) + '...' : contextText;
-  } else if (nextText) {
-    description = nextText.length > 120 ? nextText.substring(0, 120) + '...' : nextText;
-  }
-
-  // Section heading
   const section = heading || '';
 
-  // Combined caption for inline display
   let caption = '';
   if (section && description) {
     caption = section + ' — ' + description;

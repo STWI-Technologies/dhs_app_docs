@@ -59,6 +59,6 @@
   ],
   "author": "Direct Home Service",
   "license": "MIT",
-  "homepage": ".",
+  "homepage": "/",
   "proxy": "http://localhost:3000"
 }
