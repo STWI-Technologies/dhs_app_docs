@@ -8,12 +8,6 @@ export default function Footer() {
   return (
     <footer className="footer">
       <p className="footer__copyright">{t.copyright}</p>
-      <p className="footer__support">
-        {t.needHelp}{' '}
-        <a href="mailto:support@directhomeservice.com" className="footer__link">
-          {t.contactSupport}
-        </a>
-      </p>
     </footer>
   );
 }

@@ -24,9 +24,7 @@ const translations = {
     searchPlaceholder: 'Search articles...',
     backButton: '← Back to Knowledge Base',
     noResults: 'No articles found matching your search.',
-    copyright: '© 2025 Direct Home Service. All rights reserved.',
-    needHelp: 'Need help?',
-    contactSupport: 'Contact Support',
+    copyright: `© ${new Date().getFullYear()} Direct Home Service. All rights reserved.`,
     loading: 'Loading...',
     keywords: 'Keywords'
   },
@@ -35,9 +33,7 @@ const translations = {
     searchPlaceholder: 'Buscar artículos...',
     backButton: '← Volver a la Base de Conocimientos',
     noResults: 'No se encontraron artículos que coincidan con su búsqueda.',
-    copyright: '© 2025 Direct Home Service. Todos los derechos reservados.',
-    needHelp: '¿Necesita ayuda?',
-    contactSupport: 'Contactar Soporte',
+    copyright: `© ${new Date().getFullYear()} Direct Home Service. Todos los derechos reservados.`,
     loading: 'Cargando...',
     keywords: 'Palabras Clave'
   }
