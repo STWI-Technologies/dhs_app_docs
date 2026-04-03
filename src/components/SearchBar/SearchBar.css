@@ -1,0 +1,138 @@
+.search-bar {
+  max-width: 600px;
+  margin: 0 auto 36px;
+  position: relative;
+}
+
+.search-bar__input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-bar__icon {
+  position: absolute;
+  left: 16px;
+  width: 20px;
+  height: 20px;
+  color: #999;
+  pointer-events: none;
+}
+
+.search-bar__input {
+  width: 100%;
+  padding: 14px 44px 14px 48px;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  border: 2px solid #e0e0e0;
+  border-radius: 50px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background: white;
+}
+
+.search-bar__input:focus {
+  border-color: #2E3192;
+  box-shadow: 0 0 0 3px rgba(46, 49, 146, 0.1);
+}
+
+.search-bar__input::placeholder {
+  color: #aaa;
+}
+
+.search-bar__clear {
+  position: absolute;
+  right: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  font-size: 14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.search-bar__clear:hover {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.search-bar__dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  max-height: 360px;
+  overflow-y: auto;
+  z-index: 1000;
+  border: 1px solid #e8e8e8;
+}
+
+.search-bar__suggestion {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #f5f5f5;
+  transition: background-color 0.15s;
+}
+
+.search-bar__suggestion:last-child {
+  border-bottom: none;
+}
+
+.search-bar__suggestion:hover {
+  background-color: #f8f9ff;
+}
+
+.search-bar__suggestion-text {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.search-bar__suggestion-text--title {
+  font-weight: 600;
+  color: #2E3192;
+}
+
+.search-bar__suggestion-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #888;
+}
+
+.search-bar__suggestion-badge {
+  background: #eef1ff;
+  color: #2E3192;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.search-bar__suggestion-category {
+  color: #999;
+}
+
+@media (max-width: 768px) {
+  .search-bar {
+    margin-bottom: 24px;
+  }
+  .search-bar__input {
+    font-size: 14px;
+    padding: 12px 40px 12px 42px;
+  }
+  .search-bar__dropdown {
+    max-height: 280px;
+  }
+}

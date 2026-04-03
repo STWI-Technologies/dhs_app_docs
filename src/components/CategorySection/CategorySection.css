@@ -1,0 +1,25 @@
+.category-section {
+  margin-bottom: 0;
+}
+
+.category-section__title {
+  color: #1a1a2e;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #eef1ff;
+}
+
+.category-section__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .category-section__title {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+}

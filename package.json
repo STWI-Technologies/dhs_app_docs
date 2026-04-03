@@ -6,7 +6,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build:azure": "react-scripts build && cp -r public/en build/ && cp -r public/es build/ && cp -r public/brand build/",
+    "build:azure": "react-scripts build && cp -r public/en build/ && cp -r public/es build/ && cp -r public/brand build/ && cp -r public/images build/ && cp -r public/content build/",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.{js,jsx}",
@@ -15,6 +15,9 @@
     "analyze": "npm run build && npx bundle-analyzer build/static/js/*.js"
   },
   "dependencies": {
+    "@hugeicons/core-free-icons": "^4.1.1",
+    "@hugeicons/react": "^1.1.6",
+    "hugeicons-react": "^0.4.0",
     "i18next": "^22.4.10",
     "i18next-browser-languagedetector": "^7.0.1",
     "react": "^18.2.0",

@@ -1,654 +1,350 @@
 {
   "knowledgeBase": {
-    "lastUpdated": "2025-09-11",
-    "source": "directhomeservice.ladesk.com",
-    "totalArticles": 17,
+    "lastUpdated": "2026-04-02",
+    "source": "DHS Operations Manual",
+    "totalArticles": 13,
     "articles": [
       {
-        "id": "460823",
-        "url": "https://directhomeservice.ladesk.com/460823-Users",
+        "id": "users-management",
+        "icon": "\ud83d\udc65",
         "en": {
           "title": "Users Management",
           "category": "Core Operations",
-          "content": {
-            "overview": "Users Management in Customer Service Platform - User Dashboard for managing user accounts with ability to add, edit, enable, and disable users. Search and filter functionality for user management.",
-            "keyFeatures": [
-              "User Dashboard for managing user accounts",
-              "Add, edit, enable, and disable users",
-              "Search and filter functionality",
-              "Role assignment (Admin, Support, Crew)",
-              "Time zone configuration"
-            ]
-          }
+          "overview": "Manage user accounts, roles, permissions, and profile settings. Add, edit, enable, and disable users with role-based access control."
         },
         "es": {
-          "title": "Gestión de Usuarios",
+          "title": "Gesti\u00f3n de Usuarios",
           "category": "Operaciones Principales",
-          "content": {
-            "overview": "Gestión de Usuarios en la Plataforma de Servicio al Cliente - Panel de Usuarios para administrar cuentas de usuario con la capacidad de agregar, editar, habilitar y deshabilitar usuarios. Funcionalidad de búsqueda y filtrado para la gestión de usuarios.",
-            "keyFeatures": [
-              "Panel de usuarios para administrar cuentas de usuario",
-              "Agregar, editar, habilitar y deshabilitar usuarios",
-              "Funcionalidad de búsqueda y filtrado",
-              "Asignación de roles (Admin, Soporte, Equipo)",
-              "Configuración de zona horaria"
-            ]
-          }
+          "overview": "Administrar cuentas de usuario, roles, permisos y configuraci\u00f3n de perfil. Agregar, editar, habilitar y deshabilitar usuarios con control de acceso basado en roles."
         },
-        "keywords": ["users", "usuarios", "management", "gestión", "admin", "accounts", "cuentas", "roles", "permissions", "permisos", "dashboard", "panel"]
+        "keywords": [
+          "users",
+          "usuarios",
+          "roles",
+          "admin",
+          "crew",
+          "permissions",
+          "permisos",
+          "accounts",
+          "cuentas",
+          "password",
+          "profile"
+        ],
+        "searchText": "Users Management Overview The User Management section provides a clear overview of everyone who has access to your DHS account. From here, owners can review user details such as contact information, assigned roles, and crew memberships, as well as make updates when necessary. It\u2019s the central place to keep user information current and ensure that each team member has the right level of access. From this section you can: Add new users with a role, contact information, and a password. Edit existing users to update their profile, change their role, or reassign them. Disable users who should no longer have access to the platform (without deleting their data). Enable previously disabled users to restore their access. Send password reset emails so users can set a new password. Search and filter users by name, email, or role. Manage profile pictures by uploading or removing avatar images. Important: Disabling a user prevents them from logging in but preserves all their historical data (past jobs, appointments, timesheets, etc.). You can re-enable a disabled user at any time to restore their access. Users List View The Users List View is the main view for managing all your users. To access it, navigate to Menu > Users . Tabs At the top of the list, a segmented control lets you switch between two views: Tab What It Shows Active Users All users whose accounts are currently enabled. These users can log in and access the platform. Disabled Users All users whose accounts have been disabled. These users cannot log in but their data is preserved. Controls and Filters Above the table you will find: A Search bar \u2014 type a keyword to filter users by name or email. A Role filter \u2014 a multi-select dropdown that lets you filter the list to show only users with specific roles (Admin, Support, Crew Member, Owner). You can select multiple roles at once. A New User button \u2014 click to open the add user form. Table Columns Column What It Shows User The user's avatar followed by their full name. This column is sortable. Click the user's name to open their profile in edit mode. Email Address The user's email address. This column is sortable. Role The user's assigned role is displayed as a colored tag:Owner (gray), Admin (green), Support (yellow), Crew Member (blue), this column is sortable. Crew The name of the first crew the user belongs to. Actions Action buttons for the user (see Row Actions below). Row Actions (Active Users Tab) Action Icon What It Does Edit Pencil icon Opens the user's profile in edit mode where you can change all their details. Disable User with X icon Opens a confirmation dialog to disable the user. If the user has active job assignments, this button is grayed out and disabled with the tooltip: \"Cannot Disable User With Active Job Assignments.\" Row Actions (Disabled Users Tab) Action Icon What It Does Edit Pencil icon Opens the user's profile in edit mode. Enable Undo/restore icon Opens a confirmation dialog to re-enable the user so they can log in again. Sorting The data grid supports sorting by the following columns: Sort Option Description First Name Sort users alphabetically by first name (A-Z or Z-A). Email Sort users alphabetically by email address. Role Sort users by their assigned role. Created At Sort by when the user account was created. Updated At Sort by when the user profile was last modified. User Roles Every user in the system is assigned a role that determines what they can see and do. The four roles are: Role Tag Color Description Owner Gray The account owner. This role is automatically assigned to the person who created the account. There is typically one owner per account. Admin Green Full administrative access to the platform. Admins can manage users, crews, settings, and all business operations. This is the highest role that can be assigned to other users. Support Yellow Support staff role. Intended for office and dispatch personnel who manage scheduling, client communication, and day-to-day operations but may not need full admin access. Crew Member Blue Standard field worker role. Intended for technicians, installers, and other crew members who primarily work on jobs in the field. This is the default role when creating a user via Quick Add. 1. Adding a New User To add a new user to your account: Step 1: Click the Add User button at the top of the Users List View. A panel will slide open from the right side with the title Add New User . Step 2: Fill in the user's profile information. Add User Form Fields Field Required Description Profile Picture No Upload a profile image for the user. Click Upload Image to select a file. Accepted formats: any image file. Maximum size: 2 MB. results. If an image is uploaded, a Remove button appears to clear it. First Name Yes The user's first name. Must be between 2 and 50 characters and can only contain letters and spaces. Last Name Yes The user's last name. Same validation rules as First Name: 2-50 characters, letters and spaces only. Email Address Yes The us"
       },
       {
-        "id": "586913",
-        "url": "https://directhomeservice.ladesk.com/586913-Crews",
+        "id": "crews-management",
+        "icon": "\ud83d\udc77",
         "en": {
           "title": "Crews Management",
           "category": "Core Operations",
-          "content": {
-            "overview": "Crews Management Guide - Crew Dashboard for managing crew teams with ability to add, edit, and delete crew information. Assign and manage crew members and view crew availability and schedules.",
-            "keyFeatures": [
-              "Crew Dashboard for managing crew teams",
-              "Add, edit, and delete crew information",
-              "Assign and manage crew members",
-              "View crew availability and schedules",
-              "Calendar color coding"
-            ]
-          }
+          "overview": "Organize your team into crews with leads, colors, and availability. Assign crews to jobs and appointments with customer feedback tracking."
         },
         "es": {
-          "title": "Gestión de Equipos",
+          "title": "Gesti\u00f3n de Equipos",
           "category": "Operaciones Principales",
-          "content": {
-            "overview": "Gestión de Equipos - Herramienta integral para gestionar equipos y miembros del equipo con capacidades de creación, edición, asignación de miembros y eliminación.",
-            "keyFeatures": [
-              "Panel de equipos para gestión de equipos",
-              "Asignación de miembros del equipo",
-              "Crear, editar y eliminar equipos",
-              "Búsqueda y filtrado de equipos",
-              "Gestión de estatus de equipo"
-            ]
-          }
+          "overview": "Organice su equipo en cuadrillas con l\u00edderes, colores y disponibilidad. Asigne cuadrillas a trabajos y citas con seguimiento de comentarios de clientes."
         },
-        "keywords": ["crews", "equipos", "teams", "management", "gestión", "scheduling", "programación", "members", "miembros", "lead", "líder"]
+        "keywords": [
+          "crews",
+          "equipos",
+          "teams",
+          "lead",
+          "l\u00edder",
+          "members",
+          "miembros",
+          "color",
+          "availability"
+        ],
+        "searchText": "Crews Management Overview Crews represent teams of users that work together on jobs and appointments. Instead of assigning individual technicians to every appointment or estimate, you can group users into a crew and assign the whole crew at once. Each crew has a name, a color for visual identification, and a designated Crew Lead who is the primary point of contact for that team. From this section you can: Create new crews with a name, color, description, and members. Edit existing crews to change their details, manage members, or reassign the crew lead. Delete crews that are no longer needed (only if not currently assigned to jobs or estimates). View availability for each crew, and jump directly to the Availability page to configure their schedule. View customer feedback and ratings for each crew. Search and filter crews by name or by assigned users. Important: A crew can only be deleted if it is not currently assigned to any job or estimate. If a crew is in use, the delete button will be disabled and a tooltip will read: \"Cannot delete crew assigned to jobs or estimates.\" Crews List View The Crews List View is the main view for managing all your crews. To access it, navigate to Menu > Crews . At the top of the page you will see: A Search bar with the placeholder \"Search crews\" \u2014 type a keyword to filter crews by name. A Users filter \u2014 a multi-select dropdown that lets you filter the list to show only crews that include specific users as members. A New Crew button \u2014 click to open the create crew form. Table Columns Column What It Shows Crew The crew's name, preceded by a small colored dot that matches the crew's assigned color. This column is sortable \u2014 click the header to sort alphabetically (A-Z or Z-A). Description A truncated preview of the crew's description text. If the description is longer than the column width, it is cut off with an ellipsis. Rating The crew's average customer rating displayed as star icons (1 to 5 stars) with the numeric value. If the crew has no feedback yet, it shows \"Not Rated.\" Members An avatar stack showing the crew's members. The crew lead appears first with a special border. Up to 2 additional active members are shown as avatars, and if there are more, a \"+N\" badge indicates how many additional members exist. Disabled users are excluded from this display. Actions Three action icons per row (see Row Actions below). Row Actions Each crew row has three action buttons on the right side: Action Icon What It Does Edit Pencil icon Opens the crew in edit mode where you can modify all details, manage members, view availability, and see customer feedback. Availability Calendar/clock icon Navigates to the Availability page with this crew pre-selected in Per Crew mode, so you can configure the crew's schedule. Delete Trash icon Opens a confirmation dialog to delete the crew. If the crew is currently assigned to jobs or estimates, this button is grayed out and disabled with a tooltip: \"Cannot delete crew assigned to jobs or estimates.\" Sorting The data grid supports sorting by the following columns: Sort Option Description Name Sort crews alphabetically by name (A-Z or Z-A). Created At Sort by when the crew was created (oldest first or newest first). Updated At Sort by when the crew was last modified (oldest first or newest first). Pagination The list uses server-side pagination. By default, 10 crews are shown per page. You can change the page size to 10, 25, or 50 per page. The pagination controls at the bottom of the table show the current page, total pages, and total number of records. Changing any filter or search term resets the page back to page 1. Empty State If no crews match your search or filters, the table shows: \"No crews found.\" 1. Creating a New Crew To create a new crew: Step 1: Click the New Crew button at the top of the Crews List View. A panel will slide open from the right side with the title Add New Crew . Step 2: Fill in the crew details. Create Form Fields Field Required Description Crew Name Yes The name of the crew (for example, \"Team Alpha\" or \"Installation Crew A\"). Color Yes A color that visually identifies this crew throughout the platform. Click the color swatch to open a color picker. This color appears as a dot next to the crew name in lists and in the scheduler. Description No An optional text description for the crew. This is a multi-line text area (3 rows). Use it to describe the crew's specialty, coverage area, or any other relevant notes. The label shows \"Description (Optional).\" Members Yes Select one or more users to add as members of this crew. Uses a multi-select dropdown labeled \"Select Members.\" Only active (non-disabled) users appear in the dropdown. Selected members appear as tags below the dropdown. At least one member is required. Important: The first member you add to a new crew is automatically designated as the Crew Lead. A helper message below the Members field reads: \"The first member added will be designated as the Crew Lead.\" The cre"
       },
       {
-        "id": "431361",
-        "url": "https://directhomeservice.ladesk.com/431361-Jobs",
-        "en": {
-          "title": "Jobs Management",
-          "category": "Core Operations",
-          "content": {
-            "overview": "Jobs Management in Direct Home Service Platform - Comprehensive job management interface for service providers. Allows viewing, adding, editing, and deleting jobs with job status and scheduling tracking.",
-            "keyFeatures": [
-              "Comprehensive job management interface",
-              "View, add, edit, and delete jobs",
-              "Track job status and scheduling",
-              "Link to clients and crews",
-              "Priority setting and management"
-            ]
-          }
-        },
-        "es": {
-          "title": "Gestión de Trabajos",
-          "category": "Operaciones Principales",
-          "content": {
-            "overview": "Gestión de Trabajos en la Plataforma Direct Home Service - Interfaz integral de gestión de trabajos para proveedores de servicios. Permite visualizar, agregar, editar y eliminar trabajos con seguimiento de estado y programación.",
-            "keyFeatures": [
-              "Interfaz integral de gestión de trabajos",
-              "Visualizar, agregar, editar y eliminar trabajos",
-              "Rastrear estado y programación de trabajos",
-              "Vincular a clientes y cuadrillas",
-              "Configuración y gestión de prioridades"
-            ]
-          }
-        },
-        "keywords": ["jobs", "trabajos", "scheduling", "programación", "clients", "clientes", "crews", "cuadrillas", "status", "estado", "invoices", "facturas", "timer", "temporizador"]
-      },
-      {
-        "id": "270481",
-        "url": "https://directhomeservice.ladesk.com/270481-Availability",
-        "en": {
-          "title": "Availability Management",
-          "category": "Core Operations",
-          "content": {
-            "overview": "Availability Management for Service Providers - Manage service availability globally or per crew. Set schedules, time slots, and exceptions with flexible scheduling options.",
-            "keyFeatures": [
-              "Manage service availability globally or per crew",
-              "Set schedules, time slots, and exceptions",
-              "Flexible scheduling options",
-              "Warning system for schedule conflicts"
-            ]
-          }
-        },
-        "es": {
-          "title": "Gestión de Disponibilidad",
-          "category": "Operaciones Principales",
-          "content": {
-            "overview": "Gestión de Disponibilidad para Proveedores de Servicios - Administrar disponibilidad de servicios globalmente o por cuadrilla. Configurar horarios, franjas horarias y excepciones con opciones flexibles de programación.",
-            "keyFeatures": [
-              "Gestionar disponibilidad de servicios globalmente o por cuadrilla",
-              "Configurar horarios, franjas horarias y excepciones",
-              "Opciones flexibles de programación",
-              "Sistema de alertas para conflictos de horario"
-            ]
-          }
-        },
-        "keywords": ["availability", "disponibilidad", "scheduling", "programación", "time slots", "franjas horarias", "exceptions", "excepciones", "global", "crew-specific", "específico de cuadrilla"]
-      },
-      {
-        "id": "831098",
-        "url": "https://directhomeservice.ladesk.com/831098-Clients",
+        "id": "clients-management",
+        "icon": "\ud83c\udfe0",
         "en": {
           "title": "Clients Management",
           "category": "Customer Management",
-          "content": {
-            "overview": "Clients Management Guide for Customer Service Agents - Comprehensive client management system with ability to add, edit, and track client information. Detailed client dashboard with multiple sections.",
-            "keyFeatures": [
-              "Comprehensive client management system",
-              "Add, edit, and track client information",
-              "Detailed client dashboard with multiple sections",
-              "Property management integration",
-              "Document and note organization"
-            ]
-          }
+          "overview": "Manage client accounts, properties, billing, and attachments. Import/export clients via CSV, archive and restore, with multi-property support."
         },
         "es": {
-          "title": "Gestión de Clientes",
-          "category": "Gestión de Clientes",
-          "content": {
-            "overview": "Guía de Gestión de Clientes para Agentes de Servicio al Cliente - Sistema integral de gestión de clientes con capacidad para agregar, editar y rastrear información del cliente. Panel detallado de clientes con múltiples secciones.",
-            "keyFeatures": [
-              "Sistema integral de gestión de clientes",
-              "Agregar, editar y rastrear información del cliente",
-              "Panel detallado de clientes con múltiples secciones",
-              "Integración de gestión de propiedades",
-              "Organización de documentos y notas"
-            ]
-          }
+          "title": "Gesti\u00f3n de Clientes",
+          "category": "Gesti\u00f3n de Clientes",
+          "overview": "Administrar cuentas de clientes, propiedades, facturaci\u00f3n y archivos adjuntos. Importar/exportar clientes por CSV, archivar y restaurar, con soporte multi-propiedad."
         },
-        "keywords": ["clients", "clientes", "customers", "properties", "propiedades", "residential", "residencial", "business", "negocio", "contact", "contacto"]
+        "keywords": [
+          "clients",
+          "clientes",
+          "properties",
+          "propiedades",
+          "billing",
+          "facturaci\u00f3n",
+          "residential",
+          "business",
+          "CSV",
+          "import",
+          "export",
+          "tags"
+        ],
+        "searchText": "Clients Management Overview The Clients Management section is where you manage all your client accounts, their properties, contact information, and billing details. A client represents a customer you do business with \u2014 they can be residential homeowners or commercial businesses. Each client can have multiple properties, and all appointments, estimates, jobs, and invoices are linked to client accounts. From this section you can: Add new clients with a multi-step wizard covering personal details, property, billing, and attachments. Edit existing clients to update their contact information, properties, or billing addresses. Archive clients you no longer work with (without losing historical data). Restore archived clients if you need them again. Search and filter by keyword, city, state, tags, and client type. Import clients in bulk via CSV files. Export your client list to CSV for external use. Manage properties \u2014 add, edit, or delete properties for each client. View related records \u2014 see all appointments, estimates, jobs, and invoices linked to a client. Communicate with clients through the built-in messaging system. Manage attachments for both clients and their properties. Important: Clients cannot be permanently deleted \u2014 they can only be archived . Archiving preserves all historical data (appointments, estimates, jobs, invoices) while hiding the client from active views. You can restore an archived client at any time. Clients List View The Clients List View is the main view for managing all your clients. To access it, navigate to Menu > Clients . When you open the Clients List View, you will see a table listing your clients. Each row represents one client account and displays the following information: Column What It Means User The client's avatar, primary user name and company name as a subtitle if available. If the client was created via Quick Add and has incomplete information, a red warning icon appears with a tooltip: \"Created via Quick Add - details incomplete\" . Type The client's primary property type, shown with a colored dot: blue dot + \"Residential\" for residential clients, or orange dot + \"Business\" for commercial clients. Phone The primary user's phone number, formatted for display. Email The primary user's email address or the client account email. Truncated with an ellipsis if too long, with the full email visible on hover. Address The primary property's address (street, city, state, ZIP). Falls back to the billing address if no property exists. If the client has multiple properties, a tag showing +N appears (e.g., \"+2\") with a tooltip showing the breakdown by type (e.g., \"1 Residential, 2 Business\"). Tags Color-coded tag chips assigned to the client. Shows \"\u2014\" if no tags are assigned. Actions An edit button (pencil icon) to open the client detail page, and a three-dot menu with additional actions. Tabs At the top of the list you will see four tabs that filter clients by type: All \u2014 Shows all active clients, regardless of type. This is the default view. Residential \u2014 Shows only active clients whose primary property type is Residential. Business \u2014 Shows only active clients whose primary property type is Commercial/Business. Archived \u2014 Shows clients that have been archived. You can switch between these tabs at any time. The table updates to reflect the selected filter. Sorting the List You can sort the clients list by clicking on the column headers for User (sorts by company name) or Type (sorts by account type). Click once to sort in ascending order and click again to sort in descending order. Searching and Filtering The Clients List View provides several tools to find clients quickly: Search bar \u2014 Type a keyword to search across client names, email addresses, company names, and more. Results update in real time. Cities filter \u2014 A multi-select dropdown populated with all cities from your client properties. Select one or more cities to show only clients in those locations. States filter \u2014 A multi-select dropdown populated with all states. Select one or more states to narrow the results. Tags filter \u2014 A multi-select dropdown with all tags used across clients. Select tags to show only clients with those tags. The filters can be combined \u2014 selecting \"New York\" in States AND \"HVAC\" in Tags will show only clients in New York who also have the \"HVAC\" tag. Row Actions Menu Clicking the three-dot menu (\u22ee) on any row reveals the following actions: Start a Conversation \u2014 Opens the Inbox with this client pre-selected. If a direct chat already exists, it opens the existing conversation. If not, a new chat is created. Attachments \u2014 Opens the Client Attachments panel to manage files associated with this client. Archive (active clients only) \u2014 Opens a confirmation dialog: \"Are you sure you want to archive [client name]?\" . Archiving removes the client from active tabs but preserves all data. Restore (archived clients only) \u2014 Opens a confirmation dialog: \"Are you sure you want to restore [client name]?\" . Rest"
       },
       {
-        "id": "919387",
-        "url": "https://directhomeservice.ladesk.com/919387-Estimates",
+        "id": "services-management",
+        "icon": "\ud83d\udd27",
         "en": {
-          "title": "Estimates",
+          "title": "Services Management",
           "category": "Customer Management",
-          "content": {
-            "overview": "Estimates Management Guide for Customer Service Agents - Comprehensive estimate creation, editing, and tracking system. Allows service providers to manage client estimates efficiently.",
-            "keyFeatures": [
-              "Comprehensive estimate creation, editing, and tracking",
-              "Service providers can manage client estimates efficiently",
-              "Support for both residential and business estimates",
-              "Tax and discount application",
-              "Recurring service scheduling"
-            ]
-          }
+          "overview": "Create and manage labor-based service items with pricing, descriptions, and attachments. Import/export services and use them across appointments, estimates, and invoices."
         },
         "es": {
-          "title": "Presupuestos",
-          "category": "Gestión de Clientes",
-          "content": {
-            "overview": "Guía de Gestión de Presupuestos para Agentes de Servicio al Cliente - Sistema integral de creación, edición y seguimiento de presupuestos. Permite a los proveedores de servicios gestionar presupuestos de clientes de manera eficiente.",
-            "keyFeatures": [
-              "Creación, edición y seguimiento integral de presupuestos",
-              "Los proveedores de servicios pueden gestionar presupuestos de clientes eficientemente",
-              "Soporte para presupuestos residenciales y comerciales",
-              "Aplicación de impuestos y descuentos",
-              "Programación de servicios recurrentes"
-            ]
-          }
+          "title": "Gesti\u00f3n de Servicios",
+          "category": "Gesti\u00f3n de Clientes",
+          "overview": "Crear y administrar servicios basados en mano de obra con precios, descripciones y archivos adjuntos. Importar/exportar servicios y usarlos en citas, presupuestos y facturas."
         },
-        "keywords": ["estimates", "presupuestos", "pricing", "precios", "services", "servicios", "products", "productos", "taxes", "impuestos", "discounts", "descuentos", "recurring", "recurrente"]
+        "keywords": [
+          "services",
+          "servicios",
+          "pricing",
+          "precios",
+          "labor",
+          "mano de obra",
+          "attachments",
+          "archivos"
+        ],
+        "searchText": "Services Management Overview The Services Management section is where you manage all the service items your business offers. These are labor-based items \u2014 such as inspections, installations, repairs, or consultations \u2014 that can be added to appointments, estimates, invoices, and jobs. From this section you can: Add new services with pricing, descriptions, and supporting documents. Edit existing services to keep information current. Archive services you no longer offer (without losing historical data). Restore archived services if you need them again. Permanently delete archived services that are no longer needed. Search and filter to quickly find what you're looking for. Import and export services via CSV files for bulk operations. Manage attachments such as specifications, manuals, and safety documents. Important: A service can only be permanently deleted if it is not currently linked to any appointment, estimate, invoice, or job. If a service is in use, you must first remove it from all associated records before deletion is possible. Services List View The Services List View is the main view for managing all your services. To access it, navigate to Menu > Inventory > Services . When you open the Services List View, you will see a table listing all your active services. Each row represents one service and displays the following information: Column What It Means SKU A unique code that identifies the service (e.g., SVC-001 ). This cannot be changed after the service is created. Service The name of the service, along with its description (if one was provided). Cost Per Hour The hourly rate charged for this service, displayed in dollars (e.g., $75.00 ). Taxable A checkmark indicates this service is subject to tax. In Use A checkmark indicates this service is currently being used in at least one appointment, estimate, invoice, or job. Client Portal Visible A checkmark indicates that customers can see and request this service through your online client portal. Tags Color-coded labels you have assigned to help categorize the service (e.g., \"HVAC\", \"Plumbing\", \"Electrical\"). Groups The groups this service belongs to, if any. Groups are managed separately and help organize services into logical categories. Actions Quick-action buttons to edit the service, manage its attachments, or archive/delete it. Active vs. Archived Services At the top of the list you will see two tabs: Active \u2014 Shows all services that are currently available for use. This is the default view. Archived \u2014 Shows services that have been archived (temporarily disabled). Archived services do not appear in dropdowns when creating appointments, estimates, or invoices, but their historical data is preserved. You can switch between these tabs at any time to manage both active and archived services. Sorting the List You can sort the services list by clicking on the column headers for SKU , Service (name), or Cost Per Hour . Click once to sort in ascending order (A-Z or lowest to highest), and click again to sort in descending order (Z-A or highest to lowest). This helps you quickly organize services alphabetically or by price. 1. Adding a New Service To add a new service to your account, follow these steps: Step 1: Open the New Service Form Click the \"+ New Service\" button (blue) located in the top-right corner of the Services List View. A panel will slide open from the right side of the screen with a form to fill out. Tip: If the list is empty (no services have been added yet), you will also see a \"New Service\" button in the center of the page. Step 2: Fill In the General Information The form contains the following fields: Field Required? Description SKU Yes Enter a unique code to identify this service. This will be used as a reference throughout the system and cannot be changed after the service is created. Choose something meaningful, like INSP-001 for an inspection service. Service Name Yes Enter a clear, descriptive name for the service (e.g., \"Annual HVAC Inspection\" or \"Emergency Plumbing Repair\"). Cost Per Hour Yes Enter the hourly rate for this service in dollars (e.g., 75.00 ). The system accepts up to two decimal places. The maximum allowed value is $21,474,836.47. If you enter a value over $1,000,000, a warning will appear to confirm the amount is intentional. Description No Optionally, provide additional details about what this service includes, how long it typically takes, or any other relevant information. This description is visible to your team and can help clarify the scope of the service. Below the fields, you will find two configuration options: Taxable \u2014 Check this box if the service is subject to sales tax. When enabled, tax will be automatically calculated when this service is added to estimates and invoices. Show on Client Portal for Service Request \u2014 Check this box to make this service visible on your customer-facing online portal. Clients will be able to see and request this service when booking online. If left unchecked, only yo"
       },
       {
-        "id": "804099",
-        "url": "https://directhomeservice.ladesk.com/804099-Invoices",
+        "id": "products-management",
+        "icon": "\ud83d\udce6",
         "en": {
-          "title": "Invoices",
+          "title": "Products Management",
           "category": "Customer Management",
-          "content": {
-            "overview": "Invoices Management Guide for Customer Service Agents - Invoice Dashboard for creating, viewing, and managing invoices with ability to link invoices to specific jobs. Comprehensive invoice creation and editing process.",
-            "keyFeatures": [
-              "Invoice Dashboard for creating, viewing, and managing invoices",
-              "Link invoices to specific jobs",
-              "Comprehensive invoice creation and editing process",
-              "Multiple communication options for sending invoices"
-            ]
-          }
+          "overview": "Track physical products and materials with inventory management, markup pricing, bulk editing, and CSV import/export capabilities."
         },
         "es": {
-          "title": "Facturas",
-          "category": "Gestión de Clientes",
-          "content": {
-            "overview": "Guía de Gestión de Facturas para Agentes de Servicio al Cliente - Panel de Facturas para crear, ver y gestionar facturas con capacidad de vincular facturas a trabajos específicos. Proceso integral de creación y edición de facturas.",
-            "keyFeatures": [
-              "Panel de Facturas para crear, ver y gestionar facturas",
-              "Vincular facturas a trabajos específicos",
-              "Proceso integral de creación y edición de facturas",
-              "Múltiples opciones de comunicación para enviar facturas"
-            ]
-          }
+          "title": "Gesti\u00f3n de Productos",
+          "category": "Gesti\u00f3n de Clientes",
+          "overview": "Rastrear productos f\u00edsicos y materiales con gesti\u00f3n de inventario, precios con margen, edici\u00f3n masiva y capacidades de importaci\u00f3n/exportaci\u00f3n CSV."
         },
-        "keywords": ["invoices", "facturas", "billing", "facturación", "payments", "pagos", "jobs", "trabajos", "taxes", "impuestos", "email", "correo", "sms"]
+        "keywords": [
+          "products",
+          "productos",
+          "inventory",
+          "inventario",
+          "stock",
+          "markup",
+          "margen",
+          "materials",
+          "materiales"
+        ],
+        "searchText": "Products Management Overview The Products Management section is where you manage all the physical items and materials your business sells or uses in jobs. These are material-based items \u2014 such as parts, supplies, equipment, or consumables \u2014 that can be added to estimates, invoices, and jobs. Unlike services (which are billed by time), products are billed by quantity and include inventory tracking features so you always know what you have in stock. From this section you can: Add new products with cost, pricing, markup, and inventory details. Edit existing products to update pricing, stock levels, or descriptions. Archive products you no longer sell or use (without losing historical data). Restore archived products if you need them again. Permanently delete archived products that are no longer needed. Track inventory with quantity on hand, reorder levels, and stock availability. Search and filter to quickly find what you're looking for. Import and export products via CSV files for bulk operations. Bulk edit inventory quantities across multiple products at once. View stock availability including quantities reserved for estimates and jobs. Important: A product can only be permanently deleted if it is not currently linked to any estimate, invoice, or job. If a product is in use, you must first remove it from all associated records before deletion is possible. Products List View The Products List View is the main view for managing all your products. To access it, navigate to Menu > Inventory > Products . When you open the Products List View, you will see a table listing all your active products. Each row represents one product and displays the following information: Column What It Means SKU A unique code that identifies the product (e.g., PART-001 ). This cannot be changed after the product is created. Product The name of the product with a thumbnail image (if one was uploaded), along with its description. Hovering over the thumbnail shows a larger preview. Cost Your internal cost for this product \u2014 what you pay to acquire it. Displayed in dollars (e.g., $10.00 ). Markup % The percentage added on top of your cost to determine the selling price. This is automatically calculated from the difference between the Item Price and the Cost. Item Price The selling price your customers pay. Displayed in dollars (e.g., $15.00 ). Taxable A checkmark indicates this product is subject to tax. In Use A checkmark indicates this product is currently being used in at least one estimate, invoice, or job. Tags Color-coded labels you have assigned to help categorize the product (e.g., \"Plumbing\", \"Electrical\", \"HVAC\"). Groups The groups this product belongs to, if any. Groups are managed separately and help organize products into logical categories. Actions Quick-action buttons to edit the product, view its details, check inventory status, or archive/delete it. Inventory Status Indicator Each product row includes a small colored dot in the Actions column that shows the inventory status at a glance: Green dot \u2014 More than 5 units in stock. Yellow dot \u2014 Between 1 and 5 units in stock (running low). Red dot \u2014 Out of stock (0 units available). Clicking the inventory dot opens the Stock Availability window, which shows a breakdown of how your stock is allocated (see Section 3). Active vs. Archived Products At the top of the list you will see two tabs: Active \u2014 Shows all products that are currently available for use. This is the default view. Archived \u2014 Shows products that have been archived (temporarily disabled). Archived products do not appear in dropdowns when creating estimates, invoices, or jobs, but their historical data is preserved. You can switch between these tabs at any time to manage both active and archived products. Sorting the List You can sort the products list by clicking on the column headers for SKU , Product (name), Cost , or Item Price . Click once to sort in ascending order (A-Z or lowest to highest), and click again to sort in descending order (Z-A or highest to lowest). 1. Adding a New Product Adding a new product is a two-step process. The first step captures the essential pricing information, and the second step captures additional details like vendor, manufacturer, inventory, and images. Step 1: Open the New Product Form Click the \"+ New Product\" button (blue) located in the top-right corner of the Products List View. A panel will slide open from the right side of the screen. Tip: If the list is empty (no products have been added yet), you will also see a \"New Product\" button in the center of the page. Step 2: Fill In the General Information The first tab, General Info , contains the core pricing fields: Field Required? Description SKU Yes Enter a unique code to identify this product. This will be used as a reference throughout the system and cannot be changed after the product is created. Choose something meaningful, like FILTER-001 for an air filter. Name Yes Enter a clear, descriptive name for the product (e.g"
       },
       {
-        "id": "219493",
-        "url": "https://directhomeservice.ladesk.com/219493-Services",
+        "id": "availability-management",
+        "icon": "\ud83d\udcc5",
         "en": {
-          "title": "Services Catalog",
-          "category": "Services & Products",
-          "content": {
-            "overview": "Services Management Guide for Customer Service Agents - Manage service items for estimates and invoices. Add, edit, delete, and search services with configuration of service details like SKU, cost, taxability, and online booking.",
-            "keyFeatures": [
-              "Manage service items for estimates and invoices",
-              "Add, edit, delete, and search services",
-              "Configure service details like SKU, cost, taxability, and online booking",
-              "Usage status tracking"
-            ]
-          }
+          "title": "Availability Management",
+          "category": "Core Operations",
+          "overview": "Configure business hours globally or per crew with work days, time slots, and exceptions. Manage seasonal schedules and holiday closures."
         },
         "es": {
-          "title": "Catálogo de Servicios",
-          "category": "Servicios y Productos",
-          "content": {
-            "overview": "Guía de Gestión de Servicios para Agentes de Servicio al Cliente - Gestionar elementos de servicio para presupuestos y facturas. Agregar, editar, eliminar y buscar servicios con configuración de detalles del servicio como SKU, costo, gravabilidad y reserva en línea.",
-            "keyFeatures": [
-              "Gestionar elementos de servicio para presupuestos y facturas",
-              "Agregar, editar, eliminar y buscar servicios",
-              "Configurar detalles del servicio como SKU, costo, gravabilidad y reserva en línea",
-              "Seguimiento del estado de uso"
-            ]
-          }
+          "title": "Gesti\u00f3n de Disponibilidad",
+          "category": "Operaciones Principales",
+          "overview": "Configure horarios de trabajo globalmente o por cuadrilla con d\u00edas laborables, franjas horarias y excepciones. Administre horarios estacionales y cierres por festivos."
         },
-        "keywords": ["services", "servicios", "catalog", "catálogo", "sku", "pricing", "precios", "taxable", "gravable", "online booking", "reserva en línea"]
+        "keywords": [
+          "availability",
+          "disponibilidad",
+          "schedule",
+          "horario",
+          "time slots",
+          "exceptions",
+          "excepciones",
+          "global",
+          "crew"
+        ],
+        "searchText": "Availability Management Overview The Availability section is where you configure when your business is open for service and when it is not. Think of it as your business calendar \u2014 it tells the platform which days and hours your team is available to work, and which dates, months, or seasons should be blocked off entirely. Availability affects how appointments are scheduled across the platform. When someone creates an appointment, the system uses these settings to determine which time slots are available. There are two levels of availability: Global Availability \u2014 Sets the overall work schedule for your entire business. This is the default schedule that applies to all crews unless overridden. Per Crew Availability \u2014 Allows you to set a custom schedule for individual crews. A crew's availability must fall within the global hours (a crew cannot be scheduled outside the business's overall hours). From this section you can: Enable or disable work days \u2014 Toggle individual days of the week on or off. Set time slots \u2014 Define one or more working time ranges per day (for example, morning and afternoon shifts). Add exceptions \u2014 Block off specific date ranges, entire months, or full seasons when your business is unavailable. Configure per-crew schedules \u2014 Give individual crews their own availability within the global hours. Important: Availability is not a standalone list of records like Services or Products. It is a configuration page \u2014 you set it up once and adjust it as your business needs change. There are no items to archive or delete. Changes are saved automatically as you make them. Accessing Availability There are two ways to access Availability settings: Main Availability Page \u2014 Navigate to Menu > Availability . This is the full-page view with the title \"Availability\" at the top, the schedule type toggle, and all configuration sections. Settings > Availability \u2014 Navigate to Menu > Settings > Availability . This shows the exact same form embedded within the Settings page. Any changes you make in either location are reflected in both. Tip: If you see an Availability summary on a crew's detail view, you can click the View Availability Settings link to jump directly to the Availability page with that crew pre-selected in Per Crew mode. Schedule Types: Global vs. Per Crew At the top of the Availability page, you will see a segmented control (toggle) with two options: Option What It Does Global Sets the overall service availability for your entire business. This is the default schedule. The description reads: \"Set your overall service availability.\" Below the toggle, the section is titled General Schedule . Per Crew Lets you set a custom schedule for a specific crew. The description reads: \"Set crew service availability.\" After selecting this option, a Select Crew dropdown appears where you choose which crew to configure. Note: You cannot switch between Global and Per Crew while any changes are being saved. The toggle is disabled during save operations to prevent data conflicts. Selecting a Crew (Per Crew Mode) When you switch to Per Crew , a dropdown labeled Select Crew appears. This dropdown lists all the crews in your account (up to 100 crews are loaded). Select the crew you want to configure. Once selected, the page loads that crew's existing availability settings so you can review and modify them. Important: In Per Crew mode, a crew's time slots must fall within the global hours . If you try to set a crew's time slot outside the global availability window, you will see a warning message: \"Crew slot is outside global hours.\" The system will show you what the global hours are for that day so you can adjust accordingly. Work Days Section The Work Days section is where you configure which days of the week your business (or a specific crew) is available, and during what hours. It is displayed inside a bordered card with the heading Work Days . You will see all seven days of the week listed vertically: Day Index Monday 1 Tuesday 2 Wednesday 3 Thursday 4 Friday 5 Saturday 6 Sunday 7 Enabling and Disabling Days Each day has a toggle switch next to it. Here's how it works: Turning a day ON \u2014 Flipping the toggle to the \"on\" position enables that day and automatically creates an empty time slot for you to fill in. Turning a day OFF \u2014 Flipping the toggle to the \"off\" position removes all time slots for that day and immediately saves the change to the backend. You will see a success message: \"Availability updated successfully.\" Warning: Turning off a day is immediate and removes all time slots for that day. If a day had multiple time slots (such as a morning and afternoon shift), all of them will be removed at once. Setting Time Slots For each enabled day, you can define one or more time slots. Each time slot represents a continuous block of working hours. Each time slot row has: Element Description From time selector The start time of the work period. Click the field to open a time picker modal where you select hours and mi"
       },
       {
-        "id": "807691",
-        "url": "https://directhomeservice.ladesk.com/807691-Products",
+        "id": "appointments-management",
+        "icon": "\ud83d\udccb",
         "en": {
-          "title": "Products Catalog",
-          "category": "Services & Products",
-          "content": {
-            "overview": "Products Management in Customer Service Platform - Manage product items for estimates and invoices. Add, edit, delete, and search product inventory with automatic price calculations.",
-            "keyFeatures": [
-              "Manage product items for estimates and invoices",
-              "Add, edit, delete, and search product inventory",
-              "Automatic price calculations with markup",
-              "Two-stage deletion process for safety"
-            ]
-          }
+          "title": "Appointments Management",
+          "category": "Business Operations",
+          "overview": "Schedule and manage field service appointments with a 4-step wizard. Track statuses, convert to estimates/jobs/invoices, and use the calendar scheduler."
         },
         "es": {
-          "title": "Catálogo de Productos",
-          "category": "Servicios y Productos",
-          "content": {
-            "overview": "Gestión de Productos en la Plataforma de Servicio al Cliente - Gestionar elementos de producto para presupuestos y facturas. Agregar, editar, eliminar y buscar inventario de productos con cálculos automáticos de precios.",
-            "keyFeatures": [
-              "Gestionar elementos de producto para presupuestos y facturas",
-              "Agregar, editar, eliminar y buscar inventario de productos",
-              "Cálculos automáticos de precios con margen de beneficio",
-              "Proceso de eliminación en dos etapas para seguridad"
-            ]
-          }
+          "title": "Gesti\u00f3n de Citas",
+          "category": "Operaciones Comerciales",
+          "overview": "Programe y administre citas de servicio de campo con un asistente de 4 pasos. Rastree estados, convierta a presupuestos/trabajos/facturas y use el calendario."
         },
-        "keywords": ["products", "productos", "inventory", "inventario", "sku", "cost", "costo", "markup", "margen", "pricing", "precios", "taxable", "gravable"]
+        "keywords": [
+          "appointments",
+          "citas",
+          "scheduling",
+          "programaci\u00f3n",
+          "calendar",
+          "calendario",
+          "scheduler",
+          "status",
+          "estado"
+        ],
+        "searchText": "Appointments Management Overview The Appointments Management section is where you schedule, track, and manage all field service appointments for your clients. An appointment represents a single scheduled visit to a client's property, assigned to a specific crew at a specific date and time. From this section you can: Create new appointments with a 4-step wizard that walks you through details, scheduling, services, and review. Edit existing appointments to update details, reschedule, or change service items. Track status as appointments progress from Draft through Scheduled, Confirmed, En Route, Started, and finally Completed. Send to client to notify clients about their upcoming appointment with a summary of services and billing. Convert appointments into estimates, jobs, or invoices for seamless workflow continuity. Archive appointments you no longer need in your active view. Restore archived appointments back to active status. Permanently delete archived appointments that have no linked records. Use the Scheduler to see appointments on a visual calendar with day, week, month, and list views. Communicate with clients via Chat, add internal Notes, and manage Attachments from the sidebar. Important: An appointment can only be permanently deleted if it is not linked to any job, estimate, invoice, or timesheet entry. If any linked records exist, you must first remove those links before deletion is possible. Appointments List View The Appointments List View is the main view for managing all your appointments. To access it, navigate to Menu > Appointments . When you open the Appointments List View, you will see a table listing your appointments. Each row represents one appointment and displays the following information: Column What It Means Name The appointment name. If the appointment is marked as High Priority , a priority icon appears next to the name. If it is a Callback appointment (a follow-up visit), a callback icon appears as well. Click the name to open the appointment's Detail Page. This column is sortable. Client The client associated with this appointment. Displays the client's avatar (or initials) and company name. Scheduled For The scheduled date, time range (start \u2013 end), and duration of the appointment (e.g., Feb 20, 2026 9:00 AM \u2013 11:00 AM \u2022 2h ). If no date has been set, it shows \"Not Scheduled\". This column is sortable. Crew The crew assigned to this appointment. Displays a color dot matching the crew's assigned color, followed by the crew name. Status The current status of the appointment, displayed as a color-coded tag. If the appointment has a chat with unread messages, a chat icon with the unread count appears next to the status. Clicking that icon takes you to the Inbox. This column is sortable. Actions Quick-action buttons: an Edit icon (pencil) to open the Detail Page, and a More Actions menu (three dots) for additional options like Send to Client, View on Scheduler, View on Map, Cancel, Archive, Restore, or Delete. Active vs. Archived Appointments At the top of the list, a segmented control lets you switch between two views: Tab What It Shows Active Appointments that are not archived. These are your current, in-progress, or upcoming appointments. Archived Appointments that have been archived. From this tab you can Restore an appointment back to Active, or permanently Delete it (if it has no linked records). Appointment Statuses Each appointment has one of the following statuses, displayed as color-coded tags throughout the system: Status Description Draft The appointment has been created but is not yet fully scheduled. It can still be edited freely. A draft appointment can be saved even without a date/time. Scheduled The appointment has a date, time, and crew assigned and is ready for the crew to work on. This is also the default status when restoring an archived appointment. Confirmed The client has confirmed the appointment. The appointment is still editable. En Route The crew is traveling to the client's location. The appointment is still editable. Started The crew has arrived and work is in progress. The appointment is still editable and the timer can be used to track work time. Completed All work is finished. The appointment becomes read-only and cannot be edited. It moves to the Archived tab. Canceled The appointment was canceled before completion. It becomes read-only and moves to the Archived tab. No-Show The client did not show up for the appointment. It becomes read-only and moves to the Archived tab. Note: Once an appointment is set to Completed, Canceled, or No-Show, it cannot be edited. You can only Restore it (which changes its status back to Scheduled) or Delete it (permanent, if no linked records exist). 1. Creating a New Appointment To create a new appointment, click the \"+ Add Appointment\" button at the top-right of the Appointments List View. A side-panel drawer will open with a 4-step wizard . Step 1: Details Fill in the basic appointment information: Field Required "
       },
       {
-        "id": "178086",
-        "url": "https://directhomeservice.ladesk.com/178086-Dashboard",
+        "id": "estimates-management",
+        "icon": "\ud83d\udcb0",
         "en": {
-          "title": "Dashboard",
-          "category": "Dashboard",
-          "content": {
-            "overview": "Dashboard - Comprehensive command center for monitoring real-time performance metrics, work orders, and customer satisfaction with key performance indicators (KPIs) and customizable reports.",
-            "keyFeatures": [
-              "Real-time performance metrics",
-              "Work order overview",
-              "Customer satisfaction analytics",
-              "Customizable dashboards",
-              "Report export options"
-            ]
-          }
+          "title": "Estimates Management",
+          "category": "Business Operations",
+          "overview": "Create, send, and track service estimates with line items, PDF download, and client delivery via email/SMS. Convert approved estimates to jobs."
         },
         "es": {
-          "title": "Panel de Control",
-          "category": "Panel de Control",
-          "content": {
-            "overview": "Panel de Control - Centro de comando integral para supervisar métricas de rendimiento en tiempo real, órdenes de trabajo y satisfacción del cliente con indicadores clave de rendimiento (KPI) e informes personalizables.",
-            "keyFeatures": [
-              "Métricas de rendimiento en tiempo real",
-              "Resumen de órdenes de trabajo",
-              "Análisis de satisfacción del cliente",
-              "Tableros personalizables",
-              "Opciones de exportación de informes"
-            ]
-          }
+          "title": "Gesti\u00f3n de Presupuestos",
+          "category": "Operaciones Comerciales",
+          "overview": "Crear, enviar y rastrear presupuestos de servicio con partidas, descarga PDF y entrega al cliente por email/SMS. Convertir presupuestos aprobados en trabajos."
         },
-        "keywords": ["dashboard", "panel de control", "metrics", "métricas", "performance", "rendimiento", "KPI", "analytics", "análisis", "reports", "informes"]
+        "keywords": [
+          "estimates",
+          "presupuestos",
+          "quotes",
+          "cotizaciones",
+          "PDF",
+          "send",
+          "enviar",
+          "convert",
+          "convertir"
+        ],
+        "searchText": "Estimates Management Overview The Estimates Management section is where you create, manage, and track service estimates for your clients. An estimate is a proposed scope of work \u2014 including services, products, and pricing \u2014 that you prepare for a client before starting a job. Once the client reviews and approves the estimate, you can convert it directly into a job. From this section you can: Create new estimates with client, property, crew, and service/product line items. Edit existing estimates to update details or line items. Submit estimates to clients via email and/or SMS for review. Track status through the estimate lifecycle (Draft, Ready for Review, Changes Requested, Approved). Convert to Job approved estimates into scheduled jobs with a single action. Duplicate estimates to quickly create similar proposals. Delete estimates that are no longer needed. Download PDF copies of estimates for offline sharing or records. Manage billing with alternate billing addresses and \"Bill To\" client assignments. Communicate with clients through built-in chat, notes, and attachments. Important: Estimates in Ready for Review or Approved status are read-only \u2014 you cannot edit service items, products, or billing details. To make changes, return the estimate to Draft or Changes Requested status first. The recurring schedule tab remains editable regardless of status. Estimates List View The Estimates List View is the main view for managing all your estimates. To access it, navigate to Menu > Estimates . When you open the Estimates List View, you will see a table listing all your estimates. Each row represents one estimate and displays the following information: Column What It Means Name The title of the estimate. Click the name to navigate to the Estimate Detail View. If the estimate was created via Quick Add (incomplete), a warning icon will appear next to the name indicating that additional information is needed. Client The client associated with the estimate, shown with their avatar (or initials) and company name. If no client is assigned, it displays \"No Client\". Total The total estimated amount in dollars (e.g., $1,250.00 ). Amounts are stored in cents and automatically formatted for display. Status The current status of the estimate, shown as a color-coded tag. If the estimate has a chat conversation, a chat icon will also appear. A blue chat icon with a red badge indicates unread messages. Date Created The date the estimate was created, formatted as Mon DD, YYYY (e.g., \"Feb 10, 2026\"). Actions Quick-action buttons: edit (pencil icon to open detail view), duplicate (copy icon), and delete (trash icon). Estimate Statuses Every estimate has one of four statuses. These statuses help you track where each estimate is in the approval process: Status Color Meaning Draft Purple The estimate is being prepared and has not been sent to the client. You can freely edit all details. Ready for Review Gray The estimate has been submitted to the client for review. The estimate becomes read-only (services, products, and billing cannot be edited). Changes Requested Orange The client has requested modifications. The estimate returns to an editable state so you can make the requested changes. Approved Green The client has approved the estimate. The estimate is read-only and can now be converted into a job. Sorting the List You can sort the estimates list by clicking on the column headers for Name , Total , Status , or Date Created . Click once to sort in ascending order and click again to sort in descending order. Searching Use the search bar at the top of the Estimates List View to search for estimates by keyword. The search looks across estimate names and client names. Simply type your search term and the results will update automatically. If no estimates match your keyword, you will see the message: \"No estimates found matching your keyword\" . Filtering by Status Click the \"Status\" filter button to open a popover with status checkboxes. You can select one or more statuses to show only estimates matching those statuses: Draft Approved Ready for Review Changes Requested When filters are active, a badge with a number appears on the filter button indicating how many status filters are applied. To remove all filters, open the popover and click \"Reset filter\" . Pagination The Estimates List View supports server-side pagination. You can change the number of estimates displayed per page and navigate between pages using the pagination controls at the bottom of the table. Row Actions Each row in the estimates table has three quick-action buttons in the Actions column: Edit (pencil icon) \u2014 Opens the Estimate Detail View for the selected estimate. Duplicate (copy icon) \u2014 Creates an exact copy of the estimate. A loading overlay displays \"Duplicating Estimate...\" while the operation completes. Delete (trash icon) \u2014 Opens a confirmation dialog to permanently delete the estimate (see Section 4). You can also click anywhere on a row to navigate to th"
       },
       {
-        "id": "532457",
-        "url": "https://directhomeservice.ladesk.com/532457-Customer-Portal",
+        "id": "jobs-management",
+        "icon": "\u26a1",
         "en": {
-          "title": "Customer Portal",
-          "category": "Customer Management",
-          "content": {
-            "overview": "Customer Portal - Comprehensive service hub for customers to view service history, submit requests, make payments, and manage their account information.",
-            "keyFeatures": [
-              "Access to service history",
-              "Submit service requests",
-              "Online payment processing",
-              "Account profile management",
-              "Request status tracking"
-            ]
-          }
+          "title": "Jobs Management",
+          "category": "Business Operations",
+          "overview": "Manage work orders from creation to completion with status workflows, checklists, time tracking, crew assignments, and recurring job support."
         },
         "es": {
-          "title": "Portal del Cliente",
-          "category": "Gestión de Clientes",
-          "content": {
-            "overview": "Portal del Cliente - Centro de servicio integral para que los clientes vean el historial de servicios, envíen solicitudes, hagan pagos y gestionen su información de cuenta.",
-            "keyFeatures": [
-              "Acceso al historial de servicios",
-              "Envío de solicitudes de servicio",
-              "Procesamiento de pagos en línea",
-              "Gestión de perfil de cuenta",
-              "Seguimiento de estado de solicitudes"
-            ]
-          }
+          "title": "Gesti\u00f3n de Trabajos",
+          "category": "Operaciones Comerciales",
+          "overview": "Administrar \u00f3rdenes de trabajo desde la creaci\u00f3n hasta la finalizaci\u00f3n con flujos de estado, listas de verificaci\u00f3n, seguimiento de tiempo, asignaci\u00f3n de cuadrillas y soporte de trabajos recurrentes."
         },
-        "keywords": ["portal", "customer", "cliente", "service history", "historial de servicios", "requests", "solicitudes", "payments", "pagos", "account", "cuenta"]
+        "keywords": [
+          "jobs",
+          "trabajos",
+          "work orders",
+          "\u00f3rdenes",
+          "status",
+          "estado",
+          "checklist",
+          "recurring",
+          "recurrente"
+        ],
+        "searchText": "Jobs Management Overview Jobs are the core work units of the DHS platform. A job represents a specific piece of work to be performed for a client at a property, assigned to a crew, and scheduled for a particular date and time. Jobs bring together clients, properties, crews, services, products, checklists, and invoices into a single, trackable record. Jobs follow a status workflow that tracks their progress from initial creation through completion or cancellation. Each job can include services (labor items), products (material items), a checklist of tasks to complete, and related invoices. From this section you can: Create new jobs with a client, property, crew, and scheduled date/time. Track status through Draft, Scheduled, En Route, Started, Paused, Completed, and Canceled. Manage services and products \u2014 add, edit, and remove labor and material line items. Assign checklists \u2014 attach a checklist that must be completed before the job can be marked done. Complete jobs with a checklist review process. Reschedule jobs with crew availability checking. Generate invoices from completed jobs. Download PDFs of job details. Manage recurring jobs with repeating schedules. Search and filter by keyword, date range, and status. Important: A job can only be deleted if it has no linked invoices and no linked timesheet entries . If a job has invoices or timesheet entries attached, the delete button will be disabled and a tooltip will explain why. Jobs List View The Jobs List View is the main view for managing all your jobs. To access it, navigate to Menu > Jobs . At the top of the page you will see: A Search bar \u2014 type a keyword to filter jobs by name or details. A Date Range filter \u2014 select a predefined range (All Time, Last 7 Days, Last 30 Days, etc.) or a custom date range. A Status filter button \u2014 opens a popover with checkboxes for each status. Shows a badge with the count of selected filters. Includes a \"Reset filter\" button to clear selections. A New Job button \u2014 click to open the create job wizard. Table Columns Column What It Shows Name The job title. If the job has no title, it shows \"Untitled Job.\" Recurring jobs display a recurring badge icon next to the name. Priority jobs show a priority flag icon. This column is sortable. Client The client's company name with their avatar. Scheduled The start and end date/time formatted naturally. If the job spans a single day, only one date is shown with the time range. This column is sortable. Crew The assigned crew's name with a colored dot matching the crew's color. Status The job's current status as a colored tag (see Status Tags below). If the job has unread chat messages, a chat icon with a count badge appears next to the status. This column is sortable. Total The job's total value displayed as a formatted currency amount. Actions View and Delete buttons (see Row Actions below). Status Tags Status Tag Color Meaning Draft Blue/Primary The job has been created but not yet scheduled or assigned. Scheduled Gray/Default The job has a confirmed date, time, and crew assignment. En Route Blue/Primary The crew is traveling to the job site. Started Yellow/Warning The crew has arrived and work is in progress. Paused Gray/Default Work has been temporarily paused (for example, due to a break or waiting for materials). Completed Green/Success The job has been finished and all required tasks are done. Canceled Red/Error The job has been canceled and will not be performed. Row Actions Action Icon What It Does View Eye/Edit icon Navigates to the job's detail page. You can also click the job name to open it. Delete Trash icon Opens a confirmation dialog to delete the job. Disabled if the job has linked invoices or timesheet entries. The tooltip explains the restriction (for example, \"There are 2 invoices linked to this job.\"). Pagination The list uses server-side pagination with a default page size of 10 jobs per page. Pagination controls at the bottom show the current page, total pages, and total records. Empty State If no jobs exist, the page shows: \"No jobs found\" with a button to create a new job. If a search returns no results: \"No jobs found matching keyword.\" Creating a New Job To create a new job, click the New Job button. A multi-step wizard opens with three steps: Step 1: Job Details Field Required Description Client Yes Select the client this job is for. Choose from a dropdown of all active clients. When you select a client, the Property dropdown filters to show only that client's properties. Title Yes A descriptive name for the job (for example, \"AC Unit Installation\" or \"Quarterly Maintenance\"). Property Yes The property where the work will be performed. The dropdown is filtered based on the selected client. Checklist No Optionally assign a checklist of tasks that must be completed before the job can be marked done. Select from a dropdown of active checklists. Crew Yes The crew assigned to perform the work. When you select a crew, the system checks their availability for th"
       },
       {
-        "id": "849208",
-        "url": "https://directhomeservice.ladesk.com/849208-Scheduling-Dispatch",
+        "id": "invoices-management",
+        "icon": "\ud83e\uddfe",
         "en": {
-          "title": "Scheduling and Dispatch",
-          "category": "Scheduling",
-          "content": {
-            "overview": "Scheduling and Dispatch - Advanced system for scheduling work orders, assigning technicians, and optimizing routes with calendar visualization and automatic dispatch.",
-            "keyFeatures": [
-              "Drag-and-drop calendar view",
-              "Automatic technician assignment",
-              "Route optimization",
-              "Real-time notifications",
-              "Recurring job scheduling"
-            ]
-          }
+          "title": "Invoices Management",
+          "category": "Business Operations",
+          "overview": "Create, send, and track invoices with payment recording, PDF generation, tax management, and Stripe integration for online payments."
         },
         "es": {
-          "title": "Programación y Despacho",
-          "category": "Programación",
-          "content": {
-            "overview": "Programación y Despacho - Sistema avanzado para programar órdenes de trabajo, asignar técnicos y optimizar rutas con visualización de calendario y despacho automático.",
-            "keyFeatures": [
-              "Vista de calendario de arrastrar y soltar",
-              "Asignación automática de técnicos",
-              "Optimización de rutas",
-              "Notificaciones en tiempo real",
-              "Programación de trabajos recurrentes"
-            ]
-          }
+          "title": "Gesti\u00f3n de Facturas",
+          "category": "Operaciones Comerciales",
+          "overview": "Crear, enviar y rastrear facturas con registro de pagos, generaci\u00f3n de PDF, gesti\u00f3n de impuestos e integraci\u00f3n con Stripe para pagos en l\u00ednea."
         },
-        "keywords": ["scheduling", "programación", "dispatch", "despacho", "calendar", "calendario", "routes", "rutas", "technicians", "técnicos", "assignments", "asignaciones"]
+        "keywords": [
+          "invoices",
+          "facturas",
+          "payments",
+          "pagos",
+          "PDF",
+          "tax",
+          "impuestos",
+          "Stripe",
+          "billing"
+        ],
+        "searchText": "Invoices Management Overview The Invoices Management section is where you create, send, and track invoices for your clients. An invoice is a billing document generated from a job, listing the services performed and products used along with pricing, taxes, discounts, and payment terms. The system supports the full invoice lifecycle from draft creation through client delivery, payment recording, and completion. From this section you can: Create new invoices linked to jobs, with service and product line items auto-populated from the job. Edit invoice details, services, products, taxes, discounts, and deposit requirements. Send invoices to clients via email and/or SMS with customizable messages. Track status through the invoice lifecycle (Draft, Sent, Viewed, Paid). Record payments with multiple payment methods and statuses. Download PDF copies of invoices for offline sharing or records. Delete invoices that are no longer needed. Communicate with clients through built-in chat, notes, and attachments. Add comments visible to clients on the invoice document. Important: Once an invoice is marked as Paid , it becomes fully read-only. You cannot edit services, products, billing details, or invoice information. You can still add, edit, or delete payments and use the communication tools (chat, notes, attachments). Invoices List View The Invoices List View is the main view for managing all your invoices. To access it, navigate to Menu > Invoices . When you open the Invoices List View, you will see invoices grouped by job . Each job group shows the job name as a header, a \"Job Details\" button to navigate to that job, and the total amount for all invoices in that group. Within each group, invoices are displayed in a table with the following columns: Column What It Means Number The auto-generated invoice number. Click the number to navigate to the Invoice Detail View. If the invoice was created via Quick Add (incomplete), a warning icon appears next to the number indicating additional information is needed. Issue Date The date the invoice was issued, formatted as Mon DD, YYYY (e.g., \"Feb 10, 2026\"). Shows \"\u2014\" if no issue date was set. Due Date The date payment is due, formatted as Mon DD, YYYY . Shows \"\u2014\" if no due date was set. Total Balance Two lines: the top line shows the invoice total, and the bottom line shows the remaining balance. If fully paid, the balance shows $0.00 in green. If unpaid, the balance due is shown in red. Status The current status of the invoice, shown as a color-coded tag. If the invoice has a chat conversation, a chat icon also appears. A blue icon with a red badge indicates unread messages. Actions Quick-action buttons: edit (pencil icon to open detail view) and delete (trash icon). Invoice Statuses Every invoice has one of the following statuses. These statuses help you track where each invoice is in the billing process: Status Color Meaning Draft Purple The invoice is being prepared and has not been sent to the client. You can freely edit all details. Sent Orange The invoice has been sent to the client via email and/or SMS. The invoice can still be edited. Viewed Gray The client has opened and viewed the invoice. The invoice can still be edited. Payment in Progress Orange A payment is being processed through a payment gateway. The invoice can still be edited. Paid Green The invoice has been fully paid. The invoice becomes completely read-only (except for payments and communication). Sorting the List You can sort the invoices list by clicking on the column headers for Number , Due Date , Total Balance , or Status . Click once to sort in ascending order and click again to sort in descending order. Searching Use the search bar at the top of the Invoices List View to search for invoices by keyword. Simply type your search term and the results will update automatically. The search resets to page 1 when the search term changes. Filtering by Status Click the \"Status\" filter button to open a popover with status checkboxes. You can select one or more statuses to show only invoices matching those statuses: Draft Sent Viewed Paid When filters are active, a badge with the number of active filters appears on the button. Click \"Reset filter\" in the popover to clear all filters. Pagination The Invoices List View supports server-side pagination. You can change the number of invoices displayed per page (default is 10) and navigate between pages using the pagination controls at the bottom of the table. Chat Icon in Status Column If an invoice has an associated chat conversation, a chat icon appears next to the status tag: Gray background \u2014 A chat exists but there are no unread messages. Clicking navigates to the Inbox. Blue background with red badge \u2014 There are unread messages. The badge shows the count (up to \"99+\"). Clicking navigates to the Inbox with the conversation pre-selected. 1. Creating a New Invoice To create a new invoice, follow these steps: Step 1: Open the New Invoice Form Click the \"+ New Invoi"
       },
       {
-        "id": "722264",
-        "url": "https://directhomeservice.ladesk.com/722264-Reports",
+        "id": "timesheets-management",
+        "icon": "\u23f1\ufe0f",
         "en": {
-          "title": "Reports Overview",
-          "category": "Reports & Analytics",
-          "content": {
-            "overview": "Reports - Part of a customer service agent onboarding guide providing comprehensive reporting tools for various operational areas including detailed analytics across multiple domains.",
-            "keyFeatures": [
-              "Comprehensive reporting tools for various operational areas",
-              "Detailed analytics across multiple domains",
-              "Visualize, analyze, and manage workforce information",
-              "Track hours logged by users for assigned jobs"
-            ]
-          }
+          "title": "Timesheets Management",
+          "category": "Business Operations",
+          "overview": "Track working hours with timesheet approval workflows, time entries linked to jobs, and role-based permissions for submission and approval."
         },
         "es": {
-          "title": "Resumen de Reportes",
-          "category": "Informes y Análisis",
-          "content": {
-            "overview": "Reportes - Parte de una guía de incorporación para agentes de servicio al cliente que proporciona herramientas integrales de reportes para diversas áreas operativas, incluyendo análisis detallados en múltiples dominios.",
-            "keyFeatures": [
-              "Herramientas integrales de reportes para diversas áreas operativas",
-              "Análisis detallados en múltiples dominios",
-              "Visualizar, analizar y gestionar información de la fuerza laboral",
-              "Rastrear horas registradas por usuarios para trabajos asignados"
-            ]
-          }
+          "title": "Gesti\u00f3n de Hojas de Tiempo",
+          "category": "Operaciones Comerciales",
+          "overview": "Rastrear horas de trabajo con flujos de aprobaci\u00f3n de hojas de tiempo, entradas de tiempo vinculadas a trabajos y permisos basados en roles para env\u00edo y aprobaci\u00f3n."
         },
-        "keywords": ["reports", "reportes", "analytics", "análisis", "overview", "resumen", "time", "tiempo", "labor", "trabajo", "tracking", "seguimiento"]
+        "keywords": [
+          "timesheets",
+          "hojas de tiempo",
+          "hours",
+          "horas",
+          "approval",
+          "aprobaci\u00f3n",
+          "clock",
+          "reloj",
+          "entries"
+        ],
+        "searchText": "Timesheets Management Overview Timesheets are how you track working hours for your team. Each timesheet belongs to a specific user and a specific date, and contains one or more time entries that record what the person did and for how long. Time entries are categorized by type \u2014 whether the person was traveling to a job site (en route), performing work at a job site (job time), or working in the office (office time). Timesheets follow an approval workflow : they start as a Draft , get Submitted by the user for review, and are then either Approved or Rejected by an administrator or owner. This process ensures that hours are reviewed and verified before they are finalized. From this section you can: Create new timesheets for any user and date. Add time entries to track specific blocks of work, travel, or office time. Link and unlink time entries between timesheets. Submit timesheets for approval. Approve or reject timesheets (admins and owners only). Delete timesheets and time entries (with restrictions on approved timesheets). View analytics with summary cards showing total hours, en route time, office time, and job time. Search and filter by date range, user, and status. Important: Once a timesheet is approved , it becomes read-only. You cannot edit, delete, or unlink time entries from an approved timesheet. This protects finalized records from accidental modifications. Timesheets List View The Timesheets List View is the main view for managing all timesheets. To access it, navigate to Menu > Timesheets . Summary Cards At the top of the page, four summary cards show aggregated statistics for the current view. Each card shows a value and a percentage change compared to the previous week (with an up or down arrow indicator): Card Icon What It Shows Total Hours Timer The combined total of all hours across all displayed timesheets. Shows percentage change compared to the previous week. Total En Route Hours Truck The total travel time (en route hours) across all displayed timesheets. Total Office Time Building The total office hours across all displayed timesheets. Total Job Time Wrench The total on-site job hours across all displayed timesheets. Tip: The summary cards update based on your active filters. If you filter by a specific user or date range, the cards show the totals for that filtered view only. Controls and Filters Below the summary cards you will find: A New Timesheet button \u2014 click to open the create timesheet form. A Search bar \u2014 type a keyword to search across timesheets (with a slight delay for performance). A Date Range filter \u2014 select a predefined range or custom date range. Defaults to \"All Time.\" A User filter (hidden for crew members) \u2014 a multi-select dropdown to filter timesheets by specific users. Shows up to 100 users. A Status filter \u2014 a popover with checkboxes for Draft, Pending, Approved, and Rejected. Shows a badge with the count of selected filters. Includes a \"Reset filter\" button to clear all selections. Note: Crew members can only see their own timesheets. The User filter is hidden for crew members since they cannot view other people's timesheets. Admins and Owners can see all timesheets across the account. Table Columns Column What It Shows User The user's avatar and full name. Timesheet Date The date the timesheet covers, formatted as short month, day, and year (for example, \"Feb 19, 2026\"). This column is sortable. Office Time Total office hours for this timesheet, displayed in HH:MM format (for example, \"02:30\"). Job Time Total on-site job hours for this timesheet, displayed in HH:MM format. En Route Time Total travel hours for this timesheet, displayed in HH:MM format. Status The timesheet's current status as a colored tag. This column is sortable. Actions Edit and Delete buttons (see Row Actions below). Status Tags Status Tag Color Meaning Draft Purple/Indigo background The timesheet is being worked on and has not been submitted for review. Pending Gray background The timesheet has been submitted and is waiting for an admin/owner to review it. Approved Green background The timesheet has been reviewed and approved. It is now read-only. Rejected Red background The timesheet has been reviewed and rejected. The user should make corrections and resubmit. Row Actions Action Icon What It Does Edit Pencil icon Navigates to the timesheet's detail page where you can view and manage all time entries. Delete Trash icon Deletes the timesheet. This button is disabled for approved timesheets \u2014 the tooltip reads: \"This timesheet has been approved and cannot be deleted.\" Pagination The list uses server-side pagination with a default page size of 10 timesheets per page. Pagination controls at the bottom let you change pages and adjust the page size. Empty State If no timesheets match your search or filters, the table shows: \"No Timesheets Found.\" Creating a New Timesheet To create a new timesheet: Step 1: Click the New Timesheet button at the top of the Timesheets List View. A modal dialog op"
       },
       {
-        "id": "131021",
-        "url": "https://directhomeservice.ladesk.com/131021-Work-Order-Reports",
+        "id": "settings-configuration",
+        "icon": "\u2699\ufe0f",
         "en": {
-          "title": "Work Order Reports",
-          "category": "Reports & Analytics",
-          "content": {
-            "overview": "Work Order Reports - Comprehensive tool for managers to analyze and track work orders within an organization with customizable data views and advanced filtering options.",
-            "keyFeatures": [
-              "Comprehensive work order tracking and analysis",
-              "Customizable data views",
-              "Advanced search and filtering options",
-              "Export reports as PDF",
-              "Interactive chart exploration"
-            ]
-          }
+          "title": "Settings & Configuration",
+          "category": "System Administration",
+          "overview": "Configure company settings, user profiles, notifications, business rules, tax rates, payment processing, and dashboard preferences."
         },
         "es": {
-          "title": "Reportes de Órdenes de Trabajo",
-          "category": "Informes y Análisis",
-          "content": {
-            "overview": "Reportes de Órdenes de Trabajo - Herramienta integral para que los gerentes analicen y rastreen órdenes de trabajo dentro de una organización con vistas personalizables de datos y opciones avanzadas de filtrado.",
-            "keyFeatures": [
-              "Seguimiento y análisis integral de órdenes de trabajo",
-              "Vistas personalizables de datos",
-              "Opciones avanzadas de búsqueda y filtrado",
-              "Exportar reportes como PDF",
-              "Exploración interactiva de gráficos"
-            ]
-          }
+          "title": "Configuraci\u00f3n y Ajustes",
+          "category": "Administraci\u00f3n del Sistema",
+          "overview": "Configurar ajustes de empresa, perfiles de usuario, notificaciones, reglas de negocio, tasas de impuestos, procesamiento de pagos y preferencias del panel."
         },
-        "keywords": ["work orders", "órdenes de trabajo", "status", "estado", "priority", "prioridad", "completion", "finalización", "timeline", "línea de tiempo", "revenue", "ingresos"]
+        "keywords": [
+          "settings",
+          "configuraci\u00f3n",
+          "account",
+          "cuenta",
+          "notifications",
+          "notificaciones",
+          "Stripe",
+          "tax",
+          "impuestos",
+          "profile"
+        ],
+        "searchText": "Settings & Configuration Overview The Settings section is your central hub for configuring every aspect of your DHS account. It controls your company information, user profile, availability, notifications, business rules, payment processing, and more. To access Settings, navigate to Menu > Settings . The Settings page uses a sidebar + content layout: a navigation sidebar on the left lists all available sections, and the main content area on the right displays the selected section's form. The Settings sidebar includes the following sections: Section Description Account Company information, client contact details, and billing address. Profile Your personal information, password, language, and profile picture. Availability Service availability schedule by day-of-week, exception dates, and seasonal exceptions. Dashboard Dashboard display preferences such as list limits and upcoming jobs window. Notifications Notification channel preferences (Email, SMS, Push, Desktop) per category. Business Counter settings, payment disclaimers, Zelle payment options, crew settings, privacy, and tax rates. Timesheet Settings Automatic timesheet linking configuration (account-level and personal override). Accept Payments Stripe Connect integration for accepting credit card payments from clients. Note: Every settings section has a Save button and a Reset button. Changes are not saved until you click Save. The Reset button reverts all fields to their last saved values. 1. Account Settings The Account section manages your company's core information. This is the default section shown when you open Settings. 1.1 Company Information The top of the page shows a profile banner with your company's initial and name. Below it is the Company Information form: Field Required Description Company Name Yes Your business name as it appears throughout the system. Must be 2\u2013100 characters. Email Yes The primary email address for your company account. Must be unique across the system (validated on blur). Maximum 254 characters. Website No Your company website URL. Accepts URLs with or without the https:// prefix. Maximum 255 characters. Timezone Yes Your business timezone. Select from over 100 timezone options. This affects how dates and times are displayed throughout the platform. 1.2 Client Information Optional contact information that can be displayed to your clients: Field Required Description Client Phone No A phone number your clients can use to reach you. Must be in valid phone format if provided. Client Email No An email address your clients can use to contact you. Validated for proper email format. 1.3 Billing Information Your company's billing address, used on invoices and financial documents. All billing fields are optional : Field Validation Billing Company Name Maximum 100 characters. Contact Name Maximum 50 characters. Address 1 5\u2013100 characters. Address 2 Maximum 100 characters. City 2\u201350 characters. Letters, hyphens, and apostrophes only. State Select from the dropdown list of U.S. states. ZIP Code 5-digit or 5+4 format (e.g., 12345 or 12345-6789 ). Country Maximum 50 characters. 1.4 Sample Data If your account was created with sample data (demo clients, jobs, etc.), a Sample Data section appears at the bottom of the Account page. This is only visible when sample data exists. To delete all sample data: Click \"Delete Sample Data\" (red button). A confirmation modal appears with a warning about what will be deleted. Click \"Delete Sample Data\" in the modal to confirm. A progress bar tracks the deletion progress with a percentage indicator. Once complete, a success message appears and the section disappears. Warning: Deleting sample data is permanent and cannot be undone. All sample clients, jobs, estimates, invoices, and related records will be removed. Click \"Save Account Info\" to save your changes, or \"Reset\" to revert to the last saved values. 2. Profile Settings The Profile section manages your personal user information (not the company account). Click Profile in the Settings sidebar to access it. 2.1 Personal Information Field Required Description First Name Yes Your first name. 2\u201350 characters. Last Name Yes Your last name. 2\u201350 characters. Email Yes Your personal email address. Must be unique across the system. Phone Yes Your phone number. Supports international format. Country No Auto-detected from your phone number, or manually selectable. Timezone Yes Your personal timezone preference. Language Yes Choose between English and Spanish . This controls the language of the entire interface. Profile Picture No Upload a profile photo. Supports drag-and-drop. You can also remove an existing photo. If no photo is set, your initials are displayed instead. 2.2 Change Password To change your password: Enter your Current Password . Enter your New Password . Enter the new password again in Repeat Password to confirm. Click Save . Password Requirements: Minimum 10 characters . Must contain at least one lowercase letter. Must contain at least"
       },
       {
-        "id": "182200",
-        "url": "https://directhomeservice.ladesk.com/182200-Technician-Performance",
+        "id": "checklists-management",
+        "icon": "\u2705",
         "en": {
-          "title": "Technician Performance",
-          "category": "Reports & Analytics",
-          "content": {
-            "overview": "Technician Performance Dashboard - Comprehensive tool for tracking and evaluating technician productivity and job completion across an organization with detailed metrics and visualizations.",
-            "keyFeatures": [
-              "Track and evaluate technician productivity",
-              "Job completion analysis across organization",
-              "Group by Crew, User, or Combined",
-              "Export performance data as PDF",
-              "Customizable date ranges"
-            ]
-          }
+          "title": "Checklists Management",
+          "category": "Core Operations",
+          "overview": "Create reusable checklist templates with ordered items. Assign checklists to jobs and estimates, duplicate templates, and track completion."
         },
         "es": {
-          "title": "Rendimiento del Técnico",
-          "category": "Informes y Análisis",
-          "content": {
-            "overview": "Panel de Rendimiento del Técnico - Herramienta integral para rastrear y evaluar la productividad del técnico y la finalización de trabajos en toda la organización con métricas y visualizaciones detalladas.",
-            "keyFeatures": [
-              "Seguimiento y evaluación de la productividad del técnico",
-              "Análisis de finalización de trabajos en toda la organización",
-              "Agrupación por Equipo, Usuario o Combinado",
-              "Exportar datos de rendimiento como PDF",
-              "Rangos de fecha personalizables"
-            ]
-          }
+          "title": "Gesti\u00f3n de Listas de Verificaci\u00f3n",
+          "category": "Operaciones Principales",
+          "overview": "Crear plantillas de listas de verificaci\u00f3n reutilizables con elementos ordenados. Asignar listas a trabajos y presupuestos, duplicar plantillas y rastrear el progreso."
         },
-        "keywords": ["technician", "técnico", "performance", "rendimiento", "productivity", "productividad", "completion rate", "tasa de finalización", "utilization", "utilización"]
-      },
-      {
-        "id": "296554",
-        "url": "https://directhomeservice.ladesk.com/296554-Customer-Reports",
-        "en": {
-          "title": "Customer Reports",
-          "category": "Reports & Analytics",
-          "content": {
-            "overview": "Customer Reports - Comprehensive Customer Satisfaction and Complaint Analysis with interactive filtering and exportable PDF reports for tracking customer experience and service quality.",
-            "keyFeatures": [
-              "Customer Satisfaction Dashboard",
-              "Complaint Analysis and Tracking",
-              "Interactive filtering and visualization",
-              "Exportable PDF reports",
-              "Crew-wise performance comparisons"
-            ]
-          }
-        },
-        "es": {
-          "title": "Informes de Clientes",
-          "category": "Informes y Análisis",
-          "content": {
-            "overview": "Informes de Clientes - Análisis integral de satisfacción del cliente y quejas con filtrado interactivo e informes PDF exportables para el seguimiento de la experiencia del cliente y la calidad del servicio.",
-            "keyFeatures": [
-              "Panel de satisfacción del cliente",
-              "Análisis y seguimiento de quejas",
-              "Filtrado y visualización interactivos",
-              "Informes PDF exportables",
-              "Comparaciones de rendimiento por equipo"
-            ]
-          }
-        },
-        "keywords": ["customer", "cliente", "satisfaction", "satisfacción", "complaints", "quejas", "feedback", "retroalimentación", "rating", "calificación", "resolution", "resolución"]
-      },
-      {
-        "id": "724970",
-        "url": "https://directhomeservice.ladesk.com/724970-Financial-Reports",
-        "en": {
-          "title": "Financial Reports",
-          "category": "Financial Reports",
-          "content": {
-            "overview": "Financial Reports - Comprehensive tools for tracking and analyzing financial performance of jobs and services with detailed revenue tracking and visual analysis for business planning.",
-            "keyFeatures": [
-              "Track and analyze financial performance of jobs and services",
-              "Generate PDF reports with KPI summaries",
-              "Export selected charts and filtered job data",
-              "Support accurate accounting and forecasting"
-            ]
-          }
-        },
-        "es": {
-          "title": "Reportes Financieros",
-          "category": "Reportes Financieros",
-          "content": {
-            "overview": "Reportes Financieros - Herramientas integrales para rastrear y analizar el rendimiento financiero de trabajos y servicios con seguimiento detallado de ingresos y análisis visual para planificación empresarial.",
-            "keyFeatures": [
-              "Rastrear y analizar el rendimiento financiero de trabajos y servicios",
-              "Generar reportes PDF con resúmenes de KPI",
-              "Exportar gráficos seleccionados y datos filtrados de trabajos",
-              "Apoyar contabilidad precisa y proyecciones"
-            ]
-          }
-        },
-        "keywords": ["financial", "financiero", "revenue", "ingresos", "jobs", "trabajos", "taxes", "impuestos", "discounts", "descuentos", "accounting", "contabilidad", "forecasting", "proyecciones"]
-      },
-      {
-        "id": "318626",
-        "url": "https://directhomeservice.ladesk.com/318626-Time-and-Labor-Report",
-        "en": {
-          "title": "Time and Labor Report",
-          "category": "Financial Reports",
-          "content": {
-            "overview": "Time and Labor Report - Comprehensive tool for managers to track and analyze employee work hours with detailed insights into workforce time tracking, supporting payroll processing and productivity analysis.",
-            "keyFeatures": [
-              "Track and analyze employee work hours",
-              "Detailed workforce time tracking insights",
-              "Support payroll processing",
-              "Enable productivity analysis",
-              "Flexible filtering options"
-            ]
-          }
-        },
-        "es": {
-          "title": "Reporte de Tiempo y Trabajo",
-          "category": "Reportes Financieros",
-          "content": {
-            "overview": "Reporte de Tiempo y Trabajo - Herramienta integral para que los gerentes rastreen y analicen las horas de trabajo de empleados con perspectivas detalladas sobre el seguimiento de tiempo de la fuerza laboral, apoyando el procesamiento de nómina y análisis de productividad.",
-            "keyFeatures": [
-              "Rastrear y analizar horas de trabajo de empleados",
-              "Perspectivas detalladas de seguimiento de tiempo de la fuerza laboral",
-              "Apoyar procesamiento de nómina",
-              "Habilitar análisis de productividad",
-              "Opciones flexibles de filtrado"
-            ]
-          }
-        },
-        "keywords": ["time", "tiempo", "labor", "trabajo", "payroll", "nómina", "productivity", "productividad", "timesheet", "hoja de tiempo", "hours", "horas", "tracking", "seguimiento"]
-      },
-      {
-        "id": "927404",
-        "url": "https://directhomeservice.ladesk.com/927404-Scheduling--Dispatch-Reports",
-        "en": {
-          "title": "Scheduling & Dispatch Reports",
-          "category": "Operations & Compliance",
-          "content": {
-            "overview": "Scheduling & Dispatch Reports - Module helps managers analyze and optimize job scheduling and dispatch across teams and regions. Provides actionable insights into operational efficiency through powerful filtering and visualization tools.",
-            "keyFeatures": [
-              "Analyze and optimize job scheduling and dispatch",
-              "Monitor across teams and regions",
-              "Provide actionable insights into operational efficiency",
-              "Interactive tools with multiple visualization options"
-            ]
-          }
-        },
-        "es": {
-          "title": "Reportes de Programación y Despacho",
-          "category": "Operaciones y Cumplimiento",
-          "content": {
-            "overview": "Reportes de Programación y Despacho - El módulo ayuda a los gerentes a analizar y optimizar la programación de trabajos y despacho entre equipos y regiones. Proporciona perspectivas accionables sobre eficiencia operativa a través de herramientas poderosas de filtrado y visualización.",
-            "keyFeatures": [
-              "Analizar y optimizar programación de trabajos y despacho",
-              "Monitorear entre equipos y regiones",
-              "Proporcionar perspectivas accionables sobre eficiencia operativa",
-              "Herramientas interactivas con múltiples opciones de visualización"
-            ]
-          }
-        },
-        "keywords": ["scheduling", "programación", "dispatch", "despacho", "optimization", "optimización", "crew", "cuadrilla", "region", "región", "workflow", "flujo de trabajo", "resources", "recursos"]
-      },
-      {
-        "id": "977125",
-        "url": "https://directhomeservice.ladesk.com/977125-Compliance-and-Safety-Reports",
-        "en": {
-          "title": "Compliance and Safety Reports",
-          "category": "Operations & Compliance",
-          "content": {
-            "overview": "Compliance and Safety Reports Dashboard - Tracks job statuses, work crew assignments, and compliance rates with centralized monitoring of safety practices and regulatory requirements.",
-            "keyFeatures": [
-              "Track job statuses and work crew assignments",
-              "Monitor compliance rates",
-              "Centralized safety practices monitoring",
-              "Regulatory requirements tracking",
-              "PDF export functionality for auditing"
-            ]
-          }
-        },
-        "es": {
-          "title": "Reportes de Cumplimiento y Seguridad",
-          "category": "Operaciones y Cumplimiento",
-          "content": {
-            "overview": "Panel de Reportes de Cumplimiento y Seguridad - Rastrea estados de trabajos, asignaciones de cuadrillas de trabajo y tasas de cumplimiento con monitoreo centralizado de prácticas de seguridad y requisitos regulatorios.",
-            "keyFeatures": [
-              "Rastrear estados de trabajos y asignaciones de cuadrillas de trabajo",
-              "Monitorear tasas de cumplimiento",
-              "Monitoreo centralizado de prácticas de seguridad",
-              "Seguimiento de requisitos regulatorios",
-              "Funcionalidad de exportación PDF para auditorías"
-            ]
-          }
-        },
-        "keywords": ["compliance", "cumplimiento", "safety", "seguridad", "regulatory", "regulatorio", "standards", "estándares", "audit", "auditoría", "tracking", "seguimiento"]
+        "keywords": [
+          "checklists",
+          "listas",
+          "templates",
+          "plantillas",
+          "items",
+          "elementos",
+          "jobs",
+          "trabajos"
+        ],
+        "searchText": "Checklists Management [h] [i] Overview The Checklists Management section is where you create and manage reusable checklist templates for your business. Checklists help ensure that jobs are completed thoroughly by defining a set of items that must be reviewed or verified before a job can be marked as complete. Checklists work as templates \u2014 you create a checklist once, and then assign it to as many jobs or estimates as needed. Each job gets its own copy of the checklist, so changes made during a job do not affect the original template. From this section you can: Create new checklist templates with a title, description, and a set of items to verify. Edit existing checklists to add, remove, or reorder items. Duplicate an existing checklist to use it as a starting point for a new one. Archive checklists you no longer need (without losing historical data). Restore archived checklists if you need them again. Permanently delete archived checklists that are no longer needed. Search to quickly find a specific checklist. Important: A checklist can only be permanently deleted if it is not currently assigned to any job. If a checklist is in use, you must first remove it from all associated jobs before deletion is possible. Checklists List View The Checklists List View is the main view for managing all your checklist templates. To access it, navigate to Menu > Checklists . When you open the Checklists List View, you will see a table listing all your active checklists. Each row represents one checklist and displays the following information: Column What It Means Date Created The date the checklist was originally created (e.g., \"Jan 1, 2026\"). Title The name of the checklist, along with its description (if one was provided). The description is shown as smaller text below the name. Options Quick-action buttons to edit, duplicate, or archive/delete the checklist. Clicking anywhere on a row will open that checklist for viewing and editing its items. Active vs. Archived Checklists At the top of the list you will see two tabs: Active \u2014 Shows all checklists that are currently available for use. This is the default view. Active checklists can be assigned to new jobs and estimates. Archived \u2014 Shows checklists that have been archived (temporarily disabled). Archived checklists do not appear in the dropdown when creating or editing jobs, but any jobs that already have them assigned will continue to work normally. Sorting the List You can sort the checklists by clicking on the column headers for Date Created or Title . Click once to sort in ascending order, and click again to sort in descending order. Searching Use the search bar to the right of the tabs to find checklists by name or description. Type your search term and the results will update automatically. 1. Creating a New Checklist To create a new checklist template, follow these steps: Step 1: Open the New Checklist Form Click the \"New Checklist\" button (blue) located in the top-right corner of the Checklists List View. A panel will slide open from the right side of the screen. Tip: If the list is empty (no checklists have been created yet), you will see a \"Create Your First Checklist\" button in the center of the page. Step 2: Enter the Checklist Details Field Required? Description Checklist Title Yes Enter a clear, descriptive name for the checklist (e.g., \"HVAC Installation Final Inspection\" or \"Plumbing Rough-In Checklist\"). Maximum 512 characters. Description No Optionally, provide additional context about when or how this checklist should be used. Maximum 512 characters. Step 3: Add Checklist Items Below the title and description, you will see the Checklist Items section. This is where you define the individual tasks or verification points that make up the checklist. To add an item: Type the item title in the text field (e.g., \"Verify all connections are sealed\"). Press Enter or click the checkmark button to add the item. Repeat for each item you want to include. For each item, you can also check the \"Description Required\" checkbox. When this is checked, the person completing the job will be required to write a description for that item before the job can be marked as complete. This is useful for items that need documented evidence or notes (e.g., \"Record the serial number of the installed unit\"). After adding items, they will appear in a list below. You can: Edit an item by clicking the pencil icon next to it. Remove an item by clicking the trash icon next to it. Note: You must add at least one item before you can save the checklist. The \"Add New Checklist\" button will remain disabled until at least one item has been added. Step 4: Save the Checklist Once you have entered the title and added your items, click the \"Add New Checklist\" button at the bottom of the panel. You will see a brief \"Creating Checklist...\" overlay, and once the checklist is created successfully, a confirmation message will appear: \"Checklist Successfully Created\" . The new checklist will now appear"
       }
     ]
   }
