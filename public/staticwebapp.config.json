@@ -1,13 +1,29 @@
-{	
+{
   "globalHeaders": {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST, GET, OPTIONS"
   },
-    "responseOverrides": {
-      "404": {
-        "rewrite": "/404.html",
-        "statusCode": 404
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/index.html",
+      "statusCode": 200
+    }
+  },
+  "routes": [
+    {
+      "route": "/sitemap.xml",
+      "headers": {
+        "Content-Type": "application/xml"
       }
     },
-    "routes": []
+    {
+      "route": "/robots.txt",
+      "headers": {
+        "Content-Type": "text/plain"
+      }
+    }
+  ],
+  "mimeTypes": {
+    ".xml": "application/xml"
   }
+}
