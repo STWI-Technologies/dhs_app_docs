@@ -90,12 +90,48 @@
         // Remove loading state once React mounts
         window.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
-                const loadingElement = document.querySelector('.app-loading');
+                var loadingElement = document.querySelector('.app-loading');
                 if (loadingElement && window.React) {
                     loadingElement.style.display = 'none';
                 }
             }, 100);
         });
+    </script>
+
+    <!-- LiveAgent Contact Form -->
+    <script type="text/javascript">
+    (function(d, src, c) {
+        var t=d.scripts[d.scripts.length-1],s=d.createElement('script');
+        s.id='la_x2s6df8d';s.defer=true;s.src=src;
+        s.onload=s.onreadystatechange=function(){var rs=this.readyState;if(rs&&(rs!='complete')&&(rs!='loaded')){return;}c(this);};
+        t.parentElement.insertBefore(s,t.nextSibling);
+    })(document, 'https://directhomeservice.ladesk.com/scripts/track.js', function(e){
+        window.contactForm = LiveAgent.createButton('qfc0o8rw', e);
+    });
+    </script>
+
+    <!-- LiveAgent Chat Button -->
+    <script type="text/javascript">
+    (function(d, src, c) {
+        var t=d.scripts[d.scripts.length-1],s=d.createElement('script');
+        s.id='la_x2s6df8d';s.defer=true;s.src=src;
+        s.onload=s.onreadystatechange=function(){var rs=this.readyState;if(rs&&(rs!='complete')&&(rs!='loaded')){return;}c(this);};
+        t.parentElement.insertBefore(s,t.nextSibling);
+    })(document, 'https://directhomeservice.ladesk.com/scripts/track.js', function(e){
+        window.chatButton = LiveAgent.createButton('ws5l92o9', e);
+    });
+    </script>
+
+    <!-- LiveAgent Call Button -->
+    <script type="text/javascript">
+    (function(d, src, c) {
+        var t=d.scripts[d.scripts.length-1],s=d.createElement('script');
+        s.id='la_x2s6df8d';s.defer=true;s.src=src;
+        s.onload=s.onreadystatechange=function(){var rs=this.readyState;if(rs&&(rs!='complete')&&(rs!='loaded')){return;}c(this);};
+        t.parentElement.insertBefore(s,t.nextSibling);
+    })(document, 'https://directhomeservice.ladesk.com/scripts/track.js', function(e){
+        window.callButton = LiveAgent.createButton('hpnn2l51', e);
+    });
     </script>
 </body>
 </html>
