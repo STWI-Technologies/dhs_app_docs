@@ -133,21 +133,18 @@ export default function ArticleView({ article, onBack }) {
       img.dataset.lightboxIndex = i;
       img.title = caption || 'Click to enlarge';
 
-      // Inject visible caption below the image
-      // Find the right parent to insert after (image wrapper span or the image itself)
-      const wrapper = img.closest('span[style*="overflow"]');
-      const insertAfter = wrapper || img;
-      const parent = insertAfter.parentElement;
-
-      // Don't add duplicate captions
-      if (parent && !insertAfter.nextElementSibling?.classList?.contains('doc-caption')) {
-        const captionEl = document.createElement('figcaption');
-        captionEl.className = 'doc-caption';
-        captionEl.textContent = caption;
-        if (insertAfter.nextSibling) {
-          parent.insertBefore(captionEl, insertAfter.nextSibling);
-        } else {
-          parent.appendChild(captionEl);
+      // Inject visible caption below the image's block container
+      // Images are inside: <p><span style="overflow:hidden"><img></span></p>
+      // We want to insert the caption AFTER the <p> that contains this image
+      const blockParent = img.closest('p') || img.closest('div') || img.parentElement;
+      if (blockParent && blockParent.parentElement) {
+        // Check if a caption already exists right after this block
+        const nextEl = blockParent.nextElementSibling;
+        if (!nextEl || !nextEl.classList?.contains('doc-caption')) {
+          const captionEl = document.createElement('figcaption');
+          captionEl.className = 'doc-caption';
+          captionEl.textContent = caption;
+          blockParent.parentElement.insertBefore(captionEl, blockParent.nextSibling);
         }
       }
     });

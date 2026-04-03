@@ -39,8 +39,11 @@
 }
 
 .lang-switcher__flag {
-  font-size: 22px;
-  line-height: 1;
+  width: 24px;
+  height: 16px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
 }
 
 .lang-switcher__label {
