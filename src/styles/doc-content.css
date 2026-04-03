@@ -214,6 +214,33 @@
   font-size: 13px;
 }
 
+/* Inline icons/decorators from Google Docs - no screenshot treatment */
+.doc-content .doc-inline-icon {
+  display: inline !important;
+  border: none !important;
+  background: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  margin: 0 2px !important;
+  border-radius: 0 !important;
+  cursor: default !important;
+  vertical-align: middle;
+}
+
+.doc-content .doc-inline-icon:hover {
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+.doc-content .doc-inline-icon-wrapper {
+  border: none !important;
+  background: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  display: inline !important;
+}
+
 /* Screenshot captions */
 .doc-content .doc-caption {
   display: block;

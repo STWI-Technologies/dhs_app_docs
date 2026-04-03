@@ -114,18 +114,39 @@ export default function ArticleView({ article, onBack }) {
     // Collect all images, generate captions, inject caption elements
     const imgs = contentRef.current.querySelectorAll('img');
     const imageData = [];
-    imgs.forEach((img, i) => {
+    let lightboxIdx = 0;
+
+    imgs.forEach((img) => {
+      // Skip tiny decorator/icon images (inline arrows, bullets, etc.)
+      // These are typically <100px wide from Google Docs exports
+      const w = img.naturalWidth || img.width || parseInt(img.style.width) || 0;
+      const h = img.naturalHeight || img.height || parseInt(img.style.height) || 0;
+      if ((w > 0 && w < 100) || (h > 0 && h < 100)) {
+        img.classList.add('doc-inline-icon');
+        return;
+      }
+
+      // Also check the wrapper span dimensions
+      const wrapper = img.closest('span[style*="overflow"]');
+      if (wrapper) {
+        const wrapperW = parseInt(wrapper.style.width) || 0;
+        const wrapperH = parseInt(wrapper.style.height) || 0;
+        if ((wrapperW > 0 && wrapperW < 100) || (wrapperH > 0 && wrapperH < 100)) {
+          img.classList.add('doc-inline-icon');
+          if (wrapper) wrapper.classList.add('doc-inline-icon-wrapper');
+          return;
+        }
+      }
+
+      const i = lightboxIdx++;
       const { caption, section, description } = getImageCaption(img, i);
       imageData.push({ src: img.src, caption, section, description });
       img.dataset.lightboxIndex = i;
       img.title = caption || 'Click to enlarge';
 
       // Inject visible caption below the image's block container
-      // Images are inside: <p><span style="overflow:hidden"><img></span></p>
-      // We want to insert the caption AFTER the <p> that contains this image
       const blockParent = img.closest('p') || img.closest('div') || img.parentElement;
       if (blockParent && blockParent.parentElement) {
-        // Check if a caption already exists right after this block
         const nextEl = blockParent.nextElementSibling;
         if (!nextEl || !nextEl.classList?.contains('doc-caption')) {
           const captionEl = document.createElement('figcaption');
