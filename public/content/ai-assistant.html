@@ -1,7 +1,7 @@
 <h1>AI Assistant</h1>
 
 <h2>Overview</h2>
-<p>The <strong>AI Assistant</strong> is your intelligent, voice-enabled helper built directly into the Direct Home Service app. It understands natural language in both English and Spanish, so you can simply type, speak, or send a photo to get things done &mdash; no menus to navigate, no forms to fill out.</p>
+<p>The <strong>AI Assistant</strong> is your intelligent helper built directly into the Direct Home Service app. It understands natural language in both English and Spanish, so you can simply type or send a photo to get things done &mdash; no menus to navigate, no forms to fill out.</p>
 <p>The AI Assistant is available on both the <strong>web app</strong> and the <strong>mobile app</strong> (iOS and Android). It uses the same powerful AI engine as the DHS WhatsApp integration, but is accessed through a dedicated chat interface within the app itself.</p>
 
 <h3>Where to Find It</h3>
@@ -23,11 +23,6 @@
     <td>Web &amp; Mobile</td>
   </tr>
   <tr>
-    <td><strong>Voice</strong></td>
-    <td>Record a voice message; the assistant transcribes and responds</td>
-    <td>Web &amp; Mobile</td>
-  </tr>
-  <tr>
     <td><strong>Image</strong></td>
     <td>Upload or capture a photo for the assistant to analyze</td>
     <td>Web &amp; Mobile</td>
@@ -39,7 +34,7 @@
 <h2>Getting Started</h2>
 <ol>
   <li><strong>Open the AI Assistant</strong> &mdash; Tap or click the AI Assistant icon from anywhere in the app.</li>
-  <li><strong>Choose your input method</strong> &mdash; Type a message, tap the microphone to record your voice, or tap the camera/upload icon to send a photo.</li>
+  <li><strong>Choose your input method</strong> &mdash; Type a message or tap the camera/upload icon to send a photo.</li>
   <li><strong>Ask your question or give a command</strong> &mdash; Use natural, everyday language. For example: <em>"Show me today's appointments"</em> or <em>"Create a new client named Maria Lopez."</em></li>
   <li><strong>Review the response</strong> &mdash; The assistant will reply with the information you requested, confirm actions taken, or ask follow-up questions if needed.</li>
 </ol>
@@ -49,6 +44,7 @@
 
 <h2>What You Can Do</h2>
 <p>The AI Assistant has access to over <strong>100 tools</strong> across your entire DHS account. Below is a summary organized by category.</p>
+<p><em>Note: Categories are organized by how you would use them, not by how the tools are built internally. A few tools (such as the settings and availability tools) serve more than one purpose, so they appear in more than one category. The total number of distinct tools is just over 100.</em></p>
 
 <h3>Search &amp; Look Up</h3>
 <p>Quickly find any record in your system. <strong>18 tools</strong> available.</p>
@@ -267,7 +263,7 @@
 </table>
 
 <h3>Navigation &amp; Utilities</h3>
-<p>Helpful everyday tools that go beyond your DHS data. <strong>11 tools</strong> available.</p>
+<p>Helpful everyday tools that go beyond your DHS data &mdash; including weather and directions for your job sites, a built-in calculator for quick estimates, the "open" tool that generates one-tap deep links into the app, and several productivity helpers (dashboard, daily briefing, schedule, current time, PDF generation, the help menu, your profile, and quick status updates). <strong>11 tools</strong> available.</p>
 <table>
   <tr>
     <th>Tool</th>
@@ -290,8 +286,16 @@
     <td>"What's 15% of $2,400?"</td>
   </tr>
   <tr>
-    <td>Web Search</td>
-    <td>"Search for lawn care best practices"</td>
+    <td>Open in App</td>
+    <td>"Open the Henderson estimate" or "new job"</td>
+  </tr>
+  <tr>
+    <td>Daily Briefing</td>
+    <td>"Give me today's briefing"</td>
+  </tr>
+  <tr>
+    <td>Generate PDF</td>
+    <td>"Generate a PDF of estimate #1042"</td>
   </tr>
 </table>
 
@@ -317,23 +321,27 @@
 </table>
 
 <h3>Communication</h3>
-<p>Send messages and notifications from the assistant. <strong>4 tools</strong> available.</p>
+<p>Send messages to clients and check your inbox from the assistant. <strong>4 tools</strong> available.</p>
 <table>
   <tr>
     <th>Action</th>
     <th>Example Request</th>
   </tr>
   <tr>
-    <td>Send Chat Message</td>
-    <td>"Send a message to Crew A: running 15 minutes late"</td>
+    <td>Send Chat Message to Client</td>
+    <td>"Send a message to Maria Lopez: running 15 minutes late"</td>
   </tr>
   <tr>
-    <td>Send Notification</td>
-    <td>"Notify the team about tomorrow's early start"</td>
+    <td>Search Conversations</td>
+    <td>"Show me my recent chats with the Smith family"</td>
   </tr>
   <tr>
-    <td>Check Messages</td>
-    <td>"Do I have any new messages?"</td>
+    <td>Check Notifications</td>
+    <td>"Do I have any new notifications?"</td>
+  </tr>
+  <tr>
+    <td>Mark Notifications as Read</td>
+    <td>"Mark all my notifications as read"</td>
   </tr>
 </table>
 
@@ -356,14 +364,221 @@
 
 <hr>
 
-<h2>Voice Input</h2>
-<p>The AI Assistant supports <strong>voice recording</strong> on both the web and mobile apps. Instead of typing, simply tap the microphone button and speak your request.</p>
+<h2>Opening Things in the App from Chat</h2>
+<p>When chatting with the assistant &mdash; whether on <strong>WhatsApp</strong>, <strong>SMS</strong>, or the <strong>in-app chat</strong> &mdash; you can ask it to <strong>open something</strong> in the DHS app, and it will reply with a tap-to-open link. That link does three things at once:</p>
+<ol>
+  <li><strong>Logs you in automatically</strong> &mdash; no password screen, no waiting.</li>
+  <li><strong>Drops you exactly where you need to be</strong> &mdash; the right job, list, or form is already loaded.</li>
+  <li><strong>Stays clean in your messages</strong> &mdash; it is a short link that fits in a single text bubble.</li>
+</ol>
+<p>You can use it for three different purposes: <strong>viewing</strong>, <strong>browsing</strong>, and <strong>creating</strong>.</p>
+
+<h3>1. View &mdash; Jump to a Specific Record</h3>
+<p>Use this when you want to open a specific job, estimate, invoice, client, or other record you have been discussing.</p>
+<table>
+  <tr>
+    <th>You Say</th>
+    <th>What Happens</th>
+  </tr>
+  <tr>
+    <td>"open it"</td>
+    <td>Opens whatever you were just talking about</td>
+  </tr>
+  <tr>
+    <td>"open this"</td>
+    <td>Opens the most recent item from your chat</td>
+  </tr>
+  <tr>
+    <td>"open 3"</td>
+    <td>After the assistant lists 5 jobs, opens the third one</td>
+  </tr>
+  <tr>
+    <td>"open the Henderson estimate"</td>
+    <td>Looks up the Henderson estimate by name and opens it</td>
+  </tr>
+  <tr>
+    <td>"view in app"</td>
+    <td>Same as "open it"</td>
+  </tr>
+  <tr>
+    <td>"show me invoice 1042"</td>
+    <td>Opens invoice number 1042</td>
+  </tr>
+  <tr>
+    <td>"chat with Maria"</td>
+    <td>Opens your inbox conversation with that client</td>
+  </tr>
+</table>
+<p><strong>Why use it?</strong> You are mid-conversation about a specific record and want to see it, edit it by hand, attach a photo, or just confirm what you are looking at. One tap and you are there.</p>
+
+<h3>2. List &mdash; Browse an Entire Section</h3>
+<p>Use this when you want to browse a whole section of the app instead of any one specific record.</p>
+<table>
+  <tr>
+    <th>You Say</th>
+    <th>What Happens</th>
+  </tr>
+  <tr>
+    <td>"open jobs"</td>
+    <td>Opens the Jobs list page</td>
+  </tr>
+  <tr>
+    <td>"open estimates"</td>
+    <td>Opens the Estimates list page</td>
+  </tr>
+  <tr>
+    <td>"open my clients"</td>
+    <td>Opens the Clients list page</td>
+  </tr>
+  <tr>
+    <td>"show me my invoices"</td>
+    <td>Opens the Invoices list page</td>
+  </tr>
+  <tr>
+    <td>"the appointments page"</td>
+    <td>Opens the Appointments list page</td>
+  </tr>
+  <tr>
+    <td>"open crews"</td>
+    <td>Opens the Crews list page</td>
+  </tr>
+  <tr>
+    <td>"open team members"</td>
+    <td>Opens the Users / Team Members list page</td>
+  </tr>
+  <tr>
+    <td>"abrir trabajos" (Spanish)</td>
+    <td>Opens the Jobs list page</td>
+  </tr>
+</table>
+<p><strong>Why use it?</strong> Sometimes you do not have a specific record in mind &mdash; you just want to scroll, filter, search, or get an overview. List mode gets you to the section landing page in one tap.</p>
+
+<h3>3. Create &mdash; Open a Blank Form to Fill Out Yourself</h3>
+<p>Use this when you want to add a new record but would rather fill out the form by hand in the app instead of dictating everything to the AI.</p>
+<table>
+  <tr>
+    <th>You Say</th>
+    <th>What Happens</th>
+  </tr>
+  <tr>
+    <td>"new estimate"</td>
+    <td>Opens the Estimates page with the new estimate form already open</td>
+  </tr>
+  <tr>
+    <td>"create a job"</td>
+    <td>Opens the Jobs page with the new job form ready</td>
+  </tr>
+  <tr>
+    <td>"add a client"</td>
+    <td>Opens the Clients page with the new client form ready</td>
+  </tr>
+  <tr>
+    <td>"new invoice"</td>
+    <td>Opens the Invoices page with the new invoice form ready</td>
+  </tr>
+  <tr>
+    <td>"add a property"</td>
+    <td>Opens the Properties page with the new property form ready</td>
+  </tr>
+  <tr>
+    <td>"create crew"</td>
+    <td>Opens the Crews page with the new crew form ready</td>
+  </tr>
+  <tr>
+    <td>"add team member"</td>
+    <td>Opens the Users page with the new team member form ready</td>
+  </tr>
+  <tr>
+    <td>"nuevo trabajo" (Spanish)</td>
+    <td>Opens the Jobs page with the new job form ready</td>
+  </tr>
+  <tr>
+    <td>"agregar cliente" (Spanish)</td>
+    <td>Opens the Clients page with the new client form ready</td>
+  </tr>
+</table>
+<p><strong>Why use it?</strong> Some records are easier to create with the full form in front of you &mdash; especially when there are dropdowns, file attachments, multiple line items, or custom fields. Create mode skips the navigation and the "+ Add" button click for you.</p>
+
+<h3>"Create with the AI" vs. "Open the Create Form"</h3>
+<p>The assistant supports both workflows, and it is important to know the difference:</p>
 <ul>
-  <li><strong>Automatic transcription</strong> &mdash; Your voice message is converted to text instantly.</li>
-  <li><strong>Bilingual support</strong> &mdash; Speak in English or Spanish; the assistant understands both.</li>
-  <li><strong>Hands-free convenience</strong> &mdash; Ideal when you are in the field, driving, or have your hands full.</li>
+  <li><strong>Option A &mdash; Have the AI create it for you (no app needed).</strong> You give the AI all the details, it makes the record directly, and you stay in chat. Best when you already know all the details and want the record created instantly.</li>
+  <li><strong>Option B &mdash; Have the AI open the form for you.</strong> You ask the AI to "open" or "create" something, it sends you a link, and you fill out the form yourself in the app. Best when you have a complex record with attachments, photos, multiple line items, or special tax rules &mdash; or when you want to look up details as you go.</li>
 </ul>
-<p>After recording, you will see the transcribed text in the chat. The assistant processes your request the same way it would a typed message.</p>
+
+<h3>What You Can Open</h3>
+<table>
+  <tr>
+    <th>Type</th>
+    <th>View Specific One</th>
+    <th>Open List Page</th>
+    <th>Open Create Form</th>
+  </tr>
+  <tr><td>Jobs</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+  <tr><td>Estimates</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+  <tr><td>Invoices</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+  <tr><td>Clients</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+  <tr><td>Properties</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+  <tr><td>Appointments</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+  <tr><td>Crews</td><td>&mdash;</td><td>Yes</td><td>Yes</td></tr>
+  <tr><td>Team Members (Users)</td><td>&mdash;</td><td>Yes</td><td>Yes</td></tr>
+  <tr><td>Chat / Inbox</td><td>Yes (by client)</td><td>&mdash;</td><td>&mdash;</td></tr>
+</table>
+
+<h3>Speaking Spanish</h3>
+<p>The assistant understands both English and Spanish. All the same triggers work &mdash; just say what feels natural:</p>
+<table>
+  <tr>
+    <th>English</th>
+    <th>Spanish</th>
+  </tr>
+  <tr><td>"open jobs"</td><td>"abrir trabajos"</td></tr>
+  <tr><td>"show me my estimates"</td><td>"mu&eacute;strame mis estimados"</td></tr>
+  <tr><td>"open the Henderson client"</td><td>"abrir el cliente Henderson"</td></tr>
+  <tr><td>"new estimate"</td><td>"nuevo estimado" / "crear estimado"</td></tr>
+  <tr><td>"add a client"</td><td>"agregar cliente" / "nuevo cliente"</td></tr>
+  <tr><td>"create a job"</td><td>"crear trabajo"</td></tr>
+  <tr><td>"chat with Maria"</td><td>"chat con Maria"</td></tr>
+</table>
+
+<h3>What the Link Looks Like</h3>
+<p>Every link the assistant sends will appear in this format:</p>
+<pre><em>Henderson Roof Repair</em>
+https://dhs.app/s/k4n9p2</pre>
+<p>The line in italics tells you <strong>what the link will open</strong>. The URL underneath is what you tap. If you ever see the assistant write a URL in the middle of a sentence, that is a bug, not a real link &mdash; please report it.</p>
+
+<h3>Important Things to Know</h3>
+<ul>
+  <li><strong>Links are one-use only.</strong> The first tap logs you in and opens the app. The second tap will not work &mdash; you will see a friendly "Link Expired" page asking you to request a new one. If you tap twice by accident, just ask the assistant to open the same thing again for a brand-new link.</li>
+  <li><strong>Links expire after 24 hours.</strong> Even if you never tap a link, it stops working after a day. Ask the assistant for a fresh one.</li>
+  <li><strong>Links are tied to YOUR account.</strong> Forwarding a link to a coworker will not log them in &mdash; each team member needs to request their own links.</li>
+  <li><strong>Links keep your URL bar clean.</strong> When you tap a "create" link, the app opens the form and cleans the <code>?add=true</code> parameter out of the URL automatically.</li>
+  <li><strong>Works on every channel.</strong> The same link works whether you tap it from WhatsApp, SMS, the in-app chat panel, or a web browser preview. If you are already logged in, the link still works &mdash; it just skips the login step.</li>
+</ul>
+
+<h3>Tips and Tricks</h3>
+<ul>
+  <li><strong>"Open it" is smarter than you think.</strong> The assistant remembers what you were just talking about. After "find jobs at the Henderson place", you can say "open it" (most recent), "open 2" (second in the list), or "open the roof one" (matches by keyword).</li>
+  <li><strong>Numbered lists are your friend.</strong> When the assistant shows a numbered list of results, just type the number to act on it.</li>
+  <li><strong>Use list mode when you want to browse.</strong> "open invoices" is faster than typing search keywords if you are not sure what you are looking for.</li>
+  <li><strong>Use create mode for complex records.</strong> "new estimate" is way easier than dictating attachments, multiple line items, or fiddly settings.</li>
+  <li><strong>Mix it with other AI features.</strong> Example workflow: "find clients in Tucson" &rarr; "open 4" &rarr; tap link, view notes &rarr; tap back &rarr; "create a job for them at 555 Oak Ave".</li>
+</ul>
+
+<h3>Quick Reference</h3>
+<table>
+  <tr>
+    <th>I Want To&hellip;</th>
+    <th>Say Something Like&hellip;</th>
+  </tr>
+  <tr><td>Open a specific job/estimate/client I am discussing</td><td>"open it" or "open the [name]"</td></tr>
+  <tr><td>Pick from a list the AI just showed me</td><td>"open 3" (or any number)</td></tr>
+  <tr><td>Browse all my jobs / estimates / etc.</td><td>"open jobs" / "open estimates"</td></tr>
+  <tr><td>Open a chat with a client</td><td>"chat with [client name]"</td></tr>
+  <tr><td>Have the AI create a record for me</td><td>"create [thing] for [details]"</td></tr>
+  <tr><td>Open a blank form to fill out myself</td><td>"new [thing]" or "add a [thing]"</td></tr>
+  <tr><td>Get a fresh link if the old one expired</td><td>Just ask again &mdash; same words work</td></tr>
+</table>
 
 <hr>
 
@@ -382,7 +597,7 @@
 <h2>Bilingual Support</h2>
 <p>The AI Assistant provides <strong>full support for both English and Spanish</strong>. You do not need to change any settings &mdash; just communicate in whichever language you prefer.</p>
 <ul>
-  <li><strong>Automatic language detection</strong> &mdash; The assistant detects whether you are writing or speaking in English or Spanish and responds in the same language.</li>
+  <li><strong>Automatic language detection</strong> &mdash; The assistant detects whether you are writing in English or Spanish and responds in the same language.</li>
   <li><strong>Consistent responses</strong> &mdash; All information, confirmations, and follow-up questions are returned in your chosen language.</li>
   <li><strong>Mixed-language support</strong> &mdash; If you switch languages mid-conversation, the assistant adapts.</li>
 </ul>
@@ -422,11 +637,11 @@
   </tr>
   <tr>
     <td><strong>Enterprise</strong></td>
-    <td>Unlimited</td>
-    <td>No restrictions on usage</td>
+    <td>5,000 messages/day</td>
+    <td>For high-volume teams and large operations</td>
   </tr>
 </table>
-<p>Message counts reset at midnight each day. If you reach your daily limit, the assistant will let you know and suggest upgrading your plan.</p>
+<p>Message counts reset daily at <strong>00:00 UTC</strong>. If you reach your daily limit, the assistant will let you know and suggest upgrading your plan.</p>
 
 <hr>
 
@@ -512,8 +727,7 @@
 <h2>Security &amp; Privacy</h2>
 <p>Your data security is a top priority. Here is how the AI Assistant keeps your information safe:</p>
 <ul>
-  <li><strong>Authenticated access</strong> &mdash; All requests go through authenticated GraphQL APIs. The assistant can only access data if you are logged in with valid credentials.</li>
-  <li><strong>Account-scoped data</strong> &mdash; The assistant only sees data belonging to your account. There is no cross-account data access.</li>
+  <li><strong>Authenticated access</strong> &mdash; The assistant can only access data if you are logged in with valid credentials.</li>
   <li><strong>No data sharing</strong> &mdash; Your queries and data are not shared with other accounts or used to train external models.</li>
   <li><strong>Role-based permissions</strong> &mdash; The assistant respects your user role. If you do not have permission to perform an action in the app, you cannot perform it through the assistant either.</li>
   <li><strong>Confirmation prompts</strong> &mdash; Destructive actions (like deleting records) always require explicit confirmation before they are executed.</li>
@@ -532,16 +746,12 @@
     <td>Check your internet connection and make sure you are logged in. Try refreshing the page or restarting the app.</td>
   </tr>
   <tr>
-    <td>Voice input not working</td>
-    <td>Make sure you have granted microphone permissions to the app in your browser or device settings.</td>
-  </tr>
-  <tr>
     <td>Image upload fails</td>
     <td>Ensure the image is under the maximum file size. Try a different image format (JPG or PNG).</td>
   </tr>
   <tr>
     <td>"Daily limit reached" message</td>
-    <td>You have used all your messages for the day. Limits reset at midnight, or you can upgrade your plan.</td>
+    <td>You have used all your messages for the day. Limits reset daily at 00:00 UTC, or you can upgrade your plan.</td>
   </tr>
   <tr>
     <td>Assistant misunderstands request</td>
