@@ -84,6 +84,18 @@ export default function ArticleView({ article, onBack }) {
   const contentRef = useRef(null);
   const localized = getLocalized(article);
 
+  // Load doc-styles.css (Google Docs column/class styles) once
+  useEffect(() => {
+    const id = 'doc-styles-link';
+    if (!document.getElementById(id)) {
+      const link = document.createElement('link');
+      link.id = id;
+      link.rel = 'stylesheet';
+      link.href = '/content/doc-styles.css';
+      document.head.appendChild(link);
+    }
+  }, []);
+
   // Fetch HTML content
   useEffect(() => {
     setLoading(true);

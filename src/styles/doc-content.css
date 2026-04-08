@@ -107,8 +107,8 @@
   border: 1px solid #e0e0e0;
 }
 
-.doc-content table tr:first-child td,
-.doc-content table tr:first-child th,
+.doc-content table > tr:first-child td,
+.doc-content table > tr:first-child th,
 .doc-content table thead td,
 .doc-content table thead th {
   background: #1a1a2e !important;
@@ -119,8 +119,8 @@
   letter-spacing: 0.3px;
 }
 
-.doc-content table tr:first-child td *,
-.doc-content table tr:first-child th *,
+.doc-content table > tr:first-child td *,
+.doc-content table > tr:first-child th *,
 .doc-content table thead td *,
 .doc-content table thead th * {
   color: white !important;
@@ -138,7 +138,8 @@
   margin: 0;
 }
 
-.doc-content table tr:nth-child(even) td {
+.doc-content table > tr:nth-child(even) td,
+.doc-content table tbody tr:nth-child(even) td {
   background: #fafbff;
 }
 
@@ -164,7 +165,7 @@
 }
 
 /* Image wrapper spans from Google Docs */
-.doc-content span[style*="overflow: hidden"] {
+.doc-content span[style*="overflow: hidden"]:not(.doc-inline-icon-wrapper) {
   display: block !important;
   margin: 20px 0 !important;
   width: 100% !important;
@@ -178,7 +179,7 @@
   cursor: pointer;
 }
 
-.doc-content span[style*="overflow: hidden"] img {
+.doc-content span[style*="overflow: hidden"]:not(.doc-inline-icon-wrapper) img {
   width: 100% !important;
   height: auto !important;
   margin: 0;

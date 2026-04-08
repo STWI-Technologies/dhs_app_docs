@@ -22,7 +22,7 @@ const translations = {
   en: {
     subtitle: 'Knowledge Base',
     searchPlaceholder: 'Search articles...',
-    backButton: '← Back to Knowledge Base',
+    backButton: 'Back to Knowledge Base',
     noResults: 'No articles found matching your search.',
     copyright: `© ${new Date().getFullYear()} Direct Home Service. All rights reserved.`,
     loading: 'Loading...',
@@ -31,7 +31,7 @@ const translations = {
   es: {
     subtitle: 'Base de Conocimientos',
     searchPlaceholder: 'Buscar artículos...',
-    backButton: '← Volver a la Base de Conocimientos',
+    backButton: 'Volver a la Base de Conocimientos',
     noResults: 'No se encontraron artículos que coincidan con su búsqueda.',
     copyright: `© ${new Date().getFullYear()} Direct Home Service. Todos los derechos reservados.`,
     loading: 'Cargando...',
