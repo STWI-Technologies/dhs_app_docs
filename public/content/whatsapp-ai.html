@@ -30,13 +30,9 @@
 </ol>
 
 <h3>Authentication and Security</h3>
-<p>Your WhatsApp AI session is protected by multiple layers of security:</p>
-<ul>
-    <li><b>Twilio Verification</b> — Your phone number is verified through Twilio to confirm your identity.</li>
-    <li><b>Session Lock</b> — After a period of inactivity, your session is automatically locked. To unlock it, you will receive a verification email with a secure link.</li>
-    <li><b>Email Verification</b> — When your session locks, simply check your email, click the verification link, and your WhatsApp session will unlock automatically.</li>
-</ul>
-<p>If someone else tries to message the assistant from an unlinked number, they will not be able to access any account data.</p>
+<p><b>Your account is protected.</b></p>
+<p>Only the phone number you link to your DHS account can talk to the assistant. If anyone else messages it from a different number, they won't be able to see any of your information.</p>
+<p>If you haven't used the assistant in a while, we may ask you to verify it's really you. When that happens, you'll get an email with a link — tap it, and you can pick up right where you left off.</p>
 
 <h2>What You Can Do</h2>
 <p>The WhatsApp AI Assistant gives you access to over 103 tools organized into the categories below. You do not need to memorize tool names — just describe what you need in plain language and the assistant will figure out the right action.</p>
@@ -365,7 +361,7 @@
         </tr>
     </tbody>
 </table>
-<p><b>Why both chat phrasings work:</b> the AI assistant cannot carry out a live chat with a client directly — the actual conversation happens in the DHS inbox. So any "chat with [name]" request opens the inbox page for that client, whether or not you prefix it with "open".</p>
+<p><b>Why both chat phrasings work:</b> Both "chat with Maria" and "open chat with Maria" take you to the same place — Maria's conversation in your inbox, where you can send her a message.</p>
 <p><b>Why use it?</b> You are mid-conversation about a specific record and you want to see it, edit it by hand, attach a photo, or just confirm what you are looking at. One tap and you are there.</p>
 
 <h3>2. Open — Browse an entire section</h3>
@@ -464,8 +460,8 @@
 <h3>Create records inline vs. Open Create</h3>
 <p>The assistant supports both creation workflows — pick the one that fits the task:</p>
 <ul>
-    <li><b>Create inline — "create [thing]"</b> (no link). The AI asks for anything it needs (client, date, line items) right there in the chat, then saves the record. Best when you already know the basics and want the record created instantly without leaving the conversation.</li>
-    <li><b>Open Create — "open create [thing]"</b> (link). The AI sends you a one-tap link to the blank form page in the app. Best for complex records with attachments, photos, multiple line items, or custom fields — or when you want to look up details as you go.</li>
+    <li><b>Create inline</b> — say something like "create a job for Maria Lopez". The assistant asks you for anything else it needs (date, line items, crew) right in the chat, then saves it. Best when you already know the basics and want it done in one go without leaving the conversation.</li>
+    <li><b>Open Create</b> — say "open create job". The assistant sends you a one-tap link to the blank New Job form in the app. Best when the record is complex — attachments, photos, multiple line items, custom fields — or when you want to look things up as you fill it out.</li>
 </ul>
 
 <h3>What You Can Open</h3>
@@ -510,18 +506,17 @@
     </tbody>
 </table>
 
-<h3>What the Link Looks Like</h3>
-<p>Every link the assistant sends will appear in this format:</p>
+<h3>Before you tap a link</h3>
+<p>The assistant always shows a short title above the link, so you can check it matches what you asked for before opening it:</p>
 <pre><i>Henderson Roof Repair</i>
-https://dhs.app/s/k4n9p2</pre>
-<p>The line in italics tells you <b>what the link will open</b>. The URL underneath is what you tap. If you ever see the assistant write a URL in the middle of a sentence, that is a bug, not a real link — please report it. Real links always look like the format above.</p>
+<i>https://dhs.app/s/k4n9p2</i></pre>
 
 <h3>Important Things to Know</h3>
 <ul>
     <li><b>Links are one-use only.</b> The first tap logs you in and opens the app. The second tap will not work — you will see a friendly "Link Expired" page asking you to request a new one. This is intentional and is how we keep your account safe. If you tap twice by accident, just ask the assistant to open the same thing again — you will get a brand-new link instantly.</li>
     <li><b>Links expire after 24 hours.</b> Even if you never tap a link, it stops working after a day. If you come back to an old conversation and tap an old link, just ask the assistant to send you a fresh one.</li>
     <li><b>Links are tied to YOUR account.</b> If you forward a link to a coworker, it will not log them in — it will show "Link Expired" because the link only works for the person who originally requested it. Each team member needs to request their own links.</li>
-    <li><b>Links keep your URL bar clean.</b> When you tap a "create" link, the app opens the form and cleans the <code>?add=true</code> parameter out of the URL automatically — so if you bookmark or refresh the page, the form will not pop up over and over.</li>
+    <li><b>Links stay clean.</b> After you tap a "create" link and the form opens, refreshing or bookmarking the page won't re-open the form again. One-tap, one-action.</li>
     <li><b>Works on every channel.</b> The same link works whether you tap it from WhatsApp, SMS, the in-app chat panel, or a web browser preview. If you are already logged in, the link still works — it just skips the login step.</li>
 </ul>
 
@@ -561,7 +556,7 @@ https://dhs.app/s/k4n9p2</pre>
         </tr>
         <tr>
             <td>Why doesn't the AI just write a normal URL I can copy?</td>
-            <td>Because the assistant is required to use the "open" tool for every link it gives you. This guarantees the link is real, working, and tied to your account — instead of being a guess that might lead nowhere or to the wrong record. It is a safety feature, not a limitation.</td>
+            <td>The assistant builds every link fresh for your session, so you can be sure it is valid, active, and pointing to the right record. A regular URL you would find on a webpage cannot guarantee any of that.</td>
         </tr>
         <tr>
             <td>Can I open someone else's data using their link?</td>
@@ -631,13 +626,8 @@ https://dhs.app/s/k4n9p2</pre>
     <li><b>Issue documentation</b> — send a photo of a problem area and the assistant can help you log it as a note on the relevant job or client record.</li>
 </ul>
 
-<h3>Downloading Files with Magic Links</h3>
-<p>When the assistant needs to send you a file (such as an estimate PDF, invoice, or report), it generates a <b>secure magic link</b>:</p>
-<ul>
-    <li>The link is unique to your session and expires after a set time for security.</li>
-    <li>Tap the link to download or view the file directly on your phone.</li>
-    <li>No login required — the link itself serves as your authentication.</li>
-</ul>
+<h3>Downloading Files</h3>
+<p>When the assistant sends you a file — an estimate PDF, invoice, or report — it arrives as a link you can tap to view or download on your phone. The link is private to you and expires after a short time, so you don't need to worry about anyone else getting to it.</p>
 
 <h2>Plan Limits</h2>
 <p>The number of AI Assistant messages you can send per day depends on your DHS subscription plan. The same daily limit applies to all channels (WhatsApp, SMS, and the in-app chat) combined.</p>
@@ -674,7 +664,7 @@ https://dhs.app/s/k4n9p2</pre>
     </tbody>
 </table>
 
-<p>Message counts reset daily at <b>00:00 UTC</b>. When you approach your daily limit, the assistant will notify you. You can upgrade your plan at any time from the DHS app under <b>Settings &gt; Subscription</b>.</p>
+<p>Message counts reset every day at <b>midnight UTC</b> (late evening in the US, early morning in Europe). When you're close to your limit, the assistant will let you know. You can upgrade your plan at any time from the DHS app under <b>Settings &gt; Subscription</b>.</p>
 
 <h2>Tips and Best Practices</h2>
 
@@ -733,33 +723,22 @@ https://dhs.app/s/k4n9p2</pre>
 </ul>
 
 <h2>Security</h2>
-<p>Your data security is a top priority. The WhatsApp AI Assistant uses multiple layers of protection to keep your business information safe.</p>
+<p>Your data stays private and protected.</p>
 
-<h3>Phone Number Verification</h3>
-<p>When you first link your WhatsApp number, it is verified through <b>Twilio</b>, a trusted communications platform. This ensures that only your verified phone number can access your DHS account through WhatsApp.</p>
+<h3>Your phone number is the key</h3>
+<p>When you first connect WhatsApp to DHS, we verify your phone number so we know it's really you. From then on, only that number can reach the assistant on your account.</p>
 
-<h3>Session Lock and Unlock</h3>
-<p>To prevent unauthorized access, your WhatsApp AI session automatically locks after a period of inactivity. When your session is locked:</p>
-<ol>
-    <li>The assistant will let you know your session has expired.</li>
-    <li>A <b>verification email</b> is sent to the email address on your DHS account.</li>
-    <li>Open the email and click the <b>secure verification link</b>.</li>
-    <li>Your WhatsApp session unlocks automatically — you can continue right where you left off.</li>
-</ol>
+<h3>Keeping your session safe</h3>
+<p>If you haven't used the assistant for a while, we'll ask you to verify your identity again — a small precaution in case your phone ends up in the wrong hands. When that happens: the assistant lets you know, we send an email to the address on your DHS account, you tap the link, and you're back in the conversation right where you left off.</p>
 
-<h3>Magic Link Authentication</h3>
-<p>File downloads and sensitive actions use <b>magic links</b> — one-time-use URLs that are:</p>
+<h3>Files and downloads</h3>
+<p>Any file the assistant sends you — a PDF, invoice, or report — arrives as a private link just for you. The link expires after a short time and only works once, so it can't be forwarded or reused.</p>
+
+<h3>Your data</h3>
 <ul>
-    <li><b>Unique</b> to your session and request</li>
-    <li><b>Time-limited</b> — they expire after a short period</li>
-    <li><b>Single-use</b> — once clicked, the link cannot be reused</li>
-</ul>
-
-<h3>Data Privacy</h3>
-<ul>
-    <li>Messages are processed securely and are not stored beyond what is needed to complete your request.</li>
-    <li>The assistant only accesses data within your DHS account — it cannot see other users' data.</li>
-    <li>All communication between WhatsApp and the DHS system is encrypted.</li>
+    <li>The assistant only sees records in your own DHS account — never anyone else's.</li>
+    <li>Your messages are private and aren't kept longer than needed to answer you.</li>
+    <li>Everything between WhatsApp and DHS travels encrypted.</li>
 </ul>
 
 <h2>Troubleshooting</h2>
@@ -786,7 +765,7 @@ https://dhs.app/s/k4n9p2</pre>
         </tr>
         <tr>
             <td>Daily limit reached</td>
-            <td>Limits reset daily at 00:00 UTC. You can also upgrade your plan under Settings &gt; Subscription in the DHS app.</td>
+            <td>Limits reset every day at midnight UTC. You can also upgrade your plan under Settings &gt; Subscription in the DHS app.</td>
         </tr>
         <tr>
             <td>File download link expired</td>
