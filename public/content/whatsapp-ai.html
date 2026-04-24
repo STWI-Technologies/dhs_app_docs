@@ -315,15 +315,21 @@
 </table>
 
 <h2>Opening Things in the App from Chat</h2>
-<p>When you are chatting with the assistant — whether on <b>WhatsApp</b>, <b>SMS</b>, or the <b>in-app chat</b> — you can ask it to <b>open something</b> in the DHS app, and it will reply with a tap-to-open link. That link does three things at once:</p>
+<p>The assistant understands four kinds of commands:</p>
+<ul>
+    <li><b>Open</b> — returns a one-tap link to the app.</li>
+    <li><b>Show / View</b> — displays results inline in the chat. No link. ("view" is an alias for "show".)</li>
+    <li><b>Create</b> — creates a record directly in the chat; the assistant prompts for any missing details. No link.</li>
+    <li><b>Open Create</b> — returns a one-tap link to the blank create form, for the times you would rather fill out the page yourself.</li>
+</ul>
+<p>When the assistant sends you a link (Open or Open Create), that link does three things at once:</p>
 <ol>
     <li><b>Logs you in automatically</b> — no password screen, no waiting.</li>
     <li><b>Drops you exactly where you need to be</b> — the right job, list, or form is already loaded.</li>
     <li><b>Stays clean in your messages</b> — it is a short link that fits in a single text bubble.</li>
 </ol>
-<p>You can use it for three different purposes: <b>viewing</b>, <b>browsing</b>, and <b>creating</b>.</p>
 
-<h3>1. View — Jump to a specific record</h3>
+<h3>1. Open — Jump to a specific record</h3>
 <p>Use this when you want to open a <b>specific</b> job, estimate, invoice, client, or other record you have been discussing.</p>
 <table>
     <thead>
@@ -350,22 +356,19 @@
             <td>Looks up the Henderson estimate by name and opens it</td>
         </tr>
         <tr>
-            <td>"view in app"</td>
-            <td>Same as "open it"</td>
-        </tr>
-        <tr>
-            <td>"show me invoice 1042"</td>
-            <td>Opens invoice number 1042</td>
-        </tr>
-        <tr>
             <td>"chat with Maria"</td>
             <td>Opens your inbox conversation with that client</td>
         </tr>
+        <tr>
+            <td>"open chat with Maria"</td>
+            <td>Same — both phrasings open the inbox with that client</td>
+        </tr>
     </tbody>
 </table>
+<p><b>Why both chat phrasings work:</b> the AI assistant cannot carry out a live chat with a client directly — the actual conversation happens in the DHS inbox. So any "chat with [name]" request opens the inbox page for that client, whether or not you prefix it with "open".</p>
 <p><b>Why use it?</b> You are mid-conversation about a specific record and you want to see it, edit it by hand, attach a photo, or just confirm what you are looking at. One tap and you are there.</p>
 
-<h3>2. List — Browse an entire section</h3>
+<h3>2. Open — Browse an entire section</h3>
 <p>Use this when you want to <b>browse</b> a whole section of the app — the full list of jobs, estimates, clients, etc. — instead of any one specific record.</p>
 <table>
     <thead>
@@ -388,7 +391,7 @@
             <td>Opens the Clients list page</td>
         </tr>
         <tr>
-            <td>"show me my invoices"</td>
+            <td>"open invoices"</td>
             <td>Opens the Invoices list page</td>
         </tr>
         <tr>
@@ -410,9 +413,10 @@
     </tbody>
 </table>
 <p><b>Why use it?</b> Sometimes you do not have a specific record in mind — you just want to scroll, filter, search, or get an overview. List mode gets you to the section landing page in one tap.</p>
+<p><b>Note:</b> If you say "show me my invoices" or "list my jobs", the assistant will display the records <em>inline in the chat</em> — no link. Use "open" (as in "open invoices") when you want the full list page in the app.</p>
 
-<h3>3. Create — Open a blank form to fill out yourself</h3>
-<p>Use this when you want to <b>add a new record</b> but you would rather fill out the form by hand in the app instead of dictating everything to the AI.</p>
+<h3>3. Open Create — Open the blank form page</h3>
+<p>Use this when you would rather fill out the form by hand in the app instead of dictating the record to the AI. Say <b>"open create"</b> followed by the entity type. This is the only phrasing that returns a form link — bare "new estimate" or "create a job" triggers the AI to capture details in chat (see "Create records inline vs. Open Create", below).</p>
 <table>
     <thead>
         <tr>
@@ -422,50 +426,46 @@
     </thead>
     <tbody>
         <tr>
-            <td>"new estimate"</td>
-            <td>Opens the Estimates page with the new estimate form already open</td>
+            <td>"open create job"</td>
+            <td>Opens the Jobs page with the new job form already open</td>
         </tr>
         <tr>
-            <td>"create a job"</td>
-            <td>Opens the Jobs page with the new job form ready</td>
+            <td>"open create estimate"</td>
+            <td>Opens the Estimates page with the new estimate form ready</td>
         </tr>
         <tr>
-            <td>"add a client"</td>
-            <td>Opens the Clients page with the new client form ready</td>
-        </tr>
-        <tr>
-            <td>"new invoice"</td>
+            <td>"open create invoice"</td>
             <td>Opens the Invoices page with the new invoice form ready</td>
         </tr>
         <tr>
-            <td>"add a property"</td>
+            <td>"open create client"</td>
+            <td>Opens the Clients page with the new client form ready</td>
+        </tr>
+        <tr>
+            <td>"open create property"</td>
             <td>Opens the Properties page with the new property form ready</td>
         </tr>
         <tr>
-            <td>"create crew"</td>
+            <td>"open create appointment"</td>
+            <td>Opens the Appointments page with the new appointment form ready</td>
+        </tr>
+        <tr>
+            <td>"open create crew"</td>
             <td>Opens the Crews page with the new crew form ready</td>
         </tr>
         <tr>
-            <td>"add team member"</td>
+            <td>"open create user"</td>
             <td>Opens the Users page with the new team member form ready</td>
-        </tr>
-        <tr>
-            <td>"nuevo trabajo" (Spanish)</td>
-            <td>Opens the Jobs page with the new job form ready</td>
-        </tr>
-        <tr>
-            <td>"agregar cliente" (Spanish)</td>
-            <td>Opens the Clients page with the new client form ready</td>
         </tr>
     </tbody>
 </table>
-<p><b>Why use it?</b> Some records are easier to create with the full form in front of you — especially when there are dropdowns, file attachments, multiple line items, or custom fields. Create mode skips the navigation and the "+ Add" button click for you.</p>
+<p><b>Why use it?</b> Some records are easier to create with the full form in front of you — especially when there are dropdowns, file attachments, multiple line items, or custom fields. Open Create skips the navigation and the "+ Add" click for you.</p>
 
-<h3>"Create with the AI" vs. "Open the create form"</h3>
-<p>This is the most important thing to understand, because the assistant supports <b>both</b> workflows:</p>
+<h3>Create records inline vs. Open Create</h3>
+<p>The assistant supports both creation workflows — pick the one that fits the task:</p>
 <ul>
-    <li><b>Option A — Have the AI create it for you (no app needed).</b> You give the AI all the details, it makes the record directly, and you stay in chat. Best when you already know all the details and want the record created instantly without leaving WhatsApp.</li>
-    <li><b>Option B — Have the AI open the form for you.</b> You ask the AI to "open" or "create" something, it sends you a link, and you fill out the form yourself in the app. Best when you have a complex record with attachments, photos, multiple line items, or special tax rules — or when you want to look up details as you go.</li>
+    <li><b>Create inline — "create [thing]"</b> (no link). The AI asks for anything it needs (client, date, line items) right there in the chat, then saves the record. Best when you already know the basics and want the record created instantly without leaving the conversation.</li>
+    <li><b>Open Create — "open create [thing]"</b> (link). The AI sends you a one-tap link to the blank form page in the app. Best for complex records with attachments, photos, multiple line items, or custom fields — or when you want to look up details as you go.</li>
 </ul>
 
 <h3>What You Can Open</h3>
@@ -475,7 +475,7 @@
             <th>Type</th>
             <th>View Specific One</th>
             <th>Open List Page</th>
-            <th>Open Create Form</th>
+            <th>Open Create</th>
         </tr>
     </thead>
     <tbody>
@@ -492,7 +492,7 @@
 </table>
 
 <h3>Speaking Spanish</h3>
-<p>The assistant understands both English and Spanish. All the same triggers work — just say what feels natural:</p>
+<p>The assistant understands both English and Spanish. The same rules apply — only "open" and "open create" phrases return a link; "mostrar", "muéstrame", "crear", and "nuevo" are handled inline in the chat.</p>
 <table>
     <thead>
         <tr>
@@ -502,12 +502,11 @@
     </thead>
     <tbody>
         <tr><td>"open jobs"</td><td>"abrir trabajos"</td></tr>
-        <tr><td>"show me my estimates"</td><td>"muéstrame mis estimados"</td></tr>
         <tr><td>"open the Henderson client"</td><td>"abrir el cliente Henderson"</td></tr>
-        <tr><td>"new estimate"</td><td>"nuevo estimado" / "crear estimado"</td></tr>
-        <tr><td>"add a client"</td><td>"agregar cliente" / "nuevo cliente"</td></tr>
-        <tr><td>"create a job"</td><td>"crear trabajo"</td></tr>
         <tr><td>"chat with Maria"</td><td>"chat con Maria"</td></tr>
+        <tr><td>"open chat with Maria"</td><td>"abrir chat con Maria"</td></tr>
+        <tr><td>"open create job"</td><td>"abrir crear trabajo"</td></tr>
+        <tr><td>"open create client"</td><td>"abrir crear cliente"</td></tr>
     </tbody>
 </table>
 
@@ -528,10 +527,10 @@ https://dhs.app/s/k4n9p2</pre>
 
 <h3>Tips and Tricks</h3>
 <ul>
-    <li><b>"Open it" is smarter than you think.</b> The assistant remembers what you were just talking about. If you said "find jobs at the Henderson place" and it lists 3 jobs, you can say "open it" (most recent), "open 2" (second in the list), or "open the roof one" (matches by keyword).</li>
+    <li><b>'Open it' is smarter than you think.</b> The assistant remembers what you were just talking about. If you said "find jobs at the Henderson place" and it lists 3 jobs, you can say "open it" (most recent), "open 2" (second in the list), or "open the roof one" (matches by keyword).</li>
     <li><b>Numbered lists are your friend.</b> When the assistant gives you a numbered list of results, you can just type the number to act on it — for example, "open 2" after a list of estimates.</li>
     <li><b>Use list mode when you want to browse.</b> If you are not sure what you are looking for, "open invoices" is faster than typing search keywords.</li>
-    <li><b>Use create mode for complex records.</b> If you are making something with attachments, multiple line items, or fiddly settings, "new estimate" is way easier than dictating everything.</li>
+    <li><b>Use Open Create for complex records.</b> "open create estimate" opens the full form page — use it when you need attachments, multiple line items, or custom fields.</li>
     <li><b>Mix it with other AI features.</b> A natural workflow: "find clients in Tucson" → assistant lists 12 → "open 4" → tap link, view notes in the app, tap back to WhatsApp → "create a job for them at 555 Oak Ave".</li>
 </ul>
 
@@ -587,9 +586,9 @@ https://dhs.app/s/k4n9p2</pre>
         <tr><td>Open a specific job/estimate/client I am discussing</td><td>"open it" or "open the [name]"</td></tr>
         <tr><td>Pick from a list the AI just showed me</td><td>"open 3" (or any number)</td></tr>
         <tr><td>Browse all my jobs / estimates / etc.</td><td>"open jobs" / "open estimates"</td></tr>
-        <tr><td>Open a chat with a client</td><td>"chat with [client name]"</td></tr>
+        <tr><td>Open a chat with a client</td><td>"chat with [client name]" or "open chat with [client name]" (both work)</td></tr>
         <tr><td>Have the AI create a record for me</td><td>"create [thing] for [details]"</td></tr>
-        <tr><td>Open a blank form to fill out myself</td><td>"new [thing]" or "add a [thing]"</td></tr>
+        <tr><td>Open a blank form to fill out myself</td><td>"open create [thing]" (e.g. "open create job")</td></tr>
         <tr><td>Get a fresh link if the old one expired</td><td>Just ask again — same words work</td></tr>
     </tbody>
 </table>
