@@ -47,7 +47,18 @@ describe("guide HTML source content", () => {
 	it("keeps video sections in the source but hides them until final video URLs are ready", () => {
 		const offenders = guideFiles.filter((file) => {
 			const html = fs.readFileSync(file, "utf8");
-			return /YouTube Video Embed|youtube\.com|Watch .* Tutorial/i.test(html) && !/data-section="video"[^>]*display:\s*none/i.test(html);
+			const videoStart = html.search(/<div data-section="video"[^>]*>/i);
+			const nextSection = videoStart === -1 ? -1 : html.indexOf("\n        <!--", videoStart + 1);
+			const videoSection = videoStart === -1 ? "" : html.slice(videoStart, nextSection === -1 ? html.length : nextSection);
+			return (
+				/YouTube Video Embed|youtube\.com|Want to See It In Action|¿Quieres verlo/i.test(html) &&
+				!(
+					videoSection &&
+					/display:\s*none/i.test(videoSection) &&
+					/(Want to See It In Action|¿Quieres verlo)/i.test(videoSection) &&
+					/youtube\.com/i.test(videoSection)
+				)
+			);
 		});
 
 		expect(offenders.map((file) => path.relative(process.cwd(), file))).toEqual([]);
@@ -57,6 +68,57 @@ describe("guide HTML source content", () => {
 		const offenders = guideFiles.filter((file) => {
 			const html = fs.readFileSync(file, "utf8");
 			return /<svg\b/i.test(html) || !/\/icons\/.+\.svg/i.test(html);
+		});
+
+		expect(offenders.map((file) => path.relative(process.cwd(), file))).toEqual([]);
+	});
+
+	it("uses the same Estimates icon as the SP UI page header", () => {
+		const html = fs.readFileSync(path.join(process.cwd(), "public", "en", "estimates.html"), "utf8");
+
+		expect(html).toContain('<img src="/icons/clipboard-list.svg"');
+		expect(html).not.toContain('<img src="/icons/invoice.svg"');
+	});
+
+	it("gives section headers a subtle background and consistent icon spacing", () => {
+		const offenders = guideFiles.filter((file) => {
+			const html = fs.readFileSync(file, "utf8");
+			const sectionHeaders = [...html.matchAll(/<div[^>]*data-section-header="true"[^>]*>[\s\S]*?<\/div>/gi)];
+			return (
+				sectionHeaders.length < 2 ||
+				sectionHeaders.some(([section]) => {
+					return (
+						!/background:\s*#F8F9FB/i.test(section) ||
+						!/border:\s*1px solid #EEF0F4/i.test(section) ||
+						!/border-radius:\s*8px/i.test(section) ||
+						!/gap:\s*8px/i.test(section)
+					);
+				})
+			);
+		});
+
+		expect(offenders.map((file) => path.relative(process.cwd(), file))).toEqual([]);
+	});
+
+	it("keeps full-width CTA buttons inside the guide gutters", () => {
+		const offenders = guideFiles.filter((file) => {
+			const html = fs.readFileSync(file, "utf8");
+			const bookingCta = html.match(/<a href="https:\/\/directhomeservice\.com\/book-a-session"[^>]*>/i)?.[0] || "";
+			return !/box-sizing:\s*border-box/i.test(bookingCta);
+		});
+
+		expect(offenders.map((file) => path.relative(process.cwd(), file))).toEqual([]);
+	});
+
+	it("includes a contact support CTA that asks the parent app to open support", () => {
+		const offenders = guideFiles.filter((file) => {
+			const html = fs.readFileSync(file, "utf8");
+			const supportCta = html.match(/<a [^>]*data-support-contact="true"[^>]*>/i)?.[0] || "";
+			return (
+				!/Contact Support/i.test(html) ||
+				!/DHS_OPEN_SUPPORT/i.test(supportCta) ||
+				!/box-sizing:\s*border-box/i.test(supportCta)
+			);
 		});
 
 		expect(offenders.map((file) => path.relative(process.cwd(), file))).toEqual([]);
