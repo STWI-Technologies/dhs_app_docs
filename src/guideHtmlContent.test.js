@@ -80,6 +80,16 @@ describe("guide HTML source content", () => {
 		expect(html).not.toContain('<img src="/icons/invoice.svg"');
 	});
 
+	it("adds breathing room between each guide title and subtitle", () => {
+		const offenders = guideFiles.filter((file) => {
+			const html = fs.readFileSync(file, "utf8");
+			const headerBlock = html.match(/<div style="padding: 20px 15px; margin-top: 8px;">[\s\S]*?<\/div>\s*<p style="([^"]*)">/)?.[1] || "";
+			return !/margin:\s*6px 0 0 0/i.test(headerBlock);
+		});
+
+		expect(offenders.map((file) => path.relative(process.cwd(), file))).toEqual([]);
+	});
+
 	it("gives section headers a subtle background and consistent icon spacing", () => {
 		const offenders = guideFiles.filter((file) => {
 			const html = fs.readFileSync(file, "utf8");
@@ -110,7 +120,7 @@ describe("guide HTML source content", () => {
 		expect(offenders.map((file) => path.relative(process.cwd(), file))).toEqual([]);
 	});
 
-	it("includes a contact support CTA that asks the parent app to open support", () => {
+	it("includes a contact support CTA that asks the parent app to open support on every guide", () => {
 		const offenders = guideFiles.filter((file) => {
 			const html = fs.readFileSync(file, "utf8");
 			const supportCta = html.match(/<a [^>]*data-support-contact="true"[^>]*>/i)?.[0] || "";
