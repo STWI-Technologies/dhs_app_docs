@@ -12,39 +12,41 @@
         <div style="padding: 20px 15px; margin-top: 8px;">
             <div style="display: flex; align-items: center;">
                 <div style="display: flex; margin-right: 12px; background: #F3F4FF; padding: 6px; border-radius: 4px; border: 1px solid #1011150F;">
-                    <img src="/icons/support-guide.svg" alt="" style="width: 20px; height: 20px; display: block;" />
+                    <img src="/icons/box.svg" alt="" style="width: 20px; height: 20px; display: block;" />
                 </div>
                 <h1 style="margin: 0; font-size: 20px; font-weight: 600; color: #111827;">Servicios</h1>
             </div>
             <p style="margin: 0; color: #6b7280; font-size: 14px;">Estandariza tus ofertas. Simplifica tus cotizaciones. Maximiza la claridad.</p>
         </div>
 
-        <!-- Video Tutorial Section -->
-        <div data-section="video" style="display: none; display: flex; align-items: center; padding: 0px 15px;">
-            <div style="display: flex; align-items: center; margin-right: 12px;">
-                <img src="/icons/support-guide.svg" alt="" style="width: 20px; height: 20px; display: block;" />
+        <!-- Video Section (hidden until final video URLs are ready) -->
+        <div data-section="video" style="display: none;">
+            <div style="display: flex; align-items: center; padding: 0px 15px;">
+                <div style="display: flex; align-items: center; margin-right: 12px;">
+                    <img src="/icons/video.svg" alt="" style="width: 20px; height: 20px; display: block;" />
+                </div>
+                <h3 style="font-size: 16px; font-weight: 600; color: #111827;">
+                    ¿Quieres verlo en acción?
+                </h3>
             </div>
-            <h3 style="font-size: 16px; font-weight: 600; color: #111827;">
-                Mira nuestro tutorial en video
-            </h3>
-        </div>
-            </div>
-        <div style="margin: 0px 10px; border-radius: 8px; overflow: hidden;">
+            <!-- YouTube Video Embed -->
+            <div style="margin: 0px 10px; border-radius: 8px; overflow: hidden; border: 1px solid #0000001F;">
             <iframe
-                width="100%"
-                height="220"
-                src="https://www.youtube.com/embed/wHf4YyB5R8g?rel=0&modestbranding=1"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-                style="border-radius: 8px;">
-            </iframe>
+                            width="100%"
+                            height="220"
+                            src="https://www.youtube.com/embed/wHf4YyB5R8g?rel=0&modestbranding=1"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                            style="border-radius: 8px;">
+                        </iframe>
+            </div>
         </div>
 
         <!-- What You Can Do Section -->
         <div style="padding: 20px 15px;">
-            <div style="display: flex; align-items: center; margin-bottom: 16px; padding-top: 20px;">
-                <img src="/icons/support-guide.svg" alt="" style="width: 20px; height: 20px; display: block;" />
+            <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
+                <img src="/icons/checklist.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
                 <h2 style="margin: 0; font-size: 16px; font-weight: 600; color: #111827;">Lo que puedes hacer:</h2>
             </div>
 
@@ -59,11 +61,9 @@
 
         <!-- Tips for Success Section -->
         <div style="padding: 20px 15px;">
-            <div style="display: flex; align-items: center; margin-bottom: 16px;">
-                <div style="margin-right: 8px; display: flex;">
-                    <img src="/icons/support-guide.svg" alt="" style="width: 20px; height: 20px; display: block;" />
-                </div>
-                <h3 style="margin: 0; font-size: 16px; font-weight: 600; color: #17171C;">Consejos para el éxito</h3>
+            <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
+                <img src="/icons/bulb.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
+                <h3 style="margin: 0; font-size: 16px; font-weight: 600; color: #111827;">Consejos para el éxito</h3>
             </div>
 
             <ul style="font-size: 14px; margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C;">
@@ -77,17 +77,23 @@
         <!-- Call-to-Action Buttons -->
         <div style="padding: 20px 15px; margin-bottom: 30px;">
             <div style="display: flex; flex-direction: column;">
-                <a data-section="video" href="#" target="_blank" rel="noopener noreferrer" style="display: none; align-items: center; text-align: left; width: 100%; padding: 6px 10px; background: #FFF9F5; color: #17171C; border: 1px solid #FFF2EB; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; text-decoration: none; margin-bottom: 12px;">
+                <a data-section="video" href="#" target="_blank" rel="noopener noreferrer" style="display: none; align-items: center; text-align: left; width: 100%; box-sizing: border-box; padding: 6px 10px; background: #FFF9F5; color: #17171C; border: 1px solid #FFF2EB; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; text-decoration: none; margin-bottom: 12px;">
                     <span style="width: 20px; height: 20px; background: #FFF2EB; border-radius: 4px; padding: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-right: 12px;">
                         <img src="/icons/video.svg" alt="" style="width: 20px; height: 20px; display: block;" />
                     </span>
                     Watch the Feature Tutorial
                 </a>
-                <a href="https://directhomeservice.com/book-a-session" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; text-align: left; width: 100%; padding: 6px 10px; background: #F3F4FF; color: #17171C; border: 1px solid #E8E9FF; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; text-decoration: none;">
-                    <span style="width: 20px; height: 20px; border: 1px solid #E8E9FF; background: #E8E9FF; border-radius: 4px; padding: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-right: 12px;">
+                <a href="https://directhomeservice.com/book-a-session" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; text-align: left; width: 100%; box-sizing: border-box; padding: 6px 10px; background: #F3F4FF; color: #17171C; border: 1px solid #E8E9FF; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; text-decoration: none; margin-bottom: 12px;">
+                    <span style="width: 20px; height: 20px; border: 1px solid #E8E9FF; background: #E8E9FF; border-radius: 4px; padding: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-right: 12px; flex-shrink: 0;">
                         <img src="/icons/calendar.svg" alt="" style="width: 20px; height: 20px; display: block;" />
                     </span>
                     Book a Demo or Training Session
+                </a>
+                <a data-support-contact="true" href="#" onclick="window.parent.postMessage({ type: 'DHS_OPEN_SUPPORT' }, '*'); return false;" style="display: flex; align-items: center; text-align: left; width: 100%; box-sizing: border-box; padding: 6px 10px; background: #FFFFFF; color: #17171C; border: 1px solid #E5E7EB; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; text-decoration: none;">
+                    <span style="width: 20px; height: 20px; border: 1px solid #E5E7EB; background: #F9FAFB; border-radius: 4px; padding: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-right: 12px; flex-shrink: 0;">
+                        <img src="/icons/message-circle.svg" alt="" style="width: 20px; height: 20px; display: block;" />
+                    </span>
+                    Contact Support
                 </a>
             </div>
         </div></div>
