@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scheduler</title>
+    <title>Appointments</title>
 </head>
 <body style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1f2937; line-height: 1.6;">
     <div style="overflow: hidden;">
@@ -12,11 +12,11 @@
         <div style="padding: 20px 15px; margin-top: 8px;">
             <div style="display: flex; align-items: center;">
                 <div style="display: flex; margin-right: 12px; background: #F3F4FF; padding: 6px; border-radius: 4px; border: 1px solid #1011150F;">
-                    <img src="/icons/calendar-time.svg" alt="" style="width: 20px; height: 20px; display: block;" />
+                    <img src="/icons/appointment.svg" alt="" style="width: 20px; height: 20px; display: block;" />
                 </div>
-                <h1 style="margin: 0; font-size: 20px; font-weight: 600; color: #111827;">Scheduler</h1>
+                <h1 style="margin: 0; font-size: 20px; font-weight: 600; color: #111827;">Appointments</h1>
             </div>
-            <p style="margin: 6px 0 0 0; color: #6b7280; font-size: 14px;">Plan smarter. Assign crews. Never miss a beat.</p>
+            <p style="margin: 6px 0 0 0; color: #6b7280; font-size: 14px;">Organize site visits before the work begins. Schedule, track, and transition seamlessly.</p>
         </div>
 
         <!-- Video Section (hidden until final video URLs are ready) -->
@@ -51,13 +51,19 @@
             </div>
 
             <ul style="margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C; font-size: 14px;">
-                <li style="margin-bottom: 5px;">View jobs in monthly, weekly, and daily calendar formats</li>
-                <li style="margin-bottom: 5px;">Filter schedules by specific crews</li>
-                <li style="margin-bottom: 5px;">Create new jobs directly from the calendar</li>
-                <li style="margin-bottom: 5px;">Set job priorities and assign checklists</li>
-                <li style="margin-bottom: 5px;">Get instant job details with hover previews</li>
-                <li style="margin-bottom: 5px;">Link jobs to clients, properties, and crews</li>
-                <li style="margin-bottom: 0;">Edit, reassign, or cancel jobs as needed</li>
+                <li style="margin-bottom: 5px;">Manage pre-job visits like evaluations, inspections, and walkthroughs</li>
+                <li style="margin-bottom: 5px;">Create appointments with client, property, crew, and service details</li>
+                <li style="margin-bottom: 5px;">Track status visually: Draft, Scheduled, En Route, Started, Completed, Canceled, No Show</li>
+                <li style="margin-bottom: 5px;">Start timers that auto-update appointment status (En Route or Started)</li>
+                <li style="margin-bottom: 5px;">Mark appointments as Priority or Callback follow-ups</li>
+                <li style="margin-bottom: 5px;">Communicate with clients via chat or keep internal notes</li>
+                <li style="margin-bottom: 5px;">Attach files and documents for easy reference</li>
+                <li style="margin-bottom: 5px;">Log visit time manually for work, travel, office, or job prep</li>
+                <li style="margin-bottom: 5px;">Add services with pricing, taxes, and discounts</li>
+                <li style="margin-bottom: 5px;">View Related Records: linked jobs, estimates, and invoices</li>
+                <li style="margin-bottom: 5px;">Convert completed appointments to Jobs, Estimates, or Invoices</li>
+                <li style="margin-bottom: 5px;">Search by appointment name, client, or crew</li>
+                <li style="margin-bottom: 0;">Filter by status to focus on what matters</li>
             </ul>
         </div>
 
@@ -69,10 +75,11 @@
             </div>
 
             <ul style="font-size: 14px; margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C;">
-                <li style="margin-bottom: 5px;">Use different calendar views to match your planning style</li>
-                <li style="margin-bottom: 5px;">Mark urgent jobs as priority for better crew focus</li>
-                <li style="margin-bottom: 5px;">Filter by crew to avoid scheduling conflicts</li>
-                <li>Add detailed checklists to ensure nothing gets missed</li>
+                <li style="margin-bottom: 5px;">Use the Priority toggle for urgent pre-job visits</li>
+                <li style="margin-bottom: 5px;">Enable Override to schedule outside standard hours</li>
+                <li style="margin-bottom: 5px;">Use Start Timer to automatically track time and update status</li>
+                <li style="margin-bottom: 5px;">Convert completed appointments to jobs or estimates to streamline workflow</li>
+                <li>Link appointments as Callbacks to maintain job history and continuity</li>
             </ul>
         </div>
 
@@ -90,6 +97,12 @@
                         <img src="/icons/calendar.svg" alt="" style="width: 20px; height: 20px; display: block;" />
                     </span>
                     Book a Demo or Training Session
+                </a>
+                <a data-knowledgebase-link="true" href="https://knowledebase.directhomeservice.com" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; text-align: left; width: 100%; box-sizing: border-box; padding: 6px 10px; background: #F5FBFF; color: #17171C; border: 1px solid #E1F0FA; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; text-decoration: none; margin-bottom: 12px;">
+                    <span style="width: 20px; height: 20px; border: 1px solid #E1F0FA; background: #EAF6FE; border-radius: 4px; padding: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-right: 12px; flex-shrink: 0;">
+                        <img src="/icons/book.svg" alt="" style="width: 20px; height: 20px; display: block;" />
+                    </span>
+                    View Knowledgebase
                 </a>
                 <a data-support-contact="true" href="#" onclick="window.parent.postMessage({ type: 'DHS_OPEN_SUPPORT' }, '*'); return false;" style="display: flex; align-items: center; text-align: left; width: 100%; box-sizing: border-box; padding: 6px 10px; background: #FFFFFF; color: #17171C; border: 1px solid #E5E7EB; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; text-decoration: none;">
                     <span style="width: 20px; height: 20px; border: 1px solid #E5E7EB; background: #F9FAFB; border-radius: 4px; padding: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-right: 12px; flex-shrink: 0;">

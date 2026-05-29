@@ -133,4 +133,61 @@ describe("guide HTML source content", () => {
 
 		expect(offenders.map((file) => path.relative(process.cwd(), file))).toEqual([]);
 	});
+
+	it("includes a View Knowledgebase CTA that opens the knowledgebase in a new window on every guide", () => {
+		const offenders = guideFiles.filter((file) => {
+			const html = fs.readFileSync(file, "utf8");
+			const knowledgebaseCta = html.match(/<a [^>]*data-knowledgebase-link="true"[^>]*>/i)?.[0] || "";
+			return (
+				!/View Knowledgebase/i.test(html) ||
+				!/https:\/\/knowledebase\.directhomeservice\.com/i.test(knowledgebaseCta) ||
+				!/target="_blank"/i.test(knowledgebaseCta) ||
+				!/rel="noopener noreferrer"/i.test(knowledgebaseCta) ||
+				!/box-sizing:\s*border-box/i.test(knowledgebaseCta)
+			);
+		});
+
+		expect(offenders.map((file) => path.relative(process.cwd(), file))).toEqual([]);
+	});
+
+	it("uses the failed-QA source documents for appointments, checklists, reports, and timesheets panels", () => {
+		const expectedContent = {
+			"public/en/scheduler.html": [
+				/Organize site visits before the work begins/i,
+				/Track status visually: Draft, Scheduled, En Route, Started, Completed, Canceled, No Show/i,
+				/View Related Records: linked jobs, estimates, and invoices/i,
+				/Convert completed appointments to Jobs, Estimates, or Invoices/i,
+				/Link appointments as Callbacks to maintain job history/i,
+			],
+			"public/en/checklist.html": [
+				/Ensure quality\. Standardize tasks\. Never miss a step\./i,
+				/Create reusable task checklists/i,
+				/Search, archive, and restore checklists as needed/i,
+				/Duplicate and customize frequently used checklists for speed/i,
+			],
+			"public/en/reports.html": [
+				/Time and Labor Reports/i,
+				/Work Order Reports/i,
+				/Technician Performance/i,
+				/Compliance and Safety Reports/i,
+				/Travel and Mileage Reports/i,
+			],
+			"public/en/reports-timesheet.html": [
+				/Track time\. Manage labor\. Simplify payroll\./i,
+				/Time Entry Categories/i,
+				/En Route.*Travel time between jobs/i,
+				/Office Time.*Admin, prep, or other non-field time/i,
+				/Review unlinked entries regularly to ensure accuracy/i,
+			],
+		};
+
+		const offenders = Object.entries(expectedContent).flatMap(([file, patterns]) => {
+			const html = fs.readFileSync(path.join(process.cwd(), file), "utf8");
+			return patterns
+				.filter((pattern) => !pattern.test(html))
+				.map((pattern) => `${file} missing ${pattern}`);
+		});
+
+		expect(offenders).toEqual([]);
+	});
 });
