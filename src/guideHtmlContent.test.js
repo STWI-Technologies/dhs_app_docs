@@ -140,7 +140,7 @@ describe("guide HTML source content", () => {
 			const knowledgebaseCta = html.match(/<a [^>]*data-knowledgebase-link="true"[^>]*>/i)?.[0] || "";
 			return (
 				!/View Knowledgebase/i.test(html) ||
-				!/https:\/\/knowledebase\.directhomeservice\.com/i.test(knowledgebaseCta) ||
+				!/https:\/\/knowledgebase\.directhomeservice\.com\//i.test(knowledgebaseCta) ||
 				!/target="_blank"/i.test(knowledgebaseCta) ||
 				!/rel="noopener noreferrer"/i.test(knowledgebaseCta) ||
 				!/box-sizing:\s*border-box/i.test(knowledgebaseCta)
