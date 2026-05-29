@@ -80,6 +80,15 @@ describe("guide HTML source content", () => {
 		expect(html).not.toContain('<img src="/icons/invoice.svg"');
 	});
 
+	it("does not include the Jobs-only management features section", () => {
+		const offenders = ["en", "es"].filter((locale) => {
+			const html = fs.readFileSync(path.join(process.cwd(), "public", locale, "jobs.html"), "utf8");
+			return /Job Management Features|Funciones de Gestión de Trabajos/i.test(html);
+		});
+
+		expect(offenders).toEqual([]);
+	});
+
 	it("adds breathing room between each guide title and subtitle", () => {
 		const offenders = guideFiles.filter((file) => {
 			const html = fs.readFileSync(file, "utf8");
