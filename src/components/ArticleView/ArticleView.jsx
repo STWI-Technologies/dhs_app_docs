@@ -275,7 +275,6 @@ export default function ArticleView({ article, onBack, backLabel }) {
       {loading ? (
         <div className="article-view__loading">
           <div className="article-view__spinner" />
-          <p>{t.loading}</p>
         </div>
       ) : (
         <>
