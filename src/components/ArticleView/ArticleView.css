@@ -6,6 +6,14 @@
   animation: articleFadeIn 0.4s ease;
 }
 
+.article-view--app-help {
+  border-radius: 0;
+  padding: 20px 16px 28px;
+  box-shadow: none;
+  animation: none;
+  min-height: 100vh;
+}
+
 @keyframes articleFadeIn {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
@@ -33,6 +41,27 @@
   color: #1a1d80;
 }
 
+.article-view__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.article-view__breadcrumb-back {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #2563eb;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .article-view__header {
   display: flex;
   align-items: center;
@@ -40,6 +69,12 @@
   margin-bottom: 32px;
   padding-bottom: 24px;
   border-bottom: 2px solid #f0f1ff;
+}
+
+.article-view--app-help .article-view__header {
+  gap: 0;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
 }
 
 .article-view__icon {
@@ -60,6 +95,11 @@
   font-weight: 700;
   margin: 0 0 4px;
   line-height: 1.2;
+}
+
+.article-view--app-help .article-view__title {
+  font-size: 24px;
+  margin-bottom: 0;
 }
 
 .article-view__category {
@@ -99,6 +139,10 @@
   align-items: flex-start;
 }
 
+.article-view--app-help .article-view__layout {
+  display: block;
+}
+
 .article-view__content {
   flex: 1;
   min-width: 0;
@@ -114,6 +158,11 @@
   overflow-y: auto;
   padding-right: 8px;
   order: -1;
+}
+
+.article-view--app-help .article-view__toc-sidebar {
+  top: 16px;
+  width: 200px;
 }
 
 .article-view__toc-sidebar::-webkit-scrollbar {
@@ -332,10 +381,19 @@
     padding: 20px 16px;
     border-radius: 12px;
   }
+  .article-view--app-help {
+    padding: 16px 14px 24px;
+    border-radius: 0;
+  }
   .article-view__header {
     gap: 12px;
     margin-bottom: 24px;
     padding-bottom: 16px;
+  }
+  .article-view--app-help .article-view__header {
+    gap: 0;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
   }
   .article-view__icon {
     width: 48px;
@@ -345,6 +403,9 @@
   }
   .article-view__title {
     font-size: 20px;
+  }
+  .article-view--app-help .article-view__title {
+    font-size: 21px;
   }
   .article-view__category {
     font-size: 12px;
