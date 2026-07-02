@@ -72,8 +72,8 @@ function getImageCaption(img, index) {
   return { caption, section, description };
 }
 
-export default function ArticleView({ article, onBack }) {
-  const { t, getLocalized } = useLanguage();
+export default function ArticleView({ article, onBack, backLabel }) {
+  const { t, language, getLocalized } = useLanguage();
   const [htmlContent, setHtmlContent] = useState('');
   const [loading, setLoading] = useState(true);
   const [headings, setHeadings] = useState([]);
@@ -103,7 +103,10 @@ export default function ArticleView({ article, onBack }) {
     setActiveId('');
     setLightboxImages([]);
     setLightboxIndex(-1);
-    fetch(`/content/${article.id}.html`)
+    const contentPath = article.contentPath
+      ? article.contentPath[language] || article.contentPath.en
+      : `/content/${article.id}.html`;
+    fetch(contentPath)
       .then(res => {
         if (!res.ok) throw new Error('Not found');
         return res.text();
@@ -116,7 +119,7 @@ export default function ArticleView({ article, onBack }) {
         setHtmlContent('<p>Content not available.</p>');
         setLoading(false);
       });
-  }, [article.id]);
+  }, [article.id, article.contentPath, language]);
 
   // Parse headings, collect images, add click handlers
   useEffect(() => {
@@ -241,25 +244,33 @@ export default function ArticleView({ article, onBack }) {
   const closeLightbox = () => setLightboxIndex(-1);
   const nextImage = () => setLightboxIndex((i) => (i + 1) % lightboxImages.length);
   const prevImage = () => setLightboxIndex((i) => (i - 1 + lightboxImages.length) % lightboxImages.length);
+  const isAppHelpArticle = Boolean(article.contentPath);
 
   return (
-    <div className="article-view">
-      <button className="article-view__back" onClick={onBack}>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M19 12H5M12 19l-7-7 7-7" />
-        </svg>
-        {t.backButton}
-      </button>
-
-      <div className="article-view__header">
-        <span className="article-view__icon">
-          {article.icon && <article.icon size={32} color="#2E3192" variant="stroke" />}
-        </span>
-        <div>
-          <h1 className="article-view__title">{localized.title}</h1>
-          <span className="article-view__category">{localized.category}</span>
+    <div className={`article-view ${isAppHelpArticle ? 'article-view--app-help' : ''}`}>
+      {isAppHelpArticle ? (
+        <div className="article-view__breadcrumb">
+          <button className="article-view__breadcrumb-back" onClick={onBack}>
+            {backLabel || t.backButton}
+          </button>
         </div>
-      </div>
+      ) : (
+        <>
+          <button className="article-view__back" onClick={onBack}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            {backLabel || t.backButton}
+          </button>
+
+          <div className="article-view__header">
+            <div>
+              <h1 className="article-view__title">{localized.title}</h1>
+              <span className="article-view__category">{localized.category}</span>
+            </div>
+          </div>
+        </>
+      )}
 
       {loading ? (
         <div className="article-view__loading">
@@ -268,7 +279,7 @@ export default function ArticleView({ article, onBack }) {
         </div>
       ) : (
         <>
-          {headings.length > 0 && (
+          {!isAppHelpArticle && headings.length > 0 && (
             <div className="article-view__toc-mobile">
               <button className="article-view__toc-toggle" onClick={() => setTocOpen(!tocOpen)}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -299,7 +310,7 @@ export default function ArticleView({ article, onBack }) {
           )}
 
           <div className="article-view__layout">
-            {headings.length > 0 && (
+            {!isAppHelpArticle && headings.length > 0 && (
               <nav className="article-view__toc-sidebar">
                 <p className="article-view__toc-label">On this page</p>
                 <ul className="article-view__toc-list">
@@ -326,7 +337,7 @@ export default function ArticleView({ article, onBack }) {
         </>
       )}
 
-      {article.keywords && article.keywords.length > 0 && (
+      {!isAppHelpArticle && article.keywords && article.keywords.length > 0 && (
         <div className="article-view__keywords">
           <h3 className="article-view__keywords-label">{t.keywords}</h3>
           <div className="article-view__keywords-list">
