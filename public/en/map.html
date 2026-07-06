@@ -186,5 +186,18 @@
             transition: all 0.2s ease;
         }
     </style>
+    <script>
+        (function () {
+            var mobileUserAgentPattern = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i;
+            if (mobileUserAgentPattern.test(window.navigator.userAgent || '')) {
+                document.querySelectorAll('[data-support-contact="true"]').forEach(function (link) {
+                    link.style.display = 'none';
+                    link.setAttribute('aria-hidden', 'true');
+                    link.setAttribute('tabindex', '-1');
+                });
+            }
+        })();
+    </script>
+
 </body>
 </html>
