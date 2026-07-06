@@ -18,6 +18,8 @@ const DECORATOR_IMAGES = new Set([
   'image250.png','image260.png','image263.png','image264.png','image266.png','image267.png'
 ]);
 
+const MOBILE_USER_AGENT_PATTERN = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i;
+
 function getImageCaption(img, index) {
   // Walk UP to find the block-level parent (p or div)
   let block = img.closest('p') || img.closest('div') || img.parentElement;
@@ -140,6 +142,14 @@ export default function ArticleView({ article, onBack, backLabel }) {
     });
     setHeadings(parsed);
     if (parsed.length > 0) setActiveId(parsed[0].id);
+
+    if (MOBILE_USER_AGENT_PATTERN.test(window.navigator.userAgent || '')) {
+      contentRef.current.querySelectorAll('[data-support-contact="true"]').forEach(link => {
+        link.style.display = 'none';
+        link.setAttribute('aria-hidden', 'true');
+        link.setAttribute('tabindex', '-1');
+      });
+    }
 
     // Collect all images, generate captions, inject caption elements
     const imgs = contentRef.current.querySelectorAll('img');
