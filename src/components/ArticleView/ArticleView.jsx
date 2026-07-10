@@ -254,7 +254,7 @@ export default function ArticleView({ article, onBack, backLabel }) {
   const closeLightbox = () => setLightboxIndex(-1);
   const nextImage = () => setLightboxIndex((i) => (i + 1) % lightboxImages.length);
   const prevImage = () => setLightboxIndex((i) => (i - 1 + lightboxImages.length) % lightboxImages.length);
-  const isAppHelpArticle = Boolean(article.contentPath);
+  const isAppHelpArticle = Boolean(article.appHelp);
 
   return (
     <div className={`article-view ${isAppHelpArticle ? 'article-view--app-help' : ''}`}>
