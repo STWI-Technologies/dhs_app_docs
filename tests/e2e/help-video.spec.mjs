@@ -1,19 +1,13 @@
-import { access } from 'node:fs/promises';
+import { access, readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import http from 'node:http';
 import path from 'node:path';
-import { createRequire } from 'node:module';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { fileURLToPath } from 'node:url';
+import { chromium, expect, test } from '@playwright/test';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const publicRoot = path.join(repoRoot, 'public');
-const require = createRequire(import.meta.url);
-const playwrightRoot = process.env.PW_PLAYWRIGHT_DIR ?? '/home/stwi-steve';
-const playwrightPackage = require.resolve('@playwright/test', {
-  paths: [repoRoot, playwrightRoot],
-});
-const playwright = await import(pathToFileURL(playwrightPackage).href);
-const { chromium, expect, test } = playwright.default;
+const fixturesRoot = path.join(repoRoot, 'tests/e2e/fixtures');
 const bundledChromium = chromium.executablePath();
 const chromiumExecutable = existsSync(bundledChromium)
   ? bundledChromium
@@ -21,55 +15,42 @@ const chromiumExecutable = existsSync(bundledChromium)
 
 const MANIFEST_URL = 'https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/video-manifest.json';
 const PROOF_DIRECTORY = '/tmp/SP-UI-683';
-const VIDEO_BASE_URL = 'https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/';
 const mimeTypes = new Map([
   ['.html', 'text/html; charset=utf-8'],
   ['.js', 'application/javascript; charset=utf-8'],
   ['.css', 'text/css; charset=utf-8'],
   ['.png', 'image/png'],
   ['.svg', 'image/svg+xml'],
+  ['.json', 'application/json; charset=utf-8'],
 ]);
-
-const englishVideo = {
-  topic: 'reports-timesheet',
-  device: 'solo_mobile',
-  language: 'en',
-  version: '3.0.0',
-  url: `${VIDEO_BASE_URL}reports-timesheet_solo_mobile_en_3.0.mp4`,
-};
-const spanishVideo = {
-  topic: 'reports-timesheet',
-  device: 'solo_mobile',
-  language: 'es',
-  version: '3.0.0',
-  url: `${VIDEO_BASE_URL}reports-timesheet_solo_mobile_es_3.0.mp4`,
-};
 
 let server;
 let baseUrl;
 
-test.use({
-  video: 'on',
-  launchOptions: { executablePath: chromiumExecutable },
-});
+test.use({ launchOptions: { executablePath: chromiumExecutable } });
 test.describe.configure({ mode: 'serial' });
 
 test.beforeAll(async () => {
   await access(chromiumExecutable);
   await access(publicRoot);
+  await access(fixturesRoot);
   await new Promise((resolve) => {
     server = http.createServer(async (request, response) => {
       const requestPath = new URL(request.url, 'http://127.0.0.1').pathname;
-      const relativePath = requestPath === '/' ? 'en/index.html' : requestPath.slice(1);
-      const filePath = path.resolve(publicRoot, relativePath);
+      const isFixture = requestPath.startsWith('/fixtures/');
+      const root = isFixture ? fixturesRoot : publicRoot;
+      const relativePath = isFixture
+        ? requestPath.slice('/fixtures/'.length)
+        : requestPath === '/' ? 'en/index.html' : requestPath.slice(1);
+      const filePath = path.resolve(root, relativePath);
 
-      if (!filePath.startsWith(`${publicRoot}${path.sep}`)) {
+      if (!filePath.startsWith(`${root}${path.sep}`)) {
         response.writeHead(403).end();
         return;
       }
 
       try {
-        const body = await import('node:fs/promises').then(({ readFile }) => readFile(filePath));
+        const body = await readFile(filePath);
         response.writeHead(200, {
           'Content-Type': mimeTypes.get(path.extname(filePath)) ?? 'application/octet-stream',
         });
@@ -84,10 +65,11 @@ test.beforeAll(async () => {
 });
 
 test.afterAll(async () => {
+  if (!server) return;
   await new Promise((resolve, reject) => server.close((error) => error ? reject(error) : resolve()));
 });
 
-async function loadWithManifest(page, pathname, entries) {
+async function loadWithManifest(page, pathname, fixture) {
   await page.addInitScript(() => {
     const preload = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, 'preload');
     Object.defineProperty(HTMLMediaElement.prototype, 'preload', {
@@ -96,10 +78,12 @@ async function loadWithManifest(page, pathname, entries) {
       set() { preload.set.call(this, 'none'); },
     });
   });
-  await page.route(MANIFEST_URL, (route) => route.fulfill({
-    contentType: 'application/json',
-    body: JSON.stringify({ entries }),
-  }));
+  await page.route(MANIFEST_URL, async (route) => {
+    const fixtureResponse = await route.fetch({
+      url: `${baseUrl}/fixtures/${fixture}.json`,
+    });
+    await route.fulfill({ response: fixtureResponse });
+  });
   await page.goto(`${baseUrl}${pathname}`, { waitUntil: 'domcontentloaded' });
 }
 
@@ -110,28 +94,37 @@ async function captureProof(page, testInfo, name) {
 }
 
 test('renders the active English video on the static English page', async ({ page }, testInfo) => {
-  await loadWithManifest(page, '/en/reports-timesheet.html', [englishVideo]);
+  await loadWithManifest(page, '/en/reports-timesheet.html', 'english');
 
-  await expect(page.locator('[data-dhs-help-video] video')).toHaveAttribute('src', englishVideo.url);
+  await expect(page.locator('[data-dhs-help-video] video')).toHaveAttribute(
+    'src',
+    'https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/reports-timesheet_solo_mobile_en_3.0.mp4',
+  );
   await captureProof(page, testInfo, 'help-video-english');
 });
 
 test('renders the active Spanish video on the static Spanish page', async ({ page }, testInfo) => {
-  await loadWithManifest(page, '/es/reports-timesheet.html', [englishVideo, spanishVideo]);
+  await loadWithManifest(page, '/es/reports-timesheet.html', 'spanish-active');
 
-  await expect(page.locator('[data-dhs-help-video] video')).toHaveAttribute('src', spanishVideo.url);
+  await expect(page.locator('[data-dhs-help-video] video')).toHaveAttribute(
+    'src',
+    'https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/reports-timesheet_solo_mobile_es_3.0.mp4',
+  );
   await captureProof(page, testInfo, 'help-video-spanish-active');
 });
 
 test('falls back to the English video on the static Spanish page', async ({ page }, testInfo) => {
-  await loadWithManifest(page, '/es/reports-timesheet.html', [englishVideo]);
+  await loadWithManifest(page, '/es/reports-timesheet.html', 'english-fallback');
 
-  await expect(page.locator('[data-dhs-help-video] video')).toHaveAttribute('src', englishVideo.url);
+  await expect(page.locator('[data-dhs-help-video] video')).toHaveAttribute(
+    'src',
+    'https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/reports-timesheet_solo_mobile_en_3.0.mp4',
+  );
   await captureProof(page, testInfo, 'help-video-spanish-fallback');
 });
 
 test('removes the marker when the static page has no matching video', async ({ page }, testInfo) => {
-  await loadWithManifest(page, '/en/reports-timesheet.html?fixture=missing', []);
+  await loadWithManifest(page, '/en/reports-timesheet.html?fixture=missing', 'missing');
 
   await expect(page.locator('[data-dhs-help-video]')).toHaveCount(0);
   await captureProof(page, testInfo, 'help-video-missing');
