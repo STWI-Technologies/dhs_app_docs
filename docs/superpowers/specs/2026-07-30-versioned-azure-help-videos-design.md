@@ -20,6 +20,8 @@ Create `dhs-video-storage` under the Codex skills directory. Its command validat
 
 The skill uses Azure storage data-plane access, never account keys or SAS tokens in source. It requires `Storage Blob Data Contributor` scoped to `dhspublicstorage` / `dhs-public-files`.
 
+`video-manifest.json` is fetched by the website. Configure Blob CORS only for `https://app-docs.directhomeservice.com`, `https://docs.directhomeservice.com`, `https://kb.directhomeservice.com`, and `https://knowledgebase.directhomeservice.com` with `GET` and `HEAD` methods.
+
 ## Website runtime
 
 A small static script fetches the public manifest and selects `topic + device + language`. It falls back to English when the localized entry is absent. When no active entry exists, or the browser reports a video error, it removes the complete video region. The script preserves direct `/en/*.html` and `/es/*.html` URLs.
