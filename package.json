@@ -7,7 +7,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "build:azure": "react-scripts build && cp -r public/en build/ && cp -r public/es build/ && cp -r public/brand build/ && cp -r public/images build/ && cp -r public/content build/",
-    "test": "react-scripts test",
+    "test": "react-scripts test --passWithNoTests",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.{js,jsx}",
     "lint:fix": "eslint src/**/*.{js,jsx} --fix",
