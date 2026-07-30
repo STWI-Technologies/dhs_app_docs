@@ -143,6 +143,14 @@ test('removes the entire tutorial region when the static page has no matching vi
   await captureProof(page, testInfo, 'help-video-missing');
 });
 
+test('removes the complete Spanish tutorial region when neither Spanish nor English video exists', async ({ page }, testInfo) => {
+  await loadWithManifest(page, '/es/reports-timesheet.html?fixture=spanish-missing', 'spanish-missing');
+
+  await expect(page.locator('[data-dhs-help-video-region]')).toHaveCount(0);
+  await expect(page.getByRole('heading', { name: '¿Quieres verlo en acción?' })).toHaveCount(0);
+  await captureProof(page, testInfo, 'help-video-spanish-missing');
+});
+
 test('removes the entire tutorial region when the manifest is missing', async ({ page }, testInfo) => {
   await loadWithMissingManifest(page, '/en/reports-timesheet.html?fixture=missing-manifest');
 
