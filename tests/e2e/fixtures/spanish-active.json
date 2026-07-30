@@ -1,18 +1,18 @@
 {
   "entries": [
     {
-      "topic": "reports-timesheet",
+      "topic": "timesheets",
       "device": "solo_mobile",
       "language": "en",
       "version": "3.0.0",
-      "url": "https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/reports-timesheet_solo_mobile_en_3.0.mp4"
+      "url": "https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/timesheets_solo_mobile_en_3.0.0.mp4"
     },
     {
-      "topic": "reports-timesheet",
+      "topic": "timesheets",
       "device": "solo_mobile",
       "language": "es",
       "version": "3.0.0",
-      "url": "https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/reports-timesheet_solo_mobile_es_3.0.mp4"
+      "url": "https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/timesheets_solo_mobile_es_3.0.0.mp4"
     }
   ]
 }

@@ -28,6 +28,10 @@
     return filename.replace(/\.html$/, '');
   }
 
+  function videoTopic(marker, pathname) {
+    return marker?.dataset?.dhsVideoTopic || pageTopic(pathname);
+  }
+
   function pageLanguage(pathname) {
     return (pathname ?? '').split('/').filter(Boolean).at(0) === 'es' ? 'es' : 'en';
   }
@@ -53,11 +57,15 @@
       if (!response.ok) throw new Error('Unable to load help video manifest');
 
       const manifest = await response.json();
-      const topic = pageTopic(window.location.pathname);
       const language = pageLanguage(window.location.pathname);
 
       markers.forEach((marker) => {
-        const video = resolveVideo(manifest, topic, marker.dataset.dhsVideoDevice, language);
+        const video = resolveVideo(
+          manifest,
+          videoTopic(marker, window.location.pathname),
+          marker.dataset.dhsVideoDevice,
+          language,
+        );
         if (!video) {
           removeVideoRegion(marker);
           return;
@@ -76,7 +84,7 @@
     }
   }
 
-  const api = { MANIFEST_URL, pageLanguage, pageTopic, removeVideoRegion, renderHelpVideos, resolveVideo };
+  const api = { MANIFEST_URL, pageLanguage, pageTopic, removeVideoRegion, renderHelpVideos, resolveVideo, videoTopic };
 
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   if (typeof window !== 'undefined') {

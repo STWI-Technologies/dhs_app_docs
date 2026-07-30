@@ -110,9 +110,19 @@ test('renders the active English video on the static English page', async ({ pag
   await expect(page.locator('[data-dhs-help-video-region]')).toHaveCount(1);
   await expect(page.locator('[data-dhs-help-video] video')).toHaveAttribute(
     'src',
-    'https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/reports-timesheet_solo_mobile_en_3.0.mp4',
+    'https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/timesheets_solo_mobile_en_3.0.0.mp4',
   );
   await captureProof(page, testInfo, 'help-video-english');
+});
+
+test('resolves the timesheets topic on the reports-timesheet static page', async ({ page }, testInfo) => {
+  await loadWithManifest(page, '/en/reports-timesheet.html', 'timesheets');
+
+  await expect(page.locator('[data-dhs-help-video] video')).toHaveAttribute(
+    'src',
+    'https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/timesheets_solo_mobile_en_3.0.0.mp4',
+  );
+  await captureProof(page, testInfo, 'help-video-timesheets-topic');
 });
 
 test('renders the active Spanish video on the static Spanish page', async ({ page }, testInfo) => {
@@ -120,7 +130,7 @@ test('renders the active Spanish video on the static Spanish page', async ({ pag
 
   await expect(page.locator('[data-dhs-help-video] video')).toHaveAttribute(
     'src',
-    'https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/reports-timesheet_solo_mobile_es_3.0.mp4',
+    'https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/timesheets_solo_mobile_es_3.0.0.mp4',
   );
   await captureProof(page, testInfo, 'help-video-spanish-active');
 });
@@ -130,7 +140,7 @@ test('falls back to the English video on the static Spanish page', async ({ page
 
   await expect(page.locator('[data-dhs-help-video] video')).toHaveAttribute(
     'src',
-    'https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/reports-timesheet_solo_mobile_en_3.0.mp4',
+    'https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/timesheets_solo_mobile_en_3.0.0.mp4',
   );
   await captureProof(page, testInfo, 'help-video-spanish-fallback');
 });

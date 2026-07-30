@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import runtime from './help-video.js';
 
-const { removeVideoRegion, resolveVideo } = runtime;
+const { removeVideoRegion, resolveVideo, videoTopic } = runtime;
 const manifest = {
   entries: [
     {
@@ -32,6 +32,12 @@ test('resolveVideo falls back to English for an unsupported requested language',
 
 test('resolveVideo returns null when no matching entry exists', () => {
   assert.equal(resolveVideo({ entries: [] }, 'reports-timesheet', 'solo_mobile', 'en'), null);
+});
+
+test('videoTopic uses an explicit marker topic instead of the static filename', () => {
+  const marker = { dataset: { dhsVideoTopic: 'timesheets' } };
+
+  assert.equal(videoTopic(marker, '/en/reports-timesheet.html'), 'timesheets');
 });
 
 test('removeVideoRegion removes the heading and mount through their enclosing region', () => {
