@@ -161,6 +161,19 @@ test('removes the complete Spanish tutorial region when neither Spanish nor Engl
   await captureProof(page, testInfo, 'help-video-spanish-missing');
 });
 
+test('does not retain a legacy embedded resource when the target video is absent', async ({ page }, testInfo) => {
+  const requests = [];
+  page.on('request', (request) => requests.push(request.url()));
+
+  await loadWithManifest(page, '/en/reports-timesheet.html?fixture=missing', 'missing');
+
+  await expect(page.locator('[data-dhs-help-video-region]')).toHaveCount(0);
+  await expect(page.locator('iframe')).toHaveCount(0);
+  expect(requests).toContain(MANIFEST_URL);
+  expect(requests.some((url) => /youtube\.com|youtu\.be/i.test(url))).toBe(false);
+  await captureProof(page, testInfo, 'help-video-no-legacy-embed');
+});
+
 test('removes the entire tutorial region when the manifest is missing', async ({ page }, testInfo) => {
   await loadWithMissingManifest(page, '/en/reports-timesheet.html?fixture=missing-manifest');
 
