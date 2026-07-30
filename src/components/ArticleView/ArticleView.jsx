@@ -200,11 +200,10 @@ export default function ArticleView({ article, onBack }) {
         setLightboxIndex(parseInt(img.dataset.lightboxIndex, 10));
       }
     };
-    contentRef.current.addEventListener('click', handleImgClick);
+    const contentElement = contentRef.current;
+    contentElement.addEventListener('click', handleImgClick);
     return () => {
-      if (contentRef.current) {
-        contentRef.current.removeEventListener('click', handleImgClick);
-      }
+      contentElement.removeEventListener('click', handleImgClick);
     };
   }, [htmlContent, loading]);
 
