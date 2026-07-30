@@ -32,8 +32,12 @@
     return (pathname ?? '').split('/').filter(Boolean).at(0) === 'es' ? 'es' : 'en';
   }
 
+  function removeVideoRegion(marker) {
+    (marker.closest('[data-dhs-help-video-region]') ?? marker).remove();
+  }
+
   function removeMarkers(markers) {
-    markers.forEach((marker) => marker.remove());
+    markers.forEach(removeVideoRegion);
   }
 
   async function renderHelpVideos() {
@@ -55,7 +59,7 @@
       markers.forEach((marker) => {
         const video = resolveVideo(manifest, topic, marker.dataset.dhsVideoDevice, language);
         if (!video) {
-          marker.remove();
+          removeVideoRegion(marker);
           return;
         }
 
@@ -64,7 +68,7 @@
         element.controls = true;
         element.preload = 'metadata';
         element.style.cssText = 'width: 100%; display: block; border-radius: 8px;';
-        element.addEventListener('error', () => marker.remove(), { once: true });
+        element.addEventListener('error', () => removeVideoRegion(marker), { once: true });
         marker.replaceChildren(element);
       });
     } catch {
@@ -72,7 +76,7 @@
     }
   }
 
-  const api = { MANIFEST_URL, pageLanguage, pageTopic, renderHelpVideos, resolveVideo };
+  const api = { MANIFEST_URL, pageLanguage, pageTopic, removeVideoRegion, renderHelpVideos, resolveVideo };
 
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   if (typeof window !== 'undefined') {

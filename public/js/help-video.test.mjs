@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import runtime from './help-video.js';
 
-const { resolveVideo } = runtime;
+const { removeVideoRegion, resolveVideo } = runtime;
 const manifest = {
   entries: [
     {
@@ -32,4 +32,22 @@ test('resolveVideo falls back to English for an unsupported requested language',
 
 test('resolveVideo returns null when no matching entry exists', () => {
   assert.equal(resolveVideo({ entries: [] }, 'reports-timesheet', 'solo_mobile', 'en'), null);
+});
+
+test('removeVideoRegion removes the heading and mount through their enclosing region', () => {
+  let markerRemoved = false;
+  let regionRemoved = false;
+  const region = { remove: () => { regionRemoved = true; } };
+  const marker = {
+    closest: (selector) => {
+      assert.equal(selector, '[data-dhs-help-video-region]');
+      return region;
+    },
+    remove: () => { markerRemoved = true; },
+  };
+
+  removeVideoRegion(marker);
+
+  assert.equal(regionRemoved, true);
+  assert.equal(markerRemoved, false);
 });

@@ -69,21 +69,32 @@ test.afterAll(async () => {
   await new Promise((resolve, reject) => server.close((error) => error ? reject(error) : resolve()));
 });
 
-async function loadWithManifest(page, pathname, fixture) {
-  await page.addInitScript(() => {
-    const preload = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, 'preload');
-    Object.defineProperty(HTMLMediaElement.prototype, 'preload', {
-      configurable: true,
-      get() { return preload.get.call(this); },
-      set() { preload.set.call(this, 'none'); },
+async function loadWithManifest(page, pathname, fixture, { disableMediaLoading = true } = {}) {
+  if (disableMediaLoading) {
+    await page.addInitScript(() => {
+      const preload = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, 'preload');
+      Object.defineProperty(HTMLMediaElement.prototype, 'preload', {
+        configurable: true,
+        get() { return preload.get.call(this); },
+        set() { preload.set.call(this, 'none'); },
+      });
     });
-  });
+  }
   await page.route(MANIFEST_URL, async (route) => {
     const fixtureResponse = await route.fetch({
       url: `${baseUrl}/fixtures/${fixture}.json`,
     });
     await route.fulfill({ response: fixtureResponse });
   });
+  await page.goto(`${baseUrl}${pathname}`, { waitUntil: 'domcontentloaded' });
+}
+
+async function loadWithMissingManifest(page, pathname) {
+  await page.route(MANIFEST_URL, (route) => route.fulfill({
+    status: 404,
+    contentType: 'application/json',
+    body: '{"error":"manifest not found"}',
+  }));
   await page.goto(`${baseUrl}${pathname}`, { waitUntil: 'domcontentloaded' });
 }
 
@@ -96,6 +107,7 @@ async function captureProof(page, testInfo, name) {
 test('renders the active English video on the static English page', async ({ page }, testInfo) => {
   await loadWithManifest(page, '/en/reports-timesheet.html', 'english');
 
+  await expect(page.locator('[data-dhs-help-video-region]')).toHaveCount(1);
   await expect(page.locator('[data-dhs-help-video] video')).toHaveAttribute(
     'src',
     'https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/reports-timesheet_solo_mobile_en_3.0.mp4',
@@ -123,9 +135,34 @@ test('falls back to the English video on the static Spanish page', async ({ page
   await captureProof(page, testInfo, 'help-video-spanish-fallback');
 });
 
-test('removes the marker when the static page has no matching video', async ({ page }, testInfo) => {
+test('removes the entire tutorial region when the static page has no matching video', async ({ page }, testInfo) => {
   await loadWithManifest(page, '/en/reports-timesheet.html?fixture=missing', 'missing');
 
-  await expect(page.locator('[data-dhs-help-video]')).toHaveCount(0);
+  await expect(page.locator('[data-dhs-help-video-region]')).toHaveCount(0);
+  await expect(page.getByRole('heading', { name: 'Want to See It In Action?' })).toHaveCount(0);
   await captureProof(page, testInfo, 'help-video-missing');
+});
+
+test('removes the entire tutorial region when the manifest is missing', async ({ page }, testInfo) => {
+  await loadWithMissingManifest(page, '/en/reports-timesheet.html?fixture=missing-manifest');
+
+  await expect(page.locator('[data-dhs-help-video-region]')).toHaveCount(0);
+  await expect(page.getByRole('heading', { name: 'Want to See It In Action?' })).toHaveCount(0);
+  await captureProof(page, testInfo, 'help-video-missing-manifest');
+});
+
+test('removes the entire tutorial region when the selected media fails to load', async ({ page }, testInfo) => {
+  await page.route('https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/*.mp4', (route) => (
+    route.fulfill({ status: 404, contentType: 'video/mp4', body: '' })
+  ));
+  await loadWithManifest(
+    page,
+    '/en/reports-timesheet.html?fixture=media-error',
+    'english',
+    { disableMediaLoading: false },
+  );
+
+  await expect(page.locator('[data-dhs-help-video-region]')).toHaveCount(0);
+  await expect(page.getByRole('heading', { name: 'Want to See It In Action?' })).toHaveCount(0);
+  await captureProof(page, testInfo, 'help-video-media-error');
 });
