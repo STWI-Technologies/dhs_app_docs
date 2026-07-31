@@ -16,9 +16,29 @@ import {
   AiBrain01Icon,
   TelephoneIcon,
   Layers01Icon,
+  SmartPhone01Icon,
 } from 'hugeicons-react';
 
 const articles = [
+  {
+    id: 'mobile-app',
+    icon: SmartPhone01Icon,
+    contentPath: {
+      en: '/content/mobile-app.html',
+      es: '/content/mobile-app-es.html',
+    },
+    en: {
+      title: 'Mobile App',
+      category: 'Mobile App',
+      overview: 'Run your business from your phone or tablet. Sign in, navigate the app, and manage jobs, appointments, estimates, invoices, clients, your catalog, timesheets, messaging, and the AI Assistant on iOS and Android.'
+    },
+    es: {
+      title: 'Aplicación Móvil',
+      category: 'Aplicación Móvil',
+      overview: 'Gestione su negocio desde el teléfono o la tableta. Inicie sesión, navegue la app y administre trabajos, citas, presupuestos, facturas, clientes, su catálogo, hojas de tiempo, mensajería y el Asistente de IA en iOS y Android.'
+    },
+    keywords: ['mobile', 'app', 'móvil', 'aplicación', 'ios', 'android', 'phone', 'teléfono', 'field', 'campo', 'jobs', 'appointments', 'estimates', 'invoices', 'timesheet', 'timer', 'work hub', 'quick add']
+  },
   {
     id: 'users-management',
     icon: UserGroupIcon,
@@ -278,6 +298,7 @@ const articles = [
 
 export const categoryOrder = [
   'Getting Started',
+  'Mobile App',
   'People & Teams',
   'Clients & Properties',
   'Services & Products',
