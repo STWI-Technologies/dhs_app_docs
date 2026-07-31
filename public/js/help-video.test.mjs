@@ -4,7 +4,7 @@ import contract from './help-video-contract.js';
 import runtime from './help-video.js';
 
 const { deviceForWidth, normalizeHelpContext, normalizeManifestEntry, resolveVideo } = contract;
-const { removeVideoRegion, videoTopic } = runtime;
+const { helpVideoContext, removeVideoRegion, resolveVideo: resolveRuntimeVideo, videoTopic } = runtime;
 const manifest = {
   entries: [
     {
@@ -87,6 +87,32 @@ test('resolveVideo falls back to English only for a missing Spanish match', () =
 
 test('resolveVideo returns null when no plan and device match exists', () => {
   assert.equal(resolveVideo(manifest, { topic: 'timesheets', plan: 'standard', device: 'mobile', language: 'en' }), null);
+});
+
+test('the static renderer resolves with the query plan and language plus the final viewport device', () => {
+  const originalWindow = globalThis.window;
+  globalThis.window = {
+    DHSHelpVideoContract: contract,
+    innerWidth: 480,
+    location: {
+      pathname: '/en/reports-timesheet.html',
+      search: '?plan=solo&language=en',
+    },
+  };
+
+  try {
+    const context = helpVideoContext({ dataset: { dhsVideoTopic: 'reports-timesheet' } });
+
+    assert.deepEqual(context, {
+      topic: 'reports-timesheet',
+      plan: 'solo',
+      device: 'mobile',
+      language: 'en',
+    });
+    assert.equal(resolveRuntimeVideo(manifest, context)?.url, manifest.entries[0].url);
+  } finally {
+    globalThis.window = originalWindow;
+  }
 });
 
 test('videoTopic uses an explicit marker topic instead of the static filename', () => {

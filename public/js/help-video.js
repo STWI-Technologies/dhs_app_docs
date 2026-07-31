@@ -1,45 +1,20 @@
 (function () {
   const MANIFEST_URL = 'https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/video-manifest.json';
-  const AZURE_VIDEO_URL = /^https:\/\/dhspublicstorage\.blob\.core\.windows\.net\/dhs-public-files\/help-videos\/[^/?#]+\.mp4$/;
 
-  function supportedLanguage(language) {
-    return language === 'es' ? 'es' : 'en';
+  function helpVideoContract() {
+    const contract = typeof window !== 'undefined' ? window.DHSHelpVideoContract : null;
+
+    if (
+      typeof contract?.deviceForWidth !== 'function'
+      || typeof contract?.normalizeHelpContext !== 'function'
+      || typeof contract?.resolveVideo !== 'function'
+    ) return null;
+
+    return contract;
   }
 
-  function resolveVideo(manifest, topic, device, language) {
-    const contract = typeof window !== 'undefined' ? window.DHSHelpVideoContract : null;
-    if (contract) {
-      const context = contract.normalizeHelpContext(window.location.search);
-      const normalizedMarker = contract.normalizeManifestEntry({
-        plan: context.plan,
-        device,
-        language,
-      });
-
-      if (!normalizedMarker) return null;
-
-      return contract.resolveVideo(manifest, {
-        topic,
-        plan: normalizedMarker.plan,
-        device: normalizedMarker.device,
-        language: normalizedMarker.language,
-      });
-    }
-
-    if (!Array.isArray(manifest?.entries)) return null;
-
-    const requestedLanguage = supportedLanguage(language);
-    const matchingEntry = (entry, entryLanguage) => (
-      entry?.topic === topic
-      && entry.device === device
-      && entry.language === entryLanguage
-      && typeof entry.url === 'string'
-      && AZURE_VIDEO_URL.test(entry.url)
-    );
-
-    return manifest.entries.find((entry) => matchingEntry(entry, requestedLanguage))
-      ?? manifest.entries.find((entry) => matchingEntry(entry, 'en'))
-      ?? null;
+  function resolveVideo(manifest, context) {
+    return helpVideoContract()?.resolveVideo(manifest, context) ?? null;
   }
 
   function pageTopic(pathname) {
@@ -51,8 +26,18 @@
     return marker?.dataset?.dhsVideoTopic || pageTopic(pathname);
   }
 
-  function pageLanguage(pathname) {
-    return (pathname ?? '').split('/').filter(Boolean).at(0) === 'es' ? 'es' : 'en';
+  function helpVideoContext(marker) {
+    const contract = helpVideoContract();
+    if (!contract || typeof window === 'undefined') return null;
+
+    const device = contract.deviceForWidth(window.innerWidth);
+    if (device !== 'mobile' && device !== 'desktop') return null;
+
+    return {
+      topic: videoTopic(marker, window.location.pathname),
+      ...contract.normalizeHelpContext(window.location.search),
+      device,
+    };
   }
 
   function removeVideoRegion(marker) {
@@ -69,6 +54,23 @@
     const markers = [...document.querySelectorAll('[data-dhs-help-video]')];
     if (!markers.length) return;
 
+    if (!helpVideoContract()) {
+      removeMarkers(markers);
+      return;
+    }
+
+    const markerContexts = markers.map((marker) => ({
+      marker,
+      context: helpVideoContext(marker),
+    }));
+    const supportedMarkers = markerContexts.filter(({ marker, context }) => {
+      if (context) return true;
+      removeVideoRegion(marker);
+      return false;
+    });
+
+    if (!supportedMarkers.length) return;
+
     try {
       const response = await window.fetch(MANIFEST_URL, {
         headers: { Accept: 'application/json' },
@@ -76,15 +78,8 @@
       if (!response.ok) throw new Error('Unable to load help video manifest');
 
       const manifest = await response.json();
-      const language = pageLanguage(window.location.pathname);
-
-      markers.forEach((marker) => {
-        const video = resolveVideo(
-          manifest,
-          videoTopic(marker, window.location.pathname),
-          marker.dataset.dhsVideoDevice,
-          language,
-        );
+      supportedMarkers.forEach(({ marker, context }) => {
+        const video = resolveVideo(manifest, context);
         if (!video) {
           removeVideoRegion(marker);
           return;
@@ -99,11 +94,11 @@
         marker.replaceChildren(element);
       });
     } catch {
-      removeMarkers(markers);
+      removeMarkers(supportedMarkers.map(({ marker }) => marker));
     }
   }
 
-  const api = { MANIFEST_URL, pageLanguage, pageTopic, removeVideoRegion, renderHelpVideos, resolveVideo, videoTopic };
+  const api = { MANIFEST_URL, helpVideoContext, pageTopic, removeVideoRegion, renderHelpVideos, resolveVideo, videoTopic };
 
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   if (typeof window !== 'undefined') {
