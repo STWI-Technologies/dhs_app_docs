@@ -44,20 +44,15 @@ describe("guide HTML source content", () => {
 		expect(offenders.map((file) => path.relative(process.cwd(), file))).toEqual([]);
 	});
 
-	it("keeps video sections in the source but hides them until final video URLs are ready", () => {
+	it("uses manifest-backed video regions now that final video URLs are available", () => {
 		const offenders = guideFiles.filter((file) => {
 			const html = fs.readFileSync(file, "utf8");
-			const videoStart = html.search(/<div data-section="video"[^>]*>/i);
-			const nextSection = videoStart === -1 ? -1 : html.indexOf("\n        <!--", videoStart + 1);
-			const videoSection = videoStart === -1 ? "" : html.slice(videoStart, nextSection === -1 ? html.length : nextSection);
 			return (
-				/YouTube Video Embed|youtube\.com|Want to See It In Action|¿Quieres verlo/i.test(html) &&
-				!(
-					videoSection &&
-					/display:\s*none/i.test(videoSection) &&
-					/(Want to See It In Action|¿Quieres verlo)/i.test(videoSection) &&
-					/youtube\.com/i.test(videoSection)
-				)
+				!/data-dhs-help-video-region/i.test(html) ||
+				!/data-dhs-help-video/i.test(html) ||
+				!/data-dhs-video-device="solo_mobile"/i.test(html) ||
+				!/src="\/js\/help-video\.js" defer/i.test(html) ||
+				/youtube\.com|youtu\.be/i.test(html)
 			);
 		});
 

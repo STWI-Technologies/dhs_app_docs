@@ -20,7 +20,7 @@
         </div>
 
         <!-- Video Section (hidden until final video URLs are ready) -->
-        <div data-section="video" style="display: none;">
+        <div data-dhs-help-video-region>
             <div style="display: flex; align-items: center; padding: 0px 15px;">
                 <div style="display: flex; align-items: center; margin-right: 12px;">
                     <img src="/icons/video.svg" alt="" style="width: 20px; height: 20px; display: block;" />
@@ -29,19 +29,9 @@
                     Want to See It In Action?
                 </h3>
             </div>
-            <!-- YouTube Video Embed -->
-            <div style="margin: 0px 10px; border-radius: 8px; overflow: hidden; border: 1px solid #0000001F;">
-            <iframe
-                            width="100%"
-                            height="200"
-                            src="https://www.youtube.com/embed/zQnBQ4tB3ZA?rel=0&modestbranding=1"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen
-                            style="border-radius: 8px; display: block;">
-                        </iframe>
-            </div>
+                    <div style="margin: 0px 10px; border-radius: 8px; overflow: hidden; border: 1px solid #0000001F;" data-dhs-help-video data-dhs-video-device="solo_mobile" data-dhs-video-topic="job"></div>
         </div>
+        <script src="/js/help-video.js" defer></script>
 
         <!-- What You Can Do Section -->
         <div style="padding: 20px 15px;">

@@ -1,13 +1,13 @@
 {
   "name": "dhs-knowledge-base",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Direct Home Service Knowledge Base React Application",
   "main": "src/index.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "build:azure": "react-scripts build && cp -r public/en build/ && cp -r public/es build/ && cp -r public/brand build/ && cp -r public/images build/ && cp -r public/content build/",
-    "test": "react-scripts test",
+    "test": "react-scripts test --passWithNoTests",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.{js,jsx}",
     "lint:fix": "eslint src/**/*.{js,jsx} --fix",
@@ -28,6 +28,7 @@
     "web-vitals": "^3.1.1"
   },
   "devDependencies": {
+    "@playwright/test": "1.60.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
