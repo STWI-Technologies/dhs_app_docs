@@ -7,6 +7,25 @@
   }
 
   function resolveVideo(manifest, topic, device, language) {
+    const contract = typeof window !== 'undefined' ? window.DHSHelpVideoContract : null;
+    if (contract) {
+      const context = contract.normalizeHelpContext(window.location.search);
+      const normalizedMarker = contract.normalizeManifestEntry({
+        plan: context.plan,
+        device,
+        language,
+      });
+
+      if (!normalizedMarker) return null;
+
+      return contract.resolveVideo(manifest, {
+        topic,
+        plan: normalizedMarker.plan,
+        device: normalizedMarker.device,
+        language: normalizedMarker.language,
+      });
+    }
+
     if (!Array.isArray(manifest?.entries)) return null;
 
     const requestedLanguage = supportedLanguage(language);

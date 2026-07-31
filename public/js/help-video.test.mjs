@@ -1,8 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import contract from './help-video-contract.js';
 import runtime from './help-video.js';
 
-const { removeVideoRegion, resolveVideo, videoTopic } = runtime;
+const { deviceForWidth, normalizeHelpContext, normalizeManifestEntry, resolveVideo } = contract;
+const { removeVideoRegion, videoTopic } = runtime;
 const manifest = {
   entries: [
     {
@@ -22,16 +24,69 @@ const manifest = {
   ],
 };
 
-test('resolveVideo selects the active entry for the requested language', () => {
-  assert.equal(resolveVideo(manifest, 'reports-timesheet', 'solo_mobile', 'es').version, '3.0.0');
+test('normalizeHelpContext preserves supported plan and language query values', () => {
+  assert.deepEqual(normalizeHelpContext('?plan=solo&language=es'), { plan: 'solo', language: 'es' });
 });
 
-test('resolveVideo falls back to English for an unsupported requested language', () => {
-  assert.equal(resolveVideo(manifest, 'reports-timesheet', 'solo_mobile', 'fr').language, 'en');
+test('normalizeHelpContext defaults unsupported plan and language query values', () => {
+  assert.deepEqual(normalizeHelpContext('?plan=team&language=fr'), { plan: 'standard', language: 'en' });
 });
 
-test('resolveVideo returns null when no matching entry exists', () => {
-  assert.equal(resolveVideo({ entries: [] }, 'reports-timesheet', 'solo_mobile', 'en'), null);
+test('deviceForWidth treats 480px as mobile', () => {
+  assert.equal(deviceForWidth(480), 'mobile');
+  assert.equal(deviceForWidth(481), 'desktop');
+});
+
+test('normalizeManifestEntry maps legacy solo_mobile entries to plan and device fields', () => {
+  assert.deepEqual(normalizeManifestEntry(manifest.entries[1]), {
+    topic: 'reports-timesheet',
+    plan: 'solo',
+    device: 'mobile',
+    language: 'es',
+    version: '3.0.0',
+    url: 'https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/reports-timesheet_solo_mobile_es_3.0.0.mp4',
+  });
+});
+
+test('resolveVideo selects a full plan-aware match before falling back to English', () => {
+  const planAwareManifest = {
+    entries: [
+      {
+        topic: 'timesheets',
+        plan: 'standard',
+        device: 'mobile',
+        language: 'en',
+        version: '4.0.0',
+        url: 'https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/timesheets_standard_mobile_en_4.0.0.mp4',
+      },
+      {
+        topic: 'timesheets',
+        plan: 'standard',
+        device: 'mobile',
+        language: 'es',
+        version: '4.0.0',
+        url: 'https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/timesheets_standard_mobile_es_4.0.0.mp4',
+      },
+    ],
+  };
+
+  assert.equal(resolveVideo(planAwareManifest, {
+    topic: 'timesheets', plan: 'standard', device: 'mobile', language: 'es',
+  }).language, 'es');
+});
+
+test('resolveVideo falls back to English only for a missing Spanish match', () => {
+  assert.equal(resolveVideo(manifest, {
+    topic: 'reports-timesheet', plan: 'solo', device: 'mobile', language: 'es',
+  }).language, 'es');
+
+  assert.equal(resolveVideo({ entries: [manifest.entries[0]] }, {
+    topic: 'reports-timesheet', plan: 'solo', device: 'mobile', language: 'es',
+  }).language, 'en');
+});
+
+test('resolveVideo returns null when no plan and device match exists', () => {
+  assert.equal(resolveVideo(manifest, { topic: 'timesheets', plan: 'standard', device: 'mobile', language: 'en' }), null);
 });
 
 test('videoTopic uses an explicit marker topic instead of the static filename', () => {
