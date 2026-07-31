@@ -4,6 +4,31 @@ import { HelpVideoProvider } from '../../context/HelpVideoContext';
 import HelpVideo from './index';
 
 const videoUrl = 'https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/timesheets_solo_mobile_en_3.0.0.mp4';
+const helpVideoContract = {
+  deviceForWidth: (width) => width <= 480 ? 'mobile' : 'desktop',
+  normalizeHelpContext: (search) => {
+    const params = new URLSearchParams(search);
+
+    return {
+      plan: params.get('plan') === 'solo' ? 'solo' : 'standard',
+      language: params.get('language') === 'es' ? 'es' : 'en',
+    };
+  },
+  resolveVideo: (manifest, context) => {
+    if (!Array.isArray(manifest?.entries)) return null;
+
+    const matches = (entry, language) => (
+      entry?.topic === context.topic
+      && entry.plan === context.plan
+      && entry.device === context.device
+      && entry.language === language
+    );
+
+    return manifest.entries.find((entry) => matches(entry, context.language))
+      ?? (context.language === 'es' ? manifest.entries.find((entry) => matches(entry, 'en')) : null)
+      ?? null;
+  },
+};
 
 function renderHelpVideo() {
   window.history.replaceState({}, '', '/app-help/articles/timesheets?plan=solo&language=en');
@@ -25,18 +50,22 @@ function response(body) {
 describe('HelpVideo', () => {
   let originalFetch;
   let originalInnerWidth;
+  let originalHelpVideoContract;
 
   beforeEach(() => {
     originalFetch = window.fetch;
     originalInnerWidth = window.innerWidth;
+    originalHelpVideoContract = window.DHSHelpVideoContract;
     Object.defineProperty(window, 'innerWidth', { configurable: true, value: 480 });
     window.fetch = jest.fn();
+    window.DHSHelpVideoContract = helpVideoContract;
   });
 
   afterEach(() => {
     cleanup();
     window.fetch = originalFetch;
     Object.defineProperty(window, 'innerWidth', { configurable: true, value: originalInnerWidth });
+    window.DHSHelpVideoContract = originalHelpVideoContract;
     window.history.replaceState({}, '', '/');
   });
 

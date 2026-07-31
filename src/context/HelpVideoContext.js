@@ -1,11 +1,17 @@
 import React, { createContext, useContext, useState } from 'react';
-import helpVideoContract from '../../public/js/help-video-contract';
 import { LanguageProvider } from './LanguageContext';
 
 const HelpVideoContext = createContext();
+const DEFAULT_HELP_VIDEO_CONTEXT = {
+  plan: 'standard',
+  language: 'en',
+  canonicalSearch: '?plan=standard&language=en',
+};
 
 function readHelpVideoContext() {
-  const contract = window.DHSHelpVideoContract || helpVideoContract;
+  const contract = window.DHSHelpVideoContract;
+  if (typeof contract?.normalizeHelpContext !== 'function') return DEFAULT_HELP_VIDEO_CONTEXT;
+
   const { plan, language } = contract.normalizeHelpContext(window.location.search);
 
   return {
