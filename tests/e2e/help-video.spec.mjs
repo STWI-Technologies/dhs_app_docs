@@ -105,7 +105,8 @@ async function captureProof(page, testInfo, name) {
 }
 
 test('renders the active English video on the static English page', async ({ page }, testInfo) => {
-  await loadWithManifest(page, '/en/reports-timesheet.html', 'english');
+  await page.setViewportSize({ width: 480, height: 720 });
+  await loadWithManifest(page, '/en/reports-timesheet.html?plan=solo&language=en', 'english');
 
   await expect(page.locator('[data-dhs-help-video-region]')).toHaveCount(1);
   await expect(page.locator('[data-dhs-help-video] video')).toHaveAttribute(
@@ -115,8 +116,26 @@ test('renders the active English video on the static English page', async ({ pag
   await captureProof(page, testInfo, 'help-video-english');
 });
 
+test('removes the static tutorial region when the query plan has no video for the final viewport', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 720 });
+  await loadWithManifest(page, '/en/reports-timesheet.html?plan=standard&language=en', 'english');
+
+  await expect(page.locator('[data-dhs-help-video-region]')).toHaveCount(0);
+});
+
+test('uses the query plan and final mobile viewport to select the static video', async ({ page }) => {
+  await page.setViewportSize({ width: 480, height: 720 });
+  await loadWithManifest(page, '/en/reports-timesheet.html?plan=solo&language=en', 'english');
+
+  await expect(page.locator('[data-dhs-help-video] video')).toHaveAttribute(
+    'src',
+    /timesheets_solo_mobile_en_3\.0\.0\.mp4$/,
+  );
+});
+
 test('resolves the timesheets topic on the reports-timesheet static page', async ({ page }, testInfo) => {
-  await loadWithManifest(page, '/en/reports-timesheet.html', 'timesheets');
+  await page.setViewportSize({ width: 480, height: 720 });
+  await loadWithManifest(page, '/en/reports-timesheet.html?plan=solo&language=en', 'timesheets');
 
   await expect(page.locator('[data-dhs-help-video] video')).toHaveAttribute(
     'src',
@@ -126,7 +145,8 @@ test('resolves the timesheets topic on the reports-timesheet static page', async
 });
 
 test('renders the active Spanish video on the static Spanish page', async ({ page }, testInfo) => {
-  await loadWithManifest(page, '/es/reports-timesheet.html', 'spanish-active');
+  await page.setViewportSize({ width: 480, height: 720 });
+  await loadWithManifest(page, '/es/reports-timesheet.html?plan=solo&language=es', 'spanish-active');
 
   await expect(page.locator('[data-dhs-help-video] video')).toHaveAttribute(
     'src',
@@ -136,7 +156,8 @@ test('renders the active Spanish video on the static Spanish page', async ({ pag
 });
 
 test('falls back to the English video on the static Spanish page', async ({ page }, testInfo) => {
-  await loadWithManifest(page, '/es/reports-timesheet.html', 'english-fallback');
+  await page.setViewportSize({ width: 480, height: 720 });
+  await loadWithManifest(page, '/es/reports-timesheet.html?plan=solo&language=es', 'english-fallback');
 
   await expect(page.locator('[data-dhs-help-video] video')).toHaveAttribute(
     'src',
@@ -183,12 +204,13 @@ test('removes the entire tutorial region when the manifest is missing', async ({
 });
 
 test('removes the entire tutorial region when the selected media fails to load', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 480, height: 720 });
   await page.route('https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/*.mp4', (route) => (
     route.fulfill({ status: 404, contentType: 'video/mp4', body: '' })
   ));
   await loadWithManifest(
     page,
-    '/en/reports-timesheet.html?fixture=media-error',
+    '/en/reports-timesheet.html?plan=solo&language=en&fixture=media-error',
     'english',
     { disableMediaLoading: false },
   );

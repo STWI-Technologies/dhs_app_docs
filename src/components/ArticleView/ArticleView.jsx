@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import HelpVideo from '../HelpVideo';
 import Lightbox from '../Lightbox/Lightbox';
 import './ArticleView.css';
 
@@ -335,6 +336,12 @@ export default function ArticleView({ article, onBack, backLabel }) {
                 </ul>
               </nav>
             )}
+
+            <div
+              className="article-view__video"
+            >
+              {article.videoTopic && <HelpVideo topic={article.videoTopic} />}
+            </div>
 
             <div
               ref={contentRef}

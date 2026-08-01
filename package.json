@@ -1,6 +1,6 @@
 {
   "name": "dhs-knowledge-base",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Direct Home Service Knowledge Base React Application",
   "main": "src/index.js",
   "scripts": {

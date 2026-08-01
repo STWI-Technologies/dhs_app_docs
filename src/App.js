@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { BrowserRouter, Routes, Route, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { LanguageProvider, useLanguage } from './context/LanguageContext';
+import { useLanguage } from './context/LanguageContext';
+import { HelpVideoProvider, useHelpVideoContext } from './context/HelpVideoContext';
 import Header from './components/Header/Header';
 import SearchBar from './components/SearchBar/SearchBar';
 import CategorySection from './components/CategorySection/CategorySection';
@@ -26,6 +27,7 @@ const APP_HELP_PAGES = [
   { slug: 'estimates', shortLabel: 'Est', enTitle: 'Estimates', esTitle: 'Presupuestos' },
   { slug: 'inbox', shortLabel: 'Inbox', enTitle: 'Inbox', esTitle: 'Bandeja' },
   { slug: 'invoices', shortLabel: 'Inv', enTitle: 'Invoices', esTitle: 'Facturas' },
+  { slug: 'timesheets', documentSlug: 'reports-timesheet', shortLabel: 'Time', enTitle: 'Timesheets', esTitle: 'Hojas de tiempo', videoTopic: 'timesheets' },
   { slug: 'jobs', shortLabel: 'Jobs', enTitle: 'Jobs', esTitle: 'Trabajos' },
   { slug: 'map', shortLabel: 'Map', enTitle: 'Map', esTitle: 'Mapa' },
   { slug: 'products', shortLabel: 'Prod', enTitle: 'Products', esTitle: 'Productos' },
@@ -49,9 +51,10 @@ const APP_HELP_PAGE_MAP = new Map(
       id: `app-help-${page.slug}`,
       slug: page.slug,
       noteKey: APP_HELP_NOTES[page.slug] || null,
+      videoTopic: page.videoTopic,
       contentPath: {
-        en: `/en/${page.slug}.html`,
-        es: `/es/${page.slug}.html`
+        en: `/en/${page.documentSlug || page.slug}.html`,
+        es: `/es/${page.documentSlug || page.slug}.html`
       },
       en: {
         title: page.enTitle,
@@ -111,6 +114,7 @@ function HomePage() {
 
 function AppHelpPage() {
   const { t, getLocalized } = useLanguage();
+  const { canonicalSearch } = useHelpVideoContext();
   const navigate = useNavigate();
 
   const appHelpArticles = useMemo(() => {
@@ -151,7 +155,7 @@ function AppHelpPage() {
             key={article.slug}
             type="button"
             className="app-help__tile"
-            onClick={() => navigate(`/app-help/articles/${article.slug}`)}
+            onClick={() => navigate(`/app-help/articles/${article.slug}${canonicalSearch}`)}
           >
             <span className="app-help__tile-title">{article.localized.title}</span>
             {article.noteKey && (
@@ -202,6 +206,7 @@ function AppHelpArticlePage() {
   const { articleId } = useParams();
   const navigate = useNavigate();
   const { t } = useLanguage();
+  const { canonicalSearch } = useHelpVideoContext();
   const article = articleId ? APP_HELP_PAGE_MAP.get(articleId) : null;
 
   if (!article) {
@@ -211,7 +216,7 @@ function AppHelpArticlePage() {
   return (
     <ArticleView
       article={article}
-      onBack={() => navigate('/app-help')}
+      onBack={() => navigate(`/app-help${canonicalSearch}`)}
       backLabel={t.backToAppHelp}
     />
   );
@@ -242,10 +247,10 @@ function Shell() {
 
 export default function App() {
   return (
-    <LanguageProvider>
+    <HelpVideoProvider>
       <BrowserRouter>
         <Shell />
       </BrowserRouter>
-    </LanguageProvider>
+    </HelpVideoProvider>
   );
 }

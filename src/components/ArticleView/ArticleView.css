@@ -415,3 +415,18 @@
     margin-bottom: 16px;
   }
 }
+.article-view__video:empty {
+  display: none;
+}
+
+.help-video {
+  margin: 0 0 24px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.help-video video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}

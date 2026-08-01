@@ -47,8 +47,8 @@ const translations = {
   }
 };
 
-export function LanguageProvider({ children }) {
-  const [language, setLanguageState] = useState(() => getCookie('selectedLanguage') || 'en');
+export function LanguageProvider({ children, initialLanguage }) {
+  const [language, setLanguageState] = useState(() => initialLanguage || getCookie('selectedLanguage') || 'en');
 
   const setLanguage = useCallback((lang) => {
     setLanguageState(lang);
