@@ -229,7 +229,8 @@ describe("guide HTML source content", () => {
 				/Track time\. Manage labor\. Simplify payroll\./i,
 				/Time Entry Categories/i,
 				/En Route.*Travel time between jobs/i,
-				/Office Time.*Admin, prep, or other non-field time/i,
+				/Office Time.*Admin or other non-field time/i,
+				/Job Prep.*Getting ready before a job starts/i,
 				/Review unlinked entries regularly to ensure accuracy/i,
 			],
 		};
