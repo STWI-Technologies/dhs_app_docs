@@ -1,6 +1,6 @@
 # DHS App Docs - Knowledge Base
 
-Version: 2.2.0
+Version: 2.3.0
 
 ## Overview
 
@@ -149,6 +149,7 @@ To add a new article translation:
 
 ## Version History
 
+- **2.3.0** - Getting Started panels: split Scheduler from Appointments, Spanish CTA labels, solo-plan guides, Reports overview
 - **2.0.0** - Major update: React app integration, complete i18n support, hybrid architecture
 - **1.1.2** - Remove LiveAgent redirect from public staticwebapp config
 - **1.1.1** - Remove directhomeservice.com redirect from staticwebapp config

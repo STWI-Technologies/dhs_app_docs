@@ -89,11 +89,11 @@ test('resolveVideo returns null when no plan and device match exists', () => {
   assert.equal(resolveVideo(manifest, { topic: 'timesheets', plan: 'standard', device: 'mobile', language: 'en' }), null);
 });
 
-test('the static renderer resolves with the query plan and language plus the final viewport device', () => {
+test('the static renderer resolves the web surface regardless of the panel viewport width', () => {
   const originalWindow = globalThis.window;
   globalThis.window = {
     DHSHelpVideoContract: contract,
-    innerWidth: 480,
+    innerWidth: 400,
     location: {
       pathname: '/en/reports-timesheet.html',
       search: '?plan=solo&language=en',
@@ -106,10 +106,61 @@ test('the static renderer resolves with the query plan and language plus the fin
     assert.deepEqual(context, {
       topic: 'reports-timesheet',
       plan: 'solo',
-      device: 'mobile',
+      device: 'desktop',
       language: 'en',
     });
-    assert.equal(resolveRuntimeVideo(manifest, context)?.url, manifest.entries[0].url);
+  } finally {
+    globalThis.window = originalWindow;
+  }
+});
+
+test('the static renderer never falls back to a mobile app video in the web help panel', () => {
+  const originalWindow = globalThis.window;
+  globalThis.window = {
+    DHSHelpVideoContract: contract,
+    innerWidth: 400,
+    location: {
+      pathname: '/en/reports-timesheet.html',
+      search: '?plan=solo&language=en',
+    },
+  };
+
+  try {
+    const context = helpVideoContext({ dataset: { dhsVideoTopic: 'reports-timesheet' } });
+
+    assert.equal(resolveRuntimeVideo(manifest, context), null);
+  } finally {
+    globalThis.window = originalWindow;
+  }
+});
+
+test('the static renderer plays a web video as soon as one is published', () => {
+  const originalWindow = globalThis.window;
+  const webManifest = {
+    entries: [
+      {
+        topic: 'reports-timesheet',
+        plan: 'solo',
+        device: 'desktop',
+        language: 'en',
+        version: '3.0.0',
+        url: 'https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/reports-timesheet_solo_desktop_en_3.0.0.mp4',
+      },
+    ],
+  };
+  globalThis.window = {
+    DHSHelpVideoContract: contract,
+    innerWidth: 400,
+    location: {
+      pathname: '/en/reports-timesheet.html',
+      search: '?plan=solo&language=en',
+    },
+  };
+
+  try {
+    const context = helpVideoContext({ dataset: { dhsVideoTopic: 'reports-timesheet' } });
+
+    assert.equal(resolveRuntimeVideo(webManifest, context)?.url, webManifest.entries[0].url);
   } finally {
     globalThis.window = originalWindow;
   }
