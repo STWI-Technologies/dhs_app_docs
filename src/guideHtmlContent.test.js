@@ -5,12 +5,35 @@ const guideRoots = ["en", "es"].map((locale) =>
 	path.join(process.cwd(), "public", locale)
 );
 
-const guideFiles = guideRoots.flatMap((guideRoot) =>
-	fs
-		.readdirSync(guideRoot)
-		.filter((file) => file.endsWith(".html") && !["404.html", "index.html"].includes(file))
-		.map((file) => path.join(guideRoot, file))
-);
+const htmlIn = (dir) =>
+	fs.existsSync(dir)
+		? fs
+				.readdirSync(dir)
+				.filter((file) => file.endsWith(".html") && !["404.html", "index.html"].includes(file))
+				.map((file) => path.join(dir, file))
+		: [];
+
+// Solo-plan variants live in a `solo/` subfolder per locale and must satisfy every
+// rule the standard guides do — readdirSync does not recurse, so they are added
+// explicitly rather than silently skipped.
+const guideFiles = guideRoots.flatMap((guideRoot) => [
+	...htmlIn(guideRoot),
+	...htmlIn(path.join(guideRoot, "solo")),
+]);
+
+const localeOf = (file) => (file.split(path.sep).includes("es") ? "es" : "en");
+
+// Every CTA label is authored in the guide's own language; the English copy must not
+// leak into the Spanish panels.
+const CTA_LABELS = {
+	booking: { en: "Book a Demo or Training Session", es: "Agenda una demo o sesión de capacitación" },
+	knowledgebase: { en: "View Knowledgebase", es: "Ver base de conocimiento" },
+	support: { en: "Contact Support", es: "Contactar a soporte" },
+	tutorial: { en: "Watch the Feature Tutorial", es: "Ver el tutorial de la función" },
+};
+
+const labelFor = (cta, file) => CTA_LABELS[cta][localeOf(file)];
+const foreignLabelFor = (cta, file) => CTA_LABELS[cta][localeOf(file) === "es" ? "en" : "es"];
 
 describe("guide HTML source content", () => {
 	it("does not expose learning center or old scheduling CTAs", () => {
@@ -32,11 +55,12 @@ describe("guide HTML source content", () => {
 		expect(offenders).toEqual([]);
 	});
 
-	it("uses the new booking CTA in each guide", () => {
+	it("uses the new booking CTA, in the guide's own language, in each guide", () => {
 		const offenders = guideFiles.filter((file) => {
 			const html = fs.readFileSync(file, "utf8");
 			return (
-				!/Book a Demo or Training Session/i.test(html) ||
+				!html.includes(labelFor("booking", file)) ||
+				html.includes(foreignLabelFor("booking", file)) ||
 				!/https:\/\/directhomeservice\.com\/book-a-session/i.test(html)
 			);
 		});
@@ -57,6 +81,29 @@ describe("guide HTML source content", () => {
 		});
 
 		expect(offenders.map((file) => path.relative(process.cwd(), file))).toEqual([]);
+	});
+
+	it("ships the video region hidden so the tutorial heading never flashes while the manifest loads", () => {
+		const offenders = guideFiles.filter((file) => {
+			const html = fs.readFileSync(file, "utf8");
+			return !/<div data-dhs-help-video-region hidden>/i.test(html);
+		});
+
+		expect(offenders.map((file) => path.relative(process.cwd(), file))).toEqual([]);
+	});
+
+	it("keeps crew and team references out of the solo-plan guides", () => {
+		const soloFiles = guideFiles.filter((file) => file.split(path.sep).includes("solo"));
+		expect(soloFiles.length).toBeGreaterThan(0);
+
+		const offenders = soloFiles.flatMap((file) => {
+			const html = fs.readFileSync(file, "utf8");
+			return [/\bcrews?\b/i, /\bcuadrillas?\b/i, /\bequipos?\b/i]
+				.filter((pattern) => pattern.test(html))
+				.map((pattern) => `${path.relative(process.cwd(), file)} mentions ${pattern}`);
+		});
+
+		expect(offenders).toEqual([]);
 	});
 
 	it("uses shared app guide icons instead of inline SVG in guide HTML", () => {
@@ -129,7 +176,8 @@ describe("guide HTML source content", () => {
 			const html = fs.readFileSync(file, "utf8");
 			const supportCta = html.match(/<a [^>]*data-support-contact="true"[^>]*>/i)?.[0] || "";
 			return (
-				!/Contact Support/i.test(html) ||
+				!html.includes(labelFor("support", file)) ||
+				html.includes(foreignLabelFor("support", file)) ||
 				!/DHS_OPEN_SUPPORT/i.test(supportCta) ||
 				!/box-sizing:\s*border-box/i.test(supportCta)
 			);
@@ -143,7 +191,8 @@ describe("guide HTML source content", () => {
 			const html = fs.readFileSync(file, "utf8");
 			const knowledgebaseCta = html.match(/<a [^>]*data-knowledgebase-link="true"[^>]*>/i)?.[0] || "";
 			return (
-				!/View Knowledgebase/i.test(html) ||
+				!html.includes(labelFor("knowledgebase", file)) ||
+				html.includes(foreignLabelFor("knowledgebase", file)) ||
 				!/https:\/\/knowledgebase\.directhomeservice\.com\//i.test(knowledgebaseCta) ||
 				!/target="_blank"/i.test(knowledgebaseCta) ||
 				!/rel="noopener noreferrer"/i.test(knowledgebaseCta) ||
@@ -156,7 +205,7 @@ describe("guide HTML source content", () => {
 
 	it("uses the failed-QA source documents for appointments, checklists, reports, and timesheets panels", () => {
 		const expectedContent = {
-			"public/en/scheduler.html": [
+			"public/en/appointments.html": [
 				/Organize site visits before the work begins/i,
 				/Track status visually: Draft, Scheduled, En Route, Started, Completed, Canceled, No Show/i,
 				/View Related Records: linked jobs, estimates, and invoices/i,

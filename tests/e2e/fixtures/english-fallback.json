@@ -2,10 +2,10 @@
   "entries": [
     {
       "topic": "timesheets",
-      "device": "solo_mobile",
+      "device": "solo_desktop",
       "language": "en",
       "version": "3.0.0",
-      "url": "https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/timesheets_solo_mobile_en_3.0.0.mp4"
+      "url": "https://dhspublicstorage.blob.core.windows.net/dhs-public-files/help-videos/timesheets_solo_desktop_en_3.0.0.mp4"
     }
   ]
 }
