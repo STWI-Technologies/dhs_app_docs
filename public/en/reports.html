@@ -34,284 +34,93 @@
         <script src="/js/help-video-contract.js" defer></script>
         <script src="/js/help-video.js" defer></script>
 
-        <!-- Time and Labor Reports Section -->
+        <!-- What You Can Do Section -->
         <div style="padding: 20px 15px;">
             <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
                 <img src="/icons/checklist.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                <h2 style="margin: 0; font-size: 16px; font-weight: 600; color: #111827;">Time and Labor Reports</h2>
+                <h2 style="margin: 0; font-size: 16px; font-weight: 600; color: #111827;">What You Can Do:</h2>
             </div>
-            <p style="margin: 0 0 16px 0; color: #6b7280; font-size: 14px;">Monitor workforce productivity and optimize scheduling.</p>
 
-            <div style="margin-bottom: 16px;">
-                <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                    <img src="/icons/checklist.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                    <h3 style="margin: 0; font-size: 14px; font-weight: 600; color: #111827;">What You Can Do:</h3>
-                </div>
-                <ul style="margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C; font-size: 14px;">
-                    <li style="margin-bottom: 5px;">Track daily clock-in/out times and break periods</li>
-                    <li style="margin-bottom: 5px;">View monthly summaries and performance trends</li>
-                    <li style="margin-bottom: 5px;">Filter by specific users, jobs, or date ranges</li>
-                    <li style="margin-bottom: 5px;">Analyze technician performance with visual charts</li>
-                    <li style="margin-bottom: 0;">Export detailed PDF reports for payroll and records</li>
-                </ul>
+            <ul style="margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C; font-size: 14px;">
+                <li style="margin-bottom: 5px;">Pick a report type from the Reports page to open its own view</li>
+                <li style="margin-bottom: 5px;">Filter any report by date range, job, or status</li>
+                <li style="margin-bottom: 5px;">Switch between preset ranges like Today, This Week, and This Month</li>
+                <li style="margin-bottom: 5px;">Read trends over time through the visual charts on each report</li>
+                <li style="margin-bottom: 0;">Export a report to PDF for records or sharing</li>
+            </ul>
+        </div>
+
+        <!-- Report Types Overview -->
+        <div style="padding: 20px 15px;">
+            <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
+                <img src="/icons/reports.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
+                <h2 style="margin: 0; font-size: 16px; font-weight: 600; color: #111827;">Report Types</h2>
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <h3 style="margin: 0 0 4px 0; font-size: 14px; font-weight: 600; color: #111827;">Work Order Reports</h3>
+                <p style="margin: 0; font-size: 14px; color: #6b7280;">Work orders by status, priority and completion rate</p>
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <h3 style="margin: 0 0 4px 0; font-size: 14px; font-weight: 600; color: #111827;">Technician Performance Reports</h3>
+                <p style="margin: 0; font-size: 14px; color: #6b7280;">Completion rates, utilization and job times</p>
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <h3 style="margin: 0 0 4px 0; font-size: 14px; font-weight: 600; color: #111827;">Customer Reports</h3>
+                <p style="margin: 0; font-size: 14px; color: #6b7280;">Satisfaction ratings, feedback and complaint resolution</p>
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <h3 style="margin: 0 0 4px 0; font-size: 14px; font-weight: 600; color: #111827;">Time and Labor Reports</h3>
+                <p style="margin: 0; font-size: 14px; color: #6b7280;">Clock-in and out times, hours worked and payroll export</p>
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <h3 style="margin: 0 0 4px 0; font-size: 14px; font-weight: 600; color: #111827;">Asset and Inventory Reports</h3>
+                <p style="margin: 0; font-size: 14px; color: #6b7280;">Stock levels and equipment usage</p>
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <h3 style="margin: 0 0 4px 0; font-size: 14px; font-weight: 600; color: #111827;">Financial Reports</h3>
+                <p style="margin: 0; font-size: 14px; color: #6b7280;">Revenue, tax, discounts and average job value</p>
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <h3 style="margin: 0 0 4px 0; font-size: 14px; font-weight: 600; color: #111827;">Scheduling and Dispatch Reports</h3>
+                <p style="margin: 0; font-size: 14px; color: #6b7280;">Job distribution and hours by region</p>
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <h3 style="margin: 0 0 4px 0; font-size: 14px; font-weight: 600; color: #111827;">Compliance and Safety Reports</h3>
+                <p style="margin: 0; font-size: 14px; color: #6b7280;">Job completion status and safety checks</p>
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <h3 style="margin: 0 0 4px 0; font-size: 14px; font-weight: 600; color: #111827;">Travel and Mileage Reports</h3>
+                <p style="margin: 0; font-size: 14px; color: #6b7280;">Job locations, routes and travel time</p>
             </div>
 
             <div>
-                <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                    <img src="/icons/bulb.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                    <h3 style="margin: 0; font-size: 14px; font-weight: 600; color: #111827;">Tips for Success</h3>
-                </div>
-                <ul style="margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C; font-size: 14px;">
-                    <li style="margin-bottom: 5px;">Use preset filters (Today, This Week, This Month) for quick analysis</li>
-                    <li style="margin-bottom: 5px;">Monitor monthly performance trends to identify productivity patterns</li>
-                    <li style="margin-bottom: 0;">Search by employee name for individual performance reviews</li>
-                </ul>
+                <h3 style="margin: 0 0 4px 0; font-size: 14px; font-weight: 600; color: #111827;">Service Level Agreement (SLA) Reports</h3>
+                <p style="margin: 0; font-size: 14px; color: #6b7280;">Response and resolution times against your SLAs</p>
             </div>
         </div>
 
-        <!-- Work Order Reports Section -->
+        <!-- Tips for Success Section -->
         <div style="padding: 20px 15px;">
             <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
                 <img src="/icons/bulb.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                <h2 style="margin: 0; font-size: 16px; font-weight: 600; color: #111827;">Work Order Reports</h2>
-            </div>
-            <p style="margin: 0 0 16px 0; color: #6b7280; font-size: 14px;">Analyze job flow and identify operational bottlenecks.</p>
-
-            <div style="margin-bottom: 16px;">
-                <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                    <img src="/icons/checklist.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                    <h3 style="margin: 0; font-size: 14px; font-weight: 600; color: #111827;">What You Can Do:</h3>
-                </div>
-                <ul style="margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C; font-size: 14px;">
-                    <li style="margin-bottom: 5px;">Track work orders by status (Draft, Scheduled, Completed)</li>
-                    <li style="margin-bottom: 5px;">Monitor priority levels and completion rates</li>
-                    <li style="margin-bottom: 5px;">View revenue breakdown by status</li>
-                    <li style="margin-bottom: 5px;">Analyze work order timelines and capacity planning</li>
-                    <li style="margin-bottom: 0;">Filter by client, location, or priority level</li>
-                </ul>
+                <h2 style="margin: 0; font-size: 16px; font-weight: 600; color: #111827;">Tips for Success</h2>
             </div>
 
-            <div>
-                <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                    <img src="/icons/bulb.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                    <h3 style="margin: 0; font-size: 14px; font-weight: 600; color: #111827;">Tips for Success</h3>
-                </div>
-                <ul style="margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C; font-size: 14px;">
-                    <li style="margin-bottom: 5px;">Use status distribution charts to identify workflow bottlenecks</li>
-                    <li style="margin-bottom: 5px;">Monitor timeline visualizations for capacity planning</li>
-                    <li style="margin-bottom: 0;">Track revenue by status to measure financial performance</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Technician Performance Section -->
-        <div style="padding: 20px 15px;">
-            <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                <img src="/icons/video.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                <h2 style="margin: 0; font-size: 16px; font-weight: 600; color: #111827;">Technician Performance</h2>
-            </div>
-            <p style="margin: 0 0 16px 0; color: #6b7280; font-size: 14px;">Evaluate productivity and identify training opportunities.</p>
-
-            <div style="margin-bottom: 16px;">
-                <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                    <img src="/icons/checklist.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                    <h3 style="margin: 0; font-size: 14px; font-weight: 600; color: #111827;">What You Can Do:</h3>
-                </div>
-                <ul style="margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C; font-size: 14px;">
-                    <li style="margin-bottom: 5px;">Monitor completion rates and utilization by crew/individual</li>
-                    <li style="margin-bottom: 5px;">Track average job completion times</li>
-                    <li style="margin-bottom: 5px;">Compare performance across teams and time periods</li>
-                    <li style="margin-bottom: 5px;">Identify high-performers and improvement areas</li>
-                    <li style="margin-bottom: 0;">Export performance data for reviews</li>
-                </ul>
-            </div>
-
-            <div>
-                <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                    <img src="/icons/bulb.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                    <h3 style="margin: 0; font-size: 14px; font-weight: 600; color: #111827;">Tips for Success</h3>
-                </div>
-                <ul style="margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C; font-size: 14px;">
-                    <li style="margin-bottom: 5px;">Focus on utilization rates to optimize resource allocation</li>
-                    <li style="margin-bottom: 5px;">Use completion rate trends to guide training decisions</li>
-                    <li style="margin-bottom: 0;">Compare crew vs individual performance for team insights</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Customer Reports Section -->
-        <div style="padding: 20px 15px;">
-            <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                <img src="/icons/calendar.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                <h2 style="margin: 0; font-size: 16px; font-weight: 600; color: #111827;">Customer Reports</h2>
-            </div>
-            <p style="margin: 0 0 16px 0; color: #6b7280; font-size: 14px;">Enhance satisfaction and resolve issues proactively.</p>
-
-            <div style="margin-bottom: 16px;">
-                <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                    <img src="/icons/checklist.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                    <h3 style="margin: 0; font-size: 14px; font-weight: 600; color: #111827;">What You Can Do:</h3>
-                </div>
-                <ul style="margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C; font-size: 14px;">
-                    <li style="margin-bottom: 5px;">Track satisfaction ratings and feedback by crew</li>
-                    <li style="margin-bottom: 5px;">Monitor complaint resolution times and status</li>
-                    <li style="margin-bottom: 5px;">Analyze satisfaction trends over time</li>
-                    <li style="margin-bottom: 5px;">Filter by rating levels (1-5 stars) and status</li>
-                    <li style="margin-bottom: 0;">View detailed resolution notes and audit trails</li>
-                </ul>
-            </div>
-
-            <div>
-                <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                    <img src="/icons/bulb.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                    <h3 style="margin: 0; font-size: 14px; font-weight: 600; color: #111827;">Tips for Success</h3>
-                </div>
-                <ul style="margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C; font-size: 14px;">
-                    <li style="margin-bottom: 5px;">Monitor average ratings to identify service quality trends</li>
-                    <li style="margin-bottom: 5px;">Track resolution times to improve response efficiency</li>
-                    <li style="margin-bottom: 0;">Use crew-wise comparisons to identify best practices</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Financial Reports Section -->
-        <div style="padding: 20px 15px;">
-            <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                <img src="/icons/reports.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                <h2 style="margin: 0; font-size: 16px; font-weight: 600; color: #111827;">Financial Reports</h2>
-            </div>
-            <p style="margin: 0 0 16px 0; color: #6b7280; font-size: 14px;">Monitor revenue and optimize job profitability.</p>
-
-            <div style="margin-bottom: 16px;">
-                <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                    <img src="/icons/checklist.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                    <h3 style="margin: 0; font-size: 14px; font-weight: 600; color: #111827;">What You Can Do:</h3>
-                </div>
-                <ul style="margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C; font-size: 14px;">
-                    <li style="margin-bottom: 5px;">Track total revenue, tax, and discount breakdowns</li>
-                    <li style="margin-bottom: 5px;">Analyze job values and completion rates</li>
-                    <li style="margin-bottom: 5px;">Monitor monthly revenue trends</li>
-                    <li style="margin-bottom: 5px;">Calculate average job values for pricing insights</li>
-                    <li style="margin-bottom: 0;">Export financial data for accounting and audits</li>
-                </ul>
-            </div>
-
-            <div>
-                <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                    <img src="/icons/bulb.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                    <h3 style="margin: 0; font-size: 14px; font-weight: 600; color: #111827;">Tips for Success</h3>
-                </div>
-                <ul style="margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C; font-size: 14px;">
-                    <li style="margin-bottom: 5px;">Use revenue breakdown charts to understand profit components</li>
-                    <li style="margin-bottom: 5px;">Monitor monthly trends for seasonal planning</li>
-                    <li style="margin-bottom: 0;">Track average job values to optimize pricing strategies</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Scheduling & Dispatch Reports Section -->
-        <div style="padding: 20px 15px;">
-            <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                <img src="/icons/reports.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                <h2 style="margin: 0; font-size: 16px; font-weight: 600; color: #111827;">Scheduling & Dispatch Reports</h2>
-            </div>
-            <p style="margin: 0 0 16px 0; color: #6b7280; font-size: 14px;">Optimize resource allocation and dispatch efficiency.</p>
-
-            <div style="margin-bottom: 16px;">
-                <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                    <img src="/icons/checklist.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                    <h3 style="margin: 0; font-size: 14px; font-weight: 600; color: #111827;">What You Can Do:</h3>
-                </div>
-                <ul style="margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C; font-size: 14px;">
-                    <li style="margin-bottom: 5px;">View job distribution by crew, user, or region</li>
-                    <li style="margin-bottom: 5px;">Track scheduled vs completed jobs</li>
-                    <li style="margin-bottom: 5px;">Analyze scheduling trends and peak periods</li>
-                    <li style="margin-bottom: 5px;">Monitor crew performance and hours distribution</li>
-                    <li style="margin-bottom: 0;">Group data by crew, user, or region for insights</li>
-                </ul>
-            </div>
-
-            <div>
-                <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                    <img src="/icons/bulb.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                    <h3 style="margin: 0; font-size: 14px; font-weight: 600; color: #111827;">Tips for Success</h3>
-                </div>
-                <ul style="margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C; font-size: 14px;">
-                    <li style="margin-bottom: 5px;">Use job status distribution to balance workloads</li>
-                    <li style="margin-bottom: 5px;">Monitor scheduling trends to predict busy periods</li>
-                    <li style="margin-bottom: 0;">Balance hours distribution across teams for efficiency</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Compliance and Safety Reports Section -->
-        <div style="padding: 20px 15px;">
-            <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                <img src="/icons/reports.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                <h2 style="margin: 0; font-size: 16px; font-weight: 600; color: #111827;">Compliance and Safety Reports</h2>
-            </div>
-            <p style="margin: 0 0 16px 0; color: #6b7280; font-size: 14px;">Ensure standards are met and track regulatory compliance.</p>
-
-            <div style="margin-bottom: 16px;">
-                <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                    <img src="/icons/checklist.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                    <h3 style="margin: 0; font-size: 14px; font-weight: 600; color: #111827;">What You Can Do:</h3>
-                </div>
-                <ul style="margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C; font-size: 14px;">
-                    <li style="margin-bottom: 5px;">Monitor job compliance rates and safety standards</li>
-                    <li style="margin-bottom: 5px;">Track active crews and job completion status</li>
-                    <li style="margin-bottom: 5px;">Filter by status, crew, and scheduled dates</li>
-                    <li style="margin-bottom: 5px;">Visualize compliance trends over time</li>
-                    <li style="margin-bottom: 0;">Generate audit-ready PDF reports</li>
-                </ul>
-            </div>
-
-            <div>
-                <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                    <img src="/icons/bulb.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                    <h3 style="margin: 0; font-size: 14px; font-weight: 600; color: #111827;">Tips for Success</h3>
-                </div>
-                <ul style="margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C; font-size: 14px;">
-                    <li style="margin-bottom: 5px;">Monitor compliance rates to identify improvement areas</li>
-                    <li style="margin-bottom: 5px;">Track crew assignments to ensure balanced coverage</li>
-                    <li style="margin-bottom: 0;">Use status filters to focus on priority compliance issues</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Travel and Mileage Reports Section -->
-        <div style="padding: 20px 15px;">
-            <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                <img src="/icons/reports.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                <h2 style="margin: 0; font-size: 16px; font-weight: 600; color: #111827;">Travel and Mileage Reports</h2>
-            </div>
-            <p style="margin: 0 0 16px 0; color: #6b7280; font-size: 14px;">Analyze travel patterns and optimize route efficiency.</p>
-
-            <div style="margin-bottom: 16px;">
-                <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                    <img src="/icons/checklist.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                    <h3 style="margin: 0; font-size: 14px; font-weight: 600; color: #111827;">What You Can Do:</h3>
-                </div>
-                <ul style="margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C; font-size: 14px;">
-                    <li style="margin-bottom: 5px;">Track job locations and crew assignments</li>
-                    <li style="margin-bottom: 5px;">Monitor scheduled times and estimated hours</li>
-                    <li style="margin-bottom: 5px;">Analyze job completion rates by location</li>
-                    <li style="margin-bottom: 5px;">View crew workload distribution</li>
-                    <li style="margin-bottom: 0;">Export travel data for expense tracking</li>
-                </ul>
-            </div>
-
-            <div>
-                <div data-section-header="true" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; background: #F8F9FB; border: 1px solid #EEF0F4; border-radius: 8px; padding: 8px 10px;">
-                    <img src="/icons/bulb.svg" alt="" style="width: 20px; height: 20px; display: block; flex-shrink: 0;" />
-                    <h3 style="margin: 0; font-size: 14px; font-weight: 600; color: #111827;">Tips for Success</h3>
-                </div>
-                <ul style="margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C; font-size: 14px;">
-                    <li style="margin-bottom: 5px;">Group jobs by location to optimize routing</li>
-                    <li style="margin-bottom: 5px;">Compare estimated vs actual hours for better planning</li>
-                    <li style="margin-bottom: 0;">Balance crew assignments to minimize travel time</li>
-                </ul>
-            </div>
+            <ul style="font-size: 14px; margin: 0; padding-left: 20px; list-style-type: disc; color: #17171C;">
+                <li style="margin-bottom: 5px;">Open the specific report you need — each one has its own guide in this panel</li>
+                <li style="margin-bottom: 5px;">Use preset ranges (Today, This Week, This Month) for a quick read</li>
+                <li style="margin-bottom: 5px;">Compare the same range month over month to spot real trends</li>
+                <li style="margin-bottom: 0;">Export to PDF when you need a record outside the app</li>
+            </ul>
         </div>
 
         <!-- Call-to-Action Buttons -->
