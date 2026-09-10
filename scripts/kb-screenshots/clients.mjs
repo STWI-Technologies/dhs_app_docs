@@ -1,0 +1,273 @@
+/**
+ * Knowledge base screenshots — Clients section.
+ *
+ * Captures the figures used by public/content/clients-management.html. Same
+ * shape as crews.mjs; read that file first for the selector traps this pattern
+ * has already run into.
+ *
+ * Run:
+ *   set -a; . ~/dhs_qa_workspace/.env; set +a
+ *   node scripts/kb-screenshots/clients.mjs
+ *
+ * Shoots against STAGING. Credentials come from STAGING_SP_LOGIN_EMAIL /
+ * STAGING_SP_LOGIN_PASSWORD and are never written to disk or logged.
+ *
+ * READ-ONLY, and it has to stay that way: the platform is mid-migration and
+ * create operations are not available. The Add Client panel is filled in only to
+ * photograph it and is always cancelled — never submitted. The email typed in is
+ * deliberately one that cannot match a real client, so the panel doesn't swap
+ * itself for the existing-client flow.
+ *
+ * KB_ONLY="List view,Filters panel" re-shoots just those steps.
+ */
+import { chromium } from "playwright";
+import { mkdirSync } from "node:fs";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
+const OUT_DIR = resolve(ROOT, "public/images/clients");
+const BASE = process.env.KB_BASE_URL || "https://app-staging.directhomeservice.com";
+
+const VIEWPORT = { width: 1440, height: 900 };
+const SCALE = 2;
+
+const results = [];
+mkdirSync(OUT_DIR, { recursive: true });
+
+const email = process.env.KB_EMAIL || process.env.STAGING_SP_LOGIN_EMAIL;
+const password = process.env.KB_PASSWORD || process.env.STAGING_SP_LOGIN_PASSWORD;
+if (!email || !password) {
+  console.error("Missing STAGING_SP_LOGIN_EMAIL / STAGING_SP_LOGIN_PASSWORD (or KB_EMAIL / KB_PASSWORD).");
+  process.exit(1);
+}
+
+const ONLY = process.env.KB_ONLY ? process.env.KB_ONLY.split(",").map((s) => s.trim()) : null;
+
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: VIEWPORT, deviceScaleFactor: SCALE });
+
+async function shoot(name, target, opts = {}) {
+  const path = resolve(OUT_DIR, `${name}.png`);
+  await page.waitForTimeout(opts.settle ?? 600);
+  if (target) {
+    await target.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(250);
+    await target.screenshot({ path });
+  } else {
+    await page.screenshot({ path });
+  }
+  results.push({ name, status: "ok" });
+  console.log(`  ✓ ${name}.png`);
+}
+
+async function hideAccountChrome() {
+  await page.evaluate(() => {
+    // The onboarding wizard docks itself over the page for accounts that haven't
+    // finished setup, and the support-chat launcher floats over the bottom-right
+    // corner — on a tall list it lands on top of the pagination. Neither belongs
+    // to the section being documented. Matched on computed style rather than
+    // class names, which are generated.
+    document.querySelectorAll(".onboarding-widget").forEach((el) => {
+      el.style.display = "none";
+    });
+    for (const el of document.querySelectorAll("body *")) {
+      if (getComputedStyle(el).position !== "fixed") continue;
+      const r = el.getBoundingClientRect();
+      if (!r.width || !r.height || r.width > 160) continue;
+      if (r.right > window.innerWidth - 140 && r.bottom > window.innerHeight - 160) {
+        el.style.display = "none";
+      }
+    }
+  });
+}
+
+/** Close whatever panel is open, so a failed step can't block the next one. */
+async function dismissAnyPanel() {
+  for (let i = 0; i < 3; i++) {
+    const panel = page.locator("div.relative.transform.overflow-hidden.shadow-xl");
+    if (!(await panel.count())) return;
+    const cancel = page.locator('button:has-text("Cancel"), button:has-text("Back")').last();
+    if (await cancel.count()) {
+      await cancel.click({ timeout: 5000 }).catch(() => {});
+    } else {
+      await page.keyboard.press("Escape").catch(() => {});
+    }
+    await page.waitForTimeout(900);
+  }
+}
+
+async function step(label, fn) {
+  if (ONLY && !ONLY.includes(label)) return;
+  console.log(label);
+  try {
+    await fn();
+  } catch (err) {
+    const reason = err.message.split("\n")[0];
+    results.push({ name: label, status: "failed", reason });
+    console.log(`  ✗ ${reason}`);
+  } finally {
+    await dismissAnyPanel();
+  }
+}
+
+/**
+ * Back to the Clients list on the Connected tab, from wherever a step ended up.
+ *
+ * Waits on the PAGE wrapper, not on [data-tour="clients-list"]: DataGrid takes an
+ * early return for an empty list that never spreads cardWrapperAttrs, so that
+ * attribute vanishes on a tab with no rows (Invites, on staging) and waiting for
+ * it hangs for the full timeout and takes the following steps down with it.
+ */
+async function backToClientsList() {
+  const onList = /\/clients(\?|$)/.test(page.url());
+  if (!onList) {
+    await page.click('button:has-text("Clients"), a:has-text("Clients")');
+  }
+  await page.waitForSelector('[data-tour="clients-page"]', { timeout: 30000 });
+  await page.waitForTimeout(1500);
+  const connected = page
+    .locator('[data-tour="clients-status-tabs"] button')
+    .filter({ hasText: "Connected" })
+    .first();
+  if (await connected.count()) {
+    await connected.click().catch(() => {});
+    await page.waitForTimeout(3000);
+  }
+  await page.waitForSelector('[data-tour="clients-list"]', { timeout: 30000 });
+  await page.waitForTimeout(1500);
+  await hideAccountChrome();
+}
+
+// ── Sign in ───────────────────────────────────────────────────────────────────
+await page.goto(`${BASE}/login`, { waitUntil: "domcontentloaded" });
+await page.fill("#email", email);
+await page.fill("#password", password);
+await page.click('button:has-text("Sign In")');
+await page.waitForURL((u) => !u.pathname.includes("/login"), { timeout: 45000 });
+await page.waitForTimeout(3500);
+await hideAccountChrome();
+
+await page.click('button:has-text("Clients")');
+await page.waitForSelector('[data-tour="clients-list"]', { timeout: 30000 });
+await page.waitForTimeout(4500);
+await hideAccountChrome();
+
+// A tour may start by itself on a first visit; get it out of the way.
+const tourTooltip = page.locator(".react-joyride__tooltip");
+if (await tourTooltip.count()) {
+  await page.locator('button:has-text("Skip")').first().click({ timeout: 4000 }).catch(() => {});
+  await page.waitForTimeout(1200);
+}
+
+const listCard = page.locator('[data-tour="clients-list"]');
+const drawer = page.locator("div.relative.transform.overflow-hidden.shadow-xl").last();
+
+await step("List view", async () => {
+  await shoot("01-clients-list", listCard, { settle: 1500 });
+});
+
+await step("Filters panel", async () => {
+  await page.locator('[data-tour="clients-filters"] button').first().click();
+  await page.waitForTimeout(1200);
+  // The popover hangs below the card, outside its box — clip a region instead.
+  const cardBox = await listCard.boundingBox();
+  const popover = page.locator('[data-tour="clients-filters"] > div').last();
+  const popBox = await popover.boundingBox();
+  if (!cardBox) throw new Error("could not measure the list card");
+  await page.screenshot({
+    path: resolve(OUT_DIR, "02-filters-popover.png"),
+    clip: {
+      x: cardBox.x,
+      y: cardBox.y,
+      width: cardBox.width,
+      height: popBox ? Math.min(popBox.y + popBox.height - cardBox.y + 20, VIEWPORT.height - cardBox.y) : 520,
+    },
+  });
+  results.push({ name: "02-filters-popover", status: "ok" });
+  console.log("  ✓ 02-filters-popover.png");
+  await page.keyboard.press("Escape").catch(() => {});
+  await page.locator('[data-tour="clients-page"]').click({ position: { x: 5, y: 5 } }).catch(() => {});
+  await page.waitForTimeout(800);
+});
+
+// ── Add Client panel ──────────────────────────────────────────────────────────
+await step("Add Client panel", async () => {
+  await page.locator('[data-tour="clients-add-btn"] button').click();
+  await page.waitForSelector("text=Add New Client", { timeout: 15000 });
+  await page.waitForTimeout(1500);
+  await shoot("03-add-client-step1", drawer);
+
+  // Step 2 needs step 1 to validate. The email is deliberately unique so the
+  // existing-client panel can't take over the step.
+  const stamp = Date.now();
+  await page.fill('input[name="firstName"]', "Dana");
+  await page.fill('input[name="lastName"]', "Whitfield");
+  await page.fill('input[placeholder="Phone number"]', "9073353331").catch(() => {});
+  await page.fill('input[name="email"]', `kb-doc-${stamp}@example.invalid`);
+  await page.fill('input[name="companyName"]', "Whitfield Property Group").catch(() => {});
+  await page.waitForTimeout(600);
+
+  await page.locator('button:has-text("Next Step")').first().click();
+  await page.waitForTimeout(2500);
+  await shoot("04-add-client-step2", drawer, { settle: 1200 });
+
+  await page.locator('button:has-text("Cancel")').last().click();
+  await page.waitForTimeout(1500);
+});
+
+// ── A client with a pending invite ────────────────────────────────────────────
+await step("Pending invite panel", async () => {
+  await backToClientsList();
+  await page.locator('[data-tour="clients-status-tabs"] button')
+    .filter({ hasText: "Invites" })
+    .first()
+    .click();
+  await page.waitForTimeout(3500);
+  const rows = page.locator('[data-tour="clients-list"] table tbody tr');
+  if (!(await rows.count())) throw new Error("staging has no client invites to photograph");
+  await shoot("05a-invites-tab", listCard, { settle: 1200 });
+  await rows.first().click();
+  await page.waitForTimeout(2000);
+  await shoot("05-client-pending-panel", drawer);
+});
+
+// ── The client record ─────────────────────────────────────────────────────────
+await step("Client record", async () => {
+  await backToClientsList();
+  // Back to Connected before opening a client.
+  await page.locator('[data-tour="clients-status-tabs"] button')
+    .filter({ hasText: "Connected" })
+    .first()
+    .click()
+    .catch(() => {});
+  await page.waitForTimeout(3000);
+  await page.locator('[data-tour="clients-list"] table tbody tr').first().click();
+  await page.waitForURL(/\/clients\/[^/]+$/, { timeout: 20000 });
+  await page.waitForTimeout(4500);
+  await hideAccountChrome();
+  await shoot("06-client-detail", null, { settle: 1500 });
+
+  // Properties is the default tab; capture it on its own for the properties chapter.
+  const propertiesPanel = page.locator('div:has(> div > h3:text-is("Properties"))').last();
+  await shoot("07-properties-tab", (await propertiesPanel.count()) ? propertiesPanel : null);
+});
+
+// ── CSV import ────────────────────────────────────────────────────────────────
+await step("CSV import", async () => {
+  await backToClientsList();
+  const importBtn = page.locator('button:has-text("Import CSV")').first();
+  if (!(await importBtn.count())) throw new Error("Import CSV is hidden for this account");
+  await importBtn.click();
+  await page.waitForTimeout(4000);
+  await hideAccountChrome();
+  await shoot("08-import-csv", null, { settle: 1200 });
+});
+
+await browser.close();
+
+console.log("\n— summary —");
+for (const r of results) {
+  console.log(`${r.status.padEnd(8)} ${r.name}${r.reason ? ` (${r.reason})` : ""}`);
+}
+process.exit(results.some((r) => r.status === "failed") ? 1 : 0);

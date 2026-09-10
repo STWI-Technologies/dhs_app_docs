@@ -93,9 +93,22 @@ async function shoot(name, target, opts = {}) {
  */
 async function hideAccountChrome() {
   await page.evaluate(() => {
+    // The onboarding wizard docks itself over the page for accounts that haven't
+    // finished setup, and the support-chat launcher floats over the bottom-right
+    // corner — on a tall list it lands on top of the pagination. Neither belongs
+    // to the section being documented. Matched on computed style rather than
+    // class names, which are generated.
     document.querySelectorAll(".onboarding-widget").forEach((el) => {
       el.style.display = "none";
     });
+    for (const el of document.querySelectorAll("body *")) {
+      if (getComputedStyle(el).position !== "fixed") continue;
+      const r = el.getBoundingClientRect();
+      if (!r.width || !r.height || r.width > 160) continue;
+      if (r.right > window.innerWidth - 140 && r.bottom > window.innerHeight - 160) {
+        el.style.display = "none";
+      }
+    }
   });
 }
 
