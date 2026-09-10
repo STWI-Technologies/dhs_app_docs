@@ -32,6 +32,10 @@ const BASE = process.env.KB_BASE_URL || "https://app-staging.directhomeservice.c
 const VIEWPORT = { width: 1440, height: 900 };
 const SCALE = 2;
 
+// An email that already belongs to a DHS client, so the Add Client form shows the
+// existing-client / send-invite panel. Override with KB_EXISTING_EMAIL.
+const EXISTING_CLIENT_EMAIL = process.env.KB_EXISTING_EMAIL || "shawngreen@example.com";
+
 const results = [];
 mkdirSync(OUT_DIR, { recursive: true });
 
@@ -230,6 +234,29 @@ await step("Pending invite panel", async () => {
   await rows.first().click();
   await page.waitForTimeout(2000);
   await shoot("05-client-pending-panel", drawer);
+});
+
+// ── The existing-client / send-invite panel ───────────────────────────────────
+// Typing an email that already belongs to a DHS client swaps the step for this
+// panel. The lookup fires on BLUR of the email field, so the field has to be
+// left before the panel appears.
+//
+// "Send invite" is NEVER clicked: it would send a real invitation to a real
+// person. The panel is only photographed, then the form is cancelled.
+await step("Existing client invite", async () => {
+  await backToClientsList();
+  await page.locator('[data-tour="clients-add-btn"] button').click();
+  await page.waitForSelector("text=Add New Client", { timeout: 15000 });
+  await page.waitForTimeout(1200);
+
+  await page.fill('input[name="firstName"]', "Shawn");
+  await page.fill('input[name="lastName"]', "Green");
+  await page.fill('input[name="email"]', EXISTING_CLIENT_EMAIL);
+  // Blur to fire the lookup.
+  await page.locator('input[name="lastName"]').click();
+  await page.waitForSelector("text=This client already has an account", { timeout: 20000 });
+  await page.waitForTimeout(1500);
+  await shoot("05-existing-client-invite", drawer);
 });
 
 // ── The client record ─────────────────────────────────────────────────────────
