@@ -17,6 +17,7 @@ import {
   TelephoneIcon,
   Layers01Icon,
   SmartPhone01Icon,
+  WarehouseIcon,
 } from 'hugeicons-react';
 
 const articles = [
@@ -113,6 +114,21 @@ const articles = [
       overview: 'Rastrear productos físicos y materiales con gestión de inventario, precios con margen, edición masiva y capacidades de importación/exportación CSV.'
     },
     keywords: ['products', 'productos', 'inventory', 'inventario', 'stock', 'markup', 'margen', 'materials', 'materiales']
+  },
+  {
+    id: 'vendors-manufacturers-groups',
+    icon: WarehouseIcon,
+    en: {
+      title: 'Vendors, Manufacturers & Groups',
+      category: 'Services & Products',
+      overview: 'Keep track of who you buy from, who makes what you install, and the bundles of items that always go out together. Link vendors and manufacturers to your products, and add a whole group to an estimate in one step.'
+    },
+    es: {
+      title: 'Proveedores, Fabricantes y Grupos',
+      category: 'Servicios y Productos',
+      overview: 'Lleve el control de a quién le compra, quién fabrica lo que instala y los conjuntos de artículos que siempre van juntos. Vincule proveedores y fabricantes a sus productos, y agregue un grupo completo a un presupuesto en un solo paso.'
+    },
+    keywords: ['vendors', 'proveedores', 'suppliers', 'manufacturers', 'fabricantes', 'brands', 'marcas', 'groups', 'grupos', 'bundles', 'kits', 'reorder', 'warranty', 'garantía', 'vendor sku', 'inventory', 'inventario']
   },
   {
     id: 'availability-management',
