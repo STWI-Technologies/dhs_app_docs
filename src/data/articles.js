@@ -4,7 +4,6 @@ import {
   Home01Icon,
   Wrench01Icon,
   Package01Icon,
-  Calendar03Icon,
   Calendar01Icon,
   Estimate01Icon,
   Briefcase04Icon,
@@ -12,7 +11,6 @@ import {
   Timer02Icon,
   Setting07Icon,
   CheckListIcon,
-  WhatsappIcon,
   AiBrain01Icon,
   TelephoneIcon,
   Layers01Icon,
@@ -131,21 +129,6 @@ const articles = [
     keywords: ['vendors', 'proveedores', 'suppliers', 'manufacturers', 'fabricantes', 'brands', 'marcas', 'groups', 'grupos', 'bundles', 'kits', 'reorder', 'warranty', 'garantía', 'vendor sku', 'inventory', 'inventario']
   },
   {
-    id: 'availability-management',
-    icon: Calendar03Icon,
-    en: {
-      title: 'Availability Management',
-      category: 'Scheduling',
-      overview: 'Configure business hours globally or per crew with work days, time slots, and exceptions. Manage seasonal schedules and holiday closures.'
-    },
-    es: {
-      title: 'Gestión de Disponibilidad',
-      category: 'Programación',
-      overview: 'Configure horarios de trabajo globalmente o por cuadrilla con días laborables, franjas horarias y excepciones. Administre horarios estacionales y cierres por festivos.'
-    },
-    keywords: ['availability', 'disponibilidad', 'schedule', 'horario', 'time slots', 'exceptions', 'excepciones', 'global', 'crew']
-  },
-  {
     id: 'appointments-management',
     icon: Calendar01Icon,
     en: {
@@ -249,21 +232,6 @@ const articles = [
       overview: 'Crear plantillas de listas de verificación reutilizables con elementos ordenados. Asignar listas a trabajos y presupuestos, duplicar plantillas y rastrear el progreso.'
     },
     keywords: ['checklists', 'listas', 'templates', 'plantillas', 'items', 'elementos', 'jobs', 'trabajos']
-  },
-  {
-    id: 'whatsapp-ai',
-    icon: WhatsappIcon,
-    en: {
-      title: 'WhatsApp AI Assistant',
-      category: 'AI & Automation',
-      overview: 'Manage your entire DHS business from WhatsApp. Send text or voice messages to search records, create appointments, track time, send invoices, and more — all in English or Spanish.'
-    },
-    es: {
-      title: 'Asistente IA de WhatsApp',
-      category: 'IA y Automatización',
-      overview: 'Administre todo su negocio DHS desde WhatsApp. Envíe mensajes de texto o voz para buscar registros, crear citas, rastrear tiempo, enviar facturas y más — todo en inglés o español.'
-    },
-    keywords: ['whatsapp', 'ai', 'assistant', 'asistente', 'voice', 'voz', 'chat', 'bilingual', 'bilingüe', 'tools', 'herramientas', 'automation']
   },
   {
     id: 'ai-assistant',
