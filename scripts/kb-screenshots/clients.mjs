@@ -36,6 +36,17 @@ const SCALE = 2;
 // existing-client / send-invite panel. Override with KB_EXISTING_EMAIL.
 const EXISTING_CLIENT_EMAIL = process.env.KB_EXISTING_EMAIL || "shawngreen@example.com";
 
+/**
+ * The client whose record is photographed. Named on purpose rather than "whatever
+ * is first in the list" — the figure carries this person's name, address and
+ * phone into the published help centre, so it is a choice, not an accident.
+ *
+ * Prefer a subject whose row actions are ENABLED: a client who has signed into
+ * their portal owns their own details, which greys out Edit and Delete and makes
+ * the figure look broken to a reader who doesn't know why.
+ */
+const SUBJECT_CLIENT = process.env.KB_CLIENT || "Anna Clark";
+
 const results = [];
 mkdirSync(OUT_DIR, { recursive: true });
 
@@ -139,7 +150,16 @@ async function backToClientsList() {
     await page.waitForTimeout(3000);
   }
   await page.waitForSelector('[data-tour="clients-list"]', { timeout: 30000 });
-  await page.waitForTimeout(1500);
+  // Clear any search a previous step left behind, so the next one doesn't
+  // inherit a filtered list.
+  if (await searchBox.count()) {
+    const current = await searchBox.inputValue().catch(() => "");
+    if (current) {
+      await searchBox.fill("");
+      await page.waitForTimeout(2500);
+    }
+  }
+  await page.waitForTimeout(1200);
   await hideAccountChrome();
 }
 
@@ -165,6 +185,7 @@ if (await tourTooltip.count()) {
 }
 
 const listCard = page.locator('[data-tour="clients-list"]');
+const searchBox = page.locator('[data-tour="clients-search"] input');
 const drawer = page.locator("div.relative.transform.overflow-hidden.shadow-xl").last();
 
 await step("List view", async () => {
@@ -269,7 +290,18 @@ await step("Client record", async () => {
     .click()
     .catch(() => {});
   await page.waitForTimeout(3000);
-  await page.locator('[data-tour="clients-list"] table tbody tr').first().click();
+
+  // Find the named subject rather than taking the first row.
+  await searchBox.fill(SUBJECT_CLIENT);
+  await page.waitForTimeout(3500);
+  const subjectRow = page
+    .locator('[data-tour="clients-list"] table tbody tr')
+    .filter({ hasText: SUBJECT_CLIENT })
+    .first();
+  if (!(await subjectRow.count())) {
+    throw new Error(`no client matching "${SUBJECT_CLIENT}" — set KB_CLIENT to one that exists`);
+  }
+  await subjectRow.click();
   await page.waitForURL(/\/clients\/[^/]+$/, { timeout: 20000 });
   await page.waitForTimeout(4500);
   await hideAccountChrome();

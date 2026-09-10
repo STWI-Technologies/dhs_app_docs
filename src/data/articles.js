@@ -43,7 +43,7 @@ const articles = [
     id: 'users-management',
     icon: UserGroupIcon,
     en: {
-      title: 'Users Management',
+      title: 'User Management',
       category: 'People & Teams',
       overview: 'Manage user accounts, roles, permissions, and profile settings. Add, edit, enable, and disable users with role-based access control.'
     },
