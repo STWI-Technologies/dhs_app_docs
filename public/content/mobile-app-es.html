@@ -659,6 +659,65 @@
 <p>Toca una notificación para marcarla como leída e ir directamente al registro relacionado — por ejemplo, un trabajo, estimado, factura o cita.</p>
 <h3>Marcar como leídas</h3>
 <p>Toca el botón <strong>marcar todas como leídas</strong> (ícono de sobre abierto) en la parte superior de la pantalla de Alertas para limpiar todas las notificaciones sin leer de una sola vez. Al tocar cualquier notificación individual también se marca solo esa como leída.</p>
+<h2>Trabajar sin conexión</h2>
+<p>Sótanos, entretechos, propiedades rurales, estacionamientos subterráneos: muchos de los lugares donde trabajas no tienen señal. La app está hecha para eso: guarda una copia de tus datos en el dispositivo para que puedas seguir trabajando, y sube todo cuando vuelves a tener conexión.</p>
+<h3>La preparación inicial</h3>
+<p>La primera vez que inicias sesión, la app descarga tus datos y muestra <strong>Configurando tu espacio de trabajo</strong>. Déjala terminar antes de salir a un sitio sin señal — esa descarga es lo que hace posible trabajar sin conexión. Después, las siguientes pasadas dicen simplemente <strong>Actualizando tus datos</strong>.</p>
+<p>Si te quedas sin conexión antes de que termine, la app te lo dice claro: <strong>Configuración incompleta — sin conexión</strong>, y que "Algunos datos aún no se han descargado, por lo que algunas partes de la app pueden no estar disponibles sin conexión."</p>
+<h3>El indicador de sincronización</h3>
+<p>Un indicador pequeño te dice en qué punto estás en cada momento:</p>
+<table>
+<thead>
+<tr><th>Dice</th><th>Significa</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Sincronizado</strong></td><td>Todo está al día, en los dos sentidos.</td></tr>
+<tr><td><strong>Sincronizando</strong></td><td>Los datos se están moviendo, bajando o subiendo.</td></tr>
+<tr><td><strong>Sin conexión</strong></td><td>No hay conexión. Puedes seguir trabajando.</td></tr>
+<tr><td><strong>En cola</strong></td><td>Tienes cambios esperando para cargarse.</td></tr>
+<tr><td><strong>Conflicto</strong></td><td>Algo necesita que decidas. Más abajo.</td></tr>
+</tbody>
+</table>
+<p>Tócalo para ver el detalle: qué falta por subir, y si la app está bajando datos del servidor o enviando tus cambios.</p>
+<h3>Qué pasa con lo que haces sin conexión</h3>
+<p>Sigue trabajando normal. Inicia trabajos, corre cronómetros, agrega servicios y productos, escribe notas, completa listas de verificación, crea clientes: todo se guarda en el dispositivo y se marca como <strong>Sin sincronizar</strong>, así ves qué no ha subido todavía.</p>
+<p>No tienes que acordarte de enviarlo: "Tus cambios en cola se cargarán automáticamente cuando vuelvas a conectarte." Y si una carga falla, la app dice <strong>No se pudo subir</strong> y te ofrece <strong>Reintentar</strong> en vez de perder el cambio.</p>
+<h3>Qué necesita conexión</h3>
+<p>Dos cosas no funcionan con la copia local:</p>
+<ul>
+<li><strong>Los archivos adjuntos</strong> — fotos y archivos. "Los archivos adjuntos requieren una conexión a Internet."</li>
+<li><strong>El Asistente de IA</strong> — "El asistente de IA necesita conexión a internet. Vuelve a conectarte para hacer una pregunta."</li>
+</ul>
+<p>Conviene saberlo antes de salir: si vas a necesitar un documento del registro de un cliente en el sitio, ábrelo mientras todavía tengas señal.</p>
+<h3>Cuando dos personas cambian lo mismo</h3>
+<p>Si editas un trabajo sin conexión y alguien en la oficina edita el mismo trabajo, la app no puede saber cuál es el correcto, así que se detiene en vez de adivinar. Verás <strong>Sincronización pausada — se encontraron conflictos</strong> y un botón <strong>Resolver conflictos</strong>, con cuántos elementos "se cambiaron tanto aquí como en el servidor".</p>
+<p>Resolverlos es una revisión corta, un registro a la vez. En cada uno, la app explica por qué hay conflicto:</p>
+<ul>
+<li>También <strong>se modificó en el servidor</strong> mientras estabas sin conexión.</li>
+<li>Se <strong>eliminó en el servidor</strong> mientras estabas sin conexión — y conservar tu versión lo restaurará.</li>
+<li><strong>Ya existe un registro coincidente</strong> en el servidor, que normalmente significa que la misma cosa se creó dos veces.</li>
+</ul>
+<p>Después eliges, con <strong>Tu versión</strong> y <strong>Versión del servidor</strong> una al lado de la otra:</p>
+<table>
+<thead>
+<tr><th>Opción</th><th>Qué hace</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Conservar los tuyos</strong></td><td>Gana tu versión, la que hiciste sin conexión.</td></tr>
+<tr><td><strong>Conservar servidor</strong></td><td>Gana la versión de la oficina y tu cambio se descarta.</td></tr>
+<tr><td><strong>Combinar campo por campo</strong></td><td>Recorres los campos que difieren y eliges en cada uno — para cuando los dos tienen razón en cosas distintas.</td></tr>
+</tbody>
+</table>
+<p>Avanzas con <strong>Siguiente conflicto</strong> y <strong>Anterior</strong>, cambias de opinión con <strong>Cambiar resolución</strong>, y terminas con <strong>Finalizar y reanudar sincronización</strong>. La sincronización continúa donde se quedó.</p>
+<p>Dos cosas que esperar: si te sales a medias, te pregunta "¿Descartar tus cambios?" y advierte que tus selecciones se perderán; y un registro del que dependen otros cambios pendientes no se puede eliminar — "La eliminación no está disponible para este registro: está vinculado a otros cambios pendientes."</p>
+<h3>Ajustes sin conexión</h3>
+<p>En <strong>Configuración</strong> puedes controlar cuánto hace la app sin conexión. Con todo activado, se comporta como se describe arriba.</p>
+<ul>
+<li><strong>Sincronizar ahora</strong> — baja los últimos cambios sin esperar. Aparece deshabilitado, con su explicación, si no tienes conexión.</li>
+<li><strong>Modo sin conexión</strong> — si lo desactivas, la app funciona solo en línea: no se lee ni se guarda nada en el dispositivo y la sincronización se detiene.</li>
+<li><strong>Sincronización en segundo plano y actualizaciones en vivo</strong> — si lo desactivas, la app deja de sincronizar en segundo plano y ya no recibe los cambios en vivo del servidor.</li>
+</ul>
+<p><strong>No puedes desactivarlos mientras tengas trabajo sin sincronizar.</strong> La app lo impide: "Tienes cambios sin sincronizar. Conéctate a internet para que puedan sincronizarse antes de desactivar esto." Es a propósito: es lo que evita que un cambio de ajuste tire a la basura un día entero de campo.</p>
 <h2>Configuración</h2>
 <p>Configuración es donde administras la configuración de tu negocio desde la app — la numeración de tus facturas y tus tasas de impuesto, tu disponibilidad laboral y qué notificaciones recibes. Este artículo cubre el centro de Configuración y sus tres áreas: Negocio, Disponibilidad y Notificaciones.</p>
 <p>Configuración vive bajo la pestaña <strong>Más</strong>, en el grupo <strong>App y Soporte</strong>. El centro de Configuración es un menú simple con tres tarjetas — <strong>Negocio</strong>, <strong>Disponibilidad</strong> y <strong>Notificaciones</strong> — cada una abre su propia pantalla. Los cambios se guardan por pantalla y surten efecto de inmediato una vez que tocas <strong>Guardar</strong>.</p>

@@ -659,6 +659,65 @@
 <p>Tap a notification to mark it read and jump straight to the related record — for example, a job, estimate, invoice, or appointment.</p>
 <h3>Mark as read</h3>
 <p>Tap the <strong>mark-all-as-read</strong> button (open-envelope icon) at the top of the Alerts screen to clear all unread notifications at once. Tapping any single notification also marks just that one as read.</p>
+<h2>Working Offline</h2>
+<p>Basements, crawl spaces, rural properties, parking garages — plenty of the places you work have no signal. The app is built for that: it keeps a copy of your data on the device, so you can carry on working, and sends everything up when you're back on a connection.</p>
+<h3>Getting set up</h3>
+<p>The first time you sign in, the app downloads your data and shows <strong>Setting up your workspace</strong>. Let it finish before you head out somewhere without signal — that download is what makes offline work possible. After that, later passes just say <strong>Refreshing your data</strong>.</p>
+<p>If you go offline before it finished, the app tells you plainly: <strong>Setup incomplete — offline</strong>, and that "Some data hasn't finished downloading, so parts of the app may be unavailable offline."</p>
+<h3>The sync indicator</h3>
+<p>A small indicator tells you where you stand at any moment:</p>
+<table>
+<thead>
+<tr><th>It says</th><th>It means</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Synced</strong></td><td>Everything is up to date, both ways.</td></tr>
+<tr><td><strong>Syncing</strong></td><td>Data is moving — either coming down or going up.</td></tr>
+<tr><td><strong>Offline</strong></td><td>No connection. You can keep working.</td></tr>
+<tr><td><strong>Queued</strong></td><td>You have changes waiting to upload.</td></tr>
+<tr><td><strong>Conflict</strong></td><td>Something needs your decision. See below.</td></tr>
+</tbody>
+</table>
+<p>Tap it for the detail: what's still waiting to upload, and whether the app is pulling from the server or sending your changes.</p>
+<h3>What happens to work you do offline</h3>
+<p>Carry on as normal. Start jobs, run timers, add services and products, write notes, complete checklists, create clients — it's all saved on the device and marked <strong>Unsynced</strong> so you can see what hasn't gone up yet.</p>
+<p>You don't have to remember to send it: "Your queued changes will upload automatically when you reconnect." If an upload does fail, the app says <strong>Couldn't upload</strong> and offers <strong>Retry</strong> rather than losing the change.</p>
+<h3>What needs a connection</h3>
+<p>Two things can't work from a local copy:</p>
+<ul>
+<li><strong>Attachments</strong> — photos and files. "Attachments require an internet connection."</li>
+<li><strong>The AI Assistant</strong> — "The AI assistant needs an internet connection. Reconnect to ask a question."</li>
+</ul>
+<p>Worth knowing before you drive out: if you need a document from a client's record on site, open it while you still have signal.</p>
+<h3>When two people changed the same thing</h3>
+<p>If you edit a job offline and someone in the office edits the same job, the app can't know which one is right — so it stops rather than guessing. You'll see <strong>Sync paused — conflicts found</strong> and a <strong>Resolve conflicts</strong> button, telling you how many items "were changed both here and on the server."</p>
+<p>Resolving them is a short review, one record at a time. For each one, the app explains why it's a conflict:</p>
+<ul>
+<li>It was <strong>also changed on the server</strong> while you were offline.</li>
+<li>It was <strong>deleted on the server</strong> while you were offline — and keeping your version will restore it.</li>
+<li><strong>A matching record already exists</strong> on the server, which usually means the same thing got created twice.</li>
+</ul>
+<p>Then you choose, with <strong>Your version</strong> and <strong>Server version</strong> shown side by side:</p>
+<table>
+<thead>
+<tr><th>Choice</th><th>What it does</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Keep yours</strong></td><td>Your offline version wins.</td></tr>
+<tr><td><strong>Keep server</strong></td><td>The office version wins and your change is dropped.</td></tr>
+<tr><td><strong>Merge field-by-field</strong></td><td>Go through the differing fields and pick per field — for when you're both right about different things.</td></tr>
+</tbody>
+</table>
+<p>Move through them with <strong>Next conflict</strong> and <strong>Previous</strong>, change your mind with <strong>Change resolution</strong>, and finish with <strong>Finish &amp; resume sync</strong>. Syncing picks up where it left off.</p>
+<p>Two things to expect: leaving halfway asks "Discard your changes?" and warns that your selections will be lost, and a record that other pending changes depend on can't be deleted — "Deleting is off for this record — it's linked to other pending changes."</p>
+<h3>Offline settings</h3>
+<p>Under <strong>Settings</strong> you can control how much the app does offline. With everything on, it behaves as described above.</p>
+<ul>
+<li><strong>Sync now</strong> — pull the latest changes without waiting. Greyed out with an explanation when you have no connection.</li>
+<li><strong>Offline mode</strong> — turn it off and the app works purely online: nothing is read from or saved to the device, and syncing stops.</li>
+<li><strong>Background sync &amp; live updates</strong> — turn it off and the app stops syncing in the background and no longer picks up live changes from the server.</li>
+</ul>
+<p><strong>You can't switch these off while you have unsynced work.</strong> The app blocks it: "You have unsynced changes. Connect to the internet so they can sync before turning this off." That's deliberate — it's what stops a setting change from throwing away a day in the field.</p>
 <h2>Settings</h2>
 <p>Settings is where you manage your business configuration from the app — your invoice numbering and tax rates, your working availability, and which notifications you receive. This article covers the Settings hub and its three areas: Business, Availability, and Notifications.</p>
 <p>Settings lives under the <strong>More</strong> tab, in the <strong>App &amp; Support</strong> group. The Settings hub is a simple menu with three tiles — <strong>Business</strong>, <strong>Availability</strong>, and <strong>Notifications</strong> — each opening its own screen. Changes are saved per screen and take effect immediately once you tap <strong>Save</strong>.</p>
