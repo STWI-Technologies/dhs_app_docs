@@ -118,6 +118,58 @@ async function dropExcludedRows() {
   if (n) console.log(`    · ${n} excluded row(s) left out of this figure`);
 }
 
+/**
+ * Collapse the sidebar, and leave it collapsed.
+ *
+ * List figures show the whole window, chrome included, so a reader can see
+ * WHERE in the app they are. Expanded, the sidebar eats a fifth of the width
+ * and the list itself gets squeezed; collapsed, you still get the icons and the
+ * section you are in, and the table keeps its room.
+ *
+ * The control names itself, so both of these are idempotent: collapsed it reads
+ * "Expand sidebar", expanded it reads "Collapse sidebar".
+ *
+ * COLLAPSE ONLY FOR THE SHOT, THEN EXPAND AGAIN. Navigation finds sidebar items
+ * by their text, and a collapsed sidebar has none, only icons. Leaving it
+ * collapsed after a figure made every following section fail to navigate.
+ */
+async function setSidebar(state) {
+  const want = state === "collapsed" ? "Collapse sidebar" : "Expand sidebar";
+  await page.evaluate((label) => {
+    const b = [...document.querySelectorAll("button,[role=button]")].find(
+      (x) => x.getAttribute("aria-label") === label
+    );
+    if (b) b.click();
+  }, want);
+  await page.waitForTimeout(900);
+}
+
+/**
+ * Wait for the list to hold real data, not its loading skeleton.
+ *
+ * A fixed wait is not enough: Invoices came out as a grid of grey placeholder
+ * bars with an empty count badge, which looks like a broken app rather than a
+ * list. Ask the page instead: the count badge has a number in it, and the first
+ * row has text.
+ */
+async function waitForList(tour) {
+  await page
+    .waitForFunction(
+      (t) => {
+        const card = document.querySelector(`[data-tour="${t}-list"]`);
+        if (!card) return false;
+        const row = card.querySelector("table tbody tr");
+        if (!row || row.innerText.trim().length < 3) return false;
+        // The header's count badge: some number, not an empty pill.
+        return /\d/.test((card.innerText.split("\n")[0] || "") + (card.innerText.split("\n")[1] || ""));
+      },
+      tour,
+      { timeout: 45000 }
+    )
+    .catch(() => console.log("    ! the list never reported data; the figure may show its skeleton"));
+  await page.waitForTimeout(1200);
+}
+
 async function dismissTour() {
   const tip = page.locator(".react-joyride__tooltip");
   if (await tip.count()) {
@@ -254,9 +306,13 @@ for (const key of targets) {
 
   await figure(key, "01-list", async () => {
     if (!(await listCard.count())) throw new Error("the list card isn't on the page (an empty list drops its data-tour)");
-    await page.waitForTimeout(1500);
+    await waitForList(s.tour);
+    await setSidebar("collapsed");
     await dropExcludedRows();
-    await shoot(key, `01-${key}-list`, listCard, { settle: 300 });
+    // The whole window, not a crop of the card: the top bar and the collapsed
+    // sidebar are how the reader knows where they are.
+    await shoot(key, `01-${key}-list`, null, { settle: 300 });
+    await setSidebar("expanded");
   });
 
   if (s.filter === "popover") {
@@ -264,30 +320,19 @@ for (const key of targets) {
       const tour = s.filterTour || `${s.tour}-filters`;
       const trigger = page.locator(`[data-tour="${tour}"] button`).first();
       if (!(await trigger.count())) throw new Error(`no filter control at [data-tour="${tour}"]`);
+      await waitForList(s.tour);
+      await setSidebar("collapsed");
       await trigger.click();
       await page.waitForTimeout(1200);
-      // The popover hangs outside the card's box, so clip a region instead.
-      const cardBox = await listCard.boundingBox();
-      // This figure clips the top of the list too, so the same rows come out.
+      // This figure shows the top of the list too, so the same rows come out.
       await dropExcludedRows();
-      const pop = page.locator(`[data-tour="${tour}"] > div`).last();
-      const popBox = await pop.boundingBox().catch(() => null);
-      if (!cardBox) throw new Error("could not measure the list card");
-      await page.screenshot({
-        path: resolve(ROOT, `public/images/${key}/02-${key}-filter.png`),
-        clip: {
-          x: cardBox.x,
-          y: cardBox.y,
-          width: cardBox.width,
-          height: popBox
-            ? Math.min(popBox.y + popBox.height - cardBox.y + 20, VIEWPORT.height - cardBox.y)
-            : 520,
-        },
-      });
+      await page.waitForTimeout(300);
+      await page.screenshot({ path: resolve(ROOT, `public/images/${key}/02-${key}-filter.png`) });
       results.push({ section: key, name: `02-${key}-filter`, status: "ok" });
       console.log(`    ✓ 02-${key}-filter.png`);
       await page.locator(`[data-tour="${s.tour}-page"]`).click({ position: { x: 5, y: 5 } }).catch(() => {});
       await page.waitForTimeout(700);
+      await setSidebar("expanded");
     });
   }
 

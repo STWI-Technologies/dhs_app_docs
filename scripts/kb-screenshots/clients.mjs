@@ -124,6 +124,25 @@ async function dropRows(labels) {
   }
 }
 
+/**
+ * Collapse the sidebar, and leave it collapsed.
+ *
+ * List figures show the whole window, chrome included, so a reader can see
+ * where in the app they are. Expanded, the sidebar eats a fifth of the width;
+ * collapsed, you still get the icons and the section you are in, and the table
+ * keeps its room. Idempotent: once collapsed the control reads "Expand
+ * sidebar" and there is nothing to find.
+ */
+async function collapseSidebar() {
+  await page.evaluate(() => {
+    const b = [...document.querySelectorAll("button,[role=button]")].find(
+      (x) => x.getAttribute("aria-label") === "Collapse sidebar"
+    );
+    if (b) b.click();
+  });
+  await page.waitForTimeout(900);
+}
+
 /** Rows kept out of the published figures. See dropRows above. */
 const EXCLUDE_ROWS = (process.env.KB_EXCLUDE || "Lulu Lemon").split(",").map((s) => s.trim()).filter(Boolean);
 
@@ -220,29 +239,21 @@ const drawer = page.locator("div.relative.transform.overflow-hidden.shadow-xl").
 
 await step("List view", async () => {
   await page.waitForTimeout(1500);
+  await collapseSidebar();
   await dropRows(EXCLUDE_ROWS);
-  await shoot("01-clients-list", listCard, { settle: 300 });
+  // The whole window, not a crop of the card: the top bar and the collapsed
+  // sidebar are how the reader knows where they are.
+  await shoot("01-clients-list", null, { settle: 300 });
 });
 
 await step("Filters panel", async () => {
   await page.locator('[data-tour="clients-filters"] button').first().click();
   await page.waitForTimeout(1200);
-  // The popover hangs below the card, outside its box, clip a region instead.
-  const cardBox = await listCard.boundingBox();
-  const popover = page.locator('[data-tour="clients-filters"] > div').last();
-  const popBox = await popover.boundingBox();
-  if (!cardBox) throw new Error("could not measure the list card");
-  // This figure clips the top of the list too, so the same rows come out.
+  // This figure shows the top of the list too, so the same rows come out.
   await dropRows(EXCLUDE_ROWS);
-  await page.screenshot({
-    path: resolve(OUT_DIR, "02-filters-popover.png"),
-    clip: {
-      x: cardBox.x,
-      y: cardBox.y,
-      width: cardBox.width,
-      height: popBox ? Math.min(popBox.y + popBox.height - cardBox.y + 20, VIEWPORT.height - cardBox.y) : 520,
-    },
-  });
+  await page.waitForTimeout(300);
+  await page.screenshot({ path: resolve(OUT_DIR, "02-filters-popover.png") });
+
   results.push({ name: "02-filters-popover", status: "ok" });
   console.log("  ✓ 02-filters-popover.png");
   await page.keyboard.press("Escape").catch(() => {});

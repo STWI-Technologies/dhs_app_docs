@@ -222,6 +222,25 @@ await page.waitForSelector('[data-tour="crews-list"]', { timeout: 30000 });
 await page.waitForTimeout(4000);
 await hideAccountChrome();
 
+/**
+ * Collapse the sidebar, and leave it collapsed.
+ *
+ * List figures show the whole window, chrome included, so a reader can see
+ * where in the app they are. Expanded, the sidebar eats a fifth of the width;
+ * collapsed, you still get the icons and the section you are in, and the table
+ * keeps its room. Idempotent: once collapsed the control reads "Expand
+ * sidebar" and there is nothing to find.
+ */
+async function collapseSidebar() {
+  await page.evaluate(() => {
+    const b = [...document.querySelectorAll("button,[role=button]")].find(
+      (x) => x.getAttribute("aria-label") === "Collapse sidebar"
+    );
+    if (b) b.click();
+  });
+  await page.waitForTimeout(900);
+}
+
 const listCard = page.locator('[data-tour="crews-list"]');
 const searchBox = page.locator('[data-tour="crews-search"] input');
 // The Headless UI dialog ROOT has no height of its own (1440x0), so it can never
@@ -244,7 +263,9 @@ await step("Quick Tour", async () => {
 
 await step("List view", async () => {
   await paintSampleRatings();
-  await shoot("01-crews-list", listCard, { settle: 1200 });
+  await collapseSidebar();
+  // The whole window, not a crop of the card.
+  await shoot("01-crews-list", null, { settle: 1200 });
 });
 
 await step("Members +N popover", async () => {
