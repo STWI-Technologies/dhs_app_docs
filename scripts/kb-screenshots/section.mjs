@@ -18,6 +18,8 @@
  *
  * READ-ONLY. Panels are opened to photograph them and always cancelled, never
  * submitted — the platform is mid-migration and create operations are off.
+ *
+ * KB_EXCLUDE names rows to leave out of the list figures — see EXCLUDE_ROWS.
  */
 import { chromium } from "playwright";
 import { mkdirSync } from "node:fs";
@@ -87,6 +89,33 @@ async function hideAccountChrome() {
       if (r.right > window.innerWidth - 140 && r.bottom > window.innerHeight - 160) el.style.display = "none";
     }
   });
+}
+
+/**
+ * Rows kept out of the published list figures.
+ *
+ * Staging is a shared account and anyone can add records to it. A row whose
+ * client name or email is somebody's real test data — or an internal staff
+ * address — does not belong in a published help centre, and we can neither
+ * delete it (the platform is mid-migration, and this script is read-only) nor
+ * leave it in. So the row is removed from the DOM for the length of the
+ * screenshot. Nothing is changed in the app.
+ *
+ * Override with KB_EXCLUDE="Name One,Name Two".
+ */
+const EXCLUDE_ROWS = (process.env.KB_EXCLUDE ?? "Lulu Lemon")
+  .split(",").map((x) => x.trim()).filter(Boolean);
+
+async function dropExcludedRows() {
+  if (!EXCLUDE_ROWS.length) return;
+  const n = await page.evaluate((labels) => {
+    let removed = 0;
+    for (const tr of document.querySelectorAll("table tbody tr")) {
+      if (labels.some((l) => tr.textContent.includes(l))) { tr.remove(); removed++; }
+    }
+    return removed;
+  }, EXCLUDE_ROWS);
+  if (n) console.log(`    · ${n} excluded row(s) left out of this figure`);
 }
 
 async function dismissTour() {
@@ -225,7 +254,9 @@ for (const key of targets) {
 
   await figure(key, "01-list", async () => {
     if (!(await listCard.count())) throw new Error("the list card isn't on the page (an empty list drops its data-tour)");
-    await shoot(key, `01-${key}-list`, listCard, { settle: 1500 });
+    await page.waitForTimeout(1500);
+    await dropExcludedRows();
+    await shoot(key, `01-${key}-list`, listCard, { settle: 300 });
   });
 
   if (s.filter === "popover") {
@@ -237,6 +268,8 @@ for (const key of targets) {
       await page.waitForTimeout(1200);
       // The popover hangs outside the card's box, so clip a region instead.
       const cardBox = await listCard.boundingBox();
+      // This figure clips the top of the list too, so the same rows come out.
+      await dropExcludedRows();
       const pop = page.locator(`[data-tour="${tour}"] > div`).last();
       const popBox = await pop.boundingBox().catch(() => null);
       if (!cardBox) throw new Error("could not measure the list card");

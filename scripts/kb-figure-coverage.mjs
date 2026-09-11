@@ -72,6 +72,10 @@ const BLOCKED = {
   "invoices-management": {
     "Sharing a PDF": "Download Pdf is an item in the More Actions menu, shown in that figure",
   },
+  "jobs-management": {
+    "Sending job details to the client": "the Send to Client panel itself is not published: its message body renders a literal \\n\\n instead of line breaks, and the client link it builds points at client-app-DEVELOP from staging. Both are reported as defects. The More Actions figure covers where the action lives; re-shoot the panel once they are fixed",
+    "Tracking time": "starting the timer would write a timesheet record, and these scripts are read-only. The button also only exists while the job is open, so the completed job the other figures come from does not show it",
+  },
   "crews-management": {
     "Deleting a crew": "every crew on staging is assigned to work, so the delete button is disabled on all 26 rows and the confirmation cannot be opened",
   },
@@ -82,6 +86,23 @@ const BLOCKED = {
     "Deleting any of the three": "same as above",
   },
 };
+
+/**
+ * Articles this report has nothing useful to say about.
+ *
+ * - Hidden articles are not in articles.js, so they have no card and no URL.
+ *   Reporting gaps in something the reader cannot reach is how a report stops
+ *   being read. They are skipped automatically, by reading articles.js.
+ * - The mobile app is a Flutter app on a phone. Its figures cannot come from
+ *   these Playwright scripts at all; they need a device or a simulator.
+ */
+const OUT_OF_SCOPE = {
+  "mobile-app": "a Flutter app — its figures need a device or simulator, not these browser scripts",
+};
+
+const published = new Set(
+  [...readFileSync(resolve(ROOT, "src/data/articles.js"), "utf8").matchAll(/id:\s*'([^']+)'/g)].map((m) => m[1])
+);
 
 const args = process.argv.slice(2).filter((a) => !a.startsWith("-"));
 const files = args.length
@@ -136,6 +157,15 @@ for (const file of files) {
       (s.rolled ?? s.figures) === 0
   );
 
+  if (!published.has(id)) {
+    report.push({ id, hidden: true });
+    continue;
+  }
+  if (OUT_OF_SCOPE[id]) {
+    report.push({ id, outOfScope: OUT_OF_SCOPE[id] });
+    continue;
+  }
+
   const blocked = BLOCKED[id] || {};
   const open = gaps.filter((g) => !blocked[g.title]);
   const known = gaps.filter((g) => blocked[g.title]);
@@ -144,6 +174,14 @@ for (const file of files) {
 }
 
 for (const r of report) {
+  if (r.hidden) {
+    console.log(`\n${r.id}  — hidden (not in articles.js), so not assessed`);
+    continue;
+  }
+  if (r.outOfScope) {
+    console.log(`\n${r.id}  — out of scope: ${r.outOfScope}`);
+    continue;
+  }
   if (r.isExport) {
     console.log(`\n${r.id}  — still a Google Docs export, not assessed`);
     continue;

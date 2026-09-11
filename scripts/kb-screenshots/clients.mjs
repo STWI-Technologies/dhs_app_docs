@@ -19,6 +19,10 @@
  * itself for the existing-client flow.
  *
  * KB_ONLY="List view,Filters panel" re-shoots just those steps.
+ *
+ * KB_EXCLUDE is a comma-separated list of rows to leave out of the list
+ * figures — see dropRows(). Staging is shared, and not every record on it is
+ * fit to publish.
  */
 import { chromium } from "playwright";
 import { mkdirSync } from "node:fs";
@@ -96,6 +100,32 @@ async function hideAccountChrome() {
     }
   });
 }
+
+/**
+ * Drop rows from the list before photographing it.
+ *
+ * Staging is a shared account and anyone can add records to it. A row whose
+ * name or email is somebody's real test data — or an internal staff address —
+ * does not belong in a published help centre, and we cannot delete it (the
+ * platform is mid-migration and this script is read-only besides). So the row
+ * is removed from the DOM for the duration of the screenshot only. Nothing is
+ * changed in the app.
+ */
+async function dropRows(labels) {
+  const dropped = await page.evaluate((labels) => {
+    let n = 0;
+    for (const tr of document.querySelectorAll("table tbody tr")) {
+      if (labels.some((l) => tr.textContent.includes(l))) { tr.remove(); n++; }
+    }
+    return n;
+  }, labels);
+  if (dropped !== labels.length) {
+    console.log(`  ! dropRows matched ${dropped} of ${labels.length} (${labels.join(", ")})`);
+  }
+}
+
+/** Rows kept out of the published figures. See dropRows above. */
+const EXCLUDE_ROWS = (process.env.KB_EXCLUDE || "Lulu Lemon").split(",").map((s) => s.trim()).filter(Boolean);
 
 /** Close whatever panel is open, so a failed step can't block the next one. */
 async function dismissAnyPanel() {
@@ -189,7 +219,9 @@ const searchBox = page.locator('[data-tour="clients-search"] input');
 const drawer = page.locator("div.relative.transform.overflow-hidden.shadow-xl").last();
 
 await step("List view", async () => {
-  await shoot("01-clients-list", listCard, { settle: 1500 });
+  await page.waitForTimeout(1500);
+  await dropRows(EXCLUDE_ROWS);
+  await shoot("01-clients-list", listCard, { settle: 300 });
 });
 
 await step("Filters panel", async () => {
@@ -200,6 +232,8 @@ await step("Filters panel", async () => {
   const popover = page.locator('[data-tour="clients-filters"] > div').last();
   const popBox = await popover.boundingBox();
   if (!cardBox) throw new Error("could not measure the list card");
+  // This figure clips the top of the list too, so the same rows come out.
+  await dropRows(EXCLUDE_ROWS);
   await page.screenshot({
     path: resolve(OUT_DIR, "02-filters-popover.png"),
     clip: {

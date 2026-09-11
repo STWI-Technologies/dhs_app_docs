@@ -176,10 +176,16 @@ for (const key of targets) {
     await page.waitForTimeout(1200);
   }
 
-  const rowButtons = page
-    .locator(`[data-tour="${s.tour}-list"] table tbody tr`)
-    .first()
-    .locator("button");
+  // Which row the figures come from. Named where it matters (a draft job, so the
+  // edit panel isn't a wall of locked fields) rather than "whatever is first".
+  const targetRow = s.row
+    ? page.locator(`[data-tour="${s.tour}-list"] table tbody tr`).filter({ hasText: s.row }).first()
+    : page.locator(`[data-tour="${s.tour}-list"] table tbody tr`).first();
+  if (s.row && !(await targetRow.count())) {
+    console.log(`    ✗ no row matching "${s.row}" on the first page — set KB_JOB_ROW`);
+    continue;
+  }
+  const rowButtons = targetRow.locator("button");
 
   if (s.edit) {
     await figure(`${key}/${s.edit.figure}`, async () => {
