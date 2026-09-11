@@ -1,5 +1,5 @@
 /**
- * Knowledge base screenshots — Crews section.
+ * Knowledge base screenshots, Crews section.
  *
  * Captures the figures used by public/content/crews-management.html, so the
  * article can be refreshed by re-running this file instead of re-exporting a
@@ -24,7 +24,7 @@
  *
  * ONE FIGURE COMES FROM DEVELOP, NOT STAGING. Staging still ships the old single
  * "No crews found matching your keyword" line; the three separate empty states
- * (SP-UI-705) are only on develop — verified by the locale keys emptyStateNoMatching
+ * (SP-UI-705) are only on develop, verified by the locale keys emptyStateNoMatching
  * and noCrewsAddedYet being absent from the staging bundle. An empty state contains
  * no account data, so develop's ugly test crews cannot leak into it:
  *
@@ -95,7 +95,7 @@ async function hideAccountChrome() {
   await page.evaluate(() => {
     // The onboarding wizard docks itself over the page for accounts that haven't
     // finished setup, and the support-chat launcher floats over the bottom-right
-    // corner — on a tall list it lands on top of the pagination. Neither belongs
+    // corner, on a tall list it lands on top of the pagination. Neither belongs
     // to the section being documented. Matched on computed style rather than
     // class names, which are generated.
     document.querySelectorAll(".onboarding-widget").forEach((el) => {
@@ -151,7 +151,7 @@ async function closePanel() {
 
 
 /**
- * SYNTHETIC RATINGS — for the list figure only.
+ * SYNTHETIC RATINGS, for the list figure only.
  *
  * No crew on staging has customer feedback, so the Rating column is a column of
  * em dashes and the figure teaches nothing about it. Seeding real ratings is not
@@ -160,9 +160,9 @@ async function closePanel() {
  * migration.
  *
  * So the stars are injected into the cells right before the shot. The MARKUP IS
- * THE APP'S OWN — the @tabler/icons-react v3.41.1 star-filled path, at the 18px
+ * THE APP'S OWN, the @tabler/icons-react v3.41.1 star-filled path, at the 18px
  * size and with the text-yellow-400 class and opacity steps that
- * pages/Crews/tableColumns.tsx uses — so what is photographed is the real
+ * pages/Crews/tableColumns.tsx uses, so what is photographed is the real
  * component's appearance. Only the numbers behind it are made up.
  *
  * Stars only, no numeric average: the number beside the stars is a known defect.
@@ -204,7 +204,7 @@ async function paintSampleRatings() {
     },
     { starPath: STAR_PATH, ratings: SAMPLE_RATINGS }
   );
-  console.log(`    (sample ratings painted into ${painted} rows — see the note in this file)`);
+  console.log(`    (sample ratings painted into ${painted} rows, see the note in this file)`);
 }
 
 // ── Sign in ───────────────────────────────────────────────────────────────────
@@ -335,7 +335,7 @@ await step("Add New Crew panel", async () => {
   await page.locator('input[placeholder="Crew Name"]').fill("Install Team A");
   await page.waitForTimeout(600);
   const memberRows = await drawer.locator("table tbody tr").count();
-  if (memberRows === 0) throw new Error("member picker selected nothing — options selector is wrong");
+  if (memberRows === 0) throw new Error("member picker selected nothing, options selector is wrong");
   console.log(`    (${memberRows} members in the table)`);
   await shoot("05-members-table", drawer);
   await closePanel();
@@ -371,7 +371,7 @@ await step("Users filter", async () => {
 
 await browser.close();
 
-console.log("\n— summary —");
+console.log("\n, summary ,");
 for (const r of results) {
   console.log(`${r.status.padEnd(8)} ${r.name}${r.reason ? ` (${r.reason})` : ""}`);
 }

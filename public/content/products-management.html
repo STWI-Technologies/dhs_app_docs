@@ -1,10 +1,10 @@
 <h1>Products Management</h1>
 <h2>Overview</h2>
-<p>A <strong>product</strong> is something physical you stock, sell, or install — a filter, a thermostat, a length of pipe. Each one carries what it costs you, what you charge for it, and, if you want, how many you have. Add it to an estimate or an invoice and the price and the stock follow.</p>
+<p>A <strong>product</strong> is something physical you stock, sell, or install: a filter, a thermostat, a length of pipe. Each one carries what it costs you, what you charge for it, and, if you want, how many you have. Add it to an estimate or an invoice and the price and the stock follow.</p>
 <p>From this section you can:</p>
 <ul>
 <li><strong>Add products</strong> with cost, markup and price, a photo, and where they come from.</li>
-<li><strong>Track stock</strong> — what's on hand, what's already promised, when to reorder.</li>
+<li><strong>Track stock</strong>: what's on hand, what's already promised, when to reorder.</li>
 <li><strong>Edit</strong> one product, or <strong>bulk edit</strong> quantities across many.</li>
 <li><strong>Archive</strong> products you no longer carry, and restore them later.</li>
 <li><strong>Delete</strong> an archived product for good, when nothing references it.</li>
@@ -25,7 +25,7 @@
 </thead>
 <tbody>
 <tr><td>SKU</td><td>The code that identifies the product. Set once when you create it and fixed from then on. Sortable.</td></tr>
-<tr><td>Product</td><td>Its photo, name, and description. Hover the photo to see it bigger — useful when two parts have similar names.</td></tr>
+<tr><td>Product</td><td>Its photo, name, and description. Hover the photo to see it bigger, which helps when two parts have similar names.</td></tr>
 <tr><td>Cost</td><td>What you pay for it. Sortable.</td></tr>
 <tr><td>Markup %</td><td>What you add on top.</td></tr>
 <tr><td>Item Price</td><td>What the client pays. Sortable.</td></tr>
@@ -37,26 +37,26 @@
 </tbody>
 </table>
 <h3>Row actions</h3>
-<p>Each row has an <strong>eye</strong> that opens <strong>View product details</strong> — everything about the product, including its stock, read-only — and a <strong>three-dot menu</strong> with edit, archive or delete, and the rest.</p>
+<p>Each row has an <strong>eye</strong> that opens <strong>View product details</strong>, a read-only view of everything about the product including its stock, and a <strong>three-dot menu</strong> with edit, archive or delete, and the rest.</p>
 <p><strong>Delete</strong> is greyed out while anything references the product: "This item can't be deleted because it's linked to existing records." Archive it instead.</p>
 <h3>Search and filters</h3>
 <p>The search box in the card header matches names and SKUs, and <strong>Filter</strong> opens a panel to narrow by tag, group, and the product's other attributes. <strong>Reset Filter</strong> clears them. Filters, search, and the tab you're on all work together.</p>
 <p><img src="/images/products/02-products-filter.png" alt="The Products filter panel"></p>
 <figcaption class="doc-caption">Narrowing the catalogue down.</figcaption>
 <h2>Adding a product</h2>
-<p>Click <strong>Add Product</strong>. A panel opens from the right, titled <strong>Add New Product</strong>, with everything on one screen — the essentials first, then the details.</p>
+<p>Click <strong>Add Product</strong>. A panel opens from the right, titled <strong>Add New Product</strong>, with everything on one screen: the essentials first, then the details.</p>
 <p><img src="/images/products/03-add-product-panel.png" class="kb-panel" alt="The Add New Product panel with image, SKU, name, cost, markup and item price"></p>
-<figcaption class="doc-caption">Cost, markup and item price are linked — fill in two and the third follows.</figcaption>
+<figcaption class="doc-caption">Cost, markup and item price are linked: fill in two and the third follows.</figcaption>
 <h3>The essentials</h3>
 <table>
 <thead>
 <tr><th>Field</th><th>Required</th><th>Notes</th></tr>
 </thead>
 <tbody>
-<tr><td>Product Image</td><td>No</td><td>A photo. Worth adding — it's what someone recognises in a list of similar parts.</td></tr>
+<tr><td>Product Image</td><td>No</td><td>A photo. Worth adding, because it's what someone recognises in a list of similar parts.</td></tr>
 <tr><td>SKU</td><td>Yes</td><td>A code unique to this product. You can't change it afterwards. If the code is already taken you'll be told when you leave the field.</td></tr>
 <tr><td>Name</td><td>Yes</td><td>What it's called on estimates and invoices, so write it the way a client should read it.</td></tr>
-<tr><td>Description</td><td>No</td><td>Size, model, what it fits — whatever stops someone ordering the wrong one.</td></tr>
+<tr><td>Description</td><td>No</td><td>Size, model, what it fits: whatever stops someone ordering the wrong one.</td></tr>
 <tr><td>Cost</td><td>Yes</td><td>What you pay your supplier.</td></tr>
 <tr><td>Markup</td><td>—</td><td>Your margin, as a percentage.</td></tr>
 <tr><td>Item Price</td><td>—</td><td>What the client pays.</td></tr>
@@ -66,10 +66,10 @@
 <h3>How cost, markup and price fit together</h3>
 <p>These three are linked, so you only ever fill in two:</p>
 <ul>
-<li>Enter a <strong>cost</strong> and a <strong>markup</strong>, and the <strong>item price</strong> is worked out — cost plus that percentage.</li>
+<li>Enter a <strong>cost</strong> and a <strong>markup</strong>, and the <strong>item price</strong> is worked out as cost plus that percentage.</li>
 <li>Enter a <strong>cost</strong> and an <strong>item price</strong>, and the <strong>markup</strong> is worked out for you.</li>
 </ul>
-<p>Which way you work depends on how you price. If you apply a standard margin, type the markup and let the price follow. If the price is fixed — by a manufacturer, or because that's what the market bears — type the price and see what margin it actually leaves you.</p>
+<p>Which way you work depends on how you price. If you apply a standard margin, type the markup and let the price follow. If the price is fixed, by a manufacturer or because that's what the market bears, type the price and see what margin it actually leaves you.</p>
 <h3>The details</h3>
 <p>Below the essentials sits everything that makes the product orderable and countable. None of it is required, but it's what turns a price list into a working inventory.</p>
 <table>
@@ -78,10 +78,10 @@
 </thead>
 <tbody>
 <tr><td>Unit Of Measure</td><td>How you count it: each, box, foot, gallon.</td></tr>
-<tr><td>Vendor / Vendor SKU</td><td>Who you buy it from, and their code for it — so reordering doesn't mean hunting through catalogues.</td></tr>
+<tr><td>Vendor / Vendor SKU</td><td>Who you buy it from, and their code for it, so reordering doesn't mean hunting through catalogues.</td></tr>
 <tr><td>Manufacturer / Manufacturer Number</td><td>Who makes it, and the part number.</td></tr>
 <tr><td>Average Delivery Time (Days)</td><td>How long it takes to arrive. This is what tells you how early to reorder.</td></tr>
-<tr><td>Location</td><td>Where it lives — a van, a shelf, a bay.</td></tr>
+<tr><td>Location</td><td>Where it lives: a van, a shelf, a bay.</td></tr>
 <tr><td>Color</td><td>When the same part comes in several.</td></tr>
 <tr><td>Group</td><td>Which group it belongs to.</td></tr>
 <tr><td>Tags</td><td>Your own labels, for filtering later.</td></tr>
@@ -106,7 +106,7 @@
 <p>The distinction is the point: ten filters on the shelf with eight already promised to jobs is not ten filters you can sell. Products show up as <strong>In Stock</strong>, <strong>Low stock</strong>, or <strong>Out of stock</strong> depending on where they sit against your re-order quantity.</p>
 <!-- figure: 04-stock-availability -->
 <h3>Products you don't count</h3>
-<p>Not everything is worth counting — consumables, bulk fittings, anything you simply never run out of. Turn on <strong>Disable inventory tracking</strong> for those. They keep their price and work normally on estimates and invoices; they just don't carry quantities and won't warn you about stock.</p>
+<p>Not everything is worth counting: consumables, bulk fittings, anything you simply never run out of. Turn on <strong>Disable inventory tracking</strong> for those. They keep their price and work normally on estimates and invoices; they just don't carry quantities and won't warn you about stock.</p>
 <h2>Editing a product</h2>
 <p>Open the three-dot menu on the row and choose <strong>Edit product</strong>. Everything is editable except the SKU. Save with <strong>Apply Changes</strong>.</p>
 <p><img src="/images/products/04-edit-product-panel.png" class="kb-panel" alt="The Edit product panel"></p>
@@ -115,7 +115,7 @@
 <h2>Updating quantities for several products at once</h2>
 <p>After a stock count or a delivery, editing products one at a time is a waste of an afternoon. Select the rows you want, and bulk edit lets you set <strong>Quantity On Hand</strong> and <strong>Re-Order Quantity</strong> for all of them together.</p>
 <!-- figure: 05-bulk-edit -->
-<p>The panel tells you what it's about to do — how many products are selected, and whether any of them can't be updated. Products with inventory tracking switched off have no quantities to set, so they're left out; if none of your selection is tracked, you're told that instead of the change silently doing nothing. Turn tracking on in each product's edit panel first.</p>
+<p>The panel tells you what it's about to do: how many products are selected, and whether any of them can't be updated. Products with inventory tracking switched off have no quantities to set, so they're left out; if none of your selection is tracked, you're told that instead of the change silently doing nothing. Turn tracking on in each product's edit panel first.</p>
 <p><img src="/images/products/06-bulk-edit.png" class="kb-panel" alt="The bulk edit panel showing how many products are selected"></p>
 <figcaption class="doc-caption">Bulk edit says how many products it will touch, and warns when some cannot be.</figcaption>
 <h2>Archiving, restoring, deleting</h2>
@@ -125,18 +125,18 @@
 <p><strong>To restore:</strong> Archived tab &gt; three-dot menu &gt; <strong>Restore</strong>.</p>
 <p><strong>To delete for good:</strong> Archived tab &gt; three-dot menu &gt; <strong>Delete</strong> &gt; confirm. Only available when the <strong>In Use</strong> column is empty.</p>
 <h2>Importing and exporting</h2>
-<p><strong>Export CSV</strong> downloads your catalogue as a spreadsheet — for a price review, a stock count, or sending a vendor your list.</p>
+<p><strong>Export CSV</strong> downloads your catalogue as a spreadsheet, for a price review, a stock count, or sending a vendor your list.</p>
 <p><strong>Import CSV</strong> brings a catalogue in, which is how you avoid typing hundreds of parts by hand. Upload the file, match your columns to the DHS fields, check the preview, and import. Rows that fail validation are reported so you can fix the file and try again.</p>
 <p><strong>Note:</strong> both buttons can be turned off for your account, in which case neither appears.</p>
 <h2>Products added in a hurry</h2>
 <p>Mid-estimate and the part isn't in your catalogue yet? The product picker has a <strong>Quick Add</strong> shortcut in it: give a SKU, a name and a price, and you're back where you were with the product created. Its row carries a marker until someone fills in the vendor, the unit and the quantities.</p>
-<p>Note that products are added this way only — from a picker, while you're building something. The <strong>Quick Add</strong> panel in the top bar covers appointments, clients, jobs, estimates, crews, users, service items, properties and payments, but not products.</p>
+<p>Note that products are added this way only, from a picker while you're building something. The <strong>Quick Add</strong> panel in the top bar covers appointments, clients, jobs, estimates, crews, users, service items, properties and payments, but not products.</p>
 <h2>Where products are used</h2>
 <ul>
-<li><strong>Estimates</strong> — quoted parts. Quantities you quote are held as reserved, so a quote can't promise stock twice.</li>
-<li><strong>Jobs</strong> — parts committed to work in progress.</li>
-<li><strong>Invoices</strong> — what the client is billed for, with tax on the products marked taxable.</li>
-<li><strong>Groups</strong> — a set of products and services you add together, instead of picking them one by one.</li>
+<li><strong>Estimates</strong>: quoted parts. Quantities you quote are held as reserved, so a quote can't promise stock twice.</li>
+<li><strong>Jobs</strong>: parts committed to work in progress.</li>
+<li><strong>Invoices</strong>: what the client is billed for, with tax on the products marked taxable.</li>
+<li><strong>Groups</strong>: a set of products and services you add together, instead of picking them one by one.</li>
 </ul>
 <p>Changing a product's price changes what future records pick up; records already written keep the price they were created with.</p>
 <h2>Common actions</h2>
@@ -148,8 +148,8 @@
 <tr><td>See your catalogue</td><td>Menu &gt; Inventory &gt; Products</td></tr>
 <tr><td>Add a product</td><td>Add Product &gt; SKU, name, cost, markup or price &gt; Add Product</td></tr>
 <tr><td>Add one in a hurry</td><td>Quick Add &gt; Product, or the shortcut in a product picker</td></tr>
-<tr><td>Work out a price from a margin</td><td>Enter Cost and Markup — Item Price follows</td></tr>
-<tr><td>Work out the margin on a fixed price</td><td>Enter Cost and Item Price — Markup follows</td></tr>
+<tr><td>Work out a price from a margin</td><td>Enter Cost and Markup, and Item Price follows</td></tr>
+<tr><td>Work out the margin on a fixed price</td><td>Enter Cost and Item Price, and Markup follows</td></tr>
 <tr><td>Check what you can actually promise</td><td>The eye on its row &gt; Stock Available</td></tr>
 <tr><td>Update quantities after a stock count</td><td>Select the rows &gt; bulk edit &gt; Quantity On Hand</td></tr>
 <tr><td>Be warned before you run out</td><td>Set Re-Order Quantity, and Average Delivery Time</td></tr>

@@ -253,12 +253,12 @@ const articles = [
     en: {
       title: 'Plans & App Versions',
       category: 'Getting Started',
-      overview: 'DHS comes in two app versions — Solo for independent contractors and Team for businesses with crews. Compare features, communication channels, and find the right fit for your business.'
+      overview: 'DHS comes in two app versions: Solo for independent contractors and Team for businesses with crews. Compare features, communication channels, and find the right fit for your business.'
     },
     es: {
       title: 'Planes y Versiones de la App',
       category: 'Primeros Pasos',
-      overview: 'DHS viene en dos versiones — Solo para contratistas independientes y Team para negocios con equipos. Compare características, canales de comunicación y encuentre la opción ideal para su negocio.'
+      overview: 'DHS viene en dos versiones: Solo para contratistas independientes y Team para negocios con equipos. Compare características, canales de comunicación y encuentre la opción ideal para su negocio.'
     },
     keywords: ['plans', 'planes', 'solo', 'team', 'equipo', 'enterprise', 'pricing', 'subscription', 'suscripción', 'features', 'comparison']
   }

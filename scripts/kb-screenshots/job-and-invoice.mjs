@@ -1,5 +1,5 @@
 /**
- * Knowledge base screenshots — the Door Fitting job and the invoice raised from it.
+ * Knowledge base screenshots, the Door Fitting job and the invoice raised from it.
  *
  * These two records were prepared by hand for the documentation, so they are
  * addressed by id rather than searched for. Everything the Jobs and Invoices
@@ -15,7 +15,7 @@
  * TWO FIGURES ARE ADJUSTED IN THE BROWSER BEFORE THE SHOT. Both are disclosed
  * here and in the articles' own captions is not the place for it, so read this:
  *
- * 1. CHECKLIST ORDER. The items render in an order that reads as backwards —
+ * 1. CHECKLIST ORDER. The items render in an order that reads as backwards ,
  *    the job's last step appears first. That is a real defect, reported
  *    separately. Reversing them is not enough: the displayed order is not the
  *    logical order flipped, so a reverse still puts "Take after photos" before
@@ -27,12 +27,12 @@
  * 2. CHAT. The job's conversation is empty ("No messages yet"), and a real
  *    exchange cannot be produced: it needs the client to reply from their
  *    portal, and that account's password could not be recovered. So two
- *    messages are injected — one from the service provider, one from the client
- *    — using the chat component's own bubble markup, to show what the Chat tab
+ *    messages are injected, one from the service provider, one from the client
+ *   , using the chat component's own bubble markup, to show what the Chat tab
  *    looks like in use. The wording is ordinary scheduling talk about this job;
  *    nothing is quoted, promised or priced.
  *
- *    The SAME two messages go into EVERY figure that shows this sidebar — each
+ *    The SAME two messages go into EVERY figure that shows this sidebar, each
  *    tab of the job, and the invoice raised from it. Injecting them into one
  *    figure only would leave the article showing a conversation on one screen
  *    and, two figures later on the same job, an empty panel.
@@ -81,7 +81,7 @@ async function hideAccountChrome() {
 /**
  * Click a tab inside the record, not the sidebar item of the same name.
  * "Checklist" exists in both places and the sidebar one navigates away from the
- * job entirely — which is what happened on the first attempt.
+ * job entirely, which is what happened on the first attempt.
  */
 async function clickTab(name) {
   const ok = await page.evaluate((n) => {
@@ -111,7 +111,7 @@ async function step(label, fn) {
   } catch (err) {
     const lines = err.message.split("\n").map((l) => l.trim()).filter(Boolean);
     const cause = lines.find((l) => /intercept|not visible|not stable|resolved to|waiting for/i.test(l));
-    results.push({ name: label, status: "failed", reason: cause ? `${lines[0]} — ${cause}` : lines[0] });
+    results.push({ name: label, status: "failed", reason: cause ? `${lines[0]}, ${cause}` : lines[0] });
     console.log(`  ✗ ${cause || lines[0]}`);
   }
 }
@@ -169,7 +169,7 @@ async function clickMoreActions() {
 async function clickMenuItem(label) {
   await page.waitForTimeout(1200);
   const state = await page.evaluate((l) => {
-    // Each item wraps an icon and a label, so it is not a text leaf — match on
+    // Each item wraps an icon and a label, so it is not a text leaf, match on
     // the item's own text rather than hunting for a childless node.
     const item = [...document.querySelectorAll('[role="menuitem"]')].find((x) => x.innerText.trim() === l);
     if (!item) return "no item";
@@ -237,7 +237,7 @@ async function injectChat() {
     // Two messages, not three: a third was clipped by the bottom of the panel,
     // and one each way is all the figure needs to show.
     host.innerHTML =
-      bubble("Morning — we're booked in for Sunday at 10. The crew will call when they're on the way.", "Sep 5, 2026, 9:12 AM", true) +
+      bubble("Morning, we're booked in for Sunday at 10. The crew will call when they're on the way.", "Sep 5, 2026, 9:12 AM", true) +
       bubble("Perfect, thank you. I'll leave the side gate unlocked so they can get to the back door.", "Sep 5, 2026, 9:31 AM", false);
     return "ok";
   });
@@ -314,7 +314,7 @@ await step("Job checklist", async () => {
 
     const rows = leaves.map((leaf) => [...common.children].find((child) => child.contains(leaf)));
     if (rows.some((r) => !r)) return { ok: false, reason: "a row is not a direct child of the list" };
-    if (new Set(rows).size !== rows.length) return { ok: false, reason: "rows collapsed to the same child — the common ancestor is too high" };
+    if (new Set(rows).size !== rows.length) return { ok: false, reason: "rows collapsed to the same child, the common ancestor is too high" };
     rows.forEach((r) => common.appendChild(r));
     return { ok: true, moved: rows.length };
   }, ORDER);
@@ -379,7 +379,7 @@ await step("Send to client", async () => {
 
 await step("Edit job", async () => {
   await openJob();
-  // Edit is a button at the top of the job's Overview card — not in the More
+  // Edit is a button at the top of the job's Overview card, not in the More
   // Actions menu, and not only on the list row.
   const ok = await page.evaluate(() => {
     const b = [...document.querySelectorAll("button")].find(
@@ -423,10 +423,15 @@ await step("Complete job", async () => {
   // one. That dialog is the figure.
   //
   // PHOTOGRAPHED AND CANCELLED. "Complete job" is never clicked and no box is
-  // ticked — the checklist belongs to a real job.
+  // ticked, the checklist belongs to a real job.
   await clickMoreActions();
   await clickMenuItem("Complete job");
-  await shootPanel("jobs", "13-complete-job");
+  // The WHOLE page with the dialog over it, not a crop of the dialog. The
+  // dialog on its own loses what it is interrupting, and the figure is about
+  // the job being completed, not about a list of tick boxes.
+  await page.locator(PANEL).last().waitFor({ state: "visible", timeout: 20000 });
+  await page.waitForTimeout(1800);
+  await shoot("jobs", "13-complete-job", { settle: 300 });
   await closePanel();
 });
 
@@ -449,7 +454,7 @@ await step("Invoice payments", async () => {
 
 await browser.close();
 
-console.log("\n— summary —");
+console.log("\n, summary ,");
 const ok = results.filter((r) => r.status === "ok").length;
 for (const r of results) console.log(`${r.status.padEnd(8)} ${r.name}${r.reason ? ` (${r.reason})` : ""}`);
 console.log(`\n${ok} captured, ${results.length - ok} failed`);

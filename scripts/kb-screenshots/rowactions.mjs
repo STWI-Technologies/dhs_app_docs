@@ -1,5 +1,5 @@
 /**
- * Knowledge base screenshots — row-level figures.
+ * Knowledge base screenshots, row-level figures.
  *
  * section.mjs captures what a section looks like from the outside: the list, the
  * filter, the add panel. This one captures what you get from a ROW: the edit
@@ -10,7 +10,7 @@
  *   set -a; . ~/dhs_qa_workspace/.env; set +a
  *   node scripts/kb-screenshots/rowactions.mjs users
  *
- * READ-ONLY, and it must stay that way — the platform is mid-migration. The edit
+ * READ-ONLY, and it must stay that way, the platform is mid-migration. The edit
  * panel is cancelled, and the confirmation dialog is photographed and then
  * DISMISSED, never confirmed. Nothing here disables, archives or deletes.
  */
@@ -25,10 +25,10 @@ const VIEWPORT = { width: 1440, height: 900 };
 const SCALE = 2;
 
 /**
- * nav/tour  — as in section.mjs
- * edit      — { figure, expect } the pencil on a row and the heading it opens with
- * confirm   — { figure, button, expect } a row button that opens a confirmation
- * quickAdd  — { figure, item, expect } the entry to pick in the Quick Add menu
+ * nav/tour , as in section.mjs
+ * edit     , { figure, expect } the pencil on a row and the heading it opens with
+ * confirm  , { figure, button, expect } a row button that opens a confirmation
+ * quickAdd , { figure, item, expect } the entry to pick in the Quick Add menu
  */
 const SECTIONS = {
   users: {
@@ -62,7 +62,7 @@ const SECTIONS = {
     bulk: { figure: "06-bulk-edit", rows: 3 },
     // No Quick Add here: the top-bar panel offers nine tiles and Product is not
     // one of them. A product can only be quick-added from inside a product
-    // picker, which means being mid-estimate — not a figure this script takes.
+    // picker, which means being mid-estimate, not a figure this script takes.
   },
 };
 
@@ -128,8 +128,8 @@ async function figure(label, fn) {
   } catch (err) {
     const lines = err.message.split("\n").map((l) => l.trim()).filter(Boolean);
     const cause = lines.find((l) => /intercept|not visible|not stable|resolved to|waiting for/i.test(l));
-    results.push({ name: label, status: "failed", reason: cause ? `${lines[0]} — ${cause}` : lines[0] });
-    console.log(`    ✗ ${label} — ${cause || lines[0]}`);
+    results.push({ name: label, status: "failed", reason: cause ? `${lines[0]}, ${cause}` : lines[0] });
+    console.log(`    ✗ ${label}, ${cause || lines[0]}`);
   } finally {
     await dismissAnyPanel();
   }
@@ -182,7 +182,7 @@ for (const key of targets) {
     ? page.locator(`[data-tour="${s.tour}-list"] table tbody tr`).filter({ hasText: s.row }).first()
     : page.locator(`[data-tour="${s.tour}-list"] table tbody tr`).first();
   if (s.row && !(await targetRow.count())) {
-    console.log(`    ✗ no row matching "${s.row}" on the first page — set KB_JOB_ROW`);
+    console.log(`    ✗ no row matching "${s.row}" on the first page, set KB_JOB_ROW`);
     continue;
   }
   const rowButtons = targetRow.locator("button");
@@ -223,7 +223,7 @@ for (const key of targets) {
   // the Inventory sections. Same shape every time, so one step covers them all.
   //
   // Archive opens a CONFIRMATION and is photographed, then dismissed. Nothing is
-  // archived — the platform is mid-migration and this script only reads.
+  // archived, the platform is mid-migration and this script only reads.
   for (const m of s.menu || []) {
     await figure(`${key}/${m.figure}`, async () => {
       const n = await rowButtons.count();
@@ -252,7 +252,7 @@ for (const key of targets) {
       const boxes = page.locator(`[data-tour="${s.tour}-list"] table tbody tr [data-checkbox-root="true"]`).first().locator("xpath=.");
       const allBoxes = page.locator(`[data-tour="${s.tour}-list"] table tbody tr > td:first-child [data-checkbox-root="true"]`);
       const take = Math.min(s.bulk.rows, await allBoxes.count());
-      if (!take) throw new Error("no row checkboxes — this list isn't selectable");
+      if (!take) throw new Error("no row checkboxes, this list isn't selectable");
       for (let i = 0; i < take; i++) {
         await allBoxes.nth(i).click();
         await page.waitForTimeout(400);
@@ -282,7 +282,7 @@ for (const key of targets) {
 
 await browser.close();
 
-console.log("\n— summary —");
+console.log("\n, summary ,");
 const ok = results.filter((r) => r.status === "ok").length;
 for (const r of results) console.log(`${r.status.padEnd(8)} ${r.name}${r.reason ? ` (${r.reason})` : ""}`);
 console.log(`\n${ok} captured, ${results.length - ok} failed`);

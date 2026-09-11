@@ -1,5 +1,5 @@
 /**
- * Knowledge base screenshots — generic list-section capturer.
+ * Knowledge base screenshots, generic list-section capturer.
  *
  * Every list section in the SP app is built from the same parts: a page wrapper,
  * a list card, a search box, a filter control, an add button, and a panel that
@@ -17,9 +17,9 @@
  *   node scripts/kb-screenshots/section.mjs            # every section below
  *
  * READ-ONLY. Panels are opened to photograph them and always cancelled, never
- * submitted — the platform is mid-migration and create operations are off.
+ * submitted, the platform is mid-migration and create operations are off.
  *
- * KB_EXCLUDE names rows to leave out of the list figures — see EXCLUDE_ROWS.
+ * KB_EXCLUDE names rows to leave out of the list figures, see EXCLUDE_ROWS.
  */
 import { chromium } from "playwright";
 import { mkdirSync } from "node:fs";
@@ -32,14 +32,14 @@ const VIEWPORT = { width: 1440, height: 900 };
 const SCALE = 2;
 
 /**
- * key      — folder under public/images and the name used on the command line
- * nav      — the sidebar item to click. Inventory sections need their parent opened first.
- * parent   — sidebar group to expand before `nav` is reachable
- * tour     — data-tour prefix, which is the section name in every case so far
- * add      — the Add button's label, used to wait for the panel it opens
- * panel    — the heading the panel shows, so we know it actually opened
- * filter   — "popover" (a Filter button) | "select" (a dropdown in the card header) | null
- * figures  — which numbered figures to take for this section
+ * key     , folder under public/images and the name used on the command line
+ * nav     , the sidebar item to click. Inventory sections need their parent opened first.
+ * parent  , sidebar group to expand before `nav` is reachable
+ * tour    , data-tour prefix, which is the section name in every case so far
+ * add     , the Add button's label, used to wait for the panel it opens
+ * panel   , the heading the panel shows, so we know it actually opened
+ * filter  , "popover" (a Filter button) | "select" (a dropdown in the card header) | null
+ * figures , which numbered figures to take for this section
  */
 const SECTIONS = {
   users: { nav: "Users", tour: "users", add: "Add User", panel: "Add New User", filter: "popover", filterTour: "users-role-filter" },
@@ -95,8 +95,8 @@ async function hideAccountChrome() {
  * Rows kept out of the published list figures.
  *
  * Staging is a shared account and anyone can add records to it. A row whose
- * client name or email is somebody's real test data — or an internal staff
- * address — does not belong in a published help centre, and we can neither
+ * client name or email is somebody's real test data, or an internal staff
+ * address, does not belong in a published help centre, and we can neither
  * delete it (the platform is mid-migration, and this script is read-only) nor
  * leave it in. So the row is removed from the DOM for the length of the
  * screenshot. Nothing is changed in the app.
@@ -161,9 +161,9 @@ async function figure(dir, name, fn) {
     // further down, so truncating to the first line throws the diagnosis away.
     const lines = err.message.split("\n").map((l) => l.trim()).filter(Boolean);
     const cause = lines.find((l) => /intercept|not visible|not stable|resolved to|waiting for/i.test(l));
-    const reason = cause ? `${lines[0]} — ${cause}` : lines[0];
+    const reason = cause ? `${lines[0]}, ${cause}` : lines[0];
     results.push({ section: dir, name, status: "failed", reason });
-    console.log(`    ✗ ${name} — ${reason}`);
+    console.log(`    ✗ ${name}, ${reason}`);
   } finally {
     await dismissAnyPanel();
   }
@@ -195,7 +195,7 @@ for (const key of targets) {
 
     // Inventory sections sit behind a collapsible sidebar group, and the group
     // collapses with max-height rather than display:none. So its children keep a
-    // bounding box and isVisible() returns TRUE while they are collapsed — which
+    // bounding box and isVisible() returns TRUE while they are collapsed, which
     // is why testing visibility never opened the group, and the click then timed
     // out on an element another button was sitting on top of.
     //
@@ -244,9 +244,9 @@ for (const key of targets) {
   } catch (err) {
     const lines = err.message.split("\n").map((l) => l.trim()).filter(Boolean);
     const cause = lines.find((l) => /intercept|not visible|not stable|resolved to|waiting for/i.test(l));
-    const reason = cause ? `${lines[0]} — ${cause}` : lines[0];
+    const reason = cause ? `${lines[0]}, ${cause}` : lines[0];
     results.push({ section: key, name: "(navigation)", status: "failed", reason });
-    console.log(`    ✗ could not reach the section — ${reason}`);
+    console.log(`    ✗ could not reach the section, ${reason}`);
     continue;
   }
 
@@ -295,14 +295,14 @@ for (const key of targets) {
     await page.locator(`[data-tour="${s.tour}-add-btn"] button`).first().click();
     // Wait for the PANEL, not for its title. The title text is also the label of
     // the button that opens it in some sections, and in others it renders a beat
-    // after the panel does — either way the drawer itself is the thing being
+    // after the panel does, either way the drawer itself is the thing being
     // photographed, so that is what to wait for.
     const drawer = page.locator("div.relative.transform.overflow-hidden.shadow-xl").last();
     await drawer.waitFor({ state: "visible", timeout: 20000 });
     await page.waitForTimeout(1800);
     const heading = (await drawer.innerText().catch(() => "")).split("\n")[0].trim();
     if (s.panel && !heading.toLowerCase().includes(s.panel.toLowerCase())) {
-      console.log(`      (heading is "${heading}", expected "${s.panel}" — check the config)`);
+      console.log(`      (heading is "${heading}", expected "${s.panel}", check the config)`);
     }
     await shoot(key, `03-add-${key.replace(/s$/, "")}-panel`, drawer);
   });
@@ -310,7 +310,7 @@ for (const key of targets) {
 
 await browser.close();
 
-console.log("\n— summary —");
+console.log("\n, summary ,");
 const ok = results.filter((r) => r.status === "ok").length;
 for (const r of results) {
   console.log(`${r.status.padEnd(8)} ${r.section}/${r.name}${r.reason ? ` (${r.reason})` : ""}`);

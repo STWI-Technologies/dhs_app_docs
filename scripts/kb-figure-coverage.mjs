@@ -5,7 +5,7 @@
  * has to DO, and of those, which have no figure?
  *
  * The rule, so this stops being ad hoc: a section gets a figure when it walks
- * the reader through a distinct UI surface — a list, a panel, a dialog, a tab, a
+ * the reader through a distinct UI surface, a list, a panel, a dialog, a tab, a
  * page. Sections that explain a concept, list where something is used, or
  * summarise actions do not.
  *
@@ -49,7 +49,7 @@ const SKIP = [
 /**
  * Gaps we know about and cannot close from the current environment. Keeping them
  * here, with the reason, is what separates "nobody has done this yet" from
- * "this cannot be photographed today" — otherwise the report cries wolf and
+ * "this cannot be photographed today", otherwise the report cries wolf and
  * stops being read.
  */
 const BLOCKED = {
@@ -63,7 +63,7 @@ const BLOCKED = {
   },
   "products-management": {
     "Importing and exporting": "same feature flag as services",
-    "Products added in a hurry": "the top-bar Quick Add panel has no Product tile — only Service Item. A product can only be quick-added from inside a product picker, which means being mid-estimate",
+    "Products added in a hurry": "the top-bar Quick Add panel has no Product tile, only Service Item. A product can only be quick-added from inside a product picker, which means being mid-estimate",
   },
   "estimates-management": {
     "Sharing a PDF": "Download Pdf is an item in the More Actions menu, shown in that figure",
@@ -74,7 +74,7 @@ const BLOCKED = {
   },
   "jobs-management": {
     "Sending job details to the client": "the Send to Client panel itself is not published: its message body renders a literal \\n\\n instead of line breaks, and the client link it builds points at client-app-DEVELOP from staging. Both are reported as defects. The More Actions figure covers where the action lives; re-shoot the panel once they are fixed",
-    "Tracking time": "starting the timer would write a timesheet record, and these scripts are read-only. Start Timer itself is visible in the job detail figure, in the header — it only exists while the job is still open",
+    "Tracking time": "starting the timer would write a timesheet record, and these scripts are read-only. Start Timer itself is visible in the job detail figure, in the header, it only exists while the job is still open",
   },
   "crews-management": {
     "Deleting a crew": "every crew on staging is assigned to work, so the delete button is disabled on all 26 rows and the confirmation cannot be opened",
@@ -97,7 +97,7 @@ const BLOCKED = {
  *   these Playwright scripts at all; they need a device or a simulator.
  */
 const OUT_OF_SCOPE = {
-  "mobile-app": "a Flutter app — its figures need a device or simulator, not these browser scripts",
+  "mobile-app": "a Flutter app, its figures need a device or simulator, not these browser scripts",
 };
 
 const published = new Set(
@@ -175,15 +175,15 @@ for (const file of files) {
 
 for (const r of report) {
   if (r.hidden) {
-    console.log(`\n${r.id}  — hidden (not in articles.js), so not assessed`);
+    console.log(`\n${r.id} , hidden (not in articles.js), so not assessed`);
     continue;
   }
   if (r.outOfScope) {
-    console.log(`\n${r.id}  — out of scope: ${r.outOfScope}`);
+    console.log(`\n${r.id} , out of scope: ${r.outOfScope}`);
     continue;
   }
   if (r.isExport) {
-    console.log(`\n${r.id}  — still a Google Docs export, not assessed`);
+    console.log(`\n${r.id} , still a Google Docs export, not assessed`);
     continue;
   }
   if (!r.figures && !r.open.length && !r.known.length) continue;
@@ -193,7 +193,7 @@ for (const r of report) {
     console.log(`  MISSING  ${g.title}${g.anchors ? `  (anchor waiting: ${g.anchors})` : ""}`);
   }
   for (const g of r.known) {
-    console.log(`  blocked  ${g.title} — ${r.blocked[g.title]}`);
+    console.log(`  blocked  ${g.title}, ${r.blocked[g.title]}`);
   }
 }
 

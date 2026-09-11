@@ -1,5 +1,5 @@
 /**
- * Knowledge base screenshots — Clients section.
+ * Knowledge base screenshots, Clients section.
  *
  * Captures the figures used by public/content/clients-management.html. Same
  * shape as crews.mjs; read that file first for the selector traps this pattern
@@ -14,14 +14,14 @@
  *
  * READ-ONLY, and it has to stay that way: the platform is mid-migration and
  * create operations are not available. The Add Client panel is filled in only to
- * photograph it and is always cancelled — never submitted. The email typed in is
+ * photograph it and is always cancelled, never submitted. The email typed in is
  * deliberately one that cannot match a real client, so the panel doesn't swap
  * itself for the existing-client flow.
  *
  * KB_ONLY="List view,Filters panel" re-shoots just those steps.
  *
  * KB_EXCLUDE is a comma-separated list of rows to leave out of the list
- * figures — see dropRows(). Staging is shared, and not every record on it is
+ * figures, see dropRows(). Staging is shared, and not every record on it is
  * fit to publish.
  */
 import { chromium } from "playwright";
@@ -42,7 +42,7 @@ const EXISTING_CLIENT_EMAIL = process.env.KB_EXISTING_EMAIL || "annelee90@exampl
 
 /**
  * The client whose record is photographed. Named on purpose rather than "whatever
- * is first in the list" — the figure carries this person's name, address and
+ * is first in the list", the figure carries this person's name, address and
  * phone into the published help centre, so it is a choice, not an accident.
  *
  * Prefer a subject whose row actions are ENABLED: a client who has signed into
@@ -84,7 +84,7 @@ async function hideAccountChrome() {
   await page.evaluate(() => {
     // The onboarding wizard docks itself over the page for accounts that haven't
     // finished setup, and the support-chat launcher floats over the bottom-right
-    // corner — on a tall list it lands on top of the pagination. Neither belongs
+    // corner, on a tall list it lands on top of the pagination. Neither belongs
     // to the section being documented. Matched on computed style rather than
     // class names, which are generated.
     document.querySelectorAll(".onboarding-widget").forEach((el) => {
@@ -105,7 +105,7 @@ async function hideAccountChrome() {
  * Drop rows from the list before photographing it.
  *
  * Staging is a shared account and anyone can add records to it. A row whose
- * name or email is somebody's real test data — or an internal staff address —
+ * name or email is somebody's real test data, or an internal staff address ,
  * does not belong in a published help centre, and we cannot delete it (the
  * platform is mid-migration and this script is read-only besides). So the row
  * is removed from the DOM for the duration of the screenshot only. Nothing is
@@ -227,7 +227,7 @@ await step("List view", async () => {
 await step("Filters panel", async () => {
   await page.locator('[data-tour="clients-filters"] button').first().click();
   await page.waitForTimeout(1200);
-  // The popover hangs below the card, outside its box — clip a region instead.
+  // The popover hangs below the card, outside its box, clip a region instead.
   const cardBox = await listCard.boundingBox();
   const popover = page.locator('[data-tour="clients-filters"] > div').last();
   const popBox = await popover.boundingBox();
@@ -333,7 +333,7 @@ await step("Client record", async () => {
     .filter({ hasText: SUBJECT_CLIENT })
     .first();
   if (!(await subjectRow.count())) {
-    throw new Error(`no client matching "${SUBJECT_CLIENT}" — set KB_CLIENT to one that exists`);
+    throw new Error(`no client matching "${SUBJECT_CLIENT}", set KB_CLIENT to one that exists`);
   }
   await subjectRow.click();
   await page.waitForURL(/\/clients\/[^/]+$/, { timeout: 20000 });
@@ -374,7 +374,7 @@ await step("Editing a client", async () => {
   await page.waitForTimeout(4000);
   await hideAccountChrome();
   // The pencil sits in the header of the Client Contact Information card. Scope
-  // to that card rather than guessing at an icon class — the previous attempt
+  // to that card rather than guessing at an icon class, the previous attempt
   // took "the last button with an svg on the page", which is not a selector.
   const contactCard = page
     .locator('div:has(> div > h3), div:has(> h3)')
@@ -434,7 +434,7 @@ await step("Quick Add: New Client", async () => {
 
 await browser.close();
 
-console.log("\n— summary —");
+console.log("\n, summary ,");
 for (const r of results) {
   console.log(`${r.status.padEnd(8)} ${r.name}${r.reason ? ` (${r.reason})` : ""}`);
 }

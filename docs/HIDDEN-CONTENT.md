@@ -1,4 +1,4 @@
-# Hidden content — what was hidden, and how to put it back
+# Hidden content: what was hidden, and how to put it back
 
 Some knowledge base content is **hidden, not deleted**. It was taken out of the
 navigation because the feature wasn't ready to be public, and it has to go back
@@ -19,7 +19,7 @@ the cards on the home page **and** the routes: `App.js` resolves
 article missing from that file has no card *and* no reachable URL.
 
 That means removing the entry is enough to hide an article completely. The
-content file and its search-index entry can stay where they are — the article
+content file and its search-index entry can stay where they are. The article
 becomes unreachable, and putting the entry back restores it as it was.
 
 The search index is keyed by article id and `SearchBar` iterates `articles`, so
@@ -36,7 +36,7 @@ an index entry with no matching article is never read. A leftover key is inert.
 - `public/content/whatsapp-ai.html`
 - the `whatsapp-ai` key in `public/content/search-index.json`
 
-**To restore**, add this back to `src/data/articles.js` — import `WhatsappIcon`
+**To restore**, add this back to `src/data/articles.js`. Import `WhatsappIcon`
 from `hugeicons-react` again, and place the entry where it was, after
 `ai-assistant`:
 
@@ -58,12 +58,12 @@ from `hugeicons-react` again, and place the entry where it was, after
 },
 ```
 
-**References removed from other articles — these must be written back by hand.**
+**References removed from other articles. These must be written back by hand.**
 They were edited out of Google Docs exports, so there is no clean revert:
 
 | File | What was removed |
 |---|---|
-| `public/content/ai-assistant.html` | The sentence saying the assistant "uses the same powerful AI engine as the DHS WhatsApp integration". And WhatsApp was dropped from the list of channels a magic link works from — it read "whether you tap it from WhatsApp, SMS, the in-app chat panel, or a web browser preview". |
+| `public/content/ai-assistant.html` | The sentence saying the assistant "uses the same powerful AI engine as the DHS WhatsApp integration". And WhatsApp was dropped from the list of channels a magic link works from. It read "whether you tap it from WhatsApp, SMS, the in-app chat panel, or a web browser preview". |
 | `public/content/plans-pricing.html` | Two comparison-table rows labelled "WhatsApp AI". Three places reading "In-app AI and WhatsApp AI" (included / for all users / …assistant) reduced to "In-app AI". The voice-memo row no longer says the messages go "via WhatsApp". |
 
 The exact previous wording is in the commit diff: `git show 328a884 -- public/content/ai-assistant.html public/content/plans-pricing.html`
@@ -79,7 +79,7 @@ The exact previous wording is in the commit diff: `git show 328a884 -- public/co
 - `public/content/appointment-line.html`
 - the `appointment-line` key in `public/content/search-index.json`
 
-**To restore**, add this back to `src/data/articles.js` — import `TelephoneIcon`
+**To restore**, add this back to `src/data/articles.js`. Import `TelephoneIcon`
 from `hugeicons-react` again:
 
 ```js
@@ -100,12 +100,12 @@ from `hugeicons-react` again:
 },
 ```
 
-**References removed from other articles — write these back by hand:**
+**References removed from other articles. Write these back by hand:**
 
 | File | What was removed |
 |---|---|
 | `public/content/appointments-management.html` | A bullet under "Where appointments connect": "**Appointment Line** — the phone line that books appointments for you. See its own article." |
-| `public/content/plans-pricing.html` | **Seven table rows** and two prose mentions. See below — this one matters, because it changes what the plans appear to include. |
+| `public/content/plans-pricing.html` | **Seven table rows** and two prose mentions. See below. This one matters, because it changes what the plans appear to include. |
 
 ### What plans-pricing said about the Appointment Line
 
@@ -121,7 +121,7 @@ each plan includes. Restore all of it together:
 | Enterprise plan | Appointment Line | "Unlimited AI-powered appointment bookings" |
 | Comparison matrix | Appointment Line | Callback · AI Booking · AI Booking (unlimited) |
 | Comparison matrix | Dedicated Phone Number | (per-plan values) |
-| Feature catalogue | IVR Appointment Line | "AI-powered phone system where clients call to schedule, check, or manage appointments" — available on "Solo (callback), Team & Enterprise (full AI)" |
+| Feature catalogue | IVR Appointment Line | "AI-powered phone system where clients call to schedule, check, or manage appointments", available on "Solo (callback), Team & Enterprise (full AI)" |
 
 Prose removed:
 
@@ -129,7 +129,7 @@ Prose removed:
   IVR (Interactive Voice Response) phone number." It now ends "…including
   SMS/MMS." Put the IVR clause back.
 - An FAQ entry, heading and answer both:
-  **"What is the Appointment Line callback vs AI booking?"** — "In **callback
+  **"What is the Appointment Line callback vs AI booking?"** Answer: "In **callback
   mode** (Solo), clients call the appointment line and leave a callback request
   — you get notified and call them back. In **AI booking mode**
   (Team/Enterprise), the AI handles the entire conversation — it checks your
@@ -140,7 +140,7 @@ The full previous markup is in the diff for this commit.
 
 ---
 
-## 3. Availability — DELETED, not hidden
+## 3. Availability: DELETED, not hidden
 
 The one exception. `availability-management` stopped being a standalone article
 because it is being folded into the Settings article instead, so it was removed
@@ -167,7 +167,7 @@ article used to say "see the Availability Management article" and now points at
 3. Write the cross-article references back by hand, from the tables above.
 4. Rebuild the search index for every article you touched:
    `node scripts/build-search-index.mjs <article-id> …`
-5. Check nothing is left dangling the other way — an article that points at
+5. Check nothing is left dangling the other way: an article that points at
    something still hidden.
 6. Run the app and confirm the card appears, the URL resolves, and search finds
    the body text.

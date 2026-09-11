@@ -1,10 +1,10 @@
 /**
- * Knowledge base screenshots — detail views and the panels inside them.
+ * Knowledge base screenshots, detail views and the panels inside them.
  *
  * These need a SUBJECT, not "the first row": the figure carries a real record's
  * name, client and totals into the published help centre, and a thin record
- * teaches nothing. The subjects below were picked from a data audit of staging —
- * an estimate with 14 line items, an invoice with 13 and a payment against it —
+ * teaches nothing. The subjects below were picked from a data audit of staging ,
+ * an estimate with 14 line items, an invoice with 13 and a payment against it ,
  * so the figures show a populated record rather than an empty shell.
  *
  * Run:
@@ -55,7 +55,7 @@ const SECTIONS = {
     figures: [
       { name: "03-invoice-detail", kind: "page" },
       // Send and Add Payment are offered by STATUS, and the richest invoice on
-      // staging is PAID — which offers neither. Each figure therefore picks a
+      // staging is PAID, which offers neither. Each figure therefore picks a
       // subject whose status actually exposes its action: a draft to send, and
       // a sent-but-unpaid one to record a payment against.
       { name: "04-send-invoice", kind: "action", button: "Send Invoice",
@@ -129,8 +129,8 @@ async function figure(label, fn) {
   } catch (err) {
     const lines = err.message.split("\n").map((l) => l.trim()).filter(Boolean);
     const cause = lines.find((l) => /intercept|not visible|not stable|resolved to|waiting for/i.test(l));
-    results.push({ name: label, status: "failed", reason: cause ? `${lines[0]} — ${cause}` : lines[0] });
-    console.log(`    ✗ ${label} — ${cause || lines[0]}`);
+    results.push({ name: label, status: "failed", reason: cause ? `${lines[0]}, ${cause}` : lines[0] });
+    console.log(`    ✗ ${label}, ${cause || lines[0]}`);
   } finally {
     await dismissAnyPanel();
   }
@@ -142,7 +142,7 @@ async function figure(label, fn) {
  * The list's search box is word-based: searching "Standard House Cleaning"
  * returns four rows headed by "Deep Cleaning Consultation". That cannot
  * guarantee which record gets photographed, and these figures publish a real
- * record's name and totals — so the subject has to be exact.
+ * record's name and totals, so the subject has to be exact.
  */
 async function resolveId(kind, subject) {
   return page.evaluate(async ({ kind, subject }) => {
@@ -184,7 +184,7 @@ async function openSubject(s, subject) {
     .locator(`[data-tour="${s.tour}-list"] table tbody tr`)
     .filter({ hasText: subject })
     .first();
-  if (!(await row.count())) throw new Error(`no record matching "${subject}" — set the env override to one that exists`);
+  if (!(await row.count())) throw new Error(`no record matching "${subject}", set the env override to one that exists`);
   // The first cell opens the record in these sections; the eye does too.
   await row.locator("button").first().click();
   await page.waitForTimeout(5000);
@@ -220,7 +220,7 @@ for (const key of keys) {
     await figure(`${key}/${f.name}`, async () => {
       if (openedFor !== subject) {
         const id = await resolveId(key, subject);
-        if (!id) throw new Error(`no ${key.replace(/s$/, "")} named "${subject}" exists — check the audit or override with the env var`);
+        if (!id) throw new Error(`no ${key.replace(/s$/, "")} named "${subject}" exists, check the audit or override with the env var`);
         await page.goto(`${BASE}/${key}/${id}`, { waitUntil: "domcontentloaded" });
         // A detail page needs ~9s on staging before its action bar is painted;
         // at 6s the header renders with only the status badge and every button
@@ -251,7 +251,7 @@ for (const key of keys) {
         await page.waitForTimeout(2500);
       }
       const btn = page.locator(`button:has-text("${f.button}")`).first();
-      if (!(await btn.count())) throw new Error(`no "${f.button}" button on this record — its status may not offer it`);
+      if (!(await btn.count())) throw new Error(`no "${f.button}" button on this record, its status may not offer it`);
       await btn.click();
       const panel = page.locator(PANEL).last();
       await panel.waitFor({ state: "visible", timeout: 20000 });
@@ -266,7 +266,7 @@ for (const key of keys) {
 
 await browser.close();
 
-console.log("\n— summary —");
+console.log("\n, summary ,");
 const ok = results.filter((r) => r.status === "ok").length;
 for (const r of results) console.log(`${r.status.padEnd(8)} ${r.name}${r.reason ? ` (${r.reason})` : ""}`);
 console.log(`\n${ok} captured, ${results.length - ok} failed`);
