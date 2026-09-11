@@ -97,7 +97,20 @@ const BLOCKED = {
  *   these Playwright scripts at all; they need a device or a simulator.
  */
 const OUT_OF_SCOPE = {
-  "mobile-app": "a Flutter app, its figures need a device or simulator, not these browser scripts",
+  "mobile-app": "a Flutter app, so its figures need a device or a simulator, not these browser scripts",
+  // The client portal on staging is behind develop, so a figure taken there
+  // would document a version nobody is running. These articles are written
+  // from the code and carry no figures on purpose.
+  "client-getting-started": "the client portal on staging is behind develop; figures would show the wrong version",
+  "client-dashboard": "same as above",
+  "client-request-service": "same as above",
+  "client-service-providers": "same as above",
+  "client-appointments": "same as above",
+  "client-estimates": "same as above",
+  "client-jobs": "same as above",
+  "client-invoices": "same as above",
+  "client-inbox": "same as above",
+  "client-profile-settings": "same as above",
 };
 
 const published = new Set(

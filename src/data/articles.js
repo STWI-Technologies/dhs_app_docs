@@ -15,6 +15,12 @@ import {
   Layers01Icon,
   SmartPhone01Icon,
   WarehouseIcon,
+  DashboardSquare01Icon,
+  CustomerService01Icon,
+  Building03Icon,
+  Message01Icon,
+  UserCircleIcon,
+  Login03Icon,
 } from 'hugeicons-react';
 
 const articles = [
@@ -261,6 +267,156 @@ const articles = [
       overview: 'DHS viene en dos versiones: Solo para contratistas independientes y Team para negocios con equipos. Compare características, canales de comunicación y encuentre la opción ideal para su negocio.'
     },
     keywords: ['plans', 'planes', 'solo', 'team', 'equipo', 'enterprise', 'pricing', 'subscription', 'suscripción', 'features', 'comparison']
+  },
+  {
+    id: 'client-getting-started',
+    icon: Login03Icon,
+    en: {
+      title: 'Getting Started with the Client Portal',
+      category: 'Client Portal',
+      overview: 'How your service provider invites you, setting your password, signing in, magic links, and finding your way around the portal.'
+    },
+    es: {
+      title: 'Primeros Pasos en el Portal del Cliente',
+      category: 'Portal del Cliente',
+      overview: 'Cómo lo invita su proveedor de servicio, cómo establecer su contraseña, iniciar sesión, los enlaces mágicos y cómo moverse por el portal.'
+    },
+    keywords: ['portal', 'client', 'cliente', 'invitation', 'invitación', 'sign in', 'iniciar sesión', 'password', 'contraseña', 'magic link', 'enlace']
+  },
+  {
+    id: 'client-dashboard',
+    icon: DashboardSquare01Icon,
+    en: {
+      title: 'Your Dashboard',
+      category: 'Client Portal',
+      overview: 'What needs you today and what is coming: your totals, open jobs, estimates and invoices, recent messages, and your service providers.'
+    },
+    es: {
+      title: 'Su Panel',
+      category: 'Portal del Cliente',
+      overview: 'Lo que necesita hoy y lo que viene: sus totales, trabajos abiertos, presupuestos, facturas, mensajes recientes y sus proveedores de servicio.'
+    },
+    keywords: ['dashboard', 'panel', 'overview', 'resumen', 'totals', 'totales', 'upcoming', 'pendientes']
+  },
+  {
+    id: 'client-request-service',
+    icon: CustomerService01Icon,
+    en: {
+      title: 'Requesting a Service',
+      category: 'Client Portal',
+      overview: 'Ask a provider for work: choosing them, the property and the service, describing the problem, and giving a preferred and an alternate time.'
+    },
+    es: {
+      title: 'Solicitar un Servicio',
+      category: 'Portal del Cliente',
+      overview: 'Pida trabajo a un proveedor: elegirlo, la propiedad y el servicio, describir el problema y dar una fecha preferida y una alternativa.'
+    },
+    keywords: ['request', 'solicitud', 'service request', 'servicio', 'property', 'propiedad', 'schedule', 'horario', 'frequency', 'frecuencia']
+  },
+  {
+    id: 'client-service-providers',
+    icon: Building03Icon,
+    en: {
+      title: 'Service Providers',
+      category: 'Client Portal',
+      overview: 'The companies you are connected to, what each one does, and everything you have with them in one place.'
+    },
+    es: {
+      title: 'Proveedores de Servicio',
+      category: 'Portal del Cliente',
+      overview: 'Las empresas con las que está conectado, qué hace cada una y todo lo que tiene con ellas en un solo lugar.'
+    },
+    keywords: ['service provider', 'proveedor', 'company', 'empresa', 'categories', 'categorías', 'connected', 'conectado']
+  },
+  {
+    id: 'client-appointments',
+    icon: Calendar01Icon,
+    en: {
+      title: 'Appointments',
+      category: 'Client Portal',
+      overview: 'Visits booked with you: what the list shows, what is inside one, confirming or cancelling, and what a visit turns into.'
+    },
+    es: {
+      title: 'Citas',
+      category: 'Portal del Cliente',
+      overview: 'Visitas agendadas con usted: qué muestra la lista, qué hay dentro de una, confirmar o cancelar, y en qué se convierte una visita.'
+    },
+    keywords: ['appointment', 'cita', 'visit', 'visita', 'confirm', 'confirmar', 'cancel', 'cancelar', 'schedule', 'agenda']
+  },
+  {
+    id: 'client-estimates',
+    icon: Estimate01Icon,
+    en: {
+      title: 'Estimates',
+      category: 'Client Portal',
+      overview: 'Quotes waiting on your answer: reading one line by line, approving it with your signature, rejecting it with a reason, adding a service, and what happens when one expires.'
+    },
+    es: {
+      title: 'Presupuestos',
+      category: 'Portal del Cliente',
+      overview: 'Presupuestos que esperan su respuesta: leerlo línea por línea, aprobarlo con su firma, rechazarlo con un motivo, agregar un servicio y qué pasa cuando uno vence.'
+    },
+    keywords: ['estimate', 'presupuesto', 'quote', 'cotización', 'approve', 'aprobar', 'reject', 'rechazar', 'signature', 'firma', 'expired', 'vencido']
+  },
+  {
+    id: 'client-jobs',
+    icon: Briefcase04Icon,
+    en: {
+      title: 'Jobs',
+      category: 'Client Portal',
+      overview: 'The work itself: following it while it happens, the services and products on it, its invoices and payments, the attachments, and leaving feedback when it is done.'
+    },
+    es: {
+      title: 'Trabajos',
+      category: 'Portal del Cliente',
+      overview: 'El trabajo en sí: seguirlo mientras ocurre, los servicios y productos, sus facturas y pagos, los adjuntos y dejar su opinión al terminar.'
+    },
+    keywords: ['job', 'trabajo', 'crew', 'equipo', 'status', 'estado', 'feedback', 'opinión', 'attachments', 'adjuntos', 'payments', 'pagos']
+  },
+  {
+    id: 'client-invoices',
+    icon: Invoice01Icon,
+    en: {
+      title: 'Invoices and Paying',
+      category: 'Client Portal',
+      overview: 'Your bills: what the list tells you, what is inside an invoice, paying online and why the button is sometimes not there, and getting the PDF.'
+    },
+    es: {
+      title: 'Facturas y Pagos',
+      category: 'Portal del Cliente',
+      overview: 'Sus facturas: qué le dice la lista, qué hay dentro de una factura, pagar en línea y por qué a veces no aparece el botón, y obtener el PDF.'
+    },
+    keywords: ['invoice', 'factura', 'pay', 'pagar', 'payment', 'pago', 'balance', 'saldo', 'pdf', 'due date', 'vencimiento']
+  },
+  {
+    id: 'client-inbox',
+    icon: Message01Icon,
+    en: {
+      title: 'Inbox and Messages',
+      category: 'Client Portal',
+      overview: 'Every conversation with your providers, kept with the estimate, job, invoice or appointment it is about. Starting one, attaching files, and archiving.'
+    },
+    es: {
+      title: 'Bandeja de Entrada y Mensajes',
+      category: 'Portal del Cliente',
+      overview: 'Cada conversación con sus proveedores, junto al presupuesto, trabajo, factura o cita del que trata. Iniciar una, adjuntar archivos y archivarla.'
+    },
+    keywords: ['inbox', 'bandeja', 'chat', 'message', 'mensaje', 'conversation', 'conversación', 'attach', 'adjuntar', 'archive', 'archivar']
+  },
+  {
+    id: 'client-profile-settings',
+    icon: UserCircleIcon,
+    en: {
+      title: 'Your Profile and Settings',
+      category: 'Client Portal',
+      overview: 'Where your own details live: your profile, your properties, when you can be visited, what the portal tells you about, and why the provider can no longer edit your details.'
+    },
+    es: {
+      title: 'Su Perfil y Configuración',
+      category: 'Portal del Cliente',
+      overview: 'Donde viven sus datos: su perfil, sus propiedades, cuándo puede recibir visitas, de qué le avisa el portal y por qué el proveedor ya no puede editar sus datos.'
+    },
+    keywords: ['settings', 'configuración', 'profile', 'perfil', 'properties', 'propiedades', 'availability', 'disponibilidad', 'notifications', 'notificaciones', 'privacy', 'privacidad']
   }
 ];
 
@@ -274,7 +430,10 @@ export const categoryOrder = [
   'Jobs & Estimates',
   'Billing & Time Tracking',
   'AI & Automation',
-  'Settings'
+  'Settings',
+  // Last on purpose: the client portal is a different audience, and everything
+  // in it belongs together rather than mixed into the provider's sections.
+  'Client Portal'
 ];
 
 export default articles;
