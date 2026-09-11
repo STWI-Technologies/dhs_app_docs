@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services Management</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #1a1a1a; }
+    h1 { border-bottom: 2px solid #e0e0e0; padding-bottom: 0.5rem; }
+    h2 { margin-top: 2rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #d0d0d0; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background-color: #f5f5f5; font-weight: 600; }
+    blockquote { border-left: 4px solid #d0d0d0; margin: 1rem 0; padding: 0.75rem 1rem; background: #fafafa; }
+    code { background: #f0f0f0; padding: 0.15rem 0.35rem; border-radius: 3px; font-size: 0.9em; }
+    hr { border: none; border-top: 1px solid #e0e0e0; margin: 2rem 0; }
+  </style>
+</head>
+<body>
+<main>
+
+<h1>Services Management</h1>
+
+<h2>Overview</h2>
+
+<p>The <strong>Services Management</strong> section is where you manage all the service items your business offers. These are labor-based items — such as inspections, installations, repairs, or consultations — that can be added to appointments, estimates, invoices, and jobs.</p>
+
+<p>From this section you can:</p>
+
+<ul>
+  <li><strong>Add</strong> new services with pricing, descriptions, and supporting documents.</li>
+  <li><strong>Edit</strong> existing services to keep information current.</li>
+  <li><strong>Archive</strong> services you no longer offer (without losing historical data).</li>
+  <li><strong>Restore</strong> archived services if you need them again.</li>
+  <li><strong>Permanently delete</strong> archived services that are no longer needed.</li>
+  <li><strong>Search and filter</strong> to quickly find what you're looking for.</li>
+  <li><strong>Import and export</strong> services via CSV files for bulk operations.</li>
+  <li><strong>Manage attachments</strong> such as specifications, manuals, and safety documents.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Important:</strong> A service can only be permanently deleted if it is <strong>not currently linked</strong> to any appointment, estimate, invoice, or job. If a service is in use, you must first remove it from all associated records before deletion is possible.</p>
+</blockquote>
+
+<hr>
+
+<h2>Services List View</h2>
+
+<p>The Services List View is the main view for managing all your services. To access it, navigate to <strong>Menu &gt; Inventory &gt; Services</strong>.</p>
+
+<p>When you open the Services List View, you will see a table listing all your active services. Each row represents one service and displays the following information:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>What It Means</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>SKU</strong></td>
+      <td>A unique code that identifies the service (e.g., <code>SVC-001</code>). This cannot be changed after the service is created.</td>
+    </tr>
+    <tr>
+      <td><strong>Service</strong></td>
+      <td>The name of the service, along with its description (if one was provided).</td>
+    </tr>
+    <tr>
+      <td><strong>Cost Per Hour</strong></td>
+      <td>The hourly rate charged for this service, displayed in dollars (e.g., <code>$75.00</code>).</td>
+    </tr>
+    <tr>
+      <td><strong>Taxable</strong></td>
+      <td>A checkmark indicates this service is subject to tax.</td>
+    </tr>
+    <tr>
+      <td><strong>In Use</strong></td>
+      <td>A checkmark indicates this service is currently being used in at least one appointment, estimate, invoice, or job.</td>
+    </tr>
+    <tr>
+      <td><strong>Client Portal Visible</strong></td>
+      <td>A checkmark indicates that customers can see and request this service through your online client portal.</td>
+    </tr>
+    <tr>
+      <td><strong>Tags</strong></td>
+      <td>Color-coded labels you have assigned to help categorize the service (e.g., "HVAC", "Plumbing", "Electrical").</td>
+    </tr>
+    <tr>
+      <td><strong>Groups</strong></td>
+      <td>The groups this service belongs to, if any. Groups are managed separately and help organize services into logical categories.</td>
+    </tr>
+    <tr>
+      <td><strong>Actions</strong></td>
+      <td>Quick-action buttons to edit the service, manage its attachments, or archive/delete it.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Active vs. Archived Services</h3>
+
+<p>At the top of the list you will see two tabs:</p>
+
+<ul>
+  <li><strong>Active</strong> — Shows all services that are currently available for use. This is the default view.</li>
+  <li><strong>Archived</strong> — Shows services that have been archived (temporarily disabled). Archived services do not appear in dropdowns when creating appointments, estimates, or invoices, but their historical data is preserved.</li>
+</ul>
+
+<p>You can switch between these tabs at any time to manage both active and archived services.</p>
+
+<h3>Sorting the List</h3>
+
+<p>You can sort the services list by clicking on the column headers for <strong>SKU</strong>, <strong>Service</strong> (name), or <strong>Cost Per Hour</strong>. Click once to sort in ascending order (A-Z or lowest to highest), and click again to sort in descending order (Z-A or highest to lowest). This helps you quickly organize services alphabetically or by price.</p>
+
+<hr>
+
+<h2>1. Adding a New Service</h2>
+
+<p>To add a new service to your account, follow these steps:</p>
+
+<h3>Step 1: Open the New Service Form</h3>
+
+<p>Click the <strong>"+ New Service"</strong> button (blue) located in the top-right corner of the Services List View. A panel will slide open from the right side of the screen with a form to fill out.</p>
+
+<blockquote>
+  <p><strong>Tip:</strong> If the list is empty (no services have been added yet), you will also see a "New Service" button in the center of the page.</p>
+</blockquote>
+
+<h3>Step 2: Fill In the General Information</h3>
+
+<p>The form contains the following fields:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required?</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>SKU</strong></td>
+      <td>Yes</td>
+      <td>Enter a unique code to identify this service. This will be used as a reference throughout the system and <strong>cannot be changed</strong> after the service is created. Choose something meaningful, like <code>INSP-001</code> for an inspection service.</td>
+    </tr>
+    <tr>
+      <td><strong>Service Name</strong></td>
+      <td>Yes</td>
+      <td>Enter a clear, descriptive name for the service (e.g., "Annual HVAC Inspection" or "Emergency Plumbing Repair").</td>
+    </tr>
+    <tr>
+      <td><strong>Cost Per Hour</strong></td>
+      <td>Yes</td>
+      <td>Enter the hourly rate for this service in dollars (e.g., <code>75.00</code>). The system accepts up to two decimal places. The maximum allowed value is $21,474,836.47. If you enter a value over $1,000,000, a warning will appear to confirm the amount is intentional.</td>
+    </tr>
+    <tr>
+      <td><strong>Description</strong></td>
+      <td>No</td>
+      <td>Optionally, provide additional details about what this service includes, how long it typically takes, or any other relevant information. This description is visible to your team and can help clarify the scope of the service.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Below the fields, you will find two configuration options:</p>
+
+<ul>
+  <li><strong>Taxable</strong> — Check this box if the service is subject to sales tax. When enabled, tax will be automatically calculated when this service is added to estimates and invoices.</li>
+  <li><strong>Show on Client Portal for Service Request</strong> — Check this box to make this service visible on your customer-facing online portal. Clients will be able to see and request this service when booking online. If left unchecked, only your internal team will see it.</li>
+</ul>
+
+<h3>Step 3: Add Tags (Optional)</h3>
+
+<p>Tags help you organize and categorize your services for easy searching and filtering later. To add a tag:</p>
+
+<ol>
+  <li>Click on the <strong>Tags</strong> field.</li>
+  <li>Type the name of the tag you want to add (e.g., "HVAC", "Premium", "Seasonal").</li>
+  <li>Press <strong>Enter</strong> to create the tag.</li>
+  <li>Repeat to add as many tags as needed.</li>
+</ol>
+
+<p>Tags are flexible — you can create any tag name that makes sense for your business. Once created, tags become available for filtering on the Services List View.</p>
+
+<h3>Step 4: Click "Next" to Continue</h3>
+
+<p>After filling in the required fields and configuring your options, click the <strong>"Next"</strong> button at the bottom of the form. The system will validate your entries before moving forward:</p>
+
+<ul>
+  <li>If any required field is missing, you will see an error message next to that field.</li>
+  <li>If the SKU you entered already exists, a warning banner will appear at the top of the form letting you know.</li>
+</ul>
+
+<h3>Step 5: Add Attachments (Optional)</h3>
+
+<p>After clicking "Next", you will move to the <strong>Attachments</strong> tab. Here you can upload supporting documents for the service. Attachments are organized into five categories:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Typical Use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Specifications</strong></td>
+      <td>Technical specifications, datasheets, or detailed service descriptions.</td>
+    </tr>
+    <tr>
+      <td><strong>Manual</strong></td>
+      <td>Operating procedures, step-by-step guides, or reference manuals.</td>
+    </tr>
+    <tr>
+      <td><strong>Installation</strong></td>
+      <td>Installation instructions or setup guides related to the service.</td>
+    </tr>
+    <tr>
+      <td><strong>Safety</strong></td>
+      <td>Safety guidelines, compliance documents, or hazard information.</td>
+    </tr>
+    <tr>
+      <td><strong>Other</strong></td>
+      <td>Any other supporting documentation that doesn't fit the above categories.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>To upload a file:</strong></p>
+
+<ol>
+  <li>Select the appropriate category tab (Specifications, Manual, etc.).</li>
+  <li>Either <strong>drag and drop</strong> a file into the upload area, or <strong>click</strong> the upload area to browse your computer.</li>
+  <li>The file will begin uploading and show a progress bar. Wait for the upload to complete.</li>
+  <li>Repeat to add more files in any category.</li>
+</ol>
+
+<p><strong>Supported file formats:</strong> PDF, TXT, JPEG, JPG, and GIF.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> You can skip this step if you don't have attachments to add right now. Attachments can always be added later through the Attachment Manager (see Section 2 below).</p>
+</blockquote>
+
+<h3>Step 6: Save the Service</h3>
+
+<p>Once you are satisfied with the information and attachments, click the <strong>"Add Service"</strong> button at the bottom of the form. You will see a brief "Creating Service..." overlay, and once the service is created successfully, a confirmation message will appear: <strong>"Service Successfully Created"</strong>.</p>
+
+<p>The new service will now appear in your Services List View and be available for use in appointments, estimates, invoices, and jobs.</p>
+
+<blockquote>
+  <p><strong>Tip:</strong> If you need to go back and modify the general information before saving, click the <strong>"Back"</strong> button to return to the previous tab.</p>
+</blockquote>
+
+<hr>
+
+<h2>2. Managing Service Attachments</h2>
+
+<p>Attachments allow you to associate supporting documents with your services. This is useful for providing technicians with specifications, safety guidelines, installation instructions, or any other reference material they might need in the field.</p>
+
+<h3>Opening the Attachment Manager</h3>
+
+<p>There are two ways to manage attachments:</p>
+
+<ol>
+  <li><strong>From the Services List View:</strong> Click the <strong>paperclip icon</strong> in the Actions column for any service. This opens the Attachment Manager in a side panel.</li>
+  <li><strong>During service creation:</strong> Attachments are part of the second step when adding a new service (see Section 1, Step 5).</li>
+</ol>
+
+<h3>Uploading Attachments</h3>
+
+<ol>
+  <li>In the Attachment Manager, select the <strong>category tab</strong> where you want to upload the file (Specifications, Manual, Installation, Safety, or Other).</li>
+  <li><strong>Drag and drop</strong> your file into the upload area, or <strong>click</strong> to browse your files.</li>
+  <li>A progress bar will appear showing the upload status. Wait for it to complete.</li>
+  <li>Once uploaded, the file will appear in the list below the upload area with its name and file size.</li>
+</ol>
+
+<p>If an upload fails, you will see a message: <em>"The file uploading failed. Please retry."</em> along with a <strong>Retry</strong> button to try again. You can also cancel an in-progress upload if needed.</p>
+
+<h3>Searching Attachments</h3>
+
+<p>If a service has many attachments, use the <strong>search bar</strong> at the top of the Attachment Manager to filter files by name. Simply type part of the file name and the list will update in real time.</p>
+
+<h3>Downloading Attachments</h3>
+
+<ul>
+  <li><strong>Single file:</strong> Click the <strong>three-dot menu</strong> next to any file and select <strong>"Download"</strong> to download that individual file.</li>
+  <li><strong>All files in a category:</strong> Click the <strong>"Download All"</strong> button to download every file in the currently selected category tab. The files will be packaged into a single ZIP file named <code>[ServiceName]-attachments.zip</code>.</li>
+</ul>
+
+<h3>Deleting Attachments</h3>
+
+<p>To remove an attachment:</p>
+
+<ol>
+  <li>Click the <strong>three-dot menu</strong> next to the file you want to delete.</li>
+  <li>Select <strong>"Delete"</strong>.</li>
+  <li>The file will be permanently removed from the service.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Note:</strong> Deleting an attachment is permanent and cannot be undone. Make sure you have a backup of the file if you might need it later.</p>
+</blockquote>
+
+<h3>Closing the Attachment Manager</h3>
+
+<p>When you are done managing attachments, simply close the side panel to return to the Services List View. All changes are saved automatically as you upload or delete files.</p>
+
+<hr>
+
+<h2>3. Editing a Service</h2>
+
+<p>To update the information for an existing service:</p>
+
+<h3>Step 1: Open the Service for Editing</h3>
+
+<p>You can open a service for editing in two ways:</p>
+
+<ul>
+  <li><strong>Click the SKU</strong> of the service in the first column of the Services List View. This will open the edit panel.</li>
+  <li><strong>Click the edit icon</strong> (pencil icon) in the Actions column for the service you want to modify.</li>
+</ul>
+
+<p>The edit panel will slide open from the right side of the screen, pre-filled with the service's current information.</p>
+
+<h3>Step 2: Make Your Changes</h3>
+
+<p>You can modify any of the following fields:</p>
+
+<ul>
+  <li><strong>Service Name</strong> — Update the name if needed.</li>
+  <li><strong>Description</strong> — Add, edit, or remove the description.</li>
+  <li><strong>Cost Per Hour</strong> — Update the hourly rate. The same validation rules apply as when creating a service.</li>
+  <li><strong>Tags</strong> — Add new tags or remove existing ones.</li>
+  <li><strong>Taxable</strong> — Toggle the tax status on or off.</li>
+  <li><strong>Show on Client Portal for Service Request</strong> — Toggle whether this service is visible to customers on the online portal.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Note:</strong> The <strong>SKU</strong> field is displayed but <strong>cannot be changed</strong> after the service has been created. This ensures consistency across all records that reference this service.</p>
+</blockquote>
+
+<h3>Step 3: Save Your Changes</h3>
+
+<p>Once you have made your edits, click the <strong>"Apply Changes"</strong> button at the bottom of the panel. You will see a brief "Updating Service..." overlay, and once the update is saved, a confirmation message will appear: <strong>"Service Successfully Updated"</strong>.</p>
+
+<p>If you haven't made any changes, the "Apply Changes" button will be grayed out (disabled) to indicate there is nothing to save.</p>
+
+<blockquote>
+  <p><strong>Tip:</strong> If you change your mind and don't want to save your edits, click <strong>"Cancel"</strong> to close the panel without saving.</p>
+</blockquote>
+
+<h3>Archive or Delete from the Edit Panel</h3>
+
+<p>While editing a service, you will also see an <strong>Archive</strong> button (or <strong>Delete</strong> button if the service is already archived) in the top area of the edit panel. This provides a convenient way to archive or delete a service without going back to the Services List View.</p>
+
+<hr>
+
+<h2>4. Archiving Services</h2>
+
+<p>Archiving is a safe way to disable a service without permanently deleting it. Archived services:</p>
+
+<ul>
+  <li><strong>Do not appear</strong> in dropdowns when creating new appointments, estimates, or invoices.</li>
+  <li><strong>Are preserved</strong> in historical records — any existing appointments, estimates, invoices, or jobs that used this service will continue to show it.</li>
+  <li><strong>Can be restored</strong> at any time if you need the service again.</li>
+</ul>
+
+<h3>How to Archive a Service</h3>
+
+<ol>
+  <li>On the Services List View (Active tab), locate the service you want to archive.</li>
+  <li>Click the <strong>archive icon</strong> (trash icon) in the Actions column for that service.</li>
+  <li>A confirmation dialog will appear: <em>"Are you sure you want to archive [Service Name]?"</em></li>
+  <li>Click <strong>"Archive"</strong> to confirm, or <strong>"Cancel"</strong> to go back.</li>
+  <li>You will see an "Archiving Service..." overlay, followed by a success message: <strong>"Service Successfully Archived"</strong>.</li>
+</ol>
+
+<p>The service will be removed from the Active tab and moved to the Archived tab.</p>
+
+<hr>
+
+<h2>4.1 Restoring an Archived Service</h2>
+
+<p>If you need to bring an archived service back into active use:</p>
+
+<ol>
+  <li>Switch to the <strong>Archived</strong> tab on the Services List View.</li>
+  <li>Find the service you want to restore.</li>
+  <li>Click the <strong>restore icon</strong> (undo icon) in the Actions column.</li>
+  <li>A confirmation popover will appear: <em>"Do you want to restore this service item?"</em></li>
+  <li>Click <strong>"Restore"</strong> to confirm.</li>
+  <li>A success message will appear: <strong>"Service Successfully Restored"</strong>.</li>
+</ol>
+
+<p>The service will be moved back to the Active tab and will once again be available for use in appointments, estimates, invoices, and jobs.</p>
+
+<hr>
+
+<h2>4.2 Permanently Deleting a Service</h2>
+
+<p>Permanent deletion is only available for <strong>archived</strong> services and only when the service is <strong>not in use</strong> (not linked to any appointment, estimate, invoice, or job).</p>
+
+<ol>
+  <li>Switch to the <strong>Archived</strong> tab on the Services List View.</li>
+  <li>Find the service you want to permanently delete.</li>
+  <li>Click the <strong>delete icon</strong> (trash icon) in the Actions column.
+    <ul>
+      <li>If the delete icon is <strong>grayed out</strong> (disabled), it means the service is still in use somewhere. You will see a tooltip: <em>"Delete In Use Service Item"</em>. You must first remove the service from all associated records before you can delete it.</li>
+    </ul>
+  </li>
+  <li>A confirmation dialog will appear: <em>"Delete [Service Name]?"</em></li>
+  <li>Click <strong>"Delete"</strong> to confirm the permanent deletion, or <strong>"Cancel"</strong> to go back.</li>
+  <li>A success message will appear: <strong>"Service Successfully Deleted"</strong>.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Warning:</strong> Permanent deletion cannot be undone. Once a service is deleted, all of its information and attachments are removed from the system permanently. If you are unsure, keep the service archived instead.</p>
+</blockquote>
+
+<hr>
+
+<h2>5. Searching and Filtering Services</h2>
+
+<p>The Services List View provides several tools to help you quickly find the services you need.</p>
+
+<h3>5.1 Quick Search</h3>
+
+<p>The <strong>search bar</strong> at the top of the Services List View allows you to search for services by keyword. The search looks across the following fields:</p>
+
+<ul>
+  <li>SKU</li>
+  <li>Service Name</li>
+  <li>Description</li>
+</ul>
+
+<p>Simply type your search term and the results will update automatically. For example, typing "plumb" would show all services that contain "plumb" in their SKU, name, or description (such as "Plumbing Repair" or "Plumbing Inspection").</p>
+
+<p>To clear the search, delete the text from the search bar or click the clear button.</p>
+
+<h3>5.2 Advanced Filtering</h3>
+
+<p>For more precise results, click the <strong>Filter</strong> button to open the advanced filter panel. The following filter options are available:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Filter</th>
+      <th>What It Does</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Tags</strong></td>
+      <td>Select one or more tags to show only services that have those tags. For example, selecting "HVAC" will show only services tagged with "HVAC".</td>
+    </tr>
+    <tr>
+      <td><strong>Groups</strong></td>
+      <td>Select one or more groups to show only services that belong to those groups.</td>
+    </tr>
+    <tr>
+      <td><strong>Taxable</strong></td>
+      <td>Check this box to show only services that are marked as taxable.</td>
+    </tr>
+    <tr>
+      <td><strong>Online Booking</strong></td>
+      <td>Check this box to show only services that are visible on the client portal for online booking.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>When filters are active, a <strong>badge</strong> with a number will appear on the Filter button, indicating how many filters are currently applied. This helps you remember that your view is filtered.</p>
+
+<p>To remove all filters at once, open the filter panel and click the <strong>"Reset Filter"</strong> link.</p>
+
+<blockquote>
+  <p><strong>Tip:</strong> You can combine quick search and advanced filters for maximum precision. For example, search for "inspection" while filtering by the "HVAC" tag to find all HVAC inspection services.</p>
+</blockquote>
+
+<hr>
+
+<h2>6. Importing and Exporting Services</h2>
+
+<blockquote>
+  <p><strong>Note:</strong> The Import and Export features may not be visible if they have been disabled by your system administrator.</p>
+</blockquote>
+
+<h3>6.1 Exporting Services to CSV</h3>
+
+<p>To download all your services as a spreadsheet file:</p>
+
+<ol>
+  <li>Click the <strong>"Export CSV"</strong> button on the Services List View.</li>
+  <li>The system will generate a CSV file containing all your services.</li>
+  <li>The file will automatically download to your computer with a name like <code>services_2026-02-18_14-30.csv</code> (with the current date and time).</li>
+</ol>
+
+<p>The exported file can be opened in Microsoft Excel, Google Sheets, or any spreadsheet application. This is useful for:</p>
+
+<ul>
+  <li>Keeping an offline backup of your services.</li>
+  <li>Reviewing and analyzing your service catalog in a spreadsheet.</li>
+  <li>Preparing data for bulk updates via the Import feature.</li>
+</ul>
+
+<h3>6.2 Importing Services from CSV</h3>
+
+<p>To add multiple services at once from a spreadsheet file:</p>
+
+<ol>
+  <li>Click the <strong>"Import CSV"</strong> button on the Services List View. This will take you to the Import page.</li>
+  <li>Follow the step-by-step import wizard:
+    <ul>
+      <li><strong>Upload your CSV file</strong> — Drag and drop your file or click to browse.</li>
+      <li><strong>Map your columns</strong> — Match the columns in your file to the required fields in the system.</li>
+    </ul>
+  </li>
+  <li>Review the data and click to import.</li>
+</ol>
+
+<p><strong>Required columns in your CSV file:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>sku</code></td>
+      <td>Unique identifier for each service.</td>
+    </tr>
+    <tr>
+      <td><code>name</code></td>
+      <td>The name of the service.</td>
+    </tr>
+    <tr>
+      <td><code>unitRetailPrice</code></td>
+      <td>The cost per hour in dollars (e.g., <code>75.00</code>).</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Optional columns:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>description</code></td>
+      <td>A description of the service.</td>
+    </tr>
+    <tr>
+      <td><code>tags</code></td>
+      <td>Tags to assign to the service.</td>
+    </tr>
+    <tr>
+      <td><code>isTaxable</code></td>
+      <td>Whether the service is taxable (<code>true</code> or <code>false</code>).</td>
+    </tr>
+    <tr>
+      <td><code>isShowNewService</code></td>
+      <td>Whether to show on the client portal (<code>true</code> or <code>false</code>).</td>
+    </tr>
+    <tr>
+      <td><code>isShowOnlineBooking</code></td>
+      <td>Whether to show for online booking (<code>true</code> or <code>false</code>).</td>
+    </tr>
+    <tr>
+      <td><code>isArchived</code></td>
+      <td>Whether the service should be created as archived (<code>true</code> or <code>false</code>).</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Once the import is complete, you will see a success message: <strong>"Services Successfully Imported"</strong>, and you will be returned to the Services List View where the newly imported services will appear.</p>
+
+<blockquote>
+  <p><strong>Tip:</strong> You can use the Export feature to download a sample CSV with the correct format, then use it as a template for your import file.</p>
+</blockquote>
+
+<hr>
+
+<h2>7. Quick Add (Keyboard Shortcut)</h2>
+
+<p>For power users who need to create services quickly from anywhere in the application, there is a <strong>Quick Add</strong> feature:</p>
+
+<ol>
+  <li>Press <strong>Ctrl + K</strong> (Windows) or <strong>Cmd + K</strong> (Mac) from any page in the application.</li>
+  <li>A Quick Add modal will appear. Select <strong>"Service"</strong> from the options.</li>
+  <li>Enter the <strong>SKU</strong>, <strong>Service Name</strong>, and <strong>Cost Per Hour</strong>.</li>
+  <li>Click <strong>"Add"</strong> to create the service.</li>
+</ol>
+
+<p>The Quick Add modal creates the service with minimal information. After creating a service this way, you will see a confirmation with a <strong>"View Services"</strong> link that takes you to the full edit form where you can add a description, tags, attachments, and configure other settings.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> Quick Add is designed for speed. For a complete setup including attachments and all configuration options, use the full "New Service" form from the Services List View.</p>
+</blockquote>
+
+<hr>
+
+<h2>8. How Services Are Used Across the Platform</h2>
+
+<p>Once a service has been created, it becomes available throughout the platform in several key areas. Understanding where services are used helps explain why certain restrictions exist — for example, why you cannot permanently delete a service that is "In Use", and why the SKU cannot be changed after creation.</p>
+
+<h3>Appointments</h3>
+
+<p>When creating or editing an appointment, you can add services in the <strong>Services step</strong>. Each service added to an appointment includes:</p>
+
+<ul>
+  <li>The service name and description.</li>
+  <li>Hours and minutes for the expected duration.</li>
+  <li>The hourly rate (pulled automatically from the service's Cost Per Hour).</li>
+  <li>A calculated total based on time and rate.</li>
+</ul>
+
+<p>Services can also be edited directly from an appointment's <strong>Overview &gt; Services tab</strong>, where you can adjust hours, minutes, and rates inline. Services <strong>cannot be modified</strong> on appointments that are marked as <strong>Completed</strong>, <strong>Canceled</strong>, or <strong>No-Show</strong>.</p>
+
+<h3>Estimates</h3>
+
+<p>In the <strong>Services tab</strong> of an estimate, you can add services and adjust their hours, minutes, and rates. The system calculates totals automatically and applies tax if the service is marked as taxable.</p>
+
+<h3>Invoices</h3>
+
+<p>Services work similarly in invoices. When viewing an invoice, the <strong>Services section</strong> displays all labor-based items with the following editable fields:</p>
+
+<ul>
+  <li><strong>Hours</strong> — The number of hours for this service.</li>
+  <li><strong>Minutes</strong> — The number of minutes (0-59).</li>
+  <li><strong>Rate</strong> — The hourly rate (pre-filled from the service's Cost Per Hour, but can be adjusted per invoice).</li>
+  <li><strong>Total</strong> — Automatically calculated based on time and rate.</li>
+</ul>
+
+<p>You can edit multiple services at once. When changes are made, a summary popover will show what was modified (original value vs. new value), and a <strong>"Save Changes"</strong> button will appear. Click it to apply all your edits at once.</p>
+
+<p>To add services to an invoice, click the <strong>"Add Services"</strong> button, select the services you need from the list, and they will be added with a default of 1 hour at the service's standard rate.</p>
+
+<p>To remove a service from an invoice, click the <strong>delete icon</strong> next to that service.</p>
+
+<blockquote>
+  <p><strong>Important:</strong> Once an invoice is marked as <strong>Paid</strong>, all services on that invoice become <strong>read-only</strong>. You will not be able to edit hours, rates, or remove services from a paid invoice.</p>
+</blockquote>
+
+<h3>Jobs</h3>
+
+<p>Jobs have a <strong>Services tab</strong> in their Overview where you can add, edit, and remove services with inline editing of hours, minutes, and rates — the same way as in appointments.</p>
+
+<hr>
+
+<h2>Summary of Common Actions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>What You Want to Do</th>
+      <th>How to Do It</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Add a new service</td>
+      <td>Click <strong>"+ New Service"</strong> on the Services List View</td>
+    </tr>
+    <tr>
+      <td>Edit a service</td>
+      <td>Click the <strong>SKU</strong> or the <strong>edit icon</strong> on the Services List View</td>
+    </tr>
+    <tr>
+      <td>Archive a service</td>
+      <td>Click the <strong>archive icon</strong> on the Active tab</td>
+    </tr>
+    <tr>
+      <td>Restore a service</td>
+      <td>Click the <strong>restore icon</strong> on the Archived tab</td>
+    </tr>
+    <tr>
+      <td>Permanently delete a service</td>
+      <td>Click the <strong>delete icon</strong> on the Archived tab (only if not in use)</td>
+    </tr>
+    <tr>
+      <td>Add attachments to a service</td>
+      <td>Click the <strong>paperclip icon</strong> on the Services List View</td>
+    </tr>
+    <tr>
+      <td>Search for a service</td>
+      <td>Type in the <strong>search bar</strong> at the top</td>
+    </tr>
+    <tr>
+      <td>Filter services</td>
+      <td>Click the <strong>Filter</strong> button and select criteria</td>
+    </tr>
+    <tr>
+      <td>Export all services</td>
+      <td>Click <strong>"Export CSV"</strong></td>
+    </tr>
+    <tr>
+      <td>Import services from a file</td>
+      <td>Click <strong>"Import CSV"</strong></td>
+    </tr>
+    <tr>
+      <td>Quickly add a service from anywhere</td>
+      <td>Press <strong>Ctrl/Cmd + K</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+</main>
+</body>
+</html>

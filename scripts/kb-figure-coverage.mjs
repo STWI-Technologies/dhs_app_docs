@@ -67,7 +67,7 @@ const BLOCKED = {
   },
   "estimates-management": {
     "Sharing a PDF": "Download Pdf is an item in the More Actions menu, shown in that figure",
-    "Archiving and deleting": "both are items in the More Actions menu, shown in that figure",
+    "Deleting": "Delete is an item in the More Actions menu, shown in that figure",
   },
   "invoices-management": {
     "Sharing a PDF": "Download Pdf is an item in the More Actions menu, shown in that figure",

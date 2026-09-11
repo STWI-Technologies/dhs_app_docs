@@ -67,11 +67,23 @@ Beyond the blocked list in the coverage script:
 - **Tracking time** (Jobs), starting the timer writes a timesheet record. The
   `Start Timer` button itself is in the job detail figure's header; it only
   exists while the job is still open.
-- **The Send to Client panel** (Jobs), captured, then held back: the message it
-  composes shows a literal `\n\n` where the line breaks should be, and the
-  client link it builds points at `client-app-develop.directhomeservice.com`
-  from staging. Both are reported as defects, and publishing the panel would
-  publish them. The More Actions figure shows where the action lives instead.
-  The capture is kept as evidence at
+- **The Send to Client panel** (Jobs), captured and then held back, because its
+  message body shows a literal `\n\n` where the line breaks should be. The same
+  component on Estimates (`Submit estimate`) and Invoices (`Send Invoice`)
+  renders those breaks correctly, and both of those panels ARE published, so the
+  fault is specific to the job panel. The More Actions figure shows where the
+  action lives instead. The capture is kept as evidence at
   `~/dhs_qa_workspace/screenshots/kb-findings/2026-09-11/job-send-to-client-panel.png`;
-  re-shoot into the article once the defects are fixed.
+  re-shoot into the article once it is fixed.
+
+## One thing wrong in three published figures
+
+`estimates/06-submit-estimate`, `invoices/04-send-invoice` and the held-back job
+panel all build the client's link against
+`client-app-develop.directhomeservice.com`, from staging. The host comes from
+the environment, so it is not something a reader can act on, but it is an
+internal hostname sitting in two published figures. It is reported as a finding.
+It is NOT a reason to hold one figure and not the others, and the earlier note
+here that treated it that way was wrong: either all three go or none do. They
+stay until someone decides otherwise, because the alternative is doctoring a URL
+in a figure, which is worse than showing the real one.
