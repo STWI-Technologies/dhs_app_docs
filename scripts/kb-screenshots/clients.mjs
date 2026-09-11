@@ -323,6 +323,81 @@ await step("CSV import", async () => {
   await shoot("08-import-csv", null, { settle: 1200 });
 });
 
+// ── Row-level figures: edit, archive, attachments, Quick Add ──────────────────
+// These were missing, and their absence was the real defect: the sections that
+// tell a reader how to change or retire a client had no picture at all. The
+// coverage report (scripts/kb-figure-coverage.mjs) is what surfaces gaps like
+// this now, instead of someone finding them by reading the published article.
+//
+// READ-ONLY: the edit panel is cancelled, and the archive dialog is
+// photographed and then DISMISSED. No client is edited or archived.
+await step("Editing a client", async () => {
+  await backToClientsList();
+  await searchBox.fill(SUBJECT_CLIENT);
+  await page.waitForTimeout(3500);
+  await page.locator('[data-tour="clients-list"] table tbody tr').first().click();
+  await page.waitForURL(/\/clients\/[^/]+$/, { timeout: 20000 });
+  await page.waitForTimeout(4000);
+  await hideAccountChrome();
+  // The pencil sits in the header of the Client Contact Information card. Scope
+  // to that card rather than guessing at an icon class — the previous attempt
+  // took "the last button with an svg on the page", which is not a selector.
+  const contactCard = page
+    .locator('div:has(> div > h3), div:has(> h3)')
+    .filter({ hasText: "Client Contact Information" })
+    .last();
+  const pencil = contactCard.locator("button").first();
+  if (!(await pencil.count())) throw new Error("no button in the Client Contact Information card");
+  await pencil.click();
+  const panel = page.locator("div.relative.transform.overflow-hidden.shadow-xl").last();
+  await panel.waitFor({ state: "visible", timeout: 15000 });
+  await page.waitForTimeout(1800);
+  await shoot("09-edit-client-panel", panel);
+});
+
+await step("Archive confirmation", async () => {
+  await backToClientsList();
+  const menu = page
+    .locator('[data-tour="clients-list"] table tbody tr')
+    .first()
+    .locator("button")
+    .last();
+  await menu.click();
+  await page.waitForTimeout(1200);
+  await page.locator('text="Archive"').last().click();
+  const dialog = page.locator("div.relative.transform.overflow-hidden.shadow-xl").last();
+  await dialog.waitFor({ state: "visible", timeout: 15000 });
+  await page.waitForTimeout(1400);
+  await shoot("10-archive-confirmation", null);
+});
+
+await step("Attachments panel", async () => {
+  await backToClientsList();
+  const menu = page
+    .locator('[data-tour="clients-list"] table tbody tr')
+    .first()
+    .locator("button")
+    .last();
+  await menu.click();
+  await page.waitForTimeout(1200);
+  await page.locator('text="Attachments"').last().click();
+  const panel = page.locator("div.relative.transform.overflow-hidden.shadow-xl").last();
+  await panel.waitFor({ state: "visible", timeout: 15000 });
+  await page.waitForTimeout(1800);
+  await shoot("11-attachments-panel", panel);
+});
+
+await step("Quick Add: New Client", async () => {
+  await backToClientsList();
+  await page.locator('button:has-text("Quick Add")').first().click();
+  await page.waitForTimeout(1400);
+  await page.locator('text="Client"').last().click();
+  const panel = page.locator("div.relative.transform.overflow-hidden.shadow-xl").last();
+  await panel.waitFor({ state: "visible", timeout: 15000 });
+  await page.waitForTimeout(1800);
+  await shoot("12-quick-add-client", panel);
+});
+
 await browser.close();
 
 console.log("\n— summary —");
