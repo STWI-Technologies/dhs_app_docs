@@ -12,7 +12,6 @@ import {
   Setting07Icon,
   CheckListIcon,
   AiBrain01Icon,
-  TelephoneIcon,
   Layers01Icon,
   SmartPhone01Icon,
   WarehouseIcon,
@@ -247,21 +246,6 @@ const articles = [
       overview: 'Use el Asistente IA integrado en la app web y móvil de DHS para administrar su negocio con lenguaje natural. Busque, cree, actualice y elimine registros escribiendo o hablando.'
     },
     keywords: ['ai', 'assistant', 'asistente', 'web', 'mobile', 'móvil', 'voice', 'voz', 'search', 'buscar', 'create', 'crear', 'natural language']
-  },
-  {
-    id: 'appointment-line',
-    icon: TelephoneIcon,
-    en: {
-      title: 'Appointment Line (IVR)',
-      category: 'AI & Automation',
-      overview: 'An AI-powered phone system that lets callers find service providers, schedule appointments, manage bookings, and request callbacks — all by voice or keypad, in English or Spanish.'
-    },
-    es: {
-      title: 'Línea de Citas (IVR)',
-      category: 'IA y Automatización',
-      overview: 'Un sistema telefónico con IA que permite a los usuarios encontrar proveedores de servicios, programar citas, gestionar reservas y solicitar devoluciones de llamada — todo por voz o teclado, en inglés o español.'
-    },
-    keywords: ['phone', 'teléfono', 'ivr', 'call', 'llamada', 'appointment', 'cita', 'schedule', 'programar', 'voice', 'voz', 'callback', 'provider', 'proveedor']
   },
   {
     id: 'plans-pricing',
