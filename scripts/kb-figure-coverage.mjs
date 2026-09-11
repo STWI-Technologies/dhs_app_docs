@@ -74,7 +74,7 @@ const BLOCKED = {
   },
   "jobs-management": {
     "Sending job details to the client": "the Send to Client panel itself is not published: its message body renders a literal \\n\\n instead of line breaks, and the client link it builds points at client-app-DEVELOP from staging. Both are reported as defects. The More Actions figure covers where the action lives; re-shoot the panel once they are fixed",
-    "Tracking time": "starting the timer would write a timesheet record, and these scripts are read-only. The button also only exists while the job is open, so the completed job the other figures come from does not show it",
+    "Tracking time": "starting the timer would write a timesheet record, and these scripts are read-only. Start Timer itself is visible in the job detail figure, in the header — it only exists while the job is still open",
   },
   "crews-management": {
     "Deleting a crew": "every crew on staging is assigned to work, so the delete button is disabled on all 26 rows and the confirmation cannot be opened",

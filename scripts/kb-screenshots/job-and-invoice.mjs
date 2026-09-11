@@ -32,6 +32,11 @@
  *    looks like in use. The wording is ordinary scheduling talk about this job;
  *    nothing is quoted, promised or priced.
  *
+ *    The SAME two messages go into EVERY figure that shows this sidebar — each
+ *    tab of the job, and the invoice raised from it. Injecting them into one
+ *    figure only would leave the article showing a conversation on one screen
+ *    and, two figures later on the same job, an empty panel.
+ *
  * Neither adjustment is written anywhere. A reload restores the real page.
  */
 import { chromium } from "playwright";
@@ -43,18 +48,6 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const BASE = process.env.KB_BASE_URL || "https://app-staging.directhomeservice.com";
 const JOB_ID = process.env.KB_JOB_ID || "6a99f115b13a61262a714e76";
 const INVOICE_ID = process.env.KB_INVOICE_ID || "6a99f153b13a61262a715384";
-/**
- * A second, UNFINISHED job, for the figures the completed one cannot give.
- *
- * On a completed job the More Actions menu shows Reschedule and Send to Client
- * greyed out, the header drops Start Timer, and the status control has nowhere
- * left to go — those figures would be pictures of disabled controls.
- *
- * SCHEDULED, not draft: Send to Client stays greyed on a draft too (there is no
- * date to tell the client about yet), and a draft carries no services, products
- * or totals, so the rest of the page behind the menu is empty.
- */
-const ACTIVE_JOB_ID = process.env.KB_JOB_ACTIVE || "6a8848917c529f3d30d94309";
 const VIEWPORT = { width: 1440, height: 1150 };
 const SCALE = 2;
 
@@ -149,8 +142,113 @@ await page.waitForURL((u) => !u.pathname.includes("/login"), { timeout: 45000 })
 await page.waitForTimeout(3500);
 await hideAccountChrome();
 
+/**
+ * Helpers shared by the steps below.
+ *
+ * Everything that opens a panel, a menu or a dialog also CANCELS it. Send is
+ * never sent, the edit panel never saved, the completion dialog dismissed
+ * rather than confirmed. These are real records on staging and they stay
+ * exactly as they were.
+ */
+const PANEL = "div.relative.transform.overflow-hidden.shadow-xl";
+
+/** Open the record's More Actions menu. Found by accessible name, not position. */
+async function clickMoreActions() {
+  const ok = await page.evaluate(() => {
+    const b = [...document.querySelectorAll("button")].find(
+      (x) => (x.getAttribute("aria-label") || "") === "More Actions" && x.offsetParent
+    );
+    if (!b) return false;
+    b.click();
+    return true;
+  });
+  if (!ok) throw new Error('no button labelled "More Actions" on this record');
+}
+
+/** Pick an item out of the open More Actions menu by its label. */
+async function clickMenuItem(label) {
+  await page.waitForTimeout(1200);
+  const state = await page.evaluate((l) => {
+    // Each item wraps an icon and a label, so it is not a text leaf — match on
+    // the item's own text rather than hunting for a childless node.
+    const item = [...document.querySelectorAll('[role="menuitem"]')].find((x) => x.innerText.trim() === l);
+    if (!item) return "no item";
+    if (item.getAttribute("aria-disabled") === "true" || item.disabled) return "disabled";
+    item.click();
+    return "ok";
+  }, label);
+  if (state === "no item") throw new Error(`no "${label}" item in the More Actions menu`);
+  if (state === "disabled") throw new Error(`"${label}" is disabled on this record`);
+}
+
+async function shootPanel(dir, name) {
+  const panel = page.locator(PANEL).last();
+  await panel.waitFor({ state: "visible", timeout: 20000 });
+  await page.waitForTimeout(1800);
+  await panel.screenshot({ path: resolve(ROOT, `public/images/${dir}/${name}.png`) });
+  results.push({ name: `${dir}/${name}`, status: "ok" });
+  console.log(`  \u2713 ${name}.png`);
+}
+
+async function closePanel() {
+  for (let i = 0; i < 4; i++) {
+    if (!(await page.locator(PANEL).count())) return;
+    const cancel = page.locator('button:has-text("Cancel"), button:has-text("Close"), button:has-text("Back")').last();
+    if (await cancel.count()) await cancel.click({ timeout: 5000 }).catch(() => {});
+    await page.keyboard.press("Escape").catch(() => {});
+    await page.waitForTimeout(900);
+  }
+}
+
+/**
+ * Put a conversation in the record's Chat panel.
+ *
+ * See the note at the top of this file: the panel is empty on every record on
+ * staging and a real client reply cannot be produced. Every figure that shows
+ * this sidebar gets the SAME two messages, so the article doesn't show one
+ * screen with a conversation and the next, of the same job, without one.
+ *
+ * Called for its effect and allowed to fail quietly: a figure whose subject is
+ * something else should not be lost because the chat panel had not painted.
+ */
+async function injectChat() {
+  const built = await page.evaluate(() => {
+    // Anchored on the Client/Team switch rather than on the empty-state text:
+    // that text is not always in the DOM when the tab first paints, and keying
+    // off it made this step fail for the wrong reason.
+    const team = [...document.querySelectorAll("span, button")].find(
+      (e) => (e.innerText || "").trim() === "Team"
+    );
+    if (!team) return "could not find the Client/Team switch, so not sure where the chat body is";
+    const bar = team.closest("div")?.parentElement;
+    let host = bar?.nextElementSibling;
+    // Walk forward to the first sizeable block below the switch.
+    while (host && host.getBoundingClientRect().height < 60) host = host.nextElementSibling;
+    if (!host) return "could not find the chat body below the Client/Team switch";
+    const bubble = (text, time, mine) => `
+      <div style="display:flex;justify-content:${mine ? "flex-end" : "flex-start"};margin:14px 16px;">
+        <div style="max-width:78%;">
+          <div style="background:${mine ? "#3C40BC" : "#FFFFFF"};color:${mine ? "#FFFFFF" : "#27274A"};
+                      border:1px solid ${mine ? "#3C40BC" : "rgba(39,39,74,0.10)"};
+                      border-radius:14px;padding:10px 14px;font-size:14px;line-height:1.45;">${text}</div>
+          <div style="font-size:12px;color:rgba(39,39,74,0.45);margin-top:6px;text-align:${mine ? "right" : "left"};">${time}</div>
+        </div>
+      </div>`;
+    // Two messages, not three: a third was clipped by the bottom of the panel,
+    // and one each way is all the figure needs to show.
+    host.innerHTML =
+      bubble("Morning — we're booked in for Sunday at 10. The crew will call when they're on the way.", "Sep 5, 2026, 9:12 AM", true) +
+      bubble("Perfect, thank you. I'll leave the side gate unlocked so they can get to the back door.", "Sep 5, 2026, 9:31 AM", false);
+    return "ok";
+  });
+  if (built !== "ok") console.log(`    ! chat not injected here: ${built}`);
+  else await page.waitForTimeout(700);
+  return built === "ok";
+}
+
 await step("Job overview", async () => {
   await openJob();
+  await injectChat();
   await shoot("jobs", "03-job-detail", { settle: 1500 });
 });
 
@@ -173,6 +271,7 @@ await step("Job visits", async () => {
   });
   if (!expanded) throw new Error("no expand control on the visit row");
   await page.waitForTimeout(3500);
+  await injectChat();
   await shoot("jobs", "04-job-visits", { settle: 1200 });
 });
 
@@ -222,51 +321,20 @@ await step("Job checklist", async () => {
   if (!sorted.ok) throw new Error(`could not reorder the checklist: ${JSON.stringify(sorted)}`);
   console.log(`    (checklist put in work order for the figure: ${sorted.moved} rows)`);
   await page.waitForTimeout(800);
+  await injectChat();
   await shoot("jobs", "06-job-checklist", { settle: 1000 });
 });
 
 await step("Job invoices tab", async () => {
   await openJob();
   await clickTab("Invoices");
+  await injectChat();
   await shoot("jobs", "05-job-invoices", { settle: 1200 });
 });
 
 await step("Client chat", async () => {
   await openJob();
-  // See the note at the top of this file. The conversation is empty and a real
-  // client reply cannot be produced, so two bubbles are injected using the
-  // chat's own markup.
-  const built = await page.evaluate(() => {
-    // Anchored on the Client/Team switch rather than on the empty-state text:
-    // that text is not always in the DOM when the tab first paints, and keying
-    // off it made this step fail for the wrong reason.
-    const team = [...document.querySelectorAll("span, button")].find(
-      (e) => (e.innerText || "").trim() === "Team"
-    );
-    if (!team) return "could not find the Client/Team switch, so not sure where the chat body is";
-    const bar = team.closest("div")?.parentElement;
-    let host = bar?.nextElementSibling;
-    // Walk forward to the first sizeable block below the switch.
-    while (host && host.getBoundingClientRect().height < 60) host = host.nextElementSibling;
-    if (!host) return "could not find the chat body below the Client/Team switch";
-    const bubble = (text, time, mine) => `
-      <div style="display:flex;justify-content:${mine ? "flex-end" : "flex-start"};margin:14px 16px;">
-        <div style="max-width:78%;">
-          <div style="background:${mine ? "#3C40BC" : "#FFFFFF"};color:${mine ? "#FFFFFF" : "#27274A"};
-                      border:1px solid ${mine ? "#3C40BC" : "rgba(39,39,74,0.10)"};
-                      border-radius:14px;padding:10px 14px;font-size:14px;line-height:1.45;">${text}</div>
-          <div style="font-size:12px;color:rgba(39,39,74,0.45);margin-top:6px;text-align:${mine ? "right" : "left"};">${time}</div>
-        </div>
-      </div>`;
-    // Two messages, not three: a third was clipped by the bottom of the panel,
-    // and one each way is all the figure needs to show.
-    host.innerHTML =
-      bubble("Morning — we're booked in for Sunday at 10. The crew will call when they're on the way.", "Sep 5, 2026, 9:12 AM", true) +
-      bubble("Perfect, thank you. I'll leave the side gate unlocked so they can get to the back door.", "Sep 5, 2026, 9:31 AM", false);
-    return "ok";
-  });
-  if (built !== "ok") throw new Error(built);
-  await page.waitForTimeout(700);
+  if (!(await injectChat())) throw new Error("the chat panel never painted, so there was nowhere to put the conversation");
   // Crop to the chat card itself. A full-page shot spends nine tenths of its
   // width on the job behind it, and the article already has that picture.
   const box = await page.evaluate(() => {
@@ -290,100 +358,27 @@ await step("Client chat", async () => {
   console.log("  ✓ 07-client-chat.png");
 });
 
-/**
- * The three remaining action sections of the Jobs article: Send to Client, Edit,
- * and Completing a job.
- *
- * All three are opened and CANCELLED. Send is never sent, the edit panel is
- * never saved, and the completion dialog is dismissed rather than confirmed —
- * this job is a real record on staging and stays exactly as it was. Tracking
- * time has no figure on purpose: starting the timer would write a timesheet
- * record, and the Start Timer button is already visible in the job header.
- */
-const PANEL = "div.relative.transform.overflow-hidden.shadow-xl";
-
-/** Open the record's More Actions menu. Found by accessible name, not position. */
-async function clickMoreActions() {
-  const ok = await page.evaluate(() => {
-    const b = [...document.querySelectorAll("button")].find(
-      (x) => (x.getAttribute("aria-label") || "") === "More Actions" && x.offsetParent
-    );
-    if (!b) return false;
-    b.click();
-    return true;
-  });
-  if (!ok) throw new Error('no button labelled "More Actions" on this record');
-}
-
-/** Click a header button by its exact label, ignoring the sidebar. */
-async function clickAction(label) {
-  const ok = await page.evaluate((l) => {
-    const b = [...document.querySelectorAll("button")].find(
-      (x) => x.innerText.trim().toLowerCase() === l.toLowerCase() &&
-             x.getBoundingClientRect().left > 260 && x.offsetParent
-    );
-    if (!b) return false;
-    if (b.disabled) return "disabled";
-    b.click();
-    return true;
-  }, label);
-  if (ok === "disabled") throw new Error(`"${label}" is disabled on this job`);
-  if (!ok) throw new Error(`no "${label}" button inside the record`);
-}
-
-async function shootPanel(dir, name) {
-  const panel = page.locator(PANEL).last();
-  await panel.waitFor({ state: "visible", timeout: 20000 });
-  await page.waitForTimeout(1800);
-  await panel.screenshot({ path: resolve(ROOT, `public/images/${dir}/${name}.png`) });
-  results.push({ name: `${dir}/${name}`, status: "ok" });
-  console.log(`  ✓ ${name}.png`);
-}
-
-async function closePanel() {
-  for (let i = 0; i < 4; i++) {
-    if (!(await page.locator(PANEL).count())) return;
-    const cancel = page.locator('button:has-text("Cancel"), button:has-text("Close"), button:has-text("Back")').last();
-    if (await cancel.count()) await cancel.click({ timeout: 5000 }).catch(() => {});
-    await page.keyboard.press("Escape").catch(() => {});
-    await page.waitForTimeout(900);
-  }
-}
-
 await step("Job more actions", async () => {
-  await openJob(ACTIVE_JOB_ID);
-  // Reschedule, Send to Client, Cancel job and Download PDF all live in this
-  // one menu — the job header itself carries only Back, the status and this
-  // trigger. One figure of the menu covers all four; a figure each would be
-  // four pictures of the same dropdown.
+  await openJob();
+  await injectChat();
+  // Complete job, Reschedule, Send to Client, Cancel job, Download PDF and
+  // Delete all live in this one menu. One figure of it open covers all six; a
+  // figure each would be six pictures of the same dropdown.
   await clickMoreActions();
   await page.waitForTimeout(1500);
   await shoot("jobs", "09-more-actions", { settle: 300 });
 });
 
 await step("Send to client", async () => {
-  await openJob(ACTIVE_JOB_ID);
+  await openJob();
   await clickMoreActions();
-  await page.waitForTimeout(1200);
-  // Each menu item wraps an icon and a label, so it is not a text leaf — match
-  // on the item's own text instead of hunting for a childless node.
-  const clicked = await page.evaluate(() => {
-    const item = [...document.querySelectorAll('[role="menuitem"]')].find(
-      (x) => x.innerText.trim() === "Send to Client"
-    );
-    if (!item) return "no item";
-    if (item.getAttribute("aria-disabled") === "true" || item.disabled) return "disabled";
-    item.click();
-    return "ok";
-  });
-  if (clicked === "no item") throw new Error('no "Send to Client" item in the More Actions menu');
-  if (clicked === "disabled") throw new Error('"Send to Client" is disabled on this job — it needs a scheduled date');
+  await clickMenuItem("Send to Client");
   await shootPanel("jobs", "10-send-to-client");
   await closePanel();
 });
 
 await step("Edit job", async () => {
-  await openJob(ACTIVE_JOB_ID);
+  await openJob();
   // Edit is a button at the top of the job's Overview card — not in the More
   // Actions menu, and not only on the list row.
   const ok = await page.evaluate(() => {
@@ -400,14 +395,16 @@ await step("Edit job", async () => {
 });
 
 await step("Job status", async () => {
-  await openJob(ACTIVE_JOB_ID);
-  // The status next to the job's name is the control that moves it along —
-  // including to Completed. Opened to show the transitions; none is chosen.
+  await openJob();
+  await injectChat();
+  // The status next to the job's name is a CONTROL, not a label: this is where
+  // a job moves from one state to the next. Opened to show the ten states it
+  // can be in; none is chosen.
   const ok = await page.evaluate(() => {
     const b = [...document.querySelectorAll("button")].find((x) => {
       const r = x.getBoundingClientRect();
       return x.offsetParent && r.top < 200 && r.left > 400 && r.left < 1000 &&
-             /^(draft|scheduled|pending|in progress|completed|cancelled)$/i.test(x.innerText.trim());
+             /^(draft|scheduled|pending|confirmed|en route|arrived|started|paused|completed|cancell?ed)$/i.test(x.innerText.trim());
     });
     if (!b) return false;
     b.click();
@@ -418,10 +415,26 @@ await step("Job status", async () => {
   await shoot("jobs", "11-job-status", { settle: 300 });
 });
 
+await step("Complete job", async () => {
+  await openJob();
+  await injectChat();
+  // Completing a job is not a bare status change: the app stops and asks you to
+  // review the job's checklist(s) first, which is the whole point of attaching
+  // one. That dialog is the figure.
+  //
+  // PHOTOGRAPHED AND CANCELLED. "Complete job" is never clicked and no box is
+  // ticked — the checklist belongs to a real job.
+  await clickMoreActions();
+  await clickMenuItem("Complete job");
+  await shootPanel("jobs", "13-complete-job");
+  await closePanel();
+});
+
 await step("Invoice from this job", async () => {
   await page.goto(`${BASE}/invoices/${INVOICE_ID}`, { waitUntil: "domcontentloaded" });
   await page.waitForTimeout(10000);
   await hideAccountChrome();
+  await injectChat();
   await shoot("invoices", "07-invoice-paid", { settle: 1500 });
 });
 
@@ -430,6 +443,7 @@ await step("Invoice payments", async () => {
   await page.waitForTimeout(10000);
   await hideAccountChrome();
   await clickTab("Payments");
+  await injectChat();
   await shoot("invoices", "08-invoice-payments", { settle: 1200 });
 });
 
