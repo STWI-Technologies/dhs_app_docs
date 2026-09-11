@@ -351,6 +351,24 @@ await step("Quick Add: New Crew", async () => {
   await shoot("09-quick-add-crew", drawer);
 });
 
+// ── The Users filter on the crews list ───────────────────────────────────────
+// The "Searching and filtering" section described the filter without showing
+// it. Found by scripts/kb-figure-coverage.mjs rather than by someone reading
+// the published article.
+await step("Users filter", async () => {
+  await page.locator('[data-tour="crews-users-filter"]').click();
+  await page.waitForTimeout(1200);
+  // The dropdown opens below the card header, outside the card's own box.
+  const cardBox = await listCard.boundingBox();
+  if (!cardBox) throw new Error("could not measure the list card");
+  await page.screenshot({
+    path: resolve(OUT_DIR, "12-users-filter.png"),
+    clip: { x: cardBox.x, y: cardBox.y, width: cardBox.width, height: Math.min(560, VIEWPORT.height - cardBox.y) },
+  });
+  results.push({ name: "12-users-filter", status: "ok" });
+  console.log("  ✓ 12-users-filter.png");
+});
+
 await browser.close();
 
 console.log("\n— summary —");

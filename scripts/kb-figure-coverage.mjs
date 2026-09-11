@@ -63,6 +63,10 @@ const BLOCKED = {
   },
   "products-management": {
     "Importing and exporting": "same feature flag as services",
+    "Products added in a hurry": "the top-bar Quick Add panel has no Product tile — only Service Item. A product can only be quick-added from inside a product picker, which means being mid-estimate",
+  },
+  "crews-management": {
+    "Deleting a crew": "every crew on staging is assigned to work, so the delete button is disabled on all 26 rows and the confirmation cannot be opened",
   },
   "vendors-manufacturers-groups": {
     "Adding a vendor": "staging's sidebar does not expose Vendors, Manufacturers or Groups at all; develop does",

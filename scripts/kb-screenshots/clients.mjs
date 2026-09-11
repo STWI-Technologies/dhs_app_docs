@@ -34,7 +34,7 @@ const SCALE = 2;
 
 // An email that already belongs to a DHS client, so the Add Client form shows the
 // existing-client / send-invite panel. Override with KB_EXISTING_EMAIL.
-const EXISTING_CLIENT_EMAIL = process.env.KB_EXISTING_EMAIL || "shawngreen@example.com";
+const EXISTING_CLIENT_EMAIL = process.env.KB_EXISTING_EMAIL || "annelee90@example.com";
 
 /**
  * The client whose record is photographed. Named on purpose rather than "whatever
@@ -277,7 +277,7 @@ await step("Existing client invite", async () => {
   await page.locator('input[name="lastName"]').click();
   await page.waitForSelector("text=This client already has an account", { timeout: 20000 });
   await page.waitForTimeout(1500);
-  await shoot("05-existing-client-invite", drawer);
+  await shoot("05-send-invite-panel", drawer);
 });
 
 // ── The client record ─────────────────────────────────────────────────────────

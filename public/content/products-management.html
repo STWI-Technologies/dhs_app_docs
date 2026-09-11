@@ -109,13 +109,19 @@
 <p>Not everything is worth counting — consumables, bulk fittings, anything you simply never run out of. Turn on <strong>Disable inventory tracking</strong> for those. They keep their price and work normally on estimates and invoices; they just don't carry quantities and won't warn you about stock.</p>
 <h2>Editing a product</h2>
 <p>Open the three-dot menu on the row and choose <strong>Edit product</strong>. Everything is editable except the SKU. Save with <strong>Apply Changes</strong>.</p>
+<p><img src="/images/products/04-edit-product-panel.png" class="kb-panel" alt="The Edit product panel"></p>
+<figcaption class="doc-caption">Editing a product. The SKU is fixed once created.</figcaption>
 <p>The edit panel also carries <strong>Archive</strong> (or <strong>Delete</strong>, for a product already archived), with a confirmation right there.</p>
 <h2>Updating quantities for several products at once</h2>
 <p>After a stock count or a delivery, editing products one at a time is a waste of an afternoon. Select the rows you want, and bulk edit lets you set <strong>Quantity On Hand</strong> and <strong>Re-Order Quantity</strong> for all of them together.</p>
 <!-- figure: 05-bulk-edit -->
 <p>The panel tells you what it's about to do — how many products are selected, and whether any of them can't be updated. Products with inventory tracking switched off have no quantities to set, so they're left out; if none of your selection is tracked, you're told that instead of the change silently doing nothing. Turn tracking on in each product's edit panel first.</p>
+<p><img src="/images/products/06-bulk-edit.png" class="kb-panel" alt="The bulk edit panel showing how many products are selected"></p>
+<figcaption class="doc-caption">Bulk edit says how many products it will touch, and warns when some cannot be.</figcaption>
 <h2>Archiving, restoring, deleting</h2>
 <p><strong>To archive:</strong> three-dot menu &gt; <strong>Archive</strong> &gt; confirm. The product moves to the Archived tab and stops appearing in pickers. Everything that already used it is untouched. You can archive several at once by selecting their rows.</p>
+<p><img src="/images/products/05-archive-product.png" alt="The archive confirmation dialog over the Products list"></p>
+<figcaption class="doc-caption">Archiving asks first, and leaves every existing record alone.</figcaption>
 <p><strong>To restore:</strong> Archived tab &gt; three-dot menu &gt; <strong>Restore</strong>.</p>
 <p><strong>To delete for good:</strong> Archived tab &gt; three-dot menu &gt; <strong>Delete</strong> &gt; confirm. Only available when the <strong>In Use</strong> column is empty.</p>
 <h2>Importing and exporting</h2>
@@ -123,7 +129,8 @@
 <p><strong>Import CSV</strong> brings a catalogue in, which is how you avoid typing hundreds of parts by hand. Upload the file, match your columns to the DHS fields, check the preview, and import. Rows that fail validation are reported so you can fix the file and try again.</p>
 <p><strong>Note:</strong> both buttons can be turned off for your account, in which case neither appears.</p>
 <h2>Products added in a hurry</h2>
-<p>Mid-estimate and the part isn't in your catalogue yet? <strong>Quick Add</strong> — from the top bar, or from inside the product picker — asks for a SKU, a name, and a price, creates it, and drops you back where you were. Its row carries a marker until someone fills in the vendor, the unit, and the quantities.</p>
+<p>Mid-estimate and the part isn't in your catalogue yet? The product picker has a <strong>Quick Add</strong> shortcut in it: give a SKU, a name and a price, and you're back where you were with the product created. Its row carries a marker until someone fills in the vendor, the unit and the quantities.</p>
+<p>Note that products are added this way only — from a picker, while you're building something. The <strong>Quick Add</strong> panel in the top bar covers appointments, clients, jobs, estimates, crews, users, service items, properties and payments, but not products.</p>
 <h2>Where products are used</h2>
 <ul>
 <li><strong>Estimates</strong> — quoted parts. Quantities you quote are held as reserved, so a quote can't promise stock twice.</li>

@@ -44,13 +44,25 @@ const SECTIONS = {
     nav: "Services",
     parent: "Inventory",
     tour: "services",
-    quickAdd: { figure: "04-quick-add-service", item: "Service", expect: "Quick Add" },
+    menu: [
+      { figure: "04-edit-service-panel", item: "Edit service", expect: "Edit service" },
+      { figure: "05-service-attachments", item: "Attachments", expect: "Attachments" },
+      { figure: "06-archive-service", item: "Archive", expect: "Archive", viewport: true },
+    ],
+    quickAdd: { figure: "07-quick-add-service", item: "Service Item", expect: "Quick Add" },
   },
   products: {
     nav: "Products",
     parent: "Inventory",
     tour: "products",
-    quickAdd: { figure: "06-quick-add-product", item: "Product", expect: "Quick Add" },
+    menu: [
+      { figure: "04-edit-product-panel", item: "Edit product", expect: "Edit product" },
+      { figure: "05-archive-product", item: "Archive", expect: "Archive", viewport: true },
+    ],
+    bulk: { figure: "06-bulk-edit", rows: 3 },
+    // No Quick Add here: the top-bar panel offers nine tiles and Product is not
+    // one of them. A product can only be quick-added from inside a product
+    // picker, which means being mid-estimate — not a figure this script takes.
   },
 };
 
@@ -198,6 +210,54 @@ for (const key of targets) {
       // The dialog is small and centred; the viewport frames it better than a
       // tight crop, and shows what it is interrupting.
       await shoot(key, s.confirm.figure, null);
+    });
+  }
+
+  // The three-dot menu on a row is where edit, attachments and archive live in
+  // the Inventory sections. Same shape every time, so one step covers them all.
+  //
+  // Archive opens a CONFIRMATION and is photographed, then dismissed. Nothing is
+  // archived — the platform is mid-migration and this script only reads.
+  for (const m of s.menu || []) {
+    await figure(`${key}/${m.figure}`, async () => {
+      const n = await rowButtons.count();
+      if (!n) throw new Error("the first row has no action buttons");
+      await rowButtons.nth(n - 1).click();
+      await page.waitForTimeout(1200);
+      const item = page.locator(`text="${m.item}"`).last();
+      if (!(await item.count())) throw new Error(`no "${m.item}" in the row menu`);
+      await item.click();
+      const surface = page.locator(PANEL).last();
+      await surface.waitFor({ state: "visible", timeout: 20000 });
+      await page.waitForTimeout(1600);
+      const heading = (await surface.innerText().catch(() => "")).split("\n")[0].trim();
+      if (m.expect && !heading.toLowerCase().includes(m.expect.toLowerCase())) {
+        console.log(`      (heading is "${heading}", expected "${m.expect}")`);
+      }
+      // A small centred dialog reads better framed by the page it interrupts.
+      await shoot(key, m.figure, m.viewport ? null : surface);
+    });
+  }
+
+  if (s.bulk) {
+    await figure(`${key}/${s.bulk.figure}`, async () => {
+      // The row checkbox renders a hidden <input> inside a styled div, so the
+      // input is never clickable. The div carrying data-checkbox-root is.
+      const boxes = page.locator(`[data-tour="${s.tour}-list"] table tbody tr [data-checkbox-root="true"]`).first().locator("xpath=.");
+      const allBoxes = page.locator(`[data-tour="${s.tour}-list"] table tbody tr > td:first-child [data-checkbox-root="true"]`);
+      const take = Math.min(s.bulk.rows, await allBoxes.count());
+      if (!take) throw new Error("no row checkboxes — this list isn't selectable");
+      for (let i = 0; i < take; i++) {
+        await allBoxes.nth(i).click();
+        await page.waitForTimeout(400);
+      }
+      await page.waitForTimeout(900);
+      const trigger = page.locator('button:has-text("Bulk Edit"), button:has-text("Edit")').last();
+      await trigger.click();
+      const panel = page.locator(PANEL).last();
+      await panel.waitFor({ state: "visible", timeout: 20000 });
+      await page.waitForTimeout(1600);
+      await shoot(key, s.bulk.figure, panel);
     });
   }
 
