@@ -105,6 +105,7 @@ from `hugeicons-react` again:
 | File | What was removed |
 |---|---|
 | `public/content/appointments-management.html` | A bullet under "Where appointments connect": "**Appointment Line** — the phone line that books appointments for you. See its own article." |
+| `public/content/settings-configuration.html` | The **Appointment Line** section of Settings. It lives in the Workspace group of the settings sidebar, between Dashboard and Timesheet. The rewritten article lists that group as "Dashboard, Timesheet" only, has no section describing it, and no row for it in the closing "Where things are" table. On restore, add it back in all three places. |
 | `public/content/plans-pricing.html` | **Seven table rows** and two prose mentions. See below. This one matters, because it changes what the plans appear to include. |
 
 ### What plans-pricing said about the Appointment Line
@@ -140,10 +141,57 @@ The full previous markup is in the diff for this commit.
 
 ---
 
-## 3. Availability: DELETED, not hidden
+## 3. Client Portal: Inbox and Messages
+
+**Hidden in:** this commit
+
+**Kept on disk (do not delete):**
+
+- `public/content/client-inbox.html` and `public/content/client-inbox-es.html`
+- the `client-inbox` key in `public/content/search-index.json`
+
+The Inbox itself is NOT hidden from clients: it is still a page in the portal
+menu, and the other client articles still send the reader to it ("ask in the
+Inbox", "every estimate has its own conversation"). Only its article is out of
+the knowledge base, so nothing is left pointing at a card that does not exist.
+
+**To restore**, put this back in `src/data/articles.js`, before
+`client-profile-settings`, and import `Message01Icon` from `hugeicons-react`
+again (the import was removed with it):
+
+```js
+{
+    id: 'client-inbox',
+    audience: 'client',
+    platforms: ['client'],
+    icon: Message01Icon,
+    contentPath: {
+      en: '/content/client-inbox.html',
+      es: '/content/client-inbox-es.html',
+    },
+    en: {
+      title: 'Inbox and Messages',
+      category: 'Client Portal',
+      overview: 'Every conversation with your providers, kept with the estimate, job, invoice or appointment it is about. Starting one, attaching files, and archiving.'
+    },
+    es: {
+      title: 'Bandeja de Entrada y Mensajes',
+      category: 'Portal del Cliente',
+      overview: 'Cada conversación con sus proveedores, junto al presupuesto, trabajo, factura o cita del que trata. Iniciar una, adjuntar archivos y archivarla.'
+    },
+    keywords: ['inbox', 'bandeja', 'chat', 'message', 'mensaje', 'conversation', 'conversación', 'attach', 'adjuntar', 'archive', 'archivar']
+  },
+```
+
+No cross-article references were edited, so there is nothing to write back by
+hand for this one.
+
+---
+
+## 4. Availability: DELETED, not hidden
 
 The one exception. `availability-management` stopped being a standalone article
-because it is being folded into the Settings article instead, so it was removed
+because it was folded into the Settings article instead, so it was removed
 properly: the articles.js entry, the search-index key and
 `public/content/availability-management.html` are all gone, along with the
 unused `Calendar03Icon` import.
@@ -153,6 +201,10 @@ The old content is still in git history if it's wanted as raw material:
 ```
 git show 328a884^:public/content/availability-management.html
 ```
+
+The fold is done: availability is now the **Availability** section of
+`public/content/settings-configuration.html`, written from the code rather than
+from the old article.
 
 Its one incoming reference was fixed rather than left dangling: the Crews
 article used to say "see the Availability Management article" and now points at

@@ -1,0 +1,143 @@
+<h1>Gestión de Usuarios</h1>
+<h2>Resumen</h2>
+<p>Aquí administra a todos los que tienen acceso a su cuenta de DHS: el personal de oficina y las cuadrillas de campo. Cada usuario recibe un <strong>Rol</strong> que decide hasta dónde llega, y puede pertenecer a uno o más equipos.</p>
+<p>Desde esta sección usted puede:</p>
+<ul>
+<li><strong>Agregar usuarios</strong> con sus datos de contacto, un rol y una contraseña.</li>
+<li><strong>Editar</strong> el perfil de cualquiera, cambiarle el rol o actualizar su foto.</li>
+<li><strong>Deshabilitar</strong> a quien ya no deba entrar, y <strong>Habilitar</strong>lo otra vez más adelante.</li>
+<li><strong>Enviar un restablecimiento de contraseña</strong> para que él elija la suya.</li>
+<li><strong>Buscar y filtrar</strong> por nombre, correo o rol.</li>
+</ul>
+<p><strong>Importante:</strong> los usuarios nunca se eliminan, solo se deshabilitan. Deshabilitar impide que alguien inicie sesión pero conserva todo lo que hizo. Sus trabajos, citas y hojas de tiempo quedan intactos, y su nombre sigue apareciendo en los registros que trabajó. Habilítelo de nuevo y entra igual que antes.</p>
+<h2>La lista de usuarios</h2>
+<p>Para abrirla, vaya a <strong>Menú &gt; Usuarios</strong>.</p>
+<p><img src="/images/users/01-users-list.png" alt="La lista de usuarios con nombres, correos, roles y equipos"></p>
+<figcaption class="doc-caption">La lista de usuarios. La pestaña en la que está se nombra en el encabezado de la tarjeta, con un conteo.</figcaption>
+<h3>Activos y deshabilitados</h3>
+<p>Dos pestañas dividen la lista: <strong>Activo</strong>, todos los que pueden iniciar sesión ahora mismo, y <strong>Deshabilitado</strong>, aquellos a quienes les quitó el acceso. El encabezado de la tarjeta nombra la pestaña en la que está y la cuenta.</p>
+<h3>Columnas</h3>
+<table>
+<thead>
+<tr><th>Columna</th><th>Qué muestra</th></tr>
+</thead>
+<tbody>
+<tr><td>Usuario</td><td>Su foto y su nombre completo. Ordenable. Haga clic en el nombre para abrir su perfil.</td></tr>
+<tr><td>Dirección de correo electrónico</td><td>La dirección con la que inicia sesión. Ordenable.</td></tr>
+<tr><td>Rol</td><td>Su rol, como etiqueta de color. Ordenable.</td></tr>
+<tr><td>Equipo</td><td>Todos los equipos a los que pertenece. Vacío para quien no está en ninguno, que normalmente es personal de oficina.</td></tr>
+<tr><td>Acciones</td><td>Dependen de la pestaña. Vea abajo.</td></tr>
+</tbody>
+</table>
+<h3>Acciones de fila</h3>
+<p>En la pestaña <strong>Activo</strong>:</p>
+<table>
+<thead>
+<tr><th>Acción</th><th>Qué hace</th></tr>
+</thead>
+<tbody>
+<tr><td>Editar</td><td>Abre su perfil. Hacer clic en su nombre hace lo mismo.</td></tr>
+<tr><td>Deshabilitar</td><td>Pide confirmación y luego le quita el acceso.</td></tr>
+</tbody>
+</table>
+<p>En la pestaña <strong>Deshabilitado</strong>, Editar se queda y <strong>Habilitar</strong> toma el lugar de la otra, para devolverle el acceso a alguien.</p>
+<p>Hay dos cosas que impiden deshabilitar, y las dos son deliberadas:</p>
+<ul>
+<li><strong>Su propia fila no tiene botón de deshabilitar.</strong> Usted no puede dejarse fuera.</li>
+<li><strong>Quien tiene trabajos activos asignados no se puede deshabilitar</strong>: el botón queda en gris y dice "No se puede deshabilitar usuario con asignaciones de trabajo activas". Reasigne o termine su trabajo primero.</li>
+</ul>
+<h3>Búsqueda y filtro de rol</h3>
+<p>El buscador del encabezado de la tarjeta busca por nombre y por correo. Al lado, <strong>Filtro</strong> abre un panel donde marca los roles que quiere ver. Elija varios para combinarlos, y <strong>Restablecer filtro</strong> los limpia.</p>
+<p><img src="/images/users/02-users-filter.png" alt="El panel de filtro de roles abierto, con una casilla por rol"></p>
+<figcaption class="doc-caption">Filtre por rol para ver solo administradores, solo equipo, o cualquier combinación.</figcaption>
+<h3>Orden y páginas</h3>
+<p>Haga clic en el encabezado <strong>Usuario</strong>, <strong>Dirección de correo electrónico</strong> o <strong>Rol</strong> para ordenar por esa columna, y otra vez para invertir. La columna Equipo no es ordenable. La lista muestra 10 usuarios por página; cámbielo a 20, 50 o 100 abajo a la izquierda.</p>
+<h3>El recorrido guiado</h3>
+<p>La primera vez que abre la lista, un recorrido corto le señala el botón Agregar usuario, las pestañas, la lista, la búsqueda y el filtro de roles. <strong>Omitir</strong> lo descarta para siempre.</p>
+<h2>Roles</h2>
+<p>Cada usuario tiene exactamente un rol. Es el campo más importante de su perfil, porque decide qué ve al iniciar sesión.</p>
+<table>
+<thead>
+<tr><th>Rol</th><th>Etiqueta</th><th>Para quién es</th></tr>
+</thead>
+<tbody>
+<tr><td>Dueño</td><td>Gris</td><td>Quien creó la cuenta. Normalmente hay uno, y el rol no se puede repartir. No se ofrece al agregar ni al editar a nadie.</td></tr>
+<tr><td>Administrador</td><td>Verde</td><td>Control completo de la plataforma: usuarios, equipos, configuraciones y todo el lado del negocio. El rol más alto que usted puede dar.</td></tr>
+<tr><td>Soporte</td><td>Amarillo</td><td>Oficina y despacho: agendar, hablar con clientes, mantener el día en movimiento, sin el alcance completo de administrador.</td></tr>
+<tr><td>Miembro del Equipo</td><td>Azul</td><td>El campo: técnicos e instaladores que trabajan los trabajos. Es lo que Añadir Rápido le asigna a un usuario nuevo.</td></tr>
+</tbody>
+</table>
+<p>Solo los usuarios <strong>Dueño</strong>, <strong>Administrador</strong> y <strong>Miembro del Equipo</strong> se pueden poner en un equipo. Los de Soporte no aparecen en el selector de miembros, porque son personal de oficina, no de campo.</p>
+<h2>Agregar un usuario</h2>
+<p>Haga clic en <strong>Agregar usuario</strong>. Un panel entra desde la derecha, titulado <strong>Agregar nuevo usuario</strong>.</p>
+<p><img src="/images/users/03-add-user-panel.png" class="kb-panel" alt="El panel Agregar nuevo usuario con perfil, contacto, rol, zona horaria y contraseña"></p>
+<figcaption class="doc-caption">Agregar un usuario. El rol decide qué ve esa persona una vez que entra.</figcaption>
+<table>
+<thead>
+<tr><th>Campo</th><th>Obligatorio</th><th>Notas</th></tr>
+</thead>
+<tbody>
+<tr><td>Foto de perfil</td><td>No</td><td><strong>Subir imagen</strong> para agregar una foto, hasta 4 MB. Aparece donde aparezca la persona: la lista de usuarios, los avatares de los equipos y las asignaciones de trabajo. Vale la pena ponerla.</td></tr>
+<tr><td>Nombre / Apellido</td><td>Sí</td><td></td></tr>
+<tr><td>Dirección de correo electrónico</td><td>Sí</td><td>Es con lo que inicia sesión, así que tiene que ser suya y tiene que ser única. Si ya está registrada, se lo dicen al salir del campo.</td></tr>
+<tr><td>Número de teléfono</td><td>Sí</td><td>Con selector de país, en Estados Unidos por defecto.</td></tr>
+<tr><td>Rol</td><td>Sí</td><td>Administrador, Soporte o Miembro del Equipo. Vea Roles arriba.</td></tr>
+<tr><td>Zona horaria</td><td>Sí</td><td>La de esa persona, no la suya. Es como se le muestran las fechas y las horas, lo cual importa para quien trabaja en otra zona.</td></tr>
+<tr><td>Descripción</td><td>No</td><td>Notas para su propio equipo: certificaciones, en qué se especializa, de qué es responsable.</td></tr>
+<tr><td>Establecer contraseña / Confirmar</td><td>Sí</td><td>Su primera contraseña, que se le envía por correo. El campo de confirmación aparece en cuanto empieza a escribir.</td></tr>
+</tbody>
+</table>
+<h3>La contraseña</h3>
+<p>Necesita al menos <strong>10 caracteres</strong>, y entre ellos una <strong>mayúscula</strong>, una <strong>minúscula</strong>, un <strong>número</strong> y un <strong>carácter especial</strong>.</p>
+<p>En vez de inventarla, use el botón de generar que está junto al campo, que crea una que ya cumple, y luego <strong>Copiar</strong> si quiere entregarla usted mismo. De cualquier forma la contraseña se envía por correo a la dirección que capturó, así que el usuario nuevo la recibe sin que usted tenga que mandar nada.</p>
+<p>Haga clic en <strong>Agregar usuario</strong> para terminar.</p>
+<h2>Editar un usuario</h2>
+<p>Haga clic en el lápiz de su fila, o en su nombre. El panel abre como <strong>Editar usuario</strong> con todo cargado: foto, nombre, correo, teléfono, rol, zona horaria y descripción.</p>
+<p><img src="/images/users/04-edit-user-panel.png" class="kb-panel" alt="El panel Editar usuario con el perfil cargado y una sección de Restablecer contraseña"></p>
+<figcaption class="doc-caption">Editar un usuario. Los campos de contraseña se reemplazan por Restablecer contraseña, que le envía un enlace.</figcaption>
+<p>Los campos de contraseña no están aquí. Usted no puede ver ni fijar la contraseña de alguien después. En su lugar está <strong>Restablecer contraseña</strong>, que le envía un enlace para que elija una nueva. Esa sección no aparece cuando edita su propio perfil.</p>
+<p>Para cambiar la foto de alguien, <strong>Subir imagen</strong> la reemplaza y el botón de quitar la regresa al avatar por defecto.</p>
+<p>Guarde con <strong>Aplicar cambios</strong>.</p>
+<h2>Quitar y devolver el acceso</h2>
+<p>Cuando alguien se va, o no debería estar entrando por un tiempo, deshabilítelo. No se pierde nada de lo que hizo.</p>
+<h3>Deshabilitar</h3>
+<p>Desde la pestaña <strong>Activo</strong>, haga clic en el botón de deshabilitar de su fila y confirme. También se puede hacer desde su perfil: el botón está arriba del panel y pide confirmación ahí mismo.</p>
+<p><img src="/images/users/05-disable-confirmation.png" alt="El diálogo de confirmación para deshabilitar sobre la lista de usuarios"></p>
+<figcaption class="doc-caption">Deshabilitar pregunta primero. Note los botones en gris de otras filas: esos usuarios tienen trabajos activos asignados.</figcaption>
+<p>La persona se mueve a la pestaña <strong>Deshabilitado</strong> y desde ese momento no puede iniciar sesión. Su historial se queda, y su nombre sigue apareciendo en el trabajo que hizo.</p>
+<p>Recuerde los dos casos que lo impiden: su propia cuenta y quien tenga trabajos activos asignados.</p>
+<h3>Habilitar</h3>
+<p>Cambie a la pestaña <strong>Deshabilitado</strong>, haga clic en habilitar en su fila y confirme. También puede abrir su perfil y usar el botón de arriba. Vuelve a la pestaña <strong>Activo</strong> y puede entrar de inmediato, con la misma contraseña de antes.</p>
+<h2>Usuarios agregados con prisa</h2>
+<p>¿Está armando un equipo y la persona que necesita todavía no es usuario? <strong>Añadir Rápido</strong>, desde la barra superior o desde el propio selector de miembros, pide lo justo para crearla y devolverlo a lo que estaba haciendo.</p>
+<p><img src="/images/users/06-quick-add-user.png" class="kb-panel" alt="El panel de Añadir Rápido para usuario, un formulario corto"></p>
+<figcaption class="doc-caption">Añadir Rápido pide lo justo para crear a alguien y devolverlo a lo que estaba haciendo.</figcaption>
+<p>La persona se crea como <strong>Miembro del Equipo</strong>, y su fila lleva una marca que ofrece <strong>Completar Información</strong> hasta que alguien llene el resto: el rol, si debería ser otro, su zona horaria y su teléfono. La marca desaparece al guardar el perfil completo.</p>
+<h2>Dónde aparecen los usuarios</h2>
+<ul>
+<li><strong>Equipos</strong>: los usuarios Dueño, Administrador y Miembro del Equipo pueden ser miembros, y uno de ellos es el líder.</li>
+<li><strong>Citas y trabajos</strong>: el trabajo se asigna a equipos, y sus miembros son quienes llegan. Quien tiene asignaciones activas no se puede deshabilitar.</li>
+<li><strong>Hojas de tiempo</strong>: las horas se registran por usuario, ya sea con el cronómetro o capturadas a mano.</li>
+<li><strong>Mensajería</strong>: los usuarios participan en los hilos internos del equipo y en las conversaciones con clientes.</li>
+<li><strong>Reportes</strong>: el reporte de horas y de desempeño se desglosa por usuario.</li>
+</ul>
+<h2>Acciones comunes</h2>
+<table>
+<thead>
+<tr><th>Para hacer esto</th><th>Vaya aquí</th></tr>
+</thead>
+<tbody>
+<tr><td>Ver a todos</td><td>Menú &gt; Usuarios</td></tr>
+<tr><td>Agregar a alguien</td><td>Agregar usuario &gt; llene el perfil &gt; Agregar usuario</td></tr>
+<tr><td>Agregar a alguien con prisa</td><td>Añadir Rápido &gt; Usuario, o el atajo dentro del selector de miembros</td></tr>
+<tr><td>Cambiar hasta dónde llega alguien</td><td>Abra su perfil &gt; Rol &gt; Aplicar cambios</td></tr>
+<tr><td>Darle una contraseña nueva a alguien</td><td>Abra su perfil &gt; Restablecer contraseña</td></tr>
+<tr><td>Cambiar una foto</td><td>Abra su perfil &gt; Subir imagen</td></tr>
+<tr><td>Quitar el acceso</td><td>Pestaña Activo &gt; deshabilitar en su fila &gt; confirme</td></tr>
+<tr><td>Devolverlo</td><td>Pestaña Deshabilitado &gt; habilitar en su fila &gt; confirme</td></tr>
+<tr><td>Encontrar a alguien</td><td>Buscar, en el encabezado de la tarjeta</td></tr>
+<tr><td>Ver solo administradores, o solo equipo</td><td>Filtro &gt; marque los roles</td></tr>
+<tr><td>Ver quién está en cuál equipo</td><td>La columna Equipo, o el filtro de usuarios en la lista de Equipos</td></tr>
+<tr><td>Terminar un perfil agregado con prisa</td><td>Haga clic en la marca junto a su nombre &gt; Completar Información</td></tr>
+</tbody>
+</table>

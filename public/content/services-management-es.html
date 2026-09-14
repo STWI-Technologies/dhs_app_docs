@@ -1,0 +1,139 @@
+<h1>Gestión de Servicios</h1>
+<h2>Resumen</h2>
+<p>Un <strong>servicio</strong> es mano de obra que usted cobra: una inspección, una instalación, una reparación, una salida. Lo define una vez con su tarifa por hora, y de ahí en adelante lo elige al armar una cita, un presupuesto, un trabajo o una factura, en vez de volver a escribir el precio cada vez.</p>
+<p>Desde esta sección usted puede:</p>
+<ul>
+<li><strong>Agregar servicios</strong> con su tarifa, su descripción y los documentos que los acompañan.</li>
+<li><strong>Editar</strong> uno cuando cambien sus precios.</li>
+<li><strong>Archivar</strong> los servicios que ya no ofrece, y restaurarlos después.</li>
+<li><strong>Eliminar</strong> definitivamente un servicio archivado, cuando nada lo referencia.</li>
+<li><strong>Decidir qué ven los clientes</strong>: cuáles servicios aparecen en su portal del cliente.</li>
+<li><strong>Buscar y filtrar</strong> por etiqueta, grupo, si causa impuestos y si los clientes pueden verlo.</li>
+<li><strong>Importar y exportar</strong> su lista de servicios como CSV.</li>
+<li><strong>Guardar archivos adjuntos</strong>: fichas técnicas, manuales, documentos de seguridad.</li>
+</ul>
+<p><strong>Importante:</strong> archivar y eliminar no son lo mismo. Archivar saca el servicio de los selectores y conserva cada registro que lo usó, que es lo que usted quiere cuando deja de ofrecer algo. Eliminar es permanente, y solo se puede cuando nada referencia al servicio.</p>
+<h2>La lista de servicios</h2>
+<p>Para abrirla, vaya a <strong>Menú &gt; Inventario &gt; Servicios</strong>.</p>
+<p><img src="/images/services/01-services-list.png" alt="La lista de servicios con SKU, nombre, tarifa, impuestos, en uso, portal del cliente, etiquetas y grupos"></p>
+<figcaption class="doc-caption">La lista de servicios. La Tarifa es ordenable, que es como se revisan los precios.</figcaption>
+<h3>Activo y Archivado</h3>
+<p>Dos pestañas: <strong>Activo</strong>, los servicios que ofrece hoy, y <strong>Archivado</strong>, los que retiró. Los archivados no aparecen al armar un presupuesto o un trabajo, pero se quedan en todo lo que ya los incluía.</p>
+<h3>Columnas</h3>
+<table>
+<thead>
+<tr><th>Columna</th><th>Qué muestra</th></tr>
+</thead>
+<tbody>
+<tr><td>SKU</td><td>El código que identifica al servicio, como INSP-001. Se fija al crearlo y ya no cambia. Ordenable.</td></tr>
+<tr><td>Servicio</td><td>Su nombre, con la descripción debajo. Ordenable.</td></tr>
+<tr><td>Tarifa</td><td>Lo que cobra por hora. Ordenable, así que es como encuentra su trabajo más caro y el más barato.</td></tr>
+<tr><td>Sujeto a impuestos</td><td>Marcado cuando el servicio entra en el cálculo de impuestos.</td></tr>
+<tr><td>En uso</td><td>Marcado cuando al menos una cita, presupuesto, trabajo o factura lo referencia. Esto es lo que decide si se puede eliminar.</td></tr>
+<tr><td>Portal del cliente</td><td>Marcado cuando los clientes pueden verlo y pedirlo desde su portal.</td></tr>
+<tr><td>Etiquetas</td><td>Las etiquetas que le puso: un oficio, una temporada, un nivel.</td></tr>
+<tr><td>Grupos</td><td>Los grupos a los que pertenece, si es que a alguno.</td></tr>
+<tr><td>Acciones</td><td>Vea abajo.</td></tr>
+</tbody>
+</table>
+<h3>Acciones de fila</h3>
+<p>Cada fila tiene un <strong>ojo</strong> que abre <strong>Ver detalles del servicio</strong>, una vista de solo lectura con todo sobre el servicio, y un <strong>menú de tres puntos</strong> con el resto:</p>
+<ul>
+<li><strong>Editar servicio</strong>: el mismo formulario que llenó al crearlo.</li>
+<li><strong>Archivos adjuntos</strong>: sus documentos.</li>
+<li><strong>Archivar</strong> en la pestaña Activo; <strong>Restaurar Servicio</strong> y <strong>Eliminar</strong> en la pestaña Archivado.</li>
+</ul>
+<p><strong>Eliminar</strong> queda en gris mientras algo referencie al servicio: "Este elemento no se puede eliminar porque está vinculado a registros existentes". Archívelo en su lugar, que para eso está el archivado.</p>
+<h3>Búsqueda y filtros</h3>
+<p>El buscador del encabezado de la tarjeta encuentra nombres y SKU. <strong>Filtro</strong> abre un panel con cuatro formas de reducir la lista:</p>
+<p><img src="/images/services/02-services-filter.png" alt="El panel de filtros de servicios con etiquetas, grupo y dos interruptores"></p>
+<figcaption class="doc-caption">Cuatro formas de reducir la lista, y Restablecer filtro para limpiarlas.</figcaption>
+<table>
+<thead>
+<tr><th>Filtro</th><th>A qué reduce</th></tr>
+</thead>
+<tbody>
+<tr><td>Etiquetas</td><td>Servicios que llevan las etiquetas que elija.</td></tr>
+<tr><td>Grupo</td><td>Servicios de los grupos que elija.</td></tr>
+<tr><td>Sujeto a impuestos</td><td>Solo los que causan impuesto.</td></tr>
+<tr><td>Portal del cliente</td><td>Solo los visibles en el portal del cliente.</td></tr>
+</tbody>
+</table>
+<p><strong>Restablecer filtro</strong> los limpia todos. Los filtros, la búsqueda y la pestaña en la que está trabajan juntos.</p>
+<h3>El recorrido guiado</h3>
+<p>La primera vez que abre la lista, un recorrido corto le señala las partes de la página. <strong>Omitir</strong> lo descarta para siempre.</p>
+<h2>Agregar un servicio</h2>
+<p>Haga clic en <strong>Agregar servicio</strong>. Un panel abre desde la derecha, titulado <strong>Agregar nuevo servicio</strong>, con todo en una sola pantalla.</p>
+<p><img src="/images/services/03-add-service-panel.png" class="kb-panel" alt="El panel de nuevo servicio con SKU, nombre, costo por hora, descripción y etiquetas"></p>
+<figcaption class="doc-caption">Todo en un panel. Sin asistente por pasos, y los adjuntos se pueden poner desde la creación.</figcaption>
+<table>
+<thead>
+<tr><th>Campo</th><th>Obligatorio</th><th>Notas</th></tr>
+</thead>
+<tbody>
+<tr><td>SKU</td><td>Sí</td><td>Un código único para este servicio. Elija algo que vaya a reconocer: INSP-001, HVAC-TUNE. Después no se puede cambiar, así que vale pensarlo un momento. Si el código ya está ocupado, se lo dicen al salir del campo.</td></tr>
+<tr><td>Nombre</td><td>Sí</td><td>Como se llama en presupuestos y facturas, así que escríbalo como debería leerlo un cliente: "Inspección anual de HVAC", no "insp".</td></tr>
+<tr><td>Costo por hora</td><td>Sí</td><td>Su tarifa por hora. Dos decimales.</td></tr>
+<tr><td>Descripción</td><td>No</td><td>Qué incluye el servicio, cuánto suele tardar, lo que le ahorre una llamada después.</td></tr>
+<tr><td>Etiquetas</td><td>No</td><td>Escriba una etiqueta y presione Enter. Las etiquetas son por lo que filtra después, así que un poco de consistencia aquí rinde.</td></tr>
+</tbody>
+</table>
+<p>Debajo de los campos hay dos interruptores:</p>
+<ul>
+<li><strong>Sujeto a impuestos</strong>: incluye este servicio en el cálculo de impuestos cuando corresponda. Enciéndalo y el impuesto se calcula solo donde se use el servicio.</li>
+<li><strong>Mostrar en el portal del cliente</strong>: los clientes ven este servicio y lo pueden pedir ellos mismos. Déjelo apagado para lo que usted prefiera cotizar a mano.</li>
+</ul>
+<p>Puede adjuntar documentos mientras crea el servicio: fichas técnicas, manuales, lo que una cuadrilla pueda necesitar en sitio. Después haga clic en <strong>Agregar servicio</strong>.</p>
+<h2>Editar un servicio</h2>
+<p>Abra el menú de tres puntos de la fila y elija <strong>Editar servicio</strong>. Todo es editable menos el SKU. Guarde con <strong>Aplicar cambios</strong>.</p>
+<p><img src="/images/services/04-edit-service-panel.png" class="kb-panel" alt="El panel de editar servicio"></p>
+<figcaption class="doc-caption">Editar un servicio. El SKU es lo único que no se puede cambiar.</figcaption>
+<p>El panel de edición también lleva el botón <strong>Archivar</strong> (o <strong>Eliminar</strong>, para un servicio ya archivado), que pide confirmación ahí mismo. Útil cuando abre un servicio y se da cuenta de que ya no lo ofrece.</p>
+<p>Los adjuntos no están en el formulario de edición: una vez que el servicio existe, sus documentos se manejan desde <strong>Archivos adjuntos</strong> en el menú de tres puntos.</p>
+<h2>Archivos adjuntos</h2>
+<p>Cada servicio puede llevar sus propios archivos. Abra <strong>Archivos adjuntos</strong> desde el menú de tres puntos, y arrastre archivos o haga clic para buscarlos. Desde el mismo panel puede buscar en la lista, descargar un archivo o eliminar uno. Eliminar es permanente.</p>
+<p><img src="/images/services/05-service-attachments.png" class="kb-panel" alt="El panel de adjuntos del servicio"></p>
+<figcaption class="doc-caption">Documentos que pertenecen a un servicio: fichas técnicas, manuales, papeles de seguridad.</figcaption>
+<h2>Archivar, restaurar, eliminar</h2>
+<p><strong>Para archivar:</strong> menú de tres puntos &gt; <strong>Archivar</strong> &gt; confirme. El servicio pasa a la pestaña Archivado y deja de aparecer en los selectores. Todo lo que ya lo usaba queda intacto.</p>
+<p><img src="/images/services/06-archive-service.png" alt="El diálogo de confirmación de archivado sobre la lista de servicios"></p>
+<figcaption class="doc-caption">Archivar pregunta primero. Nada de lo que ya usaba el servicio se ve afectado.</figcaption>
+<p><strong>Para restaurar:</strong> pestaña Archivado &gt; menú de tres puntos &gt; <strong>Restaurar Servicio</strong>. Vuelve a los selectores de inmediato.</p>
+<p><strong>Para eliminar definitivamente:</strong> pestaña Archivado &gt; menú de tres puntos &gt; <strong>Eliminar</strong> &gt; confirme. Solo está disponible cuando la columna <strong>En uso</strong> está vacía. Si no lo está, el servicio vive en algún registro y archivar es la respuesta correcta.</p>
+<h2>Importar y exportar</h2>
+<p><strong>Exportar CSV</strong> descarga su lista de servicios como hoja de cálculo, útil para una revisión de precios o para compartir su catálogo con alguien que no usa DHS.</p>
+<p><strong>Importar CSV</strong> trae una lista. Suba el archivo, empareje sus columnas con los campos de DHS, revise la vista previa e importe. Las filas que no pasan la validación se reportan para que corrija el archivo y lo intente de nuevo.</p>
+<p><strong>Nota:</strong> los dos botones se pueden apagar para su cuenta, y en ese caso ninguno aparece.</p>
+<h2>Servicios agregados con prisa</h2>
+<p>¿Está a medio presupuesto y el servicio que necesita todavía no existe? <strong>Añadir Rápido</strong>, desde la barra superior o desde el propio selector de servicios, pide un SKU, un nombre y un precio, lo crea y lo devuelve a donde estaba. Llene el resto después; la fila lleva una marca mientras tanto.</p>
+<p><img src="/images/services/07-quick-add-service.png" class="kb-panel" alt="El panel de Añadir Rápido para un servicio"></p>
+<figcaption class="doc-caption">Añadir Rápido pide un SKU, un nombre y un precio. Lo demás puede esperar.</figcaption>
+<h2>Dónde se usan los servicios</h2>
+<ul>
+<li><strong>Presupuestos</strong>: las líneas que cotiza. La tarifa se copia sola.</li>
+<li><strong>Trabajos</strong>: el trabajo que se hace, y cuánto vale.</li>
+<li><strong>Facturas</strong>: lo que se le cobra al cliente, con impuesto aplicado a los servicios marcados como gravables.</li>
+<li><strong>Citas</strong>: el trabajo previsto para una visita.</li>
+<li><strong>Su portal del cliente</strong>: los servicios que marcó como visibles son los que los clientes pueden pedir solos.</li>
+</ul>
+<p>Como todo apunta al mismo servicio, cambiar su tarifa cambia lo que toman los registros futuros. Los registros ya escritos conservan el precio con el que se crearon.</p>
+<h2>Acciones comunes</h2>
+<table>
+<thead>
+<tr><th>Para hacer esto</th><th>Vaya aquí</th></tr>
+</thead>
+<tbody>
+<tr><td>Ver sus servicios</td><td>Menú &gt; Inventario &gt; Servicios</td></tr>
+<tr><td>Agregar uno</td><td>Agregar servicio &gt; SKU, nombre, tarifa &gt; Agregar servicio</td></tr>
+<tr><td>Agregar uno con prisa</td><td>Añadir Rápido &gt; Servicio, o el atajo dentro de un selector de servicios</td></tr>
+<tr><td>Cambiar un precio</td><td>Menú de tres puntos &gt; Editar servicio &gt; Costo por hora &gt; Aplicar cambios</td></tr>
+<tr><td>Consultarlo sin cambiarlo</td><td>El ojo de su fila</td></tr>
+<tr><td>Dejar de ofrecerlo</td><td>Menú de tres puntos &gt; Archivar</td></tr>
+<tr><td>Volver a ofrecerlo</td><td>Pestaña Archivado &gt; menú de tres puntos &gt; Restaurar Servicio</td></tr>
+<tr><td>Quitarlo definitivamente</td><td>Pestaña Archivado &gt; menú de tres puntos &gt; Eliminar (solo si no está en uso)</td></tr>
+<tr><td>Dejar que los clientes lo pidan</td><td>Editar servicio &gt; Mostrar en el portal del cliente</td></tr>
+<tr><td>Adjuntar un manual o una ficha</td><td>Menú de tres puntos &gt; Archivos adjuntos</td></tr>
+<tr><td>Encontrar los gravables</td><td>Filtro &gt; Sujeto a impuestos</td></tr>
+<tr><td>Revisar sus precios</td><td>Ordene por Tarifa, o Exportar CSV</td></tr>
+</tbody>
+</table>

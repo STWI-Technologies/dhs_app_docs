@@ -1,0 +1,157 @@
+<h1>Gestión de Trabajos</h1>
+<h2>Resumen</h2>
+<p>Un <strong>trabajo</strong> es obra con la que usted ya se comprometió: un cliente, una propiedad, un equipo, una fecha y los servicios y productos involucrados. Es donde acaba un presupuesto aprobado, donde se registra el tiempo y de donde sale la factura.</p>
+<p>Desde esta sección usted puede:</p>
+<ul>
+<li><strong>Crear trabajos</strong> directamente, o dejar que lleguen desde un presupuesto aprobado.</li>
+<li><strong>Agendarlos</strong> a un equipo, con fecha de inicio y de fin.</li>
+<li><strong>Seguirlos</strong>: en camino, llegó, iniciado, en pausa, completado.</li>
+<li><strong>Registrar visitas</strong>, para que un trabajo de varios viajes se lleve viaje por viaje.</li>
+<li><strong>Registrar tiempo</strong> del trabajo y de cada visita.</li>
+<li><strong>Trabajar una lista de verificación</strong>, cuando el trabajo lleva una.</li>
+<li><strong>Enviarle los detalles al cliente</strong>, y recoger sus comentarios después.</li>
+<li><strong>Facturar el trabajo</strong> sin recapturar nada.</li>
+<li><strong>Configurar trabajos recurrentes</strong> para lo que se repite.</li>
+</ul>
+<h2>La lista de trabajos</h2>
+<p>Para abrirla, vaya a <strong>Menú &gt; Trabajos</strong>.</p>
+<p><img src="/images/jobs/01-jobs-list.png" alt="La lista de trabajos con nombre, cliente, fecha programada, equipo, estado y total"></p>
+<figcaption class="doc-caption">La lista de trabajos. Programado es la columna en la que uno vive.</figcaption>
+<table>
+<thead>
+<tr><th>Columna</th><th>Qué muestra</th></tr>
+</thead>
+<tbody>
+<tr><td>Nombre</td><td>Como se llama el trabajo. Ordenable.</td></tr>
+<tr><td>Cliente</td><td>Para quién es.</td></tr>
+<tr><td>Programado</td><td>Cuándo está agendado. Ordenable, y la columna en la que uno vive.</td></tr>
+<tr><td>Equipo</td><td>Quién lo hace.</td></tr>
+<tr><td>Estado</td><td>Cómo va. Ordenable.</td></tr>
+<tr><td>Total</td><td>A cuánto sale el trabajo.</td></tr>
+<tr><td>Acciones</td><td>Editar y eliminar.</td></tr>
+</tbody>
+</table>
+<p>La búsqueda encuentra trabajos por nombre y por cliente, y <strong>Filtro</strong> reduce por estado, equipo y fechas. Para ver ese mismo trabajo en calendario, use el <strong>Programador</strong>; para ver dónde queda todo, use el <strong>Mapa</strong>.</p>
+<p><img src="/images/jobs/02-jobs-filter.png" alt="El panel de filtros de trabajos"></p>
+<figcaption class="doc-caption">Reduzca por estado, equipo y fechas.</figcaption>
+<h3>Estados</h3>
+<table>
+<thead>
+<tr><th>Estado</th><th>Qué significa</th></tr>
+</thead>
+<tbody>
+<tr><td>Borrador</td><td>Se está armando. Todavía sin compromiso.</td></tr>
+<tr><td>Pendiente</td><td>Enviado al cliente, esperando su confirmación.</td></tr>
+<tr><td>Confirmado</td><td>El cliente confirmó.</td></tr>
+<tr><td>Programado</td><td>Agendado con equipo y fecha, listo para salir.</td></tr>
+<tr><td>En camino</td><td>La cuadrilla va en camino.</td></tr>
+<tr><td>Llegó</td><td>Ya está en sitio.</td></tr>
+<tr><td>Iniciado</td><td>El trabajo está en curso.</td></tr>
+<tr><td>En pausa</td><td>Detenido por un rato: falta una pieza, el clima, una decisión.</td></tr>
+<tr><td>Completada</td><td>Terminado. Es lo que lo vuelve facturable.</td></tr>
+<tr><td>Cancelado</td><td>No va a ocurrir.</td></tr>
+</tbody>
+</table>
+<p><img src="/images/jobs/11-job-status.png" alt="El control de estado abierto en un trabajo, con los diez estados"></p>
+<figcaption class="doc-caption">El estado junto al nombre del trabajo es un control, no una etiqueta. Desde ahí el trabajo pasa de un estado al siguiente.</figcaption>
+<p>Las cuadrillas mueven el trabajo por En camino, Llegó, Iniciado y En pausa desde la app móvil conforme avanza el día, así la oficina ve dónde va todo sin llamar a nadie.</p>
+<h2>Crear un trabajo</h2>
+<p>Haga clic en <strong>Agregar trabajo</strong>. Tres pasos. Primero los datos: cliente, propiedad, equipo, servicios y productos, y una lista de verificación si la hay. Luego la fecha de inicio, luego la de fin. Los días en que el equipo no está disponible aparecen marcados, para que no lo agende dos veces.</p>
+<p><img src="/images/jobs/03-add-job-panel.png" class="kb-panel" alt="El panel para agregar un trabajo"></p>
+<figcaption class="doc-caption">Crear un trabajo directo. La mayoría llega desde un presupuesto aprobado.</figcaption>
+<p>Aunque la mayoría de los trabajos no empiezan aquí. Si el trabajo se cotizó, abra el presupuesto aprobado y use <strong>Convertir a trabajo</strong>, y todo se copia.</p>
+<h2>El trabajo</h2>
+<p>Haga clic en un trabajo para abrirlo.</p>
+<p><img src="/images/jobs/03-job-detail.png" alt="Un trabajo abierto en su pestaña Resumen, con el panel del cliente y su conversación en la barra lateral"></p>
+<figcaption class="doc-caption">Un trabajo abierto: sus datos, servicios, productos y la cuenta, con el cliente y su conversación al costado.</figcaption>
+<p>El encabezado lleva su nombre, el estado (que además es el control que mueve el trabajo) y un menú de tres puntos con el resto de las acciones. Mientras el trabajo siga abierto también lleva <strong>Iniciar temporizador</strong>; en cuanto queda completado ese botón desaparece, porque ya no hay nada que cronometrar. La barra lateral mantiene a la mano el teléfono, el correo y la dirección de facturación del cliente.</p>
+<p>Debajo de los datos del cliente, la barra lateral tiene tres pestañas: <strong>Chat</strong>, <strong>Notas</strong> y <strong>Archivos adjuntos</strong>. El chat a su vez se parte en dos, <strong>Cliente</strong> y <strong>Equipo</strong>, para que un mensaje a la cuadrilla sobre el acceso o el estacionamiento no le llegue al cliente por error.</p>
+<p><img src="/images/jobs/07-client-chat.png" class="kb-panel" alt="La pestaña de chat del trabajo, con el cambio entre Cliente y Equipo"></p>
+<figcaption class="doc-caption">La conversación del trabajo, guardada junto al trabajo del que habla.</figcaption>
+<p>Las pestañas de arriba:</p>
+<table>
+<thead>
+<tr><th>Pestaña</th><th>Qué hay en ella</th></tr>
+</thead>
+<tbody>
+<tr><td>Resumen</td><td>El trabajo en sí: datos, servicios, productos, la cuenta y los comentarios del cliente una vez que los deja.</td></tr>
+<tr><td>Visitas</td><td>Cada viaje hecho para este trabajo, con el tiempo registrado en cada uno.</td></tr>
+<tr><td>Lista de verificación</td><td>Cuando el trabajo lleva una: los pasos a seguir en sitio.</td></tr>
+<tr><td>Programación Recurrente</td><td>Cuando el trabajo se repite.</td></tr>
+<tr><td>Facturas</td><td>Las facturas emitidas desde este trabajo.</td></tr>
+</tbody>
+</table>
+<h2>Visitas</h2>
+<p>No todo trabajo es un solo viaje. Una reparación que requiere pedir una pieza son dos visitas; una instalación grande pueden ser cinco. <strong>Visitas</strong> es donde se registra cada una, para que el tiempo y la historia del trabajo queden claros en vez de mezclarse en un bloque de horas.</p>
+<p><img src="/images/jobs/04-job-visits.png" alt="Una visita desplegada con sus cuatro registros de tiempo, con usuarios, horas y notas"></p>
+<figcaption class="doc-caption">Despliegue una visita y aparecen sus registros de tiempo: qué tipo de tiempo, quién, cuándo y por qué.</figcaption>
+<p><strong>Agregar visita</strong> registra una: la <strong>Fecha</strong>, el usuario que la hizo, la hora desde y hasta, y una <strong>Descripción</strong>. El tiempo se separa según lo que fue en realidad:</p>
+<ul>
+<li><strong>Horario de trabajo</strong>: manos en el trabajo.</li>
+<li><strong>Preparación para el trabajo</strong>: alistarse, cargar, recoger materiales.</li>
+<li><strong>Horario de oficina</strong>: papeleo y administración de este trabajo.</li>
+<li><strong>En camino</strong>: traslado.</li>
+</ul>
+<p>Despliegue una visita para ver sus registros de tiempo y para editarla o eliminarla. Una cosa que conviene saber: <strong>una visita con un cronómetro corriendo no se puede eliminar</strong>. Detenga el cronómetro primero.</p>
+<h2>Registrar tiempo</h2>
+<p><strong>Iniciar temporizador</strong> en el trabajo registra el tiempo conforme pasa, que es más exacto que acordarse al final del día. Las cuadrillas normalmente lo corren desde la app móvil mientras trabajan; la oficina también puede capturar tiempo a mano en una visita.</p>
+<p>De cualquier forma las horas caen en <strong>Hojas de tiempo</strong>, contra el usuario y contra el trabajo, que es sobre lo que se construyen la nómina y la rentabilidad de cada trabajo.</p>
+<h2>Listas de verificación</h2>
+<p>Cuando un trabajo lleva una lista, la pestaña <strong>Lista de verificación</strong> guarda los pasos. Las cuadrillas la trabajan en sitio y el trabajo registra lo que se hizo, lo cual sirve para la consistencia y para demostrarlo después.</p>
+<p><img src="/images/jobs/06-job-checklist.png" alt="La pestaña de lista de verificación de un trabajo"></p>
+<figcaption class="doc-caption">La lista del trabajo. Las cuadrillas la trabajan en sitio.</figcaption>
+<h2>Enviarle los detalles al cliente</h2>
+<p><strong>Enviar al Cliente</strong>, en el menú <strong>Más acciones</strong> del trabajo, manda los datos por correo o por mensaje, con una vista previa de lo que va a recibir antes de que salga. Eso es lo que mueve el trabajo a <strong>Pendiente</strong>, esperando su confirmación. Queda en gris hasta que el trabajo tenga una fecha que contarle al cliente.</p>
+<p><img src="/images/jobs/09-more-actions.png" alt="El menú Más acciones de un trabajo abierto"></p>
+<figcaption class="doc-caption">El menú de tres puntos guarda todo lo que no está en el encabezado: reprogramar, completar, enviar, cancelar, el PDF y eliminar. Lo que ofrece depende de en qué va el trabajo. Un trabajo completado no tiene Reprogramar ni Eliminar.</figcaption>
+<h2>Completar un trabajo</h2>
+<p>Marque el trabajo como <strong>Completada</strong> cuando la obra esté hecha, desde el control de estado junto a su nombre o con <strong>Trabajo completo</strong> en el menú Más acciones.</p>
+<p>Si el trabajo lleva lista de verificación, completarlo no es un clic: la app le pone la lista enfrente y le pide revisarla primero. Para eso sirve tenerla.</p>
+<p><img src="/images/jobs/13-complete-job.png" alt="El trabajo abierto con el diálogo de completar encima, mostrando la lista de verificación"></p>
+<figcaption class="doc-caption">Completar un trabajo con lista: revísela y luego complete.</figcaption>
+<p>Una vez completo, se le pueden pedir comentarios al cliente, que aparecen en el Resumen del trabajo y alimentan las calificaciones de equipo que ve en la lista de Equipos.</p>
+<h2>Facturar el trabajo</h2>
+<p>Abra la pestaña <strong>Facturas</strong> y use <strong>Agregar Factura desde trabajo</strong>. Los servicios, los productos y los totales salen directo del trabajo, así que no hay que recapturar nada ni se olvida nada en el traspaso.</p>
+<p><img src="/images/jobs/05-job-invoices.png" alt="La pestaña de facturas de un trabajo, con la factura emitida desde él"></p>
+<figcaption class="doc-caption">Facturas emitidas desde este trabajo. Agregar Factura desde trabajo se lleva los servicios y productos.</figcaption>
+<p>El botón necesita algo que cobrar: agregue al menos un servicio o un producto antes de crear una factura. Un trabajo puede llevar más de una factura, que es como funciona la facturación por etapas o parcial.</p>
+<h2>Trabajos recurrentes</h2>
+<p>El trabajo que se repite, como el mantenimiento mensual o el servicio de temporada, puede correr con una programación en vez de crearse a mano cada vez. La pestaña <strong>Programación Recurrente</strong> es donde vive el patrón, y también es donde elige si un cambio aplica solo a esa ocurrencia o a toda la serie. Vale la pena ser deliberado, porque una de esas opciones reescribe todos los trabajos futuros.</p>
+<h2>Editar y eliminar</h2>
+<p>Lo que se puede cambiar depende de en qué va el trabajo. Un borrador es totalmente editable; un trabajo en curso o completado se va bloqueando, para que la historia no se reescriba en silencio después.</p>
+<p><strong>Editar</strong> está arriba de la tarjeta Resumen del trabajo. Abre <strong>Editar detalles del trabajo</strong>: el cliente, el título, la propiedad, el equipo, la lista de verificación y la prioridad. Las fechas no están ahí: mover un trabajo en el tiempo es <strong>Reprogramar</strong>, en el menú Más acciones, y los servicios y productos se cambian en el trabajo mismo.</p>
+<p><img src="/images/jobs/12-edit-job-panel.png" class="kb-panel" alt="El panel Editar detalles del trabajo"></p>
+<figcaption class="doc-caption">Editar detalles del trabajo. Qué es el trabajo y para quién, no cuándo.</figcaption>
+<p><strong>Eliminar</strong> está al fondo del menú Más acciones, y en la fila de la lista como un bote.</p>
+<p>Ese menú también ofrece <strong>Cancelar trabajo</strong>, que suele ser la opción más honesta. Un trabajo que ya se facturó o que tiene tiempo registrado es parte de sus registros, y cancelar conserva esa historia mientras que eliminar la tira. En un trabajo ya completado, Eliminar desaparece del menú y lo que queda es Cancelar.</p>
+<h2>Con qué se conectan los trabajos</h2>
+<ul>
+<li><strong>Presupuestos</strong>: un presupuesto aprobado se convierte en trabajo con todo copiado, y conserva el enlace de regreso.</li>
+<li><strong>Citas</strong>: una visita que se vuelve trabajo real se convierte en trabajo.</li>
+<li><strong>Facturas</strong>: se emiten desde el trabajo, con sus servicios y productos.</li>
+<li><strong>Hojas de tiempo</strong>: cada cronómetro y cada captura manual caen ahí.</li>
+<li><strong>Listas de verificación</strong>: adjuntas al trabajo y trabajadas en sitio.</li>
+<li><strong>Equipos</strong>: asignados al trabajo; su disponibilidad es lo que respetan los selectores de fecha.</li>
+<li><strong>Programador y Mapa</strong>: los mismos trabajos por hora y por lugar.</li>
+</ul>
+<h2>Acciones comunes</h2>
+<table>
+<thead>
+<tr><th>Para hacer esto</th><th>Vaya aquí</th></tr>
+</thead>
+<tbody>
+<tr><td>Ver sus trabajos</td><td>Menú &gt; Trabajos</td></tr>
+<tr><td>Verlos en calendario</td><td>Menú &gt; Programador</td></tr>
+<tr><td>Crear uno</td><td>Agregar trabajo &gt; datos &gt; fecha de inicio &gt; fecha de fin</td></tr>
+<tr><td>Convertir una cotización en trabajo</td><td>Abra el presupuesto aprobado &gt; Convertir a trabajo</td></tr>
+<tr><td>Registrar un viaje</td><td>Abra el trabajo &gt; Visitas &gt; Agregar visita</td></tr>
+<tr><td>Registrar tiempo mientras pasa</td><td>Iniciar temporizador, en el trabajo o en la app móvil</td></tr>
+<tr><td>Ver las horas de un trabajo</td><td>Visitas &gt; despliegue una visita &gt; sus registros de tiempo</td></tr>
+<tr><td>Decirle al cliente qué está agendado</td><td>Enviar al Cliente</td></tr>
+<tr><td>Trabajar la lista de verificación</td><td>La pestaña Lista de verificación, normalmente desde la app móvil en sitio</td></tr>
+<tr><td>Cobrar el trabajo</td><td>Pestaña Facturas &gt; Agregar Factura desde trabajo</td></tr>
+<tr><td>Cobrar por etapas</td><td>Cree más de una factura desde el mismo trabajo</td></tr>
+<tr><td>Cambiar una ocurrencia de un trabajo repetido</td><td>Programación Recurrente &gt; esa ocurrencia, no la serie</td></tr>
+<tr><td>Encontrar el trabajo de hoy</td><td>Ordene por Programado, o filtre por estado</td></tr>
+</tbody>
+</table>

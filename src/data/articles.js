@@ -18,7 +18,6 @@ import {
   DashboardSquare01Icon,
   CustomerService01Icon,
   Building03Icon,
-  Message01Icon,
   UserCircleIcon,
   Login03Icon,
 } from 'hugeicons-react';
@@ -26,6 +25,8 @@ import {
 const articles = [
   {
     id: 'mobile-app',
+    audience: 'provider',
+    platforms: ['app'],
     icon: SmartPhone01Icon,
     contentPath: {
       en: '/content/mobile-app.html',
@@ -45,7 +46,13 @@ const articles = [
   },
   {
     id: 'users-management',
+    audience: 'provider',
+    platforms: ['web'],
     icon: UserGroupIcon,
+    contentPath: {
+      en: '/content/users-management.html',
+      es: '/content/users-management-es.html',
+    },
     en: {
       title: 'User Management',
       category: 'People & Teams',
@@ -60,7 +67,13 @@ const articles = [
   },
   {
     id: 'crews-management',
+    audience: 'provider',
+    platforms: ['web'],
     icon: UserMultiple02Icon,
+    contentPath: {
+      en: '/content/crews-management.html',
+      es: '/content/crews-management-es.html',
+    },
     en: {
       title: 'Crews Management',
       category: 'People & Teams',
@@ -75,7 +88,13 @@ const articles = [
   },
   {
     id: 'clients-management',
+    audience: 'provider',
+    platforms: ['web', 'app'],
     icon: Home01Icon,
+    contentPath: {
+      en: '/content/clients-management.html',
+      es: '/content/clients-management-es.html',
+    },
     en: {
       title: 'Clients Management',
       category: 'Clients & Properties',
@@ -90,7 +109,13 @@ const articles = [
   },
   {
     id: 'services-management',
+    audience: 'provider',
+    platforms: ['web', 'app'],
     icon: Wrench01Icon,
+    contentPath: {
+      en: '/content/services-management.html',
+      es: '/content/services-management-es.html',
+    },
     en: {
       title: 'Services Management',
       category: 'Services & Products',
@@ -105,7 +130,13 @@ const articles = [
   },
   {
     id: 'products-management',
+    audience: 'provider',
+    platforms: ['web', 'app'],
     icon: Package01Icon,
+    contentPath: {
+      en: '/content/products-management.html',
+      es: '/content/products-management-es.html',
+    },
     en: {
       title: 'Products Management',
       category: 'Services & Products',
@@ -120,7 +151,13 @@ const articles = [
   },
   {
     id: 'vendors-manufacturers-groups',
+    audience: 'provider',
+    platforms: ['web'],
     icon: WarehouseIcon,
+    contentPath: {
+      en: '/content/vendors-manufacturers-groups.html',
+      es: '/content/vendors-manufacturers-groups-es.html',
+    },
     en: {
       title: 'Vendors, Manufacturers & Groups',
       category: 'Services & Products',
@@ -135,7 +172,13 @@ const articles = [
   },
   {
     id: 'appointments-management',
+    audience: 'provider',
+    platforms: ['web', 'app'],
     icon: Calendar01Icon,
+    contentPath: {
+      en: '/content/appointments-management.html',
+      es: '/content/appointments-management-es.html',
+    },
     en: {
       title: 'Appointments Management',
       category: 'Scheduling',
@@ -150,7 +193,13 @@ const articles = [
   },
   {
     id: 'estimates-management',
+    audience: 'provider',
+    platforms: ['web', 'app'],
     icon: Estimate01Icon,
+    contentPath: {
+      en: '/content/estimates-management.html',
+      es: '/content/estimates-management-es.html',
+    },
     en: {
       title: 'Estimates Management',
       category: 'Jobs & Estimates',
@@ -165,7 +214,13 @@ const articles = [
   },
   {
     id: 'jobs-management',
+    audience: 'provider',
+    platforms: ['web', 'app'],
     icon: Briefcase04Icon,
+    contentPath: {
+      en: '/content/jobs-management.html',
+      es: '/content/jobs-management-es.html',
+    },
     en: {
       title: 'Jobs Management',
       category: 'Jobs & Estimates',
@@ -180,7 +235,13 @@ const articles = [
   },
   {
     id: 'invoices-management',
+    audience: 'provider',
+    platforms: ['web', 'app'],
     icon: Invoice01Icon,
+    contentPath: {
+      en: '/content/invoices-management.html',
+      es: '/content/invoices-management-es.html',
+    },
     en: {
       title: 'Invoices Management',
       category: 'Billing & Time Tracking',
@@ -195,52 +256,76 @@ const articles = [
   },
   {
     id: 'timesheets-management',
+    audience: 'provider',
+    platforms: ['web', 'app'],
     icon: Timer02Icon,
+    contentPath: {
+      en: '/content/timesheets-management.html',
+      es: '/content/timesheets-management-es.html',
+    },
     en: {
       title: 'Timesheets Management',
       category: 'Billing & Time Tracking',
-      overview: 'Track working hours with timesheet approval workflows, time entries linked to jobs, and role-based permissions for submission and approval.'
+      overview: 'Time collected from visits and timers, split into en route, job, job prep and office. Link loose entries, add what the timers missed, then submit, approve or reject.'
     },
     es: {
       title: 'Gestión de Hojas de Tiempo',
       category: 'Facturación y Control de Tiempo',
-      overview: 'Rastrear horas de trabajo con flujos de aprobación de hojas de tiempo, entradas de tiempo vinculadas a trabajos y permisos basados en roles.'
+      overview: 'El tiempo que llega de las visitas y los temporizadores, separado en trayecto, trabajo, preparación y oficina. Vincule entradas sueltas, agregue lo que faltó y envíe, apruebe o rechace.'
     },
     keywords: ['timesheets', 'hojas de tiempo', 'hours', 'horas', 'approval', 'aprobación', 'clock', 'reloj', 'entries']
   },
   {
     id: 'settings-configuration',
+    audience: 'provider',
+    platforms: ['web'],
     icon: Setting07Icon,
+    contentPath: {
+      en: '/content/settings-configuration.html',
+      es: '/content/settings-configuration-es.html',
+    },
     en: {
       title: 'Settings & Configuration',
       category: 'Settings',
-      overview: 'Configure company settings, user profiles, notifications, business rules, tax rates, payment processing, and dashboard preferences.'
+      overview: 'Everything under the avatar menu: account and profile, notifications, security, availability, dashboard, business rules, taking payments, billing and QuickBooks.'
     },
     es: {
       title: 'Configuración y Ajustes',
       category: 'Configuración',
-      overview: 'Configurar ajustes de empresa, perfiles de usuario, notificaciones, reglas de negocio, tasas de impuestos, procesamiento de pagos y preferencias del panel.'
+      overview: 'Todo lo que vive bajo el menú del avatar: cuenta y perfil, notificaciones, seguridad, disponibilidad, panel, reglas del negocio, cobros, facturación y QuickBooks.'
     },
     keywords: ['settings', 'configuración', 'account', 'cuenta', 'notifications', 'notificaciones', 'Stripe', 'tax', 'impuestos', 'profile']
   },
   {
     id: 'checklists-management',
+    audience: 'provider',
+    platforms: ['web', 'app'],
     icon: CheckListIcon,
+    contentPath: {
+      en: '/content/checklists-management.html',
+      es: '/content/checklists-management-es.html',
+    },
     en: {
       title: 'Checklists Management',
       category: 'Jobs & Estimates',
-      overview: 'Create reusable checklist templates with ordered items. Assign checklists to jobs and estimates, duplicate templates, and track completion.'
+      overview: 'Reusable lists of steps your crews work through on site. Build one, put it in work order, require a written note where it matters, and attach it to a job.'
     },
     es: {
       title: 'Gestión de Listas de Verificación',
       category: 'Trabajos y Presupuestos',
-      overview: 'Crear plantillas de listas de verificación reutilizables con elementos ordenados. Asignar listas a trabajos y presupuestos, duplicar plantillas y rastrear el progreso.'
+      overview: 'Listas reutilizables de pasos que el equipo sigue en sitio. Constrúyala, ordénela, exija una nota escrita donde importa y adjúntela a un trabajo.'
     },
     keywords: ['checklists', 'listas', 'templates', 'plantillas', 'items', 'elementos', 'jobs', 'trabajos']
   },
   {
     id: 'ai-assistant',
+    audience: 'provider',
+    platforms: ['web', 'app'],
     icon: AiBrain01Icon,
+    contentPath: {
+      en: '/content/ai-assistant.html',
+      es: '/content/ai-assistant-es.html',
+    },
     en: {
       title: 'AI Assistant (Web & Mobile)',
       category: 'AI & Automation',
@@ -255,7 +340,13 @@ const articles = [
   },
   {
     id: 'plans-pricing',
+    audience: 'provider',
+    platforms: ['web', 'app'],
     icon: Layers01Icon,
+    contentPath: {
+      en: '/content/plans-pricing.html',
+      es: '/content/plans-pricing-es.html',
+    },
     en: {
       title: 'Plans & App Versions',
       category: 'Getting Started',
@@ -270,7 +361,13 @@ const articles = [
   },
   {
     id: 'client-getting-started',
+    audience: 'client',
+    platforms: ['client'],
     icon: Login03Icon,
+    contentPath: {
+      en: '/content/client-getting-started.html',
+      es: '/content/client-getting-started-es.html',
+    },
     en: {
       title: 'Getting Started with the Client Portal',
       category: 'Client Portal',
@@ -285,7 +382,13 @@ const articles = [
   },
   {
     id: 'client-dashboard',
+    audience: 'client',
+    platforms: ['client'],
     icon: DashboardSquare01Icon,
+    contentPath: {
+      en: '/content/client-dashboard.html',
+      es: '/content/client-dashboard-es.html',
+    },
     en: {
       title: 'Your Dashboard',
       category: 'Client Portal',
@@ -300,7 +403,13 @@ const articles = [
   },
   {
     id: 'client-request-service',
+    audience: 'client',
+    platforms: ['client'],
     icon: CustomerService01Icon,
+    contentPath: {
+      en: '/content/client-request-service.html',
+      es: '/content/client-request-service-es.html',
+    },
     en: {
       title: 'Requesting a Service',
       category: 'Client Portal',
@@ -315,7 +424,13 @@ const articles = [
   },
   {
     id: 'client-service-providers',
+    audience: 'client',
+    platforms: ['client'],
     icon: Building03Icon,
+    contentPath: {
+      en: '/content/client-service-providers.html',
+      es: '/content/client-service-providers-es.html',
+    },
     en: {
       title: 'Service Providers',
       category: 'Client Portal',
@@ -330,7 +445,13 @@ const articles = [
   },
   {
     id: 'client-appointments',
+    audience: 'client',
+    platforms: ['client'],
     icon: Calendar01Icon,
+    contentPath: {
+      en: '/content/client-appointments.html',
+      es: '/content/client-appointments-es.html',
+    },
     en: {
       title: 'Appointments',
       category: 'Client Portal',
@@ -345,7 +466,13 @@ const articles = [
   },
   {
     id: 'client-estimates',
+    audience: 'client',
+    platforms: ['client'],
     icon: Estimate01Icon,
+    contentPath: {
+      en: '/content/client-estimates.html',
+      es: '/content/client-estimates-es.html',
+    },
     en: {
       title: 'Estimates',
       category: 'Client Portal',
@@ -360,7 +487,13 @@ const articles = [
   },
   {
     id: 'client-jobs',
+    audience: 'client',
+    platforms: ['client'],
     icon: Briefcase04Icon,
+    contentPath: {
+      en: '/content/client-jobs.html',
+      es: '/content/client-jobs-es.html',
+    },
     en: {
       title: 'Jobs',
       category: 'Client Portal',
@@ -375,7 +508,13 @@ const articles = [
   },
   {
     id: 'client-invoices',
+    audience: 'client',
+    platforms: ['client'],
     icon: Invoice01Icon,
+    contentPath: {
+      en: '/content/client-invoices.html',
+      es: '/content/client-invoices-es.html',
+    },
     en: {
       title: 'Invoices and Paying',
       category: 'Client Portal',
@@ -389,23 +528,14 @@ const articles = [
     keywords: ['invoice', 'factura', 'pay', 'pagar', 'payment', 'pago', 'balance', 'saldo', 'pdf', 'due date', 'vencimiento']
   },
   {
-    id: 'client-inbox',
-    icon: Message01Icon,
-    en: {
-      title: 'Inbox and Messages',
-      category: 'Client Portal',
-      overview: 'Every conversation with your providers, kept with the estimate, job, invoice or appointment it is about. Starting one, attaching files, and archiving.'
-    },
-    es: {
-      title: 'Bandeja de Entrada y Mensajes',
-      category: 'Portal del Cliente',
-      overview: 'Cada conversación con sus proveedores, junto al presupuesto, trabajo, factura o cita del que trata. Iniciar una, adjuntar archivos y archivarla.'
-    },
-    keywords: ['inbox', 'bandeja', 'chat', 'message', 'mensaje', 'conversation', 'conversación', 'attach', 'adjuntar', 'archive', 'archivar']
-  },
-  {
     id: 'client-profile-settings',
+    audience: 'client',
+    platforms: ['client'],
     icon: UserCircleIcon,
+    contentPath: {
+      en: '/content/client-profile-settings.html',
+      es: '/content/client-profile-settings-es.html',
+    },
     en: {
       title: 'Your Profile and Settings',
       category: 'Client Portal',

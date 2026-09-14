@@ -111,6 +111,13 @@ const OUT_OF_SCOPE = {
   "client-invoices": "same as above",
   "client-inbox": "same as above",
   "client-profile-settings": "same as above",
+  // Checklists, Timesheets and Settings are getting a cosmetic UI pass. The
+  // flows and their order do not change, so the text written from the code
+  // holds, but a figure taken today would show the old skin and have to be
+  // re-shot. Photograph these once the new look ships.
+  "checklists-management": "its UI is mid cosmetic rework; figures taken now would show the old skin",
+  "timesheets-management": "same as above",
+  "settings-configuration": "same as above",
 };
 
 const published = new Set(
