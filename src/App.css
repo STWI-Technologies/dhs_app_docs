@@ -93,7 +93,28 @@ body {
 .app__categories-grid {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 56px;
+}
+
+
+/* Home page ground, per the knowledge base design: a flat light surface so the
+   navy hero and the white cards are the only things carrying weight. */
+.app--home {
+  background: #f5f6fa;
+  padding: 20px 20px 0;
+}
+
+.app--home .app__container {
+  max-width: 1520px;
+}
+
+@media (max-width: 600px) {
+  .app--home {
+    padding: 12px 12px 0;
+  }
+  .app__categories-grid {
+    gap: 36px;
+  }
 }
 
 .app-help {

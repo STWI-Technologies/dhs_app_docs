@@ -30,7 +30,15 @@ const translations = {
     noResults: 'No articles found matching your search.',
     copyright: `© ${new Date().getFullYear()} Direct Home Service. All rights reserved.`,
     loading: 'Loading...',
-    keywords: 'Keywords'
+    keywords: 'Keywords',
+    contact: 'Contact',
+    heroTitle: 'Find it fast. Get back to work',
+    heroSubtitle: 'Search by topic, or browse the sections below.',
+    audienceLabel: 'Who the articles are for',
+    forServiceProviders: 'For service providers',
+    forYourClients: 'For your clients',
+    articleSingular: 'article',
+    articlePlural: 'articles'
   },
   es: {
     subtitle: 'Base de Conocimientos',
@@ -43,7 +51,15 @@ const translations = {
     noResults: 'No se encontraron artículos que coincidan con su búsqueda.',
     copyright: `© ${new Date().getFullYear()} Direct Home Service. Todos los derechos reservados.`,
     loading: 'Cargando...',
-    keywords: 'Palabras Clave'
+    keywords: 'Palabras Clave',
+    contact: 'Contacto',
+    heroTitle: 'Encuéntrelo rápido. Vuelva al trabajo',
+    heroSubtitle: 'Busque por tema, o recorra las secciones de abajo.',
+    audienceLabel: 'Para quién son los artículos',
+    forServiceProviders: 'Para proveedores',
+    forYourClients: 'Para sus clientes',
+    articleSingular: 'artículo',
+    articlePlural: 'artículos'
   }
 };
 

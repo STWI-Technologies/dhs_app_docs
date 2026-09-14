@@ -1,34 +1,34 @@
 .article-card {
-  background: white;
-  border-radius: 12px;
+  background: #ffffff;
+  border-radius: 16px;
   padding: 24px;
   cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  border: 1px solid #eaeaea;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 1px 2px rgba(17, 24, 60, 0.04);
+  border: 1px solid #ebedf4;
   display: flex;
   align-items: flex-start;
-  gap: 16px;
+  gap: 18px;
   outline: none;
 }
 
 .article-card:hover,
 .article-card:focus-visible {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(46, 49, 146, 0.1);
-  border-color: #c8caef;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(17, 24, 60, 0.09);
+  border-color: #d9dcf3;
 }
 
+/* Rounded tile, NOT a hexagon. The hexagon is the section heading's shape,
+   where it has 56px to breathe; at card size its corners crowd the glyph. */
 .article-card__icon {
-  font-size: 28px;
-  line-height: 1;
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f0f1ff;
+  background: #eef0fd;
   border-radius: 12px;
 }
 
@@ -37,52 +37,74 @@
   min-width: 0;
 }
 
+.article-card__heading {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
 .article-card__title {
-  color: #2E3192;
-  font-size: 17px;
-  font-weight: 600;
-  margin: 0 0 6px;
-  line-height: 1.3;
+  color: #131c3f;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.article-card__badge {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 7px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  line-height: 1.4;
+}
+
+.article-card__badge--web {
+  background: #eef0fd;
+  color: #3b40c4;
+}
+
+.article-card__badge--app {
+  background: #e8f0fe;
+  color: #1f6fd0;
+}
+
+.article-card__badge--client {
+  background: #e7f6ec;
+  color: #18a34a;
 }
 
 .article-card__overview {
-  color: #666;
-  font-size: 13px;
-  line-height: 1.5;
+  color: #6b7280;
+  font-size: 15px;
+  line-height: 1.55;
   margin: 0;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-.article-card__arrow {
-  color: #ccc;
-  flex-shrink: 0;
-  transition: color 0.2s, transform 0.2s;
-  margin-top: 4px;
-}
-
-.article-card:hover .article-card__arrow {
-  color: #2E3192;
-  transform: translateX(3px);
-}
-
-@media (max-width: 768px) {
+@media (max-width: 860px) {
   .article-card {
-    padding: 16px;
-    gap: 12px;
+    padding: 18px;
+    gap: 14px;
+    border-radius: 14px;
   }
   .article-card__icon {
-    width: 40px;
-    height: 40px;
-    font-size: 22px;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
   }
   .article-card__title {
-    font-size: 15px;
+    font-size: 16px;
   }
   .article-card__overview {
-    font-size: 12px;
-    -webkit-line-clamp: 2;
+    font-size: 13px;
   }
 }
