@@ -44,9 +44,11 @@ export default function SearchBar({ onSelectArticle }) {
     articles.forEach(article => {
       const localized = getLocalized(article);
 
-      // Title match (high priority)
+      // Title match. Ranked first below, so searching "estimates" offers the
+      // Estimates article before a sentence in another article that happens to
+      // list the word.
       if (localized.title.toLowerCase().includes(term)) {
-        results.push({ text: localized.title, article, isTitle: true });
+        results.push({ text: localized.title, article, isTitle: true, rank: 0 });
       }
 
       // Overview match
@@ -57,13 +59,13 @@ export default function SearchBar({ onSelectArticle }) {
         let snippet = localized.overview.substring(start, end);
         if (start > 0) snippet = '...' + snippet;
         if (end < localized.overview.length) snippet += '...';
-        results.push({ text: snippet, article, isTitle: false });
+        results.push({ text: snippet, article, isTitle: false, rank: 2 });
       }
 
       // Keyword match
       (article.keywords || []).forEach(kw => {
         if (kw.toLowerCase().includes(term) && !results.some(r => r.article === article && r.isTitle)) {
-          results.push({ text: `${localized.title} - "${kw}"`, article, isTitle: false });
+          results.push({ text: `${localized.title} - "${kw}"`, article, isTitle: false, rank: 1 });
         }
       });
 
@@ -83,11 +85,14 @@ export default function SearchBar({ onSelectArticle }) {
         if (start > 0) snippet = '...' + snippet;
         if (end < indexed.length) snippet += '...';
         if (snippet.length > 20 && !results.some(r => r.text === snippet)) {
-          results.push({ text: snippet, article, isTitle: false });
+          results.push({ text: snippet, article, isTitle: false, rank: 3 });
         }
       }
     });
 
+    // Title, then keyword, then overview, then body. Article order decides ties,
+    // which keeps the list stable as you type.
+    results.sort((a, b) => a.rank - b.rank);
     setSuggestions(results.slice(0, 12));
   }, [searchTerm, language, searchIndex, getLocalized]);
 
