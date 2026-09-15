@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checklists Management</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #1a1a1a; }
+    h1 { border-bottom: 2px solid #e0e0e0; padding-bottom: 0.5rem; }
+    h2 { margin-top: 2rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #d0d0d0; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background-color: #f5f5f5; font-weight: 600; }
+    blockquote { border-left: 4px solid #d0d0d0; margin: 1rem 0; padding: 0.75rem 1rem; background: #fafafa; }
+    code { background: #f0f0f0; padding: 0.15rem 0.35rem; border-radius: 3px; font-size: 0.9em; }
+    hr { border: none; border-top: 1px solid #e0e0e0; margin: 2rem 0; }
+  </style>
+</head>
+<body>
+<main>
+
+<h1>Checklists Management</h1>
+
+<h2>Overview</h2>
+
+<p>The <strong>Checklists Management</strong> section is where you create and manage reusable checklist templates for your business. Checklists help ensure that jobs are completed thoroughly by defining a set of items that must be reviewed or verified before a job can be marked as complete.</p>
+
+<p>Checklists work as <strong>templates</strong> — you create a checklist once, and then assign it to as many jobs or estimates as needed. Each job gets its own copy of the checklist, so changes made during a job do not affect the original template.</p>
+
+<p>From this section you can:</p>
+
+<ul>
+  <li><strong>Create</strong> new checklist templates with a title, description, and a set of items to verify.</li>
+  <li><strong>Edit</strong> existing checklists to add, remove, or reorder items.</li>
+  <li><strong>Duplicate</strong> an existing checklist to use it as a starting point for a new one.</li>
+  <li><strong>Archive</strong> checklists you no longer need (without losing historical data).</li>
+  <li><strong>Restore</strong> archived checklists if you need them again.</li>
+  <li><strong>Permanently delete</strong> archived checklists that are no longer needed.</li>
+  <li><strong>Search</strong> to quickly find a specific checklist.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Important:</strong> A checklist can only be permanently deleted if it is <strong>not currently assigned</strong> to any job. If a checklist is in use, you must first remove it from all associated jobs before deletion is possible.</p>
+</blockquote>
+
+<hr>
+
+<h2>Checklists List View</h2>
+
+<p>The Checklists List View is the main view for managing all your checklist templates. To access it, navigate to <strong>Menu &gt; Checklists</strong>.</p>
+
+<p>When you open the Checklists List View, you will see a table listing all your active checklists. Each row represents one checklist and displays the following information:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>What It Means</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Date Created</strong></td>
+      <td>The date the checklist was originally created (e.g., "Jan 1, 2026").</td>
+    </tr>
+    <tr>
+      <td><strong>Title</strong></td>
+      <td>The name of the checklist, along with its description (if one was provided). The description is shown as smaller text below the name.</td>
+    </tr>
+    <tr>
+      <td><strong>Options</strong></td>
+      <td>Quick-action buttons to edit, duplicate, or archive/delete the checklist.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Clicking anywhere on a row will open that checklist for viewing and editing its items.</p>
+
+<h3>Active vs. Archived Checklists</h3>
+
+<p>At the top of the list you will see two tabs:</p>
+
+<ul>
+  <li><strong>Active</strong> — Shows all checklists that are currently available for use. This is the default view. Active checklists can be assigned to new jobs and estimates.</li>
+  <li><strong>Archived</strong> — Shows checklists that have been archived (temporarily disabled). Archived checklists do not appear in the dropdown when creating or editing jobs, but any jobs that already have them assigned will continue to work normally.</li>
+</ul>
+
+<h3>Sorting the List</h3>
+
+<p>You can sort the checklists by clicking on the column headers for <strong>Date Created</strong> or <strong>Title</strong>. Click once to sort in ascending order, and click again to sort in descending order.</p>
+
+<h3>Searching</h3>
+
+<p>Use the <strong>search bar</strong> to the right of the tabs to find checklists by name or description. Type your search term and the results will update automatically.</p>
+
+<hr>
+
+<h2>1. Creating a New Checklist</h2>
+
+<p>To create a new checklist template, follow these steps:</p>
+
+<h3>Step 1: Open the New Checklist Form</h3>
+
+<p>Click the <strong>"New Checklist"</strong> button (blue) located in the top-right corner of the Checklists List View. A panel will slide open from the right side of the screen.</p>
+
+<blockquote>
+  <p><strong>Tip:</strong> If the list is empty (no checklists have been created yet), you will see a "Create Your First Checklist" button in the center of the page.</p>
+</blockquote>
+
+<h3>Step 2: Enter the Checklist Details</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required?</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Checklist Title</strong></td>
+      <td>Yes</td>
+      <td>Enter a clear, descriptive name for the checklist (e.g., "HVAC Installation Final Inspection" or "Plumbing Rough-In Checklist"). Maximum 512 characters.</td>
+    </tr>
+    <tr>
+      <td><strong>Description</strong></td>
+      <td>No</td>
+      <td>Optionally, provide additional context about when or how this checklist should be used. Maximum 512 characters.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Step 3: Add Checklist Items</h3>
+
+<p>Below the title and description, you will see the <strong>Checklist Items</strong> section. This is where you define the individual tasks or verification points that make up the checklist.</p>
+
+<p>To add an item:</p>
+
+<ol>
+  <li>Type the item title in the text field (e.g., "Verify all connections are sealed").</li>
+  <li>Press <strong>Enter</strong> or click the <strong>checkmark button</strong> to add the item.</li>
+  <li>Repeat for each item you want to include.</li>
+</ol>
+
+<p>For each item, you can also check the <strong>"Description Required"</strong> checkbox. When this is checked, the person completing the job will be <strong>required to write a description</strong> for that item before the job can be marked as complete. This is useful for items that need documented evidence or notes (e.g., "Record the serial number of the installed unit").</p>
+
+<p>After adding items, they will appear in a list below. You can:</p>
+
+<ul>
+  <li><strong>Edit</strong> an item by clicking the pencil icon next to it.</li>
+  <li><strong>Remove</strong> an item by clicking the trash icon next to it.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Note:</strong> You must add <strong>at least one item</strong> before you can save the checklist. The "Add New Checklist" button will remain disabled until at least one item has been added.</p>
+</blockquote>
+
+<h3>Step 4: Save the Checklist</h3>
+
+<p>Once you have entered the title and added your items, click the <strong>"Add New Checklist"</strong> button at the bottom of the panel. You will see a brief "Creating Checklist..." overlay, and once the checklist is created successfully, a confirmation message will appear: <strong>"Checklist Successfully Created"</strong>.</p>
+
+<p>The new checklist will now appear in your Checklists List View and be available for assignment to jobs and estimates.</p>
+
+<hr>
+
+<h2>2. Viewing and Managing Checklist Items</h2>
+
+<p>To view or edit the items in an existing checklist, click on any checklist row in the Checklists List View. This will open the <strong>Checklist Detail</strong> page.</p>
+
+<h3>What You See</h3>
+
+<p>The detail page shows:</p>
+
+<ul>
+  <li>The <strong>checklist name</strong> at the top, with a pencil icon to edit the name and description.</li>
+  <li>A <strong>status badge</strong> showing whether the checklist is "Active" or "Archived".</li>
+  <li>A <strong>"New Item"</strong> button to add more items.</li>
+  <li>A <strong>table of all checklist items</strong> with the following columns:</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>What It Means</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Drag Handle</strong></td>
+      <td>Grip dots on the left side of each row. Click and drag to reorder items (see below).</td>
+    </tr>
+    <tr>
+      <td><strong>Title</strong></td>
+      <td>The name/description of the checklist item.</td>
+    </tr>
+    <tr>
+      <td><strong>Description Required</strong></td>
+      <td>A toggle indicator. Blue (filled) means a description is required when completing this item. Gray (hollow) means it is optional. You can click this toggle to change the setting directly from the table.</td>
+    </tr>
+    <tr>
+      <td><strong>Edit</strong></td>
+      <td>Pencil icon to open the item for editing.</td>
+    </tr>
+    <tr>
+      <td><strong>Delete</strong></td>
+      <td>Trash icon to remove the item from the checklist.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Adding a New Item</h3>
+
+<ol>
+  <li>Click the <strong>"New Item"</strong> button at the top of the detail page.</li>
+  <li>A dialog will appear with two fields:
+    <ul>
+      <li><strong>Title</strong> (required) — Enter the item name. Maximum 512 characters.</li>
+      <li><strong>Description Required</strong> (optional) — Check this box if a description must be provided when completing this item.</li>
+    </ul>
+  </li>
+  <li>Click <strong>"Add Item"</strong> to save, or <strong>"Cancel"</strong> to go back.</li>
+  <li>A success message will appear: <strong>"Checklist Entry Successfully Created"</strong>.</li>
+</ol>
+
+<h3>Editing an Item</h3>
+
+<ol>
+  <li>Click the <strong>pencil icon</strong> next to the item you want to edit.</li>
+  <li>A dialog will appear pre-filled with the item's current title and description required setting.</li>
+  <li>Make your changes and click <strong>"Apply Changes"</strong>, or click <strong>"Cancel"</strong> to discard.</li>
+  <li>A success message will appear: <strong>"Checklist Entry Successfully Updated"</strong>.</li>
+</ol>
+
+<h3>Reordering Items (Drag and Drop)</h3>
+
+<p>You can change the order in which items appear by dragging and dropping them:</p>
+
+<ol>
+  <li>Click and hold the <strong>drag handle</strong> (grip dots) on the left side of the item row.</li>
+  <li>Drag the item up or down to the desired position.</li>
+  <li>Release to drop it in place.</li>
+</ol>
+
+<p>The new order is saved automatically. The items will appear in this order wherever the checklist is used (in jobs and when completing jobs).</p>
+
+<h3>Deleting an Item</h3>
+
+<ol>
+  <li>Click the <strong>trash icon</strong> next to the item you want to remove.</li>
+  <li>A confirmation dialog will appear: <em>"Are you sure you want to delete [Item Title]?"</em></li>
+  <li>Click <strong>"Delete"</strong> to confirm, or <strong>"Cancel"</strong> to go back.</li>
+  <li>A success message will appear: <strong>"Checklist Entry Successfully Deleted"</strong>.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Note:</strong> You <strong>cannot delete the last item</strong> in a checklist. Every checklist must have at least one item. If you try to delete the last remaining item, the delete button will be disabled with a tooltip: <em>"Cannot delete last item."</em></p>
+</blockquote>
+
+<hr>
+
+<h2>3. Editing a Checklist's Name and Description</h2>
+
+<p>To change the name or description of a checklist (not its items):</p>
+
+<ol>
+  <li>Open the checklist detail page by clicking on it in the Checklists List View.</li>
+  <li>Click the <strong>pencil icon</strong> next to the checklist name at the top of the page.</li>
+  <li>A panel will slide open with two editable fields:
+    <ul>
+      <li><strong>Checklist Title</strong> (required) — Maximum 512 characters.</li>
+      <li><strong>Description</strong> (optional) — Maximum 512 characters.</li>
+    </ul>
+  </li>
+  <li>Make your changes and click <strong>"Apply Changes"</strong>.</li>
+  <li>A success message will appear: <strong>"Checklist Successfully Updated"</strong>.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Tip:</strong> You can also access the edit panel by clicking the pencil icon in the Actions column on the Checklists List View.</p>
+</blockquote>
+
+<hr>
+
+<h2>4. Duplicating a Checklist</h2>
+
+<p>If you want to create a new checklist that is similar to an existing one, you can duplicate it instead of starting from scratch:</p>
+
+<ol>
+  <li>On the Checklists List View (Active tab), find the checklist you want to duplicate.</li>
+  <li>Click the <strong>duplicate icon</strong> (copy icon) in the Options column.</li>
+  <li>A confirmation dialog will appear: <em>"Are you sure you want to duplicate [Checklist Name]?"</em></li>
+  <li>Click <strong>"Duplicate"</strong> to confirm.</li>
+  <li>A success message will appear: <strong>"Checklist Successfully Duplicated"</strong>.</li>
+</ol>
+
+<p>The duplicated checklist will appear in the list as a new, independent copy. You can then edit its name, description, and items without affecting the original.</p>
+
+<hr>
+
+<h2>5. Archiving Checklists</h2>
+
+<p>Archiving is a safe way to disable a checklist without permanently deleting it. Archived checklists:</p>
+
+<ul>
+  <li><strong>Do not appear</strong> in the dropdown when creating or editing jobs and estimates.</li>
+  <li><strong>Are preserved</strong> in historical records — any existing jobs that have this checklist assigned will continue to work normally.</li>
+  <li><strong>Can be restored</strong> at any time if you need the checklist again.</li>
+</ul>
+
+<h3>How to Archive a Checklist</h3>
+
+<ol>
+  <li>On the Checklists List View (Active tab), locate the checklist you want to archive.</li>
+  <li>Click the <strong>archive icon</strong> in the Options column.</li>
+  <li>A confirmation dialog will appear: <em>"Are you sure you want to archive [Checklist Name]?"</em></li>
+  <li>Click <strong>"Archive"</strong> to confirm, or <strong>"Cancel"</strong> to go back.</li>
+  <li>You will see an "Updating Checklist..." overlay, followed by a success message: <strong>"Checklist Successfully Archived"</strong>.</li>
+</ol>
+
+<p>The checklist will be removed from the Active tab and moved to the Archived tab.</p>
+
+<hr>
+
+<h2>5.1 Restoring an Archived Checklist</h2>
+
+<p>If you need to bring an archived checklist back into active use:</p>
+
+<ol>
+  <li>Switch to the <strong>Archived</strong> tab on the Checklists List View.</li>
+  <li>Find the checklist you want to restore.</li>
+  <li>Click the <strong>restore icon</strong> (undo icon) in the Options column.</li>
+  <li>A confirmation popover will appear: <em>"Do you want to restore this checklist?"</em></li>
+  <li>Click <strong>"Restore"</strong> to confirm.</li>
+  <li>A success message will appear: <strong>"Checklist Successfully Restored"</strong>.</li>
+</ol>
+
+<p>The checklist will be moved back to the Active tab and will once again appear in the dropdown when creating or editing jobs.</p>
+
+<hr>
+
+<h2>5.2 Permanently Deleting a Checklist</h2>
+
+<p>Permanent deletion is only available for <strong>archived</strong> checklists and only when the checklist is <strong>not in use</strong> (not assigned to any job).</p>
+
+<ol>
+  <li>Switch to the <strong>Archived</strong> tab on the Checklists List View.</li>
+  <li>Find the checklist you want to permanently delete.</li>
+  <li>Click the <strong>delete icon</strong> (trash icon) in the Options column.
+    <ul>
+      <li>If the delete icon is <strong>grayed out</strong> (disabled), it means the checklist is still assigned to at least one job. You will see a tooltip: <em>"Checklist cannot be deleted while in use."</em></li>
+    </ul>
+  </li>
+  <li>A confirmation dialog will appear: <em>"Are you sure you want to delete [Checklist Name]?"</em></li>
+  <li>Click <strong>"Delete"</strong> to confirm, or <strong>"Cancel"</strong> to go back.</li>
+  <li>You will see a "Deleting Checklist..." overlay, followed by a success message: <strong>"Checklist Successfully Deleted"</strong>.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Warning:</strong> Permanent deletion cannot be undone. Once a checklist is deleted, it is removed from the system permanently. If you are unsure, keep the checklist archived instead.</p>
+</blockquote>
+
+<hr>
+
+<h2>6. How Checklists Are Used Across the Platform</h2>
+
+<p>Checklists are primarily used in <strong>Jobs</strong> and <strong>Estimates</strong>. When you assign a checklist to a job, the job gets its own independent copy of the checklist — so any changes made to items during the job (adding entries, filling in descriptions) do not affect the original template.</p>
+
+<h3>Assigning a Checklist to a Job</h3>
+
+<p>When creating or editing a job, you will see a <strong>"Checklist (Optional)"</strong> dropdown in the Job Details step. This dropdown lists all your active checklists (archived checklists are not shown). Select a checklist to assign it to the job.</p>
+
+<p>Once a checklist is assigned to a job:</p>
+
+<ul>
+  <li>A <strong>"Checklist" tab</strong> appears on the job detail page.</li>
+  <li>The Checklist tab shows all the items from the template, displayed in order.</li>
+  <li>You can <strong>expand each item</strong> by clicking the chevron to enter a description or notes for that item.</li>
+  <li>If an item has <strong>"Description Required"</strong> enabled, it will be marked with an asterisk (*), and a description must be provided before the job can be completed.</li>
+  <li>You can also <strong>add new items</strong> directly to the job's checklist — these additions only affect the job, not the original template.</li>
+  <li>You can <strong>delete items</strong> from the job's checklist — again, this only affects the job copy.</li>
+</ul>
+
+<h3>Completing a Job with a Checklist</h3>
+
+<p>When you attempt to mark a job as complete, and the job has a checklist assigned:</p>
+
+<ol>
+  <li>A completion modal will appear showing all checklist items with checkboxes.</li>
+  <li>You must <strong>check every item</strong> to confirm it has been completed or verified.</li>
+  <li>For items marked as "Description Required", a <strong>description text field</strong> will appear when you check the item. You must fill in the description before proceeding.</li>
+  <li>The <strong>"Complete Job"</strong> button will remain disabled until all items are checked and all required descriptions are filled in.</li>
+</ol>
+
+<p>This ensures that no job is marked as complete without first verifying all items on the checklist.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> If a job does not have a checklist assigned, the completion modal will simply ask: <em>"Are you sure you want to complete this job?"</em> without any checklist review.</p>
+</blockquote>
+
+<h3>Assigning a Checklist to an Estimate</h3>
+
+<p>Similar to jobs, you can assign a checklist to an estimate using the <strong>"Checklist (Optional)"</strong> dropdown on the Estimate Details step. When the estimate is later converted to a job, the checklist assignment carries over.</p>
+
+<hr>
+
+<h2>Understanding Checklist Items</h2>
+
+<p>Each item in a checklist is simple by design. An item has just two properties:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>What It Means</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Title</strong></td>
+      <td>A short description of what needs to be checked or verified (e.g., "Test water pressure at all fixtures"). Maximum 512 characters.</td>
+    </tr>
+    <tr>
+      <td><strong>Description Required</strong></td>
+      <td>When enabled, the person completing the job must write a description or notes for this item (e.g., "Record the pressure reading in PSI"). When disabled, the item only needs to be checked off.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This simplicity makes checklists easy to create and fast to complete in the field, while the "Description Required" option provides accountability for items that need documented verification.</p>
+
+<hr>
+
+<h2>Summary of Common Actions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>What You Want to Do</th>
+      <th>How to Do It</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Create a new checklist</td>
+      <td>Click <strong>"New Checklist"</strong> on the Checklists List View</td>
+    </tr>
+    <tr>
+      <td>View/edit checklist items</td>
+      <td>Click on any checklist row to open its detail page</td>
+    </tr>
+    <tr>
+      <td>Edit checklist name/description</td>
+      <td>Click the <strong>pencil icon</strong> next to the checklist name</td>
+    </tr>
+    <tr>
+      <td>Add a new item</td>
+      <td>Click <strong>"New Item"</strong> on the checklist detail page</td>
+    </tr>
+    <tr>
+      <td>Reorder items</td>
+      <td><strong>Drag and drop</strong> using the grip dots on the left side of each item</td>
+    </tr>
+    <tr>
+      <td>Toggle description required</td>
+      <td>Click the <strong>toggle indicator</strong> in the Description Required column</td>
+    </tr>
+    <tr>
+      <td>Duplicate a checklist</td>
+      <td>Click the <strong>duplicate icon</strong> on the Active tab</td>
+    </tr>
+    <tr>
+      <td>Archive a checklist</td>
+      <td>Click the <strong>archive icon</strong> on the Active tab</td>
+    </tr>
+    <tr>
+      <td>Restore a checklist</td>
+      <td>Click the <strong>restore icon</strong> on the Archived tab</td>
+    </tr>
+    <tr>
+      <td>Permanently delete a checklist</td>
+      <td>Click the <strong>delete icon</strong> on the Archived tab (only if not in use)</td>
+    </tr>
+    <tr>
+      <td>Search for a checklist</td>
+      <td>Type in the <strong>search bar</strong> at the top</td>
+    </tr>
+    <tr>
+      <td>Assign a checklist to a job</td>
+      <td>Select it from the <strong>"Checklist (Optional)"</strong> dropdown when creating/editing a job</td>
+    </tr>
+  </tbody>
+</table>
+
+</main>
+</body>
+</html>

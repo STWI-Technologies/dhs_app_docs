@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Availability Management</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #1a1a1a; }
+    h1 { border-bottom: 2px solid #e0e0e0; padding-bottom: 0.5rem; }
+    h2 { margin-top: 2rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #d0d0d0; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background-color: #f5f5f5; font-weight: 600; }
+    blockquote { border-left: 4px solid #d0d0d0; margin: 1rem 0; padding: 0.75rem 1rem; background: #fafafa; }
+    code { background: #f0f0f0; padding: 0.15rem 0.35rem; border-radius: 3px; font-size: 0.9em; }
+    hr { border: none; border-top: 1px solid #e0e0e0; margin: 2rem 0; }
+  </style>
+</head>
+<body>
+<main>
+
+<h1>Availability Management</h1>
+
+<h2>Overview</h2>
+
+<p>The <strong>Availability</strong> section is where you configure when your business is open for service and when it is not. Think of it as your business calendar — it tells the platform which days and hours your team is available to work, and which dates, months, or seasons should be blocked off entirely.</p>
+
+<p>Availability affects how appointments are scheduled across the platform. When someone creates an appointment, the system uses these settings to determine which time slots are available. There are two levels of availability:</p>
+
+<ul>
+  <li><strong>Global Availability</strong> — Sets the overall work schedule for your entire business. This is the default schedule that applies to all crews unless overridden.</li>
+  <li><strong>Per Crew Availability</strong> — Allows you to set a custom schedule for individual crews. A crew's availability must fall within the global hours (a crew cannot be scheduled outside the business's overall hours).</li>
+</ul>
+
+<p>From this section you can:</p>
+
+<ul>
+  <li><strong>Enable or disable work days</strong> — Toggle individual days of the week on or off.</li>
+  <li><strong>Set time slots</strong> — Define one or more working time ranges per day (for example, morning and afternoon shifts).</li>
+  <li><strong>Add exceptions</strong> — Block off specific date ranges, entire months, or full seasons when your business is unavailable.</li>
+  <li><strong>Configure per-crew schedules</strong> — Give individual crews their own availability within the global hours.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Important:</strong> Availability is not a standalone list of records like Services or Products. It is a <strong>configuration page</strong> — you set it up once and adjust it as your business needs change. There are no items to archive or delete. Changes are saved automatically as you make them.</p>
+</blockquote>
+
+<hr>
+
+<h2>Accessing Availability</h2>
+
+<p>There are two ways to access Availability settings:</p>
+
+<ol>
+  <li><strong>Main Availability Page</strong> — Navigate to <strong>Menu &gt; Availability</strong>. This is the full-page view with the title "Availability" at the top, the schedule type toggle, and all configuration sections.</li>
+  <li><strong>Settings &gt; Availability</strong> — Navigate to <strong>Menu &gt; Settings &gt; Availability</strong>. This shows the exact same form embedded within the Settings page. Any changes you make in either location are reflected in both.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Tip:</strong> If you see an <strong>Availability</strong> summary on a crew's detail view, you can click the <strong>View Availability Settings</strong> link to jump directly to the Availability page with that crew pre-selected in Per Crew mode.</p>
+</blockquote>
+
+<hr>
+
+<h2>Schedule Types: Global vs. Per Crew</h2>
+
+<p>At the top of the Availability page, you will see a <strong>segmented control</strong> (toggle) with two options:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>What It Does</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Global</strong></td>
+      <td>Sets the overall service availability for your entire business. This is the default schedule. The description reads: "Set your overall service availability." Below the toggle, the section is titled <strong>General Schedule</strong>.</td>
+    </tr>
+    <tr>
+      <td><strong>Per Crew</strong></td>
+      <td>Lets you set a custom schedule for a specific crew. The description reads: "Set crew service availability." After selecting this option, a <strong>Select Crew</strong> dropdown appears where you choose which crew to configure.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Note:</strong> You cannot switch between Global and Per Crew while any changes are being saved. The toggle is disabled during save operations to prevent data conflicts.</p>
+</blockquote>
+
+<h3>Selecting a Crew (Per Crew Mode)</h3>
+
+<p>When you switch to <strong>Per Crew</strong>, a dropdown labeled <strong>Select Crew</strong> appears. This dropdown lists all the crews in your account (up to 100 crews are loaded). Select the crew you want to configure. Once selected, the page loads that crew's existing availability settings so you can review and modify them.</p>
+
+<blockquote>
+  <p><strong>Important:</strong> In Per Crew mode, a crew's time slots <strong>must fall within the global hours</strong>. If you try to set a crew's time slot outside the global availability window, you will see a warning message: "Crew slot is outside global hours." The system will show you what the global hours are for that day so you can adjust accordingly.</p>
+</blockquote>
+
+<hr>
+
+<h2>Work Days Section</h2>
+
+<p>The <strong>Work Days</strong> section is where you configure which days of the week your business (or a specific crew) is available, and during what hours. It is displayed inside a bordered card with the heading <strong>Work Days</strong>.</p>
+
+<p>You will see all seven days of the week listed vertically:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Index</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Monday</td><td>1</td></tr>
+    <tr><td>Tuesday</td><td>2</td></tr>
+    <tr><td>Wednesday</td><td>3</td></tr>
+    <tr><td>Thursday</td><td>4</td></tr>
+    <tr><td>Friday</td><td>5</td></tr>
+    <tr><td>Saturday</td><td>6</td></tr>
+    <tr><td>Sunday</td><td>7</td></tr>
+  </tbody>
+</table>
+
+<h3>Enabling and Disabling Days</h3>
+
+<p>Each day has a <strong>toggle switch</strong> next to it. Here's how it works:</p>
+
+<ul>
+  <li><strong>Turning a day ON</strong> — Flipping the toggle to the "on" position enables that day and automatically creates an empty time slot for you to fill in. The system does <strong>not</strong> save to the backend yet — it waits for you to set valid times and click <strong>Apply</strong>.</li>
+  <li><strong>Turning a day OFF</strong> — Flipping the toggle to the "off" position removes <strong>all</strong> time slots for that day and immediately saves the change to the backend. You will see a success message: "Availability updated successfully."</li>
+</ul>
+
+<blockquote>
+  <p><strong>Warning:</strong> Turning off a day is immediate and removes all time slots for that day. If a day had multiple time slots (such as a morning and afternoon shift), all of them will be removed at once.</p>
+</blockquote>
+
+<h3>Setting Time Slots</h3>
+
+<p>For each enabled day, you can define one or more time slots. Each time slot represents a continuous block of working hours.</p>
+
+<p>Each time slot row has:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>From</strong> time selector</td>
+      <td>The start time of the work period. Click the field to open a time picker modal where you select hours and minutes, then AM or PM.</td>
+    </tr>
+    <tr>
+      <td><strong>To</strong> time selector</td>
+      <td>The end time of the work period. Same time picker interface as the From field.</td>
+    </tr>
+    <tr>
+      <td><strong>Apply</strong> button (checkmark icon)</td>
+      <td>Saves this time slot to the backend. Only enabled when both From and To times are set and valid. Disabled if any other time slot on any day has incomplete times.</td>
+    </tr>
+    <tr>
+      <td><strong>Discard</strong> button (X icon)</td>
+      <td>Reverts the time slot to its previously saved state. If this is a brand-new slot that has never been saved, discarding it removes it entirely.</td>
+    </tr>
+    <tr>
+      <td><strong>Delete</strong> button (trash icon)</td>
+      <td>Removes a previously saved time slot. Only shown when a day has more than one time slot. Immediately saves to the backend.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Adding Multiple Time Slots Per Day</h3>
+
+<p>To add a second (or third, etc.) time slot on the same day, click the <strong>+ Add Time Slot</strong> button that appears below the existing slots for that day.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> You can only add one new time slot at a time across all days. While you have an unsaved (pending) time slot, the <strong>+ Add Time Slot</strong> buttons on all other days are disabled. You must either <strong>Apply</strong> or <strong>Discard</strong> the pending slot before you can add another one.</p>
+</blockquote>
+
+<h3>Time Slot Validation Rules</h3>
+
+<p>The system enforces several rules when you set time slots:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rule</th>
+      <th>Error Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>The <strong>From</strong> time must be before the <strong>To</strong> time (same day)</td>
+      <td>"Time slot cannot span to the next day"</td>
+    </tr>
+    <tr>
+      <td>Time slots on the same day cannot overlap each other</td>
+      <td>"Time slots overlap"</td>
+    </tr>
+    <tr>
+      <td>All time slots across all days must have complete times before you can apply any slot</td>
+      <td>"Please complete all time slots before applying"</td>
+    </tr>
+    <tr>
+      <td>Both <strong>From</strong> and <strong>To</strong> times must be set to a valid time</td>
+      <td>"Please select valid start and end times"</td>
+    </tr>
+    <tr>
+      <td>(Per Crew only) Crew time slots must fall within the global availability window</td>
+      <td>"Crew slot is outside global hours"</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Tip:</strong> Times are displayed in 12-hour format (for example, "9:00 AM" or "5:30 PM"). Internally, the system stores times in HHMM format (such as "0900" for 9:00 AM or "1730" for 5:30 PM).</p>
+</blockquote>
+
+<hr>
+
+<h2>Exceptions Section</h2>
+
+<p>The <strong>Exceptions</strong> section lets you define periods when your business (or a specific crew) is completely unavailable, regardless of the regular work days schedule. This is useful for holidays, vacation periods, seasonal shutdowns, or any other time you need to block off the calendar.</p>
+
+<p>The Exceptions area appears below the Work Days section with the heading <strong>Exceptions</strong> and an <strong>Add</strong> button to the right.</p>
+
+<p>There are three types of exceptions:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Exception Type</th>
+      <th>Tab Label</th>
+      <th>What It Does</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Date Range</td>
+      <td><strong>By Day Range</strong></td>
+      <td>Blocks a specific range of dates (for example, December 24 through January 2). Can optionally repeat every year.</td>
+    </tr>
+    <tr>
+      <td>Month</td>
+      <td><strong>By Month</strong></td>
+      <td>Blocks one or more entire months (for example, all of January and February). Only one set of month exceptions is allowed at a time.</td>
+    </tr>
+    <tr>
+      <td>Season</td>
+      <td><strong>By Season</strong></td>
+      <td>Blocks one or more seasons: Winter, Spring, Summer, or Fall. Only one set of season exceptions is allowed at a time.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Adding an Exception</h3>
+
+<p><strong>Step 1:</strong> Click the <strong>Add</strong> button in the Exceptions header. A form will appear with tabs at the top for the available exception types.</p>
+
+<p><strong>Step 2:</strong> Select the type of exception you want to create by clicking one of the tabs: <strong>By Day Range</strong>, <strong>By Month</strong>, or <strong>By Season</strong>.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> If you already have a month exception configured, the <strong>By Month</strong> tab will not appear (you can only have one set of month exceptions). The same applies to season exceptions — once configured, the <strong>By Season</strong> tab disappears. Date range exceptions have no limit; you can add as many as you need. When both month and season exceptions are already configured, the message "Month and season exceptions configured" appears.</p>
+</blockquote>
+
+<h3>Date Range Exceptions (By Day Range)</h3>
+
+<p>Date range exceptions block a specific window of dates.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>From</strong></td>
+      <td>Yes</td>
+      <td>The start date of the exception period. Click the field to open a date picker.</td>
+    </tr>
+    <tr>
+      <td><strong>To</strong></td>
+      <td>Yes</td>
+      <td>The end date of the exception period. Must be the same date or later than the From date.</td>
+    </tr>
+    <tr>
+      <td><strong>Annual Exception</strong></td>
+      <td>No</td>
+      <td>A checkbox. When checked, this exception repeats every year on the same dates. Useful for recurring holidays or annual shutdowns. Unchecked by default.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>After filling in the dates, a description appears below the form: "All services will be unavailable: [start date] - [end date]" (and if annual is checked, it adds "annually").</p>
+
+<p>Click <strong>Create Exception</strong> to save. The button shows "Creating..." while saving.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> If the end date is before the start date, the <strong>Create Exception</strong> button remains disabled.</p>
+</blockquote>
+
+<h3>Editing a Date Range Exception</h3>
+
+<p>After a date range exception is created, it appears as a card showing the date range and whether it recurs annually. Each card has:</p>
+
+<ul>
+  <li>An <strong>Edit</strong> button (pencil icon) — Click to open the exception in edit mode, where you can change the From date, To date, and the Annual checkbox.</li>
+  <li>A <strong>Delete</strong> button (trash icon) — Click to delete the exception (a confirmation dialog appears first).</li>
+</ul>
+
+<p>When editing:</p>
+<ul>
+  <li>Modify the fields as needed.</li>
+  <li>Click <strong>Save</strong> to apply changes (the button shows "Saving..." while processing).</li>
+  <li>Click <strong>Cancel</strong> to discard your changes and return to the view mode.</li>
+</ul>
+
+<h3>Month Exceptions (By Month)</h3>
+
+<p>Month exceptions let you block one or more entire calendar months.</p>
+
+<p>When you select the <strong>By Month</strong> tab, you see:</p>
+
+<ul>
+  <li><strong>12 circular month buttons</strong> arranged in a row — Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec. Each button is a small circle showing the three-letter month abbreviation.</li>
+  <li>Click a month to select it (the button turns blue with white text). Click again to deselect (returns to gray).</li>
+  <li>A description below updates in real time: "All services will be unavailable: [selected month names]."</li>
+</ul>
+
+<p>For a <strong>new</strong> month exception (created from the Add form):</p>
+<ul>
+  <li>Select the months you want to block.</li>
+  <li>Click <strong>Apply Changes</strong> to save (the button shows "Applying..." while processing).</li>
+  <li>Click <strong>Cancel</strong> to discard and close the form.</li>
+</ul>
+
+<p>For an <strong>existing</strong> month exception (already saved):</p>
+<ul>
+  <li>The exception appears as a card titled <strong>Exception</strong> with a number (for example, "Exception #1").</li>
+  <li>You can toggle months on or off. When changes are detected, <strong>Apply Changes</strong> and <strong>Cancel</strong> buttons appear.</li>
+  <li>A <strong>Delete</strong> button (trash icon) in the card header lets you remove all month exceptions.</li>
+</ul>
+
+<h3>Season Exceptions (By Season)</h3>
+
+<p>Season exceptions let you block one or more entire seasons.</p>
+
+<p>When you select the <strong>By Season</strong> tab, you see:</p>
+
+<ul>
+  <li><strong>4 checkboxes</strong>: Winter, Spring, Summer, Fall.</li>
+  <li>Check the seasons you want to block.</li>
+  <li>A description below updates in real time: "All services will be unavailable: [selected season names]."</li>
+</ul>
+
+<p>The season definitions used by the system are:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Season</th>
+      <th>Months Covered</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Winter</strong></td>
+      <td>November, December, January</td>
+    </tr>
+    <tr>
+      <td><strong>Spring</strong></td>
+      <td>February, March, April</td>
+    </tr>
+    <tr>
+      <td><strong>Summer</strong></td>
+      <td>May, June, July</td>
+    </tr>
+    <tr>
+      <td><strong>Fall</strong></td>
+      <td>August, September, October</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For a <strong>new</strong> season exception:</p>
+<ul>
+  <li>Check the seasons you want to block.</li>
+  <li>Click <strong>Apply Changes</strong> to save (the button shows "Applying..." while processing).</li>
+  <li>Click <strong>Cancel</strong> to discard and close the form.</li>
+</ul>
+
+<p>For an <strong>existing</strong> season exception:</p>
+<ul>
+  <li>The exception appears as a card titled <strong>Exception</strong> with a number.</li>
+  <li>You can toggle seasons on or off. When changes are detected, <strong>Apply Changes</strong> and <strong>Cancel</strong> buttons appear.</li>
+  <li>A <strong>Delete</strong> button (trash icon) in the card header lets you remove all season exceptions.</li>
+</ul>
+
+<h3>Deleting Exceptions</h3>
+
+<p>All exception types can be deleted. Here's what happens for each:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Exception Type</th>
+      <th>How to Delete</th>
+      <th>Confirmation Dialog</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Date Range</strong></td>
+      <td>Click the trash icon on the exception card.</td>
+      <td>Title: "Delete Exception" — Message: "Are you sure you want to delete this exception?"</td>
+    </tr>
+    <tr>
+      <td><strong>Month</strong></td>
+      <td>Click the trash icon in the month exception card header.</td>
+      <td>Confirmation message: "Are you sure you want to delete this month exception?"</td>
+    </tr>
+    <tr>
+      <td><strong>Season</strong></td>
+      <td>Click the trash icon in the season exception card header.</td>
+      <td>Confirmation message: "Are you sure you want to delete this season exception?"</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Each confirmation dialog has a <strong>Cancel</strong> button (to go back without deleting) and a <strong>Delete</strong> button (to confirm the deletion).</p>
+
+<h3>Empty State</h3>
+
+<p>When no exceptions of any type have been configured, the Exceptions section shows the message: "No exceptions."</p>
+
+<hr>
+
+<h2>How Changes Are Saved</h2>
+
+<p>Availability uses an <strong>auto-save</strong> approach — most changes are saved to the backend as soon as you confirm them. Here is how saving works for each action:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>When It Saves</th>
+      <th>Success Feedback</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Turn off a work day</td>
+      <td>Immediately when you flip the toggle off</td>
+      <td>"Availability updated successfully" (Global) or "Crew successfully updated" (Per Crew)</td>
+    </tr>
+    <tr>
+      <td>Turn on a work day</td>
+      <td>Does <strong>not</strong> save yet — waits for you to set times and click Apply</td>
+      <td>No feedback until you Apply</td>
+    </tr>
+    <tr>
+      <td>Apply a time slot</td>
+      <td>When you click the Apply (checkmark) button</td>
+      <td>"Availability updated successfully" or "Crew successfully updated"</td>
+    </tr>
+    <tr>
+      <td>Delete a time slot</td>
+      <td>Immediately when you click the trash icon</td>
+      <td>"Availability updated successfully" or "Crew successfully updated"</td>
+    </tr>
+    <tr>
+      <td>Create a date exception</td>
+      <td>When you click <strong>Create Exception</strong></td>
+      <td>"Availability updated successfully" or "Crew successfully updated"</td>
+    </tr>
+    <tr>
+      <td>Save a month/season exception</td>
+      <td>When you click <strong>Apply Changes</strong></td>
+      <td>"Availability updated successfully" or "Crew successfully updated"</td>
+    </tr>
+    <tr>
+      <td>Delete an exception</td>
+      <td>When you confirm in the dialog</td>
+      <td>"Availability updated successfully" or "Crew successfully updated"</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Note:</strong> If a save fails, the system automatically reverts your change to the previous state so your data stays consistent. You will see an error toast message: "Failed to update availability." or "Failed to update crew."</p>
+</blockquote>
+
+<hr>
+
+<h2>Cross-Platform Usage</h2>
+
+<p>Availability is not just a settings page — it directly affects how other parts of the platform work.</p>
+
+<h3>Appointments and Scheduler</h3>
+
+<p>When creating or editing an appointment, the system checks the crew's availability to determine which time slots can be offered. The appointment form uses the availability data to:</p>
+
+<ul>
+  <li>Show available time slots based on the assigned crew's schedule.</li>
+  <li>Check for date exceptions (date ranges, months, seasons) and block those dates.</li>
+  <li>Display an <strong>Availability Info</strong> note so users understand why certain times may not be available.</li>
+</ul>
+
+<p>If a user needs to schedule an appointment outside the normal availability window, the system supports an <strong>Override Availability</strong> option. When this is enabled, the appointment can be created even if it falls outside the configured hours or during an exception period.</p>
+
+<blockquote>
+  <p><strong>Tip:</strong> The Override Availability option is useful for emergency calls, special client requests, or one-off situations where the regular schedule doesn't apply.</p>
+</blockquote>
+
+<h3>Crews</h3>
+
+<p>Each crew has an <strong>Availability</strong> summary displayed on its detail view. This summary shows:</p>
+
+<ul>
+  <li><strong>General Availability</strong> — A list of enabled days with their time ranges, each marked with a green dot. For example: "Monday, 9:00 AM - 5:00 PM."</li>
+  <li><strong>Exceptions and Special Conditions</strong> — A list of all active exceptions, each marked with an orange dot. This includes date range exceptions (for example, "Not Available Dec 24 - Jan 2"), month exceptions (for example, "Not Available during January"), and season exceptions (for example, "Not Available during Winter").</li>
+</ul>
+
+<p>If no availability data has been configured for a crew, the summary shows: "No availability data."</p>
+
+<p>Clicking <strong>View Availability Settings</strong> on a crew's summary navigates you to the Availability page with that crew automatically pre-selected in Per Crew mode.</p>
+
+<h3>Jobs and Estimates</h3>
+
+<p>When scheduling work through jobs, the system uses crew availability data to calculate available time slots for the job's duration. Exception dates, monthly exceptions, and seasonal exceptions are all factored into the calculation.</p>
+
+<hr>
+
+<h2>Step-by-Step: Setting Up Availability from Scratch</h2>
+
+<p>If this is your first time configuring availability, follow these steps:</p>
+
+<h3>Step 1: Set Global Work Days</h3>
+
+<ol>
+  <li>Navigate to <strong>Menu &gt; Availability</strong> (or <strong>Settings &gt; Availability</strong>).</li>
+  <li>Make sure <strong>Global</strong> is selected in the toggle at the top.</li>
+  <li>For each day your business operates, flip the toggle switch to the "on" position.</li>
+  <li>Set the <strong>From</strong> and <strong>To</strong> times for each enabled day. Click the time fields to open the time picker.</li>
+  <li>Click the <strong>Apply</strong> (checkmark) button next to each time slot to save it.</li>
+  <li>If a day has split shifts (for example, 8:00 AM - 12:00 PM and 1:00 PM - 5:00 PM), click <strong>+ Add Time Slot</strong> and repeat steps 4-5 for the additional slot.</li>
+</ol>
+
+<h3>Step 2: Add Any Exceptions</h3>
+
+<ol>
+  <li>Scroll down to the <strong>Exceptions</strong> section.</li>
+  <li>Click <strong>Add</strong>.</li>
+  <li>Choose the exception type: <strong>By Day Range</strong>, <strong>By Month</strong>, or <strong>By Season</strong>.</li>
+  <li>Fill in the details (dates, months, or seasons to block).</li>
+  <li>Click <strong>Create Exception</strong> or <strong>Apply Changes</strong> to save.</li>
+  <li>Repeat for each exception you need. Remember you can have unlimited date range exceptions but only one set of month exceptions and one set of season exceptions.</li>
+</ol>
+
+<h3>Step 3: Configure Per-Crew Schedules (Optional)</h3>
+
+<ol>
+  <li>Switch to <strong>Per Crew</strong> using the toggle at the top.</li>
+  <li>Select a crew from the <strong>Select Crew</strong> dropdown.</li>
+  <li>Set the crew's work days and time slots, following the same process as for Global availability.</li>
+  <li>Add any crew-specific exceptions.</li>
+  <li>Repeat for each crew that needs a custom schedule.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Important:</strong> Remember that a crew's time slots cannot extend beyond the global hours. If the global schedule says Monday is 9:00 AM - 5:00 PM, a crew cannot be set to 8:00 AM - 6:00 PM on Monday. You'll see the warning "Crew slot is outside global hours" if you try.</p>
+</blockquote>
+
+<hr>
+
+<h2>Summary of Common Actions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>How to Do It</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Switch between Global and Per Crew</td>
+      <td>Click the <strong>Global</strong> or <strong>Per Crew</strong> toggle at the top of the page</td>
+    </tr>
+    <tr>
+      <td>Enable a work day</td>
+      <td>Flip the day's toggle switch on, set times, click <strong>Apply</strong></td>
+    </tr>
+    <tr>
+      <td>Disable a work day</td>
+      <td>Flip the day's toggle switch off (saves immediately)</td>
+    </tr>
+    <tr>
+      <td>Add a second time slot to a day</td>
+      <td>Click <strong>+ Add Time Slot</strong> below the existing slot, set times, click <strong>Apply</strong></td>
+    </tr>
+    <tr>
+      <td>Remove a time slot</td>
+      <td>Click the trash icon next to the slot (only visible when a day has multiple slots)</td>
+    </tr>
+    <tr>
+      <td>Discard unsaved time changes</td>
+      <td>Click the <strong>Discard</strong> (X) button next to the slot</td>
+    </tr>
+    <tr>
+      <td>Block a specific date range</td>
+      <td>Click <strong>Add</strong> in Exceptions &gt; <strong>By Day Range</strong> &gt; set dates &gt; <strong>Create Exception</strong></td>
+    </tr>
+    <tr>
+      <td>Make a date exception annual</td>
+      <td>Check the <strong>Annual Exception</strong> checkbox when creating or editing the exception</td>
+    </tr>
+    <tr>
+      <td>Block entire months</td>
+      <td>Click <strong>Add</strong> in Exceptions &gt; <strong>By Month</strong> &gt; select months &gt; <strong>Apply Changes</strong></td>
+    </tr>
+    <tr>
+      <td>Block entire seasons</td>
+      <td>Click <strong>Add</strong> in Exceptions &gt; <strong>By Season</strong> &gt; check seasons &gt; <strong>Apply Changes</strong></td>
+    </tr>
+    <tr>
+      <td>Edit a date range exception</td>
+      <td>Click the pencil icon on the exception card, modify dates, click <strong>Save</strong></td>
+    </tr>
+    <tr>
+      <td>Delete any exception</td>
+      <td>Click the trash icon on the exception card and confirm in the dialog</td>
+    </tr>
+    <tr>
+      <td>View a crew's availability</td>
+      <td>Go to the crew's detail view and look for the <strong>Availability</strong> section, or click <strong>View Availability Settings</strong></td>
+    </tr>
+    <tr>
+      <td>Set up a crew-specific schedule</td>
+      <td>Switch to <strong>Per Crew</strong>, select the crew, configure days and exceptions</td>
+    </tr>
+    <tr>
+      <td>Override availability for an appointment</td>
+      <td>Enable the <strong>Override Availability</strong> option in the appointment creation form</td>
+    </tr>
+  </tbody>
+</table>
+
+</main>
+</body>
+</html>

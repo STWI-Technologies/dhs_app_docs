@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clients Management</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #1a1a1a; }
+    h1 { border-bottom: 2px solid #e0e0e0; padding-bottom: 0.5rem; }
+    h2 { margin-top: 2rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #d0d0d0; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background-color: #f5f5f5; font-weight: 600; }
+    blockquote { border-left: 4px solid #d0d0d0; margin: 1rem 0; padding: 0.75rem 1rem; background: #fafafa; }
+    code { background: #f0f0f0; padding: 0.15rem 0.35rem; border-radius: 3px; font-size: 0.9em; }
+    hr { border: none; border-top: 1px solid #e0e0e0; margin: 2rem 0; }
+  </style>
+</head>
+<body>
+<main>
+
+<h1>Clients Management</h1>
+
+<h2>Overview</h2>
+
+<p>The <strong>Clients Management</strong> section is where you manage all your client accounts, their properties, contact information, and billing details. A client represents a customer you do business with — they can be residential homeowners or commercial businesses. Each client can have multiple properties, and all appointments, estimates, jobs, and invoices are linked to client accounts.</p>
+
+<p>From this section you can:</p>
+
+<ul>
+  <li><strong>Add</strong> new clients with a multi-step wizard covering personal details, property, billing, and attachments.</li>
+  <li><strong>Edit</strong> existing clients to update their contact information, properties, or billing addresses.</li>
+  <li><strong>Archive</strong> clients you no longer work with (without losing historical data).</li>
+  <li><strong>Restore</strong> archived clients if you need them again.</li>
+  <li><strong>Search and filter</strong> by keyword, city, state, tags, and client type.</li>
+  <li><strong>Import</strong> clients in bulk via CSV files.</li>
+  <li><strong>Export</strong> your client list to CSV for external use.</li>
+  <li><strong>Manage properties</strong> — add, edit, or delete properties for each client.</li>
+  <li><strong>View related records</strong> — see all appointments, estimates, jobs, and invoices linked to a client.</li>
+  <li><strong>Communicate</strong> with clients through the built-in messaging system.</li>
+  <li><strong>Manage attachments</strong> for both clients and their properties.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Important:</strong> Clients cannot be permanently deleted — they can only be <strong>archived</strong>. Archiving preserves all historical data (appointments, estimates, jobs, invoices) while hiding the client from active views. You can restore an archived client at any time.</p>
+</blockquote>
+
+<hr>
+
+<h2>Clients List View</h2>
+
+<p>The Clients List View is the main view for managing all your clients. To access it, navigate to <strong>Menu &gt; Clients</strong>.</p>
+
+<p>When you open the Clients List View, you will see a table listing your clients. Each row represents one client account and displays the following information:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>What It Means</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>User</strong></td>
+      <td>The client's avatar (or initials in a blue circle), primary user name (first + last), and company name as a subtitle if available. If the client was created via Quick Add and has incomplete information, a red warning icon appears with a tooltip: <em>"Created via Quick Add - details incomplete"</em>.</td>
+    </tr>
+    <tr>
+      <td><strong>Type</strong></td>
+      <td>The client's primary property type, shown with a colored dot: blue dot + "Residential" for residential clients, or orange dot + "Business" for commercial clients.</td>
+    </tr>
+    <tr>
+      <td><strong>Phone</strong></td>
+      <td>The primary user's phone number, formatted for display.</td>
+    </tr>
+    <tr>
+      <td><strong>Email</strong></td>
+      <td>The primary user's email address or the client account email. Truncated with an ellipsis if too long, with the full email visible on hover.</td>
+    </tr>
+    <tr>
+      <td><strong>Address</strong></td>
+      <td>The primary property's address (street, city, state, ZIP). Falls back to the billing address if no property exists. If the client has multiple properties, a tag showing <code>+N</code> appears (e.g., "+2") with a tooltip showing the breakdown by type (e.g., "1 Residential, 2 Business").</td>
+    </tr>
+    <tr>
+      <td><strong>Tags</strong></td>
+      <td>Color-coded tag chips assigned to the client. Shows "—" if no tags are assigned.</td>
+    </tr>
+    <tr>
+      <td><strong>Actions</strong></td>
+      <td>An edit button (pencil icon) to open the client detail page, and a three-dot menu with additional actions (see Row Actions Menu below).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Tabs</h3>
+
+<p>At the top of the list you will see four tabs that filter clients by type:</p>
+
+<ul>
+  <li><strong>All</strong> — Shows all active (non-archived) clients, regardless of type. This is the default view.</li>
+  <li><strong>Residential</strong> — Shows only active clients whose primary property type is Residential.</li>
+  <li><strong>Business</strong> — Shows only active clients whose primary property type is Commercial/Business.</li>
+  <li><strong>Archived</strong> — Shows clients that have been archived.</li>
+</ul>
+
+<p>You can switch between these tabs at any time. The table updates to reflect the selected filter.</p>
+
+<h3>Sorting the List</h3>
+
+<p>You can sort the clients list by clicking on the column headers for <strong>User</strong> (sorts by company name) or <strong>Type</strong> (sorts by account type). Click once to sort in ascending order and click again to sort in descending order.</p>
+
+<h3>Searching and Filtering</h3>
+
+<p>The Clients List View provides several tools to find clients quickly:</p>
+
+<ul>
+  <li><strong>Search bar</strong> — Type a keyword to search across client names, email addresses, company names, and more. Results update in real time.</li>
+  <li><strong>Cities filter</strong> — A multi-select dropdown populated with all cities from your client properties. Select one or more cities to show only clients in those locations.</li>
+  <li><strong>States filter</strong> — A multi-select dropdown populated with all states. Select one or more states to narrow the results.</li>
+  <li><strong>Tags filter</strong> — A multi-select dropdown with all tags used across clients. Select tags to show only clients with those tags.</li>
+</ul>
+
+<p>All filters are combined with AND logic — selecting "New York" in States AND "HVAC" in Tags will show only clients in New York who also have the "HVAC" tag.</p>
+
+<h3>Row Actions Menu</h3>
+
+<p>Clicking the three-dot menu (⋮) on any row reveals the following actions:</p>
+
+<ul>
+  <li><strong>Start a Conversation</strong> — Opens the Inbox with this client pre-selected. If a direct chat already exists, it opens the existing conversation. If not, a new chat is created.</li>
+  <li><strong>Attachments</strong> — Opens the Client Attachments panel to manage files associated with this client.</li>
+  <li><strong>Archive</strong> (active clients only) — Opens a confirmation dialog: <em>"Are you sure you want to archive [client name]?"</em>. Archiving removes the client from active tabs but preserves all data.</li>
+  <li><strong>Restore</strong> (archived clients only) — Opens a confirmation dialog: <em>"Are you sure you want to restore [client name]?"</em>. Restoring moves the client back to the active tabs.</li>
+</ul>
+
+<p>You can also click anywhere on a row to navigate to that client's Detail Page.</p>
+
+<h3>Pagination</h3>
+
+<p>The Clients List View supports server-side pagination with a default page size of 10. You can change the number of clients per page and navigate between pages using the controls at the bottom of the table.</p>
+
+<hr>
+
+<h2>1. Adding a New Client</h2>
+
+<p>To add a new client to your account, follow these steps:</p>
+
+<h3>Step 1: Open the New Client Form</h3>
+
+<p>Click the <strong>"+ New Client"</strong> button (blue) located in the top-right corner of the Clients List View. A drawer panel will slide open from the right side with a five-step wizard.</p>
+
+<blockquote>
+  <p><strong>Tip:</strong> If the list is empty, you will also see a "New Client" button in the center of the page.</p>
+</blockquote>
+
+<h3>Step 2: General Information (Step 1 of 5)</h3>
+
+<p>First, select the client type by clicking one of the two buttons at the top:</p>
+
+<ul>
+  <li><strong>Residential</strong> (blue, person icon) — For individual homeowners.</li>
+  <li><strong>Business</strong> (orange, briefcase icon) — For companies and commercial clients.</li>
+</ul>
+
+<p>Then fill in the following fields:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required?</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>First Name</strong></td>
+      <td>Yes</td>
+      <td>The client's first name. Must be 2-50 characters, letters only (spaces, hyphens, and apostrophes allowed).</td>
+    </tr>
+    <tr>
+      <td><strong>Last Name</strong></td>
+      <td>Yes</td>
+      <td>The client's last name. Same validation as first name.</td>
+    </tr>
+    <tr>
+      <td><strong>Phone Number</strong></td>
+      <td>Yes</td>
+      <td>The client's phone number with a country selector (defaults to US). Validated using country-specific phone format rules.</td>
+    </tr>
+    <tr>
+      <td><strong>Email Address</strong></td>
+      <td>Yes</td>
+      <td>The client's email. Must be a valid email format (max 255 characters). The system checks if the email is already in use — if so, an error appears.</td>
+    </tr>
+    <tr>
+      <td><strong>Company Name</strong></td>
+      <td>No (Business only)</td>
+      <td>The company or business name. Only visible when "Business" type is selected. Max 100 characters.</td>
+    </tr>
+    <tr>
+      <td><strong>Website</strong></td>
+      <td>No (Business only)</td>
+      <td>The company website. Only visible when "Business" type is selected. Accepts URLs with or without <code>https://</code>. Max 255 characters.</td>
+    </tr>
+    <tr>
+      <td><strong>Tags</strong></td>
+      <td>No</td>
+      <td>Type a tag name and press Enter to add it. You can add as many tags as needed. Tags help with filtering and organizing clients.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Click <strong>"Next"</strong> to proceed. All required fields are validated before moving forward.</p>
+
+<h3>Step 3: Property Details (Step 2 of 5)</h3>
+
+<p>This step collects the client's primary property information.</p>
+
+<h4>Property Image (Optional)</h4>
+
+<p>At the top of the form, you can upload a photo of the property:</p>
+
+<ul>
+  <li>Drag and drop an image into the upload area, or click to browse.</li>
+  <li>Accepted formats: JPEG, JPG, PNG, WebP.</li>
+  <li>Maximum file size: 4 MB.</li>
+  <li>Once uploaded, a preview appears with a remove button (red X).</li>
+</ul>
+
+<h4>Property Fields</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required?</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Property Type</strong></td>
+      <td>Yes</td>
+      <td>Select "Residential" or "Business" from the dropdown.</td>
+    </tr>
+    <tr>
+      <td><strong>Address Line 1</strong></td>
+      <td>Yes</td>
+      <td>The street address. Max 255 characters.</td>
+    </tr>
+    <tr>
+      <td><strong>Address Line 2</strong></td>
+      <td>No</td>
+      <td>Apartment, suite, unit, etc. Max 255 characters.</td>
+    </tr>
+    <tr>
+      <td><strong>City</strong></td>
+      <td>Yes</td>
+      <td>The city name. Max 100 characters, letters only.</td>
+    </tr>
+    <tr>
+      <td><strong>Timezone</strong></td>
+      <td>No</td>
+      <td>Select the property's timezone from the dropdown. Defaults to "America/New_York" if not specified.</td>
+    </tr>
+    <tr>
+      <td><strong>State</strong></td>
+      <td>Yes</td>
+      <td>Select the state from a dropdown of all US states.</td>
+    </tr>
+    <tr>
+      <td><strong>Zip Code</strong></td>
+      <td>Yes</td>
+      <td>Must be a valid 5-digit ZIP code or ZIP+4 format (e.g., <code>10001</code> or <code>10001-1234</code>).</td>
+    </tr>
+    <tr>
+      <td><strong>Address Notes</strong></td>
+      <td>No</td>
+      <td>Any additional notes about the property location (e.g., "Gate code: 1234"). Max 500 characters.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Click <strong>"Next"</strong> to proceed after filling in the required address fields.</p>
+
+<h3>Step 4: Billing Details (Step 3 of 5)</h3>
+
+<p>This step collects billing address information for invoices.</p>
+
+<p>At the top of the form, a checkbox option reads: <strong>"Billing Address Same as Property Address"</strong>. When checked, all billing fields are automatically filled with the property address from the previous step. When unchecked, you must enter the billing address manually.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required?</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Billing Address Line 1</strong></td>
+      <td>Yes</td>
+      <td>The billing street address. Max 255 characters.</td>
+    </tr>
+    <tr>
+      <td><strong>Billing Address Line 2</strong></td>
+      <td>No</td>
+      <td>Apartment, suite, unit, etc. Max 255 characters.</td>
+    </tr>
+    <tr>
+      <td><strong>Billing City</strong></td>
+      <td>Yes</td>
+      <td>The billing city name. Max 100 characters, letters only.</td>
+    </tr>
+    <tr>
+      <td><strong>Billing State</strong></td>
+      <td>Yes</td>
+      <td>Select from a dropdown of all US states.</td>
+    </tr>
+    <tr>
+      <td><strong>Billing Zip Code</strong></td>
+      <td>Yes</td>
+      <td>Must be a valid 5-digit or ZIP+4 format.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Click <strong>"Next"</strong> to proceed.</p>
+
+<h3>Step 5: Attachments (Step 4 of 5)</h3>
+
+<p>This step allows you to upload files for the client and/or the property. Two tabs are available:</p>
+
+<ul>
+  <li><strong>Client Attachments</strong> — Files associated with the client account (contracts, agreements, IDs, etc.).</li>
+  <li><strong>Property Attachments</strong> — Files associated with the property (photos, floor plans, permits, etc.).</li>
+</ul>
+
+<p>Each tab has an independent upload area where you can:</p>
+
+<ol>
+  <li>Drag and drop files into the dashed border area, or click to browse.</li>
+  <li>Each file shows a progress bar during upload.</li>
+  <li>Uploaded files display the file name, size, and a delete button.</li>
+  <li>If an upload fails, a "Retry" button appears.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Note:</strong> Attachments are optional. You can skip this step and add attachments later from the Client Detail Page.</p>
+</blockquote>
+
+<p>Click <strong>"Next"</strong> to proceed.</p>
+
+<h3>Step 6: Review (Step 5 of 5)</h3>
+
+<p>The review step shows a summary of all the information you entered:</p>
+
+<ul>
+  <li><strong>Property Image</strong> — A large preview of the uploaded property photo (or a gray placeholder if none).</li>
+  <li><strong>Client Information</strong> — Name, type (with colored dot), phone, email, company name, website, and full property address. State codes are displayed as full names (e.g., "NY" shows as "New York").</li>
+</ul>
+
+<p>Review the information carefully, then click <strong>"Create Client"</strong> to submit. A loading overlay displays <em>"Creating Client..."</em> while the operation completes. On success, a toast appears: <strong>"Client successfully created"</strong>.</p>
+
+<blockquote>
+  <p><strong>Tip:</strong> You can click any step indicator at the top of the wizard to jump back and make changes before submitting. In create mode, you can only go back to previously completed steps.</p>
+</blockquote>
+
+<hr>
+
+<h2>2. Client Detail Page</h2>
+
+<p>The Client Detail Page shows all information about a single client and their related records. To access it, click on any client's row or edit icon in the Clients List View.</p>
+
+<h3>Header Area</h3>
+
+<p>The header displays:</p>
+
+<ul>
+  <li><strong>Back button</strong> — Returns to the Clients List View.</li>
+  <li><strong>Client name</strong> — The company name (or "Unknown Client" if none).</li>
+  <li><strong>Status badge</strong> — "Active" (green) if the client is not archived, or "Archived" (gray) if archived.</li>
+  <li><strong>Start a Conversation</strong> button — Opens the Inbox with this client pre-selected for messaging.</li>
+  <li><strong>Three-dot menu</strong> — Contains: Attachments, Archive (or Restore if archived).</li>
+</ul>
+
+<h3>Sidebar</h3>
+
+<p>The right sidebar displays:</p>
+
+<ul>
+  <li><strong>Company name</strong> and property type tags (Residential/Business colored dots).</li>
+  <li><strong>Phone</strong> — Primary user's phone number.</li>
+  <li><strong>Email Address</strong> — Client account email.</li>
+  <li><strong>Billing Address</strong> — Full formatted billing address (or "—" if none).</li>
+  <li><strong>Tags</strong> — All assigned tags as colored chips.</li>
+  <li><strong>Edit button</strong> — Opens the Edit Client modal with all data pre-filled.</li>
+  <li><strong>Notes section</strong> — Internal notes with the ability to create, edit, and attach files.</li>
+</ul>
+
+<h3>2.1 Properties Tab</h3>
+
+<p>The Properties tab shows all properties associated with this client. A count badge in the tab header shows the number of active properties.</p>
+
+<p>At the top, a <strong>"+ New Property"</strong> button allows adding additional properties.</p>
+
+<p>Each property is displayed as a card showing:</p>
+
+<ul>
+  <li><strong>Property type badge</strong> — "Residential" or "Commercial".</li>
+  <li><strong>Property image</strong> — The uploaded photo or a placeholder.</li>
+  <li><strong>Full address</strong> — Street, city, state, and ZIP.</li>
+  <li><strong>Quick Add indicator</strong> — A warning icon if the property was created via Quick Add and has incomplete data.</li>
+  <li><strong>"View on Map"</strong> link — Opens the property location in the Map view.</li>
+  <li><strong>Action buttons</strong> — Attachments (paperclip icon), Edit (pencil icon), Delete (trash icon).</li>
+</ul>
+
+<p>If no properties exist, the message <em>"No Properties"</em> is displayed.</p>
+
+<h3>2.2 Appointments Tab</h3>
+
+<p>Shows all appointments associated with this client. A count badge in the tab header shows the number of appointments (with a loading skeleton while fetching).</p>
+
+<p>Each appointment is listed and clickable — clicking navigates to the Appointment Detail Page. If the client has only one active property, it is automatically pre-selected when creating a new appointment.</p>
+
+<h3>2.3 Estimates Tab</h3>
+
+<p>Shows all estimates associated with this client. A count badge shows the estimate count.</p>
+
+<p>A <strong>"+ New Estimate"</strong> button at the top allows creating a new estimate with the client pre-selected. Clicking any estimate navigates to the Estimate Detail View.</p>
+
+<h3>2.4 Jobs &amp; Invoices Tab</h3>
+
+<p>Shows all jobs and invoices associated with this client. A count badge shows the job count.</p>
+
+<p>Two buttons at the top: <strong>"+ New Job"</strong> and <strong>"+ New Invoice"</strong> — both pre-fill the client. Clicking any job or invoice navigates to the respective Detail View.</p>
+
+<hr>
+
+<h2>3. Editing a Client</h2>
+
+<p>To update information for an existing client:</p>
+
+<h3>Step 1: Open the Client for Editing</h3>
+
+<p>You can edit a client from two places:</p>
+
+<ul>
+  <li><strong>From the Client Detail Page</strong> — Click the <strong>"Edit"</strong> button in the sidebar.</li>
+  <li><strong>From the Clients List View</strong> — Click the edit icon (pencil) in the Actions column.</li>
+</ul>
+
+<p>The same five-step drawer opens, pre-filled with the client's current information. The title changes to <strong>"Edit Client"</strong>.</p>
+
+<h3>Step 2: Make Your Changes</h3>
+
+<p>In edit mode, all five steps are accessible — you can click any step indicator to jump directly to that section without needing to complete previous steps sequentially.</p>
+
+<p>You can modify:</p>
+
+<ul>
+  <li><strong>General</strong> — Name, phone, email, company name, website, tags. Note: the client type toggle is not shown in edit mode.</li>
+  <li><strong>Property</strong> — Property type, address, image, timezone, notes.</li>
+  <li><strong>Billing</strong> — Billing address fields, "same as property" checkbox.</li>
+  <li><strong>Attachments</strong> — Upload new or remove existing files.</li>
+  <li><strong>Review</strong> — Verify all changes before saving.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Note:</strong> In edit mode, the email uniqueness check is not performed (since the client already owns that email). The client field in the edit panel displays the client's current information, which is read-only for the client account association but editable for the user details.</p>
+</blockquote>
+
+<h3>Step 3: Save Your Changes</h3>
+
+<p>Navigate to the Review step and click <strong>"Save Changes"</strong>. The system updates the client account, user information, and property in separate operations. On success, a toast appears: <strong>"Client successfully updated"</strong>.</p>
+
+<p>Click <strong>"Cancel"</strong> at any step to close the drawer without saving.</p>
+
+<hr>
+
+<h2>4. Archiving Clients</h2>
+
+<p>Archiving is a safe way to deactivate a client without losing any historical data. Archived clients:</p>
+
+<ul>
+  <li><strong>Do not appear</strong> in the All, Residential, or Business tabs — they only appear in the Archived tab.</li>
+  <li><strong>Are preserved</strong> in historical records — existing appointments, estimates, jobs, and invoices remain intact.</li>
+  <li><strong>Can be restored</strong> at any time.</li>
+</ul>
+
+<h3>How to Archive a Client</h3>
+
+<ol>
+  <li>On the Clients List View, find the client you want to archive.</li>
+  <li>Click the <strong>three-dot menu</strong> (⋮) in the Actions column.</li>
+  <li>Select <strong>"Archive"</strong>.</li>
+  <li>A confirmation dialog appears: <em>"Are you sure you want to archive [client name]?"</em></li>
+  <li>Click <strong>"Archive"</strong> (red) to confirm, or <strong>"Cancel"</strong> to go back.</li>
+  <li>On success, a toast appears: <strong>"Client archived successfully"</strong>.</li>
+</ol>
+
+<p>You can also archive a client from the Client Detail Page using the three-dot menu in the header.</p>
+
+<hr>
+
+<h2>4.1 Restoring an Archived Client</h2>
+
+<p>To bring an archived client back into active use:</p>
+
+<ol>
+  <li>Switch to the <strong>Archived</strong> tab on the Clients List View.</li>
+  <li>Find the client you want to restore.</li>
+  <li>Click the <strong>three-dot menu</strong> (⋮) and select <strong>"Restore"</strong>.</li>
+  <li>A confirmation dialog appears: <em>"Are you sure you want to restore [client name]?"</em></li>
+  <li>Click <strong>"Restore"</strong> to confirm.</li>
+  <li>On success, a toast appears: <strong>"Client restored successfully"</strong>.</li>
+</ol>
+
+<p>The client will be moved back to the appropriate active tab (All, Residential, or Business).</p>
+
+<hr>
+
+<h2>5. Managing Properties</h2>
+
+<p>Each client can have multiple properties. Properties are managed from the <strong>Properties tab</strong> on the Client Detail Page.</p>
+
+<h3>5.1 Adding a New Property</h3>
+
+<ol>
+  <li>On the Client Detail Page, go to the <strong>Properties</strong> tab.</li>
+  <li>Click the <strong>"+ New Property"</strong> button.</li>
+  <li>A modal opens with the property form fields (same fields as Step 2 of the client wizard): property type, property image, address, city, state, ZIP, timezone, and address notes.</li>
+  <li>Fill in the required fields and click <strong>"Save"</strong> to create the property.</li>
+</ol>
+
+<h3>5.2 Editing a Property</h3>
+
+<ol>
+  <li>On the Properties tab, click the <strong>edit icon</strong> (pencil) on the property card you want to modify.</li>
+  <li>The same property form opens, pre-filled with the property's current data.</li>
+  <li>Make your changes and click <strong>"Save"</strong>.</li>
+</ol>
+
+<h3>5.3 Deleting a Property</h3>
+
+<ol>
+  <li>On the Properties tab, click the <strong>delete icon</strong> (trash) on the property card.</li>
+  <li>A confirmation dialog appears: <em>"Are you sure you want to delete this property?"</em></li>
+  <li>Click <strong>"Delete"</strong> (red) to confirm.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Warning:</strong> Deleting a property is permanent and cannot be undone. Consider whether any active appointments, estimates, or jobs reference this property before deleting.</p>
+</blockquote>
+
+<h3>5.4 Property Attachments</h3>
+
+<p>Each property has its own set of attachments, managed separately from client-level attachments. Click the <strong>paperclip icon</strong> on any property card to open its Attachments panel.</p>
+
+<h3>5.5 Viewing a Property on the Map</h3>
+
+<p>Click the <strong>"View on Map"</strong> link on any property card to open the Map view centered on that property's location.</p>
+
+<hr>
+
+<h2>6. Importing Clients via CSV</h2>
+
+<p>You can import clients in bulk using a CSV file. To access the import feature, click the <strong>"Import CSV"</strong> button on the Clients List View.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> The Import CSV button may not be visible if it has been disabled by your system administrator.</p>
+</blockquote>
+
+<h3>Step 1: Upload Your CSV File</h3>
+
+<p>Drag and drop a CSV file into the upload area, or click to browse your computer. The system validates the file format before proceeding.</p>
+
+<p>If you don't have a CSV file ready, click <strong>"Download Sample CSV"</strong> to get a template with example data and the expected column headers.</p>
+
+<h3>Step 2: Map Columns</h3>
+
+<p>The system shows your CSV headers and asks you to map each column to the corresponding client field. The following fields are available for mapping:</p>
+
+<p><strong>Required:</strong></p>
+<ul>
+  <li>Company Name</li>
+  <li>Email</li>
+</ul>
+
+<p><strong>Optional:</strong></p>
+<ul>
+  <li>Website</li>
+  <li>Property 1 and Property 2: Name, Contact Name, Contact Email, Contact Phone, Type, Address Line 1, Address Line 2, City, State, ZIP, Country</li>
+  <li>Billing: Company Name, Contact Name, Address Line 1, Address Line 2, City, State, ZIP, Country</li>
+  <li>Tags (comma-separated)</li>
+  <li>Timezone</li>
+  <li>Is Archived (Yes/No)</li>
+</ul>
+
+<h3>Step 3: Preview and Validate</h3>
+
+<p>A data grid shows the mapped data so you can review before importing. The system validates:</p>
+
+<ul>
+  <li>Required fields have values.</li>
+  <li>Email addresses are in valid format.</li>
+  <li>Property types are either "RESIDENTIAL" or "COMMERCIAL".</li>
+  <li>State codes are valid.</li>
+</ul>
+
+<h3>Step 4: Import</h3>
+
+<p>Click <strong>"Import"</strong> to begin the import process. The system shows progress and, on completion, displays the number of successfully imported clients and any errors. A toast message summarizes the result.</p>
+
+<hr>
+
+<h2>7. Exporting Clients to CSV</h2>
+
+<p>To download your client list as a spreadsheet file:</p>
+
+<ol>
+  <li>Click the <strong>"Export CSV"</strong> button on the Clients List View.</li>
+  <li>The system generates a CSV file containing clients matching your current filters (tab, search, city, state, tags).</li>
+  <li>The file downloads automatically with a name like <code>clients_2026-02-19_14-30.csv</code>.</li>
+</ol>
+
+<p>On success, a toast appears: <strong>"Clients exported successfully"</strong>.</p>
+
+<blockquote>
+  <p><strong>Tip:</strong> Use the search and filter tools to narrow down the export. For example, switch to the "Business" tab before exporting to get only commercial clients.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Note:</strong> The Export CSV button may not be visible if it has been disabled by your system administrator.</p>
+</blockquote>
+
+<hr>
+
+<h2>8. Client Attachments</h2>
+
+<p>Attachments allow you to associate files with a client account. These are separate from property-level attachments.</p>
+
+<h3>Opening the Attachments Panel</h3>
+
+<p>There are three ways to manage client attachments:</p>
+
+<ol>
+  <li><strong>From the Clients List View</strong> — Click the three-dot menu and select <strong>"Attachments"</strong>.</li>
+  <li><strong>From the Client Detail Page</strong> — Click the three-dot menu in the header and select <strong>"Attachments"</strong>.</li>
+  <li><strong>During client creation</strong> — Attachments are part of Step 4 of the five-step wizard.</li>
+</ol>
+
+<h3>Uploading Files</h3>
+
+<ol>
+  <li>Drag and drop files into the upload area, or click to browse.</li>
+  <li>A progress bar appears for each file during upload.</li>
+  <li>Uploaded files display the file name, size, and type icon.</li>
+</ol>
+
+<h3>Deleting Files</h3>
+
+<p>Click the <strong>trash icon</strong> next to any file to delete it. Deletion is permanent.</p>
+
+<hr>
+
+<h2>9. Quick Add Feature</h2>
+
+<p>Quick Add allows creating clients with minimal information for rapid data entry. When a client is created via Quick Add (from another section such as Estimates or Jobs), the record is flagged as incomplete.</p>
+
+<h3>Identifying Quick Add Clients</h3>
+
+<p>Quick Add clients are identified by a <strong>red warning triangle icon</strong> next to their name in the Clients List View. A tooltip reads: <em>"Created via Quick Add - details incomplete"</em>.</p>
+
+<h3>Completing Quick Add Clients</h3>
+
+<ol>
+  <li>Click the warning icon or the <strong>"Complete Info"</strong> button in the tooltip.</li>
+  <li>The Edit Client modal opens with whatever data was entered during Quick Add.</li>
+  <li>Fill in the remaining required fields.</li>
+  <li>Click <strong>"Save Changes"</strong> to complete the client.</li>
+</ol>
+
+<p>Once saved, the Quick Add flag is removed and the warning icon disappears.</p>
+
+<hr>
+
+<h2>10. Searching and Filtering Clients</h2>
+
+<h3>10.1 Quick Search</h3>
+
+<p>The <strong>search bar</strong> at the top of the Clients List View searches across client names, company names, email addresses, and other fields. Type your search term and results update automatically.</p>
+
+<h3>10.2 Advanced Filtering</h3>
+
+<p>Three multi-select filter dropdowns are available:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Filter</th>
+      <th>What It Does</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Cities</strong></td>
+      <td>Shows only clients with properties in the selected cities.</td>
+    </tr>
+    <tr>
+      <td><strong>States</strong></td>
+      <td>Shows only clients with properties in the selected states.</td>
+    </tr>
+    <tr>
+      <td><strong>Tags</strong></td>
+      <td>Shows only clients that have the selected tags assigned.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>10.3 Tab Filtering</h3>
+
+<p>The four tabs (All, Residential, Business, Archived) provide quick filtering by client type and status. Tab filtering is combined with search and advanced filters.</p>
+
+<blockquote>
+  <p><strong>Tip:</strong> You can combine all filters for maximum precision. For example, search for "Smith" on the "Residential" tab while filtering by "Texas" in States and "Premium" in Tags to find all residential clients named Smith in Texas with the Premium tag.</p>
+</blockquote>
+
+<hr>
+
+<h2>11. Summary of Common Actions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>How to Do It</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Create a new client</td>
+      <td>Click <strong>"+ New Client"</strong>, complete the five-step wizard, and click <strong>"Create Client"</strong>.</td>
+    </tr>
+    <tr>
+      <td>Edit a client</td>
+      <td>Open the Client Detail Page and click <strong>"Edit"</strong> in the sidebar, or click the edit icon on the List View.</td>
+    </tr>
+    <tr>
+      <td>Archive a client</td>
+      <td>Click the three-dot menu &gt; <strong>"Archive"</strong> and confirm.</td>
+    </tr>
+    <tr>
+      <td>Restore an archived client</td>
+      <td>On the Archived tab, click the three-dot menu &gt; <strong>"Restore"</strong> and confirm.</td>
+    </tr>
+    <tr>
+      <td>Add a property</td>
+      <td>On the Client Detail Page, go to the Properties tab and click <strong>"+ New Property"</strong>.</td>
+    </tr>
+    <tr>
+      <td>Delete a property</td>
+      <td>On the Properties tab, click the trash icon on the property card and confirm.</td>
+    </tr>
+    <tr>
+      <td>Start a conversation</td>
+      <td>Click <strong>"Start a Conversation"</strong> in the header or three-dot menu to open the Inbox.</td>
+    </tr>
+    <tr>
+      <td>Manage attachments</td>
+      <td>Click the three-dot menu &gt; <strong>"Attachments"</strong> to open the Attachments panel.</td>
+    </tr>
+    <tr>
+      <td>Import clients via CSV</td>
+      <td>Click <strong>"Import CSV"</strong>, upload your file, map columns, preview, and import.</td>
+    </tr>
+    <tr>
+      <td>Export clients to CSV</td>
+      <td>Click <strong>"Export CSV"</strong> to download a CSV of the current filtered view.</td>
+    </tr>
+    <tr>
+      <td>Create an estimate for a client</td>
+      <td>On the Client Detail Page, go to Estimates tab and click <strong>"+ New Estimate"</strong>.</td>
+    </tr>
+    <tr>
+      <td>Create a job for a client</td>
+      <td>On the Client Detail Page, go to Jobs &amp; Invoices tab and click <strong>"+ New Job"</strong>.</td>
+    </tr>
+    <tr>
+      <td>Create an invoice for a client</td>
+      <td>On the Client Detail Page, go to Jobs &amp; Invoices tab and click <strong>"+ New Invoice"</strong>.</td>
+    </tr>
+    <tr>
+      <td>Filter by client type</td>
+      <td>Click the <strong>All</strong>, <strong>Residential</strong>, <strong>Business</strong>, or <strong>Archived</strong> tab.</td>
+    </tr>
+    <tr>
+      <td>Complete a Quick Add client</td>
+      <td>Click the warning icon next to the client name and fill in the missing fields.</td>
+    </tr>
+  </tbody>
+</table>
+
+</main>
+</body>
+</html>

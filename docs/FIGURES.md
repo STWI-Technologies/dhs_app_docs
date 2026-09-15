@@ -1,0 +1,105 @@
+# Figures, how the screenshots are made, and what is adjusted in them
+
+Every image under `public/images/` is captured by a script in
+`scripts/kb-screenshots/` against **staging**
+(`https://app-staging.directhomeservice.com`). Nothing is drawn, mocked up or
+composited from pieces of other screens.
+
+The scripts are **read-only**. The platform is mid-migration and create
+operations are unavailable, so panels are opened to be photographed and always
+cancelled: no record is created, sent, paid, completed or deleted.
+
+`node scripts/kb-figure-coverage.mjs` reports which article sections describe an
+action and have no figure, and which of those cannot be photographed today with
+the reason.
+
+## Rows left out of list figures
+
+Staging is a shared account. Anyone on the team can add records to it, and some
+of what is there is somebody's real test data or an internal staff email
+address, neither belongs in a published help centre, and we cannot delete it.
+
+`clients.mjs` and `section.mjs` therefore remove matching rows from the DOM for
+the length of the screenshot only. The app is not touched.
+
+| Excluded | Why | Figures affected |
+|---|---|---|
+| `Lulu Lemon` | test data added to the shared staging account; the row also carried an internal `@stwitechnologies.com` address in the Email column | `clients/01-clients-list`, `clients/02-filters-popover`, `jobs/01-jobs-list`, `jobs/02-jobs-filter` |
+
+Override the list with `KB_EXCLUDE="Name One,Name Two"`, or `KB_EXCLUDE=` to
+exclude nothing.
+
+## Figures adjusted in the browser before the shot
+
+Two figures in `job-and-invoice.mjs` are arranged before capture. Both are
+deliberate, and both are here so a future reader does not take them for a
+faithful recording of what that record contains.
+
+| Figure | What was done | Why |
+|---|---|---|
+| `jobs/06-job-checklist` | the checklist rows are re-ordered into the sequence the work actually runs in | the app renders them in an order that is neither the order they were added nor the order they are worked; a figure in that order teaches the wrong thing. **This is an app defect, reported separately**, when it is fixed, delete the reorder and re-shoot. |
+| Every figure showing the client sidebar of the job **Door Fitting** and of the invoice raised from it, `jobs/03-job-detail`, `04-job-visits`, `05-job-invoices`, `06-job-checklist`, `07-client-chat`, `09-more-actions`, `11-job-status`, `13-complete-job`, `invoices/07-invoice-paid`, `08-invoice-payments` | the same two bubbles are injected into the Chat panel, **both** of them, the provider's and the client's | this job's Client chat is empty (`No messages yet`), and no record on staging has a two-sided conversation: the client account's password could not be recovered to answer from the other side. The panel, the Client/Team switch and the timestamp formatting are the app's; the two messages are not. They go into every one of these figures rather than just the chat close-up, so the article doesn't show a conversation on one screen and an empty panel two figures later on the same job. Re-shoot from a real conversation as soon as one exists. |
+
+
+| Every figure of the appointment **APT-1036**, `appointments/03-appointment-detail`, `06-visit-timesheets`, and `04-related-records` when it can be taken | the same two bubbles are injected into the Chat panel, and a phone number is written into the client card | the same reasons as the job above: the conversation is empty and the panel is a third of the figure. The client on this appointment also has no phone on file, so the card published `Phone: —` next to a real email and read as a broken field; the number put there is a 555 number, the shape every other client on this account carries, and it is not real. Both go into every figure of this appointment, never just one. The visit row is also expanded before the shot, that is the app's own control, nothing is faked by opening it. |
+
+## The Estimates figures are retouched
+
+Estimates stopped loading on staging before these could be re-shot with the
+record arranged, so four published figures were edited in place by
+`scripts/kb-screenshots/edit-estimates-figures.mjs`. That script is the record
+of what was changed, down to the pixel coordinates; re-shoot and delete it as
+soon as the section loads again.
+
+| Figure | What was changed | Why |
+|---|---|---|
+| `estimates/01-estimates-list`, `02-estimates-filter` | the first row's name, "EST-1001", is redrawn as "Deep Cleaning"; Robert Smith's default blue silhouette is replaced with one of the account's own portraits | nine of the ten rows carry a descriptive name, so the tenth published looking like missing data, and his was the one blank face in a column of photographs. The new name is sized to match the row below it, letter for letter. |
+| `estimates/05-estimate-detail`, `08-more-actions` | a phone number is drawn onto the client card, and two bubbles are drawn into the Chat panel | the client has no phone on file, so the card published `Phone: —` beside a real email and read as a broken field. The number is the 555 number this same client carries in the Appointments figures, from `injections.mjs`, so she has one number across both articles. The chat is empty on every record on staging, as it is for the job figures above. |
+
+## A contradiction between two published figures
+
+`jobs/06-job-checklist` and `jobs/13-complete-job` are the same job's checklist
+and they **do not agree**: the Checklist tab lists six items, the Complete job
+dialog lists seven, and only five of them are the same. This is the app's
+behaviour, not a mistake in the figures, and it is reported as a defect. Both
+figures are published because each is the right picture for its section; when
+the defect is fixed, re-shoot both.
+
+| | Checklist tab (says 6) | Complete job dialog (7) |
+|---|---|---|
+| Adjust the hinges and strike plate | yes | yes |
+| Check the seal and weatherstripping | yes | yes |
+| Update job notes | yes | yes |
+| Send the invoice and confirm the payment | yes | yes |
+| Load unused materials back in the van | yes | yes |
+| Take after photos | yes |, |
+| Record materials used |, | yes |
+| Get the client's sign off |, | yes |
+
+## Figures deliberately not taken
+
+Beyond the blocked list in the coverage script:
+
+- **Tracking time** (Jobs), starting the timer writes a timesheet record. The
+  `Start Timer` button itself is in the job detail figure's header; it only
+  exists while the job is still open.
+- **The Send to Client panel** (Jobs), captured and then held back, because its
+  message body shows a literal `\n\n` where the line breaks should be. The same
+  component on Estimates (`Submit estimate`) and Invoices (`Send Invoice`)
+  renders those breaks correctly, and both of those panels ARE published, so the
+  fault is specific to the job panel. The More Actions figure shows where the
+  action lives instead. The capture is kept as evidence at
+  `~/dhs_qa_workspace/screenshots/kb-findings/2026-09-11/job-send-to-client-panel.png`;
+  re-shoot into the article once it is fixed.
+
+## One thing wrong in three published figures
+
+`estimates/06-submit-estimate`, `invoices/04-send-invoice` and the held-back job
+panel all build the client's link against
+`client-app-develop.directhomeservice.com`, from staging. The host comes from
+the environment, so it is not something a reader can act on, but it is an
+internal hostname sitting in two published figures. It is reported as a finding.
+It is NOT a reason to hold one figure and not the others, and the earlier note
+here that treated it that way was wrong: either all three go or none do. They
+stay until someone decides otherwise, because the alternative is doctoring a URL
+in a figure, which is worse than showing the real one.

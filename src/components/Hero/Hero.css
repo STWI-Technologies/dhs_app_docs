@@ -1,0 +1,281 @@
+.hero {
+  position: relative;
+  margin-bottom: 64px;
+}
+
+/* The dark panel. The hexagons are painted with gradients rather than an image
+   so the hero stays one HTTP request and scales at any width. */
+/* No overflow:hidden here. The panel used to clip its own rounded corners,
+   but it is full-bleed and square now, and the only thing that overflowed it
+   was the search dropdown, which got cut to a single visible row. Backgrounds
+   never spill past the border box, so there is nothing left to clip. */
+.hero__panel {
+  position: relative;
+  padding: 0;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255, 255, 255, 0.06) 0 34%, transparent 34.5%),
+    radial-gradient(circle at 88% 18%, rgba(255, 255, 255, 0.05) 0 26%, transparent 26.5%),
+    radial-gradient(circle at 72% 92%, rgba(255, 255, 255, 0.04) 0 22%, transparent 22.5%),
+    linear-gradient(160deg, #1b2450 0%, #16204a 45%, #131c3f 100%);
+}
+
+/* The panel paints the full viewport width; this keeps its contents on the
+   same measure as the cards under it. */
+.hero__inner {
+  max-width: 1520px;
+  margin: 0 auto;
+  padding: 24px 32px 72px;
+}
+
+.hero__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.hero__brand {
+  display: inline-flex;
+  align-items: center;
+}
+
+.hero__logo {
+  height: 52px;
+  transition: opacity 0.2s ease;
+}
+
+.hero__brand:hover .hero__logo {
+  opacity: 0.85;
+}
+
+.hero__nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.hero__nav-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.hero__nav-link:hover,
+.hero__nav-link--active {
+  color: #ffffff;
+}
+
+.hero__title {
+  color: #ffffff;
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  line-height: 1.15;
+  text-align: center;
+  margin: 0 0 14px;
+}
+
+.hero__subtitle {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 17px;
+  text-align: center;
+  margin: 0 auto 26px;
+  max-width: 520px;
+}
+
+.hero__search {
+  position: relative;
+  z-index: 20;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Straddles the panel's bottom edge: half navy, half page background. */
+.hero__toggle-wrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -26px;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.hero__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px;
+  background: #ffffff;
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(17, 24, 60, 0.18);
+  pointer-events: auto;
+}
+
+.hero__toggle-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 26px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #3c4257;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+/* Phone-only affordance: from 600px up both options are on screen already. */
+.hero__toggle-switch {
+  display: none;
+}
+
+.hero__toggle-option svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.hero__toggle-option:hover {
+  color: #1b2450;
+}
+
+.hero__toggle-option--active,
+.hero__toggle-option--active:hover {
+  background: #131c3f;
+  color: #ffffff;
+}
+
+/* The search bar lives inside the hero, so its own page-level spacing goes. */
+.hero__search .search-bar {
+  max-width: none;
+  margin: 0;
+}
+
+.hero__search .search-bar__input {
+  padding: 18px 48px 18px 54px;
+  border-color: transparent;
+  font-size: 17px;
+  box-shadow: 0 8px 24px rgba(9, 14, 35, 0.22);
+}
+
+.hero__search .search-bar__input:focus {
+  border-color: transparent;
+  box-shadow: 0 8px 24px rgba(9, 14, 35, 0.28), 0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+.hero__search .search-bar__icon {
+  left: 20px;
+}
+
+@media (max-width: 900px) {
+  .hero__title {
+    font-size: 34px;
+  }
+  .hero__inner {
+    padding: 20px 20px 68px;
+  }
+  .hero__nav {
+    margin-bottom: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* The pill is one row now, so it hangs ~31px below the panel instead of 58. */
+  .hero {
+    margin-bottom: 50px;
+  }
+  .hero__nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .hero__nav-links {
+    gap: 18px;
+  }
+  .hero__nav-link {
+    font-size: 14px;
+  }
+  .hero__logo {
+    height: 40px;
+  }
+  .hero__title {
+    font-size: 27px;
+    text-align: left;
+  }
+  .hero__subtitle {
+    font-size: 15px;
+    text-align: left;
+    margin-bottom: 24px;
+  }
+  /* Collapsed to the selected option plus a chevron. Two explicit grid rows
+     keep the chevron beside the selected option whichever one it is, and the
+     second row simply has no box while the other option is hidden. */
+  .hero__toggle {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    width: calc(100% - 32px);
+    border-radius: 20px;
+  }
+  .hero__toggle-option {
+    width: 100%;
+    justify-content: flex-start;
+    grid-column: 1;
+    grid-row: 2;
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+  .hero__toggle-option--active {
+    grid-row: 1;
+  }
+  .hero__toggle:not(.hero__toggle--open) .hero__toggle-option:not(.hero__toggle-option--active) {
+    display: none;
+  }
+  .hero__toggle-switch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: 2;
+    grid-row: 1;
+    width: 40px;
+    align-self: stretch;
+    padding: 0;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: #3c4257;
+    cursor: pointer;
+  }
+  .hero__toggle-switch svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.2s ease;
+  }
+  .hero__toggle--open .hero__toggle-switch svg {
+    transform: rotate(180deg);
+  }
+  /* Anchored by its top edge so opening grows the pill down over the page
+     instead of up into the search bar, and floated above the cards. */
+  .hero__toggle-wrap {
+    top: calc(100% - 26px);
+    bottom: auto;
+    z-index: 5;
+  }
+  .hero__search .search-bar__input {
+    padding: 15px 44px 15px 48px;
+    font-size: 15px;
+  }
+}

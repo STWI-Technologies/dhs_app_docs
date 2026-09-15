@@ -1,0 +1,119 @@
+<h1>Gestión de Facturas</h1>
+<h2>Resumen</h2>
+<p>Una <strong>factura</strong> es la cuenta. Sale del trabajo, normalmente directo de un trabajo completado, se le manda al cliente y de ahí usted la sigue hasta que llega el dinero.</p>
+<p>Desde esta sección usted puede:</p>
+<ul>
+<li><strong>Emitir facturas</strong>, desde un trabajo o por su cuenta.</li>
+<li><strong>Enviarlas</strong> al cliente por correo o por mensaje.</li>
+<li><strong>Ver qué se ha leído</strong>: enviado, visto, pagado.</li>
+<li><strong>Registrar pagos</strong>, incluidos los parciales, con su método y su referencia.</li>
+<li><strong>Perseguir lo atrasado</strong>, por fecha de vencimiento y por saldo.</li>
+<li><strong>Descargar un PDF</strong> para los clientes que lo necesitan.</li>
+</ul>
+<h2>La lista de facturas</h2>
+<p>Para abrirla, vaya a <strong>Menú &gt; Facturas</strong>.</p>
+<p><img src="/images/invoices/01-invoices-list.png" alt="La lista de facturas con número, cliente, trabajo vinculado, fechas, estado y saldo"></p>
+<figcaption class="doc-caption">La Fecha de vencimiento y el Saldo total juntos son toda la cobranza.</figcaption>
+<table>
+<thead>
+<tr><th>Columna</th><th>Qué muestra</th></tr>
+</thead>
+<tbody>
+<tr><td>Número</td><td>El número de la factura. Ordenable.</td></tr>
+<tr><td>Cliente</td><td>A quién se le cobra.</td></tr>
+<tr><td>Vinculado a</td><td>El trabajo o presupuesto del que salió, para poder regresar al trabajo detrás de la cuenta.</td></tr>
+<tr><td>Fecha de emisión</td><td>Cuándo se emitió.</td></tr>
+<tr><td>Fecha de vencimiento</td><td>Cuándo se espera el pago. Ordenable, y así es como encuentra lo atrasado.</td></tr>
+<tr><td>Estado</td><td>Cómo va. Ordenable.</td></tr>
+<tr><td>Saldo total</td><td>Lo que se sigue debiendo. Ordenable, así los montos pendientes más grandes suben.</td></tr>
+<tr><td>Acciones</td><td>Editar y eliminar.</td></tr>
+</tbody>
+</table>
+<p>Ordenar por <strong>Fecha de vencimiento</strong> y por <strong>Saldo total</strong> es toda la cobranza: la primera le dice qué está atrasado, la segunda le dice qué conviene perseguir primero.</p>
+<p><img src="/images/invoices/02-invoices-filter.png" alt="El panel de filtros de facturas"></p>
+<figcaption class="doc-caption">Filtre por estado para separar lo enviado de lo pagado.</figcaption>
+<h3>Estados</h3>
+<table>
+<thead>
+<tr><th>Estado</th><th>Qué significa</th></tr>
+</thead>
+<tbody>
+<tr><td>Borrador</td><td>Todavía sin enviar. Totalmente editable.</td></tr>
+<tr><td>Enviado</td><td>Ya salió al cliente.</td></tr>
+<tr><td>Visto</td><td>La abrió, así que el "nunca me llegó" tiene respuesta.</td></tr>
+<tr><td>Pago en Progreso</td><td>Un pago va pasando por la pasarela.</td></tr>
+<tr><td>Pagado</td><td>Saldada por completo.</td></tr>
+</tbody>
+</table>
+<h2>Crear una factura</h2>
+<p>La mayoría de las facturas no deberían capturarse. Abra el trabajo completado, vaya a su pestaña <strong>Facturas</strong> y use <strong>Agregar Factura desde trabajo</strong>. Los servicios, los productos y los totales se pasan solos.</p>
+<p>Para emitir una directo, haga clic en <strong>Agregar Factura</strong> en la lista y llene el cliente, las fechas y las líneas.</p>
+<p><img src="/images/invoices/03-add-invoice-panel.png" class="kb-panel" alt="El panel para crear una factura"></p>
+<figcaption class="doc-caption">Emitir una factura directo. Cobrar un trabajo terminado suele ser más rápido.</figcaption>
+<p>Un trabajo puede llevar más de una factura, que es como se cobra por etapas: un anticipo al principio, el saldo al terminar.</p>
+<h2>Detalle de la factura</h2>
+<p>Haga clic en una factura para abrirla. Esta es la cuenta en sí: qué se está cobrando, el impuesto que lleva, lo que ya se ha pagado, y cuánto queda pendiente.</p>
+<p><img src="/images/invoices/07-invoice-paid.png" alt="Una factura pagada abierta, con a quién se le cobra, el trabajo del que salió, sus líneas y totales"></p>
+<figcaption class="doc-caption">Una factura abierta. Esta se emitió desde el trabajo "Door Fitting" y ya está pagada. Detalles del trabajo guarda la obra cobrada; Pagos guarda el dinero.</figcaption>
+<p>El encabezado trae su número y su estado, un botón <strong>Enviar factura</strong>, y un menú de tres puntos con <strong>Editar factura</strong>, <strong>Descargar PDF</strong> y <strong>Eliminar</strong>. Debajo hay dos pestañas. <strong>Detalles del trabajo</strong> tiene a quién se le cobra, el trabajo del que salió, y los servicios y productos con sus totales. <strong>Pagos</strong> es donde se registra el dinero recibido.</p>
+<p>La barra lateral del cliente mantiene sus datos de contacto a la mano para cuando haya que dar seguimiento.</p>
+<h2>Enviar una factura</h2>
+<p><strong>Enviar factura</strong> la manda por correo o por mensaje, con una vista previa de lo que va a recibir. El estado pasa a <strong>Enviado</strong>, y a <strong>Visto</strong> en cuanto la abre.</p>
+<p><img src="/images/invoices/04-send-invoice.png" class="kb-panel" alt="El panel de envío de factura"></p>
+<figcaption class="doc-caption">Enviar una factura, con vista previa primero.</figcaption>
+<h2>Registrar un pago</h2>
+<p>Abra la pestaña <strong>Pagos</strong> y use <strong>Agregar pago</strong> para registrar el dinero recibido:</p>
+<p><img src="/images/invoices/05-add-payment.png" class="kb-panel" alt="El panel para agregar un pago con monto, método y referencia"></p>
+<figcaption class="doc-caption">Registrar un pago. Menos del total está bien, y el saldo lleva el resto.</figcaption>
+<table>
+<thead>
+<tr><th>Campo</th><th>Notas</th></tr>
+</thead>
+<tbody>
+<tr><td>Cantidad</td><td>Lo que se recibió. Menos del total está bien. Eso es un pago parcial, y el saldo sigue llevando el resto.</td></tr>
+<tr><td>Método de pago</td><td>Efectivo, cheque, tarjeta de crédito, transferencia bancaria u otro.</td></tr>
+<tr><td>Fecha de Transacción</td><td>Cuándo se recibió, que no siempre es hoy.</td></tr>
+<tr><td>Referencia de pago</td><td>Un número de cheque, una referencia de transferencia, lo que vaya a necesitar después para cuadrarlo contra el estado de cuenta.</td></tr>
+<tr><td>Estado</td><td>Pendiente, completado, fallido, reembolsado o anulado.</td></tr>
+<tr><td>Notas</td><td>Lo que valga la pena recordar del pago.</td></tr>
+</tbody>
+</table>
+<p>Cada pago se lista en la pestaña <strong>Pagos</strong> y se puede editar después. El <strong>Saldo pendiente</strong> de la factura se actualiza conforme entran, y cuando el saldo llega a cero la factura queda <strong>Pagado</strong>.</p>
+<p><img src="/images/invoices/08-invoice-payments.png" alt="La pestaña de pagos de una factura con un pago registrado"></p>
+<figcaption class="doc-caption">La pestaña Pagos. Cada pago queda listado, y el saldo lo sigue.</figcaption>
+<p>Ese estado en la lista es la razón para registrar los pagos parciales conforme llegan y no al final: una factura con un saldo pequeño pendiente es una conversación muy distinta de una que muestra el monto completo.</p>
+<h2>Editar y eliminar</h2>
+<p>Una factura en borrador es totalmente editable. Una vez enviada, y sobre todo una vez que tiene un pago encima, la factura es un registro financiero, así que lo que se puede cambiar se reduce. Corregir una factura enviada normalmente significa emitir una nueva y no reescribir la vieja en silencio.</p>
+<p>Eliminar está disponible desde la fila de la lista y desde dentro de la factura, pero piénselo dos veces antes de eliminar algo que un cliente ya vio o ya pagó.</p>
+<p><img src="/images/invoices/06-more-actions.png" alt="El menú Más acciones abierto en una factura"></p>
+<figcaption class="doc-caption">Editar factura, Descargar PDF y Eliminar viven detrás de Más acciones.</figcaption>
+<h2>Compartir un PDF</h2>
+<p><strong>Descargar PDF</strong> le entrega la factura como documento, para los clientes que archivan en papel o que tienen que pasarla a un área de cuentas por pagar.</p>
+<h2>De dónde salen las facturas</h2>
+<ul>
+<li><strong>Trabajos</strong>: el camino habitual. La pestaña Facturas de un trabajo emite una desde la obra, y un trabajo puede tener varias.</li>
+<li><strong>Presupuestos</strong>: un presupuesto se vuelve trabajo, y el trabajo se vuelve la factura. La columna <strong>Vinculado a</strong> conserva el rastro.</li>
+<li><strong>Clientes</strong>: el registro de un cliente lista sus facturas, así ve todo lo que debe en un solo lugar.</li>
+<li><strong>Servicios y productos</strong>: las líneas, con impuesto aplicado a lo que esté marcado como gravable.</li>
+</ul>
+<h2>Acciones comunes</h2>
+<table>
+<thead>
+<tr><th>Para hacer esto</th><th>Vaya aquí</th></tr>
+</thead>
+<tbody>
+<tr><td>Ver sus facturas</td><td>Menú &gt; Facturas</td></tr>
+<tr><td>Cobrar un trabajo terminado</td><td>Abra el trabajo &gt; Facturas &gt; Agregar Factura desde trabajo</td></tr>
+<tr><td>Emitir una desde cero</td><td>Agregar Factura</td></tr>
+<tr><td>Cobrar por etapas</td><td>Cree más de una factura desde el mismo trabajo</td></tr>
+<tr><td>Enviarla</td><td>Ábrala &gt; Enviar factura</td></tr>
+<tr><td>Saber si ya la vieron</td><td>El estado. Visto significa que la abrieron</td></tr>
+<tr><td>Registrar dinero recibido</td><td>Pestaña Pagos &gt; Agregar pago &gt; monto, método, referencia</td></tr>
+<tr><td>Registrar un pago parcial</td><td>Agregar pago con menos del total; el saldo lleva el resto</td></tr>
+<tr><td>Ver todos los pagos de una factura</td><td>La pestaña Pagos</td></tr>
+<tr><td>Encontrar lo vencido</td><td>Ordene por Fecha de vencimiento</td></tr>
+<tr><td>Decidir a quién perseguir primero</td><td>Ordene por Saldo total</td></tr>
+<tr><td>Volver al trabajo detrás de una cuenta</td><td>La columna Vinculado a</td></tr>
+<tr><td>Enviar algo imprimible</td><td>Más acciones &gt; Descargar PDF</td></tr>
+</tbody>
+</table>

@@ -1,0 +1,156 @@
+<h1>Gestión de Productos</h1>
+<h2>Resumen</h2>
+<p>Un <strong>producto</strong> es algo físico que usted almacena, vende o instala: un filtro, un termostato, un tramo de tubería. Cada uno lleva lo que a usted le cuesta, lo que cobra por él y, si quiere, cuántos tiene. Agréguelo a un presupuesto o a una factura y el precio y el inventario lo siguen.</p>
+<p>Desde esta sección usted puede:</p>
+<ul>
+<li><strong>Agregar productos</strong> con costo, marcado y precio, una foto y de dónde vienen.</li>
+<li><strong>Llevar el inventario</strong>: lo que hay, lo que ya está comprometido y cuándo reordenar.</li>
+<li><strong>Editar</strong> un producto, o <strong>editar en lote</strong> las cantidades de muchos.</li>
+<li><strong>Archivar</strong> los productos que ya no maneja, y restaurarlos después.</li>
+<li><strong>Eliminar</strong> definitivamente un producto archivado, cuando nada lo referencia.</li>
+<li><strong>Buscar y filtrar</strong> por etiqueta, grupo, proveedor, fabricante y más.</li>
+</ul>
+<p><strong>Importante:</strong> archivar y eliminar no son lo mismo. Archivar saca el producto de los selectores y conserva cada registro que lo usó. Eliminar es permanente, y solo se puede cuando nada referencia al producto.</p>
+<h2>La lista de productos</h2>
+<p>Para abrirla, vaya a <strong>Menú &gt; Inventario &gt; Productos</strong>.</p>
+<p><img src="/images/products/01-products-list.png" alt="La lista de productos con SKU, producto, costo, marcado, precio del artículo e inventario"></p>
+<figcaption class="doc-caption">La lista de productos. Costo y Precio del artículo son ordenables; Marcado no.</figcaption>
+<h3>Activo y Archivado</h3>
+<p>Dos pestañas: <strong>Activo</strong>, lo que maneja hoy, y <strong>Archivado</strong>, lo que retiró. Los archivados no aparecen al armar un presupuesto o una factura, pero se quedan en todo lo que ya los incluía.</p>
+<h3>Columnas</h3>
+<table>
+<thead>
+<tr><th>Columna</th><th>Qué muestra</th></tr>
+</thead>
+<tbody>
+<tr><td>SKU</td><td>El código que identifica al producto. Se fija al crearlo y ya no cambia. Ordenable.</td></tr>
+<tr><td>Producto</td><td>Su foto, su nombre y su descripción. Pase el cursor sobre la foto para verla más grande, lo cual ayuda cuando dos piezas tienen nombres parecidos.</td></tr>
+<tr><td>Costo</td><td>Lo que usted paga por él. Ordenable.</td></tr>
+<tr><td>Marcado %</td><td>Lo que le agrega encima.</td></tr>
+<tr><td>Precio del artículo</td><td>Lo que paga el cliente. Ordenable.</td></tr>
+<tr><td>Sujeto a impuestos</td><td>Marcado cuando el producto entra en el cálculo de impuestos.</td></tr>
+<tr><td>En uso</td><td>Marcado cuando al menos un presupuesto, trabajo o factura lo referencia. Esto es lo que decide si se puede eliminar.</td></tr>
+<tr><td>Etiquetas</td><td>Las etiquetas que usted le puso.</td></tr>
+<tr><td>Grupos</td><td>Los grupos a los que pertenece, si es que a alguno.</td></tr>
+<tr><td>Acciones</td><td>Vea abajo.</td></tr>
+</tbody>
+</table>
+<h3>Acciones de fila</h3>
+<p>Cada fila tiene un <strong>ojo</strong> que abre <strong>Ver detalles del producto</strong>, una vista de solo lectura con todo sobre el producto, incluido su inventario, y un <strong>menú de tres puntos</strong> con editar, archivar o eliminar y lo demás.</p>
+<p><strong>Eliminar</strong> queda en gris mientras algo referencie al producto: "Este elemento no se puede eliminar porque está vinculado a registros existentes". Archívelo en su lugar.</p>
+<h3>Búsqueda y filtros</h3>
+<p>El buscador del encabezado encuentra nombres y SKU, y <strong>Filtro</strong> abre un panel para reducir por etiqueta, grupo y los demás atributos del producto. <strong>Restablecer filtro</strong> los limpia. Los filtros, la búsqueda y la pestaña en la que está trabajan juntos.</p>
+<p><img src="/images/products/02-products-filter.png" alt="El panel de filtros de productos"></p>
+<figcaption class="doc-caption">Reducir el catálogo.</figcaption>
+<h2>Agregar un producto</h2>
+<p>Haga clic en <strong>Agregar producto</strong>. Un panel abre desde la derecha, titulado <strong>Agregar nuevo producto</strong>, con todo en una pantalla: primero lo esencial, luego el detalle.</p>
+<p><img src="/images/products/03-add-product-panel.png" class="kb-panel" alt="El panel de nuevo producto con imagen, SKU, nombre, costo, marcado y precio"></p>
+<figcaption class="doc-caption">Costo, marcado y precio están ligados: llene dos y el tercero sale solo.</figcaption>
+<h3>Lo esencial</h3>
+<table>
+<thead>
+<tr><th>Campo</th><th>Obligatorio</th><th>Notas</th></tr>
+</thead>
+<tbody>
+<tr><td>Imagen del producto</td><td>No</td><td>Una foto. Vale la pena ponerla, porque es lo que uno reconoce en una lista de piezas parecidas.</td></tr>
+<tr><td>SKU</td><td>Sí</td><td>Un código único para este producto. Después no se puede cambiar. Si el código ya está ocupado, se lo dicen al salir del campo.</td></tr>
+<tr><td>Nombre</td><td>Sí</td><td>Como se llama en presupuestos y facturas, así que escríbalo como debería leerlo un cliente.</td></tr>
+<tr><td>Descripción</td><td>No</td><td>Medida, modelo, con qué es compatible: lo que evite que alguien pida el equivocado.</td></tr>
+<tr><td>Costo</td><td>Sí</td><td>Lo que le paga a su proveedor.</td></tr>
+<tr><td>Marcado</td><td>—</td><td>Su margen, en porcentaje.</td></tr>
+<tr><td>Precio del artículo</td><td>—</td><td>Lo que paga el cliente.</td></tr>
+<tr><td>Sujeto a impuestos</td><td>No</td><td>Incluir este producto en el cálculo de impuestos.</td></tr>
+</tbody>
+</table>
+<h3>Cómo encajan costo, marcado y precio</h3>
+<p>Los tres están ligados, así que usted solo llena dos:</p>
+<ul>
+<li>Capture un <strong>Costo</strong> y un <strong>Marcado</strong>, y el <strong>Precio del artículo</strong> se calcula como el costo más ese porcentaje.</li>
+<li>Capture un <strong>Costo</strong> y un <strong>Precio del artículo</strong>, y el <strong>Marcado</strong> se calcula solo.</li>
+</ul>
+<p>Cuál use depende de cómo cobra. Si aplica un margen estándar, escriba el marcado y deje que el precio salga. Si el precio es fijo, porque lo pone el fabricante o porque es lo que aguanta el mercado, escriba el precio y vea qué margen le queda en realidad.</p>
+<h3>El detalle</h3>
+<p>Debajo de lo esencial está todo lo que hace que el producto se pueda pedir y contar. Nada de esto es obligatorio, pero es lo que convierte una lista de precios en un inventario que funciona.</p>
+<table>
+<thead>
+<tr><th>Campo</th><th>Para qué es</th></tr>
+</thead>
+<tbody>
+<tr><td>Unidad de medida</td><td>Cómo lo cuenta: pieza, caja, pie, galón.</td></tr>
+<tr><td>Proveedor / SKU del proveedor</td><td>A quién se lo compra y cuál es su código, para que reordenar no sea rastrear catálogos.</td></tr>
+<tr><td>Fabricante / Número de fabricante</td><td>Quién lo fabrica y el número de parte.</td></tr>
+<tr><td>Tiempo promedio de entrega</td><td>Cuánto tarda en llegar. Es lo que le dice con cuánta anticipación reordenar.</td></tr>
+<tr><td>Ubicación</td><td>Dónde vive: una camioneta, un estante, una bahía.</td></tr>
+<tr><td>Color</td><td>Cuando la misma pieza viene en varios.</td></tr>
+<tr><td>Grupo</td><td>A qué grupo pertenece.</td></tr>
+<tr><td>Etiquetas</td><td>Sus propias etiquetas, para filtrar después.</td></tr>
+<tr><td>Cantidad en existencia</td><td>Cuántos tiene ahora mismo.</td></tr>
+<tr><td>Cantidad de re-orden</td><td>El nivel en el que quiere que le avisen.</td></tr>
+<tr><td>Deshabilitar seguimiento de inventario</td><td>Apaga el conteo para este producto. Vea abajo.</td></tr>
+</tbody>
+</table>
+<p>Haga clic en <strong>Agregar producto</strong> para terminar.</p>
+<h2>Inventario</h2>
+<p>Para todo lo que se cuenta, DHS lleva tres números en vez de uno:</p>
+<table>
+<thead>
+<tr><th>Número</th><th>Qué significa</th></tr>
+</thead>
+<tbody>
+<tr><td>Stock disponible</td><td>Lo que todavía puede prometer.</td></tr>
+<tr><td>Stock reservado para presupuestos</td><td>Ya cotizado, todavía sin comprometer.</td></tr>
+<tr><td>Stock reservado para trabajos</td><td>Comprometido a trabajo en curso.</td></tr>
+</tbody>
+</table>
+<p>La distinción es el punto: diez filtros en el estante con ocho ya prometidos a trabajos no son diez filtros que usted pueda vender. Los productos aparecen como <strong>En stock</strong>, <strong>Stock bajo</strong> o <strong>Sin stock</strong> según dónde queden frente a su cantidad de re-orden.</p>
+<h3>Productos que no se cuentan</h3>
+<p>No todo vale la pena contarlo: consumibles, conexiones a granel, lo que nunca se le acaba. Encienda <strong>Deshabilitar seguimiento de inventario</strong> para esos. Conservan su precio y funcionan normal en presupuestos y facturas; simplemente no llevan cantidades ni le avisan del inventario.</p>
+<h2>Editar un producto</h2>
+<p>Abra el menú de tres puntos de la fila y elija <strong>Editar producto</strong>. Todo es editable menos el SKU. Guarde con <strong>Aplicar cambios</strong>.</p>
+<p><img src="/images/products/04-edit-product-panel.png" class="kb-panel" alt="El panel de editar producto"></p>
+<figcaption class="doc-caption">Editar un producto. El SKU queda fijo desde que se crea.</figcaption>
+<p>El panel de edición también lleva <strong>Archivar</strong> (o <strong>Eliminar</strong>, para un producto ya archivado), con su confirmación ahí mismo.</p>
+<h2>Actualizar cantidades de varios productos a la vez</h2>
+<p>Después de un conteo o de una entrega, editar producto por producto es perder la tarde. Seleccione las filas que quiera y la edición en lote le permite fijar la <strong>Cantidad en existencia</strong> y la <strong>Cantidad de re-orden</strong> de todos juntos.</p>
+<p>El panel le dice qué va a hacer: cuántos productos están seleccionados y si alguno no se puede actualizar. Los productos con el seguimiento de inventario apagado no tienen cantidades que fijar, así que quedan fuera; y si ninguno de los seleccionados lleva inventario, se lo dicen en vez de que el cambio no haga nada en silencio. Encienda el seguimiento en el panel de edición de cada producto primero.</p>
+<p><img src="/images/products/06-bulk-edit.png" class="kb-panel" alt="El panel de edición en lote indicando cuántos productos están seleccionados"></p>
+<figcaption class="doc-caption">La edición en lote dice a cuántos productos va a tocar, y advierte cuando algunos no se pueden.</figcaption>
+<h2>Archivar, restaurar, eliminar</h2>
+<p><strong>Para archivar:</strong> menú de tres puntos &gt; <strong>Archivar</strong> &gt; confirme. El producto pasa a la pestaña Archivado y deja de aparecer en los selectores. Todo lo que ya lo usaba queda intacto. Puede archivar varios a la vez seleccionando sus filas.</p>
+<p><img src="/images/products/05-archive-product.png" alt="El diálogo de confirmación de archivado sobre la lista de productos"></p>
+<figcaption class="doc-caption">Archivar pregunta primero, y deja en paz cada registro existente.</figcaption>
+<p><strong>Para restaurar:</strong> pestaña Archivado &gt; menú de tres puntos &gt; <strong>Restaurar</strong>.</p>
+<p><strong>Para eliminar definitivamente:</strong> pestaña Archivado &gt; menú de tres puntos &gt; <strong>Eliminar</strong> &gt; confirme. Solo está disponible cuando la columna <strong>En uso</strong> está vacía.</p>
+<h2>Productos agregados con prisa</h2>
+<p>¿Está a medio presupuesto y la pieza todavía no está en su catálogo? El selector de productos trae un atajo de <strong>Añadir Rápido</strong>: dé un SKU, un nombre y un precio, y vuelve a donde estaba con el producto ya creado. Su fila lleva una marca hasta que alguien llene el proveedor, la unidad y las cantidades.</p>
+<p>Tenga en cuenta que los productos se agregan así únicamente, desde un selector mientras arma algo. El panel de <strong>Añadir Rápido</strong> de la barra superior cubre citas, clientes, trabajos, presupuestos, equipos, usuarios, servicios, propiedades y pagos, pero no productos.</p>
+<p><img src="/images/products/07-quick-add-product.png" class="kb-panel" alt="El panel de Añadir Rápido para un producto, abierto desde un selector de productos"></p>
+<figcaption class="doc-caption">Añadir Rápido pide un SKU, un nombre, un precio, y una cantidad inicial si la tiene. Lo demás puede esperar.</figcaption>
+<h2>Dónde se usan los productos</h2>
+<ul>
+<li><strong>Presupuestos</strong>: las piezas cotizadas. Las cantidades que cotiza quedan reservadas, así que una cotización no puede prometer el mismo inventario dos veces.</li>
+<li><strong>Trabajos</strong>: piezas comprometidas a trabajo en curso.</li>
+<li><strong>Facturas</strong>: lo que se le cobra al cliente, con impuesto en los productos marcados como gravables.</li>
+<li><strong>Grupos</strong>: un conjunto de productos y servicios que se agrega junto, en vez de elegirlos uno por uno.</li>
+</ul>
+<p>Cambiar el precio de un producto cambia lo que toman los registros futuros; los registros ya escritos conservan el precio con el que se crearon.</p>
+<h2>Acciones comunes</h2>
+<table>
+<thead>
+<tr><th>Para hacer esto</th><th>Vaya aquí</th></tr>
+</thead>
+<tbody>
+<tr><td>Ver su catálogo</td><td>Menú &gt; Inventario &gt; Productos</td></tr>
+<tr><td>Agregar un producto</td><td>Agregar producto &gt; SKU, nombre, costo, marcado o precio &gt; Agregar producto</td></tr>
+<tr><td>Agregar uno con prisa</td><td>El atajo de Añadir Rápido dentro de un selector de productos</td></tr>
+<tr><td>Sacar un precio a partir de un margen</td><td>Capture Costo y Marcado, y el Precio del artículo sale solo</td></tr>
+<tr><td>Sacar el margen de un precio fijo</td><td>Capture Costo y Precio del artículo, y el Marcado sale solo</td></tr>
+<tr><td>Ver qué puede prometer de verdad</td><td>El ojo de su fila &gt; Stock disponible</td></tr>
+<tr><td>Actualizar cantidades tras un conteo</td><td>Seleccione las filas &gt; edición en lote &gt; Cantidad en existencia</td></tr>
+<tr><td>Que le avisen antes de quedarse sin</td><td>Fije la Cantidad de re-orden y el Tiempo promedio de entrega</td></tr>
+<tr><td>Dejar de contar algo</td><td>Editar producto &gt; Deshabilitar seguimiento de inventario</td></tr>
+<tr><td>Registrar quién se lo surte</td><td>Editar producto &gt; Proveedor y SKU del proveedor</td></tr>
+<tr><td>Dejar de manejar un producto</td><td>Menú de tres puntos &gt; Archivar</td></tr>
+<tr><td>Quitarlo definitivamente</td><td>Pestaña Archivado &gt; menú de tres puntos &gt; Eliminar (solo si no está en uso)</td></tr>
+</tbody>
+</table>

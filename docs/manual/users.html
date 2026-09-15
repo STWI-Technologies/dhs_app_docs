@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users Management</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #1a1a1a; }
+    h1 { border-bottom: 2px solid #e0e0e0; padding-bottom: 0.5rem; }
+    h2 { margin-top: 2rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #d0d0d0; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background-color: #f5f5f5; font-weight: 600; }
+    blockquote { border-left: 4px solid #d0d0d0; margin: 1rem 0; padding: 0.75rem 1rem; background: #fafafa; }
+    code { background: #f0f0f0; padding: 0.15rem 0.35rem; border-radius: 3px; font-size: 0.9em; }
+    hr { border: none; border-top: 1px solid #e0e0e0; margin: 2rem 0; }
+  </style>
+</head>
+<body>
+<main>
+
+<h1>Users Management</h1>
+
+<h2>Overview</h2>
+
+<p><strong>Users</strong> are the people who have access to your DHS platform account. Every person who logs in to the system — whether they are an office administrator, a field technician, or the business owner — is represented as a user. Each user has a profile with their name, email, phone number, role, and timezone, and can be assigned to one or more crews.</p>
+
+<p>From this section you can:</p>
+
+<ul>
+  <li><strong>Add</strong> new users with a role, contact information, and a password.</li>
+  <li><strong>Edit</strong> existing users to update their profile, change their role, or reassign them.</li>
+  <li><strong>Disable</strong> users who should no longer have access to the platform (without deleting their data).</li>
+  <li><strong>Enable</strong> previously disabled users to restore their access.</li>
+  <li><strong>Send password reset emails</strong> so users can set a new password.</li>
+  <li><strong>Search and filter</strong> users by name, email, or role.</li>
+  <li><strong>Manage profile pictures</strong> by uploading or removing avatar images.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Important:</strong> Users are <strong>not</strong> archived or deleted. Instead, they are <strong>disabled</strong> when they should no longer have access. Disabling a user prevents them from logging in but preserves all their historical data (past jobs, appointments, timesheets, etc.). You can re-enable a disabled user at any time to restore their access.</p>
+</blockquote>
+
+<hr>
+
+<h2>Users List View</h2>
+
+<p>The Users List View is the main view for managing all your users. To access it, navigate to <strong>Menu &gt; Users</strong>.</p>
+
+<h3>Tabs</h3>
+
+<p>At the top of the list, a <strong>segmented control</strong> lets you switch between two views:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tab</th>
+      <th>What It Shows</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Active Users</strong></td>
+      <td>All users whose accounts are currently enabled. These users can log in and access the platform.</td>
+    </tr>
+    <tr>
+      <td><strong>Disabled Users</strong></td>
+      <td>All users whose accounts have been disabled. These users cannot log in but their data is preserved.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Controls and Filters</h3>
+
+<p>Above the table you will find:</p>
+
+<ul>
+  <li>A <strong>Search</strong> bar — type a keyword to filter users by name or email.</li>
+  <li>A <strong>Role</strong> filter — a multi-select dropdown that lets you filter the list to show only users with specific roles (Admin, Support, Crew Member, Owner). You can select multiple roles at once.</li>
+  <li>A <strong>New User</strong> button — click to open the add user form.</li>
+</ul>
+
+<h3>Table Columns</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>What It Shows</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>User</strong></td>
+      <td>The user's avatar (or initials if no avatar is set) followed by their full name (first name + last name). This column is sortable. Click the user's name to open their profile in edit mode.</td>
+    </tr>
+    <tr>
+      <td><strong>Email Address</strong></td>
+      <td>The user's email address. This column is sortable.</td>
+    </tr>
+    <tr>
+      <td><strong>Role</strong></td>
+      <td>The user's assigned role displayed as a colored tag: <strong>Admin</strong> (green), <strong>Support</strong> (yellow), <strong>Crew Member</strong> (blue), or <strong>Owner</strong> (gray). This column is sortable.</td>
+    </tr>
+    <tr>
+      <td><strong>Crew</strong></td>
+      <td>The name of the first crew the user belongs to. If the user belongs to multiple crews, a "+N" badge appears that you can hover over to see a popover listing all their crews. If the user is not in any crew, this column is empty.</td>
+    </tr>
+    <tr>
+      <td><strong>Actions</strong></td>
+      <td>Action buttons for the user (see Row Actions below).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Row Actions (Active Users Tab)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>Icon</th>
+      <th>What It Does</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Edit</strong></td>
+      <td>Pencil icon</td>
+      <td>Opens the user's profile in edit mode where you can change all their details.</td>
+    </tr>
+    <tr>
+      <td><strong>Disable</strong></td>
+      <td>User with X icon</td>
+      <td>Opens a confirmation dialog to disable the user. If the user has active job assignments, this button is grayed out and disabled with the tooltip: "Cannot Disable User With Active Job Assignments." This button is hidden for your own account (you cannot disable yourself).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Row Actions (Disabled Users Tab)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>Icon</th>
+      <th>What It Does</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Edit</strong></td>
+      <td>Pencil icon</td>
+      <td>Opens the user's profile in edit mode.</td>
+    </tr>
+    <tr>
+      <td><strong>Enable</strong></td>
+      <td>Undo/restore icon</td>
+      <td>Opens a confirmation dialog to re-enable the user so they can log in again.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Sorting</h3>
+
+<p>The data grid supports sorting by the following columns:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sort Option</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>First Name</strong></td>
+      <td>Sort users alphabetically by first name (A-Z or Z-A).</td>
+    </tr>
+    <tr>
+      <td><strong>Email</strong></td>
+      <td>Sort users alphabetically by email address.</td>
+    </tr>
+    <tr>
+      <td><strong>Role</strong></td>
+      <td>Sort users by their assigned role.</td>
+    </tr>
+    <tr>
+      <td><strong>Created At</strong></td>
+      <td>Sort by when the user account was created.</td>
+    </tr>
+    <tr>
+      <td><strong>Updated At</strong></td>
+      <td>Sort by when the user profile was last modified.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Pagination</h3>
+
+<p>The list uses server-side pagination with a default page size of 10 users per page. Pagination controls at the bottom of the table let you navigate between pages. When filters or search terms change, the page resets to page 1.</p>
+
+<h3>Empty State</h3>
+
+<p>If no users match your search or filters, the table shows: "No Users Found."</p>
+
+<hr>
+
+<h2>User Roles</h2>
+
+<p>Every user in the system is assigned a role that determines what they can see and do. The four roles are:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Role</th>
+      <th>Tag Color</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Owner</strong></td>
+      <td>Gray</td>
+      <td>The account owner. This role is automatically assigned to the person who created the account and <strong>cannot be changed</strong> from the user management form. There is typically one owner per account. The role field is shown as read-only text when viewing an Owner's profile.</td>
+    </tr>
+    <tr>
+      <td><strong>Admin</strong></td>
+      <td>Green</td>
+      <td>Full administrative access to the platform. Admins can manage users, crews, settings, and all business operations. This is the highest role that can be assigned to other users.</td>
+    </tr>
+    <tr>
+      <td><strong>Support</strong></td>
+      <td>Yellow</td>
+      <td>Support staff role. Intended for office and dispatch personnel who manage scheduling, client communication, and day-to-day operations but may not need full admin access.</td>
+    </tr>
+    <tr>
+      <td><strong>Crew Member</strong></td>
+      <td>Blue</td>
+      <td>Standard field worker role. Intended for technicians, installers, and other crew members who primarily work on jobs in the field. This is the default role when creating a user via Quick Add.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Note:</strong> When creating a user from the Crew Quick Add modal (for example, while building a crew), only <strong>Admin</strong> and <strong>Crew Member</strong> are available as role options. The Support role is not offered in that context.</p>
+</blockquote>
+
+<hr>
+
+<h2>Adding a New User</h2>
+
+<p>To add a new user to your account:</p>
+
+<p><strong>Step 1:</strong> Click the <strong>New User</strong> button at the top of the Users List View. A panel will slide open from the right side with the title <strong>Add New User</strong>.</p>
+
+<p><strong>Step 2:</strong> Fill in the user's profile information.</p>
+
+<h3>Add User Form Fields</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Profile Picture</strong></td>
+      <td>No</td>
+      <td>Upload a profile image for the user. Click <strong>Upload Image</strong> to select a file. Accepted formats: any image file. Maximum size: 2 MB. Recommended size: 500px x 500px for best results. If an image is uploaded, a <strong>Remove</strong> button appears to clear it.</td>
+    </tr>
+    <tr>
+      <td><strong>First Name</strong></td>
+      <td>Yes</td>
+      <td>The user's first name. Must be between 2 and 50 characters and can only contain letters and spaces.</td>
+    </tr>
+    <tr>
+      <td><strong>Last Name</strong></td>
+      <td>Yes</td>
+      <td>The user's last name. Same validation rules as First Name: 2-50 characters, letters and spaces only.</td>
+    </tr>
+    <tr>
+      <td><strong>Email Address</strong></td>
+      <td>Yes</td>
+      <td>The user's email address. Must be a valid email format (maximum 254 characters). The system checks for duplicates when you leave the field — if the email is already registered, you will see: "This email is already registered. Please use a different email address."</td>
+    </tr>
+    <tr>
+      <td><strong>Phone Number</strong></td>
+      <td>Yes</td>
+      <td>The user's phone number with a country selector. Defaults to the US country code. The system validates the phone format based on the selected country.</td>
+    </tr>
+    <tr>
+      <td><strong>Role</strong></td>
+      <td>Yes</td>
+      <td>The user's role in the platform. Select from: <strong>Admin</strong>, <strong>Support</strong>, or <strong>Crew Member</strong>. (The Owner role cannot be assigned here.)</td>
+    </tr>
+    <tr>
+      <td><strong>Timezone</strong></td>
+      <td>Yes</td>
+      <td>The user's timezone. Select from a full list of timezones. This affects how dates and times are displayed for this user.</td>
+    </tr>
+    <tr>
+      <td><strong>Description</strong></td>
+      <td>No</td>
+      <td>An optional text description. Maximum 500 characters. The placeholder reads "Description (optional)." Use this for notes about the user's specialty, certifications, or responsibilities.</td>
+    </tr>
+    <tr>
+      <td><strong>Set Password</strong></td>
+      <td>Yes</td>
+      <td>The initial password for the user's account. This password will be sent to the user's email. See password requirements below.</td>
+    </tr>
+    <tr>
+      <td><strong>Confirm Password</strong></td>
+      <td>Yes</td>
+      <td>Retype the password to confirm. Must match the password entered above. Only appears after you start typing a password.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Password Requirements</h3>
+
+<p>The password must meet all of the following criteria:</p>
+
+<ul>
+  <li>Minimum <strong>10 characters</strong> long</li>
+  <li>Maximum <strong>128 characters</strong> long</li>
+  <li>At least <strong>one uppercase letter</strong> (A-Z)</li>
+  <li>At least <strong>one lowercase letter</strong> (a-z)</li>
+  <li>At least <strong>one number</strong> (0-9)</li>
+  <li>At least <strong>one special character</strong> (!@#$%^&*()_+-=[]{}|;:'",./<>?/~`)</li>
+</ul>
+
+<p>If the password does not meet these requirements, you will see the error: "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character."</p>
+
+<blockquote>
+  <p><strong>Tip:</strong> You can use the <strong>Generate</strong> button (star icon next to the password field) to automatically create a strong password that meets all requirements. Use the <strong>Copy</strong> button (clipboard icon) to copy the generated password so you can share it with the user. You will see a confirmation: "Password copied."</p>
+</blockquote>
+
+<p>A note below the password field reads: "The password will be sent to the recipient email."</p>
+
+<p><strong>Step 3:</strong> Click <strong>Add User</strong> at the bottom of the panel to create the user account.</p>
+
+<p>On success, you will see the toast message: "User successfully created." The panel closes and the new user appears in the list.</p>
+
+<p>If creation fails, you will see: "Failed to create user."</p>
+
+<h3>Validation Error Messages</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Error Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>First Name (empty)</td>
+      <td>"This field is required"</td>
+    </tr>
+    <tr>
+      <td>First Name (too short)</td>
+      <td>"First name must be at least 2 characters"</td>
+    </tr>
+    <tr>
+      <td>First Name (too long)</td>
+      <td>"First name cannot exceed 50 characters"</td>
+    </tr>
+    <tr>
+      <td>First Name (invalid characters)</td>
+      <td>"First name can only contain letters and spaces"</td>
+    </tr>
+    <tr>
+      <td>Last Name</td>
+      <td>Same rules and messages as First Name (with "Last name" prefix)</td>
+    </tr>
+    <tr>
+      <td>Email (empty)</td>
+      <td>"Email is required"</td>
+    </tr>
+    <tr>
+      <td>Email (invalid format)</td>
+      <td>"Please enter a valid email address"</td>
+    </tr>
+    <tr>
+      <td>Email (already exists)</td>
+      <td>"This email is already registered. Please use a different email address."</td>
+    </tr>
+    <tr>
+      <td>Phone (empty)</td>
+      <td>"Phone number is required"</td>
+    </tr>
+    <tr>
+      <td>Phone (invalid format)</td>
+      <td>"Please enter a valid phone number"</td>
+    </tr>
+    <tr>
+      <td>Password (doesn't meet requirements)</td>
+      <td>"Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"</td>
+    </tr>
+    <tr>
+      <td>Confirm Password (doesn't match)</td>
+      <td>"Passwords do not match"</td>
+    </tr>
+    <tr>
+      <td>Confirm Password (empty)</td>
+      <td>"Please confirm your password"</td>
+    </tr>
+    <tr>
+      <td>Description (too long)</td>
+      <td>"Description cannot exceed 500 characters"</td>
+    </tr>
+    <tr>
+      <td>Avatar (too large)</td>
+      <td>"File is too large. Maximum size is 2MB."</td>
+    </tr>
+    <tr>
+      <td>Avatar (wrong type)</td>
+      <td>"Invalid file type. Please select an image file."</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>Editing a User</h2>
+
+<p>To edit an existing user, click the <strong>Edit</strong> (pencil icon) button on the user's row, or click the user's name in the table. A panel will slide open from the right side with the title <strong>Edit User</strong>.</p>
+
+<p>The edit form shows the same fields as the create form (Profile Picture, First Name, Last Name, Email, Phone, Role, Timezone, Description), pre-filled with the user's current information. The <strong>Set Password</strong> and <strong>Confirm Password</strong> fields are <strong>not</strong> shown in edit mode — instead, a password reset section appears.</p>
+
+<h3>Password Reset (Edit Mode Only)</h3>
+
+<p>Below the main form fields, a section titled <strong>Reset Password</strong> appears with the description: "Send a password reset link to the user's email address." Click the <strong>Send Reset Email</strong> button to send the link. The button shows "Sending..." while processing.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> The password reset section is not shown when editing your own profile — it only appears when editing another user's profile.</p>
+</blockquote>
+
+<h3>Disable/Enable Button (Edit Mode Header)</h3>
+
+<p>In the top-right corner of the edit panel (next to the close button), there is a <strong>Disable User</strong> or <strong>Enable User</strong> button depending on the user's current status:</p>
+
+<ul>
+  <li>For active users: Shows <strong>Disable User</strong> with a user-X icon. Clicking it opens a black confirmation popover.</li>
+  <li>For disabled users: Shows <strong>Enable User</strong> with an undo icon. Clicking it opens a black confirmation popover.</li>
+  <li>For your own account: The button is hidden (you cannot disable yourself).</li>
+</ul>
+
+<h3>Saving Changes</h3>
+
+<p>After modifying the user's information, click <strong>Apply Changes</strong> at the bottom of the panel. This button is only enabled if you have actually changed something.</p>
+
+<p>On success: "User successfully updated." On failure: "Failed to update user."</p>
+
+<p>Click <strong>Cancel</strong> to close the panel without saving.</p>
+
+<hr>
+
+<h2>Disabling a User</h2>
+
+<p>Disabling a user prevents them from logging into the platform while preserving all their historical data. This is the recommended approach when someone leaves your team or should temporarily lose access.</p>
+
+<p>There are two ways to disable a user:</p>
+
+<h3>From the Users List View</h3>
+
+<ol>
+  <li>Make sure you are on the <strong>Active Users</strong> tab.</li>
+  <li>Click the <strong>Disable</strong> (user with X icon) button on the user's row.</li>
+  <li>A confirmation dialog appears with the title <strong>Disable User</strong> and the message: "Are you sure you want to disable this user? This will prevent them from logging in and accessing the app."</li>
+  <li>Click <strong>Disable User</strong> (red button) to confirm, or <strong>Cancel</strong> to go back.</li>
+</ol>
+
+<h3>From the Edit Panel</h3>
+
+<ol>
+  <li>Open the user's profile in edit mode.</li>
+  <li>Click the <strong>Disable User</strong> button in the top-right corner of the panel.</li>
+  <li>A black confirmation popover appears with the same message: "Are you sure you want to disable this user? This will prevent them from logging in and accessing the app."</li>
+  <li>Click <strong>Disable User</strong> to confirm, or <strong>Cancel</strong> to dismiss.</li>
+</ol>
+
+<p>On success: "User successfully disabled." The user moves from the Active Users tab to the Disabled Users tab.</p>
+
+<blockquote>
+  <p><strong>Warning:</strong> You cannot disable a user who has <strong>active job assignments</strong>. If a user is currently assigned to active jobs (the <strong>isInUse</strong> flag is true), the disable button will be grayed out and disabled. The tooltip reads: "Cannot Disable User With Active Job Assignments." You must first remove the user from those active jobs before you can disable their account.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Note:</strong> You cannot disable your own account. The disable button is hidden when viewing your own profile.</p>
+</blockquote>
+
+<hr>
+
+<h2>Enabling a Disabled User</h2>
+
+<p>To restore access for a disabled user:</p>
+
+<h3>From the Users List View</h3>
+
+<ol>
+  <li>Switch to the <strong>Disabled Users</strong> tab.</li>
+  <li>Click the <strong>Enable</strong> (undo icon) button on the user's row.</li>
+  <li>A confirmation dialog appears with the title <strong>Enable User</strong> and the message: "Do you want to enable this user? They will restore app access."</li>
+  <li>Click <strong>Enable User</strong> to confirm, or <strong>Cancel</strong> to go back.</li>
+</ol>
+
+<h3>From the Edit Panel</h3>
+
+<ol>
+  <li>Open the disabled user's profile in edit mode.</li>
+  <li>Click the <strong>Enable User</strong> button in the top-right corner.</li>
+  <li>A black confirmation popover appears with the message: "Are you sure you want to enable this user?"</li>
+  <li>Click <strong>Enable User</strong> to confirm, or <strong>Cancel</strong> to dismiss. The button shows "Enabling User" while processing.</li>
+</ol>
+
+<p>On success: "User successfully enabled." The user moves from the Disabled Users tab back to the Active Users tab and can immediately log in again.</p>
+
+<hr>
+
+<h2>Profile Picture Management</h2>
+
+<p>Each user can have a profile picture (avatar) that appears throughout the platform — in the users list, crew member lists, appointment assignments, and more.</p>
+
+<h3>Uploading a Profile Picture</h3>
+
+<ol>
+  <li>Open the user's profile in add or edit mode.</li>
+  <li>Click <strong>Upload Image</strong> next to the avatar placeholder.</li>
+  <li>Select an image file from your computer.</li>
+  <li>The image is displayed as a preview in the form.</li>
+</ol>
+
+<p>Requirements:</p>
+<ul>
+  <li><strong>File type:</strong> Any image format (JPG, PNG, etc.)</li>
+  <li><strong>Maximum size:</strong> 2 MB</li>
+  <li><strong>Recommended dimensions:</strong> 500px x 500px for best results</li>
+</ul>
+
+<p>If the file is too large, you will see: "File is too large. Maximum size is 2MB." If the file is not an image, you will see: "Invalid file type. Please select an image file."</p>
+
+<h3>Removing a Profile Picture</h3>
+
+<p>If the user already has a profile picture uploaded, a <strong>Remove</strong> button appears next to the image. Click it to clear the avatar. The user's display will revert to showing their initials (first letter of first name + first letter of last name) in a gray circle.</p>
+
+<hr>
+
+<h2>Quick Add User</h2>
+
+<p>You can create a user quickly from other sections of the platform (such as when adding members to a crew) using the <strong>Quick Add</strong> feature. The Quick Add modal is titled <strong>Quick Add New User</strong> and shows a simplified form with an informational note: "Quickly add a new user without leaving this page. You can complete all details later."</p>
+
+<h3>Quick Add Form Fields</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>First Name</strong></td>
+      <td>Yes</td>
+      <td>The user's first name.</td>
+    </tr>
+    <tr>
+      <td><strong>Last Name</strong></td>
+      <td>Yes</td>
+      <td>The user's last name.</td>
+    </tr>
+    <tr>
+      <td><strong>Email</strong></td>
+      <td>Yes</td>
+      <td>Must be unique. The system checks for duplicates.</td>
+    </tr>
+    <tr>
+      <td><strong>Phone</strong></td>
+      <td>Yes</td>
+      <td>Phone number with country selector (defaults to US).</td>
+    </tr>
+    <tr>
+      <td><strong>Role</strong></td>
+      <td>Yes</td>
+      <td>Defaults to <strong>Crew Member</strong>. When creating from a Crew context, only Admin and Crew Member are available.</td>
+    </tr>
+    <tr>
+      <td><strong>Timezone</strong></td>
+      <td>Yes</td>
+      <td>The user's timezone.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The Quick Add form does not include the description field, profile picture, or password — a password is automatically generated, and the user can set their own via email. The locale defaults to English.</p>
+
+<p>On success, you will see the toast message: "User created using Quick Add" with a <strong>View User</strong> button. Clicking <strong>View User</strong> navigates to the Users List View with the new user's edit panel already open, so you can add more details if needed.</p>
+
+<hr>
+
+<h2>Searching and Filtering</h2>
+
+<h3>Search</h3>
+
+<p>The search bar at the top of the Users List View lets you filter users by keyword. The search applies to user names and email addresses. As you type, the list updates automatically.</p>
+
+<h3>Filter by Role</h3>
+
+<p>The <strong>Role</strong> filter is a multi-select dropdown with four options:</p>
+
+<ul>
+  <li><strong>Admin</strong></li>
+  <li><strong>Support</strong></li>
+  <li><strong>Crew Member</strong></li>
+  <li><strong>Owner</strong></li>
+</ul>
+
+<p>Select one or more roles to see only users with those roles. This is useful for quickly finding all your admins or all your field crew members.</p>
+
+<p>When filters or search terms change, the pagination resets to page 1.</p>
+
+<hr>
+
+<h2>Cross-Platform Usage</h2>
+
+<p>Users appear throughout the entire DHS platform:</p>
+
+<h3>Crews</h3>
+
+<p>Users can be assigned as <strong>members</strong> of one or more crews. Within a crew, one user is designated as the <strong>Crew Lead</strong>. When viewing the Users List View, the <strong>Crew</strong> column shows which crews each user belongs to. Disabled users still appear in crew member lists but are marked as "(Disabled)" and cannot be set as crew lead.</p>
+
+<h3>Appointments</h3>
+
+<p>When scheduling appointments, crews (and their member users) are assigned to handle the work. The system uses crew availability settings to determine when team members are available for scheduling.</p>
+
+<h3>Jobs</h3>
+
+<p>Users are assigned to jobs through their crew membership. The <strong>isInUse</strong> flag on a user indicates whether they have active job assignments — this is what prevents a user from being disabled while they still have active work.</p>
+
+<h3>Timesheets</h3>
+
+<p>Each user's work hours are tracked through timesheets. The timesheet system records when users clock in and out of jobs.</p>
+
+<h3>Reports and Dashboard</h3>
+
+<p>User data feeds into various reports including performance metrics, feedback ratings, and activity summaries. Users can be filtered in reports to see individual or team performance.</p>
+
+<h3>Chat and Messages</h3>
+
+<p>Users can communicate through the platform's messaging system. Each user's name and avatar appear in conversations and notification lists.</p>
+
+<hr>
+
+<h2>Summary of Common Actions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>How to Do It</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>View all active users</td>
+      <td>Navigate to <strong>Menu &gt; Users</strong> &gt; <strong>Active Users</strong> tab</td>
+    </tr>
+    <tr>
+      <td>View all disabled users</td>
+      <td>Navigate to <strong>Menu &gt; Users</strong> &gt; <strong>Disabled Users</strong> tab</td>
+    </tr>
+    <tr>
+      <td>Search for a user</td>
+      <td>Type in the search bar at the top of the Users List View</td>
+    </tr>
+    <tr>
+      <td>Filter by role</td>
+      <td>Use the <strong>Role</strong> dropdown filter and select one or more roles</td>
+    </tr>
+    <tr>
+      <td>Add a new user</td>
+      <td>Click <strong>New User</strong> &gt; fill in all required fields &gt; set a password &gt; click <strong>Add User</strong></td>
+    </tr>
+    <tr>
+      <td>Edit a user's profile</td>
+      <td>Click the pencil icon or user name &gt; make changes &gt; click <strong>Apply Changes</strong></td>
+    </tr>
+    <tr>
+      <td>Change a user's role</td>
+      <td>Open the user in edit mode &gt; change the <strong>Role</strong> dropdown &gt; click <strong>Apply Changes</strong></td>
+    </tr>
+    <tr>
+      <td>Upload a profile picture</td>
+      <td>Open the user in add or edit mode &gt; click <strong>Upload Image</strong> &gt; select a file</td>
+    </tr>
+    <tr>
+      <td>Remove a profile picture</td>
+      <td>Open the user in edit mode &gt; click <strong>Remove</strong> next to the current image</td>
+    </tr>
+    <tr>
+      <td>Disable a user</td>
+      <td>Click the disable icon on the user row (or in edit panel) &gt; confirm in the dialog</td>
+    </tr>
+    <tr>
+      <td>Enable a disabled user</td>
+      <td>Switch to <strong>Disabled Users</strong> tab &gt; click the enable icon &gt; confirm in the dialog</td>
+    </tr>
+    <tr>
+      <td>Send a password reset</td>
+      <td>Open the user in edit mode &gt; scroll to <strong>Reset Password</strong> &gt; click <strong>Send Reset Email</strong></td>
+    </tr>
+    <tr>
+      <td>Generate a strong password</td>
+      <td>When adding a user, click the star icon next to the password field</td>
+    </tr>
+    <tr>
+      <td>Copy a generated password</td>
+      <td>Click the clipboard icon next to the password field</td>
+    </tr>
+    <tr>
+      <td>Quick-add a user from another section</td>
+      <td>Use the Quick Add option in user selection dropdowns (for example, in Crews)</td>
+    </tr>
+    <tr>
+      <td>See a user's crew assignments</td>
+      <td>Look at the <strong>Crew</strong> column; hover the "+N" badge to see all crews</td>
+    </tr>
+  </tbody>
+</table>
+
+</main>
+</body>
+</html>

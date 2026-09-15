@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DHS Operations Manual – Scheduler &amp; Calendar</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #1a1a1a; }
+  h1 { border-bottom: 2px solid #e0e0e0; padding-bottom: 0.5rem; }
+  h2 { margin-top: 2rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.3rem; }
+  h3 { margin-top: 1.5rem; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { border: 1px solid #d0d0d0; padding: 0.5rem 0.75rem; text-align: left; }
+  th { background-color: #f5f5f5; font-weight: 600; }
+  blockquote { border-left: 4px solid #d0d0d0; margin: 1rem 0; padding: 0.75rem 1rem; background: #fafafa; }
+  code { background: #f0f0f0; padding: 0.15rem 0.35rem; border-radius: 3px; font-size: 0.9em; }
+  hr { border: none; border-top: 1px solid #e0e0e0; margin: 2rem 0; }
+</style>
+</head>
+<body>
+
+<h1>Scheduler &amp; Calendar</h1>
+
+<p>
+The <strong>Scheduler</strong> (also called the Calendar) is the central visual tool for managing your team's day-to-day schedule. It displays both <strong>Jobs</strong> and <strong>Appointments</strong> on a shared timeline, color-coded by crew, so dispatchers and managers can see at a glance who is working where and when. You can view the schedule in four different layouts — Day, Week, Month, and List — and interact directly with events through clicking, dragging, and double-clicking.
+</p>
+<p>
+The Scheduler is accessible from the main navigation bar by clicking <strong>Scheduler</strong>. A mini version of the Scheduler also appears as a widget on the Dashboard home page.
+</p>
+
+<hr>
+
+<h2>1. Scheduler Toolbar</h2>
+
+<p>
+The toolbar sits above the calendar area and adapts to your screen size. On large desktops (1680 px+) everything appears on a single row. On tablets (768–1680 px) it splits into two rows, and on mobile (&lt;768 px) it uses three rows. Regardless of layout, the toolbar contains the same controls:
+</p>
+
+<table>
+<thead>
+<tr><th>Control</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Today</strong> button</td>
+  <td>Jumps the calendar to today's date, regardless of which view you are in. In List view, it resets the date range to today only.</td>
+</tr>
+<tr>
+  <td><strong>Previous / Next arrows</strong></td>
+  <td>Navigate backward or forward by one day (Day view), one week (Week view), or one month (Month and List views). The arrows are hidden in List view when a custom date range is selected.</td>
+</tr>
+<tr>
+  <td><strong>Date Picker</strong></td>
+  <td>Click to open a calendar popup where you can jump to any specific date. In List view, you can select a custom date range (start and end dates).</td>
+</tr>
+<tr>
+  <td><strong>Crew Filter</strong></td>
+  <td>A multi-select dropdown listing all crews. By default it shows <em>All Crews</em>. Select one or more crews to filter the events on the calendar to only those crews. When filtering in Day view, only the selected crew columns appear.</td>
+</tr>
+<tr>
+  <td><strong>Override Availability</strong> toggle</td>
+  <td>When turned on, the system no longer blocks actions on unavailable time slots. You can drag events into unavailable times and create events in the past. This is useful for making corrections or handling scheduling exceptions. Visible on tablet and desktop layouts.</td>
+</tr>
+<tr>
+  <td><strong>View Selector</strong> (Day / Week / Month / List)</td>
+  <td>A segmented control that switches between the four calendar views. Your last chosen view is remembered in the browser (localStorage) and restored the next time you open the Scheduler. When used on the Dashboard widget, the Month view button is hidden.</td>
+</tr>
+<tr>
+  <td><strong>+ New Job</strong> button</td>
+  <td>Opens the Create Job modal. Appears as a filled primary-color button. On the Dashboard widget this button is replaced with a "View Scheduler" link that opens the full-page Scheduler.</td>
+</tr>
+<tr>
+  <td><strong>+ New Appointment</strong> button</td>
+  <td>Opens the Create Appointment modal (the same 4-step wizard described in the Appointments section). Appears as an outlined primary-color button.</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2>2. Calendar Views</h2>
+
+<p>
+The Scheduler offers four distinct views, each suited for different planning horizons. In all views, events are color-coded using the crew's assigned color, and each event shows an icon to distinguish Jobs (hammer icon) from Appointments (document icon).
+</p>
+
+<h3>2.1 Day View</h3>
+
+<p>
+The Day view shows a single day broken into hourly time slots, with <strong>one column per crew</strong>. This is the most detailed view and is ideal for dispatchers who need to coordinate crew assignments minute-by-minute.
+</p>
+
+<ul>
+  <li><strong>Layout:</strong> A timeline grid where each row is an hourly time slot (60-minute intervals) and each column represents a crew. The crew name and color dot appear in the column header, aligned to the right.</li>
+  <li><strong>Events:</strong> Displayed as colored bars spanning the appropriate time range. The bar shows the event name, a type icon (hammer for Jobs, document for Appointments), and a priority warning icon if the event is marked as high priority. Recurring jobs show a recurring icon.</li>
+  <li><strong>Drag and Drop:</strong> You can drag a Job event to a new time slot within the <strong>same crew column</strong>. Dragging a job to a different crew's column is blocked with an error message: "Cannot drop event in a different crew column." When you start dragging, unavailable time slots are highlighted in gray (#E3E4E8) and a floating legend appears in the bottom-right corner showing what "Unavailable" and "Available" colors mean.</li>
+  <li><strong>Creating Events:</strong> Double-click on any empty time slot to create a new event. A modal appears asking whether you want to create a <strong>New Job</strong> or a <strong>New Appointment</strong>. The clicked date, time, and crew are pre-filled in the creation form.</li>
+  <li><strong>Past Time Slots:</strong> Time slots in the past are dimmed (reduced opacity, gray background). You cannot create events or drag events into past time slots unless the <em>Override Availability</em> toggle is on.</li>
+</ul>
+
+<h3>2.2 Week View</h3>
+
+<p>
+The Week view shows seven days (Sunday through Saturday) with hourly time slots across the horizontal axis. This is a custom-built component (not the default Syncfusion week view) that provides enhanced functionality.
+</p>
+
+<ul>
+  <li><strong>Layout:</strong> A table where each row is a day of the week. The left column shows the day name (e.g., "Monday") and abbreviated date (e.g., "Jan 5"). The horizontal axis shows 24 hourly columns from 12:00 AM to 11:00 PM. The header row is sticky so it remains visible as you scroll.</li>
+  <li><strong>Events:</strong> Displayed as colored bars positioned horizontally according to their start and end times. Events are stacked vertically within each day row if multiple events overlap. Each event shows a type icon, the event name, a priority icon (if applicable), and the time range. Multi-day events show continuation indicators (<code>&lt;&lt;</code> on the left, <code>&gt;&gt;</code> on the right).</li>
+  <li><strong>Drag and Drop:</strong> You can drag Job events to different days and times. When dragging, unavailable time slots and entire unavailable days are highlighted in gray. The system validates availability using the same rules as the Reschedule Job modal, checking crew and client unavailable dates. Dropping on an unavailable slot shows the error: "Cannot schedule during unavailable times." Dropping on a past date shows a specific past-date error message.</li>
+  <li><strong>Creating Events:</strong> Double-click on any time slot to open the Event Type Selection modal. The clicked date and time are pre-filled.</li>
+  <li><strong>Scrolling:</strong> The entire week grid scrolls horizontally and vertically. When an event is opened via a URL deep link, the view auto-scrolls to center the event on screen.</li>
+</ul>
+
+<h3>2.3 Month View</h3>
+
+<p>
+The Month view shows a traditional calendar grid for the entire month. It provides a high-level overview of the schedule, useful for planning weeks ahead.
+</p>
+
+<ul>
+  <li><strong>Layout:</strong> A standard calendar grid with abbreviated weekday headers (Mon, Tue, etc.) and cells for each day. The header cells display shortened three-letter day names.</li>
+  <li><strong>Events:</strong> Displayed as compact colored bars inside each day cell. Each bar shows a type icon (hammer or document), the event name, and a priority or recurring icon. Multi-day events show date ranges (e.g., "Jan 5–7"). When there are more events than can fit in a cell, a blue <strong>"+X more"</strong> link appears at the bottom of the cell.</li>
+  <li><strong>"+X more" Modal:</strong> Clicking the "+X more" link opens a modal titled with the full date (e.g., "Monday, January 5, 2026") that lists all events for that day. Each event in the modal shows its type (Job or Appointment), name, crew color and name, and time range. Clicking an event navigates to its detail page.</li>
+  <li><strong>Drag and Drop:</strong> You can drag a Job from one day cell to another. When you start dragging, unavailable days are highlighted in gray. Unlike the Day and Week views, dropping a job in Month view opens the <strong>Reschedule Job Modal</strong> instead of immediately updating the schedule. This modal lets you choose the exact start and end times for the new date, ensuring accurate time-slot selection.</li>
+  <li><strong>Creating Events:</strong> Double-click on any day cell to open the Event Type Selection modal. The clicked date is pre-filled.</li>
+</ul>
+
+<h3>2.4 List View</h3>
+
+<p>
+The List view (sometimes called Agenda view) displays events as a chronological list, grouped by date. It is best for reviewing a sequence of upcoming events without the spatial layout of a calendar.
+</p>
+
+<ul>
+  <li><strong>Layout:</strong> Events are grouped by date, with each group showing the abbreviated day and date (e.g., "Mon 5") on the left. Horizontal separators divide date groups. Within each group, events are listed in chronological order.</li>
+  <li><strong>Event Rows:</strong> Each row is 56 px tall and contains three columns:
+    <ul>
+      <li><strong>Date column</strong> (100 px): Shows the day abbreviation and date number (only for the first event in each date group).</li>
+      <li><strong>Time column</strong> (280–320 px): Shows the time range (e.g., "2:00 PM – 4:30 PM"). For all-day events it shows "All Day." For multi-day events it shows the full date range with time.</li>
+      <li><strong>Event details</strong>: Shows the event name with a left-colored border matching the crew color, a type icon (hammer for Jobs, document for Appointments), and a priority alert icon if applicable.</li>
+    </ul>
+  </li>
+  <li><strong>Date Range Selection:</strong> In List view, the date picker in the toolbar changes to support custom date ranges. You can select a start and end date to view events across any span of time. When you switch to List view, it inherits the date range from your previous view (e.g., if you were viewing a specific week, the List shows that week's events).</li>
+  <li><strong>Empty State:</strong> When there are no events in the selected date range, a centered message reads "No jobs scheduled in this date range" with a calendar icon.</li>
+  <li><strong>No Drag and Drop:</strong> The List view is read-only for event positioning. You cannot drag events to reschedule them. Clicking an event opens its popover.</li>
+</ul>
+
+<hr>
+
+<h2>3. Event Popovers</h2>
+
+<p>
+When you click on any event in the calendar (in any view), a <strong>popover</strong> appears next to the clicked element showing quick-glance details about the job or appointment. There are two types of popovers: one for Jobs and one for Appointments.
+</p>
+
+<h3>3.1 Job Popover</h3>
+
+<p>The Job popover appears when you click on a Job event. It contains:</p>
+
+<ul>
+  <li><strong>Title bar:</strong> The job name, with a recurring badge icon if the job is part of a recurring series.</li>
+  <li><strong>Map Preview:</strong> An image preview of the job location. The system tries to display the property's custom photo first; if unavailable, it falls back to Google Street View, then Google Map View, then a placeholder icon. You can toggle between Street View and Map View using tabs above the image.</li>
+  <li><strong>Address:</strong> The full address of the property, with a map icon button that navigates to the Map page filtered to this job.</li>
+  <li><strong>Details grid:</strong>
+    <ul>
+      <li><strong>Date:</strong> The scheduled date. Multi-day jobs show a date range (e.g., "Jan 5 – 7, 2026").</li>
+      <li><strong>Time:</strong> The start and end times (e.g., "2:00 PM – 4:30 PM").</li>
+      <li><strong>Client:</strong> The client company name, with clickable phone number and email below.</li>
+      <li><strong>Crew:</strong> The crew name with a colored dot.</li>
+      <li><strong>Crew Lead:</strong> The name of the crew lead, with their avatar photo if available.</li>
+    </ul>
+  </li>
+  <li><strong>Action buttons:</strong> "Cancel" (closes the popover) and "Job Details" (navigates to the Job's detail page).</li>
+</ul>
+
+<h3>3.2 Appointment Popover</h3>
+
+<p>The Appointment popover is similar to the Job popover but tailored for appointments. It contains:</p>
+
+<ul>
+  <li><strong>Title bar:</strong> The appointment name (or "Untitled Appointment" if no name was set).</li>
+  <li><strong>Map Preview:</strong> Same location preview as the Job popover, with Street View / Map View toggle.</li>
+  <li><strong>Address:</strong> The full property address with map navigation button.</li>
+  <li><strong>Details grid:</strong> Date, Time, Client (with phone and email), Crew (with color dot), and Crew Lead.</li>
+  <li><strong>Action buttons:</strong> "Cancel" and "Appointment Details" (navigates to the Appointment's detail page).</li>
+</ul>
+
+<hr>
+
+<h2>4. Creating Events from the Scheduler</h2>
+
+<p>
+There are three ways to create new events directly from the Scheduler:
+</p>
+
+<h3>4.1 Using the Toolbar Buttons</h3>
+
+<ol>
+  <li>Click the <strong>+ New Job</strong> button to open the Create Job modal, or click <strong>+ New Appointment</strong> to open the 4-step Appointment wizard.</li>
+  <li>These modals open without any pre-filled date/time information — you select the schedule manually in the form.</li>
+</ol>
+
+<h3>4.2 Double-Clicking a Time Slot or Day Cell</h3>
+
+<ol>
+  <li>Double-click on an empty time slot (Day or Week view) or an empty area of a day cell (Month view).</li>
+  <li>An <strong>Event Type Selection</strong> modal appears with two large buttons: "New Job" (with a hammer icon) and "New Appointment" (with a document icon). Each button includes a brief description ("Create a scheduled job" or "Create a scheduled appointment").</li>
+  <li>Click your choice. The corresponding creation modal opens with the date and time pre-filled based on where you double-clicked.</li>
+  <li>In <strong>Day view</strong>, the crew is also pre-selected based on which crew column you clicked.</li>
+</ol>
+
+<blockquote>
+<strong>Note:</strong> You cannot create events in the past. Double-clicking on a past time slot is ignored. If you need to create a historical event, enable the <em>Override Availability</em> toggle first.
+</blockquote>
+
+<h3>4.3 Pre-filled Values from Scheduler Clicks</h3>
+
+<p>When you create a new event by double-clicking the Scheduler, the following values are pre-filled in the creation form:</p>
+
+<table>
+<thead>
+<tr><th>Field</th><th>Pre-filled Value</th></tr>
+</thead>
+<tbody>
+<tr><td>Date</td><td>The date of the clicked cell</td></tr>
+<tr><td>Time</td><td>The time of the clicked time slot (Day and Week views only)</td></tr>
+<tr><td>Crew</td><td>The crew of the clicked column (Day view only)</td></tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2>5. Drag-and-Drop Rescheduling</h2>
+
+<p>
+One of the Scheduler's most powerful features is the ability to reschedule Jobs by dragging them to new dates or times. This works across Day, Week, and Month views (not in List view).
+</p>
+
+<h3>5.1 How It Works</h3>
+
+<ol>
+  <li>Click and hold on a Job event bar until the cursor changes to a grabbing hand.</li>
+  <li>Drag the event to the desired new date and/or time.</li>
+  <li>As you drag, the system highlights <strong>unavailable time slots</strong> in gray (#E3E4E8). A floating <strong>Legend</strong> panel appears in the bottom-right corner explaining the color coding.</li>
+  <li>Release the mouse to drop the event in its new position.</li>
+</ol>
+
+<h3>5.2 View-Specific Behavior</h3>
+
+<table>
+<thead>
+<tr><th>View</th><th>Drag Behavior</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Day</strong></td>
+  <td>Drag within the same crew column to change the time. Dragging to a different crew column is blocked. The job updates immediately on drop.</td>
+</tr>
+<tr>
+  <td><strong>Week</strong></td>
+  <td>Drag to any day and time slot. Multi-day positioning supported. Drop snaps to nearest 30-minute interval. The job updates immediately on drop.</td>
+</tr>
+<tr>
+  <td><strong>Month</strong></td>
+  <td>Drag to a different day cell. On drop, the <strong>Reschedule Job Modal</strong> opens so you can select the exact start and end times for the new date. The calendar reverts the visual change until you confirm in the modal.</td>
+</tr>
+<tr>
+  <td><strong>List</strong></td>
+  <td>Drag and drop is not available in List view.</td>
+</tr>
+</tbody>
+</table>
+
+<h3>5.3 Validation Rules</h3>
+
+<p>The following rules are enforced during drag-and-drop rescheduling:</p>
+
+<ul>
+  <li><strong>Past dates are blocked:</strong> You cannot drop a job on a date that is in the past. An error toast appears: "Cannot reschedule to a past date."</li>
+  <li><strong>Unavailable time slots are blocked:</strong> The system checks crew availability, client availability, and service provider account-level unavailable dates. Dropping on an unavailable slot shows the error: "Cannot schedule during unavailable times."</li>
+  <li><strong>Job duration is preserved:</strong> When you drop a job, the system preserves the original duration. For example, if a 3-hour job starting at 9 AM is dropped at 2 PM, it will span 2 PM – 5 PM.</li>
+  <li><strong>Only Jobs can be dragged:</strong> Appointment events cannot be dragged to reschedule. If you try to drag an Appointment, the drag is canceled.</li>
+  <li><strong>Jobs with restrictions cannot be dragged:</strong> Certain jobs (e.g., completed, archived, or invoiced jobs) cannot be rescheduled. Attempting to drag them shows an appropriate error message.</li>
+  <li><strong>Day view: same crew only:</strong> In Day view, you cannot move a job between crew columns.</li>
+</ul>
+
+<h3>5.4 The Reschedule Job Modal (Month View)</h3>
+
+<p>
+When you drag a Job to a new date in Month view, the Reschedule Job Modal opens. This modal allows you to:
+</p>
+
+<ul>
+  <li>See the new date the job will be moved to.</li>
+  <li>Select the <strong>Start Time</strong> from available time slots.</li>
+  <li>Select the <strong>End Time</strong> from available time slots after the start time.</li>
+  <li>The modal only shows time slots that are actually available based on crew, client, and account unavailable dates.</li>
+  <li>Click <strong>Reschedule</strong> to confirm or <strong>Cancel</strong> to revert.</li>
+</ul>
+
+<hr>
+
+<h2>6. Availability &amp; Unavailable Dates</h2>
+
+<p>
+The Scheduler integrates with the Availability system to visually indicate when crews and clients are unavailable.
+</p>
+
+<h3>6.1 How Availability Is Calculated</h3>
+
+<p>
+The system combines unavailable dates from three sources:
+</p>
+
+<ol>
+  <li><strong>Service Provider (account level):</strong> Company-wide days off, holidays, or closed periods set in Settings &gt; Availability.</li>
+  <li><strong>Crew level:</strong> Each crew can have its own unavailable dates set on the Crew detail page.</li>
+  <li><strong>Client level:</strong> Clients may have unavailable periods set on their profiles.</li>
+</ol>
+
+<p>
+All three sources are merged and deduplicated. If a time slot is unavailable in <strong>any</strong> source, it is treated as unavailable in the Scheduler. The system fetches unavailable dates for all visible crews and clients in a single API call, extending the date range by 7 days before and after the visible range to capture unavailable periods that extend beyond the visible window.
+</p>
+
+<h3>6.2 Visual Indicators</h3>
+
+<table>
+<thead>
+<tr><th>Indicator</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>Gray cells (#E3E4E8)</td>
+  <td>Unavailable time slots or dates. These appear when you start dragging an event to show where it cannot be dropped.</td>
+</tr>
+<tr>
+  <td>Dimmed cells (reduced opacity)</td>
+  <td>Past time slots. These have a light gray background and reduced opacity.</td>
+</tr>
+<tr>
+  <td>White cells</td>
+  <td>Available time slots where events can be dropped.</td>
+</tr>
+</tbody>
+</table>
+
+<h3>6.3 The Availability Legend</h3>
+
+<p>
+When you begin dragging an event, a <strong>Legend</strong> panel appears in the bottom-right corner of the screen (or bottom-right of the widget when on the Dashboard). It shows two colored boxes:
+</p>
+
+<ul>
+  <li><strong>Gray box:</strong> "Unavailable"</li>
+  <li><strong>White box:</strong> "Available"</li>
+</ul>
+
+<p>The legend disappears when you release the drag.</p>
+
+<h3>6.4 Override Availability</h3>
+
+<p>
+The <em>Override Availability</em> toggle in the toolbar disables availability checks. When enabled:
+</p>
+
+<ul>
+  <li>Past time slots are no longer dimmed or blocked.</li>
+  <li>Unavailable slots are not highlighted during drag-and-drop.</li>
+  <li>You can create events and drop events at any time, regardless of availability restrictions.</li>
+</ul>
+
+<blockquote>
+<strong>Use with caution:</strong> Overriding availability can lead to scheduling conflicts. Use this feature only for corrections or exceptional situations.
+</blockquote>
+
+<hr>
+
+<h2>7. Deep Linking from Other Pages</h2>
+
+<p>
+Several pages in the DHS platform link directly to the Scheduler and automatically highlight or open a specific event:
+</p>
+
+<table>
+<thead>
+<tr><th>Source</th><th>URL Pattern</th><th>Behavior</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>Job Detail Page &gt; "View on Scheduler"</td>
+  <td><code>/scheduler?jobId=&lt;id&gt;</code></td>
+  <td>Switches to Week view, navigates to the job's scheduled week, scrolls to the job event, and opens the Job Popover.</td>
+</tr>
+<tr>
+  <td>Appointment Detail Page &gt; "View on Scheduler"</td>
+  <td><code>/scheduler?appointmentId=&lt;id&gt;</code></td>
+  <td>Switches to Week view, navigates to the appointment's scheduled week, scrolls to the event, and opens the Appointment Popover.</td>
+</tr>
+<tr>
+  <td>Appointment More Actions menu</td>
+  <td><code>/scheduler?appointmentId=&lt;id&gt;</code></td>
+  <td>Same as above — switches to Week view and focuses the appointment.</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+When navigating via deep link, the Scheduler auto-scrolls to center the target event on screen and then opens the popover with a brief delay to allow the calendar to render.
+</p>
+
+<hr>
+
+<h2>8. Dashboard Scheduler Widget</h2>
+
+<p>
+A compact version of the Scheduler appears on the main Dashboard page. The Dashboard widget has these differences from the full-page Scheduler:
+</p>
+
+<table>
+<thead>
+<tr><th>Feature</th><th>Full Scheduler</th><th>Dashboard Widget</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>Default view</td>
+  <td>Last saved view (defaults to Day)</td>
+  <td>Always starts in Week view</td>
+</tr>
+<tr>
+  <td>Available views</td>
+  <td>Day, Week, Month, List</td>
+  <td>Day, Week, List (no Month)</td>
+</tr>
+<tr>
+  <td>Height</td>
+  <td>Full viewport minus header (calc(100vh - 180px))</td>
+  <td>Fixed at 450 px (configurable via environment variable)</td>
+</tr>
+<tr>
+  <td>Action buttons</td>
+  <td>+ New Job, + New Appointment</td>
+  <td>"View Scheduler" link (opens the full page)</td>
+</tr>
+<tr>
+  <td>Override Availability</td>
+  <td>Visible</td>
+  <td>Hidden on mobile</td>
+</tr>
+<tr>
+  <td>Page padding</td>
+  <td>Horizontal padding (responsive)</td>
+  <td>No extra padding (embedded in Dashboard card)</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2>9. Event Display Details</h2>
+
+<p>
+Events on the Scheduler carry visual cues that help you quickly identify their type, crew, priority, and recurrence status.
+</p>
+
+<h3>9.1 Color Coding</h3>
+
+<p>
+Every event is colored using its <strong>crew's assigned color</strong>. If no crew is assigned, the event defaults to black (#000000). This makes it easy to scan the calendar and identify which crew is handling each event.
+</p>
+
+<h3>9.2 Icons</h3>
+
+<table>
+<thead>
+<tr><th>Icon</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>Hammer (white)</td>
+  <td>The event is a <strong>Job</strong>.</td>
+</tr>
+<tr>
+  <td>Document/Newspaper (white)</td>
+  <td>The event is an <strong>Appointment</strong>.</td>
+</tr>
+<tr>
+  <td>Warning triangle (white fill, crew-colored stroke)</td>
+  <td>The event is marked as <strong>high priority</strong>.</td>
+</tr>
+<tr>
+  <td>Circular arrow (white fill, crew-colored stroke)</td>
+  <td>The event is part of a <strong>recurring series</strong> (either a template or an instance).</td>
+</tr>
+</tbody>
+</table>
+
+<h3>9.3 Multi-Day Events</h3>
+
+<p>
+Events that span multiple calendar days are displayed differently depending on the view:
+</p>
+
+<ul>
+  <li><strong>Day view:</strong> Only the portion of the event falling on the current day is shown.</li>
+  <li><strong>Week view:</strong> The event bar spans across multiple day rows. Continuation indicators (<code>&lt;&lt;</code> and <code>&gt;&gt;</code>) appear at the edges to indicate the event continues from/to another day.</li>
+  <li><strong>Month view:</strong> The date range is shown as text below the event name (e.g., "Jan 5–7" or "Jan 28 – Feb 3").</li>
+  <li><strong>List view:</strong> The time column shows the full date range with time (e.g., "Jan 5 – 7, 2026 at 2:20 PM").</li>
+</ul>
+
+<hr>
+
+<h2>10. Internationalization (i18n)</h2>
+
+<p>
+The Scheduler supports <strong>English</strong> and <strong>Spanish</strong>. When the user's language is set to Spanish:
+</p>
+
+<ul>
+  <li>Day names appear in Spanish (Domingo, Lunes, Martes, etc.).</li>
+  <li>Month names and date formats follow Spanish locale conventions.</li>
+  <li>All toolbar labels, tooltips, and error messages are translated.</li>
+  <li>The Syncfusion calendar component is configured with Spanish locale data (CLDR) for proper date and number formatting.</li>
+</ul>
+
+<p>The language is determined by the user's i18n settings and changes automatically without a page reload.</p>
+
+<hr>
+
+<h2>11. Summary of Common Actions</h2>
+
+<table>
+<thead>
+<tr><th>Action</th><th>How To</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>View today's schedule</td>
+  <td>Click the <strong>Today</strong> button in the toolbar.</td>
+</tr>
+<tr>
+  <td>Switch between views</td>
+  <td>Click <strong>Day</strong>, <strong>Week</strong>, <strong>Month</strong>, or <strong>List</strong> in the view selector.</td>
+</tr>
+<tr>
+  <td>Filter by crew</td>
+  <td>Use the <strong>Crew Filter</strong> dropdown to select one or more crews.</td>
+</tr>
+<tr>
+  <td>Navigate to a specific date</td>
+  <td>Use the <strong>Previous / Next arrows</strong> or click the <strong>Date Picker</strong> to jump to a date.</td>
+</tr>
+<tr>
+  <td>View event details (quick glance)</td>
+  <td>Click on any event to open its popover with location preview, date, time, client, and crew info.</td>
+</tr>
+<tr>
+  <td>Go to event detail page</td>
+  <td>Click an event to open its popover, then click <strong>Job Details</strong> or <strong>Appointment Details</strong>.</td>
+</tr>
+<tr>
+  <td>Create a new Job from the Scheduler</td>
+  <td>Click <strong>+ New Job</strong> in the toolbar, or double-click an empty time slot and choose "New Job."</td>
+</tr>
+<tr>
+  <td>Create a new Appointment from the Scheduler</td>
+  <td>Click <strong>+ New Appointment</strong> in the toolbar, or double-click an empty time slot and choose "New Appointment."</td>
+</tr>
+<tr>
+  <td>Reschedule a Job (Day/Week view)</td>
+  <td>Drag the Job event to a new available time slot. The update saves immediately.</td>
+</tr>
+<tr>
+  <td>Reschedule a Job (Month view)</td>
+  <td>Drag the Job event to a new day. The Reschedule Modal opens — select the time and confirm.</td>
+</tr>
+<tr>
+  <td>See all events on a crowded day (Month view)</td>
+  <td>Click the <strong>"+X more"</strong> link in the day cell to open a modal listing all events for that day.</td>
+</tr>
+<tr>
+  <td>View a Job on the Map</td>
+  <td>Click the event to open its popover, then click the map icon next to the address.</td>
+</tr>
+<tr>
+  <td>Override availability restrictions</td>
+  <td>Toggle <strong>Override Availability</strong> in the toolbar. You can then drag events to any time.</td>
+</tr>
+<tr>
+  <td>View a custom date range (List view)</td>
+  <td>Switch to List view and use the Date Picker to select a start and end date range.</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>

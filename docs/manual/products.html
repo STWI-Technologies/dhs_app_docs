@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products Management</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #1a1a1a; }
+    h1 { border-bottom: 2px solid #e0e0e0; padding-bottom: 0.5rem; }
+    h2 { margin-top: 2rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #d0d0d0; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background-color: #f5f5f5; font-weight: 600; }
+    blockquote { border-left: 4px solid #d0d0d0; margin: 1rem 0; padding: 0.75rem 1rem; background: #fafafa; }
+    code { background: #f0f0f0; padding: 0.15rem 0.35rem; border-radius: 3px; font-size: 0.9em; }
+    hr { border: none; border-top: 1px solid #e0e0e0; margin: 2rem 0; }
+  </style>
+</head>
+<body>
+<main>
+
+<h1>Products Management</h1>
+
+<h2>Overview</h2>
+
+<p>The <strong>Products Management</strong> section is where you manage all the physical items and materials your business sells or uses in jobs. These are material-based items — such as parts, supplies, equipment, or consumables — that can be added to estimates, invoices, and jobs.</p>
+
+<p>Unlike services (which are billed by time), products are billed by quantity and include inventory tracking features so you always know what you have in stock.</p>
+
+<p>From this section you can:</p>
+
+<ul>
+  <li><strong>Add</strong> new products with cost, pricing, markup, and inventory details.</li>
+  <li><strong>Edit</strong> existing products to update pricing, stock levels, or descriptions.</li>
+  <li><strong>Archive</strong> products you no longer sell or use (without losing historical data).</li>
+  <li><strong>Restore</strong> archived products if you need them again.</li>
+  <li><strong>Permanently delete</strong> archived products that are no longer needed.</li>
+  <li><strong>Track inventory</strong> with quantity on hand, reorder levels, and stock availability.</li>
+  <li><strong>Search and filter</strong> to quickly find what you're looking for.</li>
+  <li><strong>Import and export</strong> products via CSV files for bulk operations.</li>
+  <li><strong>Bulk edit</strong> inventory quantities across multiple products at once.</li>
+  <li><strong>View stock availability</strong> including quantities reserved for estimates and jobs.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Important:</strong> A product can only be permanently deleted if it is <strong>not currently linked</strong> to any estimate, invoice, or job. If a product is in use, you must first remove it from all associated records before deletion is possible.</p>
+</blockquote>
+
+<hr>
+
+<h2>Products List View</h2>
+
+<p>The Products List View is the main view for managing all your products. To access it, navigate to <strong>Menu &gt; Inventory &gt; Products</strong>.</p>
+
+<p>When you open the Products List View, you will see a table listing all your active products. Each row represents one product and displays the following information:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>What It Means</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>SKU</strong></td>
+      <td>A unique code that identifies the product (e.g., <code>PART-001</code>). This cannot be changed after the product is created.</td>
+    </tr>
+    <tr>
+      <td><strong>Product</strong></td>
+      <td>The name of the product with a thumbnail image (if one was uploaded), along with its description. Hovering over the thumbnail shows a larger preview.</td>
+    </tr>
+    <tr>
+      <td><strong>Cost</strong></td>
+      <td>Your internal cost for this product — what you pay to acquire it. Displayed in dollars (e.g., <code>$10.00</code>).</td>
+    </tr>
+    <tr>
+      <td><strong>Markup %</strong></td>
+      <td>The percentage added on top of your cost to determine the selling price. This is automatically calculated from the difference between the Item Price and the Cost.</td>
+    </tr>
+    <tr>
+      <td><strong>Item Price</strong></td>
+      <td>The selling price your customers pay. Displayed in dollars (e.g., <code>$15.00</code>).</td>
+    </tr>
+    <tr>
+      <td><strong>Taxable</strong></td>
+      <td>A checkmark indicates this product is subject to tax.</td>
+    </tr>
+    <tr>
+      <td><strong>In Use</strong></td>
+      <td>A checkmark indicates this product is currently being used in at least one estimate, invoice, or job.</td>
+    </tr>
+    <tr>
+      <td><strong>Tags</strong></td>
+      <td>Color-coded labels you have assigned to help categorize the product (e.g., "Plumbing", "Electrical", "HVAC").</td>
+    </tr>
+    <tr>
+      <td><strong>Groups</strong></td>
+      <td>The groups this product belongs to, if any. Groups are managed separately and help organize products into logical categories.</td>
+    </tr>
+    <tr>
+      <td><strong>Actions</strong></td>
+      <td>Quick-action buttons to edit the product, view its details, check inventory status, or archive/delete it.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Inventory Status Indicator</h3>
+
+<p>Each product row includes a small colored dot in the Actions column that shows the inventory status at a glance:</p>
+
+<ul>
+  <li><strong>Green dot</strong> — More than 5 units in stock.</li>
+  <li><strong>Yellow dot</strong> — Between 1 and 5 units in stock (running low).</li>
+  <li><strong>Red dot</strong> — Out of stock (0 units available).</li>
+</ul>
+
+<p>Clicking the inventory dot opens the <strong>Stock Availability</strong> window, which shows a breakdown of how your stock is allocated (see Section 3).</p>
+
+<h3>Active vs. Archived Products</h3>
+
+<p>At the top of the list you will see two tabs:</p>
+
+<ul>
+  <li><strong>Active</strong> — Shows all products that are currently available for use. This is the default view.</li>
+  <li><strong>Archived</strong> — Shows products that have been archived (temporarily disabled). Archived products do not appear in dropdowns when creating estimates, invoices, or jobs, but their historical data is preserved.</li>
+</ul>
+
+<p>You can switch between these tabs at any time to manage both active and archived products.</p>
+
+<h3>Sorting the List</h3>
+
+<p>You can sort the products list by clicking on the column headers for <strong>SKU</strong>, <strong>Product</strong> (name), <strong>Cost</strong>, or <strong>Item Price</strong>. Click once to sort in ascending order (A-Z or lowest to highest), and click again to sort in descending order (Z-A or highest to lowest).</p>
+
+<hr>
+
+<h2>1. Adding a New Product</h2>
+
+<p>Adding a new product is a two-step process. The first step captures the essential pricing information, and the second step captures additional details like vendor, manufacturer, inventory, and images.</p>
+
+<h3>Step 1: Open the New Product Form</h3>
+
+<p>Click the <strong>"+ New Product"</strong> button (blue) located in the top-right corner of the Products List View. A panel will slide open from the right side of the screen.</p>
+
+<blockquote>
+  <p><strong>Tip:</strong> If the list is empty (no products have been added yet), you will also see a "New Product" button in the center of the page.</p>
+</blockquote>
+
+<h3>Step 2: Fill In the General Information</h3>
+
+<p>The first tab, <strong>General Info</strong>, contains the core pricing fields:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required?</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>SKU</strong></td>
+      <td>Yes</td>
+      <td>Enter a unique code to identify this product. This will be used as a reference throughout the system and <strong>cannot be changed</strong> after the product is created. Choose something meaningful, like <code>FILTER-001</code> for an air filter.</td>
+    </tr>
+    <tr>
+      <td><strong>Name</strong></td>
+      <td>Yes</td>
+      <td>Enter a clear, descriptive name for the product (e.g., "4-inch PVC Elbow" or "Honeywell T6 Thermostat").</td>
+    </tr>
+    <tr>
+      <td><strong>Description</strong></td>
+      <td>No</td>
+      <td>Optionally, provide additional details about the product such as specifications, model variations, or usage notes.</td>
+    </tr>
+    <tr>
+      <td><strong>Cost</strong></td>
+      <td>Yes</td>
+      <td>Enter your cost to acquire this product (what you pay your supplier). The system accepts up to two decimal places. The maximum allowed value is $21,474,836.47. If you enter a value over $1,000,000, a warning will appear to confirm the amount is intentional.</td>
+    </tr>
+    <tr>
+      <td><strong>Markup (%)</strong></td>
+      <td>No</td>
+      <td>Enter a markup percentage to automatically calculate the Item Price from the Cost. For example, entering <code>50</code> on a $10.00 cost will set the Item Price to $15.00. The maximum allowed markup is 1000%. This field auto-recalculates when you change the Cost or Item Price.</td>
+    </tr>
+    <tr>
+      <td><strong>Item Price</strong></td>
+      <td>Yes</td>
+      <td>The price your customers will pay for this product. This field auto-recalculates when you change the Cost or Markup. The Item Price <strong>cannot be less than the Cost</strong>. If you enter a price lower than the cost, you will see an error message.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Below the pricing fields, you will find one configuration option:</p>
+
+<ul>
+  <li><strong>Taxable</strong> — Check this box if the product is subject to sales tax. When enabled, tax will be automatically calculated when this product is added to estimates and invoices.</li>
+</ul>
+
+<h3>How Cost, Markup, and Item Price Work Together</h3>
+
+<p>These three fields are interconnected and automatically calculate each other to save you time:</p>
+
+<ul>
+  <li>If you enter a <strong>Cost</strong> and a <strong>Markup %</strong>, the <strong>Item Price</strong> is calculated automatically.</li>
+  <li>If you enter a <strong>Cost</strong> and an <strong>Item Price</strong>, the <strong>Markup %</strong> is calculated automatically.</li>
+  <li>If you change any one of the three, the others adjust accordingly.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Note:</strong> If the Item Price is set lower than the Cost, the Markup field will be cleared since a negative markup is not allowed.</p>
+</blockquote>
+
+<h3>Step 3: Click "Next" to Continue</h3>
+
+<p>After filling in the required fields, click the <strong>"Next"</strong> button. The system will validate your entries before moving forward. If any required field is missing or has an invalid value, you will see an error message next to that field. If the SKU already exists, a warning banner will appear at the top of the form.</p>
+
+<h3>Step 4: Fill In the Additional Details</h3>
+
+<p>The second tab, <strong>Additional Details</strong>, contains optional fields for more comprehensive product information:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required?</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Product Image</strong></td>
+      <td>No</td>
+      <td>Upload a photo of the product. For best results, use a 500px x 500px image, maximum 2MB. The image will appear as a thumbnail in the Products List View.</td>
+    </tr>
+    <tr>
+      <td><strong>Vendor</strong></td>
+      <td>No</td>
+      <td>Select the supplier you purchase this product from. You can also create a new vendor on the fly by using the quick-add option in the dropdown.</td>
+    </tr>
+    <tr>
+      <td><strong>Vendor SKU</strong></td>
+      <td>No</td>
+      <td>Enter the vendor's own SKU or part number for this product. Useful for reordering from the supplier.</td>
+    </tr>
+    <tr>
+      <td><strong>Manufacturer</strong></td>
+      <td>No</td>
+      <td>Select the manufacturer of this product. You can also create a new manufacturer on the fly using the quick-add option.</td>
+    </tr>
+    <tr>
+      <td><strong>Manufacturer Number</strong></td>
+      <td>No</td>
+      <td>Enter the manufacturer's model or part number for this product.</td>
+    </tr>
+    <tr>
+      <td><strong>Group</strong></td>
+      <td>No</td>
+      <td>Assign this product to a group for organizational purposes. You can create a new group on the fly using the quick-add option.</td>
+    </tr>
+    <tr>
+      <td><strong>Unit of Measure</strong></td>
+      <td>No</td>
+      <td>Select how this product is measured or sold. Options include: Each, Box, Case, Gallon, Dozen, Cup, Pint, Quart, Milliliter, Liter, Ounce, Pound, Inch, Feet, Yard, Cubic Meter, Cubic Centimeter, and Cubic Millimeter.</td>
+    </tr>
+    <tr>
+      <td><strong>Color</strong></td>
+      <td>No</td>
+      <td>Enter the color of the product, if applicable.</td>
+    </tr>
+    <tr>
+      <td><strong>Tags</strong></td>
+      <td>No</td>
+      <td>Type a tag name and press <strong>Enter</strong> to create it. Add as many tags as needed to help categorize and filter your products.</td>
+    </tr>
+    <tr>
+      <td><strong>Disable Inventory Tracking</strong></td>
+      <td>No</td>
+      <td>Check this box if you do not want to track stock levels for this product. When checked, the Quantity On Hand and Reorder Quantity fields will be disabled and set to zero.</td>
+    </tr>
+    <tr>
+      <td><strong>Quantity On Hand</strong></td>
+      <td>No</td>
+      <td>Enter the current number of units you have in stock. This field is disabled if inventory tracking is turned off.</td>
+    </tr>
+    <tr>
+      <td><strong>Reorder Quantity</strong></td>
+      <td>No</td>
+      <td>Enter the minimum stock level that triggers a reorder alert. When the Quantity On Hand falls below this number, you will see a warning.</td>
+    </tr>
+    <tr>
+      <td><strong>Location</strong></td>
+      <td>No</td>
+      <td>Enter the physical storage location of this product (e.g., "Warehouse A, Shelf 3" or "Service Van #2").</td>
+    </tr>
+    <tr>
+      <td><strong>Average Delivery Time</strong></td>
+      <td>No</td>
+      <td>Enter the typical number of days it takes to receive this product from the supplier after ordering.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Warning:</strong> If inventory tracking is enabled and the Quantity On Hand is below the Reorder Quantity, the quantity field will show a red warning and you will not be able to save until you adjust the values. This is to prevent creating products that are immediately flagged as below reorder level.</p>
+</blockquote>
+
+<h3>Step 5: Save the Product</h3>
+
+<p>Once you are satisfied with all the information, click the <strong>"Add Product"</strong> button at the bottom of the form. You will see a brief "Creating Product..." overlay, and once the product is created successfully, a confirmation message will appear: <strong>"Product Successfully Created"</strong>.</p>
+
+<p>The new product will now appear in your Products List View and be available for use in estimates, invoices, and jobs.</p>
+
+<blockquote>
+  <p><strong>Tip:</strong> If you need to go back and modify the general information before saving, click the <strong>"Back"</strong> button to return to the previous tab.</p>
+</blockquote>
+
+<hr>
+
+<h2>2. Viewing Product Details</h2>
+
+<p>To see a complete read-only summary of a product's information without entering edit mode:</p>
+
+<ol>
+  <li>Click the <strong>eye icon</strong> (view icon) in the Actions column for the product you want to view.</li>
+  <li>A details panel will slide open showing all product information organized in a clean layout:</li>
+</ol>
+
+<ul>
+  <li>Product image and basic info (name, description)</li>
+  <li>Vendor and manufacturer details</li>
+  <li>Group and unit of measure</li>
+  <li>Inventory details (quantity on hand, reorder level)</li>
+  <li>Location and average delivery time</li>
+  <li>Tags and color</li>
+  <li>Pricing (cost, markup, item price)</li>
+  <li>Tax and inventory tracking status</li>
+</ul>
+
+<p>From this panel, you can click <strong>"Edit Info"</strong> at the bottom to switch directly into edit mode.</p>
+
+<hr>
+
+<h2>3. Checking Stock Availability</h2>
+
+<p>To see how your product stock is allocated:</p>
+
+<ol>
+  <li>Click the <strong>colored inventory dot</strong> (green, yellow, or red) in the Actions column for any product.</li>
+  <li>A window will appear showing three key numbers:</li>
+</ol>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>What It Means</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Stocks Available</strong></td>
+      <td>The number of units currently available (not reserved for any estimate or job).</td>
+    </tr>
+    <tr>
+      <td><strong>Stock Reserved for Estimates</strong></td>
+      <td>The number of units that have been allocated to open estimates but not yet confirmed.</td>
+    </tr>
+    <tr>
+      <td><strong>Stock Reserved for Jobs</strong></td>
+      <td>The number of units that have been allocated to active jobs.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This breakdown helps you understand why your available stock might be lower than your total quantity on hand — some units may be reserved for pending estimates or active jobs.</p>
+
+<hr>
+
+<h2>4. Editing a Product</h2>
+
+<p>To update the information for an existing product:</p>
+
+<h3>Step 1: Open the Product for Editing</h3>
+
+<p>You can open a product for editing in three ways:</p>
+
+<ul>
+  <li><strong>Click the SKU</strong> of the product in the first column of the Products List View.</li>
+  <li><strong>Click the edit icon</strong> (pencil icon) in the Actions column.</li>
+  <li><strong>Click "Edit Info"</strong> from the Product Details panel (see Section 2).</li>
+</ul>
+
+<p>The edit panel will slide open from the right side of the screen, pre-filled with the product's current information.</p>
+
+<h3>Step 2: Make Your Changes</h3>
+
+<p>You can modify any field except the <strong>SKU</strong>, which is displayed but cannot be changed after the product has been created. All fields from both the General Info and Additional Details tabs are editable, including pricing, inventory levels, vendor, manufacturer, image, and tags.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> The <strong>SKU</strong> field is read-only in edit mode. This ensures consistency across all records that reference this product.</p>
+</blockquote>
+
+<h3>Step 3: Save Your Changes</h3>
+
+<p>Once you have made your edits, click the <strong>"Apply Changes"</strong> button at the bottom of the panel. You will see a brief "Updating Product..." overlay, and once the update is saved, a confirmation message will appear: <strong>"Product Successfully Updated"</strong>.</p>
+
+<p>If you haven't made any changes, the "Apply Changes" button will be grayed out (disabled) to indicate there is nothing to save.</p>
+
+<blockquote>
+  <p><strong>Tip:</strong> If you change your mind and don't want to save your edits, click <strong>"Cancel"</strong> to close the panel without saving.</p>
+</blockquote>
+
+<h3>Archive or Delete from the Edit Panel</h3>
+
+<p>While editing a product, you will also see an <strong>Archive</strong> button (or <strong>Delete</strong> button if the product is already archived) in the top area of the edit panel. This provides a convenient way to archive or delete a product without going back to the Products List View.</p>
+
+<hr>
+
+<h2>5. Archiving Products</h2>
+
+<p>Archiving is a safe way to disable a product without permanently deleting it. Archived products:</p>
+
+<ul>
+  <li><strong>Do not appear</strong> in dropdowns when creating new estimates, invoices, or jobs.</li>
+  <li><strong>Are preserved</strong> in historical records — any existing estimates, invoices, or jobs that used this product will continue to show it.</li>
+  <li><strong>Can be restored</strong> at any time if you need the product again.</li>
+</ul>
+
+<h3>How to Archive a Single Product</h3>
+
+<ol>
+  <li>On the Products List View (Active tab), locate the product you want to archive.</li>
+  <li>Click the <strong>archive icon</strong> in the Actions column for that product.</li>
+  <li>A confirmation dialog will appear: <em>"Are you sure you want to archive [Product Name]?"</em></li>
+  <li>Click <strong>"Archive"</strong> to confirm, or <strong>"Cancel"</strong> to go back.</li>
+  <li>You will see an "Archiving Product..." overlay, followed by a success message: <strong>"Product Successfully Archived"</strong>.</li>
+</ol>
+
+<h3>How to Archive Multiple Products at Once</h3>
+
+<ol>
+  <li>On the Products List View (Active tab), select the checkboxes next to the products you want to archive.</li>
+  <li>Click the <strong>"Archive"</strong> button that appears in the bulk actions bar.</li>
+  <li>A confirmation dialog will appear asking you to confirm the bulk archive.</li>
+  <li>Click <strong>"Archive"</strong> to confirm.</li>
+  <li>A success message will appear: <strong>"Products Successfully Archived"</strong>.</li>
+</ol>
+
+<hr>
+
+<h2>5.1 Restoring an Archived Product</h2>
+
+<p>If you need to bring an archived product back into active use:</p>
+
+<ol>
+  <li>Switch to the <strong>Archived</strong> tab on the Products List View.</li>
+  <li>Find the product you want to restore.</li>
+  <li>Click the <strong>restore icon</strong> (undo icon) in the Actions column.</li>
+  <li>A confirmation popover will appear: <em>"Do you want to restore this product?"</em></li>
+  <li>Click <strong>"Restore"</strong> to confirm.</li>
+  <li>A success message will appear: <strong>"Product Successfully Restored"</strong>.</li>
+</ol>
+
+<p>The product will be moved back to the Active tab and will once again be available for use in estimates, invoices, and jobs.</p>
+
+<hr>
+
+<h2>5.2 Permanently Deleting a Product</h2>
+
+<p>Permanent deletion is only available for <strong>archived</strong> products and only when the product is <strong>not in use</strong> (not linked to any estimate, invoice, or job).</p>
+
+<ol>
+  <li>Switch to the <strong>Archived</strong> tab on the Products List View.</li>
+  <li>Find the product you want to permanently delete.</li>
+  <li>Click the <strong>delete icon</strong> (trash icon) in the Actions column.
+    <ul>
+      <li>If the delete icon is <strong>grayed out</strong> (disabled), it means the product is still in use somewhere. You must first remove the product from all associated records before you can delete it.</li>
+    </ul>
+  </li>
+  <li>A confirmation dialog will appear: <em>"Delete [Product Name]?"</em></li>
+  <li>Click <strong>"Delete"</strong> to confirm the permanent deletion, or <strong>"Cancel"</strong> to go back.</li>
+  <li>A success message will appear: <strong>"Product Successfully Deleted"</strong>.</li>
+</ol>
+
+<h3>Bulk Deleting Archived Products</h3>
+
+<p>You can delete multiple archived products at once by selecting their checkboxes and clicking the <strong>"Delete"</strong> button in the bulk actions bar. If some of the selected products are in use:</p>
+
+<ul>
+  <li>The confirmation dialog will tell you how many can be deleted and how many are in use.</li>
+  <li>Only the products that are <strong>not in use</strong> will be deleted. Products that are in use will remain in the Archived tab.</li>
+  <li>If <strong>all</strong> selected products are in use, the delete button will be disabled and you will see a message explaining that none of the selected products can be deleted.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Warning:</strong> Permanent deletion cannot be undone. Once a product is deleted, all of its information is removed from the system permanently. If you are unsure, keep the product archived instead.</p>
+</blockquote>
+
+<hr>
+
+<h2>6. Bulk Editing Inventory</h2>
+
+<p>If you need to update inventory quantities for multiple products at the same time:</p>
+
+<ol>
+  <li>On the Products List View, select the checkboxes next to the products you want to update.</li>
+  <li>Click the <strong>"Bulk Edit"</strong> button that appears in the bulk actions bar.</li>
+  <li>A panel will slide open showing:
+    <ul>
+      <li>A count of how many products are selected.</li>
+      <li>A <strong>Quantity On Hand</strong> field — enter the new quantity to apply to all selected products.</li>
+      <li>A <strong>Reorder Quantity</strong> field — enter the new reorder level to apply to all selected products.</li>
+      <li>A list of the selected products with their current values for reference.</li>
+    </ul>
+  </li>
+  <li>Fill in the new values and click <strong>"Bulk Edit"</strong> to apply the changes.</li>
+  <li>A success message will appear: <strong>"Products Successfully Updated"</strong>.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Note:</strong> Bulk edit applies the <strong>same</strong> quantity and reorder level to all selected products. If you need different values for each product, edit them individually.</p>
+</blockquote>
+
+<hr>
+
+<h2>7. Searching and Filtering Products</h2>
+
+<p>The Products List View provides several tools to help you quickly find the products you need.</p>
+
+<h3>7.1 Quick Search</h3>
+
+<p>The <strong>search bar</strong> at the top of the Products List View allows you to search for products by keyword. Simply type your search term and the results will update automatically.</p>
+
+<p>To clear the search, delete the text from the search bar or click the clear button.</p>
+
+<h3>7.2 Advanced Filtering</h3>
+
+<p>For more precise results, click the <strong>Filter</strong> button to open the advanced filter panel. The following filter options are available:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Filter</th>
+      <th>What It Does</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Tags</strong></td>
+      <td>Select one or more tags to show only products that have those tags.</td>
+    </tr>
+    <tr>
+      <td><strong>Groups</strong></td>
+      <td>Select one or more groups to show only products that belong to those groups.</td>
+    </tr>
+    <tr>
+      <td><strong>Taxable</strong></td>
+      <td>Check this box to show only products that are marked as taxable.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>When filters are active, a <strong>badge</strong> with a number will appear on the Filter button, indicating how many filters are currently applied.</p>
+
+<p>To remove all filters at once, open the filter panel and click the <strong>"Reset Filter"</strong> link.</p>
+
+<blockquote>
+  <p><strong>Tip:</strong> You can combine quick search and advanced filters for maximum precision. For example, search for "thermostat" while filtering by the "HVAC" tag to find all HVAC thermostats.</p>
+</blockquote>
+
+<hr>
+
+<h2>8. Importing and Exporting Products</h2>
+
+<blockquote>
+  <p><strong>Note:</strong> The Import and Export features may not be visible if they have been disabled by your system administrator.</p>
+</blockquote>
+
+<h3>8.1 Exporting Products to CSV</h3>
+
+<p>To download all your products as a spreadsheet file:</p>
+
+<ol>
+  <li>Click the <strong>"Export CSV"</strong> button on the Products List View.</li>
+  <li>The system will generate a CSV file containing all your products.</li>
+  <li>The file will automatically download to your computer with a name like <code>products_2026-02-18_14-30.csv</code> (with the current date and time).</li>
+</ol>
+
+<p>The exported file can be opened in Microsoft Excel, Google Sheets, or any spreadsheet application.</p>
+
+<h3>8.2 Importing Products from CSV</h3>
+
+<p>To add multiple products at once from a spreadsheet file:</p>
+
+<ol>
+  <li>Click the <strong>"Import CSV"</strong> button on the Products List View. This will take you to the Import page.</li>
+  <li>Follow the step-by-step import wizard:
+    <ul>
+      <li><strong>Upload your CSV file</strong> — Drag and drop your file or click to browse.</li>
+      <li><strong>Map your columns</strong> — Match the columns in your file to the required fields in the system.</li>
+    </ul>
+  </li>
+  <li>Review the data and click to import.</li>
+</ol>
+
+<p><strong>Required columns in your CSV file:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>sku</code></td>
+      <td>Unique identifier for each product.</td>
+    </tr>
+    <tr>
+      <td><code>name</code></td>
+      <td>The name of the product.</td>
+    </tr>
+    <tr>
+      <td><code>unitCost</code></td>
+      <td>Your cost to acquire the product in dollars (e.g., <code>10.00</code>).</td>
+    </tr>
+    <tr>
+      <td><code>unitRetailPrice</code></td>
+      <td>The selling price in dollars (e.g., <code>15.00</code>).</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Optional columns:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>description</code></td>
+      <td>A description of the product.</td>
+    </tr>
+    <tr>
+      <td><code>tags</code></td>
+      <td>Tags to assign (comma-separated, e.g., "lumber, construction").</td>
+    </tr>
+    <tr>
+      <td><code>isTaxable</code></td>
+      <td>Whether the product is taxable (<code>Yes</code> or <code>No</code>).</td>
+    </tr>
+    <tr>
+      <td><code>isArchived</code></td>
+      <td>Whether the product should be created as archived (<code>Yes</code> or <code>No</code>).</td>
+    </tr>
+    <tr>
+      <td><code>vendorSku</code></td>
+      <td>The vendor's SKU for this product.</td>
+    </tr>
+    <tr>
+      <td><code>manufacturerModelNumber</code></td>
+      <td>The manufacturer's model or part number.</td>
+    </tr>
+    <tr>
+      <td><code>color</code></td>
+      <td>The product color.</td>
+    </tr>
+    <tr>
+      <td><code>unitOfMeasure</code></td>
+      <td>How the product is measured (e.g., <code>EACH</code>, <code>GALLON</code>, <code>BOX</code>).</td>
+    </tr>
+    <tr>
+      <td><code>quantityOnHand</code></td>
+      <td>Current stock level (number).</td>
+    </tr>
+    <tr>
+      <td><code>reorderLevel</code></td>
+      <td>Minimum stock before reorder alert (number).</td>
+    </tr>
+    <tr>
+      <td><code>isInventoryDisabled</code></td>
+      <td>Disable inventory tracking (<code>Yes</code> or <code>No</code>).</td>
+    </tr>
+    <tr>
+      <td><code>location</code></td>
+      <td>Physical storage location.</td>
+    </tr>
+    <tr>
+      <td><code>adt</code></td>
+      <td>Average delivery time in days.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Once the import is complete, you will see a success message: <strong>"Products Successfully Imported"</strong>, and you will be returned to the Products List View.</p>
+
+<blockquote>
+  <p><strong>Tip:</strong> You can use the Export feature to download a CSV with the correct format, then use it as a template for your import file.</p>
+</blockquote>
+
+<hr>
+
+<h2>9. Quick Add (Keyboard Shortcut)</h2>
+
+<p>For users who need to create products quickly from anywhere in the application, there is a <strong>Quick Add</strong> feature:</p>
+
+<ol>
+  <li>Press <strong>Ctrl + K</strong> (Windows) or <strong>Cmd + K</strong> (Mac) from any page in the application.</li>
+  <li>A Quick Add modal will appear. Select <strong>"Product"</strong> from the toggle at the top.</li>
+  <li>Enter the <strong>SKU</strong>, <strong>Name</strong>, <strong>Price</strong>, and optionally <strong>Quantity On Hand</strong>.</li>
+  <li>Click <strong>"Add"</strong> to create the product.</li>
+</ol>
+
+<p>The Quick Add modal creates the product with minimal information and marks it as taxable by default. After creating a product this way, you will see a confirmation with a <strong>"View Products"</strong> link that takes you to the product details where you can add all the additional information (vendor, manufacturer, image, etc.).</p>
+
+<blockquote>
+  <p><strong>Note:</strong> Quick Add does not set a Cost or Markup — only the selling Price. To complete the full product setup, open the product for editing after creating it.</p>
+</blockquote>
+
+<hr>
+
+<h2>10. How Products Are Used Across the Platform</h2>
+
+<p>Once a product has been created, it becomes available throughout the platform. Unlike services (which use hours and minutes), products use a <strong>quantity</strong> — the number of units being sold or used.</p>
+
+<h3>Estimates</h3>
+
+<p>In the <strong>Products tab</strong> of an estimate, you can add products and adjust their quantity and price per unit. Each product added shows:</p>
+
+<ul>
+  <li>The product name, description, and SKU.</li>
+  <li>An editable <strong>Quantity</strong> field (number of units).</li>
+  <li>An editable <strong>Price</strong> field (pre-filled from the product's Item Price, but adjustable per estimate).</li>
+  <li>An inventory status indicator showing current stock levels.</li>
+  <li>A calculated total based on quantity and price.</li>
+</ul>
+
+<p>When you add a product to an estimate, the quantity is <strong>reserved</strong> — it appears in the "Stock Reserved for Estimates" count in the Stock Availability window.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> Products that are out of stock (0 available quantity with inventory tracking enabled) <strong>cannot be added</strong> to estimates. They will appear grayed out in the product picker.</p>
+</blockquote>
+
+<h3>Invoices</h3>
+
+<p>Products work similarly in invoices. When viewing an invoice, you can add products with a quantity and price per unit. The price is pre-filled from the product's Item Price but can be adjusted for each invoice.</p>
+
+<blockquote>
+  <p><strong>Important:</strong> Once an invoice is marked as <strong>Paid</strong>, all products on that invoice become <strong>read-only</strong>. You will not be able to edit quantities, prices, or remove products from a paid invoice.</p>
+</blockquote>
+
+<h3>Jobs</h3>
+
+<p>Jobs have a <strong>Products</strong> section in their Overview where you can add, edit, and remove products. Key behaviors in jobs:</p>
+
+<ul>
+  <li>Quantity can be adjusted using <strong>+/-</strong> buttons or by typing directly.</li>
+  <li>Quantity is <strong>capped at available stock</strong> — you cannot add more units than are available (unless inventory tracking is disabled for that product). If you reach the maximum, a message will appear: <em>"Maximum stock reached. [X] available."</em></li>
+  <li>When you add a product to a job, the quantity is <strong>reserved</strong> — it appears in the "Stock Reserved for Jobs" count.</li>
+  <li>A change summary popover shows before/after values when you modify quantity or price.</li>
+  <li>If a job is <strong>locked</strong>, all product fields become read-only.</li>
+</ul>
+
+<hr>
+
+<h2>Summary of Common Actions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>What You Want to Do</th>
+      <th>How to Do It</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Add a new product</td>
+      <td>Click <strong>"+ New Product"</strong> on the Products List View</td>
+    </tr>
+    <tr>
+      <td>Edit a product</td>
+      <td>Click the <strong>SKU</strong> or the <strong>edit icon</strong> on the Products List View</td>
+    </tr>
+    <tr>
+      <td>View product details</td>
+      <td>Click the <strong>eye icon</strong> on the Products List View</td>
+    </tr>
+    <tr>
+      <td>Check stock availability</td>
+      <td>Click the <strong>colored inventory dot</strong> on the Products List View</td>
+    </tr>
+    <tr>
+      <td>Archive a product</td>
+      <td>Click the <strong>archive icon</strong> on the Active tab</td>
+    </tr>
+    <tr>
+      <td>Restore a product</td>
+      <td>Click the <strong>restore icon</strong> on the Archived tab</td>
+    </tr>
+    <tr>
+      <td>Permanently delete a product</td>
+      <td>Click the <strong>delete icon</strong> on the Archived tab (only if not in use)</td>
+    </tr>
+    <tr>
+      <td>Bulk edit inventory quantities</td>
+      <td>Select products, then click <strong>"Bulk Edit"</strong></td>
+    </tr>
+    <tr>
+      <td>Bulk archive products</td>
+      <td>Select products on Active tab, then click <strong>"Archive"</strong></td>
+    </tr>
+    <tr>
+      <td>Bulk delete archived products</td>
+      <td>Select products on Archived tab, then click <strong>"Delete"</strong></td>
+    </tr>
+    <tr>
+      <td>Search for a product</td>
+      <td>Type in the <strong>search bar</strong> at the top</td>
+    </tr>
+    <tr>
+      <td>Filter products</td>
+      <td>Click the <strong>Filter</strong> button and select criteria</td>
+    </tr>
+    <tr>
+      <td>Export all products</td>
+      <td>Click <strong>"Export CSV"</strong></td>
+    </tr>
+    <tr>
+      <td>Import products from a file</td>
+      <td>Click <strong>"Import CSV"</strong></td>
+    </tr>
+    <tr>
+      <td>Quickly add a product from anywhere</td>
+      <td>Press <strong>Ctrl/Cmd + K</strong> and select "Product"</td>
+    </tr>
+  </tbody>
+</table>
+
+</main>
+</body>
+</html>

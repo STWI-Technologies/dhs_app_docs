@@ -30,7 +30,20 @@ const translations = {
     noResults: 'No articles found matching your search.',
     copyright: `© ${new Date().getFullYear()} Direct Home Service. All rights reserved.`,
     loading: 'Loading...',
-    keywords: 'Keywords'
+    keywords: 'Keywords',
+    contact: 'Contact',
+    heroTitle: 'Find it fast. Get back to work',
+    heroSubtitle: 'Search by topic, or browse the sections below.',
+    audienceLabel: 'Who the articles are for',
+    forServiceProviders: 'For service providers',
+    forClients: 'For clients',
+    audienceSwitch: 'Show the other audience',
+    articleSingular: 'article',
+    articlePlural: 'articles',
+    contactSupport: 'Chat with support',
+    supportOnline: 'Online now',
+    supportOffline: 'Offline, leave a message',
+    supportChecking: 'Checking availability'
   },
   es: {
     subtitle: 'Base de Conocimientos',
@@ -43,7 +56,20 @@ const translations = {
     noResults: 'No se encontraron artículos que coincidan con su búsqueda.',
     copyright: `© ${new Date().getFullYear()} Direct Home Service. Todos los derechos reservados.`,
     loading: 'Cargando...',
-    keywords: 'Palabras Clave'
+    keywords: 'Palabras Clave',
+    contact: 'Contacto',
+    heroTitle: 'Encuéntrelo rápido. Vuelva al trabajo',
+    heroSubtitle: 'Busque por tema, o recorra las secciones de abajo.',
+    audienceLabel: 'Para quién son los artículos',
+    forServiceProviders: 'Para proveedores',
+    forClients: 'Para clientes',
+    audienceSwitch: 'Ver la otra opción',
+    articleSingular: 'artículo',
+    articlePlural: 'artículos',
+    contactSupport: 'Chatear con soporte',
+    supportOnline: 'En línea ahora',
+    supportOffline: 'Sin conexión, deje un mensaje',
+    supportChecking: 'Comprobando disponibilidad'
   }
 };
 

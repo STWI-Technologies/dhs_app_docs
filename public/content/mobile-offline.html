@@ -1,0 +1,99 @@
+<h1>Working Offline on the Mobile App</h1>
+<h2>Overview</h2>
+<p>Basements, crawl spaces, rural properties, parking garages: plenty of the places you work have no signal. The mobile app is built for that. It keeps a copy of your account on the device, so the day carries on when the bars disappear, and it sends everything up when you are back on a connection.</p>
+<p>Nothing to switch on. Offline mode is on by default, and the first sign-in is what stocks the device.</p>
+<h2>Things to know</h2>
+<ul>
+<li><strong>The first sign-in has to finish.</strong> It downloads your data and shows <strong>Setting up your workspace</strong>. Leave before it finishes and the app tells you so: <strong>Setup incomplete &mdash; offline</strong>, and that "Some data hasn't finished downloading, so parts of the app may be unavailable offline."</li>
+<li><strong>You keep working normally.</strong> Start jobs, run timers, add services and products, complete checklists, create clients. Anything you change is saved on the device and marked <strong>Unsynced</strong>.</li>
+<li><strong>Nothing to press to send it.</strong> "Your queued changes will upload automatically when you reconnect."</li>
+<li><strong>Three things need a connection</strong>, always: attachments, notes and the conversation. They are not kept on the device at all.</li>
+<li><strong>Two users can change the same record.</strong> When that happens the app stops and asks you, rather than picking a winner. See <strong>When two users changed the same thing</strong>, below.</li>
+</ul>
+<h2>Before you lose signal</h2>
+<ul>
+<li><strong>Open the app while you still have bars</strong> and let the blue <strong>Refreshing your data</strong> banner run to the end and disappear. That is the whole preparation.</li>
+<li><strong>Pull down any document you will need on site.</strong> Attachments are the one thing the device cannot give you later: a spec sheet, a signed agreement, a photo of the last visit. Open it before you drive out.</li>
+<li><strong>Check what is still waiting before you leave a site</strong> if you are going somewhere with no signal for a long stretch. The offline banner counts your queued changes for you.</li>
+</ul>
+<h2>What it looks like in the field</h2>
+<p><strong>A basement with no bars.</strong> You arrive, start the job, run the timer, add the two parts you fitted and tick the checklist. The banner says <strong>You're working offline</strong> and the records you touched pick up a small cloud-off icon. You drive to the next address, the phone finds signal on the way, and everything goes up without you doing anything.</p>
+<p><strong>A rural property.</strong> The client asks for a price while you are there. You build the estimate on the spot with your own services and products, prices and tax included, because the catalogue is on the device. It reaches the office when you do.</p>
+<p><strong>A parking garage.</strong> You need the signed service agreement from the client's record. It is an attachment, so it is not there. That is the one to plan for.</p>
+<h2>What works offline</h2>
+<p>Everything in the table below is kept on the device, so you can open it, and in most cases change it, with no connection. "Syncs automatically" means the app sends your changes up on its own once you reconnect.</p>
+<table>
+<thead>
+<tr><th>Feature</th><th>Works offline?</th><th>Syncs automatically?</th><th>Details</th></tr>
+</thead>
+<tbody>
+<tr><td>Jobs</td><td>Yes</td><td>Yes</td><td>Open them, move the status, start and stop the timer, add services and products, and complete them.</td></tr>
+<tr><td>Appointments</td><td>Yes</td><td>Yes</td><td>The day's visits, with their details, and the changes you make to them.</td></tr>
+<tr><td>Estimates</td><td>Yes</td><td>Yes</td><td>Build one on site from your catalogue. Sending it to the client is what needs a connection.</td></tr>
+<tr><td>Invoices</td><td>Yes</td><td>Yes</td><td>Raise and edit them. Sending is online, same as estimates.</td></tr>
+<tr><td>Payments</td><td>Yes</td><td>Yes</td><td>Record what you were given. Card processing itself goes through Stripe and needs a connection.</td></tr>
+<tr><td>Clients</td><td>Yes</td><td>Yes</td><td>Their details, and new clients you create on site.</td></tr>
+<tr><td>Properties</td><td>Yes</td><td>Yes</td><td>Addresses and property details, including ones you add.</td></tr>
+<tr><td>Checklists</td><td>Yes</td><td>Yes</td><td>Work through the steps on the job, including the ones that require a written note.</td></tr>
+<tr><td>Services and products</td><td>Yes</td><td>Yes</td><td>The whole catalogue, with prices, tax and stock, so estimates and invoices add up correctly with no signal.</td></tr>
+<tr><td>Vendors and manufacturers</td><td>Yes</td><td>Yes</td><td>Who supplies and who makes what you install.</td></tr>
+<tr><td>Groups</td><td>Yes</td><td>Yes</td><td>The bundles you add to an estimate in one step.</td></tr>
+<tr><td>Tax rates</td><td>Yes</td><td>Yes</td><td>Kept with the catalogue, which is why an offline total is the real total.</td></tr>
+<tr><td>Crews and users</td><td>Yes</td><td>Yes</td><td>Who is on which crew, so assignment works with no signal.</td></tr>
+<tr><td>Time entries</td><td>Yes</td><td>Yes</td><td>Start and stop the timer and log your hours. They queue up and upload on their own once you reconnect.</td></tr>
+<tr><td>Calendar</td><td>Yes</td><td>Yes</td><td>Your schedule as it stood at the last sync, and you can book straight from it: a new job or appointment created on the calendar shows up on it right away and goes to the office when you reconnect.</td></tr>
+<tr><td>Attachments</td><td>No</td><td>N/A</td><td>"Attachments require an internet connection." Photos and files are not kept on the device, on a client, a property or a service.</td></tr>
+<tr><td>Notes</td><td>No</td><td>N/A</td><td>The notes tab is server only. Offline it shows the "You're offline" placeholder.</td></tr>
+<tr><td>Conversation</td><td>Needs a connection</td><td>N/A</td><td>Messages are not kept on the device, so read the thread before you head out. Back on signal the whole conversation is there, and anything the client wrote while you were away is waiting for you.</td></tr>
+<tr><td>AI Assistant</td><td>No</td><td>N/A</td><td>"The AI assistant needs an internet connection. Reconnect to ask a question."</td></tr>
+</tbody>
+</table>
+<h2>The banner that tells you where you stand</h2>
+<p>There is no permanent status widget to go looking for. A banner appears at the top of the screen when there is something worth telling you, and it leaves when everything is synced and nothing is waiting. No banner means you are up to date.</p>
+<p>The full banner lives on your dashboard. List screens show the same card in two lighter forms: the offline one, and a small pill while that particular list is pulling or pushing. Detail and form screens show a thin orange strip that says <strong>You're offline</strong>, and nothing more.</p>
+<table>
+<thead>
+<tr><th>What it says</th><th>What is happening</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Setting up your workspace</strong>, in blue, with a percentage ring and a line like "Services &middot; Step 8 of 15"</td><td>The first download after you sign in, the one that stocks the device. Tap the card to open the detail: <strong>Server &rarr; Device</strong>, the entity being downloaded, and its own progress bar.</td></tr>
+<tr><td><strong>Refreshing your data</strong>, the same blue card</td><td>Every later pull. Different title, same card, same tap to expand. The first run gets its own wording because that is the one that decides what you will have offline.</td></tr>
+<tr><td><strong>Sending your changes</strong></td><td>Your queued work is going up. The arrow in the badge points up instead of down, and the detail reads <strong>Device &rarr; Server</strong>.</td></tr>
+<tr><td><strong>You're working offline</strong>, in orange, with an <strong>Offline</strong> chip</td><td>No connection. With work waiting it adds the count: "1 change &middot; Your queued changes will upload automatically when you reconnect." With nothing waiting, the title stands alone.</td></tr>
+<tr><td><strong>Setup incomplete &mdash; offline</strong>, also orange</td><td>You lost the connection before that first download finished: "Some data hasn't finished downloading, so parts of the app may be unavailable offline." Worth getting back on signal before you rely on the device.</td></tr>
+<tr><td><strong>Sync paused &mdash; conflicts found</strong>, in red, with a <strong>Resolve</strong> button</td><td>Something you changed was also changed on the server. See the next section.</td></tr>
+<tr><td><strong>Out of sync</strong>, in red, with an <strong>Unsynced</strong> chip and a <strong>Retry sync</strong> button</td><td>An upload failed. Nothing is lost: the change stays in the queue. Tap the card to see which entities went up, each with a green tick, and which one did not, marked <strong>Couldn't upload</strong>.</td></tr>
+</tbody>
+</table>
+<p>Records themselves carry a quieter mark: a small cloud-off icon on the row of anything you changed offline, and a temporary code (JOB-L1, and so on) on anything you created offline, until the server hands it the real one.</p>
+<h2>When two users changed the same thing</h2>
+<p>If you edit a job offline and someone in the office edits the same job, the app cannot know which one is right, so it stops instead of guessing. The banner turns red and reads <strong>Sync paused &mdash; conflicts found</strong>, with how many items "were changed both here and on the server. Pick which version to keep." and a <strong>Resolve</strong> button on the right.</p>
+<p>That opens a stepper that walks the list one record at a time, counting off in the header ("2 of 5 &middot; 1 resolved") so you can see how far you have left. For each record it tells you why it clashed:</p>
+<ul>
+<li>It was <strong>also changed on the server</strong> while you were offline.</li>
+<li>It was <strong>deleted on the server</strong> while you were offline, and keeping your version will restore it.</li>
+<li><strong>A matching record already exists</strong> on the server, which usually means the same thing got created twice.</li>
+</ul>
+<p>Below that, <strong>Your version</strong> and <strong>Server version</strong> sit side by side, one row per field that differs. You choose with <strong>Keep yours</strong>, <strong>Keep server</strong>, or <strong>Merge field-by-field</strong> when you want some of each; <strong>Delete this record</strong> is there too, switched off when another queued change depends on it. Nothing is committed until <strong>Finish &amp; resume sync</strong> at the end, and nothing else syncs until the list is empty, which is deliberate: it stops a conflict from being buried under later work.</p>
+<h2>Offline settings</h2>
+<p>Under <strong>Profile &gt; Offline</strong> there are three switches. All of them only ever <em>reduce</em> offline activity, so with everything on, the app behaves the way this article describes.</p>
+<table>
+<thead>
+<tr><th>Switch</th><th>Default</th><th>What turning it off does</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Offline mode</strong></td><td>On</td><td>The app works purely online: nothing is read from or saved to the device, and syncing stops. The other two switches go inert.</td></tr>
+<tr><td><strong>Always use latest data</strong></td><td>Off</td><td>On, the app fetches from the server while you are connected and falls back to the device copy when you are not. Off, it shows the saved copy first, which is faster. Either way your changes are saved online first and only queued when there is no connection.</td></tr>
+<tr><td><strong>Background sync and live updates</strong></td><td>On</td><td>The app stops syncing in the background and stops listening for live updates from the server.</td></tr>
+</tbody>
+</table>
+<p>The same screen has <strong>Sync now</strong>, for when you want to pull the latest before heading out rather than wait for the app to do it. Offline it tells you plainly: "You're offline. Connect to the internet to sync."</p>
+<h2>Where offline connects</h2>
+<ul>
+<li><strong>Mobile App</strong>: signing in is what stocks the device, so the first sign-in described there is the one that decides what you will have with no signal.</li>
+<li><strong>Jobs, Estimates and Invoices</strong>: the records you open and change on site. Each one you touch offline carries the cloud-off mark until it uploads.</li>
+<li><strong>Timesheets</strong>: the timer you run and the hours you log with no signal land there once you reconnect.</li>
+<li><strong>Clients and Properties</strong>: kept on the device in full, which is what lets you open a client, add a property, or create a new client in a basement.</li>
+<li><strong>Services and Products</strong>: the catalogue, its prices and the tax rates travel with you, which is why an estimate you build offline adds up to the real total.</li>
+<li><strong>Settings</strong>: the three offline switches and Sync now live under your profile, alongside the rest of your preferences.</li>
+</ul>

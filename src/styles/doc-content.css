@@ -159,6 +159,21 @@
   cursor: pointer;
 }
 
+/* Portrait figures — a side panel or drawer is ~600px wide in the app, so
+   letting it stretch to the full article width turns a narrow panel into a
+   1200px-tall block. Capped and centred instead. */
+.doc-content img.kb-panel {
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 560px) {
+  .doc-content img.kb-panel {
+    max-width: 100%;
+  }
+}
+
 .doc-content img:hover {
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.14);
   border-color: #999;

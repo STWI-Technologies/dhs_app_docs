@@ -1,0 +1,260 @@
+# Hidden content: what was hidden, and how to put it back
+
+Some knowledge base content is **hidden, not deleted**. It was taken out of the
+navigation because the feature wasn't ready to be public, and it has to go back
+when it is.
+
+Everything listed here is recoverable. Nothing was deleted except where this
+document says so explicitly.
+
+Hidden as part of **WC-32** (branch `bugfix/WC-32-Knowledgebase-Updates`).
+
+---
+
+## How hiding works in this repo
+
+`src/data/articles.js` is the single source of truth for what exists. It drives
+the cards on the home page **and** the routes: `App.js` resolves
+`/articles/:articleId` with `articles.find(a => a.id === articleId)`, so an
+article missing from that file has no card *and* no reachable URL.
+
+That means removing the entry is enough to hide an article completely. The
+content file and its search-index entry can stay where they are. The article
+becomes unreachable, and putting the entry back restores it as it was.
+
+The search index is keyed by article id and `SearchBar` iterates `articles`, so
+an index entry with no matching article is never read. A leftover key is inert.
+
+---
+
+## 1. WhatsApp AI
+
+**Hidden in:** commit `328a884`
+
+**Kept on disk (do not delete):**
+
+- `public/content/whatsapp-ai.html`
+- the `whatsapp-ai` key in `public/content/search-index.json`
+
+**To restore**, add this back to `src/data/articles.js`. Import `WhatsappIcon`
+from `hugeicons-react` again, and place the entry where it was, after
+`ai-assistant`:
+
+```js
+{
+  id: 'whatsapp-ai',
+  icon: WhatsappIcon,
+  en: {
+    title: 'WhatsApp AI Assistant',
+    category: 'AI & Automation',
+    overview: 'Manage your entire DHS business from WhatsApp. Send text or voice messages to search records, create appointments, track time, send invoices, and more — all in English or Spanish.'
+  },
+  es: {
+    title: 'Asistente IA de WhatsApp',
+    category: 'IA y Automatización',
+    overview: 'Administre todo su negocio DHS desde WhatsApp. Envíe mensajes de texto o voz para buscar registros, crear citas, rastrear tiempo, enviar facturas y más — todo en inglés o español.'
+  },
+  keywords: ['whatsapp', 'ai', 'assistant', 'asistente', 'voice', 'voz', 'chat', 'bilingual', 'bilingüe', 'tools', 'herramientas', 'automation']
+},
+```
+
+**References removed from other articles. These must be written back by hand.**
+They were edited out of Google Docs exports, so there is no clean revert:
+
+| File | What was removed |
+|---|---|
+| `public/content/ai-assistant.html` | The sentence saying the assistant "uses the same powerful AI engine as the DHS WhatsApp integration". And WhatsApp was dropped from the list of channels a magic link works from. It read "whether you tap it from WhatsApp, SMS, the in-app chat panel, or a web browser preview". |
+| `public/content/plans-pricing.html` | Two comparison-table rows labelled "WhatsApp AI". Three places reading "In-app AI and WhatsApp AI" (included / for all users / …assistant) reduced to "In-app AI". The voice-memo row no longer says the messages go "via WhatsApp". |
+
+The exact previous wording is in the commit diff: `git show 328a884 -- public/content/ai-assistant.html public/content/plans-pricing.html`
+
+---
+
+## 2. Appointment Line (IVR)
+
+**Hidden in:** commits `930e8c0` (article) and this one (references)
+
+**Kept on disk (do not delete):**
+
+- `public/content/appointment-line.html`
+- the `appointment-line` key in `public/content/search-index.json`
+
+**To restore**, add this back to `src/data/articles.js`. Import `TelephoneIcon`
+from `hugeicons-react` again:
+
+```js
+{
+  id: 'appointment-line',
+  icon: TelephoneIcon,
+  en: {
+    title: 'Appointment Line (IVR)',
+    category: 'AI & Automation',
+    overview: 'An AI-powered phone system that lets callers find service providers, schedule appointments, manage bookings, and request callbacks — all by voice or keypad, in English or Spanish.'
+  },
+  es: {
+    title: 'Línea de Citas (IVR)',
+    category: 'IA y Automatización',
+    overview: 'Un sistema telefónico con IA que permite a quien llama encontrar proveedores de servicio, agendar citas, gestionar reservas y solicitar devoluciones de llamada — por voz o teclado, en inglés o español.'
+  },
+  keywords: ['ivr', 'appointment line', 'línea de citas', 'phone', 'teléfono', 'call', 'llamada', 'booking', 'reserva', 'voice', 'voz', 'callback', 'ai']
+},
+```
+
+**References removed from other articles. Write these back by hand:**
+
+| File | What was removed |
+|---|---|
+| `public/content/appointments-management.html` | A bullet under "Where appointments connect": "**Appointment Line** — the phone line that books appointments for you. See its own article." |
+| `public/content/settings-configuration.html` | The **Appointment Line** section of Settings. It lives in the Workspace group of the settings sidebar, between Dashboard and Timesheet. The rewritten article lists that group as "Dashboard, Timesheet" only, has no section describing it, and no row for it in the closing "Where things are" table. On restore, add it back in all three places. |
+| `public/content/plans-pricing.html` | **Seven table rows** and two prose mentions. See below. This one matters, because it changes what the plans appear to include. |
+
+### What plans-pricing said about the Appointment Line
+
+This is the important part to get right on restore. The Appointment Line is a
+**paid plan feature**, and while it is hidden the pricing tables understate what
+each plan includes. Restore all of it together:
+
+| Table | Row label | Values |
+|---|---|---|
+| Solo plan | Appointment Line | "Callback mode — clients call in and request a callback" |
+| Team plan | Appointment Line | "Full AI booking — clients can schedule appointments by phone" |
+| Enterprise plan | Dedicated IVR Number | "Your own phone number for the AI Appointment Line" |
+| Enterprise plan | Appointment Line | "Unlimited AI-powered appointment bookings" |
+| Comparison matrix | Appointment Line | Callback · AI Booking · AI Booking (unlimited) |
+| Comparison matrix | Dedicated Phone Number | (per-plan values) |
+| Feature catalogue | IVR Appointment Line | "AI-powered phone system where clients call to schedule, check, or manage appointments", available on "Solo (callback), Team & Enterprise (full AI)" |
+
+Prose removed:
+
+- Enterprise description: the sentence ended "…including SMS/MMS and a dedicated
+  IVR (Interactive Voice Response) phone number." It now ends "…including
+  SMS/MMS." Put the IVR clause back.
+- An FAQ entry, heading and answer both:
+  **"What is the Appointment Line callback vs AI booking?"** Answer: "In **callback
+  mode** (Solo), clients call the appointment line and leave a callback request
+  — you get notified and call them back. In **AI booking mode**
+  (Team/Enterprise), the AI handles the entire conversation — it checks your
+  availability, schedules the appointment, and confirms with the client, all
+  without you needing to pick up the phone."
+
+The full previous markup is in the diff for this commit.
+
+---
+
+## 3. Client Portal: Inbox and Messages
+
+**Hidden in:** this commit
+
+**Kept on disk (do not delete):**
+
+- `public/content/client-inbox.html` and `public/content/client-inbox-es.html`
+- the `client-inbox` key in `public/content/search-index.json`
+
+The Inbox itself is NOT hidden from clients: it is still a page in the portal
+menu, and the other client articles still send the reader to it ("ask in the
+Inbox", "every estimate has its own conversation"). Only its article is out of
+the knowledge base, so nothing is left pointing at a card that does not exist.
+
+**To restore**, put this back in `src/data/articles.js`, before
+`client-profile-settings`, and import `Message01Icon` from `hugeicons-react`
+again (the import was removed with it):
+
+```js
+{
+    id: 'client-inbox',
+    audience: 'client',
+    platforms: ['client'],
+    icon: Message01Icon,
+    contentPath: {
+      en: '/content/client-inbox.html',
+      es: '/content/client-inbox-es.html',
+    },
+    en: {
+      title: 'Inbox and Messages',
+      category: 'Client Portal',
+      overview: 'Every conversation with your providers, kept with the estimate, job, invoice or appointment it is about. Starting one, attaching files, and archiving.'
+    },
+    es: {
+      title: 'Bandeja de Entrada y Mensajes',
+      category: 'Portal del Cliente',
+      overview: 'Cada conversación con sus proveedores, junto al presupuesto, trabajo, factura o cita del que trata. Iniciar una, adjuntar archivos y archivarla.'
+    },
+    keywords: ['inbox', 'bandeja', 'chat', 'message', 'mensaje', 'conversation', 'conversación', 'attach', 'adjuntar', 'archive', 'archivar']
+  },
+```
+
+No cross-article references were edited, so there is nothing to write back by
+hand for this one.
+
+---
+
+## 4. Clients: importing and exporting CSV
+
+**Hidden in:** this commit
+
+Import CSV and Export CSV do not render on staging: the account has
+`isImportExportClientsHidden` on, so neither button exists for a reader to
+find. The feature is real, it is just not reachable, and a manual that explains
+a button nobody can see is a manual that looks wrong.
+
+**Removed from `public/content/clients-management.html` and its Spanish twin:**
+
+| Where | What |
+|---|---|
+| Overview list | the bullet "**Import and export** your client list as CSV." |
+| Body | the whole section **Importing clients from a CSV**, its four numbered steps, and the note that both buttons can be turned off for an account |
+| Body | the whole section **Exporting your client list** |
+| Common actions | the rows "Bring in a list of clients" and "Take your list out" |
+
+Nothing else referenced them: neither section had a figure, and the figure
+coverage report already listed both as blocked by the same flag.
+
+**To restore**, write those four pieces back and delete the two
+`clients-management` entries from `BLOCKED` in
+`scripts/kb-figure-coverage.mjs`, then shoot the two panels.
+
+The exact previous wording is in the diff for this commit.
+
+The same was done to **Services** and **Products**, which hide their import and
+export behind `isImportExportServiceItemEnabled`: the section **Importing and
+exporting**, the Overview bullet, and the Common actions row in each ("Load a
+catalogue in" in Products; in Services the pricing row lost its ", or Export
+CSV" tail and now reads "Sort by Rate").
+
+---
+
+## 5. Availability: DELETED, not hidden
+
+The one exception. `availability-management` stopped being a standalone article
+because it was folded into the Settings article instead, so it was removed
+properly: the articles.js entry, the search-index key and
+`public/content/availability-management.html` are all gone, along with the
+unused `Calendar03Icon` import.
+
+The old content is still in git history if it's wanted as raw material:
+
+```
+git show 328a884^:public/content/availability-management.html
+```
+
+The fold is done: availability is now the **Availability** section of
+`public/content/settings-configuration.html`, written from the code rather than
+from the old article.
+
+Its one incoming reference was fixed rather than left dangling: the Crews
+article used to say "see the Availability Management article" and now points at
+**Manage Availability Settings** inside the crew's own Availability section.
+
+---
+
+## Checklist for un-hiding a section
+
+1. Put the `articles.js` entry back, including its icon import.
+2. Check the category still exists in `categoryOrder` in the same file.
+3. Write the cross-article references back by hand, from the tables above.
+4. Rebuild the search index for every article you touched:
+   `node scripts/build-search-index.mjs <article-id> …`
+5. Check nothing is left dangling the other way: an article that points at
+   something still hidden.
+6. Run the app and confirm the card appears, the URL resolves, and search finds
+   the body text.

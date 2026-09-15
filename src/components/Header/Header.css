@@ -23,6 +23,12 @@
   opacity: 0.85;
 }
 
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
 .header__subtitle {
   color: #d3d3d3;
   font-size: 18px;
@@ -41,6 +47,9 @@
   }
   .header__subtitle {
     font-size: 14px;
+  }
+  .header__right {
+    gap: 10px;
   }
 }
 

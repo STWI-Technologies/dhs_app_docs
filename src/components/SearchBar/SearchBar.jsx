@@ -44,9 +44,11 @@ export default function SearchBar({ onSelectArticle }) {
     articles.forEach(article => {
       const localized = getLocalized(article);
 
-      // Title match (high priority)
+      // Title match. Ranked first below, so searching "estimates" offers the
+      // Estimates article before a sentence in another article that happens to
+      // list the word.
       if (localized.title.toLowerCase().includes(term)) {
-        results.push({ text: localized.title, article, isTitle: true });
+        results.push({ text: localized.title, article, isTitle: true, rank: 0 });
       }
 
       // Overview match
@@ -57,18 +59,24 @@ export default function SearchBar({ onSelectArticle }) {
         let snippet = localized.overview.substring(start, end);
         if (start > 0) snippet = '...' + snippet;
         if (end < localized.overview.length) snippet += '...';
-        results.push({ text: snippet, article, isTitle: false });
+        results.push({ text: snippet, article, isTitle: false, rank: 2 });
       }
 
       // Keyword match
       (article.keywords || []).forEach(kw => {
         if (kw.toLowerCase().includes(term) && !results.some(r => r.article === article && r.isTitle)) {
-          results.push({ text: `${localized.title} - "${kw}"`, article, isTitle: false });
+          results.push({ text: `${localized.title} - "${kw}"`, article, isTitle: false, rank: 1 });
         }
       });
 
-      // Deep content search
-      const indexed = searchIndex[article.id] || '';
+      // Deep content search. The index holds the English body at the article's
+      // id and the Spanish one at "<id>:es", so a reader searching in Spanish
+      // matches the Spanish article. Articles with no Spanish file fall back to
+      // English rather than silently dropping out of the results.
+      const indexed =
+        (language === 'es' ? searchIndex[`${article.id}:es`] : null) ||
+        searchIndex[article.id] ||
+        '';
       if (indexed.toLowerCase().includes(term)) {
         const idx = indexed.toLowerCase().indexOf(term);
         const start = Math.max(0, idx - 40);
@@ -77,11 +85,14 @@ export default function SearchBar({ onSelectArticle }) {
         if (start > 0) snippet = '...' + snippet;
         if (end < indexed.length) snippet += '...';
         if (snippet.length > 20 && !results.some(r => r.text === snippet)) {
-          results.push({ text: snippet, article, isTitle: false });
+          results.push({ text: snippet, article, isTitle: false, rank: 3 });
         }
       }
     });
 
+    // Title, then keyword, then overview, then body. Article order decides ties,
+    // which keeps the list stable as you type.
+    results.sort((a, b) => a.rank - b.rank);
     setSuggestions(results.slice(0, 12));
   }, [searchTerm, language, searchIndex, getLocalized]);
 

@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings &amp; Configuration</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #1a1a1a; }
+    h1 { border-bottom: 2px solid #e0e0e0; padding-bottom: 0.5rem; }
+    h2 { margin-top: 2rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #d0d0d0; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background-color: #f5f5f5; font-weight: 600; }
+    blockquote { border-left: 4px solid #d0d0d0; margin: 1rem 0; padding: 0.75rem 1rem; background: #fafafa; }
+    code { background: #f0f0f0; padding: 0.15rem 0.35rem; border-radius: 3px; font-size: 0.9em; }
+    hr { border: none; border-top: 1px solid #e0e0e0; margin: 2rem 0; }
+  </style>
+</head>
+<body>
+<main>
+
+<h1>Settings &amp; Configuration</h1>
+
+<h2>Overview</h2>
+
+<p>The <strong>Settings</strong> section is your central hub for configuring every aspect of your DHS account. It controls your company information, user profile, availability, notifications, business rules, payment processing, and more.</p>
+
+<p>To access Settings, navigate to <strong>Menu &gt; Settings</strong>. The Settings page uses a <strong>sidebar + content</strong> layout: a navigation sidebar on the left lists all available sections, and the main content area on the right displays the selected section's form.</p>
+
+<p>The Settings sidebar includes the following sections:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Section</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Account</strong></td>
+      <td>Company information, client contact details, and billing address.</td>
+    </tr>
+    <tr>
+      <td><strong>Profile</strong></td>
+      <td>Your personal information, password, language, and profile picture.</td>
+    </tr>
+    <tr>
+      <td><strong>Availability</strong></td>
+      <td>Service availability schedule by day-of-week, exception dates, and seasonal exceptions.</td>
+    </tr>
+    <tr>
+      <td><strong>Dashboard</strong></td>
+      <td>Dashboard display preferences such as list limits and upcoming jobs window.</td>
+    </tr>
+    <tr>
+      <td><strong>Notifications</strong></td>
+      <td>Notification channel preferences (Email, SMS, Push, Desktop) per category.</td>
+    </tr>
+    <tr>
+      <td><strong>Business</strong></td>
+      <td>Counter settings, payment disclaimers, Zelle payment options, crew settings, privacy, and tax rates.</td>
+    </tr>
+    <tr>
+      <td><strong>Timesheet Settings</strong></td>
+      <td>Automatic timesheet linking configuration (account-level and personal override).</td>
+    </tr>
+    <tr>
+      <td><strong>Accept Payments</strong></td>
+      <td>Stripe Connect integration for accepting credit card payments from clients.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Note:</strong> Every settings section has a <strong>Save</strong> button and a <strong>Reset</strong> button. Changes are not saved until you click Save. The Reset button reverts all fields to their last saved values.</p>
+</blockquote>
+
+<hr>
+
+<h2>1. Account Settings</h2>
+
+<p>The Account section manages your company's core information. This is the default section shown when you open Settings.</p>
+
+<h3>1.1 Company Information</h3>
+
+<p>The top of the page shows a <strong>profile banner</strong> with your company's initial and name. Below it is the Company Information form:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Company Name</strong></td>
+      <td>Yes</td>
+      <td>Your business name as it appears throughout the system. Must be 2&ndash;100 characters.</td>
+    </tr>
+    <tr>
+      <td><strong>Email</strong></td>
+      <td>Yes</td>
+      <td>The primary email address for your company account. Must be unique across the system (validated on blur). Maximum 254 characters.</td>
+    </tr>
+    <tr>
+      <td><strong>Website</strong></td>
+      <td>No</td>
+      <td>Your company website URL. Accepts URLs with or without the <code>https://</code> prefix. Maximum 255 characters.</td>
+    </tr>
+    <tr>
+      <td><strong>Timezone</strong></td>
+      <td>Yes</td>
+      <td>Your business timezone. Select from over 100 timezone options. This affects how dates and times are displayed throughout the platform.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>1.2 Client Information</h3>
+
+<p>Optional contact information that can be displayed to your clients:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Client Phone</strong></td>
+      <td>No</td>
+      <td>A phone number your clients can use to reach you. Must be in valid phone format if provided.</td>
+    </tr>
+    <tr>
+      <td><strong>Client Email</strong></td>
+      <td>No</td>
+      <td>An email address your clients can use to contact you. Validated for proper email format.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>1.3 Billing Information</h3>
+
+<p>Your company's billing address, used on invoices and financial documents. All billing fields are <strong>optional</strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Validation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Billing Company Name</strong></td>
+      <td>Maximum 100 characters.</td>
+    </tr>
+    <tr>
+      <td><strong>Contact Name</strong></td>
+      <td>Maximum 50 characters.</td>
+    </tr>
+    <tr>
+      <td><strong>Address 1</strong></td>
+      <td>5&ndash;100 characters.</td>
+    </tr>
+    <tr>
+      <td><strong>Address 2</strong></td>
+      <td>Maximum 100 characters.</td>
+    </tr>
+    <tr>
+      <td><strong>City</strong></td>
+      <td>2&ndash;50 characters. Letters, hyphens, and apostrophes only.</td>
+    </tr>
+    <tr>
+      <td><strong>State</strong></td>
+      <td>Select from the dropdown list of U.S. states.</td>
+    </tr>
+    <tr>
+      <td><strong>ZIP Code</strong></td>
+      <td>5-digit or 5+4 format (e.g., <code>12345</code> or <code>12345-6789</code>).</td>
+    </tr>
+    <tr>
+      <td><strong>Country</strong></td>
+      <td>Maximum 50 characters.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>1.4 Sample Data</h3>
+
+<p>If your account was created with sample data (demo clients, jobs, etc.), a <strong>Sample Data</strong> section appears at the bottom of the Account page. This is only visible when sample data exists.</p>
+
+<p>To delete all sample data:</p>
+
+<ol>
+  <li>Click <strong>"Delete Sample Data"</strong> (red button).</li>
+  <li>A confirmation modal appears with a warning about what will be deleted.</li>
+  <li>Click <strong>"Delete Sample Data"</strong> in the modal to confirm.</li>
+  <li>A progress bar tracks the deletion progress with a percentage indicator.</li>
+  <li>Once complete, a success message appears and the section disappears.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Warning:</strong> Deleting sample data is permanent and cannot be undone. All sample clients, jobs, estimates, invoices, and related records will be removed.</p>
+</blockquote>
+
+<p>Click <strong>"Save Account Info"</strong> to save your changes, or <strong>"Reset"</strong> to revert to the last saved values.</p>
+
+<hr>
+
+<h2>2. Profile Settings</h2>
+
+<p>The Profile section manages your personal user information (not the company account). Click <strong>Profile</strong> in the Settings sidebar to access it.</p>
+
+<h3>2.1 Personal Information</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>First Name</strong></td>
+      <td>Yes</td>
+      <td>Your first name. 2&ndash;50 characters.</td>
+    </tr>
+    <tr>
+      <td><strong>Last Name</strong></td>
+      <td>Yes</td>
+      <td>Your last name. 2&ndash;50 characters.</td>
+    </tr>
+    <tr>
+      <td><strong>Email</strong></td>
+      <td>Yes</td>
+      <td>Your personal email address. Must be unique across the system.</td>
+    </tr>
+    <tr>
+      <td><strong>Phone</strong></td>
+      <td>Yes</td>
+      <td>Your phone number. Supports international format.</td>
+    </tr>
+    <tr>
+      <td><strong>Country</strong></td>
+      <td>No</td>
+      <td>Auto-detected from your phone number, or manually selectable.</td>
+    </tr>
+    <tr>
+      <td><strong>Timezone</strong></td>
+      <td>Yes</td>
+      <td>Your personal timezone preference.</td>
+    </tr>
+    <tr>
+      <td><strong>Language</strong></td>
+      <td>Yes</td>
+      <td>Choose between <strong>English</strong> and <strong>Spanish</strong>. This controls the language of the entire interface.</td>
+    </tr>
+    <tr>
+      <td><strong>Profile Picture</strong></td>
+      <td>No</td>
+      <td>Upload a profile photo. Supports drag-and-drop. You can also remove an existing photo. If no photo is set, your initials are displayed instead.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>2.2 Change Password</h3>
+
+<p>To change your password:</p>
+
+<ol>
+  <li>Enter your <strong>Current Password</strong>.</li>
+  <li>Enter your <strong>New Password</strong>.</li>
+  <li>Enter the new password again in <strong>Repeat Password</strong> to confirm.</li>
+  <li>Click <strong>Save</strong>.</li>
+</ol>
+
+<p><strong>Password Requirements:</strong></p>
+<ul>
+  <li>Minimum <strong>10 characters</strong>.</li>
+  <li>Must contain at least one <strong>lowercase</strong> letter.</li>
+  <li>Must contain at least one <strong>uppercase</strong> letter.</li>
+  <li>Must contain at least one <strong>digit</strong>.</li>
+  <li>Must contain at least one <strong>special character</strong> (<code>!@#$%^&amp;*(),.?":{}|&lt;&gt;</code>).</li>
+  <li>Must be <strong>different</strong> from your current password.</li>
+</ul>
+
+<p>Each password field has a <strong>visibility toggle</strong> (eye icon) to show or hide the entered password.</p>
+
+<h3>2.3 Account Actions</h3>
+
+<p>At the bottom of the Profile page, two important actions are available:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Logout</strong></td>
+      <td>Signs you out of the platform. A confirmation dialog appears before logging out.</td>
+    </tr>
+    <tr>
+      <td><strong>Delete Account</strong></td>
+      <td>Permanently deletes your user account. A confirmation dialog with a warning appears before proceeding. This action cannot be undone.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>3. Availability Settings</h2>
+
+<p>The Availability section controls when your business is available for scheduling. This affects which dates and times are available when creating appointments, jobs, and estimates.</p>
+
+<p>Click <strong>Availability</strong> in the Settings sidebar to access it.</p>
+
+<h3>3.1 Weekly Schedule (Day/Time Slots)</h3>
+
+<p>Set your availability for each day of the week:</p>
+
+<ul>
+  <li>For each day (Monday through Sunday), you can define <strong>start time</strong> and <strong>end time</strong>.</li>
+  <li>You can add <strong>multiple time slots</strong> per day (e.g., morning and afternoon shifts).</li>
+  <li>Days without any time slots are considered unavailable.</li>
+</ul>
+
+<h3>3.2 Exception Dates</h3>
+
+<p>Add specific date ranges when your business is not available (e.g., holidays, vacations):</p>
+
+<ul>
+  <li>Click <strong>"Add Exception"</strong> to create a new exception.</li>
+  <li>Set the <strong>Start Date</strong> and <strong>End Date</strong> for the unavailable period.</li>
+  <li>Exception dates override your weekly schedule &mdash; even if a day is normally available, it will be blocked if it falls within an exception range.</li>
+  <li>Each exception appears as a card that can be edited or deleted.</li>
+</ul>
+
+<h3>3.3 Seasonal / Monthly Exceptions</h3>
+
+<p>For recurring unavailability patterns:</p>
+
+<ul>
+  <li><strong>Monthly Exceptions:</strong> Toggle individual months (January through December) as unavailable. Useful for businesses that don't operate during certain months.</li>
+  <li><strong>Seasonal Exceptions:</strong> Toggle entire seasons (Winter, Spring, Summer, Fall) as unavailable.</li>
+  <li>Each exception appears as a card that can be removed.</li>
+</ul>
+
+<hr>
+
+<h2>4. Dashboard Settings</h2>
+
+<p>The Dashboard section controls how information is displayed on your main dashboard. These are <strong>per-user</strong> settings (each user can have their own preferences). Click <strong>Dashboard</strong> in the Settings sidebar to access it.</p>
+
+<h3>Dashboard Display Settings</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Max List Length</strong></td>
+      <td>The maximum number of items shown in dashboard lists. Limits the number of records displayed for a cleaner view. Recommended: 10&ndash;20.</td>
+    </tr>
+    <tr>
+      <td><strong>Show Only New</strong></td>
+      <td>Toggle on to filter the dashboard to show only new/unread items. Toggle off to show all items.</td>
+    </tr>
+    <tr>
+      <td><strong>Upcoming Jobs Window</strong></td>
+      <td>How many days ahead to show upcoming jobs on the dashboard. For example, setting this to <code>7</code> shows jobs scheduled within the next 7 days. Recommended: 7&ndash;14 days.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>A <strong>Performance Settings</strong> info box shows your current settings alongside recommended values for optimal performance.</p>
+
+<p>Click <strong>"Save Dashboard Settings"</strong> to apply, or <strong>"Reset"</strong> to revert.</p>
+
+<hr>
+
+<h2>5. Notification Preferences</h2>
+
+<p>The Notifications section controls how you receive notifications across different categories and channels. Click <strong>Notifications</strong> in the Settings sidebar to access it.</p>
+
+<p>The page displays a grid with <strong>notification categories</strong> as rows and <strong>delivery channels</strong> as columns. Each combination has a toggle switch.</p>
+
+<h3>Delivery Channels</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Channel</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Email</strong></td>
+      <td>Notifications sent to your email address.</td>
+    </tr>
+    <tr>
+      <td><strong>SMS</strong></td>
+      <td>Text message notifications sent to your phone.</td>
+    </tr>
+    <tr>
+      <td><strong>Mobile (Push)</strong></td>
+      <td>Push notifications on your mobile device.</td>
+    </tr>
+    <tr>
+      <td><strong>Desktop</strong></td>
+      <td>In-app notifications visible in the platform's notification area.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Notification Categories</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Authentication</strong></td>
+      <td>Login, password changes, and security-related notifications.</td>
+    </tr>
+    <tr>
+      <td><strong>Financial</strong></td>
+      <td>Payment received, payment failed, and other financial events.</td>
+    </tr>
+    <tr>
+      <td><strong>Jobs</strong></td>
+      <td>Job created, status changes, and job assignments.</td>
+    </tr>
+    <tr>
+      <td><strong>Estimates</strong></td>
+      <td>Estimate viewed, approved, or requiring attention.</td>
+    </tr>
+    <tr>
+      <td><strong>Appointments</strong></td>
+      <td>Appointment scheduled, confirmed, or status changes.</td>
+    </tr>
+    <tr>
+      <td><strong>Timesheets</strong></td>
+      <td>Timesheet submitted or approved.</td>
+    </tr>
+    <tr>
+      <td><strong>Inventory</strong></td>
+      <td>Low stock alerts and inventory changes.</td>
+    </tr>
+    <tr>
+      <td><strong>Team</strong></td>
+      <td>Team member changes and crew updates.</td>
+    </tr>
+    <tr>
+      <td><strong>Messages</strong></td>
+      <td>New client messages and chat notifications.</td>
+    </tr>
+    <tr>
+      <td><strong>Feedback</strong></td>
+      <td>Client feedback and review notifications.</td>
+    </tr>
+    <tr>
+      <td><strong>System Announcements</strong></td>
+      <td>Platform updates, maintenance, and system-wide announcements.</td>
+    </tr>
+    <tr>
+      <td><strong>Stripe</strong></td>
+      <td>Payment processing integration notifications.</td>
+    </tr>
+    <tr>
+      <td><strong>Billing</strong></td>
+      <td>Subscription and billing-related notifications.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Note:</strong> The categories visible to you depend on your <strong>user role</strong>. Admins (SP_ADMIN) can see all categories. Some system-enforced categories cannot be customized and are always active.</p>
+</blockquote>
+
+<p>Click <strong>"Save Notification Settings"</strong> to apply, or <strong>"Reset"</strong> to revert to the last saved configuration.</p>
+
+<hr>
+
+<h2>6. Business Settings</h2>
+
+<p>The Business section configures operational rules for your service provider account. Click <strong>Business</strong> in the Settings sidebar to access it.</p>
+
+<h3>6.1 Counter Settings</h3>
+
+<p>Control the auto-numbering for estimates and invoices:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Estimate ID Counter</strong></td>
+      <td>The next number that will be assigned to a new estimate. Increase this if you want to start numbering from a specific point (e.g., set to <code>1001</code> to start estimates at #1001). Default: <code>1</code>.</td>
+    </tr>
+    <tr>
+      <td><strong>Invoice Number Counter</strong></td>
+      <td>The next number that will be assigned to a new invoice. Works the same as the estimate counter. Default: <code>1</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>6.2 Payment Disclaimer Settings</h3>
+
+<p>Configure the payment disclaimer text shown on invoices and estimates sent to clients:</p>
+
+<ul>
+  <li><strong>Use Default Disclaimer</strong> (toggle):
+    <ul>
+      <li>When <strong>ON</strong>: A standard default disclaimer is used. A preview of the default text is shown below.</li>
+      <li>When <strong>OFF</strong>: A text area appears where you can write your own <strong>Custom Disclaimer Text</strong>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>6.3 Zelle Payment Details</h3>
+
+<p>If you accept Zelle payments, you can display Zelle payment instructions to your clients:</p>
+
+<ul>
+  <li><strong>Show Zelle Payment Option</strong> (toggle):
+    <ul>
+      <li>When <strong>ON</strong>: A text area appears where you enter your <strong>Zelle Payment Option Text</strong> (e.g., your Zelle email or phone number and instructions). Maximum 500 characters with a live character counter.</li>
+      <li>When <strong>OFF</strong>: Zelle payment instructions are hidden from clients.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>6.4 Crew Settings</h3>
+
+<blockquote>
+  <p><strong>Visibility:</strong> This section is only visible to users with <strong>Admin</strong>, <strong>Owner</strong>, or <strong>Support</strong> roles.</p>
+</blockquote>
+
+<ul>
+  <li><strong>Allow Crew Time Log On Any Job</strong> (toggle):
+    <ul>
+      <li>When <strong>ON</strong>: Crew members can log time on any job, regardless of whether they are assigned to it.</li>
+      <li>When <strong>OFF</strong>: Crew members can only log time on jobs they are assigned to. An amber warning box appears explaining the restriction.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>6.5 Privacy Settings</h3>
+
+<ul>
+  <li><strong>Do Not Share Information</strong> (toggle):
+    <ul>
+      <li>When <strong>ON</strong>: Your business information will not be shared with third parties. A blue info box confirms the privacy setting is active.</li>
+      <li>When <strong>OFF</strong>: Standard information sharing is enabled.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>6.6 Tax Rates (Revenue Section)</h3>
+
+<p>Below the main business settings form, a separate <strong>Revenue</strong> section lets you manage tax rates. Tax rates are applied to services, products, estimates, invoices, and appointments.</p>
+
+<ul>
+  <li>Click <strong>"Add Tax Rate"</strong> to create a new tax rate. A modal appears with fields for:
+    <ul>
+      <li><strong>Name</strong> &mdash; A label for the tax rate (e.g., "State Sales Tax", "County Tax").</li>
+      <li><strong>Description</strong> &mdash; An optional description.</li>
+      <li><strong>Rate (%)</strong> &mdash; The percentage (e.g., <code>8.25</code> for 8.25%).</li>
+      <li><strong>Default</strong> &mdash; Mark one rate as the default that is automatically applied to new records.</li>
+    </ul>
+  </li>
+  <li>Existing tax rates are displayed in a list showing name, description, and rate percentage.</li>
+  <li>Each tax rate can be <strong>edited</strong> or <strong>deleted</strong>.</li>
+  <li>Group tax rates are supported (a tax rate that combines multiple individual rates).</li>
+</ul>
+
+<p>Click <strong>"Save Business Settings"</strong> to save the counter/disclaimer/Zelle/crew/privacy settings, or <strong>"Reset"</strong> to revert. Tax rates are saved independently through their own modals.</p>
+
+<hr>
+
+<h2>7. Timesheet Settings</h2>
+
+<p>The Timesheet Settings section controls how timesheet entries are automatically linked to jobs and appointments. Click <strong>Timesheet Settings</strong> in the Settings sidebar to access it.</p>
+
+<h3>7.1 Account-Level Setting</h3>
+
+<blockquote>
+  <p><strong>Visibility:</strong> This section is only visible to users with <strong>Admin</strong> or <strong>Owner</strong> roles.</p>
+</blockquote>
+
+<ul>
+  <li><strong>Enable Automatic Linking</strong> (toggle):
+    <ul>
+      <li>When <strong>ON</strong>: When crew members start a timer on a job or appointment, the resulting timesheet entry is automatically linked to that record.</li>
+      <li>When <strong>OFF</strong>: Timesheet entries are created without automatic linking. An amber warning box explains the implications.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>7.2 Your Timesheet Preference (Per-User Override)</h3>
+
+<p>Individual users can override the account-level setting for their own timesheet behavior:</p>
+
+<ul>
+  <li><strong>Disable Automatic Linking For Me</strong> (toggle):
+    <ul>
+      <li>When <strong>ON</strong>: Automatic linking is disabled for your timesheet entries only, even if the account-level setting is enabled.</li>
+      <li>When <strong>OFF</strong> (or not set): The account-level default applies.</li>
+    </ul>
+  </li>
+  <li>This toggle is <strong>disabled</strong> (grayed out) when the account-level automatic linking is already turned off, since there is nothing to override.</li>
+</ul>
+
+<h3>7.3 How Automatic Linking Works</h3>
+
+<p>A "How It Works" section at the bottom explains the 3-step process:</p>
+<ol>
+  <li>A crew member starts a timer on a job or appointment.</li>
+  <li>When the timer stops, a timesheet entry is created.</li>
+  <li>The entry is automatically linked to the source job/appointment.</li>
+</ol>
+
+<p>Click <strong>"Save Timesheet Settings"</strong> to apply changes.</p>
+
+<hr>
+
+<h2>8. Accept Payments (Stripe Connect)</h2>
+
+<p>The Accept Payments section lets you set up credit card payment processing through <strong>Stripe Connect</strong>. This allows your clients to pay invoices online with a credit card. Click <strong>Accept Payments</strong> in the Settings sidebar to access it.</p>
+
+<h3>8.1 Application Process</h3>
+
+<p>Setting up Stripe Connect follows a multi-step process. The page displays different content depending on your current application status:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>What You See</th>
+      <th>What to Do</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>None</strong></td>
+      <td>An introduction card explaining the benefits of accepting payments.</td>
+      <td>Click <strong>"Accept Payments"</strong> to express interest and start the process.</td>
+    </tr>
+    <tr>
+      <td><strong>Inquiry</strong></td>
+      <td>A pending review message. Your request has been submitted and is being processed.</td>
+      <td>Wait for your request to be reviewed. The status will update automatically.</td>
+    </tr>
+    <tr>
+      <td><strong>Permission</strong></td>
+      <td>A form to provide your company details before applying to Stripe.</td>
+      <td>Click <strong>"Apply"</strong>, then fill in the Company Information Form (see below) and click <strong>"Save Changes"</strong>.</td>
+    </tr>
+    <tr>
+      <td><strong>Applied</strong></td>
+      <td>Confirmation that your application has been submitted to Stripe.</td>
+      <td>You can access the Stripe Dashboard to check your application status.</td>
+    </tr>
+    <tr>
+      <td><strong>Pending / Under Review</strong></td>
+      <td>Your application is being reviewed by Stripe.</td>
+      <td>Wait for Stripe to complete their review. This typically takes 1&ndash;3 business days.</td>
+    </tr>
+    <tr>
+      <td><strong>Approved</strong></td>
+      <td>A success card confirming payment processing is active, with a list of features enabled.</td>
+      <td>Click <strong>"Access Dashboard"</strong> to manage your Stripe account. You can now accept card payments, get automatic processing, real-time notifications, and detailed reports.</td>
+    </tr>
+    <tr>
+      <td><strong>Declined</strong></td>
+      <td>A message indicating additional verification is needed. Shows the decline reason and reference number if available.</td>
+      <td>Review the decline reason. Contact Stripe support with your reference number for assistance. Click <strong>"Go to Dashboard"</strong> for more details.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>8.2 Company Information Form</h3>
+
+<p>When applying (Permission status), you must provide:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Company Name</strong></td>
+      <td>Yes</td>
+      <td>Your legal business name (pre-filled from your Account settings).</td>
+    </tr>
+    <tr>
+      <td><strong>Business Type</strong></td>
+      <td>Yes</td>
+      <td>Select your entity type: <strong>Individual</strong>, <strong>Company</strong>, <strong>Non-Profit</strong>, or <strong>Government Entity</strong>.</td>
+    </tr>
+    <tr>
+      <td><strong>Phone Number</strong></td>
+      <td>Yes</td>
+      <td>Your business phone number. Automatically formatted as <code>+1 (XXX) XXX-XXXX</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>After submitting the form, you are redirected to Stripe's onboarding page to complete the verification process.</p>
+
+<hr>
+
+<h2>9. Navigating Between Settings Sections</h2>
+
+<p>Use the <strong>sidebar navigation</strong> on the left to switch between sections. Each section has:</p>
+
+<ul>
+  <li>An <strong>icon</strong> identifying the section type.</li>
+  <li>A <strong>title</strong> (e.g., "Account", "Business").</li>
+  <li>A brief <strong>description</strong> of what the section manages.</li>
+</ul>
+
+<p>The currently active section is highlighted in the sidebar. Each section has its own URL (e.g., <code>/settings-business</code>, <code>/settings-notifications</code>), so you can bookmark specific settings pages.</p>
+
+<p>The content header always shows:</p>
+<ul>
+  <li>The main title <strong>"Settings"</strong> with the subtitle "Manage service provider settings".</li>
+  <li>Below that, the <strong>current section title</strong> and its description.</li>
+</ul>
+
+<hr>
+
+<h2>10. Role-Based Access</h2>
+
+<p>Not all settings are visible to all users. Access depends on your user role:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Who Can See / Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Account settings (company info, billing)</td>
+      <td>All users (typically managed by Admins/Owners).</td>
+    </tr>
+    <tr>
+      <td>Profile settings (personal info, password)</td>
+      <td>All users (each user manages their own profile).</td>
+    </tr>
+    <tr>
+      <td>Availability settings</td>
+      <td>All users.</td>
+    </tr>
+    <tr>
+      <td>Dashboard settings</td>
+      <td>All users (per-user preferences).</td>
+    </tr>
+    <tr>
+      <td>Notification preferences</td>
+      <td>All users (categories vary by role; Admins see all).</td>
+    </tr>
+    <tr>
+      <td>Business settings &mdash; Crew Settings subsection</td>
+      <td><strong>Admin, Owner, Support</strong> roles only.</td>
+    </tr>
+    <tr>
+      <td>Timesheet settings &mdash; Account-Level toggle</td>
+      <td><strong>Admin, Owner</strong> roles only.</td>
+    </tr>
+    <tr>
+      <td>Timesheet settings &mdash; Personal override</td>
+      <td>All users.</td>
+    </tr>
+    <tr>
+      <td>Accept Payments (Stripe Connect)</td>
+      <td>All users (typically managed by Admins/Owners).</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>11. Summary of Common Actions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>How to Do It</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Update company name or email</td>
+      <td>Settings &rarr; <strong>Account</strong> &rarr; edit Company Information fields &rarr; click <strong>"Save Account Info"</strong>.</td>
+    </tr>
+    <tr>
+      <td>Change billing address</td>
+      <td>Settings &rarr; <strong>Account</strong> &rarr; scroll to Billing Information &rarr; edit fields &rarr; click <strong>"Save Account Info"</strong>.</td>
+    </tr>
+    <tr>
+      <td>Delete sample data</td>
+      <td>Settings &rarr; <strong>Account</strong> &rarr; scroll to Sample Data section &rarr; click <strong>"Delete Sample Data"</strong> &rarr; confirm.</td>
+    </tr>
+    <tr>
+      <td>Update your name, email, or phone</td>
+      <td>Settings &rarr; <strong>Profile</strong> &rarr; edit Personal Information fields &rarr; click <strong>Save</strong>.</td>
+    </tr>
+    <tr>
+      <td>Change your password</td>
+      <td>Settings &rarr; <strong>Profile</strong> &rarr; Change Password section &rarr; enter current + new + repeat &rarr; click <strong>Save</strong>.</td>
+    </tr>
+    <tr>
+      <td>Upload a profile picture</td>
+      <td>Settings &rarr; <strong>Profile</strong> &rarr; click the upload area or drag and drop an image.</td>
+    </tr>
+    <tr>
+      <td>Change interface language</td>
+      <td>Settings &rarr; <strong>Profile</strong> &rarr; select <strong>English</strong> or <strong>Spanish</strong> from the Language dropdown &rarr; click <strong>Save</strong>.</td>
+    </tr>
+    <tr>
+      <td>Set weekly availability schedule</td>
+      <td>Settings &rarr; <strong>Availability</strong> &rarr; configure start/end times for each day &rarr; click <strong>Save</strong>.</td>
+    </tr>
+    <tr>
+      <td>Add a holiday / unavailable date</td>
+      <td>Settings &rarr; <strong>Availability</strong> &rarr; click <strong>"Add Exception"</strong> &rarr; set start/end dates &rarr; click <strong>Save</strong>.</td>
+    </tr>
+    <tr>
+      <td>Configure dashboard display</td>
+      <td>Settings &rarr; <strong>Dashboard</strong> &rarr; adjust Max List Length, Show Only New, and Upcoming Jobs Window &rarr; click <strong>"Save Dashboard Settings"</strong>.</td>
+    </tr>
+    <tr>
+      <td>Turn off SMS notifications for jobs</td>
+      <td>Settings &rarr; <strong>Notifications</strong> &rarr; find the Jobs row &rarr; toggle off the <strong>SMS</strong> switch &rarr; click <strong>"Save Notification Settings"</strong>.</td>
+    </tr>
+    <tr>
+      <td>Set estimate/invoice numbering</td>
+      <td>Settings &rarr; <strong>Business</strong> &rarr; Counter Settings &rarr; set the desired counter values &rarr; click <strong>"Save Business Settings"</strong>.</td>
+    </tr>
+    <tr>
+      <td>Write a custom payment disclaimer</td>
+      <td>Settings &rarr; <strong>Business</strong> &rarr; toggle off <strong>"Use Default Disclaimer"</strong> &rarr; type your custom text &rarr; click <strong>"Save Business Settings"</strong>.</td>
+    </tr>
+    <tr>
+      <td>Enable Zelle payment instructions</td>
+      <td>Settings &rarr; <strong>Business</strong> &rarr; toggle on <strong>"Show Zelle Payment Option"</strong> &rarr; enter your Zelle details &rarr; click <strong>"Save Business Settings"</strong>.</td>
+    </tr>
+    <tr>
+      <td>Add a new tax rate</td>
+      <td>Settings &rarr; <strong>Business</strong> &rarr; scroll to Revenue section &rarr; click <strong>"Add Tax Rate"</strong> &rarr; fill in the modal &rarr; save.</td>
+    </tr>
+    <tr>
+      <td>Restrict crew time logging</td>
+      <td>Settings &rarr; <strong>Business</strong> &rarr; toggle off <strong>"Allow Crew Time Log On Any Job"</strong> &rarr; click <strong>"Save Business Settings"</strong>. (Admin/Owner/Support only.)</td>
+    </tr>
+    <tr>
+      <td>Enable/disable automatic timesheet linking</td>
+      <td>Settings &rarr; <strong>Timesheet Settings</strong> &rarr; toggle <strong>"Enable Automatic Linking"</strong> &rarr; click <strong>"Save Timesheet Settings"</strong>. (Admin/Owner only.)</td>
+    </tr>
+    <tr>
+      <td>Override timesheet linking for yourself</td>
+      <td>Settings &rarr; <strong>Timesheet Settings</strong> &rarr; toggle <strong>"Disable Automatic Linking For Me"</strong> &rarr; click <strong>"Save Timesheet Settings"</strong>.</td>
+    </tr>
+    <tr>
+      <td>Set up credit card payments</td>
+      <td>Settings &rarr; <strong>Accept Payments</strong> &rarr; follow the Stripe Connect application process (see section 8).</td>
+    </tr>
+    <tr>
+      <td>Access your Stripe dashboard</td>
+      <td>Settings &rarr; <strong>Accept Payments</strong> &rarr; click <strong>"Access Dashboard"</strong> (only available after approval).</td>
+    </tr>
+    <tr>
+      <td>Log out of the platform</td>
+      <td>Settings &rarr; <strong>Profile</strong> &rarr; click <strong>"Logout"</strong> &rarr; confirm.</td>
+    </tr>
+  </tbody>
+</table>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointments Management</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #1a1a1a; }
+    h1 { border-bottom: 2px solid #e0e0e0; padding-bottom: 0.5rem; }
+    h2 { margin-top: 2rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #d0d0d0; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background-color: #f5f5f5; font-weight: 600; }
+    blockquote { border-left: 4px solid #d0d0d0; margin: 1rem 0; padding: 0.75rem 1rem; background: #fafafa; }
+    code { background: #f0f0f0; padding: 0.15rem 0.35rem; border-radius: 3px; font-size: 0.9em; }
+    hr { border: none; border-top: 1px solid #e0e0e0; margin: 2rem 0; }
+  </style>
+</head>
+<body>
+<main>
+
+<h1>Appointments Management</h1>
+
+<h2>Overview</h2>
+
+<p>The <strong>Appointments Management</strong> section is where you schedule, track, and manage all field service appointments for your clients. An appointment represents a single scheduled visit to a client's property, assigned to a specific crew at a specific date and time.</p>
+
+<p>From this section you can:</p>
+
+<ul>
+  <li><strong>Create</strong> new appointments with a 4-step wizard that walks you through details, scheduling, services, and review.</li>
+  <li><strong>Edit</strong> existing appointments to update details, reschedule, or change service items.</li>
+  <li><strong>Track status</strong> as appointments progress from Draft through Scheduled, Confirmed, En Route, Started, and finally Completed.</li>
+  <li><strong>Send to client</strong> to notify clients about their upcoming appointment with a summary of services and billing.</li>
+  <li><strong>Convert</strong> appointments into estimates, jobs, or invoices for seamless workflow continuity.</li>
+  <li><strong>Archive</strong> appointments you no longer need in your active view.</li>
+  <li><strong>Restore</strong> archived appointments back to active status.</li>
+  <li><strong>Permanently delete</strong> archived appointments that have no linked records.</li>
+  <li><strong>Use the Scheduler</strong> to see appointments on a visual calendar with day, week, month, and list views.</li>
+  <li><strong>Communicate</strong> with clients via Chat, add internal Notes, and manage Attachments from the sidebar.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Important:</strong> An appointment can only be permanently deleted if it is <strong>not linked</strong> to any job, estimate, invoice, or timesheet entry. If any linked records exist, you must first remove those links before deletion is possible.</p>
+</blockquote>
+
+<hr>
+
+<h2>Appointments List View</h2>
+
+<p>The Appointments List View is the main view for managing all your appointments. To access it, navigate to <strong>Menu &gt; Appointments</strong>.</p>
+
+<p>When you open the Appointments List View, you will see a table listing your appointments. Each row represents one appointment and displays the following information:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>What It Means</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Name</strong></td>
+      <td>The appointment name. If the appointment is marked as <strong>High Priority</strong>, a priority icon appears next to the name. If it is a <strong>Callback</strong> appointment (a follow-up visit), a callback icon appears as well. Click the name to open the appointment's Detail Page. This column is sortable.</td>
+    </tr>
+    <tr>
+      <td><strong>Client</strong></td>
+      <td>The client associated with this appointment. Displays the client's avatar (or initials) and company name.</td>
+    </tr>
+    <tr>
+      <td><strong>Scheduled For</strong></td>
+      <td>The scheduled date, time range (start &ndash; end), and duration of the appointment (e.g., <code>Feb 20, 2026 9:00 AM &ndash; 11:00 AM &bull; 2h</code>). If no date has been set, it shows "Not Scheduled". This column is sortable.</td>
+    </tr>
+    <tr>
+      <td><strong>Crew</strong></td>
+      <td>The crew assigned to this appointment. Displays a color dot matching the crew's assigned color, followed by the crew name.</td>
+    </tr>
+    <tr>
+      <td><strong>Status</strong></td>
+      <td>The current status of the appointment, displayed as a color-coded tag. If the appointment has a chat with unread messages, a chat icon with the unread count appears next to the status. Clicking that icon takes you to the Inbox. This column is sortable.</td>
+    </tr>
+    <tr>
+      <td><strong>Actions</strong></td>
+      <td>Quick-action buttons: an <strong>Edit</strong> icon (pencil) to open the Detail Page, and a <strong>More Actions</strong> menu (three dots) for additional options like Send to Client, View on Scheduler, View on Map, Cancel, Archive, Restore, or Delete.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Active vs. Archived Appointments</h3>
+
+<p>At the top of the list, a <strong>segmented control</strong> lets you switch between two views:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tab</th>
+      <th>What It Shows</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Active</strong></td>
+      <td>Appointments that are not archived. These are your current, in-progress, or upcoming appointments.</td>
+    </tr>
+    <tr>
+      <td><strong>Archived</strong></td>
+      <td>Appointments that have been archived. From this tab you can <strong>Restore</strong> an appointment back to Active, or <strong>permanently Delete</strong> it (if it has no linked records).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Appointment Statuses</h3>
+
+<p>Each appointment has one of the following statuses, displayed as color-coded tags throughout the system:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Draft</strong></td>
+      <td>The appointment has been created but is not yet fully scheduled. It can still be edited freely. A draft appointment can be saved even without a date/time.</td>
+    </tr>
+    <tr>
+      <td><strong>Scheduled</strong></td>
+      <td>The appointment has a date, time, and crew assigned and is ready for the crew to work on. This is also the default status when restoring an archived appointment.</td>
+    </tr>
+    <tr>
+      <td><strong>Confirmed</strong></td>
+      <td>The client has confirmed the appointment. The appointment is still editable.</td>
+    </tr>
+    <tr>
+      <td><strong>En Route</strong></td>
+      <td>The crew is traveling to the client's location. The appointment is still editable.</td>
+    </tr>
+    <tr>
+      <td><strong>Started</strong></td>
+      <td>The crew has arrived and work is in progress. The appointment is still editable and the timer can be used to track work time.</td>
+    </tr>
+    <tr>
+      <td><strong>Completed</strong></td>
+      <td>All work is finished. The appointment becomes read-only and cannot be edited. It moves to the Archived tab.</td>
+    </tr>
+    <tr>
+      <td><strong>Canceled</strong></td>
+      <td>The appointment was canceled before completion. It becomes read-only and moves to the Archived tab.</td>
+    </tr>
+    <tr>
+      <td><strong>No-Show</strong></td>
+      <td>The client did not show up for the appointment. It becomes read-only and moves to the Archived tab.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Note:</strong> Once an appointment is set to Completed, Canceled, or No-Show, it cannot be edited. You can only Restore it (which changes its status back to Scheduled) or Delete it (permanent, if no linked records exist).</p>
+</blockquote>
+
+<hr>
+
+<h2>1. Creating a New Appointment</h2>
+
+<p>To create a new appointment, click the <strong>"+ New Appointment"</strong> button at the top-right of the Appointments List View. A side-panel drawer will open with a <strong>4-step wizard</strong>.</p>
+
+<h3>Step 1: Details</h3>
+
+<p>Fill in the basic appointment information:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Appointment Name</strong></td>
+      <td>Yes</td>
+      <td>A descriptive name for the appointment (e.g., "Annual HVAC Inspection", "Furnace Repair Follow-up").</td>
+    </tr>
+    <tr>
+      <td><strong>Client Account</strong></td>
+      <td>Yes</td>
+      <td>Select the client from a searchable dropdown. You can also use <strong>Quick Add</strong> to create a new client on the fly.</td>
+    </tr>
+    <tr>
+      <td><strong>Property</strong></td>
+      <td>Yes</td>
+      <td>Select the property where the work will take place. This dropdown auto-populates based on the selected client's properties. You can also Quick Add a new property.</td>
+    </tr>
+    <tr>
+      <td><strong>Crew</strong></td>
+      <td>Yes</td>
+      <td>Choose the crew that will perform the work. The crew selection affects which dates/times are available in the next step. You can also Quick Add a new crew.</td>
+    </tr>
+    <tr>
+      <td><strong>Priority</strong></td>
+      <td>No</td>
+      <td>Check this box to flag the appointment as <strong>High Priority</strong>. A priority icon will appear next to the appointment name throughout the system.</td>
+    </tr>
+    <tr>
+      <td><strong>Callback</strong></td>
+      <td>No</td>
+      <td>Check this box if this is a follow-up/callback appointment. When checked, a <strong>Job</strong> dropdown appears so you can link this callback to the original job.</td>
+    </tr>
+    <tr>
+      <td><strong>Job</strong></td>
+      <td>Only if Callback is checked</td>
+      <td>Select the job this callback appointment relates to. This field only appears when the Callback checkbox is enabled.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>After filling in all required fields, click <strong>"Next Step"</strong> to proceed.</p>
+
+<h3>Step 2: Schedule</h3>
+
+<p>Choose when the appointment will take place:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Date</strong></td>
+      <td>Yes</td>
+      <td>Select the appointment date. The date picker highlights available dates based on the selected crew's availability. Dates where the crew is unavailable are grayed out. Availability is checked within a 90-day window from today.</td>
+    </tr>
+    <tr>
+      <td><strong>Time</strong></td>
+      <td>Yes</td>
+      <td>Select the start time from the available time slots. Time slots are shown in 30-minute intervals during the crew's business hours (typically 9:00 AM &ndash; 5:00 PM).</td>
+    </tr>
+    <tr>
+      <td><strong>Duration</strong></td>
+      <td>Yes</td>
+      <td>Select how long the appointment will last. Options range from 15 minutes to 8 hours. The default is 1 hour (60 minutes). The system calculates the end time automatically.</td>
+    </tr>
+    <tr>
+      <td><strong>Override Availability</strong></td>
+      <td>No</td>
+      <td>Toggle this on to bypass crew availability restrictions. When enabled, all dates and all 24-hour time slots become available, allowing you to schedule outside normal business hours.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Schedule Conflicts:</strong> If the selected date/time overlaps with another appointment or job already assigned to the same crew, a <strong>Schedule Conflict Warning</strong> will appear. You can still proceed by clicking <strong>"Schedule Anyway"</strong> (the button turns amber to alert you), or go back to choose a different time.</p>
+</blockquote>
+
+<p>After scheduling, click <strong>"Next Step"</strong>. You can also click <strong>"Save as Draft"</strong> at any point during Steps 2, 3, or 4 to save the appointment in Draft status without completing all steps.</p>
+
+<h3>Step 3: Services</h3>
+
+<p>Add the services that will be performed during this appointment:</p>
+
+<ul>
+  <li>Click the <strong>service dropdown</strong> to search and select from your available labor-type services.</li>
+  <li>For each service added, you can configure:
+    <ul>
+      <li><strong>Hours and Minutes</strong> &mdash; How long this particular service will take.</li>
+      <li><strong>Unit Retail Price</strong> &mdash; The hourly rate (auto-populated from the service definition but can be adjusted).</li>
+      <li><strong>Total Cost</strong> &mdash; Calculated automatically based on hours &times; rate.</li>
+    </ul>
+  </li>
+  <li>Duplicate services are not allowed. If a service is already added, it will not appear in the dropdown.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Note:</strong> Adding services is <strong>optional</strong>. You can create an appointment without any services and add them later from the Detail Page.</p>
+</blockquote>
+
+<p>Click <strong>"Next Step"</strong> to proceed to the review.</p>
+
+<h3>Step 4: Review</h3>
+
+<p>Review all the appointment details before finalizing:</p>
+
+<ul>
+  <li><strong>Client information</strong> &mdash; Name and contact details.</li>
+  <li><strong>Property address</strong> &mdash; Where the work will take place.</li>
+  <li><strong>Crew details</strong> &mdash; The assigned crew and their color.</li>
+  <li><strong>Date and time</strong> &mdash; The scheduled date, start time, and duration.</li>
+  <li><strong>Services list</strong> &mdash; All services with hours and pricing.</li>
+</ul>
+
+<p>If a schedule conflict exists, a warning banner will appear on this page as well.</p>
+
+<p>At the bottom you have three options:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Button</th>
+      <th>What It Does</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Save as Draft</strong></td>
+      <td>Saves the appointment with <strong>Draft</strong> status. The appointment will appear in your list but will not be considered "scheduled" yet.</td>
+    </tr>
+    <tr>
+      <td><strong>Cancel</strong></td>
+      <td>Closes the modal without saving. All entered data is lost.</td>
+    </tr>
+    <tr>
+      <td><strong>Create Appointment</strong></td>
+      <td>Creates the appointment with <strong>Scheduled</strong> status (requires all details and schedule to be complete). If there is a schedule conflict, this button shows as <strong>"Schedule Anyway"</strong> in amber.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>2. Appointment Detail Page</h2>
+
+<p>Click any appointment row in the List View (or click the appointment name) to open its <strong>Detail Page</strong>. The Detail Page is divided into a main content area and a right sidebar.</p>
+
+<h3>Header</h3>
+
+<p>The header shows:</p>
+<ul>
+  <li><strong>Title:</strong> "Appointment: [name]" with priority and callback icons if applicable.</li>
+  <li><strong>Status Dropdown:</strong> A dropdown to quickly change the appointment's status to any of the 8 available statuses.</li>
+  <li><strong>Start Timer:</strong> A button to start tracking work time for this appointment (only visible for non-archived appointments).</li>
+  <li><strong>More Actions (&#8942;):</strong> A menu with additional actions (see section 7 below).</li>
+</ul>
+
+<h3>Tab 1: Overview</h3>
+
+<p>The Overview tab displays all core appointment information in a card layout:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Title</strong></td>
+      <td>The appointment name.</td>
+    </tr>
+    <tr>
+      <td><strong>Date Created</strong></td>
+      <td>When the appointment was first created.</td>
+    </tr>
+    <tr>
+      <td><strong>Property</strong></td>
+      <td>The service property address. A <strong>"Show Map"</strong> link opens the property on the Map view.</td>
+    </tr>
+    <tr>
+      <td><strong>Crew</strong></td>
+      <td>The assigned crew with their color indicator.</td>
+    </tr>
+    <tr>
+      <td><strong>Time</strong></td>
+      <td>The scheduled time range with timezone (e.g., "9:00 AM &ndash; 11:00 AM EST &bull; 2h").</td>
+    </tr>
+    <tr>
+      <td><strong>Date</strong></td>
+      <td>The scheduled date (e.g., "Thursday, February 20, 2026").</td>
+    </tr>
+    <tr>
+      <td><strong>Callback for</strong></td>
+      <td>If the appointment is a callback, a link to the related job appears here.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>An <strong>Edit</strong> button at the top-right of the overview card opens the appointment edit modal (same 4-step wizard). This button is disabled for Completed, Canceled, or No-Show appointments.</p>
+
+<p>Below the overview card you will find:</p>
+
+<ul>
+  <li><strong>Visits Section:</strong> If the appointment has related follow-up visits, they are listed here.</li>
+  <li><strong>Services Section:</strong> A table listing all service items with columns for service name/description, hours, minutes, rate, and total cost. You can <strong>add services</strong>, <strong>edit</strong> existing service hours/pricing inline, or <strong>delete</strong> individual service items. Editing is disabled for archived appointments.</li>
+  <li><strong>Bill Section:</strong> Shows the billing summary including subtotal, tax, discount, and total. You can also manage alternate billing addresses and "Bill to" client settings here.</li>
+</ul>
+
+<h3>Tab 2: Related Records</h3>
+
+<p>The Related Records tab shows any estimates, jobs, or invoices linked to this appointment, and lets you create new ones:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Section</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Estimates</strong></td>
+      <td>Shows linked estimates, if any. Click <strong>"Create Estimate"</strong> to generate a new estimate from the appointment's data. The system copies the client, property, crew, and service items into the new estimate and navigates you to it.</td>
+    </tr>
+    <tr>
+      <td><strong>Jobs</strong></td>
+      <td>Shows linked jobs, if any. Click <strong>"Create Job"</strong> to convert the appointment into a job. A modal appears to set the job's start/end dates and priority.</td>
+    </tr>
+    <tr>
+      <td><strong>Invoices</strong></td>
+      <td>Shows linked invoices, if any. Click <strong>"Create Invoice"</strong> to generate an invoice from the appointment's data. A confirmation dialog appears before creating.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Note:</strong> If the appointment is not yet Completed, an info banner appears: "Additional related records available after completion." You can still create related records before completion, but the banner serves as a reminder.</p>
+</blockquote>
+
+<h3>Sidebar</h3>
+
+<p>The right sidebar provides client information and communication tools:</p>
+
+<p><strong>Client Info Section:</strong></p>
+<ul>
+  <li>Client avatar, company name, and type (Residential / Business).</li>
+  <li>Phone number, email address, and billing address.</li>
+  <li>An <strong>Edit</strong> button to modify the client's billing details (alternate billing address).</li>
+  <li>A <strong>Bill to Client</strong> button to assign a different client for billing purposes (limited to 1 bill-to client per appointment).</li>
+</ul>
+
+<p><strong>Bill to Client Section</strong> (appears only if a bill-to client has been assigned):</p>
+<ul>
+  <li>Shows the bill-to client's name, phone, email, and billing address.</li>
+  <li>A <strong>Change</strong> popover to switch to a different bill-to client.</li>
+  <li>A <strong>Remove</strong> button (trash icon) to remove the bill-to client with a confirmation dialog.</li>
+</ul>
+
+<p><strong>Communication Tabs:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tab</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Chat</strong></td>
+      <td>Client-facing messaging. Send and receive messages with the client. Supports file attachments and message threading. Unread messages are indicated with a badge count in the List View.</td>
+    </tr>
+    <tr>
+      <td><strong>Notes</strong></td>
+      <td>Internal notes visible only to your team (not sent to the client). Add timestamped notes with optional file attachments (Word, PDF, PPT, TXT, images). Individual notes can be deleted.</td>
+    </tr>
+    <tr>
+      <td><strong>Attachments</strong></td>
+      <td>View and manage all files attached to this appointment. Files are grouped by type with appropriate icons. You can download or preview attached files.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>3. Editing an Appointment</h2>
+
+<p>You can edit an appointment from several places:</p>
+
+<ol>
+  <li><strong>From the List View:</strong> Click the pencil (edit) icon in the Actions column, or select <strong>"Edit Appointment"</strong> from the More Actions menu (&#8942;). This navigates to the Detail Page.</li>
+  <li><strong>From the Detail Page:</strong> Click the <strong>"Edit"</strong> button on the Overview card. This opens the same 4-step wizard used during creation, pre-filled with the appointment's current data.</li>
+  <li><strong>From the More Actions menu</strong> on the Detail Page: Select <strong>"Edit Appointment"</strong>.</li>
+</ol>
+
+<p>In <strong>Edit mode</strong>, all four steps (Details, Schedule, Services, Review) are accessible and pre-marked as completed. You can jump to any step to make changes.</p>
+
+<blockquote>
+  <p><strong>Cannot Edit:</strong> Appointments with status <strong>Completed</strong>, <strong>Canceled</strong>, or <strong>No-Show</strong> cannot be edited. The Edit button will be disabled and show a tooltip: "This appointment cannot be edited."</p>
+</blockquote>
+
+<p><strong>Inline Service Editing:</strong> On the Overview tab of the Detail Page, you can also edit service items directly without opening the full edit wizard. Click on a service's hours or minutes fields to modify them inline. Changes are saved in batch.</p>
+
+<hr>
+
+<h2>4. Archiving Appointments</h2>
+
+<p>Archiving removes an appointment from the Active list without permanently deleting it. This is useful when an appointment is no longer needed in your day-to-day view but you want to keep the record.</p>
+
+<p>To archive an appointment:</p>
+
+<ol>
+  <li>From the <strong>List View</strong> or <strong>Detail Page</strong>, click the More Actions menu (&#8942;).</li>
+  <li>Select <strong>"Archive"</strong>.</li>
+  <li>A confirmation dialog will ask: "Are you sure you want to archive this appointment?"</li>
+  <li>Click <strong>"Archive"</strong> to confirm.</li>
+</ol>
+
+<p>The appointment will move from the <strong>Active</strong> tab to the <strong>Archived</strong> tab.</p>
+
+<h3>4.1 Restoring an Archived Appointment</h3>
+
+<p>To restore an archived appointment back to active status:</p>
+
+<ol>
+  <li>Switch to the <strong>Archived</strong> tab in the List View.</li>
+  <li>Find the appointment and click the More Actions menu (&#8942;).</li>
+  <li>Select <strong>"Restore"</strong>.</li>
+  <li>A confirmation dialog will ask: "Are you sure you want to restore this appointment?"</li>
+  <li>Click <strong>"Restore"</strong> to confirm.</li>
+</ol>
+
+<p>The appointment's status will be changed to <strong>Scheduled</strong> and it will reappear in the <strong>Active</strong> tab.</p>
+
+<h3>4.2 Permanently Deleting an Appointment</h3>
+
+<p>Permanent deletion is only available for <strong>archived</strong> appointments. To delete:</p>
+
+<ol>
+  <li>Switch to the <strong>Archived</strong> tab in the List View.</li>
+  <li>Find the appointment and click the More Actions menu (&#8942;).</li>
+  <li>Select <strong>"Delete"</strong>.</li>
+  <li>A confirmation dialog will ask: "Are you sure you want to permanently delete this appointment?"</li>
+  <li>Click <strong>"Delete"</strong> to confirm.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Deletion Restrictions:</strong> An appointment <strong>cannot</strong> be deleted if it has any of the following linked records:</p>
+  <ul>
+    <li>A linked <strong>Job</strong></li>
+    <li>A linked <strong>Estimate</strong></li>
+    <li>A linked <strong>Invoice</strong></li>
+    <li>Associated <strong>Timesheet Entries</strong></li>
+  </ul>
+  <p>If deletion is blocked, the Delete button will be disabled and a tooltip will explain the reason (e.g., "This appointment cannot be deleted. It has a linked job.").</p>
+</blockquote>
+
+<hr>
+
+<h2>5. Sending an Appointment to a Client</h2>
+
+<p>You can send an appointment notification to the client via the <strong>"Send to Client"</strong> feature. This sends an email to the client with the appointment details, services, and billing summary.</p>
+
+<p>To send an appointment to a client:</p>
+
+<ol>
+  <li>From the <strong>List View</strong> or <strong>Detail Page</strong>, click the More Actions menu (&#8942;).</li>
+  <li>Select <strong>"Send to Client"</strong>.</li>
+  <li>A side-panel drawer opens showing a preview of what the client will receive:
+    <ul>
+      <li><strong>Appointment Details</strong> &mdash; Client info, scheduled date/time.</li>
+      <li><strong>Services</strong> &mdash; All service line items with descriptions and pricing.</li>
+      <li><strong>Billing Summary</strong> &mdash; Subtotal, tax, discount, required deposit, and total.</li>
+    </ul>
+  </li>
+  <li>Click <strong>"Send to Client"</strong> to send, or <strong>"Cancel"</strong> to close without sending.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Requirements:</strong> To send an appointment to a client, the appointment must have a <strong>scheduled date/time</strong> and a <strong>crew assigned</strong>. Draft appointments without these details will have the "Send to Client" option disabled.</p>
+</blockquote>
+
+<hr>
+
+<h2>6. Converting Appointments to Other Records</h2>
+
+<p>From the <strong>Related Records</strong> tab on the Appointment Detail Page, you can convert an appointment into other record types. This streamlines your workflow by carrying over the client, property, crew, and service information.</p>
+
+<h3>6.1 Creating an Estimate from an Appointment</h3>
+
+<ol>
+  <li>Open the appointment's Detail Page.</li>
+  <li>Go to the <strong>Related Records</strong> tab.</li>
+  <li>In the Estimates section, click <strong>"Create Estimate"</strong>.</li>
+  <li>The system creates a new estimate with the appointment's client, property, crew, and services pre-populated.</li>
+  <li>You are automatically navigated to the new estimate's Detail Page.</li>
+</ol>
+
+<h3>6.2 Creating a Job from an Appointment</h3>
+
+<ol>
+  <li>Open the appointment's Detail Page.</li>
+  <li>Go to the <strong>Related Records</strong> tab.</li>
+  <li>In the Jobs section, click <strong>"Create Job"</strong>.</li>
+  <li>A modal appears where you can set the job's start date, end date, and mark it as priority.</li>
+  <li>Click <strong>"Create Job"</strong> to finalize. The new job will be linked to the appointment.</li>
+</ol>
+
+<h3>6.3 Creating an Invoice from an Appointment</h3>
+
+<ol>
+  <li>Open the appointment's Detail Page.</li>
+  <li>Go to the <strong>Related Records</strong> tab.</li>
+  <li>In the Invoices section, click <strong>"Create Invoice"</strong>.</li>
+  <li>A confirmation dialog asks: "Are you sure you want to convert this appointment to invoice?"</li>
+  <li>Click <strong>"Convert"</strong> to confirm. The system creates a new invoice with the appointment's data and navigates you to it.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Note:</strong> Each appointment can have its own set of linked records. Once an estimate, job, or invoice is created from an appointment, it appears in the Related Records tab with a link to navigate directly to it.</p>
+</blockquote>
+
+<hr>
+
+<h2>7. More Actions Menu</h2>
+
+<p>The More Actions menu (&#8942;) is available both in the <strong>List View</strong> (per row) and on the <strong>Detail Page</strong> header. The available options depend on the appointment's current state:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>When Available</th>
+      <th>What It Does</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Edit Appointment</strong></td>
+      <td>Active (not Completed, Canceled, or No-Show)</td>
+      <td>Opens the 4-step edit wizard with current data pre-filled.</td>
+    </tr>
+    <tr>
+      <td><strong>Send to Client</strong></td>
+      <td>Always visible; disabled for drafts without crew/date</td>
+      <td>Opens the Send to Client preview drawer to notify the client by email.</td>
+    </tr>
+    <tr>
+      <td><strong>View on Scheduler</strong></td>
+      <td>Always visible; disabled if no date is scheduled</td>
+      <td>Opens the Scheduler view in a new tab with this appointment highlighted.</td>
+    </tr>
+    <tr>
+      <td><strong>View on Map</strong></td>
+      <td>Always</td>
+      <td>Navigates to the Map view centered on this appointment's property location.</td>
+    </tr>
+    <tr>
+      <td><strong>Complete Appointment</strong></td>
+      <td>Active appointments (not already Completed)</td>
+      <td>Marks the appointment as Completed. A confirmation dialog appears first.</td>
+    </tr>
+    <tr>
+      <td><strong>Cancel Appointment</strong></td>
+      <td>Non-archived appointments</td>
+      <td>Cancels the appointment. A confirmation dialog appears: "Are you sure you want to cancel this appointment?"</td>
+    </tr>
+    <tr>
+      <td><strong>Archive</strong></td>
+      <td>Non-archived appointments</td>
+      <td>Archives the appointment (moves it to the Archived tab).</td>
+    </tr>
+    <tr>
+      <td><strong>Restore</strong></td>
+      <td>Archived appointments only</td>
+      <td>Restores the appointment to Scheduled status (moves it back to the Active tab).</td>
+    </tr>
+    <tr>
+      <td><strong>Delete</strong></td>
+      <td>Archived appointments only; disabled if linked records exist</td>
+      <td>Permanently deletes the appointment. Cannot be undone.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>8. Time Tracking</h2>
+
+<p>Each active appointment has a <strong>"Start Timer"</strong> button in the Detail Page header. Use this to track the time spent on an appointment:</p>
+
+<ul>
+  <li>Click <strong>"Start Timer"</strong> to begin tracking work time.</li>
+  <li>The timer runs in the background as the crew works.</li>
+  <li>Timer data is linked to timesheets for payroll and reporting purposes.</li>
+  <li>The timer is <strong>not available</strong> for archived appointments (Completed, Canceled, No-Show).</li>
+</ul>
+
+<hr>
+
+<h2>9. The Scheduler (Calendar View)</h2>
+
+<p>In addition to the List View, appointments can be viewed on a <strong>visual calendar</strong>. To access it, navigate to <strong>Menu &gt; Scheduler</strong>.</p>
+
+<p>The Scheduler is powered by Syncfusion and offers the following views:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>View</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Day View</strong></td>
+      <td>Shows all appointments for a single day with time slots. You can click on a time slot to create a new appointment with that date/time pre-filled.</td>
+    </tr>
+    <tr>
+      <td><strong>Week View</strong></td>
+      <td>A custom week grid showing appointments across a 7-day period. Supports drag-and-drop to reschedule appointments.</td>
+    </tr>
+    <tr>
+      <td><strong>Month View</strong></td>
+      <td>A traditional month calendar showing appointment counts per day.</td>
+    </tr>
+    <tr>
+      <td><strong>List / Agenda View</strong></td>
+      <td>A list-style view showing appointments in chronological order, similar to an agenda.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Scheduler Features:</strong></p>
+
+<ul>
+  <li><strong>Crew Filtering:</strong> Toggle specific crews on/off to filter which appointments appear.</li>
+  <li><strong>Crew Colors:</strong> Each crew has an assigned color. Appointments are displayed in their crew's color for quick visual identification.</li>
+  <li><strong>Unavailable Dates:</strong> Dates with no crew availability are visually grayed out.</li>
+  <li><strong>Drag-and-Drop:</strong> In the custom Week View, you can drag appointments to a new time slot to reschedule them.</li>
+  <li><strong>Legend:</strong> A legend shows crew colors and event types for reference.</li>
+  <li><strong>Date Navigation:</strong> Use forward/back arrows to navigate between days, weeks, or months.</li>
+  <li><strong>Override Availability:</strong> Toggle to show all dates regardless of crew availability.</li>
+</ul>
+
+<hr>
+
+<h2>10. Searching and Filtering</h2>
+
+<h3>Quick Search</h3>
+
+<p>Use the <strong>search bar</strong> at the top of the List View to search appointments by keyword. The search filters appointments by name, client name, and other text fields. Results update in real time as you type.</p>
+
+<h3>Status Filter</h3>
+
+<p>Click the <strong>"Status"</strong> filter button to open a dropdown with all 8 appointment statuses as checkboxes. You can select one or more statuses to show only appointments matching those statuses.</p>
+
+<ul>
+  <li>Each status is displayed with its color-coded tag for easy identification.</li>
+  <li>A badge on the filter button shows how many statuses are currently selected.</li>
+  <li>Click <strong>"Reset Filter"</strong> to clear all status filters and show all appointments.</li>
+  <li>Deselecting all checkboxes has the same effect as resetting &mdash; it shows all appointments.</li>
+</ul>
+
+<h3>Sorting</h3>
+
+<p>The following columns can be sorted in ascending or descending order by clicking the column header:</p>
+
+<ul>
+  <li><strong>Name</strong></li>
+  <li><strong>Scheduled For</strong> (date/time)</li>
+  <li><strong>Status</strong></li>
+</ul>
+
+<h3>Pagination</h3>
+
+<p>The list uses <strong>server-side pagination</strong>. You can configure the number of appointments shown per page (10, 25, or 50) using the page size selector at the bottom. Navigate between pages using the pagination controls.</p>
+
+<hr>
+
+<h2>11. Summary of Common Actions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>How to Do It</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Create a new appointment</td>
+      <td>Click <strong>"+ New Appointment"</strong> and complete the 4-step wizard (Details &rarr; Schedule &rarr; Services &rarr; Review).</td>
+    </tr>
+    <tr>
+      <td>Save as draft</td>
+      <td>During creation or editing, click <strong>"Save as Draft"</strong> (available from Steps 2, 3, and 4).</td>
+    </tr>
+    <tr>
+      <td>Edit an appointment</td>
+      <td>Click the pencil icon in the List View, or click <strong>"Edit"</strong> on the Overview card in the Detail Page.</td>
+    </tr>
+    <tr>
+      <td>Change appointment status</td>
+      <td>Use the <strong>Status Dropdown</strong> in the Detail Page header to select a new status.</td>
+    </tr>
+    <tr>
+      <td>Send to client</td>
+      <td>More Actions menu &rarr; <strong>"Send to Client"</strong> &rarr; review the preview &rarr; click <strong>"Send to Client"</strong>.</td>
+    </tr>
+    <tr>
+      <td>View on scheduler</td>
+      <td>More Actions menu &rarr; <strong>"View on Scheduler"</strong> (opens in new tab).</td>
+    </tr>
+    <tr>
+      <td>View on map</td>
+      <td>More Actions menu &rarr; <strong>"View on Map"</strong>.</td>
+    </tr>
+    <tr>
+      <td>Complete an appointment</td>
+      <td>More Actions menu &rarr; <strong>"Complete Appointment"</strong> &rarr; confirm.</td>
+    </tr>
+    <tr>
+      <td>Cancel an appointment</td>
+      <td>More Actions menu &rarr; <strong>"Cancel Appointment"</strong> &rarr; confirm.</td>
+    </tr>
+    <tr>
+      <td>Archive an appointment</td>
+      <td>More Actions menu &rarr; <strong>"Archive"</strong> &rarr; confirm.</td>
+    </tr>
+    <tr>
+      <td>Restore an archived appointment</td>
+      <td>Archived tab &rarr; More Actions menu &rarr; <strong>"Restore"</strong> &rarr; confirm. Status changes to Scheduled.</td>
+    </tr>
+    <tr>
+      <td>Permanently delete</td>
+      <td>Archived tab &rarr; More Actions menu &rarr; <strong>"Delete"</strong> &rarr; confirm. Only possible if no linked records.</td>
+    </tr>
+    <tr>
+      <td>Create estimate from appointment</td>
+      <td>Detail Page &rarr; Related Records tab &rarr; <strong>"Create Estimate"</strong>.</td>
+    </tr>
+    <tr>
+      <td>Create job from appointment</td>
+      <td>Detail Page &rarr; Related Records tab &rarr; <strong>"Create Job"</strong> &rarr; set dates &rarr; confirm.</td>
+    </tr>
+    <tr>
+      <td>Create invoice from appointment</td>
+      <td>Detail Page &rarr; Related Records tab &rarr; <strong>"Create Invoice"</strong> &rarr; confirm.</td>
+    </tr>
+    <tr>
+      <td>Add a service to an appointment</td>
+      <td>Detail Page &rarr; Overview tab &rarr; Services section &rarr; <strong>"Add Service"</strong>.</td>
+    </tr>
+    <tr>
+      <td>Track work time</td>
+      <td>Detail Page &rarr; click <strong>"Start Timer"</strong> in the header.</td>
+    </tr>
+    <tr>
+      <td>Send a chat message to client</td>
+      <td>Detail Page &rarr; Sidebar &rarr; <strong>Chat</strong> tab &rarr; type and send.</td>
+    </tr>
+    <tr>
+      <td>Add an internal note</td>
+      <td>Detail Page &rarr; Sidebar &rarr; <strong>Notes</strong> tab &rarr; write and save.</td>
+    </tr>
+    <tr>
+      <td>Change billing details</td>
+      <td>Detail Page &rarr; Sidebar &rarr; click the Edit (pencil) icon next to client info to set an alternate billing address.</td>
+    </tr>
+    <tr>
+      <td>Assign a bill-to client</td>
+      <td>Detail Page &rarr; Sidebar &rarr; click the Invoice icon next to client info to assign a different billing client.</td>
+    </tr>
+    <tr>
+      <td>Filter by status</td>
+      <td>Click the <strong>"Status"</strong> filter button &rarr; check the statuses you want to see.</td>
+    </tr>
+    <tr>
+      <td>Search for an appointment</td>
+      <td>Type in the <strong>search bar</strong> at the top of the List View.</td>
+    </tr>
+  </tbody>
+</table>
+
+</main>
+</body>
+</html>

@@ -1,14 +1,14 @@
 import React, { useMemo } from 'react';
-import { BrowserRouter, Routes, Route, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useLanguage } from './context/LanguageContext';
 import { HelpVideoProvider, useHelpVideoContext } from './context/HelpVideoContext';
 import Header from './components/Header/Header';
+import Hero from './components/Hero/Hero';
 import SearchBar from './components/SearchBar/SearchBar';
 import CategorySection from './components/CategorySection/CategorySection';
 import ArticleView from './components/ArticleView/ArticleView';
-import LanguageSwitcher from './components/LanguageSwitcher/LanguageSwitcher';
 import Footer from './components/Footer/Footer';
-import ChatButton from './components/ChatButton/ChatButton';
+import SupportWidget from './components/SupportWidget/SupportWidget';
 import articles, { categoryOrder } from './data/articles';
 import './App.css';
 
@@ -72,12 +72,32 @@ const APP_HELP_PAGE_MAP = new Map(
 );
 
 function HomePage() {
-  const { getLocalized } = useLanguage();
+  const { t, getLocalized } = useLanguage();
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
+  // Audience lives in the URL so a link can point at either side of the
+  // knowledge base. Anything other than "clients" falls back to providers.
+  const audience = searchParams.get('for') === 'clients' ? 'client' : 'provider';
+
+  const handleAudienceChange = (next) => {
+    const params = new URLSearchParams(searchParams);
+    if (next === 'client') params.set('for', 'clients');
+    else params.delete('for');
+    setSearchParams(params, { replace: true });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const audienceArticles = useMemo(
+    () => articles.filter(a => (a.audience || 'provider') === audience),
+    [audience]
+  );
+
+  // Providers get their sections; the client portal is a flat list of cards.
   const categoryGroups = useMemo(() => {
+    if (audience === 'client') return [];
     const grouped = {};
-    articles.forEach(article => {
+    audienceArticles.forEach(article => {
       const enCat = article.en.category;
       if (!grouped[enCat]) grouped[enCat] = [];
       grouped[enCat].push(article);
@@ -89,24 +109,37 @@ function HomePage() {
         label: getLocalized({ en: { text: cat }, es: { text: articles.find(a => a.en.category === cat)?.es.category || cat } }).text,
         articles: grouped[cat]
       }));
-  }, [getLocalized]);
+  }, [audience, audienceArticles, getLocalized]);
 
   const handleSelectArticle = (article) => {
     navigate(`/articles/${article.id}`);
   };
 
+  const countLabel = (n) => `${n} ${n === 1 ? t.articleSingular : t.articlePlural}`;
+
   return (
     <>
-      <SearchBar onSelectArticle={handleSelectArticle} />
+      <Hero audience={audience} onAudienceChange={handleAudienceChange}>
+        <SearchBar onSelectArticle={handleSelectArticle} />
+      </Hero>
+
       <div className="app__categories-grid">
-        {categoryGroups.map(group => (
+        {audience === 'client' ? (
           <CategorySection
-            key={group.key}
-            category={group.label}
-            articles={group.articles}
+            articles={audienceArticles}
             onSelectArticle={handleSelectArticle}
           />
-        ))}
+        ) : (
+          categoryGroups.map(group => (
+            <CategorySection
+              key={group.key}
+              category={group.label}
+              countLabel={countLabel(group.articles.length)}
+              articles={group.articles}
+              onSelectArticle={handleSelectArticle}
+            />
+          ))
+        )}
       </div>
     </>
   );
@@ -226,11 +259,16 @@ function Shell() {
   const location = useLocation();
   const navigate = useNavigate();
   const isAppHelpRoute = location.pathname === '/app-help' || location.pathname.startsWith('/app-help/articles/');
+  // The home page carries the hero, which has its own brand bar, so the
+  // standalone header stays off it. The language control is no longer floating
+  // at the bottom of the page: it sits top right, in the hero on home and in
+  // the header on an article.
+  const isHome = location.pathname === '/';
 
   return (
-    <div className={`app ${isAppHelpRoute ? 'app--app-help' : ''}`}>
+    <div className={`app ${isAppHelpRoute ? 'app--app-help' : ''} ${isHome ? 'app--home' : ''}`}>
       <div className={`app__container ${isAppHelpRoute ? 'app__container--app-help' : ''}`}>
-        {!isAppHelpRoute && <Header onLogoClick={() => navigate('/')} />}
+        {!isAppHelpRoute && !isHome && <Header onLogoClick={() => navigate('/')} />}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/articles/:articleId" element={<ArticlePage />} />
@@ -239,8 +277,7 @@ function Shell() {
         </Routes>
         {!isAppHelpRoute && <Footer />}
       </div>
-      <LanguageSwitcher />
-      {!isAppHelpRoute && <ChatButton />}
+      {!isAppHelpRoute && <SupportWidget />}
     </div>
   );
 }

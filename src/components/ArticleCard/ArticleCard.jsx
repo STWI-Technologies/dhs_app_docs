@@ -2,24 +2,40 @@ import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import './ArticleCard.css';
 
+const PLATFORM_LABELS = {
+  web: 'WEB',
+  app: 'APP',
+  client: 'CLIENT'
+};
+
 export default function ArticleCard({ article, onClick }) {
   const { getLocalized } = useLanguage();
   const localized = getLocalized(article);
+  // A card that is only CLIENT sits on the client side of the toggle, where the
+  // badge repeats what the toggle already said. The badge earns its place on a
+  // provider article that ALSO touches the portal.
+  const allPlatforms = article.platforms || [];
+  const platforms = allPlatforms.length === 1 && allPlatforms[0] === 'client' ? [] : allPlatforms;
 
   return (
     <div className="article-card" onClick={() => onClick(article)} role="button" tabIndex={0}
       onKeyDown={(e) => { if (e.key === 'Enter') onClick(article); }}>
-      <div className="article-card__icon">
-        {article.icon && <article.icon size={26} color="#2E3192" variant="stroke" />}
+      <div className="article-card__icon" aria-hidden="true">
+        {article.icon && <article.icon size={22} color="#3b40c4" variant="stroke" />}
       </div>
       <div className="article-card__body">
-        <h3 className="article-card__title">{localized.title}</h3>
+        <div className="article-card__heading">
+          <h3 className="article-card__title">{localized.title}</h3>
+          {platforms.map(p => (
+            <span
+              key={p}
+              className={`article-card__badge article-card__badge--${p}`}
+            >
+              {PLATFORM_LABELS[p] || p}
+            </span>
+          ))}
+        </div>
         <p className="article-card__overview">{localized.overview}</p>
-      </div>
-      <div className="article-card__arrow">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M9 18l6-6-6-6" />
-        </svg>
       </div>
     </div>
   );

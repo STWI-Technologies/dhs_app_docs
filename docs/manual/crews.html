@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crews Management</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #1a1a1a; }
+    h1 { border-bottom: 2px solid #e0e0e0; padding-bottom: 0.5rem; }
+    h2 { margin-top: 2rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #d0d0d0; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background-color: #f5f5f5; font-weight: 600; }
+    blockquote { border-left: 4px solid #d0d0d0; margin: 1rem 0; padding: 0.75rem 1rem; background: #fafafa; }
+    code { background: #f0f0f0; padding: 0.15rem 0.35rem; border-radius: 3px; font-size: 0.9em; }
+    hr { border: none; border-top: 1px solid #e0e0e0; margin: 2rem 0; }
+  </style>
+</head>
+<body>
+<main>
+
+<h1>Crews Management</h1>
+
+<h2>Overview</h2>
+
+<p><strong>Crews</strong> represent teams of users that work together on jobs and appointments. Instead of assigning individual technicians to every appointment or estimate, you can group users into a crew and assign the whole crew at once. Each crew has a name, a color for visual identification, and a designated <strong>Crew Lead</strong> who is the primary point of contact for that team.</p>
+
+<p>From this section you can:</p>
+
+<ul>
+  <li><strong>Create</strong> new crews with a name, color, description, and members.</li>
+  <li><strong>Edit</strong> existing crews to change their details, manage members, or reassign the crew lead.</li>
+  <li><strong>Delete</strong> crews that are no longer needed (only if not currently assigned to jobs or estimates).</li>
+  <li><strong>View availability</strong> for each crew, and jump directly to the Availability page to configure their schedule.</li>
+  <li><strong>View customer feedback</strong> and ratings for each crew.</li>
+  <li><strong>Search and filter</strong> crews by name or by assigned users.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Important:</strong> A crew can only be deleted if it is <strong>not currently assigned</strong> to any job or estimate. If a crew is in use, the delete button will be disabled and a tooltip will read: "Cannot delete crew assigned to jobs or estimates."</p>
+</blockquote>
+
+<hr>
+
+<h2>Crews List View</h2>
+
+<p>The Crews List View is the main view for managing all your crews. To access it, navigate to <strong>Menu &gt; Crews</strong>.</p>
+
+<p>At the top of the page you will see:</p>
+
+<ul>
+  <li>A <strong>Search</strong> bar with the placeholder "Search crews" — type a keyword to filter crews by name.</li>
+  <li>A <strong>Users</strong> filter — a multi-select dropdown that lets you filter the list to show only crews that include specific users as members.</li>
+  <li>A <strong>New Crew</strong> button — click to open the create crew form.</li>
+</ul>
+
+<h3>Table Columns</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>What It Shows</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Crew</strong></td>
+      <td>The crew's name, preceded by a small colored dot that matches the crew's assigned color. This column is sortable — click the header to sort alphabetically (A-Z or Z-A).</td>
+    </tr>
+    <tr>
+      <td><strong>Description</strong></td>
+      <td>A truncated preview of the crew's description text. If the description is longer than the column width, it is cut off with an ellipsis.</td>
+    </tr>
+    <tr>
+      <td><strong>Rating</strong></td>
+      <td>The crew's average customer rating displayed as star icons (1 to 5 stars) with the numeric value. If the crew has no feedback yet, it shows "Not Rated."</td>
+    </tr>
+    <tr>
+      <td><strong>Members</strong></td>
+      <td>An avatar stack showing the crew's members. The crew lead appears first with a special border. Up to 2 additional active members are shown as avatars, and if there are more, a "+N" badge indicates how many additional members exist. Disabled users are excluded from this display.</td>
+    </tr>
+    <tr>
+      <td><strong>Actions</strong></td>
+      <td>Three action icons per row (see Row Actions below).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Row Actions</h3>
+
+<p>Each crew row has three action buttons on the right side:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>Icon</th>
+      <th>What It Does</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Edit</strong></td>
+      <td>Pencil icon</td>
+      <td>Opens the crew in edit mode where you can modify all details, manage members, view availability, and see customer feedback.</td>
+    </tr>
+    <tr>
+      <td><strong>Availability</strong></td>
+      <td>Calendar/clock icon</td>
+      <td>Navigates to the Availability page with this crew pre-selected in Per Crew mode, so you can configure the crew's schedule.</td>
+    </tr>
+    <tr>
+      <td><strong>Delete</strong></td>
+      <td>Trash icon</td>
+      <td>Opens a confirmation dialog to delete the crew. If the crew is currently assigned to jobs or estimates, this button is grayed out and disabled with a tooltip: "Cannot delete crew assigned to jobs or estimates."</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Sorting</h3>
+
+<p>The data grid supports sorting by the following columns:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sort Option</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Name</strong></td>
+      <td>Sort crews alphabetically by name (A-Z or Z-A).</td>
+    </tr>
+    <tr>
+      <td><strong>Created At</strong></td>
+      <td>Sort by when the crew was created (oldest first or newest first).</td>
+    </tr>
+    <tr>
+      <td><strong>Updated At</strong></td>
+      <td>Sort by when the crew was last modified (oldest first or newest first).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Pagination</h3>
+
+<p>The list uses server-side pagination. By default, 10 crews are shown per page. You can change the page size to 10, 25, or 50 per page. The pagination controls at the bottom of the table show the current page, total pages, and total number of records. Changing any filter or search term resets the page back to page 1.</p>
+
+<h3>Empty State</h3>
+
+<p>If no crews match your search or filters, the table shows: "No crews found."</p>
+
+<hr>
+
+<h2>Creating a New Crew</h2>
+
+<p>To create a new crew:</p>
+
+<p><strong>Step 1:</strong> Click the <strong>New Crew</strong> button at the top of the Crews List View. A panel will slide open from the right side with the title <strong>Add New Crew</strong>.</p>
+
+<p><strong>Step 2:</strong> Fill in the crew details.</p>
+
+<h3>Create Form Fields</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Crew Name</strong></td>
+      <td>Yes</td>
+      <td>The name of the crew (for example, "Team Alpha" or "Installation Crew A"). Maximum 512 characters. If you exceed this limit, you will see the error: "Crew name must be 512 characters or less."</td>
+    </tr>
+    <tr>
+      <td><strong>Color</strong></td>
+      <td>Yes</td>
+      <td>A color that visually identifies this crew throughout the platform. Click the color swatch to open a color picker. The default color is blue (#3B82F6). This color appears as a dot next to the crew name in lists and in the scheduler.</td>
+    </tr>
+    <tr>
+      <td><strong>Description</strong></td>
+      <td>No</td>
+      <td>An optional text description for the crew. This is a multi-line text area (3 rows). Use it to describe the crew's specialty, coverage area, or any other relevant notes. The label shows "Description (Optional)."</td>
+    </tr>
+    <tr>
+      <td><strong>Members</strong></td>
+      <td>Yes</td>
+      <td>Select one or more users to add as members of this crew. Uses a multi-select dropdown labeled "Select Members." Only active (non-disabled) users appear in the dropdown. Selected members appear as tags below the dropdown. At least one member is required.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Important:</strong> The <strong>first member</strong> you add to a new crew is automatically designated as the <strong>Crew Lead</strong>. A helper message below the Members field reads: "The first member added will be designated as the Crew Lead." The crew lead appears with a special icon on their tag.</p>
+</blockquote>
+
+<p><strong>Step 3:</strong> You can also create new users on the fly using the <strong>Quick Add</strong> feature within the Members dropdown. If a user doesn't exist yet, you can create them inline without leaving the crew form.</p>
+
+<p><strong>Step 4:</strong> Click <strong>Add Crew</strong> at the bottom of the panel to create the crew. The button shows "Creating Crew..." while saving.</p>
+
+<p>On success, you will see the toast message: "Crew successfully created." The panel closes and the new crew appears in the list.</p>
+
+<p>If creation fails, you will see: "Failed To Create Crew."</p>
+
+<hr>
+
+<h2>Editing a Crew</h2>
+
+<p>To edit an existing crew, click the <strong>Edit</strong> (pencil icon) button on the crew's row, or click the crew name in the table. A panel will slide open from the right side with the title <strong>Edit Crew</strong>.</p>
+
+<p>The edit panel has the same fields as the create form (Crew Name, Color, Description) plus additional sections:</p>
+
+<h3>Members Section (Edit Mode)</h3>
+
+<p>In edit mode, the members section changes from a simple multi-select to a <strong>members table</strong> that gives you more control:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>What It Shows</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>User</strong></td>
+      <td>The member's avatar and full name. If the user's account has been disabled, a "(Disabled)" label appears next to their name.</td>
+    </tr>
+    <tr>
+      <td><strong>Crew Lead</strong></td>
+      <td>A radio button. Only one member can be the crew lead at a time. Click the radio button next to a different member to reassign the lead role.</td>
+    </tr>
+    <tr>
+      <td><strong>Actions</strong></td>
+      <td>A delete button (trash icon) to remove this member from the crew. If there is only one member left, the delete button is disabled with the tooltip: "Cannot delete last crew member."</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>To add a new member, use the <strong>Add Crew Member</strong> dropdown that appears to the right of the members table. Select a user from the dropdown to add them to the crew.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> Disabled users are shown in the members table so you can see who was previously on the crew, but they cannot be set as crew lead and are excluded from the active member count shown in the Crews List View.</p>
+</blockquote>
+
+<p>If all members are removed, the table shows: "No Members Added."</p>
+
+<h3>Availability Section (Edit Mode)</h3>
+
+<p>Below the members table, the edit panel shows the crew's current availability schedule as a read-only summary:</p>
+
+<ul>
+  <li><strong>General Availability</strong> — Lists the crew's enabled work days with their time ranges, each marked with a green dot (for example, "Monday, 9:00 AM - 5:00 PM").</li>
+  <li><strong>Exceptions and Special Conditions</strong> — Lists any active exceptions (date ranges, months, or seasons), each marked with an orange dot.</li>
+</ul>
+
+<p>If no availability has been configured, it shows: "No availability data."</p>
+
+<p>Click <strong>View Availability Settings</strong> to navigate to the full Availability page with this crew pre-selected in Per Crew mode.</p>
+
+<h3>Customer Feedback Section (Edit Mode)</h3>
+
+<p>Below the availability section, the edit panel shows the crew's customer feedback:</p>
+
+<ul>
+  <li>Displays the crew's <strong>average star rating</strong> (1 to 5 stars).</li>
+  <li>Shows feedback grouped by crew member.</li>
+  <li>Displays job-specific feedback with the latest description and average rating.</li>
+</ul>
+
+<p>If the crew has no feedback, this section is hidden.</p>
+
+<h3>Saving Changes</h3>
+
+<p>After making your changes, click <strong>Apply Changes</strong> at the bottom of the panel. This button is only enabled if you have actually modified something — if no changes have been detected, the button stays disabled.</p>
+
+<p>The button shows "Updating Crew..." while saving. On success, you will see: "Crew successfully updated." On failure: "Failed To Update Crew."</p>
+
+<p>Click <strong>Cancel</strong> to close the panel without saving any changes.</p>
+
+<hr>
+
+<h2>Deleting a Crew</h2>
+
+<p>To delete a crew:</p>
+
+<p><strong>Step 1:</strong> Click the <strong>Delete</strong> (trash icon) button on the crew's row in the list.</p>
+
+<p><strong>Step 2:</strong> A confirmation dialog appears with the title <strong>Delete</strong> and the message: "Are you sure you want to delete this crew?"</p>
+
+<p><strong>Step 3:</strong> Click <strong>Delete</strong> to confirm, or <strong>Cancel</strong> to go back.</p>
+
+<p>The button shows "Deleting Crew..." while processing. On success: "Crew successfully deleted." On failure: "Failed To Delete Crew."</p>
+
+<blockquote>
+  <p><strong>Warning:</strong> Deletion is permanent. There is no archive or restore for crews. Once a crew is deleted, it is gone. However, historical records that referenced this crew (such as past jobs or appointments) will retain the crew information.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Note:</strong> If the crew is currently assigned to active jobs or estimates, the delete button is disabled and grayed out. The tooltip reads: "Cannot delete crew assigned to jobs or estimates." You must first remove the crew from those jobs or estimates before you can delete it.</p>
+</blockquote>
+
+<hr>
+
+<h2>Quick Add Crew</h2>
+
+<p>You can create a crew quickly from other sections of the platform (such as when assigning a crew to an appointment) using the <strong>Quick Add</strong> feature. The Quick Add modal has a simplified form:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Crew Name</strong></td>
+      <td>Yes</td>
+      <td>The name of the crew. Error if empty: "Name is required."</td>
+    </tr>
+    <tr>
+      <td><strong>Crew Members</strong></td>
+      <td>Yes</td>
+      <td>Select members for the crew. Error if empty: "At least one user is required." Supports quick-adding new users inline.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The Quick Add modal uses a default color of purple (#3C40BC) and does not include the color picker or description field — these can be edited later.</p>
+
+<p>On success, you will see the toast message: "Crew created using Quick Add" with a <strong>View Crew</strong> button that navigates to the crew's edit panel if you want to add more details.</p>
+
+<hr>
+
+<h2>Searching and Filtering</h2>
+
+<h3>Search</h3>
+
+<p>The search bar at the top of the Crews List View filters crews by name. Type any keyword and the list updates automatically (with a slight delay for performance). The search is not case-sensitive.</p>
+
+<h3>Filter by Users</h3>
+
+<p>The <strong>Users</strong> filter is a multi-select dropdown that shows all users in your account (up to 100). Select one or more users to see only crews that include those users as members. This is useful when you need to find which crews a specific person belongs to.</p>
+
+<p>When filters or search terms change, the pagination resets to page 1.</p>
+
+<hr>
+
+<h2>Cross-Platform Usage</h2>
+
+<p>Crews are used throughout the DHS platform in several important ways:</p>
+
+<h3>Appointments</h3>
+
+<p>When creating or editing an appointment, you can assign a crew to handle the work. The appointment form includes a crew selection dropdown where you can:</p>
+
+<ul>
+  <li>Select an existing crew from the dropdown (crews are shown with their color indicator).</li>
+  <li>Quick-add a new crew if the one you need doesn't exist yet.</li>
+</ul>
+
+<p>The system checks the assigned crew's availability when scheduling the appointment. If the appointment falls outside the crew's available hours or during an exception period, the system will flag it. The <strong>Override Availability</strong> option can be used to bypass these checks for special situations.</p>
+
+<h3>Jobs</h3>
+
+<p>Crews can be assigned to jobs. The system tracks which crews are assigned to active jobs, which is what determines whether a crew can be deleted (the <strong>isInUse</strong> flag). The platform can also detect <strong>schedule conflicts</strong> — if a crew is already assigned to a job during a given time range, the system can warn you before double-booking.</p>
+
+<h3>Estimates</h3>
+
+<p>When creating an estimate, you can assign a crew. If the estimate is linked to an existing appointment or job, the crew may be auto-filled from that related record.</p>
+
+<h3>Availability</h3>
+
+<p>Each crew can have its own custom availability schedule (work days, time slots, and exceptions) separate from the global business availability. See the <strong>Availability Management</strong> section of this manual for full details on configuring per-crew schedules.</p>
+
+<h3>Dashboard and Reports</h3>
+
+<p>Crew data feeds into several reporting areas:</p>
+
+<ul>
+  <li><strong>Crew ratings and performance</strong> — Average customer ratings per crew.</li>
+  <li><strong>Crew satisfaction metrics</strong> — Trends in customer feedback.</li>
+  <li><strong>Crew-wise complaint distribution</strong> — Which crews receive the most complaints.</li>
+</ul>
+
+<hr>
+
+<h2>Summary of Common Actions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>How to Do It</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>View all crews</td>
+      <td>Navigate to <strong>Menu &gt; Crews</strong></td>
+    </tr>
+    <tr>
+      <td>Search for a crew</td>
+      <td>Type in the search bar at the top of the Crews List View</td>
+    </tr>
+    <tr>
+      <td>Filter by team member</td>
+      <td>Use the <strong>Users</strong> dropdown filter and select one or more users</td>
+    </tr>
+    <tr>
+      <td>Create a new crew</td>
+      <td>Click <strong>New Crew</strong> &gt; fill in name, color, description, members &gt; click <strong>Add Crew</strong></td>
+    </tr>
+    <tr>
+      <td>Edit a crew</td>
+      <td>Click the pencil icon or crew name &gt; make changes &gt; click <strong>Apply Changes</strong></td>
+    </tr>
+    <tr>
+      <td>Change the crew lead</td>
+      <td>Open the crew in edit mode &gt; in the Members table, click the radio button next to the new lead</td>
+    </tr>
+    <tr>
+      <td>Add a member to a crew</td>
+      <td>Open the crew in edit mode &gt; use the <strong>Add Crew Member</strong> dropdown</td>
+    </tr>
+    <tr>
+      <td>Remove a member from a crew</td>
+      <td>Open the crew in edit mode &gt; click the trash icon next to the member (not available for the last member)</td>
+    </tr>
+    <tr>
+      <td>View a crew's availability</td>
+      <td>Click the <strong>Availability</strong> icon in the row, or open the crew in edit mode and look at the Availability section</td>
+    </tr>
+    <tr>
+      <td>Configure a crew's schedule</td>
+      <td>Click the <strong>Availability</strong> icon or <strong>View Availability Settings</strong> in the edit panel to go to the Availability page in Per Crew mode</td>
+    </tr>
+    <tr>
+      <td>View customer feedback</td>
+      <td>Open the crew in edit mode and scroll to the Customer Feedback section</td>
+    </tr>
+    <tr>
+      <td>Delete a crew</td>
+      <td>Click the trash icon on the crew row &gt; confirm in the dialog (only if the crew is not in use)</td>
+    </tr>
+    <tr>
+      <td>Quick-add a crew from another section</td>
+      <td>Use the Quick Add option in crew selection dropdowns (for example, in Appointments)</td>
+    </tr>
+    <tr>
+      <td>Sort crews</td>
+      <td>Click the <strong>Crew</strong> column header to sort by name, or use the sort controls for Created At / Updated At</td>
+    </tr>
+  </tbody>
+</table>
+
+</main>
+</body>
+</html>

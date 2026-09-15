@@ -1,0 +1,122 @@
+.lang-picker {
+  position: relative;
+  display: inline-block;
+}
+
+.lang-picker__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.lang-picker__flag {
+  width: 20px;
+  height: 14px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.lang-picker__chevron {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.lang-picker[aria-hidden='false'] .lang-picker__chevron,
+.lang-picker__trigger[aria-expanded='true'] .lang-picker__chevron {
+  transform: rotate(180deg);
+}
+
+/* The menu is the same on both tones: a white card, because it sits over the
+   page rather than over the bar it hangs from. */
+.lang-picker__menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 60;
+  min-width: 176px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: #ffffff;
+  border: 1px solid rgba(17, 24, 60, 0.08);
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(17, 24, 60, 0.18);
+}
+
+.lang-picker__option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 10px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #27274a;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.lang-picker__option:hover {
+  background: #f2f3f8;
+}
+
+.lang-picker__option--active {
+  color: #3c40bc;
+}
+
+.lang-picker__tick {
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  color: #3c40bc;
+}
+
+/* On the navy header and hero. */
+.lang-picker--dark .lang-picker__trigger {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+.lang-picker--dark .lang-picker__trigger:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* On a white surface. */
+.lang-picker--light .lang-picker__trigger {
+  background: #ffffff;
+  border-color: rgba(17, 24, 60, 0.12);
+  color: #27274a;
+}
+
+.lang-picker--light .lang-picker__trigger:hover {
+  border-color: rgba(17, 24, 60, 0.24);
+}
+
+@media (max-width: 600px) {
+  .lang-picker__trigger {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+  .lang-picker__label {
+    display: none;
+  }
+  .lang-picker__menu .lang-picker__label {
+    display: inline;
+  }
+}
