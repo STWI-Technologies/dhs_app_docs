@@ -28,6 +28,7 @@ import { chromium } from "playwright";
 import { mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { paintSampleAvatars as paintPortraits } from "./portraits.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const OUT_DIR = resolve(ROOT, "public/images/clients");
@@ -49,7 +50,17 @@ const EXISTING_CLIENT_EMAIL = process.env.KB_EXISTING_EMAIL || "annelee90@exampl
  * their portal owns their own details, which greys out Edit and Delete and makes
  * the figure look broken to a reader who doesn't know why.
  */
-const SUBJECT_CLIENT = process.env.KB_CLIENT || "Anna Clark";
+const SUBJECT_CLIENT = process.env.KB_CLIENT || "Liam Johnson";
+
+/**
+ * The same client by id, so the record figures open exactly this one rather
+ * than whatever the search happens to rank first. Every client on this account
+ * shares the company name, so searching by it is ambiguous.
+ *
+ * This client is the subject on purpose: it has a real client conversation and
+ * a set of attachments, which is what the Chat and Attachments figures need.
+ */
+const SUBJECT_CLIENT_ID = process.env.KB_CLIENT_ID || "677c1add71fb0ce86f2d8d10";
 
 const results = [];
 mkdirSync(OUT_DIR, { recursive: true });
@@ -143,6 +154,34 @@ async function collapseSidebar() {
   await page.waitForTimeout(900);
 }
 
+/**
+ * Put the sidebar back, and do it before the step ends.
+ *
+ * Navigation here finds sidebar entries BY THEIR TEXT, and a collapsed sidebar
+ * has none, only icons. Leaving it collapsed after the list figure made every
+ * later step land on an empty table: no rows to drop, no rows to photograph,
+ * and the archive step timed out clicking a menu that was not there.
+ */
+async function expandSidebar() {
+  await page.evaluate(() => {
+    const b = [...document.querySelectorAll("button,[role=button]")].find(
+      (x) => x.getAttribute("aria-label") === "Expand sidebar"
+    );
+    if (b) b.click();
+  });
+  await page.waitForTimeout(900);
+}
+
+/**
+ * The client list shows a wall of identical default silhouettes, so a portrait
+ * is swapped in per row before the shot. The whole thing, images included, and
+ * the reason it is done at all, lives in portraits.mjs; it is shared with
+ * section.mjs so a client keeps the same face across articles.
+ */
+const CLIENT_ROWS = '[data-tour="clients-list"] table tbody tr';
+
+const paintSampleAvatars = () => paintPortraits(page, CLIENT_ROWS);
+
 /** Rows kept out of the published figures. See dropRows above. */
 const EXCLUDE_ROWS = (process.env.KB_EXCLUDE || "Lulu Lemon").split(",").map((s) => s.trim()).filter(Boolean);
 
@@ -184,12 +223,16 @@ async function step(label, fn) {
  * it hangs for the full timeout and takes the following steps down with it.
  */
 async function backToClientsList() {
-  const onList = /\/clients(\?|$)/.test(page.url());
-  if (!onList) {
-    await page.click('button:has-text("Clients"), a:has-text("Clients")');
-  }
+  // Always reload, never just click back to the tab.
+  //
+  // dropRows and paintSampleAvatars change the DOM directly, and React has no
+  // idea: the removed rows do not come back on their own, so a later step
+  // inherited a table with nothing in it, painted no portraits, and the archive
+  // step timed out clicking a row menu that was no longer there. A reload is
+  // the only thing that undoes both.
+  await page.goto(`${BASE}/clients`, { waitUntil: "domcontentloaded" });
   await page.waitForSelector('[data-tour="clients-page"]', { timeout: 30000 });
-  await page.waitForTimeout(1500);
+  await page.waitForTimeout(4000);
   const connected = page
     .locator('[data-tour="clients-status-tabs"] button')
     .filter({ hasText: "Connected" })
@@ -241,16 +284,20 @@ await step("List view", async () => {
   await page.waitForTimeout(1500);
   await collapseSidebar();
   await dropRows(EXCLUDE_ROWS);
+  await paintSampleAvatars();
   // The whole window, not a crop of the card: the top bar and the collapsed
   // sidebar are how the reader knows where they are.
   await shoot("01-clients-list", null, { settle: 300 });
+  await expandSidebar();
 });
 
 await step("Filters panel", async () => {
+  await backToClientsList();
   await page.locator('[data-tour="clients-filters"] button').first().click();
   await page.waitForTimeout(1200);
   // This figure shows the top of the list too, so the same rows come out.
   await dropRows(EXCLUDE_ROWS);
+  await paintSampleAvatars();
   await page.waitForTimeout(300);
   await page.screenshot({ path: resolve(OUT_DIR, "02-filters-popover.png") });
 
@@ -336,20 +383,14 @@ await step("Client record", async () => {
     .catch(() => {});
   await page.waitForTimeout(3000);
 
-  // Find the named subject rather than taking the first row.
-  await searchBox.fill(SUBJECT_CLIENT);
-  await page.waitForTimeout(3500);
-  const subjectRow = page
-    .locator('[data-tour="clients-list"] table tbody tr')
-    .filter({ hasText: SUBJECT_CLIENT })
-    .first();
-  if (!(await subjectRow.count())) {
-    throw new Error(`no client matching "${SUBJECT_CLIENT}", set KB_CLIENT to one that exists`);
-  }
-  await subjectRow.click();
-  await page.waitForURL(/\/clients\/[^/]+$/, { timeout: 20000 });
-  await page.waitForTimeout(4500);
+  // Straight to the record by id. Searching by name is ambiguous here: every
+  // client on this account carries the same company name under their own, so
+  // the search cannot guarantee which record gets photographed.
+  await page.goto(`${BASE}/clients/${SUBJECT_CLIENT_ID}`, { waitUntil: "domcontentloaded" });
+  await page.waitForTimeout(6000);
   await hideAccountChrome();
+  // No montage here: this client has a real conversation with the provider,
+  // which is why it is the subject.
   await shoot("06-client-detail", null, { settle: 1500 });
 
   // Properties is the default tab; capture it on its own for the properties chapter.
@@ -402,8 +443,12 @@ await step("Editing a client", async () => {
 
 await step("Archive confirmation", async () => {
   await backToClientsList();
+  // The dialog names whichever client it was opened from, so it opens from the
+  // first row that is not excluded. Naming a client here would tie this figure
+  // to one account's data for no reason.
   const menu = page
     .locator('[data-tour="clients-list"] table tbody tr')
+    .filter({ hasNotText: EXCLUDE_ROWS[0] || " " })
     .first()
     .locator("button")
     .last();
@@ -412,14 +457,22 @@ await step("Archive confirmation", async () => {
   await page.locator('text="Archive"').last().click();
   const dialog = page.locator("div.relative.transform.overflow-hidden.shadow-xl").last();
   await dialog.waitFor({ state: "visible", timeout: 15000 });
+  // The list behind the dialog gets the same treatment as the list figures, and
+  // it happens now rather than before: mutating the table first left the row
+  // locator stale and the menu click timed out.
+  await dropRows(EXCLUDE_ROWS);
+  await paintSampleAvatars();
   await page.waitForTimeout(1400);
   await shoot("10-archive-confirmation", null);
 });
 
 await step("Attachments panel", async () => {
   await backToClientsList();
+  await searchBox.fill(SUBJECT_CLIENT);
+  await page.waitForTimeout(3500);
   const menu = page
     .locator('[data-tour="clients-list"] table tbody tr')
+    .filter({ hasText: SUBJECT_CLIENT })
     .first()
     .locator("button")
     .last();

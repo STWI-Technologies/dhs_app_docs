@@ -9,6 +9,7 @@
  * Run:
  *   set -a; . ~/dhs_qa_workspace/.env; set +a
  *   node scripts/kb-screenshots/rowactions.mjs users
+ *   KB_ONLY="05-service-attachments" node scripts/kb-screenshots/rowactions.mjs services
  *
  * READ-ONLY, and it must stay that way, the platform is mid-migration. The edit
  * panel is cancelled, and the confirmation dialog is photographed and then
@@ -29,6 +30,9 @@ const SCALE = 2;
  * edit     , { figure, expect } the pencil on a row and the heading it opens with
  * confirm  , { figure, button, expect } a row button that opens a confirmation
  * quickAdd , { figure, item, expect } the entry to pick in the Quick Add menu
+ *
+ * A menu entry may carry its own `row` to take that one figure from a named
+ * row instead of the section's default row.
  */
 const SECTIONS = {
   users: {
@@ -46,7 +50,10 @@ const SECTIONS = {
     tour: "services",
     menu: [
       { figure: "04-edit-service-panel", item: "Edit service", expect: "Edit service" },
-      { figure: "05-service-attachments", item: "Attachments", expect: "Attachments" },
+      // Attachments comes off a named service instead of whatever sorts first:
+      // this one carries a real set of documents, and an empty panel teaches
+      // nothing.
+      { figure: "05-service-attachments", item: "Attachments", expect: "Attachments", row: "Light Fixture Replacement" },
       { figure: "06-archive-service", item: "Archive", expect: "Archive", viewport: true },
     ],
     quickAdd: { figure: "07-quick-add-service", item: "Service Item", expect: "Quick Add" },
@@ -59,7 +66,7 @@ const SECTIONS = {
       { figure: "04-edit-product-panel", item: "Edit product", expect: "Edit product" },
       { figure: "05-archive-product", item: "Archive", expect: "Archive", viewport: true },
     ],
-    bulk: { figure: "06-bulk-edit", rows: 3 },
+    bulk: { figure: "06-bulk-edit", rows: "all" },
     // No Quick Add here: the top-bar panel offers nine tiles and Product is not
     // one of them. A product can only be quick-added from inside a product
     // picker, which means being mid-estimate, not a figure this script takes.
@@ -122,7 +129,15 @@ async function shoot(dir, name, target, opts = {}) {
   console.log(`    ✓ ${name}.png`);
 }
 
+/**
+ * KB_ONLY re-shoots single figures without touching the rest of a section:
+ * KB_ONLY="05-service-attachments". Matched against the figure name, so the
+ * section prefix is optional.
+ */
+const ONLY = (process.env.KB_ONLY || "").split(",").map((x) => x.trim()).filter(Boolean);
+
 async function figure(label, fn) {
+  if (ONLY.length && !ONLY.some((o) => label.includes(o))) return;
   try {
     await fn();
   } catch (err) {
@@ -226,9 +241,16 @@ for (const key of targets) {
   // archived, the platform is mid-migration and this script only reads.
   for (const m of s.menu || []) {
     await figure(`${key}/${m.figure}`, async () => {
-      const n = await rowButtons.count();
-      if (!n) throw new Error("the first row has no action buttons");
-      await rowButtons.nth(n - 1).click();
+      const row = m.row
+        ? page.locator(`[data-tour="${s.tour}-list"] table tbody tr`).filter({ hasText: m.row }).first()
+        : targetRow;
+      if (m.row && !(await row.count())) {
+        throw new Error(`no row matching "${m.row}" on the first page`);
+      }
+      const buttons = row.locator("button");
+      const n = await buttons.count();
+      if (!n) throw new Error("the row has no action buttons");
+      await buttons.nth(n - 1).click();
       await page.waitForTimeout(1200);
       const item = page.locator(`text="${m.item}"`).last();
       if (!(await item.count())) throw new Error(`no "${m.item}" in the row menu`);
@@ -249,13 +271,22 @@ for (const key of targets) {
     await figure(`${key}/${s.bulk.figure}`, async () => {
       // The row checkbox renders a hidden <input> inside a styled div, so the
       // input is never clickable. The div carrying data-checkbox-root is.
-      const boxes = page.locator(`[data-tour="${s.tour}-list"] table tbody tr [data-checkbox-root="true"]`).first().locator("xpath=.");
       const allBoxes = page.locator(`[data-tour="${s.tour}-list"] table tbody tr > td:first-child [data-checkbox-root="true"]`);
-      const take = Math.min(s.bulk.rows, await allBoxes.count());
-      if (!take) throw new Error("no row checkboxes, this list isn't selectable");
-      for (let i = 0; i < take; i++) {
-        await allBoxes.nth(i).click();
-        await page.waitForTimeout(400);
+      const available = await allBoxes.count();
+      if (!available) throw new Error("no row checkboxes, this list isn't selectable");
+      // "all" ticks the header box instead of walking rows. The bulk panel only
+      // lists products that TRACK inventory, so picking the first N rows can
+      // easily yield a single line and a figure that argues against its own
+      // caption: select everything and let the panel filter.
+      if (s.bulk.rows === "all") {
+        await page.locator(`[data-tour="${s.tour}-list"] table thead [data-checkbox-root="true"]`).first().click();
+        await page.waitForTimeout(900);
+      } else {
+        const take = Math.min(s.bulk.rows, available);
+        for (let i = 0; i < take; i++) {
+          await allBoxes.nth(i).click();
+          await page.waitForTimeout(400);
+        }
       }
       await page.waitForTimeout(900);
       const trigger = page.locator('button:has-text("Bulk Edit"), button:has-text("Edit")').last();

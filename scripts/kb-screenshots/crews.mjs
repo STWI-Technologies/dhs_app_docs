@@ -22,18 +22,9 @@
  * trash icon is disabled on every row) and the Quick Add "Complete Info" marker
  * (no crew there has isQuickAdd set). Both behaviours are covered in prose.
  *
- * ONE FIGURE COMES FROM DEVELOP, NOT STAGING. Staging still ships the old single
- * "No crews found matching your keyword" line; the three separate empty states
- * (SP-UI-705) are only on develop, verified by the locale keys emptyStateNoMatching
- * and noCrewsAddedYet being absent from the staging bundle. An empty state contains
- * no account data, so develop's ugly test crews cannot leak into it:
- *
- *   KB_ONLY="Empty search state" \
- *   KB_BASE_URL=https://app-develop.directhomeservice.com \
- *   KB_EMAIL="$TEST_SP_LOGIN_EMAIL" KB_PASSWORD="$TEST_SP_LOGIN_PASSWORD" \
- *   node scripts/kb-screenshots/crews.mjs
- *
- * Re-shoot it on staging once SP-UI-705 lands there, and drop this note.
+ * The empty search state is no longer captured: empty states, pagination and
+ * the guided tour were removed from the manuals as descriptions of the app
+ * rather than of the work.
  */
 import { chromium } from "playwright";
 import { mkdirSync } from "node:fs";
@@ -46,6 +37,15 @@ const BASE = process.env.KB_BASE_URL || "https://app-staging.directhomeservice.c
 
 // A crew with enough members that the avatar stack overflows into a "+N" badge.
 const SUBJECT_CREW = process.env.KB_CREW || "Emergency Repair Team";
+
+/**
+ * The crew whose Edit panel and Availability summary are photographed.
+ *
+ * Chosen for its schedule, not its name: it has a general schedule with several
+ * different days AND an exception, so the Availability figure shows both blocks
+ * the article describes. Most crews have one working day and no exceptions.
+ */
+const EDIT_CREW = process.env.KB_EDIT_CREW || "Painting Crew";
 
 // 2x so the figures stay sharp on the displays the help centre is read on.
 const VIEWPORT = { width: 1440, height: 900 };
@@ -309,8 +309,20 @@ await step("Members +N popover", async () => {
 // Runs while the list is still filtered to the subject crew, so the first row
 // is the one we want.
 await step("Edit Crew panel", async () => {
-  await page.locator('[data-tour="crews-list"] table tbody tr').first()
-    .locator("button").first().click();
+  // Search for the subject rather than taking the first row. The Availability
+  // summary is the reason this step exists, and most crews have nothing in it:
+  // a crew with one working day and no exceptions makes the figure teach that
+  // the Exceptions block does not exist. EDIT_CREW names one that has both.
+  await searchBox.fill(EDIT_CREW);
+  await page.waitForTimeout(3500);
+  const row = page
+    .locator('[data-tour="crews-list"] table tbody tr')
+    .filter({ hasText: EDIT_CREW })
+    .first();
+  if (!(await row.count())) {
+    throw new Error(`no crew matching "${EDIT_CREW}", set KB_EDIT_CREW to one that exists`);
+  }
+  await row.locator("button").first().click();
   await page.waitForSelector("text=Edit Crew", { timeout: 15000 });
   await page.waitForTimeout(2000);
   await shoot("06-edit-crew-panel", drawer);
@@ -318,18 +330,13 @@ await step("Edit Crew panel", async () => {
   const availability = drawer.locator('div:has(> div > h3:text-is("Availability"))').last();
   await shoot("07-availability", (await availability.count()) ? availability : drawer);
   await closePanel();
-});
-
-await step("Empty search state", async () => {
-  await searchBox.fill("zzzz");
-  await page.waitForTimeout(3500);
-  const emptyCard = page
-    .locator("text=No matching crews")
-    .locator('xpath=ancestor::div[contains(@class,"rounded-[10px]")][1]');
-  await shoot("10-no-search-results", (await emptyCard.count()) ? emptyCard.first() : null);
   await searchBox.fill("");
   await page.waitForTimeout(2500);
 });
+
+// The empty search state used to be captured here. Empty states, pagination
+// and the guided tour were taken out of the manuals: they describe the app
+// rather than the work, and a reader does not act on them.
 
 // ── Add New Crew panel ────────────────────────────────────────────────────────
 await step("Add New Crew panel", async () => {

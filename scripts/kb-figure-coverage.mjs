@@ -55,14 +55,8 @@ const SKIP = [
 const BLOCKED = {
   "clients-management": {
     "Inviting a client to the portal": "staging has no pending client invites, so there is no Invites tab or pending panel to photograph",
-    "Importing clients from a CSV": "Import/Export CSV is hidden on the staging account by the isImportExportClientsHidden flag, so the buttons never render",
-    "Exporting your client list": "same feature flag as the import above",
-  },
-  "services-management": {
-    "Importing and exporting": "import/export is behind isImportExportServiceItemEnabled and is off on staging",
   },
   "products-management": {
-    "Importing and exporting": "same feature flag as services",
     "Products added in a hurry": "the top-bar Quick Add panel has no Product tile, only Service Item. A product can only be quick-added from inside a product picker, which means being mid-estimate",
   },
   "estimates-management": {
@@ -75,6 +69,11 @@ const BLOCKED = {
   "jobs-management": {
     "Sending job details to the client": "the Send to Client panel itself is not published: its message body renders a literal \\n\\n instead of line breaks, and the client link it builds points at client-app-DEVELOP from staging. Both are reported as defects. The More Actions figure covers where the action lives; re-shoot the panel once they are fixed",
     "Tracking time": "starting the timer would write a timesheet record, and these scripts are read-only. Start Timer itself is visible in the job detail figure, in the header, it only exists while the job is still open",
+  },
+  "appointments-management": {
+    "What comes out of an appointment": "conversion is only enabled once an appointment is Completed, and both appointments on the account are Scheduled, so the Related Records tab can only be photographed empty",
+    "Tracking time on a visit": "starting the timer writes a timesheet entry, and these scripts are read-only. Start Timer itself is in the detail figure, in the header",
+    "Sending it to the client": "the Send to Client panel is the same one reported as defective from the job: a literal newline in the message body, and a link that points at the wrong client app from staging. Shoot it once those are fixed; the menu figure shows where the action lives",
   },
   "crews-management": {
     "Deleting a crew": "every crew on staging is assigned to work, so the delete button is disabled on all 26 rows and the confirmation cannot be opened",
@@ -98,6 +97,7 @@ const BLOCKED = {
  */
 const OUT_OF_SCOPE = {
   "mobile-app": "a Flutter app, so its figures need a device or a simulator, not these browser scripts",
+  "mobile-offline": "same as above: the offline behaviour it documents only exists on a phone",
   // The client portal on staging is behind develop, so a figure taken there
   // would document a version nobody is running. These articles are written
   // from the code and carry no figures on purpose.
@@ -111,12 +111,11 @@ const OUT_OF_SCOPE = {
   "client-invoices": "same as above",
   "client-inbox": "same as above",
   "client-profile-settings": "same as above",
-  // Checklists, Timesheets and Settings are getting a cosmetic UI pass. The
+  // Checklists and Settings are getting a cosmetic UI pass. The
   // flows and their order do not change, so the text written from the code
   // holds, but a figure taken today would show the old skin and have to be
   // re-shot. Photograph these once the new look ships.
   "checklists-management": "its UI is mid cosmetic rework; figures taken now would show the old skin",
-  "timesheets-management": "same as above",
   "settings-configuration": "same as above",
 };
 

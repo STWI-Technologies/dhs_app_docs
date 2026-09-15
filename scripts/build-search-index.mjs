@@ -15,9 +15,10 @@
  * remaining articles are Google Docs exports whose markup flattens differently
  * from this. Prefer naming the articles you touched.
  *
- * Note: the index is keyed by article id with no language dimension, so Spanish
- * bodies are not searchable at all. Fixing that needs a change in SearchBar too,
- * not just here.
+ * Spanish bodies are indexed under `<id>:es`, alongside the English body at
+ * `<id>`. SearchBar picks the key for the language being read and falls back to
+ * English when an article has no Spanish file yet. Keeping the English keys
+ * exactly where they were is deliberate: it keeps this file's diffs small.
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
@@ -48,18 +49,32 @@ const targets = process.argv.slice(2).length
   ? process.argv.slice(2)
   : Object.keys(index);
 
-for (const id of targets) {
-  const path = resolve(ROOT, `public/content/${id}.html`);
+/** One language of one article: read the file, flatten it, report the change. */
+function indexFile(key, path) {
   let html;
   try {
     html = readFileSync(path, "utf8");
   } catch {
-    console.error(`  ! ${id}: no public/content/${id}.html — skipped`);
+    return false;
+  }
+  const before = index[key]?.length ?? 0;
+  index[key] = flatten(html);
+  console.log(`  ${key}: ${before} -> ${index[key].length} chars`);
+  return true;
+}
+
+for (const id of targets) {
+  // A ":es" target names a key, not an article. Rebuild the pair either way.
+  const articleId = id.replace(/:es$/, "");
+
+  if (!indexFile(articleId, resolve(ROOT, `public/content/${articleId}.html`))) {
+    console.error(`  ! ${articleId}: no public/content/${articleId}.html — skipped`);
     continue;
   }
-  const before = index[id]?.length ?? 0;
-  index[id] = flatten(html);
-  console.log(`  ${id}: ${before} -> ${index[id].length} chars`);
+
+  // Spanish is optional: an article without a -es.html simply has no :es key,
+  // and SearchBar falls back to the English body for it.
+  indexFile(`${articleId}:es`, resolve(ROOT, `public/content/${articleId}-es.html`));
 }
 
 // Written minified, the way the file already is — pretty-printing it here would

@@ -25,6 +25,13 @@ const VIEWPORT = { width: 1440, height: 900 };
 const SCALE = 2;
 const PANEL = "div.relative.transform.overflow-hidden.shadow-xl";
 
+/**
+ * KB_ONLY re-shoots single figures: KB_ONLY="09-delete-estimate". Without it
+ * every figure in the section is retaken, which will happily overwrite ones
+ * that were captured from somewhere else or edited afterwards.
+ */
+const ONLY = (process.env.KB_ONLY || "").split(",").map((x) => x.trim()).filter(Boolean);
+
 const SECTIONS = {
   estimates: {
     nav: "Estimates",
@@ -45,6 +52,9 @@ const SECTIONS = {
       // figure of the menu open covers all three; a figure per item would be
       // three pictures of the same dropdown.
       { name: "08-more-actions", kind: "menu" },
+      // The confirmation Delete opens. Generic text, so it is cropped to the
+      // dialog and carries nothing from the record it was taken on.
+      { name: "09-delete-estimate", kind: "menuConfirm", item: "Delete" },
     ],
   },
   invoices: {
@@ -244,6 +254,30 @@ for (const key of keys) {
         await trigger.click();
         await page.waitForTimeout(1500);
         await shoot(key, f.name, null);
+        // Close it again: the next figure opens the same menu, and a second
+        // click on the trigger would toggle it shut instead.
+        await page.keyboard.press("Escape").catch(() => {});
+        await page.waitForTimeout(700);
+        return;
+      }
+      if (f.kind === "menuConfirm") {
+        // An item inside More Actions that opens a confirmation. Photographed
+        // and then DISMISSED: nothing is ever deleted by these scripts.
+        const trigger = page.getByRole("button", { name: /more actions/i }).first();
+        if (!(await trigger.count())) throw new Error('no button labelled "More Actions" on this record');
+        await trigger.click();
+        await page.waitForTimeout(1500);
+        const item = page.locator(`text="${f.item}"`).last();
+        if (!(await item.count())) throw new Error(`no "${f.item}" in the More Actions menu`);
+        await item.click();
+        const dialog = page.locator(PANEL).last();
+        await dialog.waitFor({ state: "visible", timeout: 20000 });
+        await page.waitForTimeout(1400);
+        // Cropped to the dialog: it says the same thing on every record, so the
+        // record behind it adds nothing and would put a QA row in the figure.
+        await shoot(key, f.name, dialog);
+        await page.keyboard.press("Escape").catch(() => {});
+        await page.waitForTimeout(800);
         return;
       }
       if (f.tab) {

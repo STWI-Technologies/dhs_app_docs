@@ -25,6 +25,7 @@ import { chromium } from "playwright";
 import { mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { paintSampleAvatars } from "./portraits.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const BASE = process.env.KB_BASE_URL || "https://app-staging.directhomeservice.com";
@@ -40,6 +41,8 @@ const SCALE = 2;
  * panel   , the heading the panel shows, so we know it actually opened
  * filter  , "popover" (a Filter button) | "select" (a dropdown in the card header) | null
  * figures , which numbered figures to take for this section
+ * faces   , true when the list shows a client avatar column worth populating,
+ *           see portraits.mjs for what is swapped in and why
  */
 const SECTIONS = {
   users: { nav: "Users", tour: "users", add: "Add User", panel: "Add New User", filter: "popover", filterTour: "users-role-filter" },
@@ -51,7 +54,10 @@ const SECTIONS = {
   estimates: { nav: "Estimates", tour: "estimates", add: "Add Estimate", panel: "Add new estimate", filter: "popover" },
   jobs: { nav: "Jobs", tour: "jobs", add: "Add Job", panel: "Add New Job", filter: "popover" },
   invoices: { nav: "Invoices", tour: "invoices", add: "Add Invoice", panel: "Create Invoice", filter: "popover" },
-  appointments: { nav: "Appointments", tour: "appointments", add: "Add Appointment", panel: "Add Appointment", filter: "popover" },
+  appointments: { nav: "Appointments", tour: "appointments", add: "Add Appointment", panel: "Add Appointment", filter: "popover", faces: true },
+  // Timesheets has the same tour hooks as the rest but no data-tour on its Add
+  // button, so the add panel is reached by the button's label instead.
+  timesheets: { nav: "Timesheets", tour: "timesheets", add: "Add Timesheet", panel: "Add Timesheet", filter: "popover" },
 };
 
 const email = process.env.KB_EMAIL || process.env.STAGING_SP_LOGIN_EMAIL;
@@ -309,6 +315,7 @@ for (const key of targets) {
     await waitForList(s.tour);
     await setSidebar("collapsed");
     await dropExcludedRows();
+    if (s.faces) await paintSampleAvatars(page, `[data-tour="${s.tour}-list"] table tbody tr`);
     // The whole window, not a crop of the card: the top bar and the collapsed
     // sidebar are how the reader knows where they are.
     await shoot(key, `01-${key}-list`, null, { settle: 300 });
@@ -322,6 +329,7 @@ for (const key of targets) {
       if (!(await trigger.count())) throw new Error(`no filter control at [data-tour="${tour}"]`);
       await waitForList(s.tour);
       await setSidebar("collapsed");
+      if (s.faces) await paintSampleAvatars(page, `[data-tour="${s.tour}-list"] table tbody tr`);
       await trigger.click();
       await page.waitForTimeout(1200);
       // This figure shows the top of the list too, so the same rows come out.
@@ -337,7 +345,14 @@ for (const key of targets) {
   }
 
   await figure(key, "03-add-panel", async () => {
-    await page.locator(`[data-tour="${s.tour}-add-btn"] button`).first().click();
+    // Most sections wrap their Add button in a data-tour hook for the guided
+    // tour. Timesheets does not, so fall back to the button's own label rather
+    // than making the page grow an attribute for the sake of a screenshot.
+    const addByTour = page.locator(`[data-tour="${s.tour}-add-btn"] button`).first();
+    const addButton = (await addByTour.count())
+      ? addByTour
+      : page.locator(`button:has-text("${s.add}")`).first();
+    await addButton.click();
     // Wait for the PANEL, not for its title. The title text is also the label of
     // the button that opens it in some sections, and in others it renders a beat
     // after the panel does, either way the drawer itself is the thing being
