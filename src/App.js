@@ -7,9 +7,8 @@ import Hero from './components/Hero/Hero';
 import SearchBar from './components/SearchBar/SearchBar';
 import CategorySection from './components/CategorySection/CategorySection';
 import ArticleView from './components/ArticleView/ArticleView';
-import LanguageSwitcher from './components/LanguageSwitcher/LanguageSwitcher';
 import Footer from './components/Footer/Footer';
-import ChatButton from './components/ChatButton/ChatButton';
+import SupportWidget from './components/SupportWidget/SupportWidget';
 import articles, { categoryOrder } from './data/articles';
 import './App.css';
 
@@ -260,8 +259,10 @@ function Shell() {
   const location = useLocation();
   const navigate = useNavigate();
   const isAppHelpRoute = location.pathname === '/app-help' || location.pathname.startsWith('/app-help/articles/');
-  // The home page carries the hero, which has its own brand bar and language
-  // control, so the standalone header and the floating switcher stay off it.
+  // The home page carries the hero, which has its own brand bar, so the
+  // standalone header stays off it. The language control is no longer floating
+  // at the bottom of the page: it sits top right, in the hero on home and in
+  // the header on an article.
   const isHome = location.pathname === '/';
 
   return (
@@ -276,8 +277,7 @@ function Shell() {
         </Routes>
         {!isAppHelpRoute && <Footer />}
       </div>
-      {!isHome && <LanguageSwitcher />}
-      {!isAppHelpRoute && <ChatButton />}
+      {!isAppHelpRoute && <SupportWidget />}
     </div>
   );
 }

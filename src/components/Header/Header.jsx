@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import LanguagePicker from '../LanguagePicker/LanguagePicker';
 import './Header.css';
 
 export default function Header({ onLogoClick }) {
@@ -21,7 +22,10 @@ export default function Header({ onLogoClick }) {
           className="header__logo"
         />
       </a>
-      <span className="header__subtitle">{t.subtitle}</span>
+      <div className="header__right">
+        <span className="header__subtitle">{t.subtitle}</span>
+        <LanguagePicker tone="dark" />
+      </div>
     </header>
   );
 }

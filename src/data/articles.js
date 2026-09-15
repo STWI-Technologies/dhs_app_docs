@@ -14,6 +14,7 @@ import {
   AiBrain01Icon,
   Layers01Icon,
   SmartPhone01Icon,
+  WifiDisconnected01Icon,
   WarehouseIcon,
   DashboardSquare01Icon,
   CustomerService01Icon,
@@ -45,6 +46,27 @@ const articles = [
     keywords: ['mobile', 'app', 'móvil', 'aplicación', 'ios', 'android', 'phone', 'teléfono', 'field', 'campo', 'jobs', 'appointments', 'estimates', 'invoices', 'timesheet', 'timer', 'work hub', 'quick add']
   },
   {
+    id: 'mobile-offline',
+    audience: 'provider',
+    platforms: ['app'],
+    icon: WifiDisconnected01Icon,
+    contentPath: {
+      en: '/content/mobile-offline.html',
+      es: '/content/mobile-offline-es.html',
+    },
+    en: {
+      title: 'Working Offline',
+      category: 'Mobile App',
+      overview: 'What the mobile app can still do with no signal, entity by entity, how your changes queue and upload on their own, and what to open before you drive out.'
+    },
+    es: {
+      title: 'Trabajar sin Conexión',
+      category: 'Aplicación Móvil',
+      overview: 'Qué puede seguir haciendo la app móvil sin señal, punto por punto, cómo se encolan y suben solos sus cambios, y qué abrir antes de salir.'
+    },
+    keywords: ['offline', 'sin conexión', 'sync', 'sincronización', 'queued', 'cola', 'conflict', 'conflicto', 'signal', 'señal', 'field', 'campo', 'unsynced', 'mobile', 'móvil']
+  },
+  {
     id: 'users-management',
     audience: 'provider',
     platforms: ['web'],
@@ -56,12 +78,12 @@ const articles = [
     en: {
       title: 'User Management',
       category: 'People & Teams',
-      overview: 'Manage user accounts, roles, permissions, and profile settings. Add, edit, enable, and disable users with role-based access control.'
+      overview: 'Everyone who can sign in: adding them with a role, editing profiles, sending a password reset, and turning access off and on. Users are disabled, never deleted, so the work they did stays on the record.'
     },
     es: {
       title: 'Gestión de Usuarios',
       category: 'Personas y Equipos',
-      overview: 'Administrar cuentas de usuario, roles, permisos y configuración de perfil. Agregar, editar, habilitar y deshabilitar usuarios con control de acceso basado en roles.'
+      overview: 'Todos los que pueden iniciar sesión: agregarlos con un rol, editar perfiles, enviar un restablecimiento de contraseña y quitar o devolver el acceso. Los usuarios se deshabilitan, nunca se eliminan, así que su trabajo queda en el registro.'
     },
     keywords: ['users', 'usuarios', 'roles', 'admin', 'crew', 'permissions', 'permisos', 'accounts', 'cuentas', 'password', 'profile']
   },
@@ -77,12 +99,12 @@ const articles = [
     en: {
       title: 'Crews Management',
       category: 'People & Teams',
-      overview: 'Organize your team into crews with leads, colors, and availability. Assign crews to jobs and appointments with customer feedback tracking.'
+      overview: 'Teams you assign as a unit instead of one technician at a time: members and a lead, a colour that identifies them everywhere, their own working hours, and the ratings clients leave them.'
     },
     es: {
       title: 'Gestión de Equipos',
       category: 'Personas y Equipos',
-      overview: 'Organice su equipo en cuadrillas con líderes, colores y disponibilidad. Asigne cuadrillas a trabajos y citas con seguimiento de comentarios de clientes.'
+      overview: 'Equipos que se asignan completos en vez de técnico por técnico: miembros y líder, un color que los identifica en toda la app, su propio horario y las calificaciones que les dejan los clientes.'
     },
     keywords: ['crews', 'equipos', 'teams', 'lead', 'líder', 'members', 'miembros', 'color', 'availability']
   },
@@ -98,12 +120,12 @@ const articles = [
     en: {
       title: 'Clients Management',
       category: 'Clients & Properties',
-      overview: 'Manage client accounts, properties, billing, and attachments. Import/export clients via CSV, archive and restore, with multi-property support.'
+      overview: 'Who you work for: contact and billing details, their properties, their files and the conversation. Invite them to the portal and from then on they maintain their own details.'
     },
     es: {
       title: 'Gestión de Clientes',
       category: 'Clientes y Propiedades',
-      overview: 'Administrar cuentas de clientes, propiedades, facturación y archivos adjuntos. Importar/exportar clientes por CSV, archivar y restaurar, con soporte multi-propiedad.'
+      overview: 'Para quién trabaja: datos de contacto y facturación, sus propiedades, sus archivos y la conversación. Invítelos al portal y desde ahí ellos mantienen sus propios datos.'
     },
     keywords: ['clients', 'clientes', 'properties', 'propiedades', 'billing', 'facturación', 'residential', 'business', 'CSV', 'import', 'export', 'tags']
   },
@@ -119,12 +141,12 @@ const articles = [
     en: {
       title: 'Services Management',
       category: 'Services & Products',
-      overview: 'Create and manage labor-based service items with pricing, descriptions, and attachments. Import/export services and use them across appointments, estimates, and invoices.'
+      overview: 'The labour you charge for, priced once and picked everywhere else. Rates, what clients can request from your portal, and archiving what you stopped offering without touching the records that used it.'
     },
     es: {
       title: 'Gestión de Servicios',
       category: 'Servicios y Productos',
-      overview: 'Crear y administrar servicios basados en mano de obra con precios, descripciones y archivos adjuntos. Importar/exportar servicios y usarlos en citas, presupuestos y facturas.'
+      overview: 'La mano de obra que cobra, con precio puesto una vez y elegida en todo lo demás. Tarifas, qué pueden pedir los clientes desde su portal, y archivar lo que dejó de ofrecer sin tocar los registros que lo usaron.'
     },
     keywords: ['services', 'servicios', 'pricing', 'precios', 'labor', 'mano de obra', 'attachments', 'archivos']
   },
@@ -140,12 +162,12 @@ const articles = [
     en: {
       title: 'Products Management',
       category: 'Services & Products',
-      overview: 'Track physical products and materials with inventory management, markup pricing, bulk editing, and CSV import/export capabilities.'
+      overview: 'What you stock and install: cost, markup and price that work each other out, what is on hand against what is already promised to jobs and quotes, and when to reorder.'
     },
     es: {
       title: 'Gestión de Productos',
       category: 'Servicios y Productos',
-      overview: 'Rastrear productos físicos y materiales con gestión de inventario, precios con margen, edición masiva y capacidades de importación/exportación CSV.'
+      overview: 'Lo que almacena e instala: costo, marcado y precio que se calculan entre ellos, lo que hay contra lo que ya está comprometido a trabajos y cotizaciones, y cuándo reordenar.'
     },
     keywords: ['products', 'productos', 'inventory', 'inventario', 'stock', 'markup', 'margen', 'materials', 'materiales']
   },
@@ -182,12 +204,12 @@ const articles = [
     en: {
       title: 'Appointments Management',
       category: 'Scheduling',
-      overview: 'Schedule and manage field service appointments with a 4-step wizard. Track statuses, convert to estimates/jobs/invoices, and use the calendar scheduler.'
+      overview: 'The visit before the work: booking it around crew availability, getting the client to confirm, and turning what you found into an estimate, a job or an invoice.'
     },
     es: {
       title: 'Gestión de Citas',
       category: 'Programación',
-      overview: 'Programe y administre citas de servicio de campo con un asistente de 4 pasos. Rastree estados, convierta a presupuestos/trabajos/facturas y use el calendario.'
+      overview: 'La visita antes del trabajo: agendarla respetando la disponibilidad del equipo, conseguir que el cliente confirme, y convertir lo que encontró en presupuesto, trabajo o factura.'
     },
     keywords: ['appointments', 'citas', 'scheduling', 'programación', 'calendar', 'calendario', 'scheduler', 'status', 'estado']
   },
@@ -203,12 +225,12 @@ const articles = [
     en: {
       title: 'Estimates Management',
       category: 'Jobs & Estimates',
-      overview: 'Create, send, and track service estimates with line items, PDF download, and client delivery via email/SMS. Convert approved estimates to jobs.'
+      overview: 'The price before the work: building it from your catalogue, sending it by email or text, finding what is still waiting on a client, renewing what expired, and turning a yes into a job with nothing retyped.'
     },
     es: {
       title: 'Gestión de Presupuestos',
       category: 'Trabajos y Presupuestos',
-      overview: 'Crear, enviar y rastrear presupuestos de servicio con partidas, descarga PDF y entrega al cliente por email/SMS. Convertir presupuestos aprobados en trabajos.'
+      overview: 'El precio antes del trabajo: armarlo con su catálogo, enviarlo por correo o mensaje, encontrar lo que sigue esperando al cliente, renovar lo vencido y convertir un sí en trabajo sin recapturar nada.'
     },
     keywords: ['estimates', 'presupuestos', 'quotes', 'cotizaciones', 'PDF', 'send', 'enviar', 'convert', 'convertir']
   },
@@ -224,12 +246,12 @@ const articles = [
     en: {
       title: 'Jobs Management',
       category: 'Jobs & Estimates',
-      overview: 'Manage work orders from creation to completion with status workflows, checklists, time tracking, crew assignments, and recurring job support.'
+      overview: 'Work you have committed to: scheduling it to a crew, following it from en route to completed, recording each visit and its hours, working the checklist, and billing it without retyping.'
     },
     es: {
       title: 'Gestión de Trabajos',
       category: 'Trabajos y Presupuestos',
-      overview: 'Administrar órdenes de trabajo desde la creación hasta la finalización con flujos de estado, listas de verificación, seguimiento de tiempo y soporte de trabajos recurrentes.'
+      overview: 'El trabajo con el que ya se comprometió: agendarlo a un equipo, seguirlo de en camino a completado, registrar cada visita y sus horas, trabajar la lista de verificación y facturarlo sin recapturar.'
     },
     keywords: ['jobs', 'trabajos', 'work orders', 'órdenes', 'status', 'estado', 'checklist', 'recurring', 'recurrente']
   },
@@ -245,12 +267,12 @@ const articles = [
     en: {
       title: 'Invoices Management',
       category: 'Billing & Time Tracking',
-      overview: 'Create, send, and track invoices with payment recording, PDF generation, tax management, and Stripe integration for online payments.'
+      overview: 'The bill and the money: raising it from a finished job, sending it, seeing whether the client opened it, recording payments including part payments, and chasing what is late.'
     },
     es: {
       title: 'Gestión de Facturas',
       category: 'Facturación y Control de Tiempo',
-      overview: 'Crear, enviar y rastrear facturas con registro de pagos, generación de PDF, gestión de impuestos e integración con Stripe para pagos en línea.'
+      overview: 'La cuenta y el dinero: emitirla desde un trabajo terminado, enviarla, ver si el cliente la abrió, registrar pagos incluidos los parciales y perseguir lo atrasado.'
     },
     keywords: ['invoices', 'facturas', 'payments', 'pagos', 'PDF', 'tax', 'impuestos', 'Stripe', 'billing']
   },
@@ -329,12 +351,12 @@ const articles = [
     en: {
       title: 'AI Assistant (Web & Mobile)',
       category: 'AI & Automation',
-      overview: 'Use the built-in AI Assistant in the DHS web and mobile app to manage your business with natural language. Search, create, update, and delete records by typing or speaking.'
+      overview: 'Ask in plain English or Spanish and it does the work: finding records, creating and updating them, tracking time, reading a photo you send it, and handing you a one-tap link straight into the app.'
     },
     es: {
       title: 'Asistente IA (Web y Móvil)',
       category: 'IA y Automatización',
-      overview: 'Use el Asistente IA integrado en la app web y móvil de DHS para administrar su negocio con lenguaje natural. Busque, cree, actualice y elimine registros escribiendo o hablando.'
+      overview: 'Pídalo en español o en inglés y lo hace: buscar registros, crearlos y actualizarlos, registrar tiempo, leer una foto que le mande y entregarle un enlace directo a la app.'
     },
     keywords: ['ai', 'assistant', 'asistente', 'web', 'mobile', 'móvil', 'voice', 'voz', 'search', 'buscar', 'create', 'crear', 'natural language']
   },

@@ -36,9 +36,14 @@ const translations = {
     heroSubtitle: 'Search by topic, or browse the sections below.',
     audienceLabel: 'Who the articles are for',
     forServiceProviders: 'For service providers',
-    forYourClients: 'For your clients',
+    forClients: 'For clients',
+    audienceSwitch: 'Show the other audience',
     articleSingular: 'article',
-    articlePlural: 'articles'
+    articlePlural: 'articles',
+    contactSupport: 'Chat with support',
+    supportOnline: 'Online now',
+    supportOffline: 'Offline, leave a message',
+    supportChecking: 'Checking availability'
   },
   es: {
     subtitle: 'Base de Conocimientos',
@@ -57,9 +62,14 @@ const translations = {
     heroSubtitle: 'Busque por tema, o recorra las secciones de abajo.',
     audienceLabel: 'Para quién son los artículos',
     forServiceProviders: 'Para proveedores',
-    forYourClients: 'Para sus clientes',
+    forClients: 'Para clientes',
+    audienceSwitch: 'Ver la otra opción',
     articleSingular: 'artículo',
-    articlePlural: 'artículos'
+    articlePlural: 'artículos',
+    contactSupport: 'Chatear con soporte',
+    supportOnline: 'En línea ahora',
+    supportOffline: 'Sin conexión, deje un mensaje',
+    supportChecking: 'Comprobando disponibilidad'
   }
 };
 

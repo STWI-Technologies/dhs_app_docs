@@ -67,8 +67,14 @@ export default function SearchBar({ onSelectArticle }) {
         }
       });
 
-      // Deep content search
-      const indexed = searchIndex[article.id] || '';
+      // Deep content search. The index holds the English body at the article's
+      // id and the Spanish one at "<id>:es", so a reader searching in Spanish
+      // matches the Spanish article. Articles with no Spanish file fall back to
+      // English rather than silently dropping out of the results.
+      const indexed =
+        (language === 'es' ? searchIndex[`${article.id}:es`] : null) ||
+        searchIndex[article.id] ||
+        '';
       if (indexed.toLowerCase().includes(term)) {
         const idx = indexed.toLowerCase().indexOf(term);
         const start = Math.max(0, idx - 40);

@@ -8,8 +8,7 @@
 .hero__panel {
   position: relative;
   overflow: hidden;
-  border-radius: 28px;
-  padding: 28px 32px 96px;
+  padding: 0;
   background:
     radial-gradient(circle at 12% 0%, rgba(255, 255, 255, 0.06) 0 34%, transparent 34.5%),
     radial-gradient(circle at 88% 18%, rgba(255, 255, 255, 0.05) 0 26%, transparent 26.5%),
@@ -17,12 +16,20 @@
     linear-gradient(160deg, #1b2450 0%, #16204a 45%, #131c3f 100%);
 }
 
+/* The panel paints the full viewport width; this keeps its contents on the
+   same measure as the cards under it. */
+.hero__inner {
+  max-width: 1520px;
+  margin: 0 auto;
+  padding: 24px 32px 72px;
+}
+
 .hero__nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  margin-bottom: 56px;
+  margin-bottom: 36px;
 }
 
 .hero__brand {
@@ -77,7 +84,7 @@
   color: rgba(255, 255, 255, 0.72);
   font-size: 17px;
   text-align: center;
-  margin: 0 auto 34px;
+  margin: 0 auto 26px;
   max-width: 520px;
 }
 
@@ -125,6 +132,11 @@
   white-space: nowrap;
 }
 
+/* Phone-only affordance: from 600px up both options are on screen already. */
+.hero__toggle-switch {
+  display: none;
+}
+
 .hero__toggle-option svg {
   width: 20px;
   height: 20px;
@@ -167,18 +179,18 @@
   .hero__title {
     font-size: 34px;
   }
-  .hero__panel {
-    padding: 22px 20px 92px;
-    border-radius: 22px;
+  .hero__inner {
+    padding: 20px 20px 68px;
   }
   .hero__nav {
-    margin-bottom: 40px;
+    margin-bottom: 28px;
   }
 }
 
 @media (max-width: 600px) {
+  /* The pill is one row now, so it hangs ~31px below the panel instead of 58. */
   .hero {
-    margin-bottom: 76px;
+    margin-bottom: 50px;
   }
   .hero__nav {
     flex-direction: column;
@@ -204,19 +216,58 @@
     text-align: left;
     margin-bottom: 24px;
   }
+  /* Collapsed to the selected option plus a chevron. Two explicit grid rows
+     keep the chevron beside the selected option whichever one it is, and the
+     second row simply has no box while the other option is hidden. */
   .hero__toggle {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr auto;
     width: calc(100% - 32px);
     border-radius: 20px;
   }
   .hero__toggle-option {
     width: 100%;
-    justify-content: center;
+    justify-content: flex-start;
+    grid-column: 1;
+    grid-row: 2;
     padding: 12px 16px;
     font-size: 15px;
   }
+  .hero__toggle-option--active {
+    grid-row: 1;
+  }
+  .hero__toggle:not(.hero__toggle--open) .hero__toggle-option:not(.hero__toggle-option--active) {
+    display: none;
+  }
+  .hero__toggle-switch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: 2;
+    grid-row: 1;
+    width: 40px;
+    align-self: stretch;
+    padding: 0;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: #3c4257;
+    cursor: pointer;
+  }
+  .hero__toggle-switch svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.2s ease;
+  }
+  .hero__toggle--open .hero__toggle-switch svg {
+    transform: rotate(180deg);
+  }
+  /* Anchored by its top edge so opening grows the pill down over the page
+     instead of up into the search bar, and floated above the cards. */
   .hero__toggle-wrap {
-    bottom: -58px;
+    top: calc(100% - 26px);
+    bottom: auto;
+    z-index: 5;
   }
   .hero__search .search-bar__input {
     padding: 15px 44px 15px 48px;

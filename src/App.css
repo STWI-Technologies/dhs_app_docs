@@ -25,8 +25,11 @@ body {
   padding: 0;
 }
 
+/* 1480px is the card row's own width on home: the 1520px body measure less
+   its 20px gutters. Article pages sit on exactly that, so the panel lines up
+   with the cards you came from. */
 .app__container {
-  max-width: 1200px;
+  max-width: 1480px;
   margin: 0 auto;
 }
 
@@ -101,16 +104,31 @@ body {
    navy hero and the white cards are the only things carrying weight. */
 .app--home {
   background: #f5f6fa;
-  padding: 20px 20px 0;
+  padding: 0;
 }
 
+/* The hero is the page header, not a card: it runs the full width of the
+   viewport, with no gutter and no rounded corners. So on home the container
+   stops constraining anything, and the width limit moves onto the body under
+   the hero, which keeps the measure the cards already had. */
 .app--home .app__container {
+  max-width: none;
+}
+
+.app--home .app__categories-grid,
+.app--home .footer {
   max-width: 1520px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 @media (max-width: 600px) {
-  .app--home {
-    padding: 12px 12px 0;
+  .app--home .app__categories-grid,
+  .app--home .footer {
+    padding-left: 12px;
+    padding-right: 12px;
   }
   .app__categories-grid {
     gap: 36px;
@@ -222,6 +240,11 @@ body {
 @media (max-width: 768px) {
   .app {
     padding: 12px;
+  }
+  /* Home keeps its full-bleed hero at every width, so the phone gutter that
+     the article pages want must not come back here. */
+  .app--home {
+    padding: 0;
   }
   .app--app-help {
     padding: 0;
