@@ -32,13 +32,29 @@ exclude nothing.
 ## Figures adjusted in the browser before the shot
 
 Two figures in `job-and-invoice.mjs` are arranged before capture. Both are
-deliberate, and both are here so a future reader doesn't take them for a
+deliberate, and both are here so a future reader does not take them for a
 faithful recording of what that record contains.
 
 | Figure | What was done | Why |
 |---|---|---|
 | `jobs/06-job-checklist` | the checklist rows are re-ordered into the sequence the work actually runs in | the app renders them in an order that is neither the order they were added nor the order they are worked; a figure in that order teaches the wrong thing. **This is an app defect, reported separately**, when it is fixed, delete the reorder and re-shoot. |
 | Every figure showing the client sidebar of the job **Door Fitting** and of the invoice raised from it, `jobs/03-job-detail`, `04-job-visits`, `05-job-invoices`, `06-job-checklist`, `07-client-chat`, `09-more-actions`, `11-job-status`, `13-complete-job`, `invoices/07-invoice-paid`, `08-invoice-payments` | the same two bubbles are injected into the Chat panel, **both** of them, the provider's and the client's | this job's Client chat is empty (`No messages yet`), and no record on staging has a two-sided conversation: the client account's password could not be recovered to answer from the other side. The panel, the Client/Team switch and the timestamp formatting are the app's; the two messages are not. They go into every one of these figures rather than just the chat close-up, so the article doesn't show a conversation on one screen and an empty panel two figures later on the same job. Re-shoot from a real conversation as soon as one exists. |
+
+
+| Every figure of the appointment **APT-1036**, `appointments/03-appointment-detail`, `06-visit-timesheets`, and `04-related-records` when it can be taken | the same two bubbles are injected into the Chat panel, and a phone number is written into the client card | the same reasons as the job above: the conversation is empty and the panel is a third of the figure. The client on this appointment also has no phone on file, so the card published `Phone: —` next to a real email and read as a broken field; the number put there is a 555 number, the shape every other client on this account carries, and it is not real. Both go into every figure of this appointment, never just one. The visit row is also expanded before the shot, that is the app's own control, nothing is faked by opening it. |
+
+## The Estimates figures are retouched
+
+Estimates stopped loading on staging before these could be re-shot with the
+record arranged, so four published figures were edited in place by
+`scripts/kb-screenshots/edit-estimates-figures.mjs`. That script is the record
+of what was changed, down to the pixel coordinates; re-shoot and delete it as
+soon as the section loads again.
+
+| Figure | What was changed | Why |
+|---|---|---|
+| `estimates/01-estimates-list`, `02-estimates-filter` | the first row's name, "EST-1001", is redrawn as "Deep Cleaning"; Robert Smith's default blue silhouette is replaced with one of the account's own portraits | nine of the ten rows carry a descriptive name, so the tenth published looking like missing data, and his was the one blank face in a column of photographs. The new name is sized to match the row below it, letter for letter. |
+| `estimates/05-estimate-detail`, `08-more-actions` | a phone number is drawn onto the client card, and two bubbles are drawn into the Chat panel | the client has no phone on file, so the card published `Phone: —` beside a real email and read as a broken field. The number is the 555 number this same client carries in the Appointments figures, from `injections.mjs`, so she has one number across both articles. The chat is empty on every record on staging, as it is for the job figures above. |
 
 ## A contradiction between two published figures
 

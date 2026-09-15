@@ -24,6 +24,8 @@
 </table>
 <h2>The Timesheets list</h2>
 <p>To open it, go to <strong>Menu &gt; Timesheets</strong>.</p>
+<p><img src="/images/timesheets/01-timesheets-list.png" alt="The Timesheets list with the five summary cards above it, and columns for user, date, each kind of time, and status"></p>
+<figcaption class="doc-caption">The Timesheets list. The delete on an approved row is greyed out, which is the rule made visible.</figcaption>
 <p>Five cards sit above the list: <strong>Total Hours</strong>, <strong>Total en route hours</strong>, <strong>Total office time</strong>, <strong>Total job time</strong> and <strong>Total job prep hours</strong>. Each one carries its movement against the week before, so a number that jumps is visible without opening anything.</p>
 <table>
 <thead>
@@ -40,8 +42,10 @@
 <tr><td>Actions</td><td>Open and delete.</td></tr>
 </tbody>
 </table>
-<p>Search sits in the card header. Beside it are two filters: <strong>Users</strong>, and <strong>Status</strong>. Both take more than one value at a time and both have a reset.</p>
+<p>Search sits in the card header. Beside it are three controls: a <strong>date range</strong>, which reads <strong>All Time</strong> until you narrow it, <strong>Users</strong>, and <strong>Status</strong>. The last two take more than one value at a time and both have a reset. On the Solo plan, and for crew members, the Users filter is not there, because there is only one person&rsquo;s time to look at.</p>
 <p>An <strong>approved</strong> timesheet cannot be deleted. Its bin is greyed and says so when you hover it. That is deliberate: an approved timesheet is a payroll record.</p>
+<p><img src="/images/timesheets/02-timesheets-filter.png" alt="The status filter open over the Timesheets list"></p>
+<figcaption class="doc-caption">Filtering by status. Date range, Users and Status narrow the list together.</figcaption>
 <h2>Creating a timesheet</h2>
 <p>Click <strong>Add Timesheet</strong>. It asks for three things:</p>
 <ul>
@@ -49,12 +53,18 @@
 <li><strong>User</strong>, required, and fixed from then on. You cannot move a timesheet to another person after it is created, so check it before saving. Crew members can only create their own.</li>
 <li><strong>Description</strong>, optional, and worth filling in because it becomes the title you see at the top of the timesheet.</li>
 </ul>
+<p><img src="/images/timesheets/03-add-timesheet-panel.png" class="kb-panel" alt="The Add Timesheet panel with date, user and description"></p>
+<figcaption class="doc-caption">Creating a timesheet by hand. The user cannot be changed afterwards.</figcaption>
 <p>In practice you will create fewer of these than you think. With automatic linking on, the first entry of the week makes its own draft.</p>
 <h2>Inside a timesheet</h2>
 <p>Open one and the header carries the person's name and the status. If you are an admin or the owner, the status is a dropdown you can change directly; everyone else sees it as a label. <strong>Add Time</strong> sits on the right, and disappears once the timesheet is approved.</p>
+<p><img src="/images/timesheets/04-timesheet-detail.png" alt="A pending timesheet open, with its overview, its time entries and the approve and reject buttons"></p>
+<figcaption class="doc-caption">A timesheet waiting on approval. Reject and Approve sit under the entries, and only appear once there is time to approve.</figcaption>
 <p><strong>Overview</strong> holds the description, the user, their crew and the date it was created, with <strong>Edit</strong> for the date and description.</p>
-<p><strong>Time Entries</strong> is the timesheet itself: the entries linked to it, with a search box and an activity filter that narrows the table to one type of time. The table shows the job, the user, the date, the description, the type as a coloured tag and the duration, and totals at the bottom. Each row can be edited or deleted from its Actions.</p>
+<p><strong>Time Entries</strong> is the timesheet itself: the entries linked to it, with a search box, a date range and an activity filter that narrows the table to one type of time. The table shows the job, the user, the date, the description, the type as a coloured tag and the duration, and totals at the bottom. Each row can be edited or deleted from its Actions.</p>
 <h3>Adding time by hand</h3>
+<p><img src="/images/timesheets/05-add-time-panel.png" class="kb-panel" alt="The Add time panel with user, date, job, from and to, and description"></p>
+<figcaption class="doc-caption">Adding time by hand. The job is required for every type except office time.</figcaption>
 <p><strong>Add Time</strong> asks for the user, the date, the job, a <strong>From</strong> and <strong>To</strong>, and a description. Four rules are worth knowing before you start typing:</p>
 <ul>
 <li>The <strong>job is required</strong> for En Route, Work Time and Job Prep. For Office Time there is no job to give.</li>

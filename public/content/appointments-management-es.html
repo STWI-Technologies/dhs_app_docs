@@ -10,7 +10,7 @@
 <li><strong>Convertir una en presupuesto, trabajo o factura</strong>, y ver todo lo que salió de ella.</li>
 </ul>
 <h2>La lista de citas</h2>
-<p>Para abrirla, vaya a <strong>Menú &gt; Citas</strong>.</p>
+<p>Para abrirla, vaya a <strong>Menú &gt; Citas</strong>. Dos pestañas dividen la lista: <strong>Activo</strong> y <strong>Archivado</strong>.</p>
 <p><img src="/images/appointments/01-appointments-list.png" alt="La lista de citas con nombre, cliente, hora programada, equipo y estado"></p>
 <figcaption class="doc-caption">La lista de citas. Programado Para es la columna desde la que se trabaja.</figcaption>
 <table>
@@ -52,8 +52,13 @@
 <figcaption class="doc-caption">Agendar una visita. La disponibilidad del equipo se respeta mientras usted elige.</figcaption>
 <p>La disponibilidad del equipo se respeta mientras elige, así que no puede agendar en silencio a alguien que ya está fuera en un trabajo. Si el cliente todavía no está en DHS, Añadir Rápido está dentro del selector.</p>
 <p>Las citas también se pueden crear directo desde el <strong>Programador</strong> eligiendo un espacio, que suele ser más rápido cuando agenda alrededor del trabajo existente.</p>
-<h2>La cita</h2>
-<p>Haga clic en una cita para abrirla.</p>
+<h2>Detalle de la cita</h2>
+<p>Haga clic en una cita para abrirla. Esta es la visita: cuándo es, quién va, a qué propiedad, los servicios previstos, y las horas que la visita terminó tomando.</p>
+<!-- FIGURE PENDING: <p><img src="/images/appointments/03-appointment-detail.png" alt="Una cita abierta en su pestaña Resumen, con los datos de la visita, sus servicios, y el cliente y la conversación en la barra lateral"></p> <figcaption class="doc-caption">Una cita abierta. Iniciar temporizador está en el encabezado; el cliente y la conversación se quedan a la derecha.</figcaption>
+     The capture was lost when staging started serving its offline screen; the
+     record views cannot be taken from develop, whose data is QA junk. Re-shoot
+     with scripts/kb-screenshots/appointment-detail.mjs and restore these two
+     lines as soon as staging loads appointments again. -->
 <p>El encabezado trae su nombre y su estado, la acción <strong>Iniciar temporizador</strong> y un menú de tres puntos. La barra lateral mantiene a la mano el teléfono y el correo del cliente. Este es el registro que va a tener abierto cuando llame a confirmar.</p>
 <p>Dos pestañas:</p>
 <ul>
@@ -65,6 +70,7 @@
 <p>Esto es lo que evita la llamada de "¿alguien iba a venir hoy?".</p>
 <h2>Qué sale de una cita</h2>
 <p>Esta es la parte de la sección que se gana el sueldo. Usted fue a ver el trabajo; ahora ya sabe cuál es. La pestaña <strong>Registros Relacionados</strong> convierte la visita en el siguiente paso, y después guarda el rastro.</p>
+<p><strong>La visita tiene que haber ocurrido primero.</strong> Mientras la cita no esté <strong>Completada</strong>, la pestaña lo dice y no ofrece nada que crear: <em>la conversión a presupuestos, trabajos y facturas se habilita cuando la cita se completa</em>. Marque la visita como completada y las tres secciones sacan sus botones.</p>
 <table>
 <thead>
 <tr><th>Desde una cita puede crear</th><th>Cuándo</th></tr>
@@ -75,14 +81,19 @@
 <tr><td>Una <strong>factura</strong></td><td>La visita misma es lo que va a cobrar: una salida, una inspección, un diagnóstico.</td></tr>
 </tbody>
 </table>
-<p>Una vez creados, cada uno se lista en esa misma pestaña, así que la cita se vuelve el hilo que puede seguir desde "fuimos a ver" hasta "nos pagaron". Mientras tanto las secciones lo dicen claramente: de esta cita todavía no ha salido nada.</p>
+<p>Una vez creados, cada uno se lista en esa misma pestaña, así que la cita se vuelve el hilo que puede seguir desde "fuimos a ver" hasta "nos pagaron". Cada tipo se crea una sola vez: si de esta visita ya salió un presupuesto, el botón para hacer otro queda gastado.</p>
 <h2>Registrar tiempo de una visita</h2>
 <p><strong>Iniciar temporizador</strong> registra tiempo contra la cita, lo cual importa para las visitas que cobra por hora y para saber cuánto le cuestan en realidad las visitas que no cobra. Las horas caen en <strong>Hojas de tiempo</strong> como cualquier otro tiempo.</p>
 <h2>Una nota sobre los productos</h2>
 <p>Las citas llevan <strong>servicios</strong>, no productos, porque son visitas y no instalaciones. Si hay piezas de por medio, eso es un trabajo, y la cita es desde donde lo crea.</p>
-<h2>Editar, cancelar, eliminar</h2>
-<p>Edite una cita desde su fila o desde adentro. Si la hora cambia después de que el cliente confirmó, vuelva a enviársela para que se entere.</p>
-<p><strong>Cancelado</strong> cuando no va a ocurrir, y <strong>No se presentó</strong> cuando el cliente no estaba. La distinción vale la pena, porque uno es su cambio y el otro es el de él. También se puede eliminar, pero una cita cancelada es un registro más honesto que una cita ausente.</p>
+<h2>Editar, cancelar, archivar</h2>
+<p>Todo lo que no es el temporizador vive en el menú de tres puntos que está a su lado.</p>
+<p><img src="/images/appointments/05-appointment-more-actions.png" alt="El menú de tres puntos abierto en una cita, con Editar cita, Enviar al Cliente, Ver en el calendario, Ver en mapa, Completar cita, Reprogramar, Cancelar cita y Archivar"></p>
+<figcaption class="doc-caption">El menú de tres puntos. Lo que ofrece depende de en qué va la cita: una archivada muestra Restaurar y Eliminar en lugar de Archivar.</figcaption>
+<p><strong>Editar cita</strong> cambia qué es la visita. Moverla en el tiempo es <strong>Reprogramar</strong>, y si el cliente ya había confirmado, vuelva a enviársela para que se entere.</p>
+<p><strong>Cancelar cita</strong> cuando no va a ocurrir, y ponga el estado en <strong>No se presentó</strong> cuando el cliente no estaba. La distinción vale la pena, porque uno es su cambio y el otro es el de él.</p>
+<p><strong>Archivar</strong> es como una cita sale de la pestaña Activo. En una cita activa no hay Eliminar: aparece solo en la pestaña <strong>Archivado</strong>, junto a <strong>Restaurar</strong>.</p>
+<p>Y aun ahí, eliminar se rechaza cuando la visita dejó rastro. La app dice el motivo: la cita tiene un trabajo, un presupuesto, una factura o entradas de tiempo vinculadas. Para eso sirve archivar. El registro de una visita que produjo trabajo vale la pena conservarlo.</p>
 <h2>Con qué se conectan las citas</h2>
 <ul>
 <li><strong>Presupuestos, trabajos y facturas</strong>: se crean desde la cita y se listan en su pestaña de Registros Relacionados.</li>

@@ -49,19 +49,6 @@
 </table>
 <h3>Sorting</h3>
 <p>Click the <strong>Crew</strong> column header to sort the list by name, and click it again to reverse the order. The other columns aren't sortable.</p>
-<h3>Pagination</h3>
-<p>The list shows 10 crews per page. Use the picker at the bottom left to switch to 20, 50, or 100, and the controls at the bottom right to move between pages. Changing the search term or the filter takes you back to the first page.</p>
-<h3>When nothing is listed</h3>
-<p>Which message you get depends on why the list is empty:</p>
-<ul>
-<li><strong>A search with no match</strong> tells you which keyword came up empty, so you can try another one.</li>
-<li><strong>A filter with no match</strong> suggests clearing your filters.</li>
-<li><strong>No crews at all</strong> explains what crews are for, with a shortcut to this help article.</li>
-</ul>
-<p><img src="/images/crews/10-no-search-results.png" alt="The Crews list with a search term that matches nothing, showing the No matching crews message"></p>
-<figcaption class="doc-caption">A search that matches nothing names the keyword you tried.</figcaption>
-<h3>The guided tour</h3>
-<p>The first time you open the Crews list, a short tour walks you through the page: the Add Crew button, the list itself, search, the Users filter, and the row actions. Use <strong>Next</strong> to step through it, or <strong>Skip</strong> to dismiss it. You'll then be asked whether you want to skip just this tour or turn tours off everywhere. Once finished or skipped, it doesn't come back.</p>
 <h2>Creating a crew</h2>
 <p>Click <strong>Add Crew</strong>. A panel slides in from the right, titled <strong>Add New Crew</strong>.</p>
 <p><img src="/images/crews/03-add-crew-panel.png" class="kb-panel" alt="The Add New Crew panel with fields for crew name, color, description, and crew members"></p>
@@ -113,12 +100,13 @@
 <h3>Saving</h3>
 <p>Click <strong>Apply Changes</strong>. The button stays greyed out until you actually change something, so there's no way to save an untouched form. <strong>Cancel</strong> closes the panel and keeps the crew as it was.</p>
 <h2>Deleting a crew</h2>
+<p><strong>A crew that is assigned to work cannot be deleted.</strong> While any job or estimate has this crew on it, the trash on its row is greyed out, and hovering it says why: "Cannot delete crew assigned to jobs or estimates."</p>
+<p>To delete one, take it off that work first. Reassign the jobs and estimates to another crew, and the trash becomes available.</p>
 <ol>
 <li>Click the <strong>trash</strong> button on the crew's row.</li>
 <li>Confirm when you're asked whether you're sure.</li>
 </ol>
-<p><strong>Deleting is permanent.</strong> Crews can't be archived or restored. Records that already reference the crew, like past jobs and appointments, keep the crew's details.</p>
-<p>If the crew is assigned to jobs or estimates, the trash button is greyed out and hovering it reads: "Cannot delete crew assigned to jobs or estimates." Reassign the crew on that work first, then delete it.</p>
+<p><strong>Deleting is permanent.</strong> Crews cannot be archived or restored, so there is nothing to undo it with.</p>
 <h2>Quick Add</h2>
 <p>When you're in the middle of something else and need a crew immediately, use <strong>Quick Add</strong> in the top bar and choose <strong>Crew</strong>. It also turns up wherever you pick a crew, when assigning one to an appointment for instance.</p>
 <p><img src="/images/crews/09-quick-add-crew.png" class="kb-panel" alt="The Quick Add New Crew panel, a short form asking only for a crew name and members"></p>

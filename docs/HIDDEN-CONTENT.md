@@ -188,7 +188,42 @@ hand for this one.
 
 ---
 
-## 4. Availability: DELETED, not hidden
+## 4. Clients: importing and exporting CSV
+
+**Hidden in:** this commit
+
+Import CSV and Export CSV do not render on staging: the account has
+`isImportExportClientsHidden` on, so neither button exists for a reader to
+find. The feature is real, it is just not reachable, and a manual that explains
+a button nobody can see is a manual that looks wrong.
+
+**Removed from `public/content/clients-management.html` and its Spanish twin:**
+
+| Where | What |
+|---|---|
+| Overview list | the bullet "**Import and export** your client list as CSV." |
+| Body | the whole section **Importing clients from a CSV**, its four numbered steps, and the note that both buttons can be turned off for an account |
+| Body | the whole section **Exporting your client list** |
+| Common actions | the rows "Bring in a list of clients" and "Take your list out" |
+
+Nothing else referenced them: neither section had a figure, and the figure
+coverage report already listed both as blocked by the same flag.
+
+**To restore**, write those four pieces back and delete the two
+`clients-management` entries from `BLOCKED` in
+`scripts/kb-figure-coverage.mjs`, then shoot the two panels.
+
+The exact previous wording is in the diff for this commit.
+
+The same was done to **Services** and **Products**, which hide their import and
+export behind `isImportExportServiceItemEnabled`: the section **Importing and
+exporting**, the Overview bullet, and the Common actions row in each ("Load a
+catalogue in" in Products; in Services the pricing row lost its ", or Export
+CSV" tail and now reads "Sort by Rate").
+
+---
+
+## 5. Availability: DELETED, not hidden
 
 The one exception. `availability-management` stopped being a standalone article
 because it was folded into the Settings article instead, so it was removed

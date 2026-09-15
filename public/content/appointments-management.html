@@ -10,7 +10,7 @@
 <li><strong>Turn one into an estimate, a job, or an invoice</strong>, and see everything that came out of it.</li>
 </ul>
 <h2>The Appointments list</h2>
-<p>To open it, go to <strong>Menu &gt; Appointments</strong>.</p>
+<p>To open it, go to <strong>Menu &gt; Appointments</strong>. Two tabs split the list: <strong>Active</strong> and <strong>Archived</strong>.</p>
 <p><img src="/images/appointments/01-appointments-list.png" alt="The Appointments list with name, client, scheduled time, crew and status"></p>
 <figcaption class="doc-caption">The Appointments list. Scheduled For is the column you work from.</figcaption>
 <table>
@@ -52,9 +52,13 @@
 <figcaption class="doc-caption">Booking a visit. The crew’s availability is respected while you pick.</figcaption>
 <p>The crew's availability is respected while you pick, so you can't quietly book someone who's already out on a job. If the client isn't in DHS yet, Quick Add is in the picker.</p>
 <p>Appointments can also be created straight from the <strong>Scheduler</strong> by picking a slot, which is usually faster when you're booking around existing work.</p>
-<h2>The appointment</h2>
-<p>Click an appointment to open it.</p>
-<!-- figure: 03-appointment-detail -->
+<h2>Appointment details</h2>
+<p>Click an appointment to open it. This is the visit: when it is, who is going, the property they are going to, the services planned for it, and the hours the visit actually took.</p>
+<!-- FIGURE PENDING: <p><img src="/images/appointments/03-appointment-detail.png" alt="An appointment open on its Overview tab, with the visit details, its services, and the client and conversation in the sidebar"></p> <figcaption class="doc-caption">An appointment open. Start Timer sits in the header; the client and the conversation stay on the right.</figcaption>
+     The capture was lost when staging started serving its offline screen; the
+     record views cannot be taken from develop, whose data is QA junk. Re-shoot
+     with scripts/kb-screenshots/appointment-detail.mjs and restore these two
+     lines as soon as staging loads appointments again. -->
 <p>The header has its name and status, a <strong>Start Timer</strong> action, and a three-dot menu. The sidebar keeps the client's phone and email to hand. This is the record you'll have open when you call to confirm.</p>
 <p>Two tabs:</p>
 <ul>
@@ -66,6 +70,7 @@
 <p>This is what stops the "was anyone coming today?" call.</p>
 <h2>What comes out of an appointment</h2>
 <p>This is the part of the section that earns its keep. You went to look at the work; now you know what it is. The <strong>Related Records</strong> tab turns the visit into the next step, and then keeps the trail.</p>
+<p><strong>The visit has to have happened first.</strong> Until the appointment is <strong>Completed</strong>, the tab says so and offers nothing to create: <em>conversion to estimates, jobs and invoices is enabled once this appointment is completed</em>. Mark the visit complete and the three sections grow their buttons.</p>
 <!-- figure: 04-related-records -->
 <table>
 <thead>
@@ -77,14 +82,19 @@
 <tr><td>An <strong>invoice</strong></td><td>The visit itself is what you're billing: a callout, an inspection, a diagnostic.</td></tr>
 </tbody>
 </table>
-<p>Once created, each one is listed on the same tab, so the appointment becomes the thread you can follow from "we went and looked" to "we were paid". Until then the sections say so plainly: nothing has come from this appointment yet.</p>
+<p>Once created, each one is listed on the same tab, so the appointment becomes the thread you can follow from "we went and looked" to "we were paid". Each kind is created once: with an estimate already made from this visit, the button to make another is spent.</p>
 <h2>Tracking time on a visit</h2>
 <p><strong>Start Timer</strong> records time against the appointment, which matters for visits you bill by the hour and for knowing what unbilled site visits actually cost you. The hours land in <strong>Timesheets</strong> like any other time.</p>
 <h2>A note on products</h2>
 <p>Appointments carry <strong>services</strong>, not products, because they're visits rather than installs. If parts are involved, that's a job, and the appointment is where you create it from.</p>
-<h2>Editing, cancelling, deleting</h2>
-<p>Edit an appointment from its row or from inside it. If the time changes after the client has confirmed, send it again so they know.</p>
-<p><strong>Cancel</strong> when it isn't happening, and mark <strong>No Show</strong> when the client wasn't there. The distinction is worth keeping, because one is your change and the other is theirs. Delete is available too, but a cancelled appointment is a more honest record than a missing one.</p>
+<h2>Editing, cancelling, archiving</h2>
+<p>Everything that is not the timer lives in the three-dot menu beside it.</p>
+<p><img src="/images/appointments/05-appointment-more-actions.png" alt="The three-dot menu open on an appointment, listing Edit Appointment, Send to Client, View on Scheduler, View on Map, Complete Appointment, Reschedule, Cancel Appointment and Archive"></p>
+<figcaption class="doc-caption">The three-dot menu. What it offers depends on where the appointment is: an archived one shows Restore and Delete instead of Archive.</figcaption>
+<p><strong>Edit Appointment</strong> changes what the visit is. Moving it in time is <strong>Reschedule</strong>, and if the client had already confirmed, send it again so they know.</p>
+<p><strong>Cancel Appointment</strong> when it is not happening, and set the status to <strong>No Show</strong> when the client was not there. The distinction is worth keeping, because one is your change and the other is theirs.</p>
+<p><strong>Archive</strong> is how an appointment leaves the Active tab. There is no Delete on an active appointment at all: it appears only on the <strong>Archived</strong> tab, next to <strong>Restore</strong>.</p>
+<p>And even there, deleting is refused when the visit left a trail. The app names the reason: the appointment has a linked job, a linked estimate, a linked invoice, or linked timesheet entries. That is the point of archiving. The record of a visit that produced work is worth keeping.</p>
 <h2>Where appointments connect</h2>
 <ul>
 <li><strong>Estimates, jobs and invoices</strong>: created from the appointment and listed on its Related Records tab.</li>
