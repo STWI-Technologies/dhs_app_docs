@@ -1,0 +1,87 @@
+<h1>Programador</h1>
+<h2>Resumen</h2>
+<p>El <strong>Programador</strong> es el calendario de todo lo que tiene fecha: trabajos y citas, uno al lado del otro, con el color del equipo que los hace. Es donde se planifica la semana y donde se rearma cuando el día se desordena.</p>
+<p>Desde aquí usted puede:</p>
+<ul>
+<li><strong>Ver el trabajo</strong> por día, semana, mes o como lista simple.</li>
+<li><strong>Crear un trabajo o una cita</strong> con un clic en el espacio donde lo quiere.</li>
+<li><strong>Mover trabajo</strong> arrastrándolo a otra hora.</li>
+<li><strong>Respetar la disponibilidad del equipo</strong>, o anularla a propósito.</li>
+<li><strong>Reducir a los equipos</strong> que le importan.</li>
+</ul>
+<p>Para abrirlo, vaya a <strong>Menú &gt; Programador</strong>.</p>
+<h2>Moverse por el calendario</h2>
+<p>El encabezado lleva los mismos tres controles en todas las vistas. <strong>Hoy</strong> vuelve a la fecha actual, las flechas avanzan un día, una semana o un mes a la vez, y el selector de fecha va directo a una fecha.</p>
+<p><img src="/images/scheduler/02-scheduler-controls.png" alt="El encabezado del calendario: Hoy, las flechas, el selector de fecha, Anular Disponibilidad y el filtro de equipos"></p>
+<figcaption class="doc-caption">Los mismos tres controles en todas las vistas, y los dos filtros de la derecha.</figcaption>
+<p>A la derecha, un control segmentado cambia la vista.</p>
+<table>
+<thead>
+<tr><th>Vista</th><th>Para qué sirve</th></tr>
+</thead>
+<tbody>
+<tr><td>Día</td><td>Un día, partido en una columna por equipo, hora por hora. La vista para despachar.</td></tr>
+<tr><td>Semana</td><td>Siete días a la vez. La vista para planificar.</td></tr>
+<tr><td>Mes</td><td>El mes completo, para la forma general más que para el detalle.</td></tr>
+<tr><td>Lista</td><td>Sin cuadrícula: el trabajo escrito en orden, para el rango de fechas que usted elija.</td></tr>
+</tbody>
+</table>
+<p>La vista con la que abre es suya de configurar en <strong>Configuración &gt; Panel de control &gt; Default Scheduler Views</strong>, en <strong>Scheduler Page</strong>. El calendario incrustado en el panel tiene su propio ajuste, así que los dos pueden diferir. En la vista Lista las flechas desaparecen, porque el selector de fecha le está dando un rango en vez de una sola fecha.</p>
+<p>Llegar aquí desde un trabajo o una cita es un caso aparte: el calendario abre en vista <strong>Semana</strong>, en la fecha de ese registro.</p>
+<p><img src="/images/scheduler/03-scheduler-week.png" alt="El calendario en vista Semana, con el trabajo repartido de lunes a viernes"></p>
+<figcaption class="doc-caption">Vista Semana. Aquí no hay columnas por equipo: el trabajo se reparte por día.</figcaption>
+<h2>Vista Día, una columna por equipo</h2>
+<p>Día es la única vista que se parte por equipo. Cada equipo recibe una columna con su nombre, y el trabajo cae en la columna del equipo al que está asignado. Lo que no tiene equipo va a una columna llamada <strong>Sin asignar</strong>.</p>
+<p><img src="/images/scheduler/01-scheduler-day.png" alt="El calendario en vista Día, una columna por equipo a lo largo de la jornada"></p>
+<figcaption class="doc-caption">Vista Día. Cada equipo recibe una fila, y la tarjeta toma el color del equipo.</figcaption>
+<p>También es la única vista donde un arrastre se puede rechazar por un motivo distinto: sacar una tarjeta de la columna de su propio equipo no es una reasignación, y el calendario lo detiene con <strong>No se puede soltar el evento en una columna de equipo diferente</strong>. Para cambiar quién hace el trabajo, cambie el equipo en el propio trabajo o cita.</p>
+<h2>Qué le dice una tarjeta</h2>
+<p>Cada tarjeta lleva un icono de lo que es, un martillo para un trabajo y un calendario para una cita, y toma el color de su equipo. El trabajo sin equipo usa un color neutro. Los trabajos recurrentes van marcados como tales.</p>
+<p><img src="/images/scheduler/04-scheduler-popover.png" class="kb-panel" alt="El panel flotante de un trabajo con la foto de la propiedad, la dirección, las fechas, el cliente y el líder del equipo"></p>
+<figcaption class="doc-caption">Un clic en una tarjeta. Job Details abre el registro completo.</figcaption>
+<p>Un clic en una tarjeta abre un panel flotante con lo esencial: para quién es, dónde, cuándo, qué equipo y en qué estado está. Desde ahí se abre el registro completo.</p>
+<p>Las tarjetas no se pueden redimensionar. Arrastrar un borde no hace nada, porque una duración no es algo que el calendario le deje inventar: cámbiela en el trabajo o en la cita, donde viven las fechas.</p>
+<h2>Crear desde el calendario</h2>
+<p>Dos botones arriba a la derecha, <strong>Nueva Cita</strong> y <strong>Nuevo Trabajo</strong>, arrancan con un formulario en blanco.</p>
+<p><img src="/images/scheduler/05-scheduler-create-event.png" class="kb-panel" alt="El cuadro Crear Nuevo Evento, con Nuevo Trabajo o Nueva Cita"></p>
+<figcaption class="doc-caption">Un clic en un espacio vacío pregunta cuál de los dos, con la fecha y la hora ya puestas.</figcaption>
+<p>Un clic en un espacio vacío es más rápido. Pregunta <strong>Crear Nuevo Evento</strong> y ofrece las mismas dos opciones, con la fecha y la hora en la que hizo clic ya puestas. En las vistas Día y Semana eso quiere decir fecha y hora; en Mes, solo la fecha.</p>
+<h2>Mover trabajo arrastrando</h2>
+<p>Arrastre una tarjeta a otro espacio y el calendario le pide confirmar antes de guardar nada. La confirmación es el panel de reprogramación, con el nuevo inicio y fin ya dentro, para que los ajuste antes de comprometerse.</p>
+<p><img src="/images/scheduler/07-scheduler-reschedule.png" class="kb-panel" alt="El panel Reschedule Job con la fecha anterior y el nuevo inicio y fin"></p>
+<figcaption class="doc-caption">La confirmación que abre un arrastre. Esta se abrió desde el menú del propio trabajo, por eso las fechas están vacías; un arrastre llega con las nuevas ya puestas.</figcaption>
+<p>Un arrastre se rechaza en dos casos:</p>
+<table>
+<thead>
+<tr><th>Qué ve</th><th>Por qué</th></tr>
+</thead>
+<tbody>
+<tr><td>No se puede programar durante los horarios no disponibles</td><td>El equipo no está disponible entonces, y Anular Disponibilidad está apagado.</td></tr>
+<tr><td>No se puede soltar el evento en una columna de equipo diferente</td><td>En la vista Día, arrastró la tarjeta a la columna de otro equipo.</td></tr>
+</tbody>
+</table>
+<h2>La disponibilidad, y cómo anularla</h2>
+<p>El calendario sabe cuándo está disponible cada equipo, por <strong>Configuración &gt; Disponibilidad</strong> y por las fechas en las que un equipo se marcó como no disponible. Esas horas y esos días van sombreados, y el trabajo no cae en ellos.</p>
+<p><img src="/images/scheduler/08-scheduler-availability.png" alt="Las primeras horas de la mañana sombreadas en la cuadrícula del día, con el interruptor Anular Disponibilidad arriba"></p>
+<figcaption class="doc-caption">Las horas anteriores a la jornada van sombreadas, y el interruptor que las ignora está en la misma barra.</figcaption>
+<p>El interruptor <strong>Anular Disponibilidad</strong> del encabezado apaga ese resguardo, para las veces en que hay que agendar de todas formas: el trabajo de emergencia, el sábado que alguien aceptó cubrir. No cambia nada de la disponibilidad del equipo, solo si el calendario le discute. Mientras el calendario está calculando qué hay disponible verá <strong>Actualizando disponibilidad...</strong> en la esquina.</p>
+<h2>Filtrar por equipo</h2>
+<p>El selector de equipos acepta tantos equipos como quiera y dice <strong>Todos los Equipos</strong> cuando no eligió ninguno. Reduce todas las vistas, incluidas las columnas de Día. En un plan <strong>Solo</strong> no hay equipos, así que el selector no está y la vista Día no se parte en columnas.</p>
+<p><img src="/images/scheduler/06-scheduler-crew-filter.png" alt="El filtro de equipos abierto, con los equipos por marcar"></p>
+<figcaption class="doc-caption">Tantos equipos como quiera. Vacío significa todos.</figcaption>
+<h2>Cuando un día está vacío</h2>
+<p>La vista Lista dice <strong>No hay eventos para esta fecha</strong> en vez de mostrarle una cuadrícula vacía. Las vistas de cuadrícula simplemente muestran el día sin nada, que es la respuesta que usted buscaba.</p>
+<h2>Con qué se conecta el programador</h2>
+<table>
+<thead>
+<tr><th>Desde el programador</th><th>Usted llega a</th></tr>
+</thead>
+<tbody>
+<tr><td>El panel flotante de una tarjeta</td><td>El <strong>trabajo</strong> o la <strong>cita</strong>.</td></tr>
+<tr><td>Un espacio vacío</td><td>Un trabajo o una cita nuevos, ya con fecha.</td></tr>
+<tr><td>Un arrastre</td><td>El panel de reprogramación de ese registro.</td></tr>
+<tr><td>Los colores de los equipos</td><td><strong>Equipos</strong>, donde se asignan los colores.</td></tr>
+<tr><td>Las horas sombreadas</td><td><strong>Configuración &gt; Disponibilidad</strong>.</td></tr>
+</tbody>
+</table>
+<p>El mismo trabajo aparece en tres lugares, y cuál quiere depende de la pregunta. Las listas de <strong>Trabajos</strong> y <strong>Citas</strong> son para filtrar y trabajar en lote, el programador es para el tiempo, y el <strong>Mapa</strong> es para dónde está todo.</p>

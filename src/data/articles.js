@@ -17,6 +17,9 @@ import {
   WifiDisconnected01Icon,
   WarehouseIcon,
   DashboardSquare01Icon,
+  DashboardSpeed02Icon,
+  Calendar03Icon,
+  MapsLocation01Icon,
   CustomerService01Icon,
   Building03Icon,
   UserCircleIcon,
@@ -214,6 +217,48 @@ const articles = [
     keywords: ['appointments', 'citas', 'scheduling', 'programación', 'calendar', 'calendario', 'scheduler', 'status', 'estado']
   },
   {
+    id: 'scheduler',
+    audience: 'provider',
+    platforms: ['web'],
+    icon: Calendar03Icon,
+    contentPath: {
+      en: '/content/scheduler.html',
+      es: '/content/scheduler-es.html',
+    },
+    en: {
+      title: 'Scheduler',
+      category: 'Scheduling',
+      overview: 'The calendar for everything with a date: day, week, month and list views, a column per crew for dispatching, creating by clicking a slot, dragging to reschedule, and when the calendar refuses a drop.'
+    },
+    es: {
+      title: 'Programador',
+      category: 'Programación',
+      overview: 'El calendario de todo lo que tiene fecha: vistas de día, semana, mes y lista, una columna por equipo para despachar, crear con un clic en el espacio, arrastrar para reprogramar, y cuándo el calendario rechaza un arrastre.'
+    },
+    keywords: ['scheduler', 'programador', 'calendar', 'calendario', 'schedule', 'agenda', 'day', 'día', 'week', 'semana', 'month', 'mes', 'drag', 'arrastrar', 'reschedule', 'reprogramar', 'availability', 'disponibilidad', 'override', 'anular', 'crew', 'equipo', 'unassigned', 'sin asignar']
+  },
+  {
+    id: 'map-view',
+    audience: 'provider',
+    platforms: ['web'],
+    icon: MapsLocation01Icon,
+    contentPath: {
+      en: '/content/map-view.html',
+      es: '/content/map-view-es.html',
+    },
+    en: {
+      title: 'Map',
+      category: 'Scheduling',
+      overview: 'Where the work is: jobs and appointments as pins, grouped when they sit together, filtered by date and crew, and what an empty map is actually telling you.'
+    },
+    es: {
+      title: 'Mapa',
+      category: 'Programación',
+      overview: 'Dónde está el trabajo: trabajos y citas como marcadores, agrupados cuando quedan juntos, filtrados por fecha y equipo, y qué le está diciendo de verdad un mapa vacío.'
+    },
+    keywords: ['map', 'mapa', 'location', 'ubicación', 'address', 'dirección', 'pins', 'marcadores', 'route', 'ruta', 'geography', 'geografía', 'property', 'propiedad', 'street view', 'recenter', 'recentrar']
+  },
+  {
     id: 'estimates-management',
     audience: 'provider',
     platforms: ['web', 'app'],
@@ -359,6 +404,27 @@ const articles = [
       overview: 'Pídalo en español o en inglés y lo hace: buscar registros, crearlos y actualizarlos, registrar tiempo, leer una foto que le mande y entregarle un enlace directo a la app.'
     },
     keywords: ['ai', 'assistant', 'asistente', 'web', 'mobile', 'móvil', 'voice', 'voz', 'search', 'buscar', 'create', 'crear', 'natural language']
+  },
+  {
+    id: 'dashboard',
+    audience: 'provider',
+    platforms: ['web'],
+    icon: DashboardSpeed02Icon,
+    contentPath: {
+      en: '/content/dashboard.html',
+      es: '/content/dashboard-es.html',
+    },
+    en: {
+      title: 'Dashboard',
+      category: 'Getting Started',
+      overview: 'The screen you land on: the four numbers that matter, the calendar, who is waiting on a reply, and what is still open, with every row a shortcut into the record behind it.'
+    },
+    es: {
+      title: 'Panel de Control',
+      category: 'Primeros Pasos',
+      overview: 'La pantalla en la que usted cae: los cuatro números que importan, el calendario, quién espera respuesta y qué sigue abierto, con cada fila como atajo al registro que tiene detrás.'
+    },
+    keywords: ['dashboard', 'panel', 'home', 'inicio', 'overview', 'resumen', 'totals', 'totales', 'profit', 'ganancia', 'inbox', 'bandeja', 'upcoming', 'próximos', 'clock', 'reloj', 'timer', 'cronómetro', 'widgets']
   },
   {
     id: 'plans-pricing',

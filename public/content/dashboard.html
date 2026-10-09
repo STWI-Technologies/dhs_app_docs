@@ -1,0 +1,89 @@
+<h1>Dashboard</h1>
+<h2>Overview</h2>
+<p>The <strong>dashboard</strong> is what opens when you sign in. It is a single screen that answers four questions without you going anywhere: how the business is doing, what is on the calendar, who is waiting on a reply, and what is still open.</p>
+<p><img src="/images/dashboard/01-dashboard.png" alt="The dashboard: four stat cards, the scheduler on a full day, and the Inbox"></p>
+<figcaption class="doc-caption">One screen, four questions. Everything on it opens the real record.</figcaption>
+<p>Everything on it is a shortcut. Nothing is edited here: every number, row and card opens the real record when you click it.</p>
+<h2>The top of the page</h2>
+<p>Your greeting changes with the time of day and carries your name. To the right of it sit three things, and all three are optional.</p>
+<p><img src="/images/dashboard/02-dashboard-topbar.png" alt="The greeting with the clock, the timer pill and the settings gear"></p>
+<figcaption class="doc-caption">The greeting, and the three optional pieces beside it.</figcaption>
+<table>
+<thead>
+<tr><th>Element</th><th>What it is</th></tr>
+</thead>
+<tbody>
+<tr><td>Clock</td><td>The current time, with the date beside it and seconds inside it if you want them, in 12 or 24 hour format.</td></tr>
+<tr><td>Timer</td><td>The job timer you have running, if any, so you can stop it from here instead of opening the job.</td></tr>
+<tr><td>Gear</td><td>Opens <strong>Dashboard Settings</strong>, the same controls that live in <strong>Settings &gt; Dashboard</strong>.</td></tr>
+</tbody>
+</table>
+<p>The timer is live. If a crew stops it from the mobile app, or you stop it from the job itself, it disappears from here too.</p>
+<h2>The four numbers</h2>
+<p>Four cards across the top of the page, each with a number, a change badge and a small bar chart.</p>
+<p><img src="/images/dashboard/03-dashboard-stats.png" alt="Total Jobs, Total Real Profit, Pending Invoices and Total Potential Profit"></p>
+<figcaption class="doc-caption">Each card: the number, the change against the period before, and the shape of the last eleven.</figcaption>
+<table>
+<thead>
+<tr><th>Card</th><th>What it counts</th></tr>
+</thead>
+<tbody>
+<tr><td>Total Jobs</td><td>How many jobs the account has.</td></tr>
+<tr><td>Total Real Profit</td><td>What the work you have actually completed has earned.</td></tr>
+<tr><td>Pending Invoices</td><td>How many invoices are still waiting to be paid.</td></tr>
+<tr><td>Total Potential Profit</td><td>What is on the table: the work quoted or scheduled but not yet earned.</td></tr>
+</tbody>
+</table>
+<p>Money is shortened once it gets long, so $1,240 reads <strong>$1.2K</strong> and $3,400,000 reads <strong>$3.4M</strong>. The bar chart is the last eleven periods of that same number, so you can see the shape of it without reading a report.</p>
+<p>The badge compares the current period with the one before it. Green with an up arrow means it grew, red with a down arrow means it fell, and a grey <strong>0%</strong> means it did not move. When there is nothing to compare against yet, there is no badge at all.</p>
+<h2>The scheduler card</h2>
+<p>The calendar sits in the middle of the page, with the same controls as the full page: <strong>Today</strong>, the arrows, the date picker and the crew filter. Only the views differ: here you get <strong>Day</strong>, <strong>Week</strong> and <strong>List</strong>, and Month is left to the full page.</p>
+<p><img src="/images/dashboard/04-dashboard-scheduler.png" alt="The scheduler card in Day view, one row per crew"></p>
+<figcaption class="doc-caption">The same calendar as the full page, minus the Month view.</figcaption>
+<p>You can work in it from here. Clicking an empty slot starts a new job or appointment on that date and time, clicking a card opens its popover, and dragging a card reschedules it. <strong>View Scheduler</strong> at the bottom right opens the full page on the same date.</p>
+<p>Which view it opens on is yours to set, separately from the full page, in <strong>Dashboard Settings</strong>.</p>
+<h2>The Inbox card</h2>
+<p>Every conversation with activity, newest first. One row per conversation, not per client, so a client who wrote you from a job and from an estimate shows up twice, each row labelled with where the message came from.</p>
+<p><img src="/images/dashboard/05-dashboard-inbox.png" alt="The Inbox card, one row per conversation with unread counts"></p>
+<figcaption class="doc-caption">One row per conversation, not per client. The blue circle is what you have not read.</figcaption>
+<p>A row carries the chat type, the date and time of the last message, the client, who wrote it and the first line of what they said. A blue circle on the right counts what you have not read. A job whose crew is on the way is tagged <strong>EN ROUTE</strong>.</p>
+<p>Clicking a row opens that conversation in the <strong>Inbox</strong>. Two settings shape the card: <strong>Max List Length</strong> caps how many rows it shows, and <strong>Show Only New Messages</strong> hides everything you have already read.</p>
+<h2>Upcoming jobs, open estimates, open invoices</h2>
+<p>Three tabs at the bottom of the page, each with its own count, its own crew filter and a <strong>View all</strong> link into the full list.</p>
+<p><img src="/images/dashboard/06-dashboard-open-items.png" alt="The open items card on the Upcoming Jobs tab"></p>
+<figcaption class="doc-caption">Upcoming or Today, filtered by crew, sorted by any column with an arrow.</figcaption>
+<table>
+<thead>
+<tr><th>Tab</th><th>Columns</th></tr>
+</thead>
+<tbody>
+<tr><td>Upcoming Jobs</td><td>Name, Scheduled, Crew, Status</td></tr>
+<tr><td>Open Estimates</td><td>Name, Client, Status, Crew</td></tr>
+<tr><td>Open Invoices</td><td>Invoice, Client, Due Date, Status</td></tr>
+</tbody>
+</table>
+<p>The jobs tab has one control the others do not: <strong>Upcoming</strong> and <strong>Today</strong>. Upcoming is everything from today forward, Today is only today. How far forward Upcoming reaches is the <strong>Upcoming Jobs Window</strong> in Dashboard Settings.</p>
+<p>Column headers with arrows sort the list. Clicking a row opens the record, and the pencil at the end of the row does the same thing. An estimate that is ready for review is labelled <strong>Pending Review</strong> here, which is the same status the estimates list calls Ready for Review.</p>
+<p>When a tab is empty it tells you why, and offers the way out. No jobs at all offers <strong>Add Job</strong>; jobs that exist but none coming up says so instead. Open Estimates reads "Anything waiting on a client response appears here", and Open Invoices "Drafts and unpaid invoices appear here".</p>
+<p>On a <strong>Solo</strong> plan there are no crews, so the Crew column and the crew filter are not there.</p>
+<h2>Tuning what it shows</h2>
+<p>The gear at the top right and <strong>Settings &gt; Dashboard</strong> are the same controls, and changing them in one place changes the other. They are listed in full in the Settings article, but the two that make the most difference are <strong>Max List Length</strong> and <strong>Upcoming Jobs Window</strong>: on a busy account, a shorter list and a narrower window are the difference between a dashboard that opens instantly and one you wait for.</p>
+<p><img src="/images/dashboard/07-dashboard-settings.png" class="kb-panel" alt="The Dashboard Settings dialog"></p>
+<figcaption class="doc-caption">Behind the gear. The same controls as Settings &gt; Dashboard.</figcaption>
+<h2>It keeps itself current</h2>
+<p>The dashboard listens for changes and refreshes on its own. When someone else completes a job, sends an invoice or replies to a client, you do not have to reload the page to see it.</p>
+<h2>Where the dashboard connects</h2>
+<table>
+<thead>
+<tr><th>From the dashboard</th><th>You land in</th></tr>
+</thead>
+<tbody>
+<tr><td>A card in the scheduler</td><td>The job or appointment, through its popover.</td></tr>
+<tr><td>An empty slot in the scheduler</td><td>A new job or appointment, already dated.</td></tr>
+<tr><td>View Scheduler</td><td>The full <strong>Scheduler</strong>, on the same date.</td></tr>
+<tr><td>A row in the Inbox card</td><td>That conversation in the <strong>Inbox</strong>.</td></tr>
+<tr><td>A row in the three tabs</td><td>The job, estimate or invoice itself.</td></tr>
+<tr><td>View all</td><td>The <strong>Jobs</strong>, <strong>Estimates</strong> or <strong>Invoices</strong> list.</td></tr>
+<tr><td>The gear</td><td><strong>Dashboard Settings</strong>.</td></tr>
+</tbody>
+</table>
