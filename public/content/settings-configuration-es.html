@@ -2,6 +2,8 @@
 <h2>Resumen</h2>
 <p><strong>Configuraciones</strong> es donde se configura la cuenta: quién es usted, cuándo trabaja, cómo se numeran las cosas, cómo le pagan y de qué le avisa la app.</p>
 <p>No está en el Menú principal. Haga clic en su avatar, arriba a la derecha, y elija <strong>Configuraciones</strong>. Su <strong>Perfil</strong> y la <strong>Facturación</strong> están en ese mismo menú.</p>
+<p><img src="/images/settings/01-settings.png" alt="La página de Settings con su barra lateral agrupada en Personal, Workspace y Business"></p>
+<figcaption class="doc-caption">Settings y su propia barra lateral. Personal, Workspace y Business son tres alcances distintos.</figcaption>
 <p>La página tiene su propia barra lateral a la izquierda, agrupada para que las preferencias personales no se mezclen con la configuración de toda la cuenta:</p>
 <table>
 <thead>
@@ -15,10 +17,15 @@
 </tbody>
 </table>
 <p>Cada sección se guarda por su cuenta. No hay un botón de guardar para toda la página, así que termine una sección antes de pasar a la siguiente.</p>
+<p>Cada sección carga de una pieza, no campo por campo, y cada tarjeta es de solo lectura hasta que la abre para editar. Si sale de una tarjeta con cambios sin aplicar, la app lo detiene: "Los cambios que hiciste en esta sección no se han guardado. Si continúas, se perderán", con <strong>Seguir editando</strong> y <strong>Descartar cambios</strong>.</p>
+<p><img src="/images/settings/05-settings-unsaved.png" class="kb-panel" alt="El cuadro que avisa de que los cambios de esta sección no se han guardado"></p>
+<figcaption class="doc-caption">El resguardo. Salta al salir de la sección, no al salir de la página.</figcaption>
+
 <h2>Cuenta</h2>
 <p>Los datos de la empresa, en tres bloques.</p>
 <p><strong>Información de la empresa</strong> es el nombre, el contacto y la dirección que identifican al negocio. <strong>Información de facturación</strong> es lo que aparece en los documentos, cuando es distinto.</p>
-<p><strong>Información de contacto del cliente</strong> es la que hay que acertar: el correo y el teléfono de aquí se imprimen en los correos de notificación que reciben sus clientes, así que es por donde lo van a contactar cuando tengan una duda. Al menos uno de los dos es obligatorio.</p>
+<p><strong>Nombre de la empresa</strong> es obligatorio. <strong>Correo electrónico de la empresa</strong> no lo es, así que un negocio que prefiera que lo contacten por una sola dirección puede dejarlo vacío. El correo y el teléfono de la empresa se comprueban mientras escribe: si otra cuenta ya los usa, el campo se lo dice antes de que intente guardar.</p>
+<p><strong>Información de contacto del cliente</strong> es la que hay que acertar: el correo y el teléfono de aquí se imprimen en los correos de notificación que reciben sus clientes, así que es por donde lo van a contactar cuando tengan una duda. "Se requiere al menos un correo electrónico o número de teléfono del cliente".</p>
 <p>Debajo está su <strong>enlace de registro para clientes</strong> y su <strong>código de cliente</strong>, los dos con botón de copiar. Si un cliente se registra por ese enlace, queda conectado a su cuenta automáticamente, sin que usted tenga que aprobar nada.</p>
 <p><strong>Eliminar Datos de Muestra</strong> borra los registros de demostración con los que se creó la cuenta. Pide confirmación dos veces y no se puede deshacer. Hágalo cuando ya tenga datos reales y las muestras solo estorben.</p>
 <h2>Perfil</h2>
@@ -47,35 +54,51 @@
 <p>Las excepciones son los días en los que el horario no aplica: feriados, cierres, la semana en que no hay nadie. Agregue una con un rango de fechas y márquela como <strong>Excepción Anual</strong> si ocurre todos los años, que es lo que quiere para los feriados fijos.</p>
 <p>Las excepciones también se resumen por mes y por temporada, así ve la forma del año y no una lista plana de fechas.</p>
 <h2>Panel de control</h2>
-<p>Cuánto muestra el panel y cómo abre.</p>
+<p>Cuánto muestra el panel, con qué vista abre el calendario y qué aparece en la barra superior. Los mismos controles están detrás del engranaje del propio panel, así que cambiarlos en cualquiera de los dos sitios los cambia en los dos.</p>
+<p><img src="/images/settings/02-settings-dashboard.png" alt="La sección Dashboard de Settings"></p>
+<figcaption class="doc-caption">Los mismos controles que el engranaje del panel.</figcaption>
 <table>
 <thead>
-<tr><th>Ajuste</th><th>Qué hace</th></tr>
+<tr><th>Bloque</th><th>Ajuste</th><th>Qué hace</th></tr>
 </thead>
 <tbody>
-<tr><td>Longitud máxima de la lista</td><td>Cuántas filas muestra cada lista del panel.</td></tr>
-<tr><td>Mostrar Solo Nuevos</td><td>Reduce las listas a lo que usted todavía no ha atendido.</td></tr>
-<tr><td>Ventana de próximos trabajos</td><td>Cuántos días hacia adelante mira la lista de próximos trabajos.</td></tr>
-<tr><td>Calendario del Dashboard</td><td>La vista predeterminada del calendario dentro del panel.</td></tr>
-<tr><td>Página del Calendario</td><td>La vista predeterminada de la página completa del calendario.</td></tr>
+<tr><td rowspan="2">Display</td><td>Max List Length</td><td>El máximo de filas que muestra cada lista del panel. No puede ser cero.</td></tr>
+<tr><td>Upcoming Jobs Window</td><td>Cuántos días hacia adelante mira la lista de trabajos próximos. No puede ser cero.</td></tr>
+<tr><td rowspan="2">Default Scheduler Views</td><td>Dashboard Scheduler</td><td>La vista con la que abre el calendario dentro del panel. Día, Semana o Lista.</td></tr>
+<tr><td>Scheduler Page</td><td>La vista con la que abre la página completa del calendario. Día, Semana, Mes o Lista.</td></tr>
+<tr><td>Inbox Display</td><td>Show Only New Messages</td><td>Oculta de la tarjeta de mensajes las conversaciones que ya leyó.</td></tr>
+<tr><td>Job Timer</td><td>Show Timer</td><td>Pone el cronómetro del trabajo en curso en la barra superior, junto al reloj.</td></tr>
+<tr><td rowspan="4">Date &amp; Time</td><td>Show time</td><td>Muestra un reloj en la barra superior.</td></tr>
+<tr><td>Show date</td><td>Añade la fecha junto al reloj.</td></tr>
+<tr><td>Include seconds</td><td>Añade los segundos a la lectura del reloj.</td></tr>
+<tr><td>Time format</td><td>12 o 24 horas.</td></tr>
 </tbody>
 </table>
-<p>La sección también trae una configuración recomendada. En una cuenta con mucho movimiento, una lista más corta y una ventana más angosta son la diferencia entre un panel que abre de inmediato y uno que hay que esperar.</p>
+<p>Debajo del bloque Date &amp; Time hay una vista previa de la barra superior, para ver cómo quedará el reloj antes de guardar. Con Show time y Show date apagados dice <strong>Clock hidden</strong>.</p>
+<p>La sección también trae una configuración recomendada. En una cuenta con mucho movimiento, una lista más corta y una ventana más estrecha son la diferencia entre un panel que abre al instante y uno que hay que esperar.</p>
 <h2>Hoja de tiempo</h2>
 <p>Una sola decisión, y ahorra mucho trabajo manual: la <strong>Vinculación Automática de Hojas de Tiempo</strong>.</p>
 <p>Encendida, una entrada nueva o un cronómetro iniciado se une a la hoja en borrador de esa semana, de lunes a domingo, y si no hay borrador la app crea uno. Apagada, cada entrada hay que vincularla a mano.</p>
 <p>El interruptor principal es de toda la cuenta. Debajo, cada persona puede excluirse con <strong>Deshabilitar vinculación automática para mí</strong> sin cambiar nada para el resto del equipo.</p>
 <p>Vea <strong>Hojas de tiempo</strong> para saber qué le hace la vinculación a una entrada.</p>
 <h2>Negocio</h2>
-<p>Las reglas de toda la cuenta, en cuatro bloques.</p>
-<h3>Configuración del Contador</h3>
-<p><strong>Contador de ID de presupuesto</strong> y <strong>Contador de Números de Factura</strong> fijan desde dónde continúa la numeración, y los valores actuales se muestran al lado. Esto es lo que usa cuando viene de otro sistema y quiere que sus números de factura sigan en vez de empezar otra vez en uno.</p>
-<h3>Configuración de Tripulación</h3>
-<p><strong>Permitir a la Tripulación Acceder a Cualquier Trabajo</strong> decide hasta dónde ve un miembro del equipo. Déjelo apagado y aplica la <strong>Restricción de Tripulación Activa</strong>: ve y registra tiempo en los trabajos asignados a sus equipos, y en nada más. Enciéndalo y cualquier miembro puede abrir y registrar tiempo en cualquier trabajo de la cuenta.</p>
-<h3>Compartir información</h3>
-<p><strong>No Compartir Información</strong> controla si sus datos se comparten más allá de su propia cuenta.</p>
-<h3>Aviso legal de pago</h3>
-<p>La letra chica al pie de una factura. Deje el texto predeterminado, que se le muestra completo, o escriba el suyo. Aquí también vive <strong>Mostrar la opción de pago con Zelle en la factura</strong>, junto con los datos de Zelle y el texto que ve el cliente.</p>
+<p>Las reglas de toda la cuenta, en seis bloques, en el orden en que la página los lista.</p>
+<p><img src="/images/settings/03-settings-business.png" alt="La sección Business con Counter settings, Invoice Instructions y Zelle payment details"></p>
+<figcaption class="doc-caption">Cada bloque tiene su propio Edit. Aquí no se edita nada hasta que lo presiona.</figcaption>
+<h3>Counter settings</h3>
+<p><strong>Estimate ID counter</strong> e <strong>Invoice number counter</strong> fijan desde dónde continúa la numeración, y los valores actuales se muestran al lado. Esto es lo que usa cuando viene de otro sistema y quiere que sus números de factura sigan en vez de empezar otra vez en uno.</p>
+<h3>Invoice Instructions</h3>
+<p>Texto que sale en <em>todas</em> las facturas: "Provide instructional text to display on all invoices". Un solo campo, con su contador de 512 caracteres. Ya no hay texto predeterminado al que recurrir, así que lo que escriba aquí es lo que lee el cliente, y un campo vacío significa que la factura no lleva instrucciones.</p>
+<h3>Zelle payment details</h3>
+<p>Un bloque aparte, no parte de las instrucciones. <strong>Show Zelle Payment Option on Invoice</strong> lo enciende o lo apaga, y <strong>Zelle payment option text</strong> es el texto que ve el cliente.</p>
+<h3>Crew settings</h3>
+<p><strong>Allow crew to access any job</strong> decide hasta dónde ve un miembro del equipo. Déjelo apagado y ve y registra tiempo en los trabajos asignados a sus equipos, y en nada más. Enciéndalo y cualquier miembro puede abrir y registrar tiempo en cualquier trabajo de la cuenta.</p>
+<h3>Privacy settings</h3>
+<p><strong>Do not share information</strong> controla si sus datos se comparten más allá de su propia cuenta.</p>
+<h3>Tax rates</h3>
+<p>Las tasas que puede poner en una línea. <strong>Add Tax Rate</strong> crea una con nombre y porcentaje, y cada fila se puede editar o eliminar. Son las que eligen las líneas de presupuestos y facturas.</p>
+<p><img src="/images/settings/04-settings-business-privacy.png" alt="Crew settings, Privacy settings y Tax rates al final de la sección Business"></p>
+<figcaption class="doc-caption">La mitad de abajo de la misma sección.</figcaption>
 <h2>Aceptar Pagos</h2>
 <p>Los pagos con tarjeta en línea corren por Stripe, y esta sección es la solicitud y su estado.</p>
 <p>Se postula desde aquí, indicando el tipo de negocio, el nombre de la empresa y el teléfono. La sección después refleja en qué punto va la solicitud: enviada, en revisión, con verificación adicional pendiente, o aprobada con un enlace a su panel de Stripe. Si Stripe la rechaza, se muestran el motivo y un número de referencia para que soporte tenga con qué trabajar.</p>

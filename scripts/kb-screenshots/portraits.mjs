@@ -39,9 +39,45 @@ export const PORTRAITS = {
   ].map((f) => `${BLOB}/${f}`),
 };
 
-// Enough to place the names that are actually on this account's first pages.
-export const FEMALE_FIRST_NAMES = ["sandra", "anna", "samantha", "megan", "jessica", "maria", "laura", "emily", "olivia", "sophia", "ava", "isabella"];
-export const MALE_FIRST_NAMES = ["shawn", "ethan", "christopher", "omar", "liam", "noah", "david", "brian", "mike", "tyler", "daniel"];
+/**
+ * Which face goes with which name.
+ *
+ * A name that is in NEITHER list falls back to alternating, and the fallback
+ * is how a conversation from "Marcus" was published with a woman's portrait on
+ * it. So the lists are deliberately wider than the names currently on the
+ * account, and callers should report what they could not place rather than let
+ * the fallback decide quietly. See `bucketFor`.
+ */
+export const FEMALE_FIRST_NAMES = [
+  "sandra", "anna", "samantha", "megan", "jessica", "maria", "laura", "emily", "olivia",
+  "sophia", "ava", "isabella", "lucia", "valentina", "sofia", "zoe", "lisa", "amelia",
+  "mia", "charlotte", "grace", "hannah", "rachel", "sarah", "karen", "nancy", "linda",
+  "patricia", "barbara", "elizabeth", "susan", "carol", "michelle", "angela", "melissa",
+  "rebecca", "stephanie", "nicole", "katherine", "diana", "paula", "carmen", "rosa",
+  "elena", "clara", "julia", "natalia", "daniela", "gabriela", "andrea", "beatriz",
+];
+export const MALE_FIRST_NAMES = [
+  "shawn", "ethan", "christopher", "omar", "liam", "noah", "david", "brian", "mike",
+  "tyler", "daniel", "marcus", "andres", "mark", "john", "james", "robert", "michael",
+  "william", "richard", "joseph", "thomas", "charles", "steven", "paul", "andrew",
+  "joshua", "kevin", "george", "edward", "ryan", "jason", "jeffrey", "gary", "nicholas",
+  "eric", "stephen", "jacob", "larry", "frank", "scott", "justin", "brandon", "samuel",
+  "raymond", "patrick", "jack", "dennis", "jerry", "carlos", "miguel", "javier", "diego",
+  "luis", "pedro", "antonio", "rafael", "sergio", "hector", "ricardo",
+];
+
+/**
+ * The bucket a first name belongs to, or null when we genuinely do not know.
+ *
+ * Returning null instead of guessing is the point: the caller decides whether
+ * to alternate, and can say out loud which names it had to guess at.
+ */
+export function bucketFor(firstName) {
+  const key = (firstName || "").trim().toLowerCase();
+  if (FEMALE_FIRST_NAMES.includes(key)) return "female";
+  if (MALE_FIRST_NAMES.includes(key)) return "male";
+  return null;
+}
 
 /**
  * Paint the portraits, and KEEP them painted.

@@ -1,0 +1,87 @@
+<h1>Scheduler</h1>
+<h2>Overview</h2>
+<p>The <strong>Scheduler</strong> is the calendar for everything that has a date: jobs and appointments, side by side, coloured by the crew doing them. It is where the week gets planned and where it gets rearranged when the day falls apart.</p>
+<p>From here you can:</p>
+<ul>
+<li><strong>See the work</strong> by day, week, month or as a plain list.</li>
+<li><strong>Create a job or an appointment</strong> by clicking the slot you want it in.</li>
+<li><strong>Move work</strong> by dragging it to a new time.</li>
+<li><strong>Respect crew availability</strong>, or deliberately override it.</li>
+<li><strong>Narrow to the crews</strong> you care about.</li>
+</ul>
+<p>To open it, go to <strong>Menu &gt; Scheduler</strong>.</p>
+<h2>Getting around</h2>
+<p>The header carries the same three controls in every view. <strong>Today</strong> jumps back to the current date, the arrows step one day, week or month at a time, and the date picker goes straight to a date.</p>
+<p><img src="/images/scheduler/02-scheduler-controls.png" alt="The scheduler header: Today, the arrows, the date picker, Override Availability and the crew filter"></p>
+<figcaption class="doc-caption">The same three controls in every view, and the two filters on the right.</figcaption>
+<p>On the right, a segmented control switches the view.</p>
+<table>
+<thead>
+<tr><th>View</th><th>What it gives you</th></tr>
+</thead>
+<tbody>
+<tr><td>Day</td><td>One day, split into a column per crew, hour by hour. The view for dispatching.</td></tr>
+<tr><td>Week</td><td>Seven days at once. The view for planning.</td></tr>
+<tr><td>Month</td><td>The whole month, for the shape of it rather than the detail.</td></tr>
+<tr><td>List</td><td>No grid at all: the work written out in order, for a date range you choose.</td></tr>
+</tbody>
+</table>
+<p>The view it opens on is yours to set in <strong>Settings &gt; Dashboard &gt; Default Scheduler Views</strong>, under <strong>Scheduler Page</strong>. The scheduler embedded in the dashboard has its own setting, so the two can differ. In List view the arrows disappear, because the date picker is giving you a range rather than a single date.</p>
+<p>Arriving here from a job or an appointment is a special case: the scheduler opens in <strong>Week</strong> view, on that record's date.</p>
+<p><img src="/images/scheduler/03-scheduler-week.png" alt="The scheduler in Week view, work spread across Monday to Friday"></p>
+<figcaption class="doc-caption">Week view. No crew columns here: the work is laid out by day.</figcaption>
+<h2>Day view, one column per crew</h2>
+<p>Day is the only view that splits by crew. Each crew gets a column, titled with its name, and work lands in the column of the crew it is assigned to. Anything with no crew goes into a column called <strong>Unassigned</strong>.</p>
+<p><img src="/images/scheduler/01-scheduler-day.png" alt="The scheduler in Day view, a column per crew across the working day"></p>
+<figcaption class="doc-caption">Day view. Each crew gets a row, and the card takes the crew's colour.</figcaption>
+<p>This is also the only view where a drag can be refused for the wrong reason: dragging a card out of its own crew's column is not a reassignment, and the scheduler stops it with <strong>Cannot drop event in different crew column</strong>. To change who is doing the work, change the crew on the job or appointment itself.</p>
+<h2>What a card tells you</h2>
+<p>Each card carries an icon for what it is, a hammer for a job and a calendar for an appointment, and takes the colour of its crew. Work with no crew uses a neutral colour instead. Recurring jobs are marked as such.</p>
+<p><img src="/images/scheduler/04-scheduler-popover.png" class="kb-panel" alt="A job's popover with the property photo, address, dates, client and crew lead"></p>
+<figcaption class="doc-caption">One click on a card. Job Details opens the full record.</figcaption>
+<p>Clicking a card opens a popover with the essentials: who it is for, where, when, which crew and what status. From the popover you open the full record.</p>
+<p>Cards cannot be resized. Dragging an edge does nothing, because a duration is not something the calendar lets you invent: change it on the job or the appointment, where the dates belong.</p>
+<h2>Creating from the calendar</h2>
+<p>Two buttons at the top right, <strong>New Appointment</strong> and <strong>New Job</strong>, start from an empty form.</p>
+<p><img src="/images/scheduler/05-scheduler-create-event.png" class="kb-panel" alt="The Create New Event dialog, offering New Job or New Appointment"></p>
+<figcaption class="doc-caption">Clicking an empty slot asks which of the two, with the date and time already in hand.</figcaption>
+<p>Clicking an empty slot is quicker. It asks <strong>Create New Event</strong> and offers the same two choices, with the date and the time you clicked already filled in. In Day and Week views that means date and time; in Month view, just the date.</p>
+<h2>Moving work by dragging</h2>
+<p>Drag a card to a new slot and the scheduler asks you to confirm before anything is saved. The confirmation is the reschedule panel, with the new start and end already in it, so you can adjust them before committing.</p>
+<p><img src="/images/scheduler/07-scheduler-reschedule.png" class="kb-panel" alt="The Reschedule Job panel with the old scheduled date and the new start and end"></p>
+<figcaption class="doc-caption">The confirmation a drag opens. This one was opened from the job's own menu, which is why the dates are blank; a drag arrives with the new ones already in.</figcaption>
+<p>A drop is refused in two cases:</p>
+<table>
+<thead>
+<tr><th>What you see</th><th>Why</th></tr>
+</thead>
+<tbody>
+<tr><td>Cannot schedule during unavailable times</td><td>The crew is not available then, and Override Availability is off.</td></tr>
+<tr><td>Cannot drop event in different crew column</td><td>In Day view, you dragged the card into another crew's column.</td></tr>
+</tbody>
+</table>
+<h2>Availability, and overriding it</h2>
+<p>The calendar knows when each crew is available, from <strong>Settings &gt; Availability</strong> and from the dates a crew has been marked unavailable. Those hours and days are shaded, and work will not drop into them.</p>
+<p><img src="/images/scheduler/08-scheduler-availability.png" alt="The early morning hours shaded in the day grid, with the Override Availability switch above"></p>
+<figcaption class="doc-caption">The hours before the working day are shaded, and the switch that ignores them sits in the same bar.</figcaption>
+<p>The <strong>Override Availability</strong> switch in the header turns that guard off for the session, for the times you have to schedule anyway: the emergency job, the Saturday somebody agreed to cover. It changes nothing about the crew's availability, only whether the calendar argues with you. While the calendar is working out what is available you will see <strong>Updating availability...</strong> in the corner.</p>
+<h2>Filtering by crew</h2>
+<p>The crew selector takes as many crews as you want and shows <strong>All Crews</strong> when you have picked none. It narrows every view, Day columns included. On a <strong>Solo</strong> plan there are no crews, so the selector is not there and Day view does not split into columns.</p>
+<p><img src="/images/scheduler/06-scheduler-crew-filter.png" class="kb-panel" alt="The crew filter open, with crews to tick"></p>
+<figcaption class="doc-caption">As many crews as you want. Empty means all of them.</figcaption>
+<h2>When a day is empty</h2>
+<p>List view says <strong>No events for this date</strong> rather than showing you an empty grid. The grid views simply show the day with nothing in it, which is the answer you were looking for.</p>
+<h2>Where the scheduler connects</h2>
+<table>
+<thead>
+<tr><th>From the scheduler</th><th>You land in</th></tr>
+</thead>
+<tbody>
+<tr><td>A card's popover</td><td>The <strong>job</strong> or the <strong>appointment</strong>.</td></tr>
+<tr><td>An empty slot</td><td>A new job or appointment, already dated.</td></tr>
+<tr><td>A drag</td><td>The reschedule panel for that record.</td></tr>
+<tr><td>The crew colours</td><td><strong>Crews</strong>, where the colours are assigned.</td></tr>
+<tr><td>The shaded hours</td><td><strong>Settings &gt; Availability</strong>.</td></tr>
+</tbody>
+</table>
+<p>The same work shows up in three places, and which one you want depends on the question. The <strong>Jobs</strong> and <strong>Appointments</strong> lists are for filtering and bulk work, the scheduler is for time, and the <strong>Map</strong> is for where everything is.</p>

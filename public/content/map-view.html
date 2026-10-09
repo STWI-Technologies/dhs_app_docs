@@ -1,0 +1,65 @@
+<h1>Map</h1>
+<h2>Overview</h2>
+<p>The <strong>Map</strong> answers the question the lists cannot: where is all of this. Every job and appointment that has a property with an address shows up as a pin, so you can see a day laid out geographically before you commit a crew to it.</p>
+<p>It is a read-only view. Nothing is scheduled or edited from the map; it takes you to the record that is.</p>
+<p>To open it, go to <strong>Menu &gt; Map</strong>.</p>
+<h2>Jobs or appointments</h2>
+<p>A segmented control at the top left switches between <strong>Jobs</strong> and <strong>Appointments</strong>, with the number of matches inside each tab. Both run under the same filters, so each tab tells you its own count whether or not you are looking at it. A tab with nothing in it shows no number rather than a zero.</p>
+<p><img src="/images/map/01-map.png" alt="The map with a day's jobs as pins across Arizona"></p>
+<figcaption class="doc-caption">A day laid out geographically. Pins that sit together are grouped, with a count on them.</figcaption>
+<h2>Narrowing what is on the map</h2>
+<p><img src="/images/map/02-map-filters.png" alt="The map filter bar: the Jobs and Appointments tabs, search, date range, crew and recenter"></p>
+<figcaption class="doc-caption">The whole bar. The count sits inside the tab it belongs to.</figcaption>
+<table>
+<thead>
+<tr><th>Control</th><th>What it does</th></tr>
+</thead>
+<tbody>
+<tr><td>Search</td><td>Finds by name and client.</td></tr>
+<tr><td>Date range</td><td>Opens on <strong>Today</strong>. There is no "all time" option here on purpose: a map of every job you have ever done is not useful.</td></tr>
+<tr><td>Crew</td><td>One crew at a time. Not shown on a Solo plan.</td></tr>
+<tr><td>Recenter</td><td>Puts the map back how it opened, after you have panned and zoomed around.</td></tr>
+</tbody>
+</table>
+<h2>Reading the pins</h2>
+<p>Pins that sit close together are grouped into one, with a count on it. Zooming in splits them apart.</p>
+<p><img src="/images/map/03-map-marker.png" class="kb-panel" alt="A single pin's card: property photo, address, client, job, crew and dates"></p>
+<figcaption class="doc-caption">One pin, one record. View Job opens it.</figcaption>
+<p>Clicking a single pin opens a card for that record: a photo of the property if there is one, the property address, the client, the name of the job or appointment with its type icon, the crew with its colour dot, and the start and end dates. At the bottom, <strong>View Job</strong> or <strong>View Appointment</strong> opens the record.</p>
+<p>When no photo has been added, the card falls back on its own: Street View for the address first, then a plain map of it, and if neither is available, <strong>No location preview available</strong>.</p>
+<p>Clicking a group opens the list of what is there instead. Picking one shows its card, and a link at the top of the card reading <strong>3 items at this location</strong> takes you back to the group. This is how a property with several jobs on the same day is read.</p>
+<p><img src="/images/map/04-map-group.png" class="kb-panel" alt="A group pin's card listing the two jobs at that address"></p>
+<figcaption class="doc-caption">A group. Pick one to see its card, and the link at the bottom counts what is there.</figcaption>
+<h2>When the map comes up empty</h2>
+<p>A banner above the map tells you which kind of empty it is, which is the difference between nothing scheduled and nothing matching.</p>
+<p><img src="/images/map/05-map-empty.png" alt="The banner reading: no jobs match skylight"></p>
+<figcaption class="doc-caption">The banner names which kind of empty it is, so you know whether to clear a filter or book some work.</figcaption>
+<table>
+<thead>
+<tr><th>Banner</th><th>What it means</th></tr>
+</thead>
+<tbody>
+<tr><td>No jobs scheduled for today</td><td>You have not narrowed anything. There is genuinely nothing on this date.</td></tr>
+<tr><td>No jobs match "kitchen"</td><td>Your search found nothing.</td></tr>
+<tr><td>No jobs match these filters</td><td>The date range or the crew is excluding everything.</td></tr>
+<tr><td>No jobs match your search and filters</td><td>Both at once.</td></tr>
+</tbody>
+</table>
+<p>The filters you have applied are listed beside the banner as chips, so you can see what is in the way. With more than one thing applied, <strong>Clear all</strong> appears to drop them in one go. With only one, its own dropdown already clears it.</p>
+<p>The appointments tab says the same four things about appointments.</p>
+<h2>Arriving from somewhere else</h2>
+<p>Opening the map from a job or a property brings its filters with it: the map lands on that one record, or on that one property, with the other filters cleared and a breadcrumb back to where you came from. It is the fastest way to answer "where exactly is this" without searching for it.</p>
+<h2>A pin needs an address</h2>
+<p>The map plots properties, not clients. A job whose property has no usable address cannot be placed, and will be missing from the map while still being perfectly visible in the Jobs list. If something you expected is not there, check the property on the client record first.</p>
+<h2>Where the map connects</h2>
+<table>
+<thead>
+<tr><th>From the map</th><th>You land in</th></tr>
+</thead>
+<tbody>
+<tr><td>View Job / View Appointment</td><td>The <strong>job</strong> or the <strong>appointment</strong>.</td></tr>
+<tr><td>The crew colour dot</td><td><strong>Crews</strong>, where the colours are assigned.</td></tr>
+<tr><td>A missing pin</td><td><strong>Clients &gt; Properties</strong>, where the address lives.</td></tr>
+</tbody>
+</table>
+<p>For the same work ordered by time rather than place, use the <strong>Scheduler</strong>.</p>

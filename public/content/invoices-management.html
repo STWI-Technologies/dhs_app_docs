@@ -50,6 +50,10 @@
 <p>To raise one directly, click <strong>Add Invoice</strong> on the Invoices list and fill in the client, the dates, and the lines.</p>
 <p><img src="/images/invoices/03-add-invoice-panel.png" class="kb-panel" alt="The Create Invoice panel"></p>
 <figcaption class="doc-caption">Raising an invoice directly. Billing a finished job is usually faster.</figcaption>
+<p><img src="/images/invoices/04-add-invoice-step2.png" class="kb-panel" alt="Step two of the Create Invoice panel, with the Groups sub-panel above Services and Products"></p>
+<figcaption class="doc-caption">Step 2 is the lines. Groups is the first thing on it.</figcaption>
+<p><strong>Copy from group</strong> brings a whole set of items in at once instead of picking them one at a time: "Add items from a group to the invoice. Editing them afterwards will not change the group." That sentence is the important part. A group is <em>copied</em>, never linked, so the lines become ordinary lines the moment they land: change a quantity, drop what you do not need, and the group itself is untouched.</p>
+<p>It tells you what it is about to do before you accept, because it does not copy blindly. Items already on the record are skipped ("2 items are already on the invoice"), and products with no stock are skipped too ("3 are out of stock"). When everything in the group falls into one of those, it says so rather than copying nothing in silence: "Nothing to copy from here."</p>
 <p>A job can carry more than one invoice, which is how you bill in stages: a deposit up front, the balance on completion.</p>
 <h2>Invoice details</h2>
 <p>Click an invoice to open it. This is the bill itself: what is being charged, the tax on it, what has been paid against it, and how much is still outstanding.</p>
@@ -57,6 +61,13 @@
 <figcaption class="doc-caption">An invoice open. This one was raised from the job "Door Fitting" and has since been paid. Job Details holds the work billed; Payments holds the money.</figcaption>
 <p>The header has its number and status, a <strong>Send Invoice</strong> button, and a three-dot menu holding <strong>Edit invoice</strong>, <strong>Download Pdf</strong> and <strong>Delete</strong>. Two tabs sit below. <strong>Job Details</strong> holds who it's billed to, the job it came from, and the services and products with their totals. <strong>Payments</strong> is where money received is recorded.</p>
 <p>The client sidebar keeps their contact details to hand for when you need to chase.</p>
+<h3>Copying a group onto an open invoice</h3>
+<p>The same <strong>Groups</strong> control is on the invoice itself, above the services and products, and it works as it does on an estimate: a group is copied, never linked, and the lines are ordinary lines the moment they land.</p>
+<p>The difference from the add panel is the preview. On an open invoice the card lists the group's items before anything happens, split into Services and Products, with the count that will actually be copied and the reason for whatever it leaves behind. <strong>Copy</strong> is what commits it.</p>
+<p><img src="/images/invoices/11-group-copy-preview.png" alt="The Groups card on an invoice with a group chosen and its items listed"></p>
+<figcaption class="doc-caption">The list comes first, the copy second.</figcaption>
+<p>An invoice that can no longer take lines, a paid one for instance, does not show the card at all.</p>
+
 <h2>Sending an invoice</h2>
 <p><strong>Send Invoice</strong> emails or texts it to the client, with a preview of what they'll receive first. The status moves to <strong>Sent</strong>, and to <strong>Viewed</strong> once they open it.</p>
 <p><img src="/images/invoices/04-send-invoice.png" class="kb-panel" alt="The send invoice panel"></p>
@@ -83,10 +94,11 @@
 <figcaption class="doc-caption">The Payments tab. Each payment is listed, and the balance follows.</figcaption>
 <p>That status on the list is why part payments are worth recording as they arrive rather than at the end: an invoice showing a small remaining balance is a very different conversation from one showing the full amount.</p>
 <h2>Editing and deleting</h2>
-<p>A draft invoice is fully editable. Once it's been sent, and especially once a payment is against it, an invoice is a financial record, so what you can change narrows. Correcting a sent invoice usually means issuing a new one rather than quietly rewriting the old.</p>
-<p>Delete is available from the row in the list and from inside the invoice, but think twice about deleting anything a client has already seen or paid.</p>
-<p><img src="/images/invoices/06-more-actions.png" alt="The More Actions menu open on an invoice, showing Edit invoice, Download Pdf and Delete"></p>
-<figcaption class="doc-caption">Edit invoice, Download Pdf and Delete sit behind More Actions.</figcaption>
+<p>A draft invoice is fully editable. Once it has been sent, an invoice is a financial record, so correcting it usually means issuing a new one rather than quietly rewriting the old.</p>
+<p>A <strong>Paid</strong> invoice is closed. <strong>Edit invoice</strong> and <strong>Delete</strong> are not disabled on it, they are <em>not in the menu at all</em>: all that is left is <strong>Download Pdf</strong>. The same applies throughout the record, so the line items, the dates and the totals are read-only too. If a paid invoice is wrong, the fix is a new document, not an edit.</p>
+<p>While it is still unpaid, Delete is on the row in the list and in the three-dot menu inside the invoice. Think twice about deleting anything a client has already seen.</p>
+<p><img src="/images/invoices/06-more-actions.png" alt="The three-dot menu open on a sent invoice, holding Edit Invoice, Download Pdf and Delete"></p>
+<figcaption class="doc-caption">The three-dot menu on an invoice that is still unpaid. On a paid one, only Download Pdf is left.</figcaption>
 <h2>Sharing a PDF</h2>
 <p><strong>Download Pdf</strong> gives you the invoice as a document, for clients who file paper or need to pass it to an accounts department.</p>
 <h2>Where invoices come from</h2>

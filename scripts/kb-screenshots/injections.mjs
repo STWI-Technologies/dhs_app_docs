@@ -39,14 +39,26 @@ const DEFAULT_PHONE = "+16025550173";
 export async function injectClientPhone(page, phones = CLIENT_PHONES) {
   const done = await page.evaluate(
     ({ phones, fallback }) => {
-      const label = [...document.querySelectorAll("p, span, div")].find(
-        (e) => (e.textContent || "").trim() === "Phone:"
+      // The client card has been redesigned once already: the label used to
+      // read "Phone:" on the same line as its value and now reads "Phone" on a
+      // line of its own. Match both, or this silently publishes "Phone: —".
+      const label = [...document.querySelectorAll("p, span, div, dt, label")].find(
+        (e) => e.children.length === 0 && /^Phone:?$/.test((e.textContent || "").trim())
       );
       if (!label) return "no Phone label on the client card";
       let value = label.nextElementSibling;
       if (!value) {
         const parent = label.parentElement;
-        value = parent && parent.children.length > 1 ? parent.children[1] : null;
+        const kids = parent ? [...parent.children] : [];
+        const i = kids.indexOf(label);
+        value = i >= 0 && kids[i + 1] ? kids[i + 1] : kids[1] || null;
+      }
+      if (!value) {
+        // Label and value as siblings under a shared wrapper, which is what the
+        // stacked layout produces.
+        const wrap = label.parentElement?.parentElement;
+        const sib = label.parentElement?.nextElementSibling;
+        value = sib || (wrap ? wrap.querySelector("p + p, span + span") : null);
       }
       if (!value) return "found the Phone label but not its value";
       if (!/^[—-]$/.test((value.textContent || "").trim())) return "ok";
