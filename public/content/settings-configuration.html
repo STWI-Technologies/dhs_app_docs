@@ -2,6 +2,8 @@
 <h2>Overview</h2>
 <p><strong>Settings</strong> is where the account is configured: who you are, when you work, how things are numbered, how you get paid, and what the app tells you about.</p>
 <p>It is not in the main Menu. Click your avatar in the top right corner and choose <strong>Settings</strong>. Your <strong>Profile</strong> and <strong>Billing</strong> are in that same popover.</p>
+<p><img src="/images/settings/01-settings.png" alt="The Settings page with its sidebar grouped into Personal, Workspace and Business"></p>
+<figcaption class="doc-caption">Settings and its own sidebar. Personal, Workspace and Business are three different scopes.</figcaption>
 <p>The page has its own sidebar on the left, grouped so that personal preferences and account-wide configuration do not get mixed up:</p>
 <table>
 <thead>
@@ -15,10 +17,15 @@
 </tbody>
 </table>
 <p>Each section saves on its own. There is no single save button for the page, so finish one section before moving to the next.</p>
+<p>Each section loads in one piece rather than field by field, and every card is read-only until you open it for editing. Leave a card with changes you have not applied and the app stops you: "The changes you made in this section have not been saved. If you continue, they will be lost", with <strong>Keep editing</strong> and <strong>Discard Changes</strong>.</p>
+<p><img src="/images/settings/05-settings-unsaved.png" class="kb-panel" alt="The dialog warning that changes in this section have not been saved"></p>
+<figcaption class="doc-caption">The guard. It fires on leaving the section, not on leaving the page.</figcaption>
+
 <h2>Account</h2>
 <p>The company's own details, in three blocks.</p>
 <p><strong>Company Information</strong> is the name, contact name and address that identify the business. <strong>Billing Information</strong> is what appears on the paperwork, when it differs.</p>
-<p><strong>Client Contact Information</strong> is the one to get right: the email and phone here are printed in the notification emails your clients receive, so it is how they reach you when they have a question. At least one of the two is required.</p>
+<p><strong>Company Name</strong> is required. <strong>Company Email</strong> is not, so a business that would rather be reached on one address can leave it empty. Company email and company phone are checked as you type: if another account already uses them, the field says so before you try to save.</p>
+<p><strong>Client Contact Information</strong> is the one to get right: the email and phone here are printed in the notification emails your clients receive, so it is how they reach you when they have a question. "At least one client email or phone number is required."</p>
 <p>Below that sits your <strong>client signup link</strong> and <strong>client code</strong>, both with a copy button. Send the link to a client and signing up through it connects them to your account automatically, with nothing for you to approve afterwards.</p>
 <p><strong>Delete Sample Data</strong> clears the demonstration records the account was created with. It asks twice, and it cannot be undone. Do it once you have real data and the samples are only getting in the way.</p>
 <h2>Profile</h2>
@@ -47,19 +54,27 @@
 <p>Exceptions are the days the schedule does not apply: holidays, shutdowns, the week everyone is away. Add one with a date range, and mark it <strong>Annual</strong> if it happens every year, which is what you want for fixed holidays.</p>
 <p>Exceptions are also summarised by month and by season, so you can see the shape of the year rather than a flat list of dates.</p>
 <h2>Dashboard</h2>
-<p>How much the dashboard shows and how it opens.</p>
+<p>How much the dashboard shows, which scheduler view it opens on, and what sits in the top bar. The same controls live behind the gear on the dashboard itself, so changing them in either place changes both.</p>
+<p><img src="/images/settings/02-settings-dashboard.png" alt="The Dashboard section of Settings"></p>
+<figcaption class="doc-caption">The same controls as the gear on the dashboard.</figcaption>
 <table>
 <thead>
-<tr><th>Setting</th><th>What it does</th></tr>
+<tr><th>Block</th><th>Setting</th><th>What it does</th></tr>
 </thead>
 <tbody>
-<tr><td>Max List Length</td><td>How many rows each dashboard list shows.</td></tr>
-<tr><td>Show Only New</td><td>Narrows the lists to what you have not dealt with yet.</td></tr>
-<tr><td>Upcoming Jobs Window</td><td>How many days ahead the upcoming jobs list looks.</td></tr>
-<tr><td>Dashboard Scheduler</td><td>The default view for the scheduler on the dashboard.</td></tr>
-<tr><td>Scheduler Page</td><td>The default view for the full scheduler page.</td></tr>
+<tr><td rowspan="2">Display</td><td>Max List Length</td><td>The maximum number of rows each dashboard list shows. It cannot be zero.</td></tr>
+<tr><td>Upcoming Jobs Window</td><td>How many days ahead the upcoming jobs list looks. It cannot be zero.</td></tr>
+<tr><td rowspan="2">Default Scheduler Views</td><td>Dashboard Scheduler</td><td>The view the scheduler opens on inside the dashboard. Day, Week or List.</td></tr>
+<tr><td>Scheduler Page</td><td>The view the full Scheduler page opens on. Day, Week, Month or List.</td></tr>
+<tr><td>Inbox Display</td><td>Show Only New Messages</td><td>Hides conversations you have already read from the Inbox card.</td></tr>
+<tr><td>Job Timer</td><td>Show Timer</td><td>Puts the running job timer in the top bar, next to the clock.</td></tr>
+<tr><td rowspan="4">Date &amp; Time</td><td>Show time</td><td>Displays a clock in the top bar.</td></tr>
+<tr><td>Show date</td><td>Adds the date next to the clock.</td></tr>
+<tr><td>Include seconds</td><td>Adds seconds to the clock readout.</td></tr>
+<tr><td>Time format</td><td>12-hour or 24-hour.</td></tr>
 </tbody>
 </table>
+<p>A preview of the top bar sits under the Date &amp; Time block, so you can see what the clock will look like before you save. With both Show time and Show date off it reads <strong>Clock hidden</strong>.</p>
 <p>The section also carries a recommended configuration. On a busy account, a shorter list and a narrower window are the difference between a dashboard that opens instantly and one you wait for.</p>
 <h2>Timesheet</h2>
 <p>One decision, and it saves a lot of manual work: <strong>automatic linking</strong>.</p>
@@ -67,15 +82,23 @@
 <p>The main switch is account-wide. Underneath, each person can opt themselves out with <strong>Disable automatic linking for myself</strong> without changing anything for the rest of the team.</p>
 <p>See <strong>Timesheets</strong> for what linking actually does to an entry.</p>
 <h2>Business</h2>
-<p>The account-wide rules, in four blocks.</p>
-<h3>Counter Settings</h3>
-<p><strong>Estimate ID Counter</strong> and <strong>Invoice Number Counter</strong> set where the numbering continues from, and the current values are shown beside them. This is what you use when you are moving from another system and want your invoice numbers to carry on rather than restart at one.</p>
-<h3>Crew Settings</h3>
-<p><strong>Allow Crew To Access Any Job</strong> decides how far a crew member can see. Leave it off and <strong>Crew Restriction Active</strong> applies: they see and log time on the jobs assigned to their crews, and nothing else. Turn it on and any crew member can open and log time on any job in the account.</p>
-<h3>Information Sharing</h3>
-<p><strong>Do Not Share Information</strong> controls whether your details are shared beyond your own account.</p>
-<h3>Payment Disclaimer</h3>
-<p>The small print at the bottom of an invoice. Keep the default text, which is shown to you in full, or write your own. This is also where <strong>Show Zelle Payment Option on Invoice</strong> lives, along with the Zelle details and the wording the client sees.</p>
+<p>The account-wide rules, in six blocks, in the order the page lists them.</p>
+<p><img src="/images/settings/03-settings-business.png" alt="The Business section with Counter settings, Invoice Instructions and Zelle payment details"></p>
+<figcaption class="doc-caption">Each block has its own Edit. Nothing here is editable until you press it.</figcaption>
+<h3>Counter settings</h3>
+<p><strong>Estimate ID counter</strong> and <strong>Invoice number counter</strong> set where the numbering continues from, and the current values are shown beside them. This is what you use when you are moving from another system and want your invoice numbers to carry on rather than restart at one.</p>
+<h3>Invoice Instructions</h3>
+<p>Text that goes out on <em>every</em> invoice: "Provide instructional text to display on all invoices". One field, with a 512 character counter. There is no longer a default text to fall back on, so whatever you write here is what the client reads, and an empty field means no instructions at all.</p>
+<h3>Zelle payment details</h3>
+<p>A block of its own, not part of the instructions. <strong>Show Zelle Payment Option on Invoice</strong> turns it on or off, and <strong>Zelle payment option text</strong> is the wording the client sees.</p>
+<h3>Crew settings</h3>
+<p><strong>Allow crew to access any job</strong> decides how far a crew member can see. Leave it off and they see and log time on the jobs assigned to their crews, and nothing else. Turn it on and any crew member can open and log time on any job in the account.</p>
+<h3>Privacy settings</h3>
+<p><strong>Do not share information</strong> controls whether your details are shared beyond your own account.</p>
+<h3>Tax rates</h3>
+<p>The rates you can put on a line. <strong>Add Tax Rate</strong> creates one with a name and a percentage, and each row can be edited or removed. These are what the Estimates and Invoices line items pick from.</p>
+<p><img src="/images/settings/04-settings-business-privacy.png" alt="Crew settings, Privacy settings and Tax rates at the bottom of the Business section"></p>
+<figcaption class="doc-caption">The bottom half of the same section.</figcaption>
 <h2>Accept Payments</h2>
 <p>Online card payments run through Stripe, and this section is the application and its status.</p>
 <p>You apply from here, giving your business type, company name and phone. The section then reflects where the application is: submitted, under review, needing extra verification, or approved with a link into your Stripe dashboard. If Stripe declines, the reason and a reference number are shown so support has something to work with.</p>

@@ -50,6 +50,10 @@
 <p>Para emitir una directo, haga clic en <strong>Agregar Factura</strong> en la lista y llene el cliente, las fechas y las líneas.</p>
 <p><img src="/images/invoices/03-add-invoice-panel.png" class="kb-panel" alt="El panel para crear una factura"></p>
 <figcaption class="doc-caption">Emitir una factura directo. Cobrar un trabajo terminado suele ser más rápido.</figcaption>
+<p><img src="/images/invoices/04-add-invoice-step2.png" class="kb-panel" alt="Paso dos del panel Create Invoice, con el subpanel Groups encima de Servicios y Productos"></p>
+<figcaption class="doc-caption">El paso 2 son las líneas. Groups es lo primero que hay en él.</figcaption>
+<p><strong>Copiar desde un grupo</strong> trae un conjunto entero de una vez en lugar de ir uno por uno: "Agregue elementos de un grupo a la factura. Editarlos después no cambiará el grupo". Esa frase es lo importante. Un grupo se <em>copia</em>, nunca se enlaza, así que las líneas son líneas normales en cuanto entran: cambie una cantidad, quite lo que no necesita, y el grupo queda intacto.</p>
+<p>Le dice qué va a hacer antes de que acepte, porque no copia a ciegas. Los elementos que ya están en la factura se omiten ("2 elementos ya están ahí"), y los productos sin existencias también ("3 están sin existencias"). Cuando todo el grupo cae en alguno de esos casos, lo dice en vez de copiar nada en silencio: "No hay nada que copiar desde aquí".</p>
 <p>Un trabajo puede llevar más de una factura, que es como se cobra por etapas: un anticipo al principio, el saldo al terminar.</p>
 <h2>Detalle de la factura</h2>
 <p>Haga clic en una factura para abrirla. Esta es la cuenta en sí: qué se está cobrando, el impuesto que lleva, lo que ya se ha pagado, y cuánto queda pendiente.</p>
@@ -57,6 +61,13 @@
 <figcaption class="doc-caption">Una factura abierta. Esta se emitió desde el trabajo "Door Fitting" y ya está pagada. Detalles del trabajo guarda la obra cobrada; Pagos guarda el dinero.</figcaption>
 <p>El encabezado trae su número y su estado, un botón <strong>Enviar factura</strong>, y un menú de tres puntos con <strong>Editar factura</strong>, <strong>Descargar PDF</strong> y <strong>Eliminar</strong>. Debajo hay dos pestañas. <strong>Detalles del trabajo</strong> tiene a quién se le cobra, el trabajo del que salió, y los servicios y productos con sus totales. <strong>Pagos</strong> es donde se registra el dinero recibido.</p>
 <p>La barra lateral del cliente mantiene sus datos de contacto a la mano para cuando haya que dar seguimiento.</p>
+<h3>Copiar un grupo en una factura abierta</h3>
+<p>El mismo control de <strong>Groups</strong> está en la propia factura, encima de los servicios y productos, y funciona igual que en un presupuesto: el grupo se copia, nunca se enlaza, y las líneas son líneas normales en cuanto caen.</p>
+<p>La diferencia con el panel de alta es la vista previa. En una factura abierta la tarjeta lista los artículos del grupo antes de que pase nada, separados en Servicios y Productos, con la cantidad que de verdad se va a copiar y el motivo de lo que deja fuera. <strong>Copy</strong> es lo que lo confirma.</p>
+<p><img src="/images/invoices/11-group-copy-preview.png" alt="La tarjeta de Groups en una factura con un grupo elegido y sus artículos listados"></p>
+<figcaption class="doc-caption">Primero la lista, después la copia.</figcaption>
+<p>Una factura que ya no admite líneas, por ejemplo una pagada, no muestra la tarjeta.</p>
+
 <h2>Enviar una factura</h2>
 <p><strong>Enviar factura</strong> la manda por correo o por mensaje, con una vista previa de lo que va a recibir. El estado pasa a <strong>Enviado</strong>, y a <strong>Visto</strong> en cuanto la abre.</p>
 <p><img src="/images/invoices/04-send-invoice.png" class="kb-panel" alt="El panel de envío de factura"></p>
@@ -83,10 +94,11 @@
 <figcaption class="doc-caption">La pestaña Pagos. Cada pago queda listado, y el saldo lo sigue.</figcaption>
 <p>Ese estado en la lista es la razón para registrar los pagos parciales conforme llegan y no al final: una factura con un saldo pequeño pendiente es una conversación muy distinta de una que muestra el monto completo.</p>
 <h2>Editar y eliminar</h2>
-<p>Una factura en borrador es totalmente editable. Una vez enviada, y sobre todo una vez que tiene un pago encima, la factura es un registro financiero, así que lo que se puede cambiar se reduce. Corregir una factura enviada normalmente significa emitir una nueva y no reescribir la vieja en silencio.</p>
-<p>Eliminar está disponible desde la fila de la lista y desde dentro de la factura, pero piénselo dos veces antes de eliminar algo que un cliente ya vio o ya pagó.</p>
-<p><img src="/images/invoices/06-more-actions.png" alt="El menú Más acciones abierto en una factura"></p>
-<figcaption class="doc-caption">Editar factura, Descargar PDF y Eliminar viven detrás de Más acciones.</figcaption>
+<p>Una factura en borrador es totalmente editable. Una vez enviada, la factura es un registro financiero, así que corregirla normalmente significa emitir una nueva y no reescribir la vieja en silencio.</p>
+<p>Una factura <strong>Paid</strong> está cerrada. <strong>Edit invoice</strong> y <strong>Delete</strong> no aparecen deshabilitados: <em>no están en el menú</em>. Lo único que queda es <strong>Download Pdf</strong>. Lo mismo vale para el resto del registro, así que las líneas, las fechas y los totales también son de solo lectura. Si una factura pagada está mal, el arreglo es un documento nuevo, no una edición.</p>
+<p>Mientras siga sin pagar, Eliminar está en la fila de la lista y en el menú de tres puntos dentro de la factura. Piénselo dos veces antes de eliminar algo que el cliente ya vio.</p>
+<p><img src="/images/invoices/06-more-actions.png" alt="El menú de tres puntos abierto en una factura enviada, con Edit Invoice, Download Pdf y Delete"></p>
+<figcaption class="doc-caption">El menú de tres puntos en una factura que sigue sin pagar. En una pagada solo queda Download Pdf.</figcaption>
 <h2>Compartir un PDF</h2>
 <p><strong>Descargar PDF</strong> le entrega la factura como documento, para los clientes que archivan en papel o que tienen que pasarla a un área de cuentas por pagar.</p>
 <h2>De dónde salen las facturas</h2>

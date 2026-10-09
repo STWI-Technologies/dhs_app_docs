@@ -56,9 +56,13 @@
 <figcaption class="doc-caption">El estado junto al nombre del trabajo es un control, no una etiqueta. Desde ahí el trabajo pasa de un estado al siguiente.</figcaption>
 <p>Las cuadrillas mueven el trabajo por En camino, Llegó, Iniciado y En pausa desde la app móvil conforme avanza el día, así la oficina ve dónde va todo sin llamar a nadie.</p>
 <h2>Crear un trabajo</h2>
-<p>Haga clic en <strong>Agregar trabajo</strong>. Tres pasos. Primero los datos: cliente, propiedad, equipo, servicios y productos, y una lista de verificación si la hay. Luego la fecha de inicio, luego la de fin. Los días en que el equipo no está disponible aparecen marcados, para que no lo agende dos veces.</p>
+<p>Haga clic en <strong>Agregar trabajo</strong>. Dos pasos. <strong>Paso 1, Details</strong>: cliente, propiedad, equipo, servicios y productos, y una lista de verificación si la hay.</p>
 <p><img src="/images/jobs/03-add-job-panel.png" class="kb-panel" alt="El panel para agregar un trabajo"></p>
-<figcaption class="doc-caption">Crear un trabajo directo. La mayoría llega desde un presupuesto aprobado.</figcaption>
+<figcaption class="doc-caption">Paso 1. La mayoría de los trabajos llegan desde un presupuesto aprobado en vez de empezar aquí.</figcaption>
+<p><strong>Paso 2, Schedule</strong>: una <strong>fecha y hora de inicio</strong> y una <strong>fecha y hora de fin</strong>, para que un trabajo que cruza dos días sea un trabajo y no dos. Encima van tres interruptores: <strong>High Priority</strong>, <strong>Is Locked</strong>, que impide que un cambio de agenda lo mueva, y <strong>Override</strong>, que ignora las restricciones de horario comercial.</p>
+<p>Los días en que el equipo no está disponible aparecen marcados, para que no lo agende dos veces, y Override es la forma deliberada de saltarse eso.</p>
+<p><img src="/images/jobs/04-add-job-step2.png" class="kb-panel" alt="Paso dos del panel Add New Job: los tres interruptores y las fechas y horas de inicio y fin"></p>
+<figcaption class="doc-caption">Paso 2. Inicio y fin son fechas separadas, no una duración.</figcaption>
 <p>Aunque la mayoría de los trabajos no empiezan aquí. Si el trabajo se cotizó, abra el presupuesto aprobado y use <strong>Convertir a trabajo</strong>, y todo se copia.</p>
 <h2>Detalle del trabajo</h2>
 <p>Haga clic en un trabajo para abrirlo. Todo lo de ese trabajo vive en una sola pantalla: lo acordado, quién lo hace, las visitas que lleva, las horas registradas y lo que el cliente debe al final.</p>
@@ -68,6 +72,8 @@
 <p>Debajo de los datos del cliente, la barra lateral tiene tres pestañas: <strong>Chat</strong>, <strong>Notas</strong> y <strong>Archivos adjuntos</strong>. El chat a su vez se parte en dos, <strong>Cliente</strong> y <strong>Equipo</strong>, para que un mensaje a la cuadrilla sobre el acceso o el estacionamiento no le llegue al cliente por error.</p>
 <p><img src="/images/jobs/07-client-chat.png" class="kb-panel" alt="La pestaña de chat del trabajo, con el cambio entre Cliente y Equipo"></p>
 <figcaption class="doc-caption">La conversación del trabajo, guardada junto al trabajo del que habla.</figcaption>
+<p><strong>Copiar desde un grupo</strong> trae un conjunto entero de una vez en lugar de ir uno por uno: "Agregue elementos de un grupo a el trabajo. Editarlos después no cambiará el grupo". Esa frase es lo importante. Un grupo se <em>copia</em>, nunca se enlaza, así que las líneas son líneas normales en cuanto entran: cambie una cantidad, quite lo que no necesita, y el grupo queda intacto.</p>
+<p>Le dice qué va a hacer antes de que acepte, porque no copia a ciegas. Los elementos que ya están en el trabajo se omiten ("2 elementos ya están ahí"), y los productos sin existencias también ("3 están sin existencias"). Cuando todo el grupo cae en alguno de esos casos, lo dice en vez de copiar nada en silencio: "No hay nada que copiar desde aquí".</p>
 <p>Las pestañas de arriba:</p>
 <table>
 <thead>

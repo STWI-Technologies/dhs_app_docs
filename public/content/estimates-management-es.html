@@ -53,13 +53,16 @@
 <h2>Crear un presupuesto</h2>
 <p>Haga clic en <strong>Agregar presupuesto</strong>. El panel tiene dos pasos.</p>
 <h3>Paso 1: los datos</h3>
-<p>Para quién es y qué cubre: el <strong>Cliente</strong> y cuál de sus propiedades, un <strong>Nombre</strong> para el presupuesto, el <strong>Equipo</strong> que haría el trabajo, una <strong>Fecha de vencimiento</strong> y una <strong>Lista de verificación</strong> si el trabajo lleva una.</p>
+<p>Para quién es y qué cubre: el <strong>cliente</strong>, cuál de sus <strong>propiedades</strong> y el <strong>equipo</strong> que haría el trabajo. Los tres son obligatorios.</p>
+<p>Después <strong>Expiration Date</strong>, que de entrada es un interruptor y no una fecha. Arranca apagado, así que el campo de al lado dice <strong>Never expires</strong>; enciéndalo para elegir una fecha, y tiene que ser futura.</p>
+<p>Dos cosas que este paso ya no pide, y antes sí: el <strong>nombre</strong> y la <strong>lista de verificación</strong>. Las dos pertenecen al presupuesto una vez que existe, y se ponen desde el propio registro.</p>
 <p><img src="/images/estimates/03-add-estimate-panel.png" class="kb-panel" alt="Primer paso del panel de nuevo presupuesto"></p>
 <figcaption class="doc-caption">El paso 1 es para quién es; el paso 2 es qué está cobrando.</figcaption>
 <p>Si el cliente todavía no está en DHS, Añadir Rápido está ahí mismo en el selector, así que no tiene que abandonar el presupuesto para crearlo primero.</p>
 <h3>Paso 2: las líneas</h3>
 <p>Ahora lo que va a cobrar: los <strong>servicios</strong> y <strong>productos</strong> que forman el trabajo. Cada uno entra con su precio ya puesto desde su catálogo, y usted ajusta la cantidad.</p>
-<p>Si tiene <strong>grupos</strong> configurados, agregue uno y su conjunto completo entra de una vez en lugar de elegirlos uno por uno. De ahí en adelante son líneas normales: cambie una cantidad, quite lo que no haga falta.</p>
+<p><strong>Copiar desde un grupo</strong> trae un conjunto entero de una vez en lugar de ir uno por uno: "Agregue elementos de un grupo a el presupuesto. Editarlos después no cambiará el grupo". Esa frase es lo importante. Un grupo se <em>copia</em>, nunca se enlaza, así que las líneas son líneas normales en cuanto entran: cambie una cantidad, quite lo que no necesita, y el grupo queda intacto.</p>
+<p>Le dice qué va a hacer antes de que acepte, porque no copia a ciegas. Los elementos que ya están en el presupuesto se omiten ("2 elementos ya están ahí"), y los productos sin existencias también ("3 están sin existencias"). Cuando todo el grupo cae en alguno de esos casos, lo dice en vez de copiar nada en silencio: "No hay nada que copiar desde aquí".</p>
 <p>Guarde, y el presupuesto arranca como <strong>Borrador</strong>.</p>
 <h2>Detalle del presupuesto</h2>
 <p>Haga clic en un presupuesto para abrirlo. Esta es la cotización tal como la verá el cliente: el trabajo, los servicios y productos con los que se cotiza, los totales, y en qué punto de su aprobación está.</p>
@@ -77,6 +80,13 @@
 </ul>
 <p>La <strong>barra lateral del cliente</strong> mantiene a la mano su teléfono y su correo, para que pueda dar seguimiento a una cotización sin ir a buscarlo.</p>
 <p>Cuando un presupuesto tiene programación recurrente, aparece una pestaña <strong>Programación Recurrente</strong> junto a Resumen.</p>
+<h3>Copiar un grupo en un presupuesto abierto</h3>
+<p>El mismo control de <strong>Groups</strong> está en el propio registro, justo encima de Servicios y Productos, porque un grupo llena los dos: sus partidas de mano de obra caen como servicios y sus materiales como productos.</p>
+<p>Aquí se comporta distinto en algo que importa. En el panel de alta copia sin mostrarle una lista, porque los paneles de Servicios y Productos que van debajo ya enseñan lo que llegó. En un presupuesto abierto no hay esa vista previa, así que la tarjeta <em>lista primero los artículos del grupo</em>, separados en Servicios y Productos, y le dice qué se va a copiar y qué se va a saltar. No se mueve nada hasta que presione <strong>Copy</strong>.</p>
+<p><img src="/images/estimates/11-group-copy-preview.png" alt="La tarjeta de Groups con un grupo elegido, listando sus servicios y productos y el botón Copy"></p>
+<figcaption class="doc-caption">Safety Equipment elegido: tres servicios, dos productos con su stock, y qué hará el botón Copy.</figcaption>
+<p>La tarjeta no aparece en un presupuesto que ya no admite líneas, es decir uno convertido en trabajo o vencido. Es a propósito, no un olvido: ofrecerle copiar en un registro bloqueado no llevaría a ninguna parte.</p>
+
 <h2>Enviarle un presupuesto al cliente</h2>
 <p>Abra el presupuesto y haga clic en <strong>Enviar presupuesto</strong>.</p>
 <p><img src="/images/estimates/06-submit-estimate.png" class="kb-panel" alt="El panel de envío con los canales de correo y SMS"></p>

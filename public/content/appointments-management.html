@@ -47,10 +47,16 @@
 </table>
 <p>Crews move an appointment through En Route, Arrived and Completed from the mobile app, so the office can see the day unfold.</p>
 <h2>Booking an appointment</h2>
-<p>Click <strong>Add Appointment</strong>. You choose the <strong>client</strong> and which of their <strong>properties</strong>, what the visit is <strong>called</strong>, the <strong>crew</strong>, and the <strong>date and time</strong>.</p>
+<p>Click <strong>Add Appointment</strong>. The panel has two steps. <strong>Step 1, Details</strong>, is who and where: the <strong>client</strong>, which of their <strong>properties</strong>, the <strong>crew</strong>, and what they asked for. There is no title field; the appointment is numbered for you.</p>
+<p><strong>Customer Info &amp; Request</strong> is required, and it is the field that earns the booking its keep: "Describe what type of request it is and customer info...". Up to 512 characters. It is saved as a note on the appointment, so whoever picks the visit up reads what the client actually asked for instead of guessing from the title.</p>
+<p>That field only exists while you are creating. Editing an appointment afterwards does not offer it, so write it now; anything you add later goes in the appointment's own notes.</p>
 <p><img src="/images/appointments/03-add-appointment-panel.png" class="kb-panel" alt="Step one of the Add Appointment panel"></p>
-<figcaption class="doc-caption">Booking a visit. The crew’s availability is respected while you pick.</figcaption>
+<figcaption class="doc-caption">Step 1. Four fields, all of them required.</figcaption>
+<p><strong>Step 2, Schedule &amp; Review</strong>, is when. <strong>Duration</strong>, a <strong>date</strong> and a <strong>time</strong>, plus three switches: <strong>High Priority</strong>, <strong>Callback</strong> for a follow-up visit, and <strong>Override</strong>, which ignores the business hours restrictions. A <strong>Summary</strong> at the bottom repeats the client, property, crew, time and date, so the last thing you see before booking is what you are booking.</p>
+<p><img src="/images/appointments/04-add-appointment-step2.png" class="kb-panel" alt="Step two of the Add Appointment panel: the switches, duration, date, time and the summary"></p>
+<figcaption class="doc-caption">Step 2. <strong>Save As Draft</strong> keeps it without committing the slot.</figcaption>
 <p>The crew's availability is respected while you pick, so you can't quietly book someone who's already out on a job. If the client isn't in DHS yet, Quick Add is in the picker.</p>
+<p><strong>Services are not part of booking any more.</strong> The wizard used to have a Services step; it is gone, and so is the Service row in the review summary. Book the visit first, then add services from the appointment itself. Rescheduling never asks for them either, and it leaves the services already on the appointment untouched.</p>
 <p>Appointments can also be created straight from the <strong>Scheduler</strong> by picking a slot, which is usually faster when you're booking around existing work.</p>
 <h2>Appointment details</h2>
 <p>Click an appointment to open it. This is the visit: when it is, who is going, the property they are going to, the services planned for it, and the hours the visit actually took.</p>
@@ -67,6 +73,8 @@
 </ul>
 <h2>Sending it to the client</h2>
 <p><strong>Send to Client</strong> sends the appointment details out by email or text, with a preview first. The status moves to <strong>Pending</strong> until they confirm.</p>
+<p><img src="/images/appointments/07-send-to-client.png" class="kb-panel" alt="The Send to Client panel for an appointment, with the email and SMS messages and a preview"></p>
+<figcaption class="doc-caption">Email, SMS or both. <strong>Preview appointment</strong> at the top shows what the client will open.</figcaption>
 <p>This is what stops the "was anyone coming today?" call.</p>
 <h2>What comes out of an appointment</h2>
 <p>This is the part of the section that earns its keep. You went to look at the work; now you know what it is. The <strong>Related Records</strong> tab turns the visit into the next step, and then keeps the trail.</p>
@@ -85,6 +93,8 @@
 <p>Once created, each one is listed on the same tab, so the appointment becomes the thread you can follow from "we went and looked" to "we were paid". Each kind is created once: with an estimate already made from this visit, the button to make another is spent.</p>
 <h2>Tracking time on a visit</h2>
 <p><strong>Start Timer</strong> records time against the appointment, which matters for visits you bill by the hour and for knowing what unbilled site visits actually cost you. The hours land in <strong>Timesheets</strong> like any other time.</p>
+<p><img src="/images/appointments/06-visit-timesheets.png" alt="The Visits card with a visit expanded, showing its timesheet record"></p>
+<figcaption class="doc-caption">A visit expanded. En route, work time, office time and job prep are kept apart, and the entries behind them are listed underneath.</figcaption>
 <h2>A note on products</h2>
 <p>Appointments carry <strong>services</strong>, not products, because they're visits rather than installs. If parts are involved, that's a job, and the appointment is where you create it from.</p>
 <h2>Editing, cancelling, archiving</h2>
