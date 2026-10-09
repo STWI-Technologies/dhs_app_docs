@@ -98,6 +98,35 @@ async function waitForSkeletons() {
 const injectChat = () => injectChatInto(page, APPOINTMENT_CHAT);
 const injectClientPhone = () => injectPhoneInto(page);
 
+/**
+ * Open the visit row before the shot.
+ *
+ * The Visits card lists each visit collapsed, and collapsed it shows a date and
+ * nothing else, which is not what the article is describing. Expanding it is
+ * the app's own control: nothing is faked by clicking it.
+ */
+async function expandVisit() {
+  const opened = await page.evaluate(() => {
+    const card = [...document.querySelectorAll("div")].find(
+      (d) => /^Visits/.test((d.innerText || "").trim()) && d.querySelector("button")
+    );
+    if (!card) return "no Visits card";
+    // The row's expander is the chevron button at the end of the row, not the
+    // Add Visit button in the header.
+    const buttons = [...card.querySelectorAll("button")].filter(
+      (b) => !/add visit/i.test(b.innerText || "")
+    );
+    const chevron = buttons.find((b) => b.querySelector("svg") && !(b.innerText || "").trim());
+    const target = chevron || buttons[0];
+    if (!target) return "no expander on the visit row";
+    target.click();
+    return "clicked";
+  });
+  console.log(`    visit row: ${opened}`);
+  await page.waitForTimeout(2500);
+  await waitForSkeletons();
+}
+
 async function gotoAppointments() {
   await page.locator('button:has-text("Appointments"), a:has-text("Appointments")').first().click();
   await page.waitForSelector('[data-tour="appointments-page"]', { timeout: 30000 });
@@ -226,16 +255,47 @@ console.log(`    ✓ 03-appointment-detail.png (${SUBJECT_ID})`);
 
 // The Visits card on its own, open, for the time-tracking section: a viewport
 // shot of the top of the record cannot show the timesheet records under it.
-const visitsCard = page
-  .locator("div")
-  .filter({ hasText: /^Visits/ })
-  .filter({ has: page.locator('button:has-text("Add Visit")') })
-  .last();
-if (await visitsCard.count()) {
-  await visitsCard.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(800);
-  await visitsCard.screenshot({ path: resolve(OUT_DIR, "06-visit-timesheets.png") });
-  console.log(`    ✓ 06-visit-timesheets.png (${SUBJECT_ID})`);
+// Matching "the div that says Visits" picked the card's HEADER, and published
+// a 40px strip with the title and the Add Visit button and no table at all.
+// Climb from the heading until the box is big enough to hold the rows under it.
+const visitsBox = await page.evaluate(() => {
+  const head = [...document.querySelectorAll("h1,h2,h3,h4,div,span,p")].find(
+    (e) => e.children.length === 0 && /^Visits$/.test((e.textContent || "").trim())
+  );
+  if (!head) return null;
+  let el = head;
+  while (el && el.parentElement) {
+    const r = el.getBoundingClientRect();
+    if (r.width > 600 && r.height > 240 && /Timesheet records|Work Time/i.test(el.innerText || "")) break;
+    el = el.parentElement;
+  }
+  if (!el) return null;
+  el.scrollIntoView({ block: "center" });
+  return true;
+});
+if (visitsBox) {
+  await page.waitForTimeout(900);
+  const clip = await page.evaluate(() => {
+    const head = [...document.querySelectorAll("h1,h2,h3,h4,div,span,p")].find(
+      (e) => e.children.length === 0 && /^Visits$/.test((e.textContent || "").trim())
+    );
+    let el = head;
+    while (el && el.parentElement) {
+      const r = el.getBoundingClientRect();
+      if (r.width > 600 && r.height > 240 && /Timesheet records|Work Time/i.test(el.innerText || "")) break;
+      el = el.parentElement;
+    }
+    if (!el) return null;
+    const r = el.getBoundingClientRect();
+    const top = Math.max(0, r.y - 4);
+    return { x: Math.max(0, r.x - 4), y: top, width: r.width + 8, height: Math.min(r.height + 8, window.innerHeight - top - 4) };
+  });
+  if (clip) {
+    await page.screenshot({ path: resolve(OUT_DIR, "06-visit-timesheets.png"), clip });
+    console.log(`    ✓ 06-visit-timesheets.png (${SUBJECT_ID})`);
+  } else {
+    console.log("    ! could not measure the Visits card");
+  }
 } else {
   console.log("    ! could not find the Visits card to crop");
 }

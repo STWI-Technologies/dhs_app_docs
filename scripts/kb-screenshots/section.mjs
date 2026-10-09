@@ -60,6 +60,33 @@ const SECTIONS = {
   timesheets: { nav: "Timesheets", tour: "timesheets", add: "Add Timesheet", panel: "Add Timesheet", filter: "popover" },
 };
 
+
+/**
+ * The Appointments list's own client column, re-dressed.
+ *
+ * On this account every appointment on the first page belongs to a throwaway
+ * fixture: "GateUser Tester5d7530", "ClientUser Contact2df9ce", "UserContact
+ * Only Co eaf53a". Ten rows of that is what a reader sees first, and it is not
+ * what the Estimates list two articles away shows for the same account.
+ *
+ * So the client column is given the SAME people the Estimates figure already
+ * publishes, in the same order. Only the name and the company are rewritten,
+ * in the browser, after the response arrives: the appointments, their dates,
+ * their crews and their statuses are the account's own. Nothing is written.
+ */
+const APPOINTMENT_CLIENTS = [
+  ["Sophia", "Turner", "Sun Valley Properties"],
+  ["Robert", "Smith", "Robert Smith"],
+  ["Olivia", "Martinez", "Sun Valley Properties"],
+  ["Sophia", "Turner", "Sun Valley Properties"],
+  ["Sophia", "Turner", "Sun Valley Properties"],
+  ["Ethan", "Roberts", "Sun Valley Properties"],
+  ["Ava", "Wilson", "Sun Valley Properties"],
+  ["Olivia", "Martinez", "Sun Valley Properties"],
+  ["Noah", "Davis", "Sun Valley Properties"],
+  ["Ava", "Wilson", "Sun Valley Properties"],
+];
+
 const email = process.env.KB_EMAIL || process.env.STAGING_SP_LOGIN_EMAIL;
 const password = process.env.KB_PASSWORD || process.env.STAGING_SP_LOGIN_PASSWORD;
 if (!email || !password) {
@@ -78,6 +105,26 @@ if (unknown.length) {
 const results = [];
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: VIEWPORT, deviceScaleFactor: SCALE });
+
+await page.route("**/graphql**", async (route) => {
+  let body = null;
+  try { body = JSON.parse(route.request().postData() || "null"); } catch {}
+  if (body?.operationName !== "GetAppointmentsListPage") return route.continue();
+  const res = await route.fetch();
+  let json;
+  try { json = await res.json(); } catch { return route.fulfill({ response: res }); }
+  const rows = json?.data?.getAppointments?.appointments;
+  if (Array.isArray(rows)) {
+    rows.forEach((row, i) => {
+      const [first, last, company] = APPOINTMENT_CLIENTS[i % APPOINTMENT_CLIENTS.length];
+      if (!row.client) return;
+      row.client.companyName = company;
+      const user = row.client.users && row.client.users[0];
+      if (user) { user.firstName = first; user.lastName = last; }
+    });
+  }
+  await route.fulfill({ response: res, json });
+});
 
 /**
  * The onboarding wizard docks over the page for accounts that haven't finished
@@ -210,7 +257,19 @@ async function shoot(dir, name, target, opts = {}) {
   console.log(`    ✓ ${name}.png`);
 }
 
+/**
+ * Which numbered figures to take, e.g. KB_FIGURES=03.
+ *
+ * Without this, re-shooting one panel re-shoots the list figures beside it, and
+ * two of the estimates ones are RETOUCHED in place by
+ * edit-estimates-figures.mjs. Overwriting those silently threw away work once
+ * already.
+ */
+const ONLY_FIGURES = (process.env.KB_FIGURES || "").split(",").map((x) => x.trim()).filter(Boolean);
+const wantFigure = (name) => !ONLY_FIGURES.length || ONLY_FIGURES.some((n) => name.startsWith(n));
+
 async function figure(dir, name, fn) {
+  if (!wantFigure(name)) return;
   try {
     await fn();
   } catch (err) {

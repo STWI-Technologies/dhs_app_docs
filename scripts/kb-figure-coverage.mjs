@@ -47,6 +47,41 @@ const SKIP = [
 ];
 
 /**
+ * Surfaces whose heading does not read like an action but is one.
+ *
+ * The three visual sections, Dashboard, Scheduler and Map, are named after the
+ * thing on screen rather than after a verb ("The four numbers", "Reading the
+ * pins"), so the ACTION test above cannot see them. They are the sections most
+ * in need of a picture, so they are named here instead of bending the regex
+ * until it matches prose everywhere else.
+ */
+const EXTRA_SURFACES = {
+  dashboard: [
+    "The top of the page",
+    "The four numbers",
+    "The scheduler card",
+    "The Inbox card",
+    "Upcoming jobs, open estimates, open invoices",
+    "Tuning what it shows",
+  ],
+  scheduler: [
+    "Getting around",
+    "Day view, one column per crew",
+    "What a card tells you",
+    "Creating from the calendar",
+    "Moving work by dragging",
+    "Availability, and overriding it",
+    "Filtering by crew",
+  ],
+  "map-view": [
+    "Jobs or appointments",
+    "Narrowing what is on the map",
+    "Reading the pins",
+    "When the map comes up empty",
+  ],
+};
+
+/**
  * Gaps we know about and cannot close from the current environment. Keeping them
  * here, with the reason, is what separates "nobody has done this yet" from
  * "this cannot be photographed today", otherwise the report cries wolf and
@@ -72,8 +107,6 @@ const BLOCKED = {
   },
   "appointments-management": {
     "What comes out of an appointment": "conversion is only enabled once an appointment is Completed, and both appointments on the account are Scheduled, so the Related Records tab can only be photographed empty",
-    "Tracking time on a visit": "starting the timer writes a timesheet entry, and these scripts are read-only. Start Timer itself is in the detail figure, in the header",
-    "Sending it to the client": "the Send to Client panel is the same one reported as defective from the job: a literal newline in the message body, and a link that points at the wrong client app from staging. Shoot it once those are fixed; the menu figure shows where the action lives",
   },
   "crews-management": {
     "Deleting a crew": "every crew on staging is assigned to work, so the delete button is disabled on all 26 rows and the confirmation cannot be opened",
@@ -111,12 +144,13 @@ const OUT_OF_SCOPE = {
   "client-invoices": "same as above",
   "client-inbox": "same as above",
   "client-profile-settings": "same as above",
-  // Checklists and Settings are getting a cosmetic UI pass. The
-  // flows and their order do not change, so the text written from the code
-  // holds, but a figure taken today would show the old skin and have to be
-  // re-shot. Photograph these once the new look ships.
+  // Checklists is getting a cosmetic UI pass. The flow and its order do not
+  // change, so the text written from the code holds, but a figure taken today
+  // would show the old skin and have to be re-shot.
+  //
+  // Settings came off this list on 2026-10-08: the redesign shipped, staging is
+  // running it, and scripts/kb-screenshots/settings.mjs photographs it.
   "checklists-management": "its UI is mid cosmetic rework; figures taken now would show the old skin",
-  "settings-configuration": "same as above",
 };
 
 const published = new Set(
@@ -169,9 +203,10 @@ for (const file of files) {
     sections[i].rolled = rolled;
   }
 
+  const extra = new Set(EXTRA_SURFACES[id] || []);
   const gaps = sections.filter(
     (s) =>
-      ACTION.test(s.title) &&
+      (ACTION.test(s.title) || extra.has(s.title)) &&
       !SKIP.some((re) => re.test(s.title)) &&
       (s.rolled ?? s.figures) === 0
   );
