@@ -9,6 +9,11 @@
   },
   "routes": [
     {
+      "route": "/articles/users-management",
+      "redirect": "/articles/user-management",
+      "statusCode": 301
+    },
+    {
       "route": "/sitemap.xml",
       "headers": {
         "Content-Type": "application/xml"
