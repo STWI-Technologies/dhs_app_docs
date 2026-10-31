@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { BrowserRouter, Routes, Route, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { BrowserRouter, Navigate, Routes, Route, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useLanguage } from './context/LanguageContext';
 import { HelpVideoProvider, useHelpVideoContext } from './context/HelpVideoContext';
 import Header from './components/Header/Header';
@@ -201,11 +201,22 @@ function AppHelpPage() {
   );
 }
 
+// Article ids that were renamed. The old URL still opens the article, and the
+// address bar is moved to the new one. Azure does the same with a 301 in
+// public/staticwebapp.config.json; this covers the dev server and in-app links.
+const RENAMED_ARTICLE_IDS = {
+  'users-management': 'user-management'
+};
+
 function ArticlePage({ backTo = '/', backLabel }) {
   const { articleId } = useParams();
   const navigate = useNavigate();
   const { t } = useLanguage();
   const article = articles.find(a => a.id === articleId);
+
+  if (!article && RENAMED_ARTICLE_IDS[articleId]) {
+    return <Navigate to={`/articles/${RENAMED_ARTICLE_IDS[articleId]}`} replace />;
+  }
 
   if (!article) {
     return (

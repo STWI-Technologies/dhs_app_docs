@@ -70,13 +70,13 @@ const articles = [
     keywords: ['offline', 'sin conexión', 'sync', 'sincronización', 'queued', 'cola', 'conflict', 'conflicto', 'signal', 'señal', 'field', 'campo', 'unsynced', 'mobile', 'móvil']
   },
   {
-    id: 'users-management',
+    id: 'user-management',
     audience: 'provider',
     platforms: ['web'],
     icon: UserGroupIcon,
     contentPath: {
-      en: '/content/users-management.html',
-      es: '/content/users-management-es.html',
+      en: '/content/user-management.html',
+      es: '/content/user-management-es.html',
     },
     en: {
       title: 'User Management',

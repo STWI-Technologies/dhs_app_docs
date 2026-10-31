@@ -1,6 +1,6 @@
 # DHS App Docs - Knowledge Base
 
-Version: 2.5.0
+Version: 2.5.1
 
 ## Overview
 
@@ -149,6 +149,7 @@ To add a new article translation:
 
 ## Version History
 
+- **2.5.1** - User Management article moves to /articles/user-management; the old /articles/users-management URL redirects to it
 - **2.5.0** - Dashboard, Scheduler and Map articles added; Settings, Appointments, Estimates, Invoices and Jobs rewritten against the shipped UI; 25 new figures
 - **2.4.0** - Working Offline article, language picker moved to the top right, full-width hero, articles on the card measure, ranked search, figures re-shot on one account
 - **2.3.0** - Getting Started panels: split Scheduler from Appointments, Spanish CTA labels, solo-plan guides, Reports overview
