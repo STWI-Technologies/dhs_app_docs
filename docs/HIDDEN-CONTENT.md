@@ -68,6 +68,16 @@ They were edited out of Google Docs exports, so there is no clean revert:
 
 The exact previous wording is in the commit diff: `git show 328a884 -- public/content/ai-assistant.html public/content/plans-pricing.html`
 
+Removed later, when WhatsApp was taken out of everything a visitor or a search
+engine can see (version 2.5.2). Write these back too when WhatsApp AI returns:
+
+| File | What was removed |
+|---|---|
+| `public/content/settings-configuration.html` | **WhatsApp** from the Notifications channels. It read "**Email**, **SMS**, **WhatsApp**, **Mobile** and **Desktop**". Rebuild its search entry afterwards. |
+| `public/content/settings-configuration-es.html` | The same in Spanish: "**Correo**, **SMS**, **WhatsApp**, **Móvil** y **Escritorio**". |
+| `public/index.html` | "WhatsApp" at the end of the `keywords` meta tag, and the structured-data list item `{"@type": "ListItem", "position": 14, "name": "WhatsApp AI Assistant", "url": "https://docs.directhomeservice.com/articles/whatsapp-ai"}`. The items after it moved up one and `numberOfItems` went from 16 to 15. |
+| `public/sitemap.xml` | The `<url>` entry for `https://docs.directhomeservice.com/articles/whatsapp-ai` (priority 0.9). |
+
 ---
 
 ## 2. Appointment Line (IVR)
