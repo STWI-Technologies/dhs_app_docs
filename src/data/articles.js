@@ -39,12 +39,12 @@ const articles = [
     en: {
       title: 'Mobile App',
       category: 'Mobile App',
-      overview: 'Run your business from your phone or tablet. Sign in, navigate the app, and manage jobs, appointments, estimates, invoices, clients, your catalog, timesheets, messaging, and the AI Assistant on iOS and Android.'
+      overview: 'Run your business from your phone or tablet. Sign in, navigate the app, and manage jobs, appointments, estimates, invoices, clients, your catalog, timesheets and messaging on iOS and Android.'
     },
     es: {
       title: 'Aplicación Móvil',
       category: 'Aplicación Móvil',
-      overview: 'Gestione su negocio desde el teléfono o la tableta. Inicie sesión, navegue la app y administre trabajos, citas, presupuestos, facturas, clientes, su catálogo, hojas de tiempo, mensajería y el Asistente de IA en iOS y Android.'
+      overview: 'Gestione su negocio desde el teléfono o la tableta. Inicie sesión, navegue la app y administre trabajos, citas, presupuestos, facturas, clientes, su catálogo, hojas de tiempo y mensajería en iOS y Android.'
     },
     keywords: ['mobile', 'app', 'móvil', 'aplicación', 'ios', 'android', 'phone', 'teléfono', 'field', 'campo', 'jobs', 'appointments', 'estimates', 'invoices', 'timesheet', 'timer', 'work hub', 'quick add']
   },
@@ -388,6 +388,7 @@ const articles = [
     id: 'ai-assistant',
     audience: 'provider',
     platforms: ['web', 'app'],
+    comingSoon: true,
     icon: AiBrain01Icon,
     contentPath: {
       en: '/content/ai-assistant.html',

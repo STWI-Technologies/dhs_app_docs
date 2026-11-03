@@ -257,6 +257,130 @@ article used to say "see the Availability Management article" and now points at
 
 ---
 
+## 6. AI Assistant: coming soon, not removed
+
+**Hidden as part of WC-218** (branch `bugfix/WC-218-Hide-AI-Assistant`).
+
+This one works differently from the four above, and the difference is
+deliberate. The AI Assistant card **stays on the home page**, muted and badged
+**Coming soon**, because the feature is announced, not withdrawn. What is closed
+is the access to the content.
+
+### The `comingSoon` flag
+
+`src/data/articles.js` carries `comingSoon: true` on the `ai-assistant` entry.
+Three places read it:
+
+| File | What the flag does |
+|---|---|
+| `src/components/ArticleCard/ArticleCard.jsx` | drops `onClick`, `role="button"` and `tabIndex`, sets `aria-disabled`, adds the badge |
+| `src/App.js` (`ArticlePage`) | returns the Coming soon panel instead of `ArticleView`, so the direct URL `/articles/ai-assistant` does not open the body either |
+| `src/components/SearchBar/SearchBar.jsx` | skips the article, so search never offers a result that leads nowhere |
+
+The badge text lives in `src/context/LanguageContext.js` as `comingSoon`,
+`comingSoonTitle` and `comingSoonBody`, in both languages.
+
+**To restore**, delete the single line `comingSoon: true,` from the
+`ai-assistant` entry. Nothing else has to be undone for the article itself: the
+card, the route, the search entry and the content file were never touched. The
+flag stays in the codebase for the next article that needs it.
+
+**Kept on disk (do not delete):**
+
+- `public/content/ai-assistant.html` and `public/content/ai-assistant-es.html`
+- the `ai-assistant` and `ai-assistant:es` keys in
+  `public/content/search-index.json`
+
+### References removed from other articles. Write these back by hand.
+
+**`public/content/mobile-app.html` and `public/content/mobile-app-es.html`**
+
+| Where | What was removed |
+|---|---|
+| `src/data/articles.js`, the Mobile App card | the tail of both overviews. English ended "…your catalog, timesheets, messaging, and the AI Assistant on iOS and Android." and now ends "…your catalog, timesheets and messaging on iOS and Android." Spanish ended "…su catálogo, hojas de tiempo, mensajería y el Asistente de IA en iOS y Android." |
+| Overview list | the bullet's tail. It read "**Message clients and your team**, and ask the built-in **AI Assistant** in English or Spanish." and now ends after "your team". The Spanish read "**Enviar mensajes a los clientes y a tu equipo**, y preguntarle al **Asistente de IA** integrado en inglés o español." |
+| Getting Started, bottom-navigation list | the slot "**AI** — the AI Assistant." / "**IA** — el Asistente de IA." It sat between **Work Hub** and **More**. |
+| Your Account & Profile, Change your language | the tip "**Tip:** The AI Assistant also understands both languages — just type in whichever you prefer." / "**Consejo:** El Asistente de IA también entiende ambos idiomas — solo escribe en el que prefieras." |
+| Body | the whole **AI Assistant** section, 26 lines in each language: the two intro paragraphs and the subsections Open the AI Assistant, Ask by text, Ask by voice, Ask with a photo, Suggested prompts and Tips. It sat between **Inbox (Messaging)** and **Quick Add**. |
+
+**`public/content/mobile-offline.html` and `public/content/mobile-offline-es.html`**
+
+| Where | What was removed |
+|---|---|
+| "What works offline" table | the last row: `AI Assistant · No · N/A · "The AI assistant needs an internet connection. Reconnect to ask a question."` The Spanish row read `Asistente de IA · No · No aplica · "El asistente de IA necesita conexión a internet. Reconéctese para hacer una pregunta".` |
+
+The exact previous markup is in the diff for this commit.
+
+After writing any of these back, rebuild the index for the articles touched:
+
+```
+node scripts/build-search-index.mjs mobile-app mobile-offline
+```
+
+### `public/content/plans-pricing.html` and `public/content/plans-pricing-es.html`
+
+Every AI reference was taken out, both the assistant itself and the generic
+"AI features / AI queries" claims, because a plan that advertises AI capacity
+while the assistant is unreachable promises something the reader cannot use.
+This is the part to restore most carefully: it changes what each plan appears
+to include.
+
+**Rows deleted outright.** Put them back in the position shown.
+
+| Table | Row, English | Row, Spanish |
+|---|---|---|
+| DHS Solo, after Users | `AI Assistant · In-app AI included` | `Asistente de IA · IA dentro de la app incluida` |
+| DHS Team, after Users | `AI Assistant · In-app AI for all users` | `Asistente de IA · IA dentro de la app para todos los usuarios` |
+| Enterprise, after Users | `AI Queries · Unlimited` | `Consultas de IA · Ilimitadas` |
+| Side-by-Side Comparison, after Jobs & Estimates | `In-App AI · Yes · Yes · Yes` | `IA en la app · Sí · Sí · Sí` |
+| Communication Channels, before SMS/MMS | `In-App AI · Text, voice, and image input directly in the web or mobile app · All plans (including Free)` | `IA en la app · Entrada de texto, voz e imagen directo en la app web o móvil · Todos los planes (incluido el gratuito)` |
+
+**Other deletions.**
+
+| Where | What |
+|---|---|
+| Free Trial, list of what the free plan includes | the bullet "In-app AI assistant" / "Asistente de IA dentro de la app", between the jobs limit and attachment storage |
+| Frequently Asked Questions, between "What happens if I reach my limit?" and "How do I get Enterprise?" | the whole entry. Heading: "Do all team members get AI access?" Answer: "Yes. Every user on a Team or Enterprise account has access to the In-App AI assistant." Spanish heading: "¿Todos los integrantes del equipo tienen IA?" Answer: "Sí. Cada usuario de una cuenta Team o Enterprise tiene acceso al Asistente de IA dentro de la app." |
+
+**Prose reworded. The previous wording is on the left.**
+
+| Where | Was | Is now |
+|---|---|---|
+| Intro paragraph | "Both app versions include the same powerful AI features — the difference is in user capacity, team management tools, and communication channels." | "The difference between the two app versions is in user capacity, team management tools, and communication channels." |
+| Intro paragraph, Spanish | "Las dos versiones incluyen las mismas funciones de IA: la diferencia está en la capacidad de usuarios…" | "La diferencia entre las dos versiones está en la capacidad de usuarios…" |
+| DHS Solo, Voice Memos row | `Yes — send voice messages to the AI` / `Sí, puede mandarle mensajes de voz a la IA` | `Yes` / `Sí`. The row was kept rather than deleted, so it still matches the Voice Memos row in the comparison matrix. |
+| DHS Solo, Perfect for | "…who want AI-powered business management without the complexity of team features" | "…who want to run their business from one place without the complexity of team features" |
+| DHS Solo, Ideal para | "…que quieren administrar su negocio con IA sin la complejidad…" | "…que quieren administrar su negocio desde un solo lugar sin la complejidad…" |
+| DHS Team description | "…multi-user reports, and expanded AI and communication capabilities." | "…multi-user reports, and expanded communication capabilities." |
+| DHS Team, Spanish | "…reportes multiusuario y más capacidad de IA y de comunicación." | "…reportes multiusuario y más capacidad de comunicación." |
+| Enterprise description | "…unlimited users, unlimited AI queries, unlimited clients, and access to…" | "…unlimited users, unlimited clients, and access to…" |
+| Enterprise, Spanish | "…usuarios, consultas de IA y clientes sin límite, y acceso a…" | "…usuarios y clientes sin límite, y acceso a…" |
+| Communication Channels, intro line | "DHS provides multiple ways to interact with the AI and communicate with clients:" / "DHS ofrece varias formas de interactuar con la IA y de comunicarse con los clientes:" | "DHS provides the following ways to communicate with clients:" / "DHS ofrece las siguientes formas de comunicarse con los clientes:" |
+| Choosing the Right Version > Choose Enterprise if | "You need unlimited capacity for users, clients, and AI queries" / "Necesita capacidad ilimitada de usuarios, clientes y consultas de IA" | "You need unlimited capacity for users and clients" / "Necesita capacidad ilimitada de usuarios y clientes" |
+
+**One fix that is not WC-218.** `Choosing the Right Version > Choose Team if`
+still read "You need clients to book appointments directly via the AI phone
+system" in English only. That is the Appointment Line, hidden back in section 2
+of this document, and the Spanish twin had already been rewritten to "Necesita
+que sus clientes puedan agendar citas por su cuenta". The English bullet now
+reads "You need clients to book appointments on their own", matching Spanish.
+When the Appointment Line comes back, restore it from section 2, not from here.
+
+**After restoring any of this**, rebuild the index:
+
+```
+node scripts/build-search-index.mjs plans-pricing
+```
+
+### What the Communication Channels section looks like while this is hidden
+
+One row, SMS/MMS, Enterprise only. WhatsApp was already removed in section 1
+and the in-app AI row here, so the table is down to a single channel. If the
+section looks too thin to keep, that is why; do not delete it, because both
+rows come back.
+
+---
+
 ## Checklist for un-hiding a section
 
 1. Put the `articles.js` entry back, including its icon import.

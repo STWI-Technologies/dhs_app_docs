@@ -9,7 +9,7 @@ const PLATFORM_LABELS = {
 };
 
 export default function ArticleCard({ article, onClick }) {
-  const { getLocalized } = useLanguage();
+  const { t, getLocalized } = useLanguage();
   const localized = getLocalized(article);
   // A card that is only CLIENT sits on the client side of the toggle, where the
   // badge repeats what the toggle already said. The badge earns its place on a
@@ -17,9 +17,24 @@ export default function ArticleCard({ article, onClick }) {
   const allPlatforms = article.platforms || [];
   const platforms = allPlatforms.length === 1 && allPlatforms[0] === 'client' ? [] : allPlatforms;
 
+  // A coming-soon article keeps its card so readers know the feature is on the
+  // way, but the card is not a door: no click, no keyboard target, no route.
+  const comingSoon = Boolean(article.comingSoon);
+
+  const interaction = comingSoon
+    ? { 'aria-disabled': true }
+    : {
+        onClick: () => onClick(article),
+        role: 'button',
+        tabIndex: 0,
+        onKeyDown: (e) => { if (e.key === 'Enter') onClick(article); }
+      };
+
   return (
-    <div className="article-card" onClick={() => onClick(article)} role="button" tabIndex={0}
-      onKeyDown={(e) => { if (e.key === 'Enter') onClick(article); }}>
+    <div
+      className={`article-card${comingSoon ? ' article-card--coming-soon' : ''}`}
+      {...interaction}
+    >
       <div className="article-card__icon" aria-hidden="true">
         {article.icon && <article.icon size={22} color="#3b40c4" variant="stroke" />}
       </div>
@@ -34,6 +49,11 @@ export default function ArticleCard({ article, onClick }) {
               {PLATFORM_LABELS[p] || p}
             </span>
           ))}
+          {comingSoon && (
+            <span className="article-card__badge article-card__badge--soon">
+              {t.comingSoon}
+            </span>
+          )}
         </div>
         <p className="article-card__overview">{localized.overview}</p>
       </div>

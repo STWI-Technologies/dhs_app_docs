@@ -42,6 +42,10 @@ export default function SearchBar({ onSelectArticle }) {
     const results = [];
 
     articles.forEach(article => {
+      // Coming-soon articles have no reachable page, so they must not be
+      // offered as a result that leads nowhere.
+      if (article.comingSoon) return;
+
       const localized = getLocalized(article);
 
       // Title match. Ranked first below, so searching "estimates" offers the
