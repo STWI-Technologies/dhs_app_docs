@@ -1,6 +1,6 @@
 # DHS App Docs - Knowledge Base
 
-Version: 2.5.3
+Version: 2.5.4
 
 ## Overview
 
@@ -149,6 +149,7 @@ To add a new article translation:
 
 ## Version History
 
+- **2.5.4** - Hidden AI and Appointment Line leftovers closed: AI card overview is a short coming-soon teaser, AI and IVR out of the sitemap and home page SEO tags, their raw content files return 404, Appointment Line out of the Settings panels
 - **2.5.3** - AI Assistant hidden across the knowledge base: the card keeps a coming-soon badge but no route, and its references are out of the Mobile App, Working Offline and Plans articles
 - **2.5.2** - WhatsApp taken out of the public pages while the feature is hidden: Settings notification channels, home page keywords and structured data, sitemap
 - **2.5.1** - User Management article moves to /articles/user-management; the old /articles/users-management URL redirects to it

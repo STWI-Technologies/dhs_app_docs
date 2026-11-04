@@ -397,12 +397,12 @@ const articles = [
     en: {
       title: 'AI Assistant (Web & Mobile)',
       category: 'AI & Automation',
-      overview: 'Ask in plain English or Spanish and it does the work: finding records, creating and updating them, tracking time, reading a photo you send it, and handing you a one-tap link straight into the app.'
+      overview: 'Your AI helper for Direct Home Service. Coming soon to web and mobile.'
     },
     es: {
       title: 'Asistente IA (Web y Móvil)',
       category: 'IA y Automatización',
-      overview: 'Pídalo en español o en inglés y lo hace: buscar registros, crearlos y actualizarlos, registrar tiempo, leer una foto que le mande y entregarle un enlace directo a la app.'
+      overview: 'Su asistente de IA para Direct Home Service. Próximamente en web y móvil.'
     },
     keywords: ['ai', 'assistant', 'asistente', 'web', 'mobile', 'móvil', 'voice', 'voz', 'search', 'buscar', 'create', 'crear', 'natural language']
   },

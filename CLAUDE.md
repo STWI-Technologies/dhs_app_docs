@@ -1,6 +1,6 @@
 # CLAUDE.md - AI Assistant Instructions
 
-Version: 2.5.2
+Version: 2.5.4
 
 ## Project Overview
 
