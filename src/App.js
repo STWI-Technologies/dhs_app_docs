@@ -237,6 +237,27 @@ function ArticlePage({ backTo = '/', backLabel }) {
     );
   }
 
+  // Flagged coming soon in articles.js: the card is already inert, this closes
+  // the direct URL so a shared or bookmarked link cannot reach the body.
+  if (article.comingSoon) {
+    return (
+      <div style={{ textAlign: 'center', padding: '60px 20px', color: '#666' }}>
+        <h2>{t.comingSoonTitle}</h2>
+        <p>{t.comingSoonBody}</p>
+        <button
+          onClick={() => navigate(backTo)}
+          style={{
+            marginTop: '16px', padding: '10px 24px', background: '#2E3192',
+            color: 'white', border: 'none', borderRadius: '8px', cursor: 'pointer',
+            fontFamily: 'Poppins, sans-serif', fontSize: '14px'
+          }}
+        >
+          {backLabel || t.backButton}
+        </button>
+      </div>
+    );
+  }
+
   return (
     <ArticleView
       article={article}

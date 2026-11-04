@@ -108,3 +108,36 @@
     font-size: 13px;
   }
 }
+
+/* Coming soon: the card stays on the page so the feature is announced, but it
+   is not clickable and should not read as one. Muted, no hover lift, default
+   cursor. */
+.article-card--coming-soon {
+  cursor: default;
+  background: #fbfbfd;
+  border-color: #eceef6;
+}
+
+.article-card--coming-soon:hover,
+.article-card--coming-soon:focus-visible {
+  transform: none;
+  box-shadow: 0 1px 2px rgba(17, 24, 60, 0.04);
+  border-color: #eceef6;
+}
+
+.article-card--coming-soon .article-card__icon {
+  background: #f1f2f7;
+}
+
+.article-card--coming-soon .article-card__title {
+  color: #4b5168;
+}
+
+.article-card--coming-soon .article-card__overview {
+  color: #9299aa;
+}
+
+.article-card__badge--soon {
+  background: #fdf1e3;
+  color: #b4701a;
+}
