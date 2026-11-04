@@ -381,6 +381,88 @@ rows come back.
 
 ---
 
+## 7. Leftovers closed after WC-218 (AI, Appointment Line, WhatsApp AI)
+
+Added in version 2.5.4. Sections 1, 2 and 6 hid the articles, but a few things
+outside the articles still pointed at them. These were turned off too. Nothing
+was deleted; undo each item below when its feature comes back.
+
+### AI Assistant card text (restore with section 6)
+
+`src/data/articles.js`, the `ai-assistant` entry. The overview was shortened to
+a teaser while the card shows Coming soon. Put the original back:
+
+| | Teaser now | Original, restore this |
+|---|---|---|
+| `en.overview` | "Your AI helper for Direct Home Service. Coming soon to web and mobile." | "Ask in plain English or Spanish and it does the work: finding records, creating and updating them, tracking time, reading a photo you send it, and handing you a one-tap link straight into the app." |
+| `es.overview` | "Su asistente de IA para Direct Home Service. Próximamente en web y móvil." | "Pídalo en español o en inglés y lo hace: buscar registros, crearlos y actualizarlos, registrar tiempo, leer una foto que le mande y entregarle un enlace directo a la app." |
+
+### Raw content files return 404
+
+`public/staticwebapp.config.json` has one route per file with
+`"statusCode": 404`, so these files cannot be opened by direct link or indexed
+by search engines. The files themselves are still on disk.
+
+| Route | Remove when |
+|---|---|
+| `/content/ai-assistant.html` | AI Assistant comes back (section 6) |
+| `/content/ai-assistant-es.html` | AI Assistant comes back (section 6) |
+| `/content/appointment-line.html` | Appointment Line comes back (section 2) |
+| `/content/whatsapp-ai.html` | WhatsApp AI comes back (section 1) |
+
+**This one is required, not optional.** The article page loads its body from
+these same files, so if the route stays, the restored article opens empty with
+a "not found" error.
+
+### Home page SEO tags (`public/index.html`)
+
+| Where | Was | Is now |
+|---|---|---|
+| `<meta name="description">` | "…estimates, jobs, invoices, timesheets, and AI-powered features." | "…estimates, jobs, invoices, and timesheets." |
+| `<meta name="keywords">` | ended "…crews, clients, AI assistant" | ends "…crews, clients" |
+| JSON-LD `ItemList` | `"numberOfItems": 15`, plus the two items below | `"numberOfItems": 13` |
+
+The two JSON-LD items, to put back after position 13 (Checklists Management),
+updating `numberOfItems` to match:
+
+```json
+{"@type": "ListItem", "position": 14, "name": "AI Assistant (Web & Mobile)", "url": "https://docs.directhomeservice.com/articles/ai-assistant"},
+{"@type": "ListItem", "position": 15, "name": "Appointment Line (IVR)", "url": "https://docs.directhomeservice.com/articles/appointment-line"}
+```
+
+### Sitemap (`public/sitemap.xml`)
+
+Two entries removed. Put back the one for each feature that returns:
+
+```xml
+<url>
+  <loc>https://docs.directhomeservice.com/articles/ai-assistant</loc>
+  <lastmod>2026-04-03</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.9</priority>
+</url>
+<url>
+  <loc>https://docs.directhomeservice.com/articles/appointment-line</loc>
+  <lastmod>2026-04-03</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.9</priority>
+</url>
+```
+
+Set `lastmod` to the launch date. Search engines take days to weeks to list the
+page again; requesting indexing in Google Search Console speeds it up.
+
+### Appointment Line in the Settings Getting Started panels (restore with section 2)
+
+`public/en/settings.html` and `public/es/settings.html`:
+
+| Where | What was removed |
+|---|---|
+| "What you can do" list, after the timesheets bullet | EN "Set up your appointment line for incoming client calls" / ES "Configurar tu línea de citas para las llamadas entrantes de clientes" |
+| Workspace group, last line | EN "Your appointment line for client calls" / ES "Tu línea de citas para llamadas de clientes". The Timesheet line above it took over its `margin: 0 0 16px 0`; give that back to the restored last line and set the Timesheet line to `0 0 8px 0`. |
+
+---
+
 ## Checklist for un-hiding a section
 
 1. Put the `articles.js` entry back, including its icon import.
@@ -390,5 +472,8 @@ rows come back.
    `node scripts/build-search-index.mjs <article-id> …`
 5. Check nothing is left dangling the other way: an article that points at
    something still hidden.
+5a. Undo the matching items in section 7: the 404 route (required, or the
+   article opens empty), the sitemap entry, the home page SEO tags and any
+   panel text.
 6. Run the app and confirm the card appears, the URL resolves, and search finds
    the body text.
